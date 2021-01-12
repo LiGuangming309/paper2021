@@ -93,7 +93,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "07_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_by <- "nation" # c("county","Census_Region","Census_division","hhs_region_number","state","nation")
+agr_by <- "state" # c("county","Census_Region","Census_division","hhs_region_number","state","nation")
 
 paf.dir <- file.path(data.dir, "08_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -116,7 +116,7 @@ paf.script <- file.path(code.dir, "08_paf.R")
 calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
 
 #--------parameters of code-------------------
-years <- c(2010)
+years <- c(2010,2013)
 
 
 for (year in years) {
