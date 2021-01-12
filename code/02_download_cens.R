@@ -30,13 +30,13 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 # TODO l?schen
-#year <- 2010
+year <- 2000
 
-# censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
-# tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
+# censDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_demog"
+# tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-#tmpDir <- "/Users/default/Desktop/paper2020/data/tmp"
-#censDir <- "/Users/default/Desktop/paper2020/data/06_demog"
+tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
 
 # quits, if not downloadable year
 if (!year %in% c(2000, 2010:2016)) {
@@ -129,6 +129,15 @@ apply(states, 1, function(state) {
     # make wider
     tic(paste("Made additional calculations with census data in year", toString(year), "in", name))
     
+    #TODO delete
+    variables_test <-c("P012D042","PCT012L168","PCT012L167")
+    census_meta %>% filter(variable %in% variables_test) 
+    
+    GEO_IDS_test<-unique(dem.state.data$GEO_ID)[1:4]
+    dem.state.data <- dem.state.data %>%
+      filter(GEO_ID %in% GEO_IDS_test,
+             variable %in% variables_test)
+    #TODO delete above
     
     dem.state.data <- dem.state.data %>%
       group_by(variable) %>%

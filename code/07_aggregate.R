@@ -45,7 +45,7 @@ agr_by <- args[10]
 # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
 # cens_agrDir <- "C:/Users/Daniel/Desktop/paper2020/data/07_dem.agr"
 
-if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "state", "nation")) {
+if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
   quit()
 }

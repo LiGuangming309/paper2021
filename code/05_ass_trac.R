@@ -152,7 +152,7 @@ apply(states, 1, function(state) {
 
   ## --------------plot-----------
   # save everything as interactive map via tmap
-  if (TRUE) {
+  if (FALSE) {
     tm <- tm_shape(tracts) +
       tm_polygons("pm", alpha = 0.6)
     #+tm_format("NLD",title=paste("Particulate Matter Exposure for",year,"in",name)) #TODO
