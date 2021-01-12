@@ -132,7 +132,7 @@ if (!file.exists(attrBurdenDir)) {
     "label_cause" = "label_cause"
   )
 
-  agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region", "Census_division" = "Census.division", "hhs_region_number" = "HHS.Region", "state" = "State", "nation" = "Nation")
+  agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region", "Census_division" = "Census.division", "hhs_region_number" = "HHS.Region", "STATEFP" = "State", "nation" = "Nation")
   agr_by_new <- agr_by_replace[[agr_by]]
   join_variables[agr_by_new] <- agr_by
 
