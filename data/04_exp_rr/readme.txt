@@ -1,0 +1,7 @@
+""	"name"	"label"	"concept"	"predicateType"	"group"	"limit"	"predicateOnly"
+"1"	"P005005"	"Total!!Not Hispanic or Latino!!American Indian and Alaska Native alone"	"HISPANIC OR LATINO ORIGIN BY RACE"	"int"	"P5"	"0"	"TRUE"
+"2"	"P005006"	"Total!!Not Hispanic or Latino!!Asian alone"	"HISPANIC OR LATINO ORIGIN BY RACE"	"int"	"P5"	"0"	"TRUE"
+"3"	"P005007"	"Total!!Not Hispanic or Latino!!Native Hawaiian and Other Pacific Islander alone"	"HISPANIC OR LATINO ORIGIN BY RACE"	"int"	"P5"	"0"	"TRUE"
+"4"	"P005008"	"Total!!Not Hispanic or Latino!!Some Other Race alone"	"HISPANIC OR LATINO ORIGIN BY RACE"	"int"	"P5"	"0"	"TRUE"
+"5"	"P005009"	"Total!!Not Hispanic or Latino!!Two or More Races"	"HISPANIC OR LATINO ORIGIN BY RACE"	"int"	"P5"	"0"	"TRUE"
+"6"	"P005001"	"Total"	"HISPANIC OR LATINO ORIGIN BY RACE"	"int"	"P5"	"0"	"TRUE"
