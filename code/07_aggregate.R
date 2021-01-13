@@ -89,7 +89,7 @@ apply(states, 1, function(state) {
       read.csv()
 
     # tigris does not provide all tract boundaries
-    sym_dif <- sets::set_symdiff(exp_tracData$GEO_ID, trac_censData$GEO_ID) %>% unlist()
+    sym_dif <- setdiff(trac_censData$GEO_ID, exp_tracData$GEO_ID) %>% unlist()
     if (!is.null(sym_dif)) {
       trac_censData_sub <- trac_censData %>%
         filter(GEO_ID %in% sym_dif)
@@ -98,7 +98,7 @@ apply(states, 1, function(state) {
         mutate(rowsum = rowSums(trac_censData_sub[, -c(1:4)])) %>%
         filter(rowsum > 0)
       if (nrow(trac_censData_sub) > 0) {
-        print(paste("In", name, "exp_tracData and trac_censData differ by", nrow(trac_censData_sub), "rows:"))
+        print(paste("In", name, "trac_censData\exp_tracData differ by", nrow(trac_censData_sub), "rows:"))
         glimpse(trac_censData_sub$GEO_ID)
         # browser()
       }
