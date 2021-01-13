@@ -28,21 +28,23 @@ pafDir <- args[11]
 totalBurdenDir <- args[12]
 attrBurdenDir <- args[13]
 
-# year <- 2010
-# agr_by <- "nation"
+# TODO delete
+if (is.null(args)) {
+  year <- 2010
+  agr_by <- "nation"
 
-# tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-# pafDir <- "/Users/default/Desktop/paper2021/data/08_paf"
-# totalBurdenDir <- "/Users/default/Desktop/paper2021/data/09_total_burden"
-# attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
-# TODO
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  pafDir <- "/Users/default/Desktop/paper2021/data/08_paf"
+  totalBurdenDir <- "/Users/default/Desktop/paper2021/data/09_total_burden"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
+}
 
 pafDir <- file.path(pafDir, agr_by, year)
 totalBurdenDir <- file.path(totalBurdenDir, agr_by)
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
-attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv")) # .csv
+attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv")) 
 
 if (!file.exists(attrBurdenDir)) {
   ## ----- read paf------
@@ -139,7 +141,7 @@ if (!file.exists(attrBurdenDir)) {
   # give some feedback on what is still missing
   # one side
   missing_rows <- anti_join(total_burden, pafs, by = join_variables) %>%
-    select(all_of(c("Gender", "Race", "Hispanic.Origin", "label_cause", agr_by_new))) %>% #year?
+    select(all_of(c("Gender", "Race", "Hispanic.Origin", "label_cause", agr_by_new))) %>% # year?
     distinct()
   if (nrow(missing_rows) > 0) {
     print(paste(nrow(missing_rows), "rows are still missing in pafs data for", agr_by, ":"))

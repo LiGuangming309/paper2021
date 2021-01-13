@@ -30,13 +30,15 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 # TODO l?schen
-#year <- 2010
+if (rlang::is_empty(args)) {
+year <- 2010
 
 # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
 # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
 
-#tmpDir <- "/Users/default/Desktop/paper2020/data/tmp"
-#censDir <- "/Users/default/Desktop/paper2020/data/06_demog"
+tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
+}
 
 # quits, if not downloadable year
 if (!year %in% c(2000:2016)) {
