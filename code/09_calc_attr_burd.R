@@ -69,7 +69,8 @@ if (!file.exists(attrBurdenDir)) {
     to = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American")
   )
   pafs <- DataCombine::FindReplace(data = pafs, Var = "race", replaceData = replaces, from = "from", to = "to", exact = FALSE)
-
+  
+  #TODO Alaska (02), Census Region 4: West (CENS-R4)
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
   total_burden <- lapply(files, function(file) {

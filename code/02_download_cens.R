@@ -31,13 +31,13 @@ censDir <- args[8]
 
 # TODO l?schen
 #if (rlang::is_empty(args)) {
-  year <- 2000
+ # year <- 2000
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
+#  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+#  censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
 #}
 
 # quits, if not downloadable year
@@ -91,60 +91,40 @@ apply(states, 1, function(state) {
     file.path(censDir, .)
 
   # download if does not exist yet
-  if (TRUE || !file.exists(dem.state.dir)) { #TODO delete
+  if (!file.exists(dem.state.dir)) { #TODO delete
     tic(paste("Downloaded census data in year", toString(year), "in", name))
 
-    #TODO entcomment
     # loop over all groups, download data
-    #dem.state.data <- lapply(groups, function(group) {
-    #  tic(paste("Downloaded census data in year", toString(year), "in", name, "for group", group))
-    #  data <- getCensus(
-    #    name = tablename,
-    #    vintage = year,
-    #    vars = paste0("group(", group, ")"),
-    #    region = "tract:*",
-    #    regionin = sprintf("state:%02d", STATEFP)
-    #  )
+    dem.state.data <- lapply(groups, function(group) {
+      tic(paste("Downloaded census data in year", toString(year), "in", name, "for group", group))
+      data <- getCensus(
+        name = tablename,
+        vintage = year,
+        vars = paste0("group(", group, ")"),
+        region = "tract:*",
+        regionin = sprintf("state:%02d", STATEFP)
+      )
       
-    #  # subset relevant part of GEO_ID
-    #  data$GEO_ID <- data$GEO_ID %>%
-    #    str_sub(., -11, -1)
+      # subset relevant part of GEO_ID
+      data$GEO_ID <- data$GEO_ID %>%
+        str_sub(., -11, -1)
 
-    #  data <- data %>%
-    #    select(
-    #      any_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))
-    #    ) %>%
-    #    pivot_longer(
-    #      cols = !c("state", "county", "tract", "GEO_ID"),
-    #      names_to = "variable",
-    #      values_to = "pop_size"
-    #    ) %>%
-    #    filter()
-    #  toc()
-    #  return(data)
-    #}) %>%
-    #  do.call(rbind, .) %>%
-    #  as.data.frame()
-
-    # save data
-   # fwrite(dem.state.data, dem.state.dir, row.names = FALSE)
-
-   ##---- make additional calculations-----
-    dem.state.data <- fread(dem.state.dir)
+      data <- data %>%
+        select(any_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))) %>%
+        pivot_longer(
+          cols = !c("state", "county", "tract", "GEO_ID"),
+          names_to = "variable",
+          values_to = "pop_size"
+        ) 
+      toc()
+      return(data)
+    }) %>%
+      do.call(rbind, .) %>%
+      as.data.frame
   
+     ##---- make additional calculations-----
     tic(paste("Made additional calculations with census data in year", toString(year), "in", name))
 
-    # TODO delete
-    variables_test <- c("P012B031C", "P012B031", "PCT012J125","PCT012J126")
-    census_meta<-census_meta %>% filter(variable %in% variables_test)
-
-    GEO_IDS_test <- unique(dem.state.data$GEO_ID)[1:3]
-    dem.state.data <- dem.state.data %>%
-      filter(
-        GEO_ID %in% GEO_IDS_test,
-        variable %in% variables_test
-      )
-    # TODO delete above
     # make wider
     dem.state.data <- dem.state.data %>%
       group_by(variable) %>%
@@ -201,7 +181,7 @@ apply(states, 1, function(state) {
       # calculate "Hispanic or latino" = "all" - "not hispanic or latino"
       dem.state.data[, var] <- data_tot - data_ntot
 
-      # some times estimates lead to negative results
+      # some estimates lead to negative results => max(x,0)
       dem.state.data[, var] <- (dem.state.data[, var] +abs(dem.state.data[, var]))/2
     }
 
@@ -220,73 +200,19 @@ apply(states, 1, function(state) {
       unlist()
 
     dem.state.data <- dem.state.data %>%
-      filter(
-        !is.na(pop_size), # TODO
-        variable %in% relevant_variables
-      )
-
+      filter(variable %in% relevant_variables)
+    
+    #TODO delete
+    if(any(is.na(dem.state.data))){
+      subset_na <- dem.state.data %>% filter(is.na(pop_size))
+      browser()
+    }
 
     #--- test file for download census------
-    # test_that("02_download end", {
-    #  expect_false(any(is.na(dem.state.data)))
-    #  expect_true(all(dem.state.data$pop_size >= 0))
-
-    # TODO delete
-    # if(!all(dem.state.data$pop_size >= 0)){
-    #  negativeRows<-dem.state.data[dem.state.data$pop_size < 0,]
-    #  variables_negative<- census_meta[census_meta$variable %in% (negativeRows$variable),]
-    #  browser()
-    # }
-
-    # census_meta_sub <- census_meta %>% filter(downloaded == FALSE)
-    # seq <- seq(from = 1, to = nrow(census_meta_sub), length.out = 10) %>% round()
-    #  census_meta_sub <- census_meta_sub[seq, ]
-
-    # show progress
-    #  pb <- txtProgressBar(1, nrow(census_meta_sub), style = 3)
-    #  list <- lapply(1:nrow(census_meta_sub), function(i) {
-    #    var <- census_meta_sub[i, "variable"]
-    # parse String "A|B|C..." to vector c(A,B,C,...)
-    #    tot_var <- census_meta_sub[i, "tot_var"] %>%
-    #      strsplit(., "|", fixed = TRUE) %>%
-    #      unlist()
-    #
-    #    ntot_var <- census_meta_sub[i, "ntot_var"] %>%
-    #      strsplit(., "|", fixed = TRUE) %>%
-    #      unlist()
-
-    # calculate difference
-    #    dem.state.data.tot <- dem.state.data %>%
-    #      filter(variable %in% tot_var)
-    #    dem.state.data.tot <- dem.state.data %>%
-    #      group_by(state, county, tract, GEO_ID) %>%
-    #      summarise(pop_size_tot = sum(pop_size))
-    #    dem.state.data.ntot <- dem.state.data %>%
-    #      filter(variable %in% ntot_var) %>%
-    #      group_by(state, county, tract, GEO_ID) %>%
-    #      summarise(pop_size_ntot = sum(pop_size))
-    #    dem.state.data.dif <- full_join(dem.state.data.tot, dem.state.data.ntot,
-    #                                    by = c("state", "county", "tract", "GEO_ID")
-    #    )
-    #    dem.state.data.dif <- dem.state.data.dif %>%
-    #     mutate(
-    #        variable = var,
-    #    pop_size = max(0, pop_size_tot - pop_size_ntot),
-    #     pop_size_tot = NULL,
-    #      pop_size_ntot = NULL,
-    #     )
-    # toc()
-    #    setTxtProgressBar(pb, i)
-    #    return(dem.state.data.dif)
-    #  })
-    #  comp1 <- rbindlist(list, use.names = TRUE)
-
-    #  comp2 <- inner_join(comp1, dem.state.data, by = c("state", "county", "tract", "GEO_ID","variable"))
-    #
-    #  apply(comp2, 1, function(row) {
-    #    expect_equal(row[["x.pop_size"]], row[["y.pop_size"]])
-    #  })
-    # })
+     test_that("02_download end", {
+      expect_false(any(is.na(dem.state.data)))
+      expect_true(all(dem.state.data$pop_size >= 0))
+     })
 
     toc()
 

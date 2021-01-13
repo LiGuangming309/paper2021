@@ -31,13 +31,13 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-year <- 2010
+  year <- 2010
 
-# censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
-# tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
+  # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
+  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
 
-tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
 }
 
 # quits, if not downloadable year
@@ -335,9 +335,9 @@ if (!file.exists(filepathCensMeta)) {
       relevant == TRUE
     ) %>%
     group_by(year, gender, gender_label, race, hispanic_origin) %>%
-    summarise(tot_var = list(variable)) 
-  
-  census_meta_old<-census_meta_old%>%
+    summarise(tot_var = list(variable))
+
+  census_meta_old <- census_meta_old %>%
     mutate(
       ntot_var = NA,
       group = NA,
@@ -348,13 +348,13 @@ if (!file.exists(filepathCensMeta)) {
       relevant = TRUE,
       variable = sapply(tot_var, function(list) paste0(list[[1]], "O"))
     )
-  
+
   census_meta <- census_meta %>%
     mutate(relevant = ifelse(min_age >= 100,
-                             FALSE,
-                             relevant
+      FALSE,
+      relevant
     ))
-  
+
   census_meta <- rbind(census_meta, census_meta_old)
   fwrite(census_meta, filepathCensMeta)
   toc()

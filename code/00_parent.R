@@ -116,7 +116,7 @@ paf.script <- file.path(code.dir, "08_paf.R")
 calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
 
 #--------parameters of code-------------------
-years <- c(2010,2013)
+years <- c(2010,2010)
 
 
 for (year in years) {
