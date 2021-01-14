@@ -31,21 +31,17 @@ agr_by <- args[10]
 pafDir <- args[11]
 
 # TODO löschen
-#year <- 2010
-#agr_by <- "nation"
-
-#tmpDir <- "/Users/default/Desktop/paper2020/data/tmp"
-#exp_rrDir <- "/Users/default/Desktop/paper2020/data/04_exp_rr"
-#censDir <- "/Users/default/Desktop/paper2020/data/06_demog"
-#cens_agrDir <- "/Users/default/Desktop/paper2020/data/07_dem.agr"
-#pafDir <- "/Users/default/Desktop/paper2020/data/08_paf"
-
-#/Users/default/Desktop/paper2020/data/07_dem.agr/nation/2010
-#tmpDir <- "C:/Users/Daniel/Desktop/paper2020/data/tmp"
-#exp_rrDir <- "C:/Users/Daniel/Desktop/paper2020/data/04_exp_rr"
-#censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
-#cens_agrDir <- "C:/Users/Daniel/Desktop/paper2020/data/07_dem.agr"
-#pafDir <- "C:/Users/Daniel/Desktop/paper2020/data/08_paf"
+if (rlang::is_empty(args)) {
+  year <- 2010
+  agr_by <- "nation"
+  
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  exp_rrDir <- "/Users/default/Desktop/paper2021/data/04_exp_rr"
+  pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
+}
 
 #load meta data
 census_meta <-  file.path(censDir,"meta", paste0("cens_meta_", toString(year), ".csv")) %>% 
@@ -101,20 +97,16 @@ for (region in regions) {
              censMeta <- censMetaAll %>% filter(age_group_id == as.numeric(age_group_idX))
              )
 
-      #TODO same thing via group by
       pafs <- apply(censMeta, 1, function(row) {
         variableX <- row[["variable"]]
         cens_agr_sub <- cens_agr %>% filter(variable == variableX)
 
         rr <- sapply(cens_agr_sub$pm, getRR) %>% as.numeric 
         props <- cens_agr_sub$prop
-        
-        x <- sum(props*(rr-1)) # TODO umbennen
+
+        x <- sum(props*(rr-1)) 
         y<-x / (1 + x)
-        #test_that("07_paf sum(props)", {
-        #  expect_equal(sum(props), 1)
-        #  expect_lt(y, 1) smaller
-        #})
+
         return(y)
       })
 

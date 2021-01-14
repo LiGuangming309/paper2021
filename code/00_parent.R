@@ -87,21 +87,21 @@ exp.rr.dir <- file.path(data.dir, "04_exp_rr")
 if (!file.exists(exp.rr.dir)) warning("The mrbrt_summary files from Cohen (2019) need to be downloaded")
 
 # directory for downloaded demographic census data
-dem.dir <- file.path(data.dir, "06_demog")
+dem.dir <- file.path(data.dir, "05_demog")
 dir.create(dem.dir, recursive = T, showWarnings = F)
 
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
-dem.agr.dir <- file.path(data.dir, "07_dem.agr")
+dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_by <- "STATEFP" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_by <- "nation" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
-paf.dir <- file.path(data.dir, "08_paf")
+paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
 
-total.burden.dir <- file.path(data.dir, "09_total_burden")
+total.burden.dir <- file.path(data.dir, "08_total_burden")
 if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wonder need to be downloaded")
 
-attr.burden.dir <- file.path(data.dir, "10_attr_burd")
+attr.burden.dir <- file.path(data.dir, "09_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
 # paths of scripts
@@ -116,7 +116,7 @@ paf.script <- file.path(code.dir, "08_paf.R")
 calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
 
 #--------parameters of code-------------------
-years <- c(2010,2010)
+years <- c(2010)
 
 
 for (year in years) {
@@ -141,7 +141,9 @@ for (year in years) {
    }else{
      runscript(script=download.cens.script, args = args)
    }
+   sink(type="message", append = TRUE)
    runscript(script=download.other.script, args = args)
+   sink(type="message", append = TRUE)
    runscript(script=assignTract.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script=mrbrtRR.script, args = args)

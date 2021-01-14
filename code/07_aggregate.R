@@ -32,19 +32,20 @@ cens_agrDir <- args[9]
 agr_by <- args[10]
 
 # TODO l?schen
-# year <- 2010
-# agr_by <- "nation"
+if (rlang::is_empty(args)) {
+  year <- 2010
+  agr_by <- "nation"
 
-# tmpDir <- "/Users/default/Desktop/paper2020/data/tmp"
-# exp_tracDir <- "/Users/default/Desktop/paper2020/data/03_exp_tracts"
-# censDir <- "/Users/default/Desktop/paper2020/data/06_demog"
-# cens_agrDir <- "/Users/default/Desktop/paper2020/data/07_dem.agr"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-# tmpDir <- "C:/Users/Daniel/Desktop/paper2020/data/tmp"
-# exp_tracDir <- "C:/Users/Daniel/Desktop/paper2020/data/03_exp_tracts"
-# censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
-# cens_agrDir <- "C:/Users/Daniel/Desktop/paper2020/data/07_dem.agr"
-
+  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_demog"
+  # cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_dem.agr"
+}
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
   quit()
@@ -78,7 +79,6 @@ apply(states, 1, function(state) {
     trac_censData <- paste0("census_", toString(year), "_", STUSPS, ".csv") %>%
       file.path(censDir, year, .) %>%
       read.csv() %>%
-      # setnames("GEO_ID", "AFFGEOID") %>%
       pivot_wider(
         names_from = variable,
         values_from = pop_size
@@ -89,19 +89,10 @@ apply(states, 1, function(state) {
       read.csv()
 
     # tigris does not provide all tract boundaries
-    sym_dif <- setdiff(trac_censData$GEO_ID, exp_tracData$GEO_ID) %>% unlist()
-    if (!is.null(sym_dif)) {
-      trac_censData_sub <- trac_censData %>%
-        filter(GEO_ID %in% sym_dif)
-
-      trac_censData_sub <- trac_censData_sub %>%
-        mutate(rowsum = rowSums(trac_censData_sub[, -c(1:4)])) %>%
-        filter(rowsum > 0)
-      if (nrow(trac_censData_sub) > 0) {
-        print(paste("In", name, "trac_censData-exp_tracData differ by", nrow(trac_censData_sub), "rows:"))
-        glimpse(trac_censData_sub$GEO_ID)
-        # browser()
-      }
+    set_dif <- setdiff(trac_censData$GEO_ID, exp_tracData$GEO_ID) %>% unlist
+    if (!rlang::is_empty(set_dif)) {
+      print(paste("In", name, "trac_censData-exp_tracData differ by", length(set_dif), "rows:"))
+      print(head(set_dif))
     }
 
     # join above datasets
@@ -123,7 +114,7 @@ apply(states, 1, function(state) {
 
     cens_agr <- cens_agr %>%
       group_by(state, county, variable) %>%
-      # calculate marginal sum regardsless of exposure
+      # calculate marginal sum regardless of exposure
       summarise(totals = sum(pop_size)) %>%
       filter(totals != 0) %>%
       inner_join(cens_agr, by = c("state", "county", "variable")) %>%
@@ -132,13 +123,28 @@ apply(states, 1, function(state) {
 
     # test, check
     test_that("06_aggregate county", {
+      expect_false(any(is.na(cens_agr)))
+      expect_false(any(is.na(trac_censData)))
       cens_agr %>%
         group_by(state, county, variable) %>%
         summarise(sum_prop = sum(prop)) %>%
         apply(1, function(row) {
           expect_equal(1, row[["sum_prop"]] %>% as.numeric())
         })
-      expect_equal(any(is.na(cens_agr)), FALSE)
+
+      # test that population does not change
+      comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
+        read.csv %>%
+        group_by(state, county, variable) %>%
+        summarise(pop_size = sum(pop_size))
+      
+      comp2<-cens_agr %>%
+        group_by(state, county, variable) %>%
+        summarise(pop_size = sum(pop_size)) %>%
+        full_join(comp1, by = c("state", "county", "variable")) 
+      
+      comp2[is.na(comp2)] <- 0
+      expect_equal(comp2$pop_size.x,comp2$pop_size.y)
     })
 
     write.csv(cens_agr, cens_agrDirCX)
@@ -196,10 +202,10 @@ if (agr_by != "county") {
       toc()
     }
     #---- -----Plot-----------    
-    if (TRUE) {
+    if (FALSE) {
       census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% read.csv()
 
-      cens_agr_plotDir <- file.path(cens_agrDir, "plots")
+      cens_agr_plotDir <- file.path(cens_agrDir, "plots", region)
       if (!file.exists(cens_agr_plotDir)) {
         tic(paste("Plotted aggregated Census data in", agr_by, region, "in year", year, "by pm"))
         dir.create(cens_agr_plotDir, recursive = TRUE)

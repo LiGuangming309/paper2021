@@ -31,12 +31,12 @@ attrBurdenDir <- args[13]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2010
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  pafDir <- "/Users/default/Desktop/paper2021/data/08_paf"
-  totalBurdenDir <- "/Users/default/Desktop/paper2021/data/09_total_burden"
-  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
+  pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
+  totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/09_attr_burd"
 }
 
 totalBurdenDir <- file.path(totalBurdenDir, agr_by)
@@ -57,47 +57,57 @@ if (!file.exists(attrBurdenDir)) {
     as.data.frame()
 
   # Find and replace so it is compatible with other data
-  replaces <- data.frame(
+  replaces1 <- data.frame(
     from = c("NOT HISPANIC OR LATINO", "HISPANIC OR LATINO", "all"),
     to = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins")
   )
-  pafs <- FindReplace(data = pafs, Var = "hispanic_origin", replaceData = replaces, from = "from", to = "to", exact = FALSE)
+  pafs <- FindReplace(data = pafs, Var = "hispanic_origin", replaceData = replaces1, from = "from", to = "to", exact = FALSE)
 
-  replaces <- data.frame(
+  replaces2 <- data.frame(
     from = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN OR PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN"),
     to = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American")
   )
-  pafs <- DataCombine::FindReplace(data = pafs, Var = "race", replaceData = replaces, from = "from", to = "to", exact = FALSE)
+  pafs <- DataCombine::FindReplace(data = pafs, Var = "race", replaceData = replaces2, from = "from", to = "to", exact = FALSE)
   
   if(agr_by =="STATEFP"){
-    replaces <- data.frame(
+    #TODO problems for this case
+    replaces3 <- data.frame(
       from = states$STATEFP,
       to = paste0(states$NAME,sprintf(" (%02d)", states$STATEFP))
     )
   }else if(agr_by =="Census_Region"){
-    replaces <- data.frame(
+    replaces3 <- data.frame(
       from = 1:4,
       to = c("Census Region 1: Northeast (CENS-R1)","Census Region 2: Midwest (CENS-R2)","Census Region 3: South (CENS-R3)","Census Region 4: West (CENS-R4)")
     )
   }else if(agr_by =="nation"){
-    replaces <- data.frame(from = "us",to = "us")
+    replaces3 <- data.frame(from = "us",to = "us")
   }else if(agr_by =="Census_division"){
-    replaces <- data.frame(
+    replaces3 <- data.frame(
       from = 1:9,
       to = c("Division 1: New England (CENS-D1)","Division 2: Middle Atlantic (CENS-D2)","Division 3: East North Central (CENS-D3)","Division 4: West North Central (CENS-D4)",
              "Division 5: South Atlantic (CENS-D5)","Division 6: East South Central (CENS-D6)","Division 7: West South Central (CENS-D7)","Division 8: Mountain (CENS-D8)",
              "Division 9: Pacific (CENS-D9)")
     )
   }else if(agr_by =="hhs_region_number"){
-    replaces <- data.frame(
+    replaces3 <- data.frame(
       from = 1:10,
       to = c("HHS Region #1 CT, ME, MA, NH, RI, VT", "HHS Region #2 NJ, NY","HHS Region #3 DE, DC, MD, PA, VA, WV","HHS Region #4 AL, FL, GA, KY, MS, NC, SC, TN",
              "HHS Region #5 IL, IN, MI, MN, OH, WI", "HHS Region #6 AR, LA, NM, OK, TX","HHS Region #7 IA, KS, MO, NE","HHS Region #8 CO, MT, ND, SD, UT, WY",
              "HHS Region #9 AZ, CA, HI, NV","HHS Region #10 AK, ID, OR, WA")
     )
   }
-  pafs <- DataCombine::FindReplace(data = pafs, Var = agr_by, replaceData = replaces, from = "from", to = "to", exact = FALSE)
+  #agr_by
+  pafs <- DataCombine::FindReplace(data = pafs, Var = agr_by, replaceData = replaces3, from = "from", to = "to", exact = FALSE)
 
+  test_that("09_calc_attr check completness of pafs",{
+    missing<-setdiff(replaces1$to,pafs$hispanic_origin)
+    #if(length(missing)>0){
+    if(!expect_equal(length(missing),0)){
+      print("Hispanic origins in paf data missing:")
+      print(missing)
+    }
+  })
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
   total_burden <- lapply(files, function(file) {
@@ -215,9 +225,11 @@ if (!file.exists(attrBurdenDir)) {
       attrDeaths = Deaths * pafs,
       attrYLD = YLD * pafs
     )
-
-  attrBurden <- attrBurden %>%
-    group_by(Year, Gender, Gender.Code, Single.Year.Ages, Race, min_age, max_age, Hispanic.Origin) %>%
+  
+  #TODO what does the following step change?
+  attrBurden2<-attrBurden
+  attrBurden <- attrBurden %>% #agr_by
+    group_by(all_of(c("Year", "Gender", "Gender.Code", "Single.Year.Ages", "Race", "min_age", "max_age", "Hispanic.Origin","label_cause"))) %>%
     summarize(
       Deaths = sum(Deaths),
       YLD = sum(YLD),
@@ -228,20 +240,20 @@ if (!file.exists(attrBurdenDir)) {
   # some basic tests
   test_that("09_read burden join2", {
     comp1 <- total_burden %>%
-      group_by(Year, Gender, Gender.Code, Race, Hispanic.Origin, Single.Year.Ages) %>%
+      group_by(Year, Gender, Gender.Code, Race, Hispanic.Origin, Single.Year.Ages,label_cause) %>%
       summarize(
         Deaths = sum(Deaths),
         YLD = sum(YLD)
       )
 
-    comp2 <- attrBurden %>%
-      group_by(Year, Gender, Gender.Code, Race, Hispanic.Origin, Single.Year.Ages) %>%
+    comp2 <- attrBurden2 %>%
+      group_by(Year, Gender, Gender.Code, Race, Hispanic.Origin, Single.Year.Ages,label_cause) %>%
       summarize(
         Deaths = sum(Deaths),
         YLD = sum(YLD)
       )
 
-    comp3 <- inner_join(comp1, comp2, by = c("Year", "Gender", "Gender.Code", "Race", "Hispanic.Origin","Single.Year.Ages"))%>%
+    comp3 <- inner_join(comp1, comp2, by = c("Year", "Gender", "Gender.Code", "Race", "Hispanic.Origin","Single.Year.Ages","label_cause"))%>%
       filter(Deaths.x != Deaths.y)
     expect_equal(nrow(comp3),0)
 
