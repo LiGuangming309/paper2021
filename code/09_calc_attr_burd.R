@@ -43,38 +43,38 @@ totalBurdenDir <- file.path(totalBurdenDir, agr_by)
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
-attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv")) 
+attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
 if (!file.exists(attrBurdenDir)) {
-  ##----determine join variables
+  ## ----determine join variables
   join_variables <- c(
-    "Year"="year",
-    #"Year.code"="year",
+    "Year" = "year",
+    # "Year.code"="year",
     "Gender" = "gender",
     "Gender.Code" = "gender_label",
     "Race" = "race",
     "Hispanic.Origin" = "hispanic_origin",
     "label_cause" = "label_cause"
   )
-  
+
   agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region", "Census_division" = "Census.division", "hhs_region_number" = "HHS.Region", "STATEFP" = "State", "nation" = "Nation")
   agr_by_new <- agr_by_replace[[agr_by]]
   join_variables[agr_by_new] <- agr_by
-  
-  inverse_join_variables<- setNames(names(join_variables), join_variables)
+
+  inverse_join_variables <- setNames(names(join_variables), join_variables)
   ## ----- read paf------
   states <- file.path(tmpDir, "states.csv") %>% read.csv()
   regions <- states[, agr_by] %>% unique()
   pafs <- lapply(regions, function(region) {
-    file.path(pafDir,agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
+    file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
       read.csv()
   }) %>%
     do.call(rbind, .) %>%
-    #TODO Asian, Pacific Islander immer noch dabei
-    filter(!(race %in% c("ASIAN","NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
-    #TODO old people still included
-    filter(!(100 <= min_age & max_age <150 | 100 < min_age)) %>%
-    as.data.frame 
+    # TODO Asian, Pacific Islander immer noch dabei
+    filter(!(race %in% c("ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
+    # TODO old people still included
+    filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
+    as.data.frame()
 
   # Find and replace so it is compatible with other data
   replaces1 <- data.frame(
@@ -88,78 +88,82 @@ if (!file.exists(attrBurdenDir)) {
     to = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American")
   )
   pafs <- DataCombine::FindReplace(data = pafs, Var = "race", replaceData = replaces2, from = "from", to = "to", exact = FALSE)
-  
-  if(agr_by =="STATEFP"){
+
+  if (agr_by == "STATEFP") {
     replaces3 <- data.frame(
       from = states$STATEFP,
-      to = paste0(states$NAME,sprintf(" (%02d)", states$STATEFP))
+      to = paste0(states$NAME, sprintf(" (%02d)", states$STATEFP))
     )
-  }else if(agr_by =="Census_Region"){
+  } else if (agr_by == "Census_Region") {
     replaces3 <- data.frame(
       from = 1:4,
-      to = c("Census Region 1: Northeast (CENS-R1)","Census Region 2: Midwest (CENS-R2)","Census Region 3: South (CENS-R3)","Census Region 4: West (CENS-R4)")
+      to = c("Census Region 1: Northeast (CENS-R1)", "Census Region 2: Midwest (CENS-R2)", "Census Region 3: South (CENS-R3)", "Census Region 4: West (CENS-R4)")
     )
-  }else if(agr_by =="nation"){
-    replaces3 <- data.frame(from = "us",to = "us")
-  }else if(agr_by =="Census_division"){
+  } else if (agr_by == "nation") {
+    replaces3 <- data.frame(from = "us", to = "us")
+  } else if (agr_by == "Census_division") {
     replaces3 <- data.frame(
       from = 1:9,
-      to = c("Division 1: New England (CENS-D1)","Division 2: Middle Atlantic (CENS-D2)","Division 3: East North Central (CENS-D3)","Division 4: West North Central (CENS-D4)",
-             "Division 5: South Atlantic (CENS-D5)","Division 6: East South Central (CENS-D6)","Division 7: West South Central (CENS-D7)","Division 8: Mountain (CENS-D8)",
-             "Division 9: Pacific (CENS-D9)")
+      to = c(
+        "Division 1: New England (CENS-D1)", "Division 2: Middle Atlantic (CENS-D2)", "Division 3: East North Central (CENS-D3)", "Division 4: West North Central (CENS-D4)",
+        "Division 5: South Atlantic (CENS-D5)", "Division 6: East South Central (CENS-D6)", "Division 7: West South Central (CENS-D7)", "Division 8: Mountain (CENS-D8)",
+        "Division 9: Pacific (CENS-D9)"
+      )
     )
-  }else if(agr_by =="hhs_region_number"){
+  } else if (agr_by == "hhs_region_number") {
     replaces3 <- data.frame(
       from = 1:10,
-      to = c("HHS Region #1 CT, ME, MA, NH, RI, VT", "HHS Region #2 NJ, NY","HHS Region #3 DE, DC, MD, PA, VA, WV","HHS Region #4 AL, FL, GA, KY, MS, NC, SC, TN",
-             "HHS Region #5 IL, IN, MI, MN, OH, WI", "HHS Region #6 AR, LA, NM, OK, TX","HHS Region #7 IA, KS, MO, NE","HHS Region #8 CO, MT, ND, SD, UT, WY",
-             "HHS Region #9 AZ, CA, HI, NV","HHS Region #10 AK, ID, OR, WA")
+      to = c(
+        "HHS Region #1 CT, ME, MA, NH, RI, VT", "HHS Region #2 NJ, NY", "HHS Region #3 DE, DC, MD, PA, VA, WV", "HHS Region #4 AL, FL, GA, KY, MS, NC, SC, TN",
+        "HHS Region #5 IL, IN, MI, MN, OH, WI", "HHS Region #6 AR, LA, NM, OK, TX", "HHS Region #7 IA, KS, MO, NE", "HHS Region #8 CO, MT, ND, SD, UT, WY",
+        "HHS Region #9 AZ, CA, HI, NV", "HHS Region #10 AK, ID, OR, WA"
+      )
     )
   }
-  #TODO problems for STATEFP
-  #pafs <- DataCombine::FindReplace(data = pafs, Var = agr_by, replaceData = replaces3, from = "from", to = "to", exact = FALSE)
+  # TODO problems for STATEFP
+  # pafs <- DataCombine::FindReplace(data = pafs, Var = agr_by, replaceData = replaces3, from = "from", to = "to", exact = FALSE)
 
-  #check for missing stuff
-    #missing hispanic origin
-    missing<-setdiff(replaces1$to,pafs$hispanic_origin)
-    if(length(missing)>0){ 
-      print("Hispanic origins in paf data missing:")
-      print(missing)
-    }
-    
-    #missing races
-    missing<-setdiff(replaces2$to,pafs$race)
-    if(length(missing)>0){ 
-      print("Races in paf data missing:")
-      print(missing)
-    }
-    
-    #missing regions
-    missing<-setdiff(replaces3$to,pafs[,agr_by])
-    if(length(missing)>0){ 
-      print("Regions in paf data missing:")
-      #print(missing) #TODO
-    }
-    
-    #missing causes
-    label_causes_all<-c("resp_copd", "lri", "neo_lung", "t2_dm","cvd_ihd", "cvd_stroke")
-    missing<-setdiff(label_causes_all,pafs$label_cause)
-    if(length(missing)>0){ 
-      print("Causes in paf data missing:")
-      print(missing)
-    }
-  
+  # check for missing stuff
+  # missing hispanic origin
+  missing <- setdiff(replaces1$to, pafs$hispanic_origin)
+  if (length(missing) > 0) {
+    print("Hispanic origins in paf data missing:")
+    print(missing)
+  }
+
+  # missing races
+  missing <- setdiff(replaces2$to, pafs$race)
+  if (length(missing) > 0) {
+    print("Races in paf data missing:")
+    print(missing)
+  }
+
+  # missing regions
+  missing <- setdiff(replaces3$to, pafs[, agr_by])
+  if (length(missing) > 0) {
+    print("Regions in paf data missing:")
+    # print(missing) #TODO
+  }
+
+  # missing causes
+  label_causes_all <- c("resp_copd", "lri", "neo_lung", "t2_dm", "cvd_ihd", "cvd_stroke")
+  missing <- setdiff(label_causes_all, pafs$label_cause)
+  if (length(missing) > 0) {
+    print("Causes in paf data missing:")
+    print(missing)
+  }
+
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
   total_burden <- lapply(files, function(file) {
     fileDir <- file.path(totalBurdenDir, file)
-    
-    columns<-c(unname(inverse_join_variables),"Notes", "Single.Year.Ages", "Single.Year.Ages.Code", "Deaths")
-    if(agr_by_new == "Nation") columns<-columns[columns!="Nation"] #in this case this column does not exist
-    
+
+    columns <- c(unname(inverse_join_variables), "Notes", "Single.Year.Ages", "Single.Year.Ages.Code", "Deaths")
+    if (agr_by_new == "Nation") columns <- columns[columns != "Nation"] # in this case this column does not exist
+
     total_burden <- read.delim(fileDir) %>%
       select(any_of(columns)) %>%
-      filter(Single.Year.Ages != "Not Stated") %>% 
+      filter(Single.Year.Ages != "Not Stated") %>%
       mutate(
         Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
         YLD = sapply(Single.Year.Ages.Code, function(a) max(0, 75 - a)) # TODO right formula?
@@ -197,57 +201,59 @@ if (!file.exists(attrBurdenDir)) {
 
     if (agr_by == "nation") {
       total_burden[, "Nation"] <- "us"
-    } 
+    }
     return(total_burden)
   }) %>%
     do.call(rbind, .) %>%
-    as.data.frame %>% 
-    filter(Year == year,
-           Hispanic.Origin !="Not Stated")
-  
-  
-  #check for missing stuff
-  #missing Genders
-  missing<-setdiff(c("Male","Female"),total_burden$Gender)
-  if(length(missing)>0){ 
+    as.data.frame() %>%
+    filter(
+      Year == year,
+      Hispanic.Origin != "Not Stated"
+    )
+
+
+  # check for missing stuff
+  # missing Genders
+  missing <- setdiff(c("Male", "Female"), total_burden$Gender)
+  if (length(missing) > 0) {
     print("Genders in total burden data missing:")
     print(missing)
   }
-  
-  #missing hispanic origin
-  missing<-setdiff(replaces1$to,total_burden$Hispanic.Origin)
-  if(length(missing)>0){ 
+
+  # missing hispanic origin
+  missing <- setdiff(replaces1$to, total_burden$Hispanic.Origin)
+  if (length(missing) > 0) {
     print("Hispanic origins in total burden data missing:")
     print(missing)
   }
-  
-  #missing races
-  missing<-setdiff(replaces2$to,total_burden$Race)
-  if(length(missing)>0){ 
+
+  # missing races
+  missing <- setdiff(replaces2$to, total_burden$Race)
+  if (length(missing) > 0) {
     print("Races in total burden data missing:")
     print(missing)
   }
-  
 
-  missing<-setdiff(replaces3$to,total_burden[,agr_by_new])
-  if(length(missing)>0){ 
+
+  missing <- setdiff(replaces3$to, total_burden[, agr_by_new])
+  if (length(missing) > 0) {
     print("Regions in total burden paf data missing:")
-    print(missing) 
+    print(missing)
   }
-  
-  #missing causes
-  label_causes_all<-c("resp_copd", "lri", "neo_lung", "t2_dm","cvd_ihd", "cvd_stroke")
-  missing<-setdiff(label_causes_all,total_burden$label_cause)
-  if(length(missing)>0){ 
+
+  # missing causes
+  label_causes_all <- c("resp_copd", "lri", "neo_lung", "t2_dm", "cvd_ihd", "cvd_stroke")
+  missing <- setdiff(label_causes_all, total_burden$label_cause)
+  if (length(missing) > 0) {
     print("Causes in total burden data missing:")
     print(missing)
   }
 
   ## ----- join total_burden and pafs-----
-  
+
   # give some feedback on what is still missing
   # one side
-  missing_rows <- anti_join(total_burden, pafs, by = join_variables) 
+  missing_rows <- anti_join(total_burden, pafs, by = join_variables)
   if (nrow(missing_rows) > 0) {
     print(paste(nrow(missing_rows), "rows are still missing in pafs data for", agr_by, ":"))
     print(head(missing_rows))
@@ -255,11 +261,11 @@ if (!file.exists(attrBurdenDir)) {
 
   # other side
   missing_rows <- anti_join(pafs, total_burden, by = inverse_join_variables) %>%
-    #following combination rarely occurs
+    # following combination rarely occurs
     filter(!(race %in% c("Asian or Pacific Islander", "Black or African American") & hispanic_origin == "Hispanic or Latino" |
-               race == "American Indian or Alaska Native")) %>%
-    select(gender,race,hispanic_origin)%>%
-    distinct
+      race == "American Indian or Alaska Native")) %>%
+    select(gender, race, hispanic_origin) %>%
+    distinct()
   if (nrow(missing_rows) > 0) {
     print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing_rows))
@@ -279,7 +285,7 @@ if (!file.exists(attrBurdenDir)) {
 
   test_that("09_calc distinct rows", {
     burden_paf_sub <- burden_paf %>%
-      select(Single.Year.Ages.Code, Gender.Code, Race, Year.Code, Hispanic.Origin, label_cause)
+      select(Single.Year.Ages.Code, Gender.Code, Race, Hispanic.Origin, label_cause)
 
     dub_ind <- duplicated(burden_paf_sub) | duplicated(burden_paf_sub, fromLast = TRUE)
     burden_paf_sub <- burden_paf[dub_ind, ]
@@ -291,12 +297,11 @@ if (!file.exists(attrBurdenDir)) {
     mutate(
       attrDeaths = Deaths * pafs,
       attrYLD = YLD * pafs
-    ) 
-  
-  #group "out" Single.Age, since age group more appropriate
-  columns <-c(unname(inverse_join_variables), "min_age", "max_age")
-  attrBurden_old-attrBurden
-  attrBurden <- attrBurden %>% 
+    )
+
+  # group "out" Single.Age, since age group more appropriate
+  columns <- c(unname(inverse_join_variables), "min_age", "max_age")
+  attrBurden <- attrBurden %>%
     group_by_at(vars(one_of(columns))) %>%
     summarize(
       Deaths = sum(Deaths),
@@ -307,27 +312,22 @@ if (!file.exists(attrBurdenDir)) {
 
   # some basic tests
   test_that("09_read burden join2", {
-    #TODO group_by agr_by
-    comp1 <- total_burden %>%
-      group_by(Year.code, Gender, Gender.Code, Race, Hispanic.Origin, Single.Year.Ages,label_cause) %>%
-      summarize(
-        Deaths = sum(Deaths),
-        YLD = sum(YLD)
-      )
-
-    comp2 <- attrBurden_old %>%
-      group_by(Year.code, Gender, Gender.Code, Race, Hispanic.Origin, Single.Year.Ages,label_cause) %>%
-      summarize(
-        Deaths = sum(Deaths),
-        YLD = sum(YLD)
-      )
+    expect_false(any(is.na(attrBurden)))
     
-    #TODO compare with totalBurden instead of attrBurden_old
+    #test that total number of deaths/YLD has not changed
+    columns<-unname(inverse_join_variables)
+    comp1 <- total_burden %>%
+      group_by_at(vars(one_of(columns))) %>%
+      summarize(Deaths = sum(Deaths), YLD = sum(YLD))
 
-    comp3 <- inner_join(comp1, comp2, by = c("Year", "Gender", "Gender.Code", "Race", "Hispanic.Origin","Single.Year.Ages","label_cause"))%>%
-      filter(Deaths.x != Deaths.y)
-    expect_equal(nrow(comp3),0)
+    comp2 <- attrBurden %>%
+      group_by_at(vars(one_of(columns))) %>%
+      summarize(Deaths = sum(Deaths), YLD = sum(YLD))
 
+    comp3 <- inner_join(comp1, comp2, by = columns)
+    
+    expect_equal(comp3$Deaths.x, comp3$Deaths.x)
+    expect_equal(comp3$YLD.x, comp3$YLD.x)
   })
   fwrite(attrBurden, attrBurdenDir)
 }
