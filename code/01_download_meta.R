@@ -350,7 +350,7 @@ if (!file.exists(filepathCensMeta)) {
     )
 
   census_meta <- census_meta %>%
-    mutate(relevant = ifelse(min_age >= 100,
+    mutate(relevant = ifelse(100 <= min_age & max_age <150 | 100 < min_age,
       FALSE,
       relevant
     ))

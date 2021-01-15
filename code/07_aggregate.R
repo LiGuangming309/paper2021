@@ -81,7 +81,8 @@ apply(states, 1, function(state) {
       read.csv() %>%
       pivot_wider(
         names_from = variable,
-        values_from = pop_size
+        values_from = pop_size,
+        values_fill = 0
       )
 
     # read pm exposure data by tract

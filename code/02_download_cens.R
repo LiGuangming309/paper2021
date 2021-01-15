@@ -133,7 +133,7 @@ apply(states, 1, function(state) {
       pivot_wider(
         names_from = variable,
         values_from = pop_size,
-        values_fill = 0 # TODO legitimate to fill in this way?
+        values_fill = 0 
       ) %>%
       select(-row)
 
