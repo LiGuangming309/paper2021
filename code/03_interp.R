@@ -155,14 +155,17 @@ apply(states, 1, function(state) {
     censData_joined <-full_join(censData00,censData10, by=c("GEO_ID","variable"))
     
     #inform, how much is missing
-    missing<-sum(is.na(censData_joined$pop_size00)) 
-    if(missing > 0) print(paste(missing,"rows missing in 2000 data"))
-    missing<-sum(is.na(censData_joined$pop_size10)) 
-    if(missing > 0) print(paste(missing,"rows missing in 2010 data in 20000 boundaries"))
+    test_that("03 interp any na",{
+      expect_false(any(is.na(censData_joined)))
+    })
+    #missing<-sum(is.na(censData_joined$pop_size00)) 
+    #if(missing > 0) print(paste(missing,"rows missing in 2000 data"))
+    #missing<-sum(is.na(censData_joined$pop_size10)) 
+    #if(missing > 0) print(paste(missing,"rows missing in 2010 data in 20000 boundaries"))
     
-    censData_joined<-censData_joined%>% 
-            mutate(pop_size00=replace_na(pop_size00, 0),
-                   pop_size10=replace_na(pop_size10, 0))
+    #censData_joined<-censData_joined%>% 
+    #        mutate(pop_size00=replace_na(pop_size00, 0),
+    #               pop_size10=replace_na(pop_size10, 0))
     
     t<-(year-2000)/10
     censDataYear<-censData_joined %>%
