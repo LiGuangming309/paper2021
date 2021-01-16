@@ -1,4 +1,1 @@
-STUSPS_copy<-STUSPS
-test<-missing_statesDir %>%
-  read.csv %>%
-  filter(STUSPS != STUSPS_copy)
+test2<-read.csv(censDir10_in00X)

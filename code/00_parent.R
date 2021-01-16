@@ -120,7 +120,7 @@ calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
 plot.script <- file.path(code.dir, "10_plot.R")
 
 #--------parameters of code-------------------
-years <- c(2000,2010,2001)
+years <- c(2000,2010,2001:2009,2011:2016)
 
 
 for (year in years) {
@@ -168,4 +168,4 @@ args <- paste(
   plots.dir #3
 ) 
 
-runscript(script = plot.script, args = args)
+#runscript(script = plot.script, args = args)

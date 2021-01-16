@@ -102,7 +102,6 @@ if(year %in% c(2000:2016)){
           tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
         }else if(year == 2010){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
-          #setnames(tracts, "GEO_ID", "AFFGEOID")
           tracts$GEO_ID<- tracts$GEO_ID %>% str_sub(.,-11,-1)
         }else if(year %in% 2011:2012){
           tracts <- tracts(state = STUSPS, cb = FALSE, year = year)
