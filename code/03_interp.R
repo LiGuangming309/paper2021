@@ -40,8 +40,8 @@ if (!year %in% 2001:2009) {
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 
 crosswalk <- read.dta(file.path(dataDir,"crosswalk_2010_2000.dta"))%>%
-  select(trtid00,trtid10,weight) %>%
-  filter(weight != 0)
+  select(trtid00,trtid10,weight) #%>%
+  #filter(weight != 0)
 
 #crosswalk <- file.path(tmpDir,"crosswalk_2000_2010.csv") %>% 
 #read.table(., header=TRUE) %>%

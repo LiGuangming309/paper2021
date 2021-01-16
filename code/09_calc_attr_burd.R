@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc") # "sets","prob"
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -45,6 +45,7 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
+##----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
   join_variables <- c(
