@@ -31,7 +31,7 @@ attrBurdenDir <- args[13]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2010
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
@@ -57,7 +57,8 @@ if (!file.exists(attrBurdenDir)) {
     "label_cause" = "label_cause"
   )
 
-  agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region", "Census_division" = "Census.division", "hhs_region_number" = "HHS.Region", "STATEFP" = "State", "nation" = "Nation")
+  agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code", 
+                      "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
   agr_by_new <- agr_by_replace[[agr_by]]
   join_variables[agr_by_new] <- agr_by
 
@@ -90,39 +91,25 @@ if (!file.exists(attrBurdenDir)) {
   pafs <- DataCombine::FindReplace(data = pafs, Var = "race", replaceData = replaces2, from = "from", to = "to", exact = FALSE)
 
   if (agr_by == "STATEFP") {
-    replaces3 <- data.frame(
-      from = states$STATEFP,
-      to = paste0(states$NAME, sprintf(" (%02d)", states$STATEFP))
-    )
+    possible_regions <- c(1,4:6,8:13,16:42,44:51,53:56)
   } else if (agr_by == "Census_Region") {
-    replaces3 <- data.frame(
-      from = 1:4,
-      to = c("Census Region 1: Northeast (CENS-R1)", "Census Region 2: Midwest (CENS-R2)", "Census Region 3: South (CENS-R3)", "Census Region 4: West (CENS-R4)")
-    )
+    pafs$Census_Region<-paste("CENS-R",pafs$Census_Region)
+    possible_regions <- paste("CENS-R",1:4)
   } else if (agr_by == "nation") {
-    replaces3 <- data.frame(from = "us", to = "us")
+    possible_regions <- "us"
   } else if (agr_by == "Census_division") {
-    replaces3 <- data.frame(
-      from = 1:9,
-      to = c(
-        "Division 1: New England (CENS-D1)", "Division 2: Middle Atlantic (CENS-D2)", "Division 3: East North Central (CENS-D3)", "Division 4: West North Central (CENS-D4)",
-        "Division 5: South Atlantic (CENS-D5)", "Division 6: East South Central (CENS-D6)", "Division 7: West South Central (CENS-D7)", "Division 8: Mountain (CENS-D8)",
-        "Division 9: Pacific (CENS-D9)"
-      )
-    )
+    pafs$Census_division<-paste("CENS-D",pafs$Census_division)
+    possible_regions <- paste("CENS-D",1:9)
   } else if (agr_by == "hhs_region_number") {
-    replaces3 <- data.frame(
-      from = 1:10,
-      to = c(
-        "HHS Region #1 CT, ME, MA, NH, RI, VT", "HHS Region #2 NJ, NY", "HHS Region #3 DE, DC, MD, PA, VA, WV", "HHS Region #4 AL, FL, GA, KY, MS, NC, SC, TN",
-        "HHS Region #5 IL, IN, MI, MN, OH, WI", "HHS Region #6 AR, LA, NM, OK, TX", "HHS Region #7 IA, KS, MO, NE", "HHS Region #8 CO, MT, ND, SD, UT, WY",
-        "HHS Region #9 AZ, CA, HI, NV", "HHS Region #10 AK, ID, OR, WA"
-      )
-    )
+    pafs$hhs_region_number<-paste("HHS",pafs$hhs_region_number)
+    possible_regions <- paste("HHS",1:10)
+  }else if (agr_by == "county") {
+    #pafs$county<-sprintif(%02d,03d,pafs$state,pafs$county)
+    #TODO
+    pafs$state<- NULL
+    possible_regions <- c() #TODO too difficult
   }
-  # TODO problems for STATEFP
-  # pafs <- DataCombine::FindReplace(data = pafs, Var = agr_by, replaceData = replaces3, from = "from", to = "to", exact = FALSE)
-
+  
   # check for missing stuff
   # missing hispanic origin
   missing <- setdiff(replaces1$to, pafs$hispanic_origin)
@@ -139,10 +126,10 @@ if (!file.exists(attrBurdenDir)) {
   }
 
   # missing regions
-  missing <- setdiff(replaces3$to, pafs[, agr_by])
+  missing <- setdiff(possible_regions, pafs[, agr_by])
   if (length(missing) > 0) {
     print("Regions in paf data missing:")
-    # print(missing) #TODO
+    print(missing) 
   }
 
   # missing causes
@@ -152,7 +139,8 @@ if (!file.exists(attrBurdenDir)) {
     print("Causes in paf data missing:")
     print(missing)
   }
-
+  
+  if(!(150 %in% pafs$max_age)) print("max_age 150 missing in paf data")
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
   total_burden <- lapply(files, function(file) {
@@ -235,7 +223,7 @@ if (!file.exists(attrBurdenDir)) {
   }
 
 
-  missing <- setdiff(replaces3$to, total_burden[, agr_by_new])
+  missing <- setdiff(possible_regions, total_burden[, agr_by_new])
   if (length(missing) > 0) {
     print("Regions in total burden paf data missing:")
     print(missing)

@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2011
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -91,51 +91,49 @@ apply(states, 1, function(state) {
     file.path(censDir, .)
 
   # download if does not exist yet
-  if (!file.exists(dem.state.dir)) { # TODO delete
+  if (!file.exists(dem.state.dir)) { 
     tic(paste("Downloaded census data in year", toString(year), "in", name))
-
-    # loop over all groups, download data
-    dem.state.data <- lapply(groups, function(group) {
-      tic(paste("Downloaded census data in year", toString(year), "in", name, "for group", group))
-      data <- getCensus(
-        name = tablename,
-        vintage = year,
-        vars = paste0("group(", group, ")"),
-        region = "tract:*",
-        regionin = sprintf("state:%02d", STATEFP)
-      )
-
-      # subset relevant part of GEO_ID
-      data$GEO_ID <- data$GEO_ID %>%
-        str_sub(., -11, -1)
-
-      data <- data %>%
-        select(any_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))) %>%
-        pivot_longer(
-          cols = !c("state", "county", "tract", "GEO_ID"),
-          names_to = "variable",
-          values_to = "pop_size"
-        )
-      toc()
-      return(data)
-    }) %>%
-      do.call(rbind, .) %>%
-      as.data.frame()
     
-    dem.state.data.old<- dem.state.data
+    # loop over all groups, download data
+     dem.state.data <- lapply(groups, function(group) {
+        tic(paste("Downloaded census data in year", toString(year), "in", name, "for group", group))
+        data <- getCensus(
+          name = tablename,
+          vintage = year,
+          vars = paste0("group(", group, ")"),
+          region = "tract:*",
+          regionin = sprintf("state:%02d", STATEFP)
+        )
+
+    # subset relevant part of GEO_ID
+        data$GEO_ID <- data$GEO_ID %>%
+          str_sub(., -11, -1)
+
+        data <- data %>%
+          select(any_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))) %>%
+          pivot_longer(
+            cols = !c("state", "county", "tract", "GEO_ID"),
+            names_to = "variable",
+            values_to = "pop_size"
+          )
+        toc()
+        return(data)
+      }) %>%
+        do.call(rbind, .) %>%
+        as.data.frame()
+    
+    dem.state.data.old <- dem.state.data
+    
     ## ---- make additional calculations-----
     tic(paste("Made additional calculations with census data in year", toString(year), "in", name))
 
     # make wider
-    dem.state.data <- dem.state.data %>%
-      group_by(variable) %>%
-      mutate(row = row_number()) %>%
+    dem.state.data <- dem.state.data %>% #spread(key = variable, value = pop_size, fill = 0)
       pivot_wider(
         names_from = variable,
         values_from = pop_size,
-        values_fill = 0 
-      ) %>%
-      select(-row)
+        values_fill = 0
+      ) 
 
     # filter out census tracts, where no one is living
     totalPopulationTract <- dem.state.data %>%
@@ -167,7 +165,7 @@ apply(states, 1, function(state) {
         data_tot <- dem.state.data[, tot_var, drop = FALSE] %>%
           apply(., 2, as.numeric) %>%
           rowSums() %>%
-          unlist()
+          unlist
       }
 
       if (rlang::is_empty(ntot_var)) {
@@ -208,37 +206,38 @@ apply(states, 1, function(state) {
     test_that("02_download basic checks", {
       expect_false(any(is.na(dem.state.data)))
       expect_true(all(dem.state.data$pop_size >= 0))
-      
-      test_dem.state.data <- dem.state.data.old %>%
-        inner_join(dem.state.data, by = c("state", "county", "tract", "GEO_ID","variable")) 
 
-      expect_equal(test_dem.state.data$pop_size.x,test_dem.state.data$pop_size.y)
+      test_dem.state.data <- dem.state.data.old %>%
+        inner_join(dem.state.data, by = c("state", "county", "tract", "GEO_ID", "variable"))
+
+      expect_equal(test_dem.state.data$pop_size.x, test_dem.state.data$pop_size.y)
     })
 
     test_that("02_download sanity check total population", {
       test_dem.state.data <- dem.state.data %>%
         inner_join(census_meta, by = "variable") %>%
         group_by(hispanic_origin) %>%
-        summarise(pop_size = sum(pop_size)) 
-      
+        summarise(pop_size = sum(pop_size)) %>%
+        as.data.frame()
+
       test_dem.state.data.old <- dem.state.data.old %>%
         inner_join(census_meta, by = "variable") %>%
         group_by(hispanic_origin) %>%
-        summarise(pop_size = sum(pop_size))
+        summarise(pop_size = sum(pop_size)) %>%
+        as.data.frame()
 
       print(as.data.frame(test_dem.state.data))
-      
+
       pop_all <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "all", "pop_size"] %>% unlist()
       pop_his <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "HISPANIC OR LATINO", "pop_size"] %>% unlist()
       pop_nhis <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "NOT HISPANIC OR LATINO", "pop_size"] %>% unlist()
       pop_all_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "all", "pop_size"] %>% unlist()
       pop_nhis_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "NOT HISPANIC OR LATINO", "pop_size"] %>% unlist()
-      
-      expect_equal(pop_all,pop_his+pop_nhis)
-      expect_equal(pop_all,pop_all_old)
-      expect_equal(pop_nhis,pop_nhis_old)
-      })
 
+      expect_equal(pop_all, pop_his + pop_nhis)
+      expect_equal(pop_all, pop_all_old)
+      expect_equal(pop_nhis, pop_nhis_old)
+    })
 
     # save demographic data in seperate file for each state
     fwrite(dem.state.data, dem.state.dir, row.names = FALSE)
