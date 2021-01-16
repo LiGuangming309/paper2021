@@ -146,16 +146,17 @@ for (year in years) {
      runscript(script=download.cens.script, args = args)
    }
    sink(type="message", append = TRUE)
-  # runscript(script=download.other.script, args = args)
+   runscript(script=download.other.script, args = args)
    sink(type="message", append = TRUE)
-  # runscript(script=assignTract.script, args = args)
+   runscript(script=assignTract.script, args = args)
    sink(type="message", append = TRUE)
-   #runscript(script=mrbrtRR.script, args = args)
-  # runscript(script = cens_agr.script, args = args)
+   
+   runscript(script=mrbrtRR.script, args = args)
+   runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
-  # runscript(script = paf.script, args = args)
+   runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
-  # runscript(script = calc.attr.burd.script, args = args)
+   runscript(script = calc.attr.burd.script, args = args)
    
    #save console
    #  Restore output to console
@@ -168,4 +169,4 @@ args <- paste(
   plots.dir #3
 ) 
 
-#runscript(script = plot.script, args = args)
+runscript(script = plot.script, args = args)
