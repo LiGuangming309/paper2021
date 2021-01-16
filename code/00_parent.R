@@ -139,7 +139,7 @@ for (year in years) {
    if(year %in% 2001:2009){
      #runscript(script=interp.script, args = args)
    }else{
-    # runscript(script=download.cens.script, args = args)
+     runscript(script=download.cens.script, args = args)
    }
    sink(type="message", append = TRUE)
   # runscript(script=download.other.script, args = args)
