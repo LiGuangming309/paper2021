@@ -38,7 +38,7 @@ if (!year %in% 2001:2009) {
 }
 
 crosswalk <- read.dta(file.path(dataDir, "crosswalk_2010_2000.dta")) %>%
-  select(trtid00, trtid10, weight) 
+  select(trtid00, trtid10, weight)
 
 censDir00 <- file.path(censDir, "2000")
 censDir10 <- file.path(censDir, "2010")
@@ -92,70 +92,77 @@ meta_crosswalk <- fread(meta_crosswalkDir)
 apply(missing_states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
+  if (!is.na(STUSPS)) {
+    tic(paste("calculated 2010 demographic census data in 2000 boundaries in", name))
+    # read demographic census data by tract,
+    censData10 <- file.path(censDir10, paste0("census_2010_", STUSPS, ".csv")) %>%
+      fread(colClasses = c(pop_size = "numeric")) %>%
+      mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0"))
 
-  tic(paste("calculated 2010 demographic census data in 2000 boundaries in", name))
-  # read demographic census data by tract,
-  censData10 <- file.path(censDir10, paste0("census_2010_", STUSPS, ".csv")) %>%
-    fread(colClasses = c(pop_size = "numeric")) %>%
-    mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0"))
+    # translate variables
+    censData10 <- censData10 %>%
+      left_join(meta_crosswalk, by = c("variable" = "variable10")) %>%
+      mutate(variable = NULL) %>%
+      rename(variable = variable00)
 
-  # translate variables
-  censData10 <- censData10 %>%
-    left_join(meta_crosswalk, by = c("variable" = "variable10")) %>%
-    mutate(variable = NULL) %>%
-    rename(variable = variable00)
+    # translate tracts
+    censData10 <- censData10 %>%
+      left_join(crosswalk, by = c("GEO_ID" = "trtid10")) %>%
+      mutate(pop_size = pop_size * weight) %>%
+      group_by(trtid00, variable) %>%
+      summarise(pop_size = sum(pop_size)) %>%
+      rename(GEO_ID = trtid00) %>%
+      as.data.frame()
 
-  # translate tracts
-  censData10 <- censData10 %>%
-    left_join(crosswalk, by = c("GEO_ID" = "trtid10")) %>%
-    mutate(pop_size = pop_size * weight) %>%
-    group_by(trtid00, variable) %>%
-    summarise(pop_size = sum(pop_size)) %>%
-    rename(GEO_ID = trtid00) %>%
-    as.data.frame()
-  
-  censData10 <- censData10 %>%
-    mutate(state = str_sub(GEO_ID,1,2))
-  
-  for(statefp in unique(censData10$state)){
-    censData10_sub <- censData10 %>% filter(state == statefp)
-    STUSPS_corresponding <- states[states[,"STATEFP"]==as.numeric(statefp),"STUSPS"]
-    
-    censDir10_in00X <- file.path(censDir10_in00, paste0("census_2010_", STUSPS_corresponding, ".csv"))
-    
-    if(!file.exists(censDir10_in00X)){
-      fwrite(censData10_sub, censDir10_in00X)
-    }else{
-      write.table(censData10_sub, 
-                  censDir10_in00X,
-                  sep = ",", 
-                  col.names = !file.exists(censDir10_in00X), 
-                  append = T)
+    censData10 <- censData10 %>%
+      mutate(state = str_sub(GEO_ID, 1, 2))
+
+    for (statefp in unique(censData10$state)) {
+      censData10_sub <- censData10 %>% filter(state == statefp)
+      STUSPS_corresponding <- states[states[, "STATEFP"] == as.numeric(statefp), "STUSPS"]
+
+      censDir10_in00X <- file.path(censDir10_in00, paste0("census_2010_", STUSPS_corresponding, ".csv"))
+
+      if (!file.exists(censDir10_in00X)) {
+        fwrite(censData10_sub, censDir10_in00X)
+      } else {
+        write.table(censData10_sub,
+          censDir10_in00X,
+          sep = ",",
+          col.names = !file.exists(censDir10_in00X),
+          append = T
+        )
+      }
     }
-  }
-  
-  # delete this state from missing_states
-  STUSPS_copy <- STUSPS
-  missing_statesDir %>%
-    read.csv() %>%
-    filter(STUSPS != STUSPS_copy) %>%
-    write.csv(missing_statesDir)
 
-  toc()
+    # delete this state from missing_states
+    STUSPS_copy <- STUSPS
+    missing_statesDir %>%
+      read.csv() %>%
+      filter(STUSPS != STUSPS_copy) %>%
+      write.csv(missing_statesDir)
+
+    toc()
+  }
 })
 
 apply(states, 1, function(state) {
-  censData10Dir<-file.path(censDir10_in00, paste0("census_2010_", STUSPS, ".csv"))
+  STUSPS <- state["STUSPS"]
+  name <- state["NAME"]
+  censData10Dir <- file.path(censDir10_in00, paste0("census_2010_", STUSPS, ".csv"))
   censData10 <- fread(censData10Dir)
-  if("state" %in% colnames(censData10)){
-    test_that("basic",{
-      expect_equal(1,length(unique(censData10$state)))
+
+  if ("state" %in% colnames(censData10)) {
+    tic(paste("aggregated ",name,"by GEO_ID and variable"))
+    test_that("basic", {
+      expect_equal(1, length(unique(censData10$state)))
     })
-    censData10<-censData10 %>%
+    censData10 <- censData10 %>%
       group_by(GEO_ID, variable) %>%
       summarise(pop_size = sum(pop_size))
-    
-    fwrite(censData10,censData10Dir)
+
+    fwrite(censData10, censData10Dir)
+    toc()
   }
 })
 
