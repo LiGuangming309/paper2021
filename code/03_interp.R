@@ -25,10 +25,12 @@ dataDir <- args[2]
 tmpDir<-args[3]
 censDir <- args[8]
 
-#year<-2001
-#dataDir <- "/Users/default/Desktop/paper2020/data"
-#tmpDir <- "/Users/default/Desktop/paper2020/data/tmp"
-#censDir <- "/Users/default/Desktop/paper2020/data/06_demog"
+if (rlang::is_empty(args)) {
+  year <- 2001
+  dataDir <- "/Users/default/Desktop/paper2021/data"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+}
 
 if (!year %in% 2001:2009) {
   print(paste("can not interpolate census data for", year))
@@ -38,8 +40,8 @@ if (!year %in% 2001:2009) {
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 
 crosswalk <- read.dta(file.path(dataDir,"crosswalk_2010_2000.dta"))%>%
-  select(trtid00,trtid10,weight)#%>%
-  #filter(weight != 0)
+  select(trtid00,trtid10,weight) %>%
+  filter(weight != 0)
 
 #crosswalk <- file.path(tmpDir,"crosswalk_2000_2010.csv") %>% 
 #read.table(., header=TRUE) %>%
@@ -71,6 +73,12 @@ if(!file.exists(meta_crosswalkDir)){
            variable10 =variable.y)%>%
     select(variable00,variable10)
   
+  test_that("03 interp meta crosswalk",{
+    missing_variables <- setdiff(meta00$variable,meta_crosswalk$variable00)
+    expect_true(rlang::is_empty(missing_variables))
+    missing_variables <- setdiff(meta10$variable,meta_crosswalk$variable10)
+    expect_true(rlang::is_empty(missing_variables))
+  })
   fwrite(meta_crosswalk,meta_crosswalkDir)
 }
 meta_crosswalk<-fread(meta_crosswalkDir)
@@ -97,29 +105,20 @@ apply(states, 1, function(state) {
       mutate(variable = NULL)%>%
       rename(variable =variable00)
     
-    #TODO löschen
-    censData10_copy <-censData10
+    censData10_old <-censData10
     
-    #TODO popsize negative
     #translate tracts
     censData10 <- censData10 %>% 
       inner_join(crosswalk, by=c("GEO_ID"="trtid10")) %>% #TODO left_join 
       mutate(pop_size= pop_size*weight)%>%
       group_by(trtid00,variable)%>%
       summarise(pop_size = sum(pop_size))%>%
-      rename(GEO_ID=trtid00)
+      rename(GEO_ID=trtid00) %>%
       as.data.frame
-    
-      censData10 <- censData10 %>% mutate(
-        #TODO 
-        state = str_sub(GEO_ID,1,2),
-        county =str_sub(GEO_ID,3,6),
-        tract =str_sub(GEO_ID,7,11)
-      )
       
     #testthat after GEO_ID crosswalk same population size
       test_that("02_interp 2010 in 2000 boundaries", {
-        comp1<-censData10_copy %>%
+        comp1<-censData10_old %>%
           ungroup%>% 
           group_by(variable)%>%
           summarise(pop_size = sum(pop_size)) 
@@ -131,10 +130,7 @@ apply(states, 1, function(state) {
         
         comp3 <- full_join(comp1,comp2, by ="variable")
         
-        apply(comp3,1,function(row){
-          expect_equal(row[["pop_size.x"]],row[["pop_size.y"]], tolerance=1)
-        }
-        )
+        expect_equal(comp3$pop_size.x,comp3$pop_size.y, tolerance=1)
       })
     
     fwrite(censData10,censDir10_in00X)
@@ -151,31 +147,27 @@ apply(states, 1, function(state) {
   
   censDirYearX <- file.path(censDirYear, paste0("census_",toString(year),"_", STUSPS, ".csv"))
   if(!file.exists(censDirYearX)){
-    #TODO something wrong
     censData00<-fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv")))%>%
       rename(pop_size00 = pop_size)
     censData10<-fread(file.path(censDir10_in00, paste0("census_2010_", STUSPS, ".csv")))%>%
       rename(pop_size10 = pop_size)
+
+    censData_joined <-full_join(censData00,censData10, by=c("GEO_ID","variable"))
     
+    #inform, how much is missing
+    missing<-sum(is.na(censData_joined$pop_size00)) 
+    if(missing > 0) print(paste(missing,"rows missing in 2000 data"))
+    missing<-sum(is.na(censData_joined$pop_size10)) 
+    if(missing > 0) print(paste(missing,"rows missing in 2010 data in 20000 boundaries"))
     
-    censData_joined <-full_join(censData00,censData10, 
-                                by=c("GEO_ID"="GEO_ID","variable"="variable"))
-    
-    test_that("03_interp censData_joined",{
-      expect_false(any(is.na(censData_joined)))
-    })
-     
-    #censData_joined<-censData_joined%>% 
-    #        mutate(pop_size00=replace_na(pop_size00, 0),
-    #               pop_size10=replace_na(pop_size10, 0))
+    censData_joined<-censData_joined%>% 
+            mutate(pop_size00=replace_na(pop_size00, 0),
+                   pop_size10=replace_na(pop_size10, 0))
     
     t<-(year-2000)/10
     censDataYear<-censData_joined %>%
                     mutate(pop_size = t*pop_size00+(1-t)*pop_size10)%>%
-                    select(state.x,county.x,tract.x,GEO_ID,variable,pop_size)%>%#TODO
-                    rename(state =state.x,
-                           county =county.x,
-                           tract =tract.x)
+                    select(state,county,tract,GEO_ID,variable,pop_size)
     
     fwrite(censDataYear,censDirYearX)
     

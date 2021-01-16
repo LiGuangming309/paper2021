@@ -116,7 +116,7 @@ paf.script <- file.path(code.dir, "08_paf.R")
 calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
 
 #--------parameters of code-------------------
-years <- c(2000,2010:2016)
+years <- c(2000,2010,2001)
 
 
 for (year in years) {
@@ -137,7 +137,7 @@ for (year in years) {
   ) 
    runscript(script=download.meta.script, args = args)
    if(year %in% 2001:2009){
-     #runscript(script=interp.script, args = args)
+     runscript(script=interp.script, args = args)
    }else{
      runscript(script=download.cens.script, args = args)
    }

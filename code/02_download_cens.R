@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2010
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -206,11 +206,26 @@ apply(states, 1, function(state) {
     test_that("02_download basic checks", {
       expect_false(any(is.na(dem.state.data)))
       expect_true(all(dem.state.data$pop_size >= 0))
-
+      
+      #Test, that has not changed
       test_dem.state.data <- dem.state.data.old %>%
         inner_join(dem.state.data, by = c("state", "county", "tract", "GEO_ID", "variable"))
 
       expect_equal(test_dem.state.data$pop_size.x, test_dem.state.data$pop_size.y)
+      
+      #Test, that GEO_ID - variable is a primary key for the data.frame
+      test_dem.state.data <- dem.state.data %>%
+        select(GEO_ID,variable)%>% 
+        distinct
+
+      is_equal <-nrow(test_dem.state.data)== nrow(dem.state.data)
+      expect_true(is_equal)
+      if(!is_equal){
+        test_dem.state.data <- dem.state.data %>%
+          group_by(GEO_ID,variable) %>%
+          summarise(appearances = n())
+        browser()
+      }
     })
 
     test_that("02_download sanity check total population", {
