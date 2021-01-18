@@ -25,7 +25,7 @@ for (p in packages) {
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
-year <- args[1]
+year <- args[1] 
 tmpDir <- args[3]
 censDir <- args[8]
 

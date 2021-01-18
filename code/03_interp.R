@@ -20,7 +20,7 @@ options(dplyr.join.inform = FALSE)
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
-year <- args[1]
+year <- args[1] %>% as.numeric
 dataDir <- args[2]
 tmpDir <- args[3]
 censDir <- args[8]
