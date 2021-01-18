@@ -121,7 +121,7 @@ plot.script <- file.path(code.dir, "10_plot.R")
 
 #--------parameters of code-------------------
 #years <- c(2000,2010,2001:2009,2011:2016)
-years <- c(2011:2016)
+years <- c(2000:2010)
 
 for (year in years) {
   args <- paste(
@@ -141,7 +141,7 @@ for (year in years) {
   ) 
    runscript(script=download.meta.script, args = args)
    if(year %in% 2001:2009){
-   #  runscript(script=interp.script, args = args)
+     runscript(script=interp.script, args = args)
    }else{
      runscript(script=download.cens.script, args = args)
    }
@@ -154,7 +154,7 @@ for (year in years) {
    #runscript(script=mrbrtRR.script, args = args)
    runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
-   #runscript(script = paf.script, args = args)
+   runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script = calc.attr.burd.script, args = args)
    
