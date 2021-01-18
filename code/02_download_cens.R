@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2000
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -122,7 +122,7 @@ apply(states, 1, function(state) {
         do.call(rbind, .) %>%
         as.data.frame()
     
-    dem.state.data.old <- dem.state.data
+    dem.state.data.old <- dem.state.data 
     
     ## ---- make additional calculations-----
     tic(paste("Made additional calculations with census data in year", toString(year), "in", name))
@@ -141,7 +141,7 @@ apply(states, 1, function(state) {
       apply(., 2, as.numeric) %>%
       rowSums()
 
-    dem.state.data <- dem.state.data[totalPopulationTract > 0, ]
+    dem.state.data <- dem.state.data[totalPopulationTract > 0, ] #TODO
 
     # calculate new variables from old ones
     census_meta_sub <- census_meta %>% filter(downloaded == FALSE)
@@ -210,7 +210,6 @@ apply(states, 1, function(state) {
       #Test, that has not changed
       test_dem.state.data <- dem.state.data.old %>%
         inner_join(dem.state.data, by = c("state", "county", "tract", "GEO_ID", "variable"))
-
       expect_equal(test_dem.state.data$pop_size.x, test_dem.state.data$pop_size.y)
       
       #Test, that GEO_ID - variable is a primary key for the data.frame
