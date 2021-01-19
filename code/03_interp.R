@@ -20,7 +20,7 @@ options(dplyr.join.inform = FALSE)
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
-year <- args[1] %>% as.numeric
+year <- args[1] %>% as.numeric()
 dataDir <- args[2]
 tmpDir <- args[3]
 censDir <- args[8]
@@ -42,14 +42,14 @@ censDir10 <- file.path(censDir, "2010")
 censDir10_in00 <- file.path(censDir, "2010_in_2000")
 dir.create(censDir10_in00, recursive = T, showWarnings = F)
 
-states <- file.path(tmpDir, "states.csv") %>% read.csv
-possible_states <- states$STATEFP%>%
-  as.character %>%
-  str_pad(., 2, pad = "0") 
+states <- file.path(tmpDir, "states.csv") %>% read.csv()
+possible_states <- states$STATEFP %>%
+  as.character() %>%
+  str_pad(., 2, pad = "0")
 
 crosswalk <- read.dta(file.path(dataDir, "crosswalk_2010_2000.dta")) %>%
   select(trtid00, trtid10, weight) %>%
-  mutate(state = str_sub(trtid00,1,2)) %>%
+  mutate(state = str_sub(trtid00, 1, 2)) %>%
   filter(state %in% possible_states)
 
 
@@ -103,9 +103,9 @@ apply(missing_states, 1, function(state) {
     # read demographic census data by tract,
     censData10 <- file.path(censDir10, paste0("census_2010_", STUSPS, ".csv")) %>%
       fread(colClasses = c(pop_size = "numeric")) %>%
-      select(GEO_ID,variable,pop_size) %>%
-      mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0")) 
-      
+      select(GEO_ID, variable, pop_size) %>%
+      mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0"))
+
 
     # translate variables
     censData10 <- censData10 %>%
@@ -116,8 +116,8 @@ apply(missing_states, 1, function(state) {
     test <- censData10 %>%
       anti_join(crosswalk, by = c("GEO_ID" = "trtid10")) %>%
       filter(pop_size > 0)
-    if(nrow(test) >0)warning("03_interp missing GEO_IDs")
-    
+    if (nrow(test) > 0) warning("03_interp missing GEO_IDs")
+
     # translate tracts
     censData10 <- censData10 %>%
       inner_join(crosswalk, by = c("GEO_ID" = "trtid10")) %>%
@@ -166,7 +166,7 @@ apply(states, 1, function(state) {
   censData10 <- fread(censData10Dir)
 
   if ("state" %in% colnames(censData10)) {
-    tic(paste("aggregated ",name,"by GEO_ID and variable"))
+    tic(paste("aggregated ", name, "by GEO_ID and variable"))
     test_that("basic", {
       expect_equal(1, length(unique(censData10$state)))
     })
@@ -178,33 +178,33 @@ apply(states, 1, function(state) {
     toc()
   }
 })
-##----give overview over missing GEO_IDs in crosswalk
-missing_GEOIDsDir <-file.path(censDir10_in00,paste0("missing_GEO_ID.csv"))
-if(!file.exists(missing_GEOIDsDir)){
-  GEOIDs<-apply(states, 1, function(state) {
+## ----give overview over missing GEO_IDs in crosswalk
+missing_GEOIDsDir <- file.path(censDir10_in00, paste0("missing_GEO_ID.csv"))
+if (!file.exists(missing_GEOIDsDir)) {
+  GEOIDs <- apply(states, 1, function(state) {
     STUSPS <- state["STUSPS"]
     censData00_GEO <- fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv"))) %>%
       mutate(GEO_ID = GEO_ID %>%
-               as.character %>%
-               str_pad(., 11, pad = "0")) %>%
+        as.character() %>%
+        str_pad(., 11, pad = "0")) %>%
       select(GEO_ID) %>%
-      unlist %>%
-      unique
-    
+      unlist() %>%
+      unique()
+
     return(censData00_GEO)
-  })%>% 
-    unlist 
-  
-  #TODO comment
-  missing_GEOIDs<-setdiff(GEOIDs,unique(crosswalk$trtid00))
-  print(paste(length(missing_GEOIDs),"GEO_ID, which are present in the 2000 census data, are not present in the crosswalk files"))
-  write.csv(missing_GEOIDs,missing_GEOIDsDir)
-  
-  missing_GEOIDs2<-setdiff(unique(crosswalk$trtid00),GEOIDs)
-  write.csv(missing_GEOIDs2,file.path(censDir10_in00,paste0("missing_GEO_ID2.csv")))
-}else{
-  missing_GEOIDs <-fread(missing_GEOIDsDir)
-  missing_GEOIDs2<-fread(file.path(censDir10_in00,paste0("missing_GEO_ID2.csv")))
+  }) %>%
+    unlist()
+
+  # TODO comment
+  missing_GEOIDs <- setdiff(GEOIDs, unique(crosswalk$trtid00))
+  print(paste(length(missing_GEOIDs), "GEO_ID, which are present in the 2000 census data, are not present in the crosswalk files"))
+  write.csv(missing_GEOIDs, missing_GEOIDsDir)
+
+  missing_GEOIDs2 <- setdiff(unique(crosswalk$trtid00), GEOIDs)
+  write.csv(missing_GEOIDs2, file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
+} else {
+  missing_GEOIDs <- fread(missing_GEOIDsDir)
+  missing_GEOIDs2 <- fread(file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
 }
 
 ## ----- actual interpolation-----
@@ -217,7 +217,7 @@ apply(states, 1, function(state) {
 
   censDirYearX <- file.path(censDirYear, paste0("census_", toString(year), "_", STUSPS, ".csv"))
   if (!file.exists(censDirYearX)) {
-    tic(paste("interpolated data in",year,"in",name))
+    tic(paste("interpolated data in", year, "in", name))
     censData00 <- fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv"))) %>%
       rename(pop_size00 = pop_size)
     censData10 <- fread(file.path(censDir10_in00, paste0("census_2010_", STUSPS, ".csv"))) %>%
@@ -229,32 +229,32 @@ apply(states, 1, function(state) {
         is.na(pop_size00) & is.na(pop_size10)))
 
     # give an overview, how much is missing
-  #  missing1 <- censData_joined %>% filter(is.na(pop_size00)) 
+    #  missing1 <- censData_joined %>% filter(is.na(pop_size00))
 
-  #  if (nrow(missing1) > 0){
-  #    missing1<-missing1%>%
-  #      group_by(GEO_ID) %>%
-  #      summarise(variables = n(),
-  #                pop_size10 = sum(pop_size10)) %>%
-  #      mutate(test = GEO_ID %in% missing_GEOIDs2$x) %>%
-  #      arrange(desc(pop_size10))
-      
-  #    print(paste(nrow(missing1), "GEO_ID worth", sum(missing1$pop_size10), "persons missing in 2000 data in", name))
-  #  } 
+    #  if (nrow(missing1) > 0){
+    #    missing1<-missing1%>%
+    #      group_by(GEO_ID) %>%
+    #      summarise(variables = n(),
+    #                pop_size10 = sum(pop_size10)) %>%
+    #      mutate(test = GEO_ID %in% missing_GEOIDs2$x) %>%
+    #      arrange(desc(pop_size10))
 
-  #  missing2 <- censData_joined %>% filter(is.na(pop_size10))
+    #    print(paste(nrow(missing1), "GEO_ID worth", sum(missing1$pop_size10), "persons missing in 2000 data in", name))
+    #  }
 
-  #  if (nrow(missing2) > 0){
-  #    missing2<-missing2%>%
-  #      group_by(GEO_ID) %>%
-  #      summarise(variables = n(),
-  #                pop_size00 = sum(pop_size00)) %>%
-  #      mutate(test = GEO_ID %in% missing_GEOIDs$x) %>%
-  #      arrange(desc(pop_size00))
-      
+    #  missing2 <- censData_joined %>% filter(is.na(pop_size10))
+
+    #  if (nrow(missing2) > 0){
+    #    missing2<-missing2%>%
+    #      group_by(GEO_ID) %>%
+    #      summarise(variables = n(),
+    #                pop_size00 = sum(pop_size00)) %>%
+    #      mutate(test = GEO_ID %in% missing_GEOIDs$x) %>%
+    #      arrange(desc(pop_size00))
+
     #  print(paste(nrow(missing2), "GEO_ID worth", sum(missing2$pop_size00), "persons missing in 2010 data in 20000 boundaries in", name))
-    #} 
-    #if (any(is.na(censData_joined))) browser()
+    # }
+    # if (any(is.na(censData_joined))) browser()
     # TODO delete above
 
     censData_joined <- censData_joined %>%
@@ -263,6 +263,20 @@ apply(states, 1, function(state) {
         pop_size10 = replace_na(pop_size10, 0)
       )
 
+    # fill state/county/tract if NA
+    suppressWarnings(
+      censData_joined[is.na(censData_joined$state), ] <- censData_joined[is.na(censData_joined$state), ] %>%
+        mutate(
+          GEO_ID = GEO_ID %>%
+            as.character() %>%
+            str_pad(., 11, pad = "0"),
+          state = str_sub(GEO_ID, 1, 2),
+          county = str_sub(GEO_ID, 3, 6),
+          tract = str_sub(GEO_ID, 7, 11)
+        )
+    )
+
+    # convex combination/interpolation
     t <- (year - 2000) / 10
     censDataYear <- censData_joined %>%
       mutate(pop_size = t * pop_size00 + (1 - t) * pop_size10) %>%
@@ -272,6 +286,8 @@ apply(states, 1, function(state) {
 
     # testthat
     test_that("02_interp actual interpolation", {
+      expect_false(any(is.na(censDataYear)))
+
       censData00_agr <- censData00 %>%
         ungroup() %>%
         group_by(variable) %>%
@@ -299,7 +315,7 @@ apply(states, 1, function(state) {
         )
 
       expect_true(all(comp4$inInterval))
-      if(!all(comp4$inInterval)) browser()
+      if (!all(comp4$inInterval)) browser()
     })
     toc()
   }

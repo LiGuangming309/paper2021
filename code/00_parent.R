@@ -152,7 +152,7 @@ for (year in years) {
    sink(type="message", append = TRUE)
    
    #runscript(script=mrbrtRR.script, args = args)
-   #runscript(script = cens_agr.script, args = args)
+   runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)

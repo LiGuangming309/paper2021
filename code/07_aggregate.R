@@ -76,25 +76,29 @@ apply(states, 1, function(state) {
     tic(paste("Aggregated Census data in", name, "in year", year, "by pm and county"))
 
     # read demographic census data by tract, make data wider
-    trac_censData <- paste0("census_", toString(year), "_", STUSPS, ".csv") %>%
-      file.path(censDir, year, .) %>%
-      read.csv() %>%
-      pivot_wider(
-        names_from = variable,
-        values_from = pop_size,
-        values_fill = 0
-      )
+    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv()
 
     # read pm exposure data by tract
     exp_tracData <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv")) %>%
       read.csv()
 
     # tigris does not provide all tract boundaries
-    set_dif <- setdiff(trac_censData$GEO_ID, exp_tracData$GEO_ID) %>% unlist
-    if (!rlang::is_empty(set_dif)) {
-      print(paste("In", name, "trac_censData-exp_tracData differ by", length(set_dif), "rows:"))
-      print(head(set_dif))
+    anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID")
+    if (nrow(anti) > 0) {
+      anti <- anti %>%
+        group_by(GEO_ID) %>%
+        summarise(pop_size = sum(pop_size))
+
+      print(paste(nrow(anti), "GEO_ID worth", sum(anti$pop_size), "persons missing in exposure-tract data in", year, "in", name))
+      print(anti$GEO_ID)
     }
+
+    trac_censData <- trac_censData %>%
+      pivot_wider(
+        names_from = variable,
+        values_from = pop_size,
+        values_fill = 0
+      )
 
     # join above datasets
     cens_agr <- inner_join(trac_censData,
@@ -134,18 +138,21 @@ apply(states, 1, function(state) {
         })
 
       # test that population does not change
-      comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
-        read.csv %>%
-        group_by(state, county, variable) %>%
-        summarise(pop_size = sum(pop_size))
-      
-      comp2<-cens_agr %>%
-        group_by(state, county, variable) %>%
-        summarise(pop_size = sum(pop_size)) %>%
-        full_join(comp1, by = c("state", "county", "variable")) 
-      
-      comp2[is.na(comp2)] <- 0
-      expect_equal(comp2$pop_size.x,comp2$pop_size.y)
+      if (nrow(anti) == 0) {
+        comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
+          read.csv() %>%
+          group_by(state, county, variable) %>%
+          summarise(pop_size = sum(pop_size))
+
+        comp2 <- cens_agr %>%
+          group_by(state, county, variable) %>%
+          summarise(pop_size = sum(pop_size)) %>%
+          full_join(comp1, by = c("state", "county", "variable"))
+
+        comp2[is.na(comp2)] <- 0
+
+        expect_equal(comp2$pop_size.x, comp2$pop_size.y)
+      }
     })
 
     write.csv(cens_agr, cens_agrDirCX)
