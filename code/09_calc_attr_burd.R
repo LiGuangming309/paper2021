@@ -78,19 +78,6 @@ if (!file.exists(attrBurdenDir)) {
     filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
     as.data.frame()
 
-  # Find and replace so it is compatible with other data
-  replaces1 <- data.frame(
-    from = c("NOT HISPANIC OR LATINO", "HISPANIC OR LATINO", "all"),
-    to = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins")
-  )
-  pafs <- FindReplace(data = pafs, Var = "hispanic_origin", replaceData = replaces1, from = "from", to = "to", exact = FALSE)
-
-  replaces2 <- data.frame(
-    from = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN OR PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN"),
-    to = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American")
-  )
-  pafs <- DataCombine::FindReplace(data = pafs, Var = "race", replaceData = replaces2, from = "from", to = "to", exact = FALSE)
-
   if (agr_by == "STATEFP") {
     possible_regions <- c(1,4:6,8:13,16:42,44:51,53:56)
   } else if (agr_by == "Census_Region") {
@@ -113,14 +100,14 @@ if (!file.exists(attrBurdenDir)) {
   
   # check for missing stuff
   # missing hispanic origin
-  missing <- setdiff(replaces1$to, pafs$hispanic_origin)
+  missing <- setdiff(c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins"), pafs$hispanic_origin)
   if (length(missing) > 0) {
     print("Hispanic origins in paf data missing:")
     print(missing)
   }
 
   # missing races
-  missing <- setdiff(replaces2$to, pafs$race)
+  missing <- setdiff(c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American"), pafs$race)
   if (length(missing) > 0) {
     print("Races in paf data missing:")
     print(missing)
@@ -174,7 +161,7 @@ if (!file.exists(attrBurdenDir)) {
       total_burden$label_cause <- "cvd_stroke"
     } else if (grepl("A48.0 (Gas gangrene); A48.1 (Legionnaires disease); A48.2 (Nonpneumonic Legionnaires disease [Pontiac", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "lri"
-    } else if (grepl("C33 (Malignant neoplasm of trachea); C34.0 (Main bronchus - Malignant neoplasms); C34.1 (Upper lobe,", cause_icd, fixed = TRUE)) {
+    } else if (grepl("C33 (Malignant neoplasm of trachea); C44.0 (Skin of lip - Malignant neoplasms); C44.1 (Skin of eyelid,", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "neo_lung"
     }
 

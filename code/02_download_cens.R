@@ -242,19 +242,19 @@ apply(states, 1, function(state) {
 
       print(as.data.frame(test_dem.state.data))
 
-      pop_all <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "all", "pop_size"] %>% unlist()
-      pop_his <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "HISPANIC OR LATINO", "pop_size"] %>% unlist()
-      pop_nhis <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "NOT HISPANIC OR LATINO", "pop_size"] %>% unlist()
-      pop_all_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "all", "pop_size"] %>% unlist()
-      pop_nhis_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "NOT HISPANIC OR LATINO", "pop_size"] %>% unlist()
+      pop_all <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "All Origins", "pop_size"] %>% unlist()
+      pop_his <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "Hispanic or Latino", "pop_size"] %>% unlist()
+      pop_nhis <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "Not Hispanic or Latino", "pop_size"] %>% unlist()
+      pop_all_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "All Origins", "pop_size"] %>% unlist()
+      pop_nhis_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "Not Hispanic or Latino", "pop_size"] %>% unlist()
       
       if(year %in% c(2000,2010)){
         expect_equal(pop_all, pop_his + pop_nhis)
       }else{
         pop_all_white <- dem.state.data %>%
           inner_join(census_meta, by = "variable")%>%
-          filter(hispanic_origin == "all"&
-                 race == "WHITE") %>%
+          filter(hispanic_origin == "All Origins"&
+                 race == "White") %>%
           select(pop_size) %>%
           sum 
         expect_equal(pop_all_white, pop_his + pop_nhis)

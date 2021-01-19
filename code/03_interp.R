@@ -179,33 +179,33 @@ apply(states, 1, function(state) {
   }
 })
 ## ----give overview over missing GEO_IDs in crosswalk
-missing_GEOIDsDir <- file.path(censDir10_in00, paste0("missing_GEO_ID.csv"))
-if (!file.exists(missing_GEOIDsDir)) {
-  GEOIDs <- apply(states, 1, function(state) {
-    STUSPS <- state["STUSPS"]
-    censData00_GEO <- fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv"))) %>%
-      mutate(GEO_ID = GEO_ID %>%
-        as.character() %>%
-        str_pad(., 11, pad = "0")) %>%
-      select(GEO_ID) %>%
-      unlist() %>%
-      unique()
+#missing_GEOIDsDir <- file.path(censDir10_in00, paste0("missing_GEO_ID.csv"))
+#if (!file.exists(missing_GEOIDsDir)) {
+#  GEOIDs <- apply(states, 1, function(state) {
+#    STUSPS <- state["STUSPS"]
+#    censData00_GEO <- fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv"))) %>%
+#      mutate(GEO_ID = GEO_ID %>%
+#        as.character() %>%
+#        str_pad(., 11, pad = "0")) %>%
+#      select(GEO_ID) %>%
+#      unlist() %>%
+#      unique()
 
-    return(censData00_GEO)
-  }) %>%
-    unlist()
+#    return(censData00_GEO)
+#  }) %>%
+#    unlist()
 
   # TODO comment
-  missing_GEOIDs <- setdiff(GEOIDs, unique(crosswalk$trtid00))
-  print(paste(length(missing_GEOIDs), "GEO_ID, which are present in the 2000 census data, are not present in the crosswalk files"))
-  write.csv(missing_GEOIDs, missing_GEOIDsDir)
+#  missing_GEOIDs <- setdiff(GEOIDs, unique(crosswalk$trtid00))
+#  print(paste(length(missing_GEOIDs), "GEO_ID, which are present in the 2000 census data, are not present in the crosswalk files"))
+#  write.csv(missing_GEOIDs, missing_GEOIDsDir)
 
-  missing_GEOIDs2 <- setdiff(unique(crosswalk$trtid00), GEOIDs)
-  write.csv(missing_GEOIDs2, file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
-} else {
-  missing_GEOIDs <- fread(missing_GEOIDsDir)
-  missing_GEOIDs2 <- fread(file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
-}
+#  missing_GEOIDs2 <- setdiff(unique(crosswalk$trtid00), GEOIDs)
+#  write.csv(missing_GEOIDs2, file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
+#} else {
+#  missing_GEOIDs <- fread(missing_GEOIDsDir)
+#  missing_GEOIDs2 <- fread(file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
+#}
 
 ## ----- actual interpolation-----
 censDirYear <- file.path(censDir, year)

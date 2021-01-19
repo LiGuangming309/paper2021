@@ -11,7 +11,7 @@ rm(list = ls(all = TRUE))
 
 # load packages, install if missing
 packages <- c(
-  "dplyr", "magrittr", "censusapi", "stringr", "data.table", "tidyverse",
+  "dplyr", "magrittr", "censusapi", "stringr", "DataCombine", "data.table", "tidyverse",
   "tigris", "tictoc", "cdcfluview", "testthat", "rlang"
 )
 
@@ -37,7 +37,7 @@ if (rlang::is_empty(args)) {
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/06_demog"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
 # quits, if not downloadable year
@@ -356,6 +356,22 @@ if (!file.exists(filepathCensMeta)) {
     ))
 
   census_meta <- rbind(census_meta, census_meta_old)
+  
+  ###----- find and replace, so it is more compatible with later data 
+  # Find and replace so it is compatible with other data
+  replaces1 <- data.frame(
+    from = c("NOT HISPANIC OR LATINO", "HISPANIC OR LATINO", "all"),
+    to = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins")
+  )
+  census_meta <- DataCombine::FindReplace(data = census_meta, Var = "hispanic_origin", replaceData = replaces1, from = "from", to = "to", exact = FALSE)
+  
+  replaces2 <- data.frame(
+    from = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN OR PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN"),
+    to = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American")
+  )
+  census_meta <- DataCombine::FindReplace(data = census_meta, Var = "race", replaceData = replaces2, from = "from", to = "to", exact = FALSE)
+  
+  
   fwrite(census_meta, filepathCensMeta)
   toc()
 }

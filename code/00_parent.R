@@ -164,9 +164,11 @@ for (year in years) {
 }    
 
 args <- paste(
-  agr_by, # 1
-  attr.burden.dir, #2
-  plots.dir #3
+  tmp.dir, #1
+  agr_by, # 2
+  dem.dir, # 3
+  attr.burden.dir, #4
+  plots.dir #5
 ) 
 
 #runscript(script = plot.script, args = args)

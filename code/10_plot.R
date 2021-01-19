@@ -21,13 +21,17 @@ options(dplyr.join.inform = FALSE)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
 
-agr_by <- args[1]
-attrBurdenDir <- args[2]
-plotsDir <- args[3]
+tmpDir <- args[1]
+agr_by <- args[2]
+censDir <- args[3]
+attrBurdenDir <- args[4]
+plotsDir <- args[5]
 
 # TODO delete
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/09_attr_burd"
   plotsDir <- "/Users/default/Desktop/paper2021/data/10_plots"
 }
@@ -36,6 +40,16 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 plotsDir <- file.path(plotsDir, agr_by)
 dir.create(plotsDir, recursive = T, showWarnings = F)
 
+states <- file.path(tmpDir, "states.csv") %>% read.csv()
+
+group_variables <- c(
+  "Year" = "year",
+  # "Gender" = "gender",
+  # "Gender.Code" = "gender_label",
+  "Race" = "race",
+  "Hispanic.Origin" = "hispanic_origin"
+)
+inverse_group_variables <- setNames(names(group_variables), group_variables)
 ### ---read attributable burden data-----
 files <- list.files(attrBurdenDir)
 
@@ -47,28 +61,73 @@ attrBurden <- lapply(files, function(file) {
 
 missing <- setdiff(2000:2016, attrBurden$Year)
 if (length(missing) > 0) {
-  print("Years missing in attributable burden data")
+  print("Years missing in attributable burden data:")
   print(missing)
 }
 
+## --- read demographic census data ----
+tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', ')))
+censData <- lapply(unique(attrBurden$Year), function(year) {
+  tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', '), "in", year))
+
+  meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+  censData <- apply(states, 1, function(state) {
+    STUSPS <- state["STUSPS"]
+    name <- state["NAME"]
+    tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', '), "in", year, "in", name))
+    censData <- file.path(censDir, year, paste0("census_2010_", STUSPS, ".csv")) %>% read.csv()
+
+    censData <- censData %>%
+      left_join(meta, by = "variable") %>%
+      group_by_at(vars(one_of(group_variables))) %>%
+      summarise(pop_size = sum(pop_size))
+
+    toc()
+    return(censData)
+  }) %>%
+    do.call(rbind, .) %>%
+    as.data.frame()
+
+  toc()
+  return(censData)
+}) %>%
+  do.call(rbind, .) %>%
+  as.data.frame()
+
+censData <- censData %>%
+  group_by_at(vars(one_of(group_variables))) %>%
+  summarise(pop_size = sum(pop_size))
+toc()
 ## --- group-----
-groups <- c("Year", "Race", "Hispanic.Origin")
 attrBurden_gr <- attrBurden %>%
-  group_by_at(vars(one_of(groups))) %>%
+  group_by_at(vars(one_of(inverse_group_variables))) %>%
   summarise(
     Deaths = sum(Deaths),
     YLD = sum(YLD),
     attrDeaths = sum(attrDeaths),
     attrYLD = sum(attrYLD)
   ) %>%
-  as.data.frame()
+  as.data.frame %>%
+  mutate(effPaf = attrDeaths /Deaths)
+
+attrBurden_gr <- left_join(attrBurden_gr, censData, by = group_variables) %>%
+  mutate(
+    crudeDeaths = Deaths *100000/pop_size,
+    crudeYLD = YLD *100000/pop_size,
+    crudeAttrDeaths = attrDeaths *100000/pop_size, #Crude Rate Per 100,000
+    crudeAttrYLD = attrYLD *100000/pop_size,
+  )
+
+test_that("10 plot basic chackes",{
+  expect_false(any(is.na(attrBurden_gr)))
+  #TODO
+})
 
 fwrite(attrBurden_gr, file.path(plotsDir, "attr_burd.csv"))
 
 ## ---plot ------
 for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
   attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
-
 
   for (measure in c("Deaths", "YLD", "attrDeaths", "attrYLD")) {
     g <- attrBurden_gr_his %>%
@@ -79,11 +138,11 @@ for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
       ylab(paste("burden measured in", measure)) +
       xlab("Year") +
       ylim(0, NA) +
-      xlim(2000, 2016)+
-      geom_line() 
-    
+      xlim(2000, 2016) +
+      geom_line()
+
     ggsave(file.path(plotsDir, paste0(measure, "_", his_or, ".png")),
-           plot = g 
+      plot = g
     )
   }
 }
