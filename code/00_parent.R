@@ -120,8 +120,8 @@ calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
 plot.script <- file.path(code.dir, "10_plot.R")
 
 #--------parameters of code-------------------
-#years <- c(2000,2010,2001:2009,2011:2016)
-years <- c(2000:2010)
+years <- c(2000,2010,2001:2009,2011:2016)
+#years <- c(200)
 
 for (year in years) {
   args <- paste(
@@ -152,9 +152,9 @@ for (year in years) {
    sink(type="message", append = TRUE)
    
    #runscript(script=mrbrtRR.script, args = args)
-   runscript(script = cens_agr.script, args = args)
+   #runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
-   runscript(script = paf.script, args = args)
+   #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script = calc.attr.burd.script, args = args)
    

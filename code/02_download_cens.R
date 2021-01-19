@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2011
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -247,8 +247,19 @@ apply(states, 1, function(state) {
       pop_nhis <- test_dem.state.data[test_dem.state.data[, "hispanic_origin"] == "NOT HISPANIC OR LATINO", "pop_size"] %>% unlist()
       pop_all_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "all", "pop_size"] %>% unlist()
       pop_nhis_old <- test_dem.state.data.old[test_dem.state.data.old[, "hispanic_origin"] == "NOT HISPANIC OR LATINO", "pop_size"] %>% unlist()
-
-      expect_equal(pop_all, pop_his + pop_nhis)
+      
+      if(year %in% c(2000,2010)){
+        expect_equal(pop_all, pop_his + pop_nhis)
+      }else{
+        pop_all_white <- dem.state.data %>%
+          inner_join(census_meta, by = "variable")%>%
+          filter(hispanic_origin == "all"&
+                 race == "WHITE") %>%
+          select(pop_size) %>%
+          sum 
+        expect_equal(pop_all_white, pop_his + pop_nhis)
+      }
+      
       expect_equal(pop_all, pop_all_old)
       expect_equal(pop_nhis, pop_nhis_old)
     })
