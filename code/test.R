@@ -1,29 +1,18 @@
-test <- censData_joined[is.na(censData_joined$state), ] %>%
-  mutate(
-    GEO_ID = GEO_ID %>%
-      as.character() %>%
-      str_pad(., 11, pad = "0"),
-    state = str_sub(GEO_ID, 1, 2),
-    county = str_sub(GEO_ID, 3, 6),
-    tract = str_sub(GEO_ID, 7, 11)
-  )
+# TODO l?schen
+args <- commandArgs(trailingOnly = T)
+if (rlang::is_empty(args)) {
+  agr_by <- "nation"
 
-# 06031001702,Cali,0310,01702
-#6109005202
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+}
 
-test <- censData_joined %>%
-  mutate(
-    GEO_ID = GEO_ID %>%
-      as.character() %>%
-      str_pad(., 11, pad = "0"),
-    state = sapply(state, function(x) {
-      ifelse(is.na(x),
-        str_sub(GEO_ID, 1, 2),
-        x
-      )
-    })
-    # county = str_sub(GEO_ID,3,6),
-    # tract = str_sub(GEO_ID,7,11)
-  )
-
-#co 830425
+cens_agrDir <- file.path(cens_agrDir, agr_by)
+years <- list.files(cens_agrDir)
+tmrel<-lapply(years, function(year) {
+  files <- list.files(file.path(cens_agrDir, year))
+  lapply(files, function(file) {
+    cens_agr<-read.csv(file.path(cens_agrDir, year,file))
+    return(min(cens_agr$pm))
+  }) %>% min
+}) %>% min

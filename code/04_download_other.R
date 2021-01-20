@@ -78,7 +78,6 @@ if (!file.exists(filepathM)) {
 rm(filenameExp, filepathExp, filepathM)
 
 
-
 ### ------------------download tract shape files--------------------
 filepathTr <- file.path(tracDir, toString(year))
 dir.create(filepathTr, recursive = T, showWarnings = F)

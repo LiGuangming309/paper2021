@@ -24,6 +24,7 @@ for (p in packages) {
 args <- commandArgs(trailingOnly = T)
 tmpDir <- args[3]
 exp_rrDir <- args[6]
+cens_agrDir <- args[9]
 
 plotsDir <- file.path(exp_rrDir, "plots")
 dir.create(plotsDir, recursive = T, showWarnings = F)
@@ -66,8 +67,26 @@ if (file.exists(causes_agesDir)) {
 #  write.csv(tmrels,tmrelsDir, row.names = FALSE)
 # }
 
-#tmrel <- mean(2.4, 5.9)
-tmrel <- 1.3
+# tmrel <- mean(2.4, 5.9)
+## ---- find tmrel ---
+# tmrel <- 1.3
+tmrelDir <-file.path(tmpDir, "tmrel.RData")
+if(!file.exists(tmrelDir)){
+  cens_agrDir <- file.path(cens_agrDir, agr_by)
+  years <- list.files(cens_agrDir)
+  tmrel <- lapply(years, function(year) {
+    files <- list.files(file.path(cens_agrDir, year))
+    lapply(files, function(file) {
+      cens_agr <- read.csv(file.path(cens_agrDir, year, file))
+      return(min(cens_agr$pm))
+    }) %>% min()
+  }) %>% min()
+  print(paste("tmrel: ", tmrel))
+  
+  save(tmrel, file = tmrelDir)
+}
+
+load(tmrelDir)
 ## ----------calculation---------
 
 tic("Calculated RR from MR-BRT for all causes")
@@ -102,7 +121,7 @@ apply(causes_ages, 1, function(cause_age) {
       1,
       getMRBRT(pm) / tmrelMRBR
     ) %>%
-      as.numeric %>%
+      as.numeric() %>%
       return(.)
   }
 
