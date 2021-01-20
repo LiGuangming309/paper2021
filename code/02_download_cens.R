@@ -106,15 +106,14 @@ apply(states, 1, function(state) {
         )
 
     # subset relevant part of GEO_ID
-        print(colnames(data))
-        if(GEO_ID %in% colnames(data)){
+        if("GEO_ID" %in% colnames(data)){
           data$GEO_ID <- data$GEO_ID %>%
             str_sub(., -11, -1)
         }else{
           data$GEO_ID <- paste0(
             data$state , #%>% as.character %>% str_pad(width = 2, pad = "0")
             data$county ,
-            data$tract ,
+            data$tract 
           )
         }
 
