@@ -75,12 +75,11 @@ if(!file.exists(tmrelDir)){
   cens_agrDir <- file.path(cens_agrDir, "nation")
   years <- list.files(cens_agrDir)
   tmrel <- lapply(years, function(year) {
-    files <- list.files(file.path(cens_agrDir, year))
-    lapply(files, function(file) {
-      cens_agr <- read.csv(file.path(cens_agrDir, year, file))
-      return(min(cens_agr$pm))
-    }) %>% min()
-  }) %>% min()
+    cens_agr <- file.path(cens_agrDir, year, paste0("cens_agr_",toString(year),"_us.csv")) %>% read.csv
+    return(min(cens_agr$pm))
+  }) %>% 
+    unlist %>% 
+    min
   print(paste("tmrel: ", tmrel))
   
   save(tmrel, file = tmrelDir)
