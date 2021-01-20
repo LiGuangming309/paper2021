@@ -210,7 +210,7 @@ if (agr_by != "county") {
       toc()
     }
     #---- -----Plot-----------    
-    if (FALSE) {
+    if (TRUE) {
       census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% read.csv()
 
       cens_agr_plotDir <- file.path(cens_agrDir, "plots", region)

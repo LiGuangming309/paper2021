@@ -31,13 +31,13 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2016
 
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
 # quits, if not downloadable year
@@ -106,8 +106,17 @@ apply(states, 1, function(state) {
         )
 
     # subset relevant part of GEO_ID
-        data$GEO_ID <- data$GEO_ID %>%
-          str_sub(., -11, -1)
+        print(colnames(data))
+        if(GEO_ID %in% colnames(data)){
+          data$GEO_ID <- data$GEO_ID %>%
+            str_sub(., -11, -1)
+        }else{
+          data$GEO_ID <- paste0(
+            data$state , #%>% as.character %>% str_pad(width = 2, pad = "0")
+            data$county ,
+            data$tract ,
+          )
+        }
 
         data <- data %>%
           select(any_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))) %>%

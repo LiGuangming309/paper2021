@@ -18,7 +18,7 @@ sink(con, append=TRUE, type="message")
 #install packages if missing
 packages <-c("bit64","cdcfluview","censusapi","data.table","dplyr", "ggplot2", "magrittr",
              "MALDIquant","plyr","RCurl","sf","sp","stringr","testthat", "tictoc", 
-             "tidyverse","tigris","tmap","viridis","hrbrthemes","rlang")
+             "tidyverse","tigris","tmap","viridis","hrbrthemes","rlang","Rtools")
 
 options(tigris_use_cache = FALSE)
 for (p in packages) {
