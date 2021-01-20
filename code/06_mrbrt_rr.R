@@ -72,7 +72,7 @@ if (file.exists(causes_agesDir)) {
 # tmrel <- 1.3
 tmrelDir <-file.path(tmpDir, "tmrel.RData")
 if(!file.exists(tmrelDir)){
-  cens_agrDir <- file.path(cens_agrDir, agr_by)
+  cens_agrDir <- file.path(cens_agrDir, "nation")
   years <- list.files(cens_agrDir)
   tmrel <- lapply(years, function(year) {
     files <- list.files(file.path(cens_agrDir, year))
