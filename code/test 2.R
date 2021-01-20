@@ -1,3 +1,2 @@
-group_variables
-paste(group_variables, sep =", ")
-
+test <- attrBurden %>%
+  mutate(effPaf = attrDeaths /Deaths)

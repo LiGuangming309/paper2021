@@ -65,6 +65,16 @@ if (length(missing) > 0) {
   print(missing)
 }
 
+attrBurden_gr <- attrBurden %>%
+  group_by_at(vars(one_of(inverse_group_variables))) %>%
+  summarise(
+    Deaths = sum(Deaths),
+    YLD = sum(YLD),
+    attrDeaths = sum(attrDeaths),
+    attrYLD = sum(attrYLD)
+  ) %>%
+  as.data.frame %>%
+  mutate(effPaf = attrDeaths /Deaths)
 ## --- read demographic census data ----
 tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', ')))
 censData <- lapply(unique(attrBurden$Year), function(year) {
@@ -98,17 +108,7 @@ censData <- censData %>%
   group_by_at(vars(one_of(group_variables))) %>%
   summarise(pop_size = sum(pop_size))
 toc()
-## --- group-----
-attrBurden_gr <- attrBurden %>%
-  group_by_at(vars(one_of(inverse_group_variables))) %>%
-  summarise(
-    Deaths = sum(Deaths),
-    YLD = sum(YLD),
-    attrDeaths = sum(attrDeaths),
-    attrYLD = sum(attrYLD)
-  ) %>%
-  as.data.frame %>%
-  mutate(effPaf = attrDeaths /Deaths)
+## --- join/write -----
 
 attrBurden_gr <- left_join(attrBurden_gr, censData, by = group_variables) %>%
   mutate(

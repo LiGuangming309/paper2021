@@ -24,11 +24,14 @@ tmpDir <- args[3]
 expDir <- args[4]
 tracDir <- args[5]
 
-#year<-2000
-#tmpDir <- "/Users/default/Desktop/paper2020/data/tmp"
-#expDir <- "/Users/default/Desktop/paper2020/data/01_exposure"
-#tracDir <- "/Users/default/Desktop/paper2020/data/02_tracts"
-
+# TODO delete
+if (rlang::is_empty(args)) {
+  year <- 2016
+  
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
+  tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
+}
 #-- load data---
 states <- file.path(tmpDir,"states.csv") %>% read.csv
 
@@ -104,8 +107,9 @@ if(year %in% c(2000:2016)){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
           tracts$GEO_ID<- tracts$GEO_ID %>% str_sub(.,-11,-1)
         }else if(year %in% 2011:2012){
-          tracts <- tracts(state = STUSPS, cb = FALSE, year = year)
-          #tracts$AFFGEOID <-paste0("1400000US",tracts$GEOID)
+          tracts <- tracts(state = STUSPS, cb = FALSE, year = year) %>%
+            rename(GEO_ID = GEOID)
+          #TODO Geometry corrupted?
         }else if(year %in% 2013:2016){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
           tracts$GEO_ID<- tracts$AFFGEOID %>% str_sub(.,-11,-1)
