@@ -6,7 +6,7 @@
 #***************************************************************************
 
 #------------------SET-UP--------------------------------------------------
-# clear memory
+# clear memory #test
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
