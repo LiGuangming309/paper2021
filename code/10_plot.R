@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc","viridis","hrbrthemes")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -50,6 +50,8 @@ group_variables <- c(
   "Hispanic.Origin" = "hispanic_origin"
 )
 inverse_group_variables <- setNames(names(group_variables), group_variables)
+
+if(!file.exists(file.path(plotsDir, "attr_burd.csv"))){
 ### ---read attributable burden data-----
 files <- list.files(attrBurdenDir)
 
@@ -124,6 +126,8 @@ test_that("10 plot basic chackes",{
 })
 
 fwrite(attrBurden_gr, file.path(plotsDir, "attr_burd.csv"))
+}
+attrBurden_gr<-fread(file.path(plotsDir, "attr_burd.csv"))
 
 ## ---plot ------
 for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
