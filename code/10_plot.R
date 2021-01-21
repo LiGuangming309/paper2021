@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc","viridis","hrbrthemes")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -51,48 +51,54 @@ group_variables <- c(
 )
 inverse_group_variables <- setNames(names(group_variables), group_variables)
 
-if(!file.exists(file.path(plotsDir, "attr_burd.csv"))){
-### ---read attributable burden data-----
-files <- list.files(attrBurdenDir)
+if (!file.exists(file.path(plotsDir, "attr_burd.csv"))) {
+  ### ---read attributable burden data-----
+  files <- list.files(attrBurdenDir)
 
-attrBurden <- lapply(files, function(file) {
-  attrBurden <- file.path(attrBurdenDir, file) %>% read.csv()
-}) %>%
-  do.call(rbind, .) %>%
-  as.data.frame()
+  attrBurden <- lapply(files, function(file) {
+    attrBurden <- file.path(attrBurdenDir, file) %>% read.csv()
+  }) %>%
+    do.call(rbind, .) %>%
+    as.data.frame()
 
-missing <- setdiff(2000:2016, attrBurden$Year)
-if (length(missing) > 0) {
-  print("Years missing in attributable burden data:")
-  print(missing)
-}
+  missing <- setdiff(2000:2016, attrBurden$Year)
+  if (length(missing) > 0) {
+    print("Years missing in attributable burden data:")
+    print(missing)
+  }
 
-attrBurden_gr <- attrBurden %>%
-  group_by_at(vars(one_of(inverse_group_variables))) %>%
-  summarise(
-    Deaths = sum(Deaths),
-    YLL = sum(YLL),
-    attrDeaths = sum(attrDeaths),
-    attrYLL = sum(attrYLL)
-  ) %>%
-  as.data.frame %>%
-  mutate(effPaf = attrDeaths /Deaths)
-## --- read demographic census data ----
-tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', ')))
-censData <- lapply(unique(attrBurden$Year), function(year) {
-  tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', '), "in", year))
+  attrBurden_gr <- attrBurden %>%
+    group_by_at(vars(one_of(inverse_group_variables))) %>%
+    summarise(
+      Deaths = sum(Deaths),
+      YLL = sum(YLL),
+      attrDeaths = sum(attrDeaths),
+      attrYLL = sum(attrYLL)
+    ) %>%
+    as.data.frame() %>%
+    mutate(effPaf = attrDeaths / Deaths)
+  ## --- read demographic census data ----
+  tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))
+  censData <- lapply(unique(attrBurden$Year), function(year) {
+    tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", "), "in", year))
 
-  meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
-  censData <- apply(states, 1, function(state) {
-    STUSPS <- state["STUSPS"]
-    name <- state["NAME"]
-    tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', '), "in", year, "in", name))
-    censData <- file.path(censDir, year, paste0("census_",toString(year),"_", STUSPS, ".csv")) %>% read.csv()
+    meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+    censData <- apply(states, 1, function(state) {
+      STUSPS <- state["STUSPS"]
+      name <- state["NAME"]
+      tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", "), "in", year, "in", name))
+      censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv()
 
-    censData <- censData %>%
-      left_join(meta, by = "variable") %>%
-      group_by_at(vars(one_of(group_variables))) %>%
-      summarise(pop_size = sum(pop_size))
+      censData <- censData %>%
+        left_join(meta, by = "variable") %>%
+        group_by_at(vars(one_of(group_variables))) %>%
+        summarise(pop_size = sum(pop_size))
+
+      toc()
+      return(censData)
+    }) %>%
+      do.call(rbind, .) %>%
+      as.data.frame()
 
     toc()
     return(censData)
@@ -100,42 +106,36 @@ censData <- lapply(unique(attrBurden$Year), function(year) {
     do.call(rbind, .) %>%
     as.data.frame()
 
+  censData <- censData %>%
+    group_by_at(vars(one_of(group_variables))) %>%
+    summarise(pop_size = sum(pop_size))
   toc()
-  return(censData)
-}) %>%
-  do.call(rbind, .) %>%
-  as.data.frame()
+  ## --- join/write -----
 
-censData <- censData %>%
-  group_by_at(vars(one_of(group_variables))) %>%
-  summarise(pop_size = sum(pop_size))
-toc()
-## --- join/write -----
+  attrBurden_gr <- left_join(attrBurden_gr, censData, by = group_variables) %>%
+    mutate(
+      crudeDeaths = Deaths * 100000 / pop_size,
+      crudeYLL = YLL * 100000 / pop_size,
+      crudeAttrDeaths = attrDeaths * 100000 / pop_size, # Crude Rate Per 100,000
+      crudeAttrYLL = attrYLL * 100000 / pop_size,
+    )
 
-attrBurden_gr <- left_join(attrBurden_gr, censData, by = group_variables) %>%
-  mutate(
-    crudeDeaths = Deaths *100000/pop_size,
-    crudeYLL = YLL *100000/pop_size,
-    crudeAttrDeaths = attrDeaths *100000/pop_size, #Crude Rate Per 100,000
-    crudeAttrYLL = attrYLL *100000/pop_size,
-  )
+  test_that("10 plot basic chackes", {
+    expect_false(any(is.na(attrBurden_gr)))
+  })
 
-test_that("10 plot basic chackes",{
-  expect_false(any(is.na(attrBurden_gr)))
-  #TODO
-})
-
-fwrite(attrBurden_gr, file.path(plotsDir, "attr_burd.csv"))
+  fwrite(attrBurden_gr, file.path(plotsDir, "attr_burd.csv"))
 }
-attrBurden_gr<-fread(file.path(plotsDir, "attr_burd.csv"))
+attrBurden_gr <- fread(file.path(plotsDir, "attr_burd.csv"))
 
 ## ---plot ------
 for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
   attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
 
-  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL")) {
+  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
+                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL")) {
     g <- attrBurden_gr_his %>%
-      ggplot(aes(x = Year, y = measure, group = Race, color = Race)) +
+      ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
       scale_color_viridis(discrete = TRUE) +
       ggtitle(paste("hispanic origin:", his_or)) +
       theme_ipsum() +

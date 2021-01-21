@@ -171,4 +171,4 @@ args <- paste(
   plots.dir #5
 ) 
 
-#runscript(script = plot.script, args = args)
+runscript(script = plot.script, args = args)
