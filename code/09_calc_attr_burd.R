@@ -197,14 +197,14 @@ if (!file.exists(attrBurdenDir)) {
   }
 
   # missing hispanic origin
-  missing <- setdiff(replaces1$to, total_burden$Hispanic.Origin)
+  missing <- setdiff(c("NOT HISPANIC OR LATINO", "HISPANIC OR LATINO", "all"), total_burden$Hispanic.Origin)
   if (length(missing) > 0) {
     print("Hispanic origins in total burden data missing:")
     print(missing)
   }
 
   # missing races
-  missing <- setdiff(replaces2$to, total_burden$Race)
+  missing <- setdiff(c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN OR PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN"), total_burden$Race)
   if (length(missing) > 0) {
     print("Races in total burden data missing:")
     print(missing)
