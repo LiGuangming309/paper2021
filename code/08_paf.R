@@ -32,7 +32,7 @@ pafDir <- args[11]
 
 # TODO löschen
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2011
   agr_by <- "nation"
   
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -46,7 +46,7 @@ if (rlang::is_empty(args)) {
 #load meta data
 census_meta <-  file.path(censDir,"meta", paste0("cens_meta_", toString(year), ".csv")) %>% 
                      read.csv %>%
-                    filter(relevant == TRUE) %>%
+                    #filter(relevant == TRUE) %>%
                      select(variable,year,gender,gender_label,min_age,max_age,race,hispanic_origin)
 
 # create directories
@@ -97,9 +97,14 @@ for (region in regions) {
              censMeta <- censMetaAll,
              censMeta <- censMetaAll %>% filter(age_group_id == as.numeric(age_group_idX))
              )
-
+      
+      if(nrow(censMeta)==0){
+        return() #TODO
+      }
+      
       pafs <- apply(censMeta, 1, function(row) {
         variableX <- row[["variable"]]
+        
         cens_agr_sub <- cens_agr %>% filter(variable == variableX)
 
         rr <- sapply(cens_agr_sub$pm, getRR) %>% as.numeric 
@@ -126,15 +131,18 @@ for (region in regions) {
       return(result)
     }) %>% do.call(rbind, .)
 
-    
     pafs[, agr_by] <- region
     
     pafs <- left_join(pafs,census_meta, by= c("censMeta.variable"="variable"))%>%
                 select(!censMeta.variable)
     
     test_that("07_paf distinct rows", {
+      expect_false(any(is.na(pafs)))
+
       pafs_dis<-pafs %>% distinct(label_cause,year,gender_label,min_age,max_age,race,hispanic_origin)
-      expect_equal(nrow(pafs_dis),nrow(pafs))
+      expect_equal(nrow(pafs_dis),nrow(pafs)) 
+      #TODO löschen
+  
     })                        
       
     write.csv(pafs, pafDirX, row.names = FALSE)

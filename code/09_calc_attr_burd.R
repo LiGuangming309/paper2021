@@ -73,9 +73,9 @@ if (!file.exists(attrBurdenDir)) {
   }) %>%
     do.call(rbind, .) %>%
     # TODO Asian, Pacific Islander immer noch dabei
-    #filter(!(race %in% c("ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
+    filter(!(race %in% c("ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
     # TODO old people still included
-    #filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
+    filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
     as.data.frame()
 
   if (agr_by == "STATEFP") {
