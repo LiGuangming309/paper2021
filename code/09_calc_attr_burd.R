@@ -31,7 +31,7 @@ attrBurdenDir <- args[13]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2010
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
@@ -67,6 +67,7 @@ if (!file.exists(attrBurdenDir)) {
   ## ----- read paf------
   states <- file.path(tmpDir, "states.csv") %>% read.csv()
   regions <- states[, agr_by] %>% unique()
+
   pafs <- lapply(regions, function(region) {
     file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
       read.csv()
@@ -129,6 +130,7 @@ if (!file.exists(attrBurdenDir)) {
   }
   
   if(!(150 %in% pafs$max_age)) print("max_age 150 missing in paf data")
+
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
   total_burden <- lapply(files, function(file) {
@@ -159,10 +161,12 @@ if (!file.exists(attrBurdenDir)) {
       total_burden$label_cause <- "t2_dm"
     } else if (grepl("G45.0 (Vertebro-basilar artery syndrome); G45.1 (Carotid artery syndrome (hemispheric)); G45.2 (Multiple and", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "cvd_stroke"
-    } else if (grepl("A48.0 (Gas gangrene); A48.1 (Legionnaires disease); A48.2 (Nonpneumonic Legionnaires disease [Pontiac", cause_icd, fixed = TRUE)) {
+    } else if (grepl("A48.1 (Legionnaires disease); A70 (Chlamydia psittaci infection); B34.2 (Coronavirus infection,", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "lri"
     } else if (grepl("C33 (Malignant neoplasm of trachea); C44.0 (Skin of lip - Malignant neoplasms); C44.1 (Skin of eyelid,", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "neo_lung"
+    }else{
+      print("unidentifiable ICD Code")
     }
 
     if (!"Hispanic.Origin" %in% colnames(total_burden)) {
@@ -179,7 +183,9 @@ if (!file.exists(attrBurdenDir)) {
       total_burden[, "Nation"] <- "us"
     }
     return(total_burden)
-  }) %>%
+  }) 
+  
+  total_burden <-total_burden %>%
     do.call(rbind, .) %>%
     as.data.frame() %>%
     filter(
@@ -188,7 +194,7 @@ if (!file.exists(attrBurdenDir)) {
     )
 
 
-  # check for missing stuff
+  # ---------check for missing stuff----------------
   # missing Genders
   missing <- setdiff(c("Male", "Female"), total_burden$Gender)
   if (length(missing) > 0) {
@@ -197,14 +203,14 @@ if (!file.exists(attrBurdenDir)) {
   }
 
   # missing hispanic origin
-  missing <- setdiff(c("NOT HISPANIC OR LATINO", "HISPANIC OR LATINO", "all"), total_burden$Hispanic.Origin)
+  missing <- setdiff(c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins"), total_burden$Hispanic.Origin)
   if (length(missing) > 0) {
     print("Hispanic origins in total burden data missing:")
     print(missing)
   }
 
   # missing races
-  missing <- setdiff(c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN OR PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN"), total_burden$Race)
+  missing <- setdiff(c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American"), total_burden$Race)
   if (length(missing) > 0) {
     print("Races in total burden data missing:")
     print(missing)
@@ -225,8 +231,6 @@ if (!file.exists(attrBurdenDir)) {
     print(missing)
   }
 
-  ## ----- join total_burden and pafs-----
-
   # give some feedback on what is still missing
   # one side
   missing_rows <- anti_join(total_burden, pafs, by = join_variables)
@@ -237,17 +241,21 @@ if (!file.exists(attrBurdenDir)) {
 
   # other side
   missing_rows <- anti_join(pafs, total_burden, by = inverse_join_variables) %>%
-    # following combination rarely occurs
-    filter(!(race %in% c("Asian or Pacific Islander", "Black or African American") & hispanic_origin == "Hispanic or Latino" |
-      race == "American Indian or Alaska Native")) %>%
     select(gender, race, hispanic_origin) %>%
     distinct()
   if (nrow(missing_rows) > 0) {
     print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing_rows))
   }
-
-  ##
+  ###---- analyse suppression ------
+  suppressedRows <- sum(total_burden$Deaths == "Suppressed")
+  suppressedRowsPerc <- (100*suppressedRows/nrow(total_burden)) %>% round
+  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data in ",toString(year)))
+  total_burden <- total_burden %>% filter(Deaths != "Suppressed")
+  
+  total_burden$Deaths <- as.numeric(total_burden$Deaths)
+  ## ----- join total_burden and pafs-----
+  
   burden_paf <- inner_join(total_burden, pafs, by = join_variables)
 
   # filter those, where age in correct interval
