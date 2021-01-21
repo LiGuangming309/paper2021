@@ -46,6 +46,7 @@ if (rlang::is_empty(args)) {
 #load meta data
 census_meta <-  file.path(censDir,"meta", paste0("cens_meta_", toString(year), ".csv")) %>% 
                      read.csv %>%
+                    filter(relevant == TRUE) %>%
                      select(variable,year,gender,gender_label,min_age,max_age,race,hispanic_origin)
 
 # create directories
