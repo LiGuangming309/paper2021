@@ -139,16 +139,16 @@ for (year in years) {
     total.burden.dir, #12
     attr.burden.dir #13
   ) 
-   runscript(script=download.meta.script, args = args)
+   #runscript(script=download.meta.script, args = args)
    if(year %in% 2001:2009){
-     runscript(script=interp.script, args = args)
+   #  runscript(script=interp.script, args = args)
    }else{
-     runscript(script=download.cens.script, args = args)
+    # runscript(script=download.cens.script, args = args)
    }
    sink(type="message", append = TRUE)
-   runscript(script=download.other.script, args = args)
+   #runscript(script=download.other.script, args = args)
    sink(type="message", append = TRUE)
-   runscript(script=assignTract.script, args = args)
+   #runscript(script=assignTract.script, args = args)
    sink(type="message", append = TRUE)
    
    runscript(script = cens_agr.script, args = args)

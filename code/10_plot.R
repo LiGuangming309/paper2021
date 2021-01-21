@@ -85,7 +85,7 @@ censData <- lapply(unique(attrBurden$Year), function(year) {
     STUSPS <- state["STUSPS"]
     name <- state["NAME"]
     tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ', '), "in", year, "in", name))
-    censData <- file.path(censDir, year, paste0("census_2010_", STUSPS, ".csv")) %>% read.csv()
+    censData <- file.path(censDir, year, paste0("census_",toString(year),"_", STUSPS, ".csv")) %>% read.csv()
 
     censData <- censData %>%
       left_join(meta, by = "variable") %>%
