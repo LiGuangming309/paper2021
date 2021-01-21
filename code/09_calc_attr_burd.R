@@ -142,7 +142,7 @@ if (!file.exists(attrBurdenDir)) {
       filter(Single.Year.Ages != "Not Stated") %>%
       mutate(
         Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-        YLD = sapply(Single.Year.Ages.Code, function(a) max(0, 75 - a)) # TODO right formula?
+        YLL = sapply(Single.Year.Ages.Code, function(a) max(0, 75 - a)) # TODO right formula?
       )
 
     cause_icd <- total_burden$Notes[grepl("UCD - ICD-10 Codes:", total_burden$Notes, fixed = TRUE)]
@@ -272,7 +272,7 @@ if (!file.exists(attrBurdenDir)) {
   attrBurden <- burden_paf %>%
     mutate(
       attrDeaths = Deaths * pafs,
-      attrYLD = YLD * pafs
+      attrYLL = YLL * pafs
     )
 
   # group "out" Single.Age, since age group more appropriate
@@ -281,29 +281,29 @@ if (!file.exists(attrBurdenDir)) {
     group_by_at(vars(one_of(columns))) %>%
     summarize(
       Deaths = sum(Deaths),
-      YLD = sum(YLD),
+      YLL = sum(YLL),
       attrDeaths = sum(attrDeaths),
-      attrYLD = sum(attrYLD)
+      attrYLL = sum(attrYLL)
     )
 
   # some basic tests
   test_that("09_read burden join2", {
     expect_false(any(is.na(attrBurden)))
     
-    #test that total number of deaths/YLD has not changed
+    #test that total number of deaths/YLL has not changed
     columns<-unname(inverse_join_variables)
     comp1 <- total_burden %>%
       group_by_at(vars(one_of(columns))) %>%
-      summarize(Deaths = sum(Deaths), YLD = sum(YLD))
+      summarize(Deaths = sum(Deaths), YLL = sum(YLL))
 
     comp2 <- attrBurden %>%
       group_by_at(vars(one_of(columns))) %>%
-      summarize(Deaths = sum(Deaths), YLD = sum(YLD))
+      summarize(Deaths = sum(Deaths), YLL = sum(YLL))
 
     comp3 <- inner_join(comp1, comp2, by = columns)
     
     expect_equal(comp3$Deaths.x, comp3$Deaths.x)
-    expect_equal(comp3$YLD.x, comp3$YLD.x)
+    expect_equal(comp3$YLL.x, comp3$YLL.x)
   })
   fwrite(attrBurden, attrBurdenDir)
 }

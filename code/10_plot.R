@@ -69,9 +69,9 @@ attrBurden_gr <- attrBurden %>%
   group_by_at(vars(one_of(inverse_group_variables))) %>%
   summarise(
     Deaths = sum(Deaths),
-    YLD = sum(YLD),
+    YLL = sum(YLL),
     attrDeaths = sum(attrDeaths),
-    attrYLD = sum(attrYLD)
+    attrYLL = sum(attrYLL)
   ) %>%
   as.data.frame %>%
   mutate(effPaf = attrDeaths /Deaths)
@@ -113,9 +113,9 @@ toc()
 attrBurden_gr <- left_join(attrBurden_gr, censData, by = group_variables) %>%
   mutate(
     crudeDeaths = Deaths *100000/pop_size,
-    crudeYLD = YLD *100000/pop_size,
+    crudeYLL = YLL *100000/pop_size,
     crudeAttrDeaths = attrDeaths *100000/pop_size, #Crude Rate Per 100,000
-    crudeAttrYLD = attrYLD *100000/pop_size,
+    crudeAttrYLL = attrYLL *100000/pop_size,
   )
 
 test_that("10 plot basic chackes",{
@@ -129,7 +129,7 @@ fwrite(attrBurden_gr, file.path(plotsDir, "attr_burd.csv"))
 for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
   attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
 
-  for (measure in c("Deaths", "YLD", "attrDeaths", "attrYLD")) {
+  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL")) {
     g <- attrBurden_gr_his %>%
       ggplot(aes(x = Year, y = measure, group = Race, color = Race)) +
       scale_color_viridis(discrete = TRUE) +
