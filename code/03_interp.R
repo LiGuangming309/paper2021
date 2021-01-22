@@ -66,9 +66,10 @@ if (!file.exists(meta_crosswalkDir)) {
 
   meta_crosswalk <- full_join(meta00, meta10,
     by = c(
-      "gender_label" = "gender_label",
-      "race" = "race",
-      "hispanic_origin" = "hispanic_origin"
+      "gender",
+      "gender_label",
+      "race",
+      "hispanic_origin"
     )
   )
 
@@ -81,15 +82,30 @@ if (!file.exists(meta_crosswalkDir)) {
     rename(
       variable00 = variable.x,
       variable10 = variable.y
-    ) %>%
-    select(variable00, variable10)
+    )
 
   test_that("03 interp meta crosswalk", {
     missing_variables <- setdiff(meta00$variable, meta_crosswalk$variable00)
     expect_true(rlang::is_empty(missing_variables))
     missing_variables <- setdiff(meta10$variable, meta_crosswalk$variable10)
     expect_true(rlang::is_empty(missing_variables))
+
+    test <- meta_crosswalk %>%
+      group_by(gender_label, race, hispanic_origin, min_age.x, max_age.x) %>%
+      summarise(
+        min_age = min(min_age.y),
+        max_age = max(max_age.y)
+      )
+    expect_equal(test$min_age.x, test$min_age)
+    expect_equal(test$max_age.x, test$max_age)
   })
+  meta_crosswalk <- meta_crosswalk %>%
+    select(
+      variable00, variable10, gender, gender_label,
+      race, hispanic_origin, year.x, min_age.x, max_age.x,
+      year.y, min_age.y, max_age.y
+    )
+  
   fwrite(meta_crosswalk, meta_crosswalkDir)
 }
 meta_crosswalk <- fread(meta_crosswalkDir)
@@ -179,8 +195,8 @@ apply(states, 1, function(state) {
   }
 })
 ## ----give overview over missing GEO_IDs in crosswalk
-#missing_GEOIDsDir <- file.path(censDir10_in00, paste0("missing_GEO_ID.csv"))
-#if (!file.exists(missing_GEOIDsDir)) {
+# missing_GEOIDsDir <- file.path(censDir10_in00, paste0("missing_GEO_ID.csv"))
+# if (!file.exists(missing_GEOIDsDir)) {
 #  GEOIDs <- apply(states, 1, function(state) {
 #    STUSPS <- state["STUSPS"]
 #    censData00_GEO <- fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv"))) %>%
@@ -195,17 +211,17 @@ apply(states, 1, function(state) {
 #  }) %>%
 #    unlist()
 
-  # TODO comment
+# TODO comment
 #  missing_GEOIDs <- setdiff(GEOIDs, unique(crosswalk$trtid00))
 #  print(paste(length(missing_GEOIDs), "GEO_ID, which are present in the 2000 census data, are not present in the crosswalk files"))
 #  write.csv(missing_GEOIDs, missing_GEOIDsDir)
 
 #  missing_GEOIDs2 <- setdiff(unique(crosswalk$trtid00), GEOIDs)
 #  write.csv(missing_GEOIDs2, file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
-#} else {
+# } else {
 #  missing_GEOIDs <- fread(missing_GEOIDsDir)
 #  missing_GEOIDs2 <- fread(file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
-#}
+# }
 
 ## ----- actual interpolation-----
 censDirYear <- file.path(censDir, year)
