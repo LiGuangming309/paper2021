@@ -155,7 +155,7 @@ apply(causes_ages, 1, function(cause_age) {
       geom_point() +
       xlab("Exposure") +
       ylab("RR") +
-      ggtitle(paste(label_cause, age_group_id))
+      ggtitle(paste(label_cause, age_group_id, "for TMREL =",tmrel))
 
 
     ggsave(plotDirX)
