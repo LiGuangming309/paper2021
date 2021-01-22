@@ -24,7 +24,12 @@ for (p in packages) {
 args <- commandArgs(trailingOnly = T)
 tmpDir <- args[3]
 exp_rrDir <- args[6]
-cens_agrDir <- args[9]
+#cens_agrDir <- args[9]
+# TODO delete
+if (rlang::is_empty(args)) {
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  exp_rrDir <- "/Users/default/Desktop/paper2021/data/04_exp_rr"
+}
 
 plotsDir <- file.path(exp_rrDir, "plots")
 dir.create(plotsDir, recursive = T, showWarnings = F)
@@ -69,23 +74,23 @@ if (file.exists(causes_agesDir)) {
 
 # tmrel <- mean(2.4, 5.9)
 ## ---- find tmrel ---
-# tmrel <- 1.3
-tmrelDir <-file.path(tmpDir, "tmrel.RData")
-if(!file.exists(tmrelDir)){
-  cens_agrDir <- file.path(cens_agrDir, "nation")
-  years <- list.files(cens_agrDir)
-  tmrel <- lapply(years, function(year) {
-    cens_agr <- file.path(cens_agrDir, year, paste0("cens_agr_",toString(year),"_us.csv")) %>% read.csv
-    return(min(cens_agr$pm))
-  }) %>% 
-    unlist %>% 
-    min
-  print(paste("tmrel: ", tmrel))
+tmrel <- 0.83
+#tmrelDir <-file.path(tmpDir, "tmrel.RData")
+#if(!file.exists(tmrelDir)){
+#  cens_agrDir <- file.path(cens_agrDir, "nation")
+#  years <- list.files(cens_agrDir)
+#  tmrel <- lapply(years, function(year) {
+#    cens_agr <- file.path(cens_agrDir, year, paste0("cens_agr_",toString(year),"_us.csv")) %>% read.csv
+#    return(min(cens_agr$pm))
+#  }) %>% 
+#    unlist %>% 
+#    min
+#  print(paste("tmrel: ", tmrel))
   
-  save(tmrel, file = tmrelDir)
-}
+#  save(tmrel, file = tmrelDir)
+#}
 
-load(tmrelDir)
+#load(tmrelDir)
 ## ----------calculation---------
 
 tic("Calculated RR from MR-BRT for all causes")
@@ -103,9 +108,9 @@ apply(causes_ages, 1, function(cause_age) {
     read.csv() %>%
     filter(exposure_spline <= 50)
 
-  if ("rr" %in% colnames(exp_rr)) {
-    return()
-  } # TODO entkommentieren
+  #if ("rr" %in% colnames(exp_rr)) {
+  #  return()
+  #} # TODO entkommentieren
 
   getMRBRT <- function(pm) {
     match.closest(pm, exp_rr$exposure_spline) %>%
@@ -145,7 +150,7 @@ apply(causes_ages, 1, function(cause_age) {
   plotDirX <- paste0(label_cause, "_", age_group_id, ".png") %>%
     file.path(plotsDir, .)
 
-  if (FALSE && !file.exists(plotDirX)) {
+  if (!file.exists(plotDirX)) {
     ggplot(data = exp_rr, aes(x = exposure_spline, y = rr)) +
       geom_point() +
       xlab("Exposure") +
