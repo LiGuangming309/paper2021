@@ -79,36 +79,45 @@ if (!file.exists(file.path(plotsDir, "attr_burd.csv"))) {
     mutate(effPaf = attrDeaths / Deaths)
   ## --- read demographic census data ----
   tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))
-  censData <- lapply(unique(attrBurden$Year), function(year) {
+  censData_agr <- lapply(unique(attrBurden$Year), function(year) {
     tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", "), "in", year))
-
-    meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
-    censData <- apply(states, 1, function(state) {
+    
+    censData_agr <- apply(states, 1, function(state) {
       STUSPS <- state["STUSPS"]
       name <- state["NAME"]
-      tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", "), "in", year, "in", name))
-      censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv()
-
-      censData <- censData %>%
-        left_join(meta, by = "variable") %>%
-        group_by_at(vars(one_of(group_variables))) %>%
-        summarise(pop_size = sum(pop_size))
-
-      toc()
-      return(censData)
+      
+      censData_agrDir<-file.path(censDir, year, paste0("agr_census_", toString(year), "_", STUSPS, ".csv"))
+      if(!file.exists(censData_agrDir)){
+        tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", "), "in", year, "in", name))
+        censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
+        
+        censData_agr <- censData %>%
+          group_by(variable) %>%
+          summarise(pop_size = sum(pop_size))
+        
+        fwrite(censData_agr,censData_agrDir)
+        toc()
+      }
+      censData_agr <-fread(censData_agrDir)
+      return(censData_agr)
     }) %>%
       do.call(rbind, .) %>%
-      as.data.frame()
-
+      as.data.frame
+    
+    meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+    censData_agr<- censData_agr %>%
+      left_join(meta, by = "variable")
+    
     toc()
-    return(censData)
+    return(censData_agr)
   }) %>%
     do.call(rbind, .) %>%
     as.data.frame()
-
+  
   censData <- censData %>%
     group_by_at(vars(one_of(group_variables))) %>%
     summarise(pop_size = sum(pop_size))
+  
   toc()
   ## --- join/write -----
 

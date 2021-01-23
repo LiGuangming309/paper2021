@@ -52,6 +52,8 @@ crosswalk <- read.dta(file.path(dataDir, "crosswalk_2010_2000.dta")) %>%
   mutate(state = str_sub(trtid00, 1, 2)) %>%
   filter(state %in% possible_states)
 
+meta00 <- read.csv(file.path(censDir, "meta", "cens_meta_2000.csv"))
+meta10 <- read.csv(file.path(censDir, "meta", "cens_meta_2010.csv"))
 
 # states, for which 2000 and 2010 still needs to be calculated
 missing_statesDir <- file.path(censDir10_in00, "missing_states.csv")
@@ -61,9 +63,6 @@ missing_states <- read.csv(missing_statesDir)
 ## -----pair meta data from 2000 and 2010 -----
 meta_crosswalkDir <- file.path(censDir, "meta", "2000_2010_cross.csv")
 if (!file.exists(meta_crosswalkDir)) {
-  meta00 <- read.csv(file.path(censDir, "meta", "cens_meta_2000.csv"))
-  meta10 <- read.csv(file.path(censDir, "meta", "cens_meta_2010.csv"))
-
   meta_crosswalk <- full_join(meta00, meta10,
     by = c(
       "gender",
@@ -105,7 +104,7 @@ if (!file.exists(meta_crosswalkDir)) {
       race, hispanic_origin, year.x, min_age.x, max_age.x,
       year.y, min_age.y, max_age.y
     )
-  
+
   fwrite(meta_crosswalk, meta_crosswalkDir)
 }
 meta_crosswalk <- fread(meta_crosswalkDir)
@@ -122,6 +121,7 @@ apply(missing_states, 1, function(state) {
       select(GEO_ID, variable, pop_size) %>%
       mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0"))
 
+    censData10_old <- censData10
 
     # translate variables
     censData10 <- censData10 %>%
@@ -146,23 +146,41 @@ apply(missing_states, 1, function(state) {
     censData10 <- censData10 %>%
       mutate(state = str_sub(GEO_ID, 1, 2))
 
-    for (statefp in unique(censData10$state)) {
+    # for (statefp in unique(censData10$state)) {
+    test1 <- lapply(unique(censData10$state), function(statefp) {
       censData10_sub <- censData10 %>% filter(state == statefp)
       STUSPS_corresponding <- states[states[, "STATEFP"] == as.numeric(statefp), "STUSPS"]
 
       censDir10_in00X <- file.path(censDir10_in00, paste0("census_2010_", STUSPS_corresponding, ".csv"))
 
-      if (!file.exists(censDir10_in00X)) {
-        fwrite(censData10_sub, censDir10_in00X)
-      } else {
+      suppressWarnings(
         write.table(censData10_sub,
           censDir10_in00X,
           sep = ",",
           col.names = !file.exists(censDir10_in00X),
-          append = T
+          append = T,
+          row.names = F
         )
-      }
-    }
+      )
+
+      return(censData10_sub)
+    }) %>% do.call(rbind, .)
+
+    test_that("03_interp old censData10", {
+      test1 <- test1 %>%
+        left_join(meta00, by = "variable") %>%
+        group_by(gender, gender_label, race, hispanic_origin) %>%
+        summarise(pop_size = sum(pop_size))
+
+      test2 <- censData10_old %>%
+        left_join(meta10, by = "variable") %>%
+        group_by(gender, gender_label, race, hispanic_origin) %>%
+        summarise(pop_size = sum(pop_size))
+
+      test3 <- full_join(test1, test2, by = c("gender", "gender_label", "race", "hispanic_origin"))
+      expect_equal(test3$pop_size.x, test3$pop_size.y)
+    })
+
 
     # delete this state from missing_states
     STUSPS_copy <- STUSPS
@@ -179,7 +197,7 @@ apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
   censData10Dir <- file.path(censDir10_in00, paste0("census_2010_", STUSPS, ".csv"))
-  censData10 <- fread(censData10Dir)
+  censData10 <- read.csv(censData10Dir, sep = ",")
 
   if ("state" %in% colnames(censData10)) {
     tic(paste("aggregated ", name, "by GEO_ID and variable"))
