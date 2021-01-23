@@ -197,7 +197,7 @@ apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
   censData10Dir <- file.path(censDir10_in00, paste0("census_2010_", STUSPS, ".csv"))
-  censData10 <- read.csv(censData10Dir, sep = ",")
+  censData10 <- fread(censData10Dir)
 
   if ("state" %in% colnames(censData10)) {
     tic(paste("aggregated ", name, "by GEO_ID and variable"))

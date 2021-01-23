@@ -1,3 +1,1 @@
-censData10 <- fread(censData10Dir,
-                    fill=TRUE,
-                    comment.char=.)
+censData102 <- fread(censData10Dir)
