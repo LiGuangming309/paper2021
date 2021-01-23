@@ -1,7 +1,7 @@
 #-------------------Header------------------------------------------------
 # Author: Daniel Fridljand
 # Date: 01/16/2021
-# Purpose: parent file for project
+# Purpose: summarize data
 #
 #***************************************************************************
 
@@ -25,7 +25,7 @@ tmpDir <- args[1]
 agr_by <- args[2]
 censDir <- args[3]
 attrBurdenDir <- args[4]
-plotsDir <- args[5]
+summaryDir <- args[5]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -33,12 +33,12 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/09_attr_burd"
-  plotsDir <- "/Users/default/Desktop/paper2021/data/10_plots"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/10_plots"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
-plotsDir <- file.path(plotsDir, agr_by)
-dir.create(plotsDir, recursive = T, showWarnings = F)
+summaryDir <- file.path(summaryDir, agr_by)
+dir.create(summaryDir, recursive = T, showWarnings = F)
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
@@ -51,7 +51,7 @@ group_variables <- c(
 )
 inverse_group_variables <- setNames(names(group_variables), group_variables)
 
-if (!file.exists(file.path(plotsDir, "attr_burd.csv"))) {
+if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   ### ---read attributable burden data-----
   files <- list.files(attrBurdenDir)
 
@@ -133,9 +133,9 @@ if (!file.exists(file.path(plotsDir, "attr_burd.csv"))) {
     expect_false(any(is.na(attrBurden_gr)))
   })
 
-  fwrite(attrBurden_gr, file.path(plotsDir, "attr_burd.csv"))
+  fwrite(attrBurden_gr, file.path(summaryDir, "attr_burd.csv"))
 }
-attrBurden_gr <- fread(file.path(plotsDir, "attr_burd.csv"))
+attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 ## ---plot ------
 for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
@@ -154,7 +154,7 @@ for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
       xlim(2000, 2016) +
       geom_line()
 
-    ggsave(file.path(plotsDir, paste0(measure, "_", his_or, ".png")),
+    ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
       plot = g
     )
   }

@@ -104,8 +104,11 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 attr.burden.dir <- file.path(data.dir, "09_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
-plots.dir <- file.path(data.dir, "10_plots")
-dir.create(plots.dir, recursive = T, showWarnings = F)
+summary.dir <- file.path(data.dir, "10_summary")
+dir.create(summary.dir, recursive = T, showWarnings = F)
+
+plot.dir <- file.path(data.dir, "10_summary")
+dir.create(plot.dir, recursive = T, showWarnings = F)
 
 # paths of scripts
 download.meta.script <- file.path(code.dir, "01_download_meta.R")
@@ -117,7 +120,8 @@ mrbrtRR.script <- file.path(code.dir, "06_mrbrt_rr.R")
 cens_agr.script <- file.path(code.dir, "07_aggregate.R")
 paf.script <- file.path(code.dir, "08_paf.R")
 calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
-plot.script <- file.path(code.dir, "10_plot.R")
+summary.script <- file.path(code.dir, "10_summary.R")
+plot.script <- file.path(code.dir, "11_plot.R")
 
 #--------parameters of code-------------------
 years <- c(2000,2010,2001:2009,2011:2016)
@@ -168,7 +172,9 @@ args <- paste(
   agr_by, # 2
   dem.dir, # 3
   attr.burden.dir, #4
-  plots.dir #5
+  summary.dir, #5
+  plot.dir
 ) 
 
-runscript(script = plot.script, args = args)
+runscript(script = summary.script, args = args)
+runscript(script = summary.script, args = args)
