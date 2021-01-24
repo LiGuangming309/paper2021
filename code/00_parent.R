@@ -107,7 +107,7 @@ dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 summary.dir <- file.path(data.dir, "10_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
-plot.dir <- file.path(data.dir, "10_summary")
+plot.dir <- file.path(data.dir, "11_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
 # paths of scripts
@@ -177,4 +177,4 @@ args <- paste(
 ) 
 
 runscript(script = summary.script, args = args)
-runscript(script = summary.script, args = args)
+runscript(script = plot.script, args = args)
