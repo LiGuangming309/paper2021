@@ -313,7 +313,7 @@ apply(states, 1, function(state) {
     # convex combination/interpolation
     t <- (year - 2000) / 10
     censDataYear <- censData_joined %>%
-      mutate(pop_size = t * pop_size00 + (1 - t) * pop_size10) %>%
+      mutate(pop_size = (1 - t)  * pop_size00 + t  * pop_size10) %>%
       select(state, county, tract, GEO_ID, variable, pop_size)
 
     fwrite(censDataYear, censDirYearX)
