@@ -28,7 +28,6 @@ attrBurdenDir <- args[4]
 summaryDir <- args[5]
 plotDir <- args[6]
 
-print(args)
 # TODO delete
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
@@ -66,7 +65,7 @@ g<-ggplot(attrBurden_gr, aes(x = Year, y = value)) +
   geom_line(aes(color = Ethnicity, linetype = measure),size=1) +
   #scale_color_manual(values = c("green","yellow", "steelblue"))+
   scale_linetype_manual(values =c("dashed","solid"))+
-  ylab(paste("YLL per 100.000")) +
+  ylab(paste("YLL[75] per 100.000")) +
   xlab("Year") +
   ylim(0, NA) +
   xlim(2000, 2016) +
