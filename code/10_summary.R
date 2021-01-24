@@ -114,14 +114,14 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     do.call(rbind, .) %>%
     as.data.frame()
   
-  censData <- censData %>%
+  censData_agr <- censData_agr %>%
     group_by_at(vars(one_of(group_variables))) %>%
     summarise(pop_size = sum(pop_size))
   
   toc()
   ## --- join/write -----
 
-  attrBurden_gr <- left_join(attrBurden_gr, censData, by = group_variables) %>%
+  attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) %>%
     mutate(
       crudeDeaths = Deaths * 100000 / pop_size,
       crudeYLL = YLL * 100000 / pop_size,
