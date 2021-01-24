@@ -28,6 +28,7 @@ attrBurdenDir <- args[4]
 summaryDir <- args[5]
 plotDir <- args[6]
 
+print(args)
 # TODO delete
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
@@ -70,7 +71,7 @@ g<-ggplot(attrBurden_gr, aes(x = Year, y = value)) +
   ylim(0, NA) +
   xlim(2000, 2016) +
   #scale_color_viridis(discrete = TRUE) + 
-  theme(legend.position="bottom")
+  theme(legend.position="bottom", legend.box="vertical", legend.margin=margin())
 #ggtitle(paste("hispanic origin:", his_or))
 
 g
