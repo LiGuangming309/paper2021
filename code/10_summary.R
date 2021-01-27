@@ -84,8 +84,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       attrDeaths = sum(attrDeaths),
       attrYLL = sum(attrYLL)
     ) %>%
-    as.data.frame %>%
-    mutate(effPaf = attrDeaths / Deaths)
+    as.data.frame 
   ##---------- read all burden data----------
   files <- list.files(allBurdenDir)
   all_burden <- lapply(files, function(file) {
@@ -139,7 +138,15 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       Deaths = as.numeric(Deaths),
       Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
       YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
-    )
+    )%>%
+    rename(allDeaths = Deaths,
+           allYLL = YLL)
+  
+  all_burden <- all_burden %>%
+    group_by_at(vars(one_of(group_variables))) %>%
+    summarise(allDeaths = sum(allDeaths),
+              allYLL=sum(allYLL))
+  
   ## --------- read demographic census data -----------
   tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))
   censData_agr <- lapply(unique(attrBurden$Year), function(year) {
@@ -183,13 +190,26 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   
   toc()
   ## ---------------- join/write --------------------
-
+  #join everything
   attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) %>%
+    left_join(all_burden, by = group_variables)
+  
+  #calculations
+  attrBurden_gr<- attrBurden_gr%>%
     mutate(
+      # Crude Rates Per 100,000
       crudeDeaths = Deaths * 100000 / pop_size,
       crudeYLL = YLL * 100000 / pop_size,
-      crudeAttrDeaths = attrDeaths * 100000 / pop_size, # Crude Rate Per 100,000
+      crudeAttrDeaths = attrDeaths * 100000 / pop_size, 
       crudeAttrYLL = attrYLL * 100000 / pop_size,
+      #effective PAF
+      effPaf = attrDeaths / Deaths,
+      #proportions
+      propDeaths = attrDeaths/allDeaths,
+      propYll = attrYLL/allYLL,
+      #test
+      test1= Deaths/allDeaths,
+      test2 = YLL/allYLL,
     )
 
   test_that("10 plot basic chackes", {
@@ -201,24 +221,24 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 ## ---plot ------
-#for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
-#  attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
+for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
+  attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
 
-#  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
-#                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL")) {
-#    g <- attrBurden_gr_his %>%
-#      ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
-#      scale_color_viridis(discrete = TRUE) +
-#      ggtitle(paste("hispanic origin:", his_or)) +
-#      theme_ipsum() +
-#      ylab(paste("burden measured in", measure)) +
-#      xlab("Year") +
-#      ylim(0, NA) +
-#      xlim(2000, 2016) +
-#      geom_line()
+  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
+                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL","propDeaths","propYll","test1","test2")) {
+    g <- attrBurden_gr_his %>%
+      ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
+      scale_color_viridis(discrete = TRUE) +
+      ggtitle(paste("hispanic origin:", his_or)) +
+      theme_ipsum() +
+      ylab(paste("burden measured in", measure)) +
+      xlab("Year") +
+      ylim(0, NA) +
+      xlim(2000, 2016) +
+      geom_line()
 
-#    ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
-#      plot = g
-#    )
-#  }
-#}
+    ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
+      plot = g
+    )
+  }
+}
