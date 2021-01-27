@@ -104,10 +104,13 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 attr.burden.dir <- file.path(data.dir, "09_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
-summary.dir <- file.path(data.dir, "10_summary")
+all.burden.dir <- file.path(data.dir, "10_all_burden")
+if (!file.exists(all.burden.dir)) warning("The all burden data from CDC wonder need to be downloaded")
+
+summary.dir <- file.path(data.dir, "11_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
-plot.dir <- file.path(data.dir, "11_plot")
+plot.dir <- file.path(data.dir, "12_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
 # paths of scripts
@@ -145,20 +148,20 @@ for (year in years) {
   ) 
    #runscript(script=download.meta.script, args = args)
    if(year %in% 2001:2009){
-     runscript(script=interp.script, args = args)
+     #runscript(script=interp.script, args = args)
    }else{
-     runscript(script=download.cens.script, args = args)
+    # runscript(script=download.cens.script, args = args)
    }
    sink(type="message", append = TRUE)
-   runscript(script=download.other.script, args = args)
+   #runscript(script=download.other.script, args = args)
    sink(type="message", append = TRUE)
-   runscript(script=assignTract.script, args = args)
+   #runscript(script=assignTract.script, args = args)
    sink(type="message", append = TRUE)
    
-   runscript(script = cens_agr.script, args = args)
+   #runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script=mrbrtRR.script, args = args)
-   runscript(script = paf.script, args = args)
+   #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
    runscript(script = calc.attr.burd.script, args = args)
    
@@ -172,8 +175,9 @@ args <- paste(
   agr_by, # 2
   dem.dir, # 3
   attr.burden.dir, #4
-  summary.dir, #5
-  plot.dir
+  all.burden.dir, #5
+  summary.dir, #6
+  plot.dir #7
 ) 
 
 runscript(script = summary.script, args = args)

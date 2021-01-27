@@ -25,8 +25,8 @@ tmpDir <- args[1]
 agr_by <- args[2]
 censDir <- args[3]
 attrBurdenDir <- args[4]
-summaryDir <- args[5]
-plotDir <- args[6]
+summaryDir <- args[6]
+plotDir <- args[7]
 
 print(args)
 # TODO delete

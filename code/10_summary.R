@@ -25,7 +25,8 @@ tmpDir <- args[1]
 agr_by <- args[2]
 censDir <- args[3]
 attrBurdenDir <- args[4]
-summaryDir <- args[5]
+allBurdenDir <- args[5]
+summaryDir <- args[6]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -33,10 +34,12 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/09_attr_burd"
+  allBurdenDir <- "/Users/default/Desktop/paper2021/data/10_all_burden"
   summaryDir <- "/Users/default/Desktop/paper2021/data/10_plots"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
+allBurdenDir <- file.path(allBurdenDir, agr_by)
 summaryDir <- file.path(summaryDir, agr_by)
 dir.create(summaryDir, recursive = T, showWarnings = F)
 
@@ -44,15 +47,21 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c(
   "Year" = "year",
-  # "Gender" = "gender",
-  # "Gender.Code" = "gender_label",
+   "Gender" = "gender",
+   "Gender.Code" = "gender_label",
   "Race" = "race",
   "Hispanic.Origin" = "hispanic_origin"
 )
+
+agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code", 
+                    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
+agr_by_new <- agr_by_replace[[agr_by]]
+group_variables[agr_by_new] <- agr_by
+
 inverse_group_variables <- setNames(names(group_variables), group_variables)
 
 if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
-  ### ---read attributable burden data-----
+  ### --------read attributable burden data----------
   files <- list.files(attrBurdenDir)
 
   attrBurden <- lapply(files, function(file) {
@@ -75,9 +84,54 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       attrDeaths = sum(attrDeaths),
       attrYLL = sum(attrYLL)
     ) %>%
-    as.data.frame() %>%
+    as.data.frame %>%
     mutate(effPaf = attrDeaths / Deaths)
-  ## --- read demographic census data ----
+  ##---------- read all burden data----------
+  files <- list.files(allBurdenDir)
+  all_burden <- lapply(files, function(file) {
+    fileDir <- file.path(allBurdenDir, file)
+    
+    columns <- c(unname(inverse_group_variables), "Notes", "Single.Year.Ages", "Single.Year.Ages.Code", "Deaths")
+    if (agr_by == "nation") columns <- columns[columns != "Nation"] # in this case this column does not exist
+    
+    all_burden <- read.delim(fileDir) %>%
+      select(any_of(columns)) %>%
+      filter(Single.Year.Ages != "Not Stated") %>%
+      mutate(
+        Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
+        Deaths = as.numeric(Deaths),
+        Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
+        YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
+      )
+    
+    notes_hisp_or <- all_burden$Notes[grepl("Hispanic Origin:", all_burden$Notes, fixed = TRUE)]
+    
+    all_burden$Notes <- NULL
+    all_burden <- all_burden[!apply(is.na(all_burden) | all_burden == "", 1, all), ]
+    
+    if (!"Hispanic.Origin" %in% colnames(all_burden)) {
+      if (rlang::is_empty(notes_hisp_or)) {
+        all_burden[, "Hispanic.Origin"] <- "All Origins"
+      } else if (grepl("Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
+        all_burden[, "Hispanic.Origin"] <- "Hispanic or Latino"
+      } else if (grepl("Not Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
+        all_burden[, "Hispanic.Origin"] <- "Not Hispanic or Latino"
+      }
+    }
+    
+    if (agr_by == "nation") {
+      all_burden[, "Nation"] <- "us"
+    }
+    return(all_burden)
+  }) 
+  
+  all_burden <-all_burden %>%
+    do.call(rbind, .) %>%
+    as.data.frame() %>%
+    filter(
+      Hispanic.Origin != "Not Stated"
+    )
+  ## --------- read demographic census data -----------
   tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))
   censData_agr <- lapply(unique(attrBurden$Year), function(year) {
     tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", "), "in", year))
@@ -119,7 +173,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     summarise(pop_size = sum(pop_size))
   
   toc()
-  ## --- join/write -----
+  ## ---------------- join/write --------------------
 
   attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) %>%
     mutate(
@@ -138,24 +192,24 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 ## ---plot ------
-for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
-  attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
+#for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
+#  attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
 
-  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
-                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL")) {
-    g <- attrBurden_gr_his %>%
-      ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
-      scale_color_viridis(discrete = TRUE) +
-      ggtitle(paste("hispanic origin:", his_or)) +
-      theme_ipsum() +
-      ylab(paste("burden measured in", measure)) +
-      xlab("Year") +
-      ylim(0, NA) +
-      xlim(2000, 2016) +
-      geom_line()
+#  for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
+#                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL")) {
+#    g <- attrBurden_gr_his %>%
+#      ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
+#      scale_color_viridis(discrete = TRUE) +
+#      ggtitle(paste("hispanic origin:", his_or)) +
+#      theme_ipsum() +
+#      ylab(paste("burden measured in", measure)) +
+#      xlab("Year") +
+#      ylim(0, NA) +
+#      xlim(2000, 2016) +
+#      geom_line()
 
-    ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
-      plot = g
-    )
-  }
-}
+#    ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
+#      plot = g
+#    )
+#  }
+#}

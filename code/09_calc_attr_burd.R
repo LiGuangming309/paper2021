@@ -30,7 +30,7 @@ attrBurdenDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2000
   agr_by <- "nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -144,7 +144,9 @@ if (!file.exists(attrBurdenDir)) {
       filter(Single.Year.Ages != "Not Stated") %>%
       mutate(
         Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-        YLL = sapply(Single.Year.Ages.Code, function(a) max(0, 75 - a)) # TODO right formula?
+        Deaths = as.numeric(Deaths),
+        Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
+        YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
       )
 
     cause_icd <- total_burden$Notes[grepl("UCD - ICD-10 Codes:", total_burden$Notes, fixed = TRUE)]
