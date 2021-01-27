@@ -141,13 +141,7 @@ if (!file.exists(attrBurdenDir)) {
 
     total_burden <- read.delim(fileDir) %>%
       select(any_of(columns)) %>%
-      filter(Single.Year.Ages != "Not Stated") %>%
-      mutate(
-        Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-        Deaths = as.numeric(Deaths),
-        Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
-        YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
-      )
+      filter(Single.Year.Ages != "Not Stated") 
 
     cause_icd <- total_burden$Notes[grepl("UCD - ICD-10 Codes:", total_burden$Notes, fixed = TRUE)]
     notes_hisp_or <- total_burden$Notes[grepl("Hispanic Origin:", total_burden$Notes, fixed = TRUE)]
@@ -194,8 +188,7 @@ if (!file.exists(attrBurdenDir)) {
       Year == year,
       Hispanic.Origin != "Not Stated"
     )
-
-
+  
   # ---------check for missing stuff----------------
   # missing Genders
   missing <- setdiff(c("Male", "Female"), total_burden$Gender)
@@ -249,13 +242,22 @@ if (!file.exists(attrBurdenDir)) {
     print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing_rows))
   }
+  
   ###---- analyse suppression ------
   suppressedRows <- sum(total_burden$Deaths == "Suppressed")
   suppressedRowsPerc <- (100*suppressedRows/nrow(total_burden)) %>% round
-  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data in ",toString(year)))
+  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data in "))
   total_burden <- total_burden %>% filter(Deaths != "Suppressed")
   
-  total_burden$Deaths <- as.numeric(total_burden$Deaths)
+  #calculate YLL
+  total_burden<-total_burden%>%
+    mutate(
+      Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
+      Deaths = as.numeric(Deaths),
+      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
+      YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
+    )
+  
   ## ----- join total_burden and pafs-----
   
   burden_paf <- inner_join(total_burden, pafs, by = join_variables)
