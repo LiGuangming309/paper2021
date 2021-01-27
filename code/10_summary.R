@@ -204,12 +204,13 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       crudeYLL = YLL * 100000 / pop_size,
       crudeAttrDeaths = attrDeaths * 100000 / pop_size, 
       crudeAttrYLL = attrYLL * 100000 / pop_size,
-      #effective PAF
-      effPaf = attrDeaths / Deaths,
+      crudeAllDeaths = allDeaths * 100000 / pop_size, 
+      crudeAllYLL = allYLL * 100000 / pop_size,
       #proportions
       propDeaths = attrDeaths/allDeaths,
       propYll = attrYLL/allYLL,
       #test
+      effPaf = attrDeaths / Deaths,
       test1= Deaths/allDeaths,
       test2 = YLL/allYLL,
     )
