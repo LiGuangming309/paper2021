@@ -30,7 +30,7 @@ attrBurdenDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2016
   agr_by <- "nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -246,7 +246,7 @@ if (!file.exists(attrBurdenDir)) {
   ###---- analyse suppression ------
   suppressedRows <- sum(total_burden$Deaths == "Suppressed")
   suppressedRowsPerc <- (100*suppressedRows/nrow(total_burden)) %>% round
-  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data in "))
+  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data in ",toString(year)))
   total_burden <- total_burden %>% filter(Deaths != "Suppressed")
   
   #calculate YLL

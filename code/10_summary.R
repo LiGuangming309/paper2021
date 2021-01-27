@@ -96,13 +96,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     
     all_burden <- read.delim(fileDir) %>%
       select(any_of(columns)) %>%
-      filter(Single.Year.Ages != "Not Stated") %>%
-      mutate(
-        Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-        Deaths = as.numeric(Deaths),
-        Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
-        YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
-      )
+      filter(Single.Year.Ages != "Not Stated") 
     
     notes_hisp_or <- all_burden$Notes[grepl("Hispanic Origin:", all_burden$Notes, fixed = TRUE)]
     
@@ -123,13 +117,28 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       all_burden[, "Nation"] <- "us"
     }
     return(all_burden)
-  }) 
+  })
   
   all_burden <-all_burden %>%
     do.call(rbind, .) %>%
     as.data.frame() %>%
     filter(
       Hispanic.Origin != "Not Stated"
+    )
+  
+  ###---- analyse suppression ------
+  suppressedRows <- sum(all_burden$Deaths == "Suppressed")
+  suppressedRowsPerc <- (100*suppressedRows/nrow(all_burden)) %>% round
+  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data"))
+  all_burden <- all_burden %>% filter(Deaths != "Suppressed")
+  
+  #calculate YLL
+  all_burden<-all_burden%>%
+    mutate(
+      Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
+      Deaths = as.numeric(Deaths),
+      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
+      YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
     )
   ## --------- read demographic census data -----------
   tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))
