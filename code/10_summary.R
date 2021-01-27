@@ -47,8 +47,8 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c(
   "Year" = "year",
-   "Gender" = "gender",
-   "Gender.Code" = "gender_label",
+  # "Gender" = "gender",
+  # "Gender.Code" = "gender_label",
   "Race" = "race",
   "Hispanic.Origin" = "hispanic_origin"
 )
@@ -90,7 +90,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   all_burden <- lapply(files, function(file) {
     fileDir <- file.path(allBurdenDir, file)
     
-    columns <- c(unname(inverse_group_variables), "Notes", "Single.Year.Ages", "Single.Year.Ages.Code", "Deaths")
+    columns <- c(unname(inverse_group_variables), "Notes","Gender","Gender.Code", "Single.Year.Ages", "Single.Year.Ages.Code", "Deaths") %>% unique
     if (agr_by == "nation") columns <- columns[columns != "Nation"] # in this case this column does not exist
     
     all_burden <- read.delim(fileDir) %>%
@@ -186,23 +186,15 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     as.data.frame()
   
   censData_agr <- censData_agr %>%
-    group_by_at(vars(one_of(inverse_group_variables))) %>%
+    group_by_at(vars(one_of(group_variables))) %>%
     summarise(pop_size = sum(pop_size))
   
   toc()
   ## ---------------- join/write --------------------
   #join everything
   attrBurden_gr<-attrBurden_gr%>%
-    left_join(all_burden, by = unname(inverse_group_variables)) 
-  
-  print("group_variables")
-  print(group_variables)
-  print("attrBurden_gr")
-  print(colnames(attrBurden_gr))
-  print("censData_agr")
-  print(colnames(censData_agr))
-  
-  attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) 
+    left_join(all_burden, by = unname(inverse_group_variables)) %>%
+    left_join(censData_agr, by = group_variables) 
   
   #calculations
   attrBurden_gr<- attrBurden_gr%>%
