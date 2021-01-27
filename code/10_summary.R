@@ -53,10 +53,10 @@ group_variables <- c(
   "Hispanic.Origin" = "hispanic_origin"
 )
 
-agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code", 
-                    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
-agr_by_new <- agr_by_replace[[agr_by]]
-group_variables[agr_by_new] <- agr_by
+#agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code", 
+#                    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
+#agr_by_new <- agr_by_replace[[agr_by]]
+#group_variables[agr_by_new] <- agr_by
 
 inverse_group_variables <- setNames(names(group_variables), group_variables)
 
@@ -128,7 +128,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   ###---- analyse suppression ------
   suppressedRows <- sum(all_burden$Deaths == "Suppressed")
   suppressedRowsPerc <- (100*suppressedRows/nrow(all_burden)) %>% round
-  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data"))
+  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in all burden data"))
   all_burden <- all_burden %>% filter(Deaths != "Suppressed")
   
   #calculate YLL
@@ -185,14 +185,25 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     as.data.frame()
   
   censData_agr <- censData_agr %>%
-    group_by_at(vars(one_of(group_variables))) %>%
+    group_by_at(vars(one_of(inverse_group_variables))) %>%
     summarise(pop_size = sum(pop_size))
   
   toc()
   ## ---------------- join/write --------------------
   #join everything
-  attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) %>%
-    left_join(all_burden, by = group_variables)
+  print("group_variables")
+  print(group_variables)
+  print("attrBurden_gr")
+  print(colnames(attrBurden_gr))
+  print("censData_agr")
+  print(colnames(censData_agr))
+  print("all_burden")
+  print(colnames(all_burden))
+  
+  attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) 
+  
+  attrBurden_gr<-attrBurden_gr%>%
+    left_join(all_burden, by = unname(inverse_group_variables)) #inverse_group_variables
   
   #calculations
   attrBurden_gr<- attrBurden_gr%>%

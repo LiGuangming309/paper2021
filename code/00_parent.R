@@ -163,7 +163,7 @@ for (year in years) {
    #runscript(script=mrbrtRR.script, args = args)
    #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
-   runscript(script = calc.attr.burd.script, args = args)
+   #runscript(script = calc.attr.burd.script, args = args)
    
    #save console
    #  Restore output to console
@@ -181,4 +181,5 @@ args <- paste(
 ) 
 
 runscript(script = summary.script, args = args)
-runscript(script = plot.script, args = args)
+#runscript(script = plot.script, args = args)
+  
