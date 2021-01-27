@@ -45,7 +45,7 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
-##----calculations-----
+## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
   join_variables <- c(
@@ -58,8 +58,10 @@ if (!file.exists(attrBurdenDir)) {
     "label_cause" = "label_cause"
   )
 
-  agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code", 
-                      "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
+  agr_by_replace <- c(
+    "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
+    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county" = "County.Code"
+  )
   agr_by_new <- agr_by_replace[[agr_by]]
   join_variables[agr_by_new] <- agr_by
 
@@ -80,25 +82,25 @@ if (!file.exists(attrBurdenDir)) {
     as.data.frame()
 
   if (agr_by == "STATEFP") {
-    possible_regions <- c(1,4:6,8:13,16:42,44:51,53:56)
+    possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
   } else if (agr_by == "Census_Region") {
-    pafs$Census_Region<-paste("CENS-R",pafs$Census_Region)
-    possible_regions <- paste("CENS-R",1:4)
+    pafs$Census_Region <- paste("CENS-R", pafs$Census_Region)
+    possible_regions <- paste("CENS-R", 1:4)
   } else if (agr_by == "nation") {
     possible_regions <- "us"
   } else if (agr_by == "Census_division") {
-    pafs$Census_division<-paste("CENS-D",pafs$Census_division)
-    possible_regions <- paste("CENS-D",1:9)
+    pafs$Census_division <- paste("CENS-D", pafs$Census_division)
+    possible_regions <- paste("CENS-D", 1:9)
   } else if (agr_by == "hhs_region_number") {
-    pafs$hhs_region_number<-paste("HHS",pafs$hhs_region_number)
-    possible_regions <- paste("HHS",1:10)
-  }else if (agr_by == "county") {
-    #pafs$county<-sprintif(%02d,03d,pafs$state,pafs$county)
-    #TODO
-    pafs$state<- NULL
-    possible_regions <- c() #TODO too difficult
+    pafs$hhs_region_number <- paste("HHS", pafs$hhs_region_number)
+    possible_regions <- paste("HHS", 1:10)
+  } else if (agr_by == "county") {
+    # pafs$county<-sprintif(%02d,03d,pafs$state,pafs$county)
+    # TODO
+    pafs$state <- NULL
+    possible_regions <- c() # TODO too difficult
   }
-  
+
   # check for missing stuff
   # missing hispanic origin
   missing <- setdiff(c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins"), pafs$hispanic_origin)
@@ -118,7 +120,7 @@ if (!file.exists(attrBurdenDir)) {
   missing <- setdiff(possible_regions, pafs[, agr_by])
   if (length(missing) > 0) {
     print("Regions in paf data missing:")
-    print(missing) 
+    print(missing)
   }
 
   # missing causes
@@ -128,8 +130,8 @@ if (!file.exists(attrBurdenDir)) {
     print("Causes in paf data missing:")
     print(missing)
   }
-  
-  if(!(150 %in% pafs$max_age)) print("max_age 150 missing in paf data")
+
+  if (!(150 %in% pafs$max_age)) print("max_age 150 missing in paf data")
 
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
@@ -141,12 +143,12 @@ if (!file.exists(attrBurdenDir)) {
 
     total_burden <- read.delim(fileDir) %>%
       select(any_of(columns)) %>%
-      filter(Single.Year.Ages != "Not Stated") 
+      filter(Single.Year.Ages != "Not Stated")
 
     cause_icd <- total_burden$Notes[grepl("UCD - ICD-10 Codes:", total_burden$Notes, fixed = TRUE)]
     notes_hisp_or <- total_burden$Notes[grepl("Hispanic Origin:", total_burden$Notes, fixed = TRUE)]
 
-    total_burden$Notes <- NULL
+    total_burden <- total_burden %>% subset(select = -Notes)
     total_burden <- total_burden[!apply(is.na(total_burden) | total_burden == "", 1, all), ]
 
     if (grepl("I20-I25 (Ischaemic heart diseases)", cause_icd, fixed = TRUE)) {
@@ -161,7 +163,7 @@ if (!file.exists(attrBurdenDir)) {
       total_burden$label_cause <- "lri"
     } else if (grepl("C33 (Malignant neoplasm of trachea); C44.0 (Skin of lip - Malignant neoplasms); C44.1 (Skin of eyelid,", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "neo_lung"
-    }else{
+    } else {
       print("unidentifiable ICD Code")
     }
 
@@ -179,16 +181,16 @@ if (!file.exists(attrBurdenDir)) {
       total_burden[, "Nation"] <- "us"
     }
     return(total_burden)
-  }) 
-  
-  total_burden <-total_burden %>%
+  })
+
+  total_burden <- total_burden %>%
     do.call(rbind, .) %>%
     as.data.frame() %>%
     filter(
       Year == year,
       Hispanic.Origin != "Not Stated"
     )
-  
+
   # ---------check for missing stuff----------------
   # missing Genders
   missing <- setdiff(c("Male", "Female"), total_burden$Gender)
@@ -242,24 +244,24 @@ if (!file.exists(attrBurdenDir)) {
     print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing_rows))
   }
-  
-  ###---- analyse suppression ------
+
+  ### ---- analyse suppression ------
   suppressedRows <- sum(total_burden$Deaths == "Suppressed")
-  suppressedRowsPerc <- (100*suppressedRows/nrow(total_burden)) %>% round
-  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in total burden data in ",toString(year)))
+  suppressedRowsPerc <- (100 * suppressedRows / nrow(total_burden)) %>% round()
+  print(paste0(suppressedRows, " (", suppressedRowsPerc, "%) rows suppressed in total burden data in ", toString(year)))
   total_burden <- total_burden %>% filter(Deaths != "Suppressed")
-  
-  #calculate YLL
-  total_burden<-total_burden%>%
+
+  # calculate YLL
+  total_burden <- total_burden %>%
     mutate(
       Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
       Deaths = as.numeric(Deaths),
       Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
-      YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
+      YLL = Deaths * (abs(Life.Expectancy - Single.Year.Ages.Code) + (Life.Expectancy - Single.Year.Ages.Code)) / 2
     )
-  
+
   ## ----- join total_burden and pafs-----
-  
+
   burden_paf <- inner_join(total_burden, pafs, by = join_variables)
 
   # filter those, where age in correct interval
@@ -301,9 +303,9 @@ if (!file.exists(attrBurdenDir)) {
   # some basic tests
   test_that("09_read burden join2", {
     expect_false(any(is.na(attrBurden)))
-    
-    #test that total number of deaths/YLL has not changed
-    columns<-unname(inverse_join_variables)
+
+    # test that total number of deaths/YLL has not changed
+    columns <- unname(inverse_join_variables)
     comp1 <- total_burden %>%
       group_by_at(vars(one_of(columns))) %>%
       summarize(Deaths = sum(Deaths), YLL = sum(YLL))
@@ -313,7 +315,7 @@ if (!file.exists(attrBurdenDir)) {
       summarize(Deaths = sum(Deaths), YLL = sum(YLL))
 
     comp3 <- inner_join(comp1, comp2, by = columns)
-    
+
     expect_equal(comp3$Deaths.x, comp3$Deaths.x)
     expect_equal(comp3$YLL.x, comp3$YLL.x)
   })

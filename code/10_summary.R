@@ -99,7 +99,8 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     
     notes_hisp_or <- all_burden$Notes[grepl("Hispanic Origin:", all_burden$Notes, fixed = TRUE)]
     
-    all_burden$Notes <- NULL
+    all_burden<-all_burden %>%subset(select=-Notes)
+    
     all_burden <- all_burden[!apply(is.na(all_burden) | all_burden == "", 1, all), ]
     
     if (!"Hispanic.Origin" %in% colnames(all_burden)) {
@@ -143,7 +144,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
            allYLL = YLL)
   
   all_burden <- all_burden %>%
-    group_by_at(vars(one_of(group_variables))) %>%
+    group_by_at(vars(one_of(inverse_group_variables))) %>%
     summarise(allDeaths = sum(allDeaths),
               allYLL=sum(allYLL))
   
@@ -191,19 +192,17 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   toc()
   ## ---------------- join/write --------------------
   #join everything
+  attrBurden_gr<-attrBurden_gr%>%
+    left_join(all_burden, by = unname(inverse_group_variables)) 
+  
   print("group_variables")
   print(group_variables)
   print("attrBurden_gr")
   print(colnames(attrBurden_gr))
   print("censData_agr")
   print(colnames(censData_agr))
-  print("all_burden")
-  print(colnames(all_burden))
   
   attrBurden_gr <- left_join(attrBurden_gr, censData_agr, by = group_variables) 
-  
-  attrBurden_gr<-attrBurden_gr%>%
-    left_join(all_burden, by = unname(inverse_group_variables)) #inverse_group_variables
   
   #calculations
   attrBurden_gr<- attrBurden_gr%>%
