@@ -40,42 +40,48 @@ if (rlang::is_empty(args)) {
   # plotDir <- "C:/Users/Daniel/Desktop/paper2021/data/12_plot"
 
   tmpDir <- "/Users/default/Desktop/paper2021/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/05_demog"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"  
   attrBurdenDir <- "/Users/default/Desktop/paper2021/09_attr_burd"
-  summaryDir <- "/Users/default/Desktop/paper2021/11_summary"
-  plotDir <- "/Users/default/Desktop/paper2021/12_plot"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/11_summary"  
+  plotDir <- "/Users/default/Desktop/paper2021/data/12_plot" 
 }
 
 summaryDir <- file.path(summaryDir, agr_by)
 attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
+attrBurden_gr<-attrBurden_gr %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
 
-attrBurden_gr <- attrBurden_gr %>%
+### -------plot 1 -------
+attrBurden_gr1 <- attrBurden_gr %>%
   pivot_longer(
-    cols = !c("Year", "Race", "Hispanic.Origin"),
+    cols = !c("Year", "Race", "Hispanic.Origin","Ethnicity"),
     names_to = "measure",
     values_to = "value"
-  ) %>%
-  mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
+  )  %>% 
   as.data.frame
 
-### ----plot 1 -------
-attrBurden_gr <- attrBurden_gr %>%
+attrBurden_gr1 <- attrBurden_gr1 %>%
   filter(
     Ethnicity %in% c("White, Not Hispanic or Latino", "White, Hispanic or Latino", "Black or African American, All Origins"),
-    measure %in% c("crudeYLL", "crudeAttrYLL")
+    measure %in% c(#"crudeYLL",
+                   #"crudeAllYLL",
+                   #"crudeAttrYLL",
+                   "crudeDeaths",
+                   "crudeAttrDeaths"
+                   )
   )
 
-attrBurden_gr[attrBurden_gr == "crudeYLL"] <- "YLL from causes associated with PM exposure"
-attrBurden_gr[attrBurden_gr == "crudeAttrYLL"] <- "YLL directly attributable to PM exposure"
+attrBurden_gr1[attrBurden_gr1 == "crudeAllYLL"] <- "YLL from all causes"
+attrBurden_gr1[attrBurden_gr1 == "crudeYLL"] <- "YLL from causes associated with PM exposure"
+attrBurden_gr1[attrBurden_gr1 == "crudeAttrYLL"] <- "YLL directly attributable to PM exposure"
 
 ## --- plot-----
 # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
 # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
-g <- ggplot(attrBurden_gr, aes(x = Year, y = value)) +
+g <- ggplot(attrBurden_gr1, aes(x = Year, y = value)) +
   geom_line(aes(color = Ethnicity, linetype = measure), size = 1) +
   # scale_color_manual(values = c("green","yellow", "steelblue"))+
-  scale_linetype_manual(values = c("dashed", "solid")) +
-  ylab(paste("YLL[75] per 100.000")) +
+  #scale_linetype_manual(values = c("dashed", "solid")) +
+  ylab(paste("YLL per 100.000")) +
   xlab("Year") +
   ylim(0, NA) +
   xlim(2000, 2016) +
@@ -83,4 +89,24 @@ g <- ggplot(attrBurden_gr, aes(x = Year, y = value)) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
   ggtitle(paste("plot1"))
 
-ggsave(file.path(plotDir, paste0("plot1.png")), plot = g)
+#ggsave(file.path(plotDir, paste0("plot1.png")), plot = g)
+### -------plot 2 -------
+attrBurden_gr2 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)
+attrBurden_gr3<-inner_join(attrBurden_gr2,attrBurden_gr2,by = "Year") %>%
+  mutate(test1 = (crudeAttrYLL.x-crudeAttrYLL.y),
+         test2 = (crudeAllYLL.x-crudeAllYLL.y),
+         test3 = 100*(crudeAttrYLL.x-crudeAttrYLL.y)/(crudeAllYLL.x-crudeAllYLL.y)) 
+
+attrBurden_gr3 <- attrBurden_gr3 %>% 
+  filter(Ethnicity.x == "White, Not Hispanic or Latino",
+         (Ethnicity.y %in% c("White, Hispanic or Latino","Black or African American, Not Hispanic or Latino",
+                             "Black or African American, All Origins")))
+
+g <- ggplot(attrBurden_gr3, aes(x = Year, y = test3)) +
+  geom_line(aes(color = Ethnicity.y), size = 1) +
+  ylab(paste("%")) +
+  xlab("Year") +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  ggtitle(paste("plot2"))
+g

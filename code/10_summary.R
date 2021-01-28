@@ -228,7 +228,8 @@ for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
   attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
 
   for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
-                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL","propDeaths","propYll","test1","test2")) {
+                    "crudeYLL","crudeAttrDeaths","crudeAttrYLL","crudeAllDeaths","crudeAllYLL",
+                    "propDeaths","propYll","test1","test2")) {
     g <- attrBurden_gr_his %>%
       ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
       scale_color_viridis(discrete = TRUE) +
