@@ -7,11 +7,11 @@ options(dplyr.summarise.inform = FALSE)
 options(dplyr.join.inform = FALSE)
 
 # TODO delete
-#if (rlang::is_empty(args)) {
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-#}
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp/"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog/"
+  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/"
+
+  
 
 dem_agrDir <- file.path(dem_agrDir, "nation")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
@@ -71,3 +71,22 @@ join$mean <- join$prop * join$pm
 join <- join %>%
   group_by(year, race, hispanic_origin) %>%
   summarise(mean = sum(mean))
+
+write.csv(join, "C:/Users/Daniel/Desktop/paper2021/data/test/pm.csv")
+## --plot ---
+join$ethnicity <- paste0(join$race, ", ",join$hispanic_origin)
+join <- join %>% filter(ethnicity %in% c(#"Black or African American, Not Hispanic or Latino",
+                                         "White, Not Hispanic or Latino",
+                                         "White, Hispanic or Latino",
+                                         "Black or African American, All Origins"))
+  
+g <- ggplot(join, aes(x = year, y = mean)) +
+  geom_line(aes(color = ethnicity), size = 1) + 
+  ylab(paste("mean pm exposure")) +
+  xlab("Year") +
+  ylim(0, NA) +
+  xlim(2000, 2016) +
+  # scale_color_viridis(discrete = TRUE) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) 
+
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm.png", plot = g)
