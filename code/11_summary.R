@@ -33,9 +33,9 @@ if (rlang::is_empty(args)) {
   agr_by <- "nation"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/09_attr_burd"
-  allBurdenDir <- "/Users/default/Desktop/paper2021/data/10_all_burden"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/10_plots"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
+  allBurdenDir <- "/Users/default/Desktop/paper2021/data/11_all_burden"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/13_plot"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
@@ -137,7 +137,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     mutate(
       Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
       Deaths = as.numeric(Deaths),
-      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
+      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5), #TODO
       YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
     )%>%
     rename(allDeaths = Deaths,

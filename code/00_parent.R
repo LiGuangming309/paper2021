@@ -18,7 +18,7 @@ sink(con, append=TRUE, type="message")
 #install packages if missing
 packages <-c("bit64","cdcfluview","censusapi","data.table","dplyr", "ggplot2", "magrittr",
              "MALDIquant","plyr","RCurl","sf","sp","stringr","testthat", "tictoc", 
-             "tidyverse","tigris","tmap","viridis","hrbrthemes","rlang","Rtools")
+             "tidyverse","tigris","tmap","viridis","hrbrthemes","rlang","Rtools", "xlsx")
 
 options(tigris_use_cache = FALSE)
 for (p in packages) {
@@ -148,7 +148,7 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, #12
-    suppr.anal.script, #13
+    uns.total.burden.dir, #13
     attr.burden.dir #14
   ) 
    #runscript(script=download.meta.script, args = args)
@@ -166,10 +166,10 @@ for (year in years) {
    #runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script=mrbrtRR.script, args = args)
-   runscript(script = paf.script, args = args)
+   #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
-   #runscript(script = suppr.anal.script, args = args)
-   #runscript(script = calc.attr.burd.script, args = args)
+   runscript(script = suppr.anal.script, args = args)
+   runscript(script = calc.attr.burd.script, args = args)
    
    #save console
    #  Restore output to console

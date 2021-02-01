@@ -45,6 +45,10 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
+states <- file.path(tmpDir, "states.csv") %>% read.csv()
+ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>%
+  read.csv() %>%
+  select(Race, Hispanic.Origin, label_cause, factor)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
@@ -67,7 +71,6 @@ if (!file.exists(attrBurdenDir)) {
 
   inverse_join_variables <- setNames(names(join_variables), join_variables)
   ## ----- read paf------
-  states <- file.path(tmpDir, "states.csv") %>% read.csv()
   regions <- states[, agr_by] %>% unique()
 
   pafs <- lapply(regions, function(region) {
@@ -251,12 +254,20 @@ if (!file.exists(attrBurdenDir)) {
   print(paste0(suppressedRows, " (", suppressedRowsPerc, "%) rows suppressed in total burden data in ", toString(year)))
   total_burden <- total_burden %>% filter(Deaths != "Suppressed")
 
+  #counter suppression bias
+  total_burden <- left_join(total_burden, ethn_suppr,
+    by = c("Race", "Hispanic.Origin", "label_cause")
+  ) %>%
+    mutate(
+      Deaths = as.numeric(Deaths),
+      Deaths = Deaths * factor
+    )
+  
   # calculate YLL
   total_burden <- total_burden %>%
     mutate(
       Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-      Deaths = as.numeric(Deaths),
-      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5),
+      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5), # TODO
       YLL = Deaths * (abs(Life.Expectancy - Single.Year.Ages.Code) + (Life.Expectancy - Single.Year.Ages.Code)) / 2
     )
 
