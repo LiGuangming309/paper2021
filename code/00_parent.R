@@ -166,9 +166,9 @@ for (year in years) {
    #runscript(script = cens_agr.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script=mrbrtRR.script, args = args)
-   #runscript(script = paf.script, args = args)
+   runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
-   runscript(script = suppr.anal.script, args = args)
+   #runscript(script = suppr.anal.script, args = args)
    #runscript(script = calc.attr.burd.script, args = args)
    
    #save console
@@ -186,6 +186,6 @@ args <- paste(
   plot.dir #7
 ) 
 
-runscript(script = summary.script, args = args)
+#runscript(script = summary.script, args = args)
 #runscript(script = plot.script, args = args)
   
