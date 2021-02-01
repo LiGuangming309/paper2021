@@ -18,6 +18,44 @@ attr_burd2<- lapply(2000:2016, function(year){
               attrYLL = sum(attrYLL))
 }) %>% do.call(rbind,.)
 
+#attr_burd2 <- attr_burd2 %>% filter(label_cause %in% c("neo_lung", "t2_dm"))
+#http://ihmeuw.org/5cwp 
+g1 <- ggplot(attr_burd2, aes(x = Year, y = Deaths)) +
+  geom_line(aes(color = label_cause), size = 1) +
+  ylab(paste("Deaths")) +
+  xlab("Year") +
+  ylim(0, NA) +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+
+g2 <- ggplot(attr_burd2, aes(x = Year, y = YLL)) +
+  geom_line(aes(color = label_cause), size = 1) +
+  ylab(paste("YLL")) +
+  xlab("Year") +
+  ylim(0, NA) +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+
+#http://ihmeuw.org/5cwq
+g1 <- ggplot(attr_burd2, aes(x = Year, y = attrDeaths)) +
+  geom_line(aes(color = label_cause), size = 1) +
+  ylab(paste("Deaths")) +
+  xlab("Year") +
+  ylim(0, NA) +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+
+g2 <- ggplot(attr_burd2, aes(x = Year, y = attrYLL)) +
+  geom_line(aes(color = label_cause), size = 1) +
+  ylab(paste("YLL")) +
+  xlab("Year") +
+  ylim(0, NA) +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+
+g1
+g2
+
 attr_burd3<- lapply(2000:2016, function(year){
   attr_burd <- paste0("~/Desktop/paper2021/data/09_attr_burd/nation/attr_burd_",toString(year),".csv") %>%read.csv
   attr_burd2 <- attr_burd %>% 
@@ -29,26 +67,24 @@ attr_burd3<- lapply(2000:2016, function(year){
               attrYLL = sum(attrYLL))
 }) %>% do.call(rbind,.)
 
-g1 <- ggplot(attr_burd3, aes(x = Year, y = attrDeaths)) +
+g3 <- ggplot(attr_burd3, aes(x = Year, y = attrDeaths)) +
   geom_line(size = 1) +
   ylab(paste("Deaths")) +
   xlab("Year") +
   ylim(0, NA) +
   xlim(2000, 2016) +
-  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  ggtitle(paste("plot1"))
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
 
-g2 <- ggplot(attr_burd3, aes(x = Year, y = attrYLL)) +
+g4 <- ggplot(attr_burd3, aes(x = Year, y = attrYLL)) +
   geom_line(size = 1) +
   ylab(paste("YLL")) +
   xlab("Year") +
   ylim(0, NA) +
   xlim(2000, 2016) +
-  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  ggtitle(paste("plot2"))
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
 
 fwrite(attr_burd2, "~/Desktop/paper2021/data/test/attr_burd2.csv", sep = ';')
 fwrite(attr_burd3, "~/Desktop/paper2021/data/test/attr_burd3.csv", sep = ';')
 
-ggsave("~/Desktop/paper2021/data/test/deaths.png", plot = g1)
-ggsave("~/Desktop/paper2021/data/test/YLL.png", plot = g2)
+ggsave("~/Desktop/paper2021/data/test/deaths_attr.png", plot = g3)
+ggsave("~/Desktop/paper2021/data/test/YL_attrL.png", plot = g4)

@@ -101,16 +101,19 @@ dir.create(paf.dir, recursive = T, showWarnings = F)
 total.burden.dir <- file.path(data.dir, "08_total_burden")
 if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wonder need to be downloaded")
 
-attr.burden.dir <- file.path(data.dir, "09_attr_burd")
+uns.total.burden.dir <- file.path(data.dir, "09_unsup_total_burden")
+if (!file.exists(uns.total.burden.dir)) warning("The unsepressed total burden data from CDC wonder need to be downloaded")
+
+attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
-all.burden.dir <- file.path(data.dir, "10_all_burden")
+all.burden.dir <- file.path(data.dir, "11_all_burden")
 if (!file.exists(all.burden.dir)) warning("The all burden data from CDC wonder need to be downloaded")
 
-summary.dir <- file.path(data.dir, "11_summary")
+summary.dir <- file.path(data.dir, "12_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
-plot.dir <- file.path(data.dir, "12_plot")
+plot.dir <- file.path(data.dir, "13_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
 # paths of scripts
@@ -122,9 +125,10 @@ assignTract.script <- file.path(code.dir, "05_ass_trac.R")
 mrbrtRR.script <- file.path(code.dir, "06_mrbrt_rr.R")
 cens_agr.script <- file.path(code.dir, "07_aggregate.R")
 paf.script <- file.path(code.dir, "08_paf.R")
-calc.attr.burd.script <- file.path(code.dir, "09_calc_attr_burd.R")
-summary.script <- file.path(code.dir, "10_summary.R")
-plot.script <- file.path(code.dir, "11_plot.R")
+suppr.anal.script <- file.path(code.dir, "09_suppr_anal.R")
+calc.attr.burd.script <- file.path(code.dir, "10_calc_attr_burd.R")
+summary.script <- file.path(code.dir, "11_summary.R")
+plot.script <- file.path(code.dir, "12_plot.R")
 
 #--------parameters of code-------------------
 years <- c(2000,2010,2001:2009,2011:2016)
@@ -144,7 +148,8 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, #12
-    attr.burden.dir #13
+    suppr.anal.script, #13
+    attr.burden.dir #14
   ) 
    #runscript(script=download.meta.script, args = args)
    if(year %in% 2001:2009){
@@ -163,6 +168,7 @@ for (year in years) {
    #runscript(script=mrbrtRR.script, args = args)
    #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
+   runscript(script = suppr.anal.script, args = args)
    #runscript(script = calc.attr.burd.script, args = args)
    
    #save console

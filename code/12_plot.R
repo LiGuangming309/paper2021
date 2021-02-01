@@ -48,7 +48,13 @@ if (rlang::is_empty(args)) {
 
 summaryDir <- file.path(summaryDir, agr_by)
 attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
-attrBurden_gr<-attrBurden_gr %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
+attrBurden_gr<-attrBurden_gr %>% 
+  mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
+  filter(Ethnicity %in% c("White, Not Hispanic or Latino", 
+                          "White, Hispanic or Latino", 
+                          "Black or African American, All Origins",
+                          "Asian or Pacific Islander, All Origins",
+                          "American Indian or Alaska Native, All Origins"))
 
 ### -------plot 1 -------
 attrBurden_gr1 <- attrBurden_gr %>%
@@ -61,20 +67,20 @@ attrBurden_gr1 <- attrBurden_gr %>%
 
 attrBurden_gr1 <- attrBurden_gr1 %>%
   filter(
-    Ethnicity %in% c("White, Not Hispanic or Latino", "White, Hispanic or Latino", "Black or African American, All Origins"),
-    measure %in% c(#"crudeYLL",
-                   #"crudeAllYLL",
-                   #"crudeAttrYLL",
-                   "crudeDeaths",
-                   "crudeAttrDeaths"
+    measure %in% c(
+                   "crudeAllYLL"
+                   #"crudeAttrYLL"
+                   #"crudeAllDeaths"
+                   #"crudeAttrDeaths"
                    )
   )
 
+attrBurden_gr1[attrBurden_gr1 == "crudeAttrDeaths"] <- "Deaths directly attributable to PM exposure"
+attrBurden_gr1[attrBurden_gr1 == "crudeAllDeaths"] <- "Deaths from all causes"
 attrBurden_gr1[attrBurden_gr1 == "crudeAllYLL"] <- "YLL from all causes"
 attrBurden_gr1[attrBurden_gr1 == "crudeYLL"] <- "YLL from causes associated with PM exposure"
 attrBurden_gr1[attrBurden_gr1 == "crudeAttrYLL"] <- "YLL directly attributable to PM exposure"
 
-## --- plot-----
 # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
 # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
 g <- ggplot(attrBurden_gr1, aes(x = Year, y = value)) +
@@ -85,10 +91,10 @@ g <- ggplot(attrBurden_gr1, aes(x = Year, y = value)) +
   xlab("Year") +
   ylim(0, NA) +
   xlim(2000, 2016) +
-  # scale_color_viridis(discrete = TRUE) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  ggtitle(paste("plot1"))
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))
 
+g
 #ggsave(file.path(plotDir, paste0("plot1.png")), plot = g)
 ### -------plot 2 -------
 attrBurden_gr2 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)
@@ -99,8 +105,9 @@ attrBurden_gr3<-inner_join(attrBurden_gr2,attrBurden_gr2,by = "Year") %>%
 
 attrBurden_gr3 <- attrBurden_gr3 %>% 
   filter(Ethnicity.x == "White, Not Hispanic or Latino",
-         (Ethnicity.y %in% c("White, Hispanic or Latino","Black or African American, Not Hispanic or Latino",
-                             "Black or African American, All Origins")))
+         (Ethnicity.y %in% c("White, Hispanic or Latino", 
+                             "Black or African American, All Origins",
+                             "Asian or Pacific Islander, All Origins")))
 
 g <- ggplot(attrBurden_gr3, aes(x = Year, y = test3)) +
   geom_line(aes(color = Ethnicity.y), size = 1) +
@@ -108,5 +115,25 @@ g <- ggplot(attrBurden_gr3, aes(x = Year, y = test3)) +
   xlab("Year") +
   xlim(2000, 2016) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  ggtitle(paste("plot2"))
+  guides(col = guide_legend(nrow = 2, byrow = TRUE))
+g
+### -------plot 3 -------
+attrBurden_gr4 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllDeaths,crudeAttrDeaths)
+attrBurden_gr5<-inner_join(attrBurden_gr4,attrBurden_gr4,by = "Year") %>%
+  mutate(test3 = 100*(crudeAttrDeaths.x-crudeAttrDeaths.y)/(crudeAllDeaths.x-crudeAllDeaths.y)) 
+
+attrBurden_gr5 <- attrBurden_gr5 %>% 
+  filter(Ethnicity.x == "White, Not Hispanic or Latino",
+         (Ethnicity.y %in% c("White, Hispanic or Latino", 
+                             "Black or African American, All Origins",
+                             "Asian or Pacific Islander, All Origins",
+                             "American Indian or Alaska Native, All Origins")))
+
+g <- ggplot(attrBurden_gr5, aes(x = Year, y = test3)) +
+  geom_line(aes(color = Ethnicity.y), size = 1) +
+  ylab(paste("%")) +
+  xlab("Year") +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))
 g

@@ -26,7 +26,7 @@ tmpDir <- args[3]
 agr_by <- args[10]
 pafDir <- args[11]
 totalBurdenDir <- args[12]
-attrBurdenDir <- args[13]
+attrBurdenDir <- args[14]
 
 # TODO delete
 if (rlang::is_empty(args)) {
