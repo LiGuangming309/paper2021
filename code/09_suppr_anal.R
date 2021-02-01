@@ -93,7 +93,7 @@ if (!file.exists(ethn_supprDir)) {
   fwrite(ethn_suppr, ethn_supprDir)
 }
 
-if(TRUE){
+if(FALSE){
   ethn_suppr <- fread(ethn_supprDir)
   ethn_suppr2 <- ethn_suppr %>%
     group_by(Race, Hispanic.Origin) %>%

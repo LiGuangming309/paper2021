@@ -28,7 +28,6 @@ attrBurdenDir <- args[4]
 summaryDir <- args[6]
 plotDir <- args[7]
 
-print(args)
 # TODO delete
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
@@ -95,7 +94,7 @@ g <- ggplot(attrBurden_gr1, aes(x = Year, y = value)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
 
 g
-#ggsave(file.path(plotDir, paste0("plot1.png")), plot = g)
+ggsave(file.path(plotDir, paste0("plot1.png")), plot = g)
 ### -------plot 2 -------
 attrBurden_gr2 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)
 attrBurden_gr3<-inner_join(attrBurden_gr2,attrBurden_gr2,by = "Year") %>%
@@ -116,6 +115,8 @@ g <- ggplot(attrBurden_gr3, aes(x = Year, y = test3)) +
   xlim(2000, 2016) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
   guides(col = guide_legend(nrow = 2, byrow = TRUE))
+
+ggsave(file.path(plotDir, paste0("plot2.png")), plot = g)
 g
 ### -------plot 3 -------
 attrBurden_gr4 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllDeaths,crudeAttrDeaths)
@@ -137,3 +138,4 @@ g <- ggplot(attrBurden_gr5, aes(x = Year, y = test3)) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
 g
+ggsave(file.path(plotDir, paste0("plot3.png")), plot = g)
