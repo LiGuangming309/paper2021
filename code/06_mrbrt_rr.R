@@ -62,35 +62,8 @@ if (file.exists(causes_agesDir)) {
   write.csv(causes_ages, causes_agesDir, row.names = FALSE)
 }
 
-# drar samples for tmrel
-# tmrelsDir <- file.path(tmpDir, "tmrels.csv")
-# if(file.exists(tmrelsDir)){
-#  tmrels <- read.csv(tmrelsDir)[[1]]
-# }else{
-#  tmrels <-runif(1000, min= 2.4, max= 5.9) %>%
-#                round(digits = 2)
-#  write.csv(tmrels,tmrelsDir, row.names = FALSE)
-# }
 
-# tmrel <- mean(2.4, 5.9)
-## ---- find tmrel ---
-tmrel <- 0.83
-#tmrelDir <-file.path(tmpDir, "tmrel.RData")
-#if(!file.exists(tmrelDir)){
-#  cens_agrDir <- file.path(cens_agrDir, "nation")
-#  years <- list.files(cens_agrDir)
-#  tmrel <- lapply(years, function(year) {
-#    cens_agr <- file.path(cens_agrDir, year, paste0("cens_agr_",toString(year),"_us.csv")) %>% read.csv
-#    return(min(cens_agr$pm))
-#  }) %>% 
-#    unlist %>% 
-#    min
-#  print(paste("tmrel: ", tmrel))
-  
-#  save(tmrel, file = tmrelDir)
-#}
-
-#load(tmrelDir)
+tmrel <- mean(2.4, 5.9)
 ## ----------calculation---------
 
 tic("Calculated RR from MR-BRT for all causes")
@@ -128,16 +101,6 @@ apply(causes_ages, 1, function(cause_age) {
       as.numeric() %>%
       return(.)
   }
-
-  # getRR2 <-function(pm){
-  #  sapply(tmrels, function(tmrel){
-  #    ifelse(pm<=tmrel,
-  #           1,
-  #           getMRBRT(pm)/getMRBRT(tmrel)) %>%
-  #      return(.)
-  #  }) %>% mean %>%
-  #      return(.)
-  #  }
 
   exp_rr <- exp_rr %>% mutate(
     lower = NULL,
