@@ -1,8 +1,8 @@
 "Notes"	"Race"	"Race Code"	Deaths	Population	Crude Rate
-	"American Indian or Alaska Native"	"1002-5"	180	64320644	0.3
-	"Asian or Pacific Islander"	"A-PI"	429	257722045	0.2
-	"Black or African American"	"2054-5"	2754	695773528	0.4
-	"White"	"2106-3"	47131	4104543750	1.1
+	"American Indian or Alaska Native"	"1002-5"	10966	64320644	17.0
+	"Asian or Pacific Islander"	"A-PI"	44187	257722045	17.1
+	"Black or African American"	"2054-5"	279162	695773528	40.1
+	"White"	"2106-3"	2319138	4104543750	56.5
 "---"
 "Dataset: Multiple Cause of Death, 1999-2019"
 "Query Parameters:"
@@ -14,12 +14,10 @@
 "(37); North Dakota (38); Ohio (39); Oklahoma (40); Oregon (41); Pennsylvania (42); Rhode Island (44); South Carolina (45); South"
 "Dakota (46); Tennessee (47); Texas (48); Utah (49); Vermont (50); Virginia (51); Washington (53); West Virginia (54); Wisconsin"
 "(55); Wyoming (56)"
-"UCD - ICD-10 Codes: C33 (Malignant neoplasm of trachea); C44.0 (Skin of lip - Malignant neoplasms); C44.1 (Skin of eyelid,"
-"including canthus - Malignant neoplasms); C44.2 (Skin of ear and external auricular canal - Malignant neoplasms); C44.3 (Skin of"
-"other and unspecified parts of face - Malignant neoplasms); C44.4 (Skin of scalp and neck - Malignant neoplasms); C44.5 (Skin of"
-"trunk - Malignant neoplasms); C44.6 (Skin of upper limb, including shoulder - Malignant neoplasms); C44.7 (Skin of lower limb,"
-"including hip - Malignant neoplasms); C44.8 (Overlapping lesion of skin - Malignant neoplasms); C44.9 (Malignant neoplasm of"
-"skin, unspecified - Malignant neoplasms)"
+"UCD - ICD-10 Codes: C33 (Malignant neoplasm of trachea); C34.0 (Main bronchus - Malignant neoplasms); C34.1 (Upper lobe,"
+"bronchus or lung - Malignant neoplasms); C34.2 (Middle lobe, bronchus or lung - Malignant neoplasms); C34.3 (Lower lobe,"
+"bronchus or lung - Malignant neoplasms); C34.8 (Overlapping lesion of bronchus and lung - Malignant neoplasms); C34.9 (Bronchus"
+"or lung, unspecified - Malignant neoplasms)"
 "Year/Month: 2000; 2001; 2002; 2003; 2004; 2005; 2006; 2007; 2008; 2009; 2010; 2011; 2012; 2013; 2014; 2015; 2016"
 "Group By: Race"
 "Show Totals: False"
@@ -30,12 +28,12 @@
 "---"
 "Help: See http://wonder.cdc.gov/wonder/help/mcd.html for more information."
 "---"
-"Query Date: Jan 31, 2021 2:53:50 PM"
+"Query Date: Feb 4, 2021 1:31:28 PM"
 "---"
 "Suggested Citation: Centers for Disease Control and Prevention, National Center for Health Statistics. Multiple Cause of Death"
 "1999-2019 on CDC WONDER Online Database, released in 2020. Data are from the Multiple Cause of Death Files, 1999-2019, as"
 "compiled from data provided by the 57 vital statistics jurisdictions through the Vital Statistics Cooperative Program. Accessed"
-"at http://wonder.cdc.gov/mcd-icd10.html on Jan 31, 2021 2:53:50 PM"
+"at http://wonder.cdc.gov/mcd-icd10.html on Feb 4, 2021 1:31:28 PM"
 "---"
 Caveats:
 "1. As of April 3, 2017, the underlying cause of death has been revised for 125 deaths in 2014. More information:"

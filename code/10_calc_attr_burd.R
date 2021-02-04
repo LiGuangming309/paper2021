@@ -164,7 +164,8 @@ if (!file.exists(attrBurdenDir)) {
       total_burden$label_cause <- "cvd_stroke"
     } else if (grepl("A48.1 (Legionnaires disease); A70 (Chlamydia psittaci infection); B34.2 (Coronavirus infection,", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "lri"
-    } else if (grepl("C33 (Malignant neoplasm of trachea); C44.0 (Skin of lip - Malignant neoplasms); C44.1 (Skin of eyelid,", cause_icd, fixed = TRUE)) {
+    } #else if (grepl("C33 (Malignant neoplasm of trachea); C44.0 (Skin of lip - Malignant neoplasms); C44.1 (Skin of eyelid,", cause_icd, fixed = TRUE)) {
+      else if (grepl("C33 (Malignant neoplasm of trachea); C34.0 (Main bronchus - Malignant neoplasms); C34.1 (Upper lobe,", cause_icd, fixed = TRUE)) {
       total_burden$label_cause <- "neo_lung"
     } else {
       print("unidentifiable ICD Code")

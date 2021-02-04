@@ -40,9 +40,9 @@ if (rlang::is_empty(args)) {
 
   tmpDir <- "/Users/default/Desktop/paper2021/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"  
-  attrBurdenDir <- "/Users/default/Desktop/paper2021/09_attr_burd"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/11_summary"  
-  plotDir <- "/Users/default/Desktop/paper2021/data/12_plot" 
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/10_attr_burd"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/12_summary"  
+  plotDir <- "/Users/default/Desktop/paper2021/data/13_plot" 
 }
 
 summaryDir <- file.path(summaryDir, agr_by)
@@ -124,11 +124,11 @@ attrBurden_gr5<-inner_join(attrBurden_gr4,attrBurden_gr4,by = "Year") %>%
   mutate(test3 = 100*(crudeAttrDeaths.x-crudeAttrDeaths.y)/(crudeAllDeaths.x-crudeAllDeaths.y)) 
 
 attrBurden_gr5 <- attrBurden_gr5 %>% 
-  filter(Ethnicity.x == "White, Not Hispanic or Latino",
+  filter(Ethnicity.x == "Black or African American, All Origins" &
          (Ethnicity.y %in% c("White, Hispanic or Latino", 
-                             "Black or African American, All Origins",
-                             "Asian or Pacific Islander, All Origins",
-                             "American Indian or Alaska Native, All Origins")))
+                             "White, Not Hispanic or Latino",
+                             "Asian or Pacific Islander, All Origins"
+                             )))
 
 g <- ggplot(attrBurden_gr5, aes(x = Year, y = test3)) +
   geom_line(aes(color = Ethnicity.y), size = 1) +
