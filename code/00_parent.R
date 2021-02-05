@@ -187,6 +187,6 @@ args <- paste(
   data.dir #8
 ) 
 
-runscript(script = summary.script, args = args)
-runscript(script = plot.script, args = args)
+#runscript(script = summary.script, args = args)
+#runscript(script = plot.script, args = args)
   
