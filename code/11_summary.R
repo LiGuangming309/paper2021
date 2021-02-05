@@ -46,8 +46,6 @@ summaryDir <- file.path(summaryDir, agr_by)
 dir.create(summaryDir, recursive = T, showWarnings = F)
 
 lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
-
-glimpse(lifeExpectancy) #TODO löschen
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c(

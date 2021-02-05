@@ -11,9 +11,9 @@
 rm(list = ls(all = TRUE))
 
 #console
-con <- file("console.log")
-sink(con, append=TRUE)
-sink(con, append=TRUE, type="message")
+#con <- file("console.log")
+#sink(con, append=TRUE)
+#sink(con, append=TRUE, type="message")
 
 #install packages if missing
 packages <-c("bit64","cdcfluview","censusapi","data.table","dplyr", "ggplot2", "magrittr",
