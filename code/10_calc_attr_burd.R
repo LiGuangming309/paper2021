@@ -31,14 +31,14 @@ attrBurdenDir <- args[14]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2016
+  year <- 2000
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
-  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/09_attr_burd"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
 }
 
 totalBurdenDir <- file.path(totalBurdenDir, agr_by)
