@@ -168,7 +168,7 @@ for (year in years) {
    #runscript(script=mrbrtRR.script, args = args)
    #runscript(script = paf.script, args = args)
    sink(type="message", append = TRUE)
-   runscript(script = suppr.anal.script, args = args)
+   #runscript(script = suppr.anal.script, args = args)
    runscript(script = calc.attr.burd.script, args = args)
    
    #save console
@@ -183,7 +183,8 @@ args <- paste(
   attr.burden.dir, #4
   all.burden.dir, #5
   summary.dir, #6
-  plot.dir #7
+  plot.dir, #7
+  data.dir #8
 ) 
 
 runscript(script = summary.script, args = args)

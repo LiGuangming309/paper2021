@@ -27,11 +27,13 @@ censDir <- args[3]
 attrBurdenDir <- args[4]
 allBurdenDir <- args[5]
 summaryDir <- args[6]
+dataDir <- args[8]
 
 # TODO delete
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  dataDir <- "/Users/default/Desktop/paper2021/data"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
   allBurdenDir <- "/Users/default/Desktop/paper2021/data/11_all_burden"
@@ -43,6 +45,7 @@ allBurdenDir <- file.path(allBurdenDir, agr_by)
 summaryDir <- file.path(summaryDir, agr_by)
 dir.create(summaryDir, recursive = T, showWarnings = F)
 
+lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c(
@@ -137,8 +140,8 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     mutate(
       Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
       Deaths = as.numeric(Deaths),
-      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5), #TODO
-      YLL = Deaths*(abs(Life.Expectancy - Single.Year.Ages.Code)+(Life.Expectancy - Single.Year.Ages.Code))/2
+      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
+      YLL = Deaths * Life.Expectancy
     )%>%
     rename(allDeaths = Deaths,
            allYLL = YLL)

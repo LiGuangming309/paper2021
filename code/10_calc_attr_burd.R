@@ -22,6 +22,7 @@ options(dplyr.join.inform = FALSE)
 args <- commandArgs(trailingOnly = T)
 
 year <- args[1]
+dataDir <- args[2]
 tmpDir <- args[3]
 agr_by <- args[10]
 pafDir <- args[11]
@@ -33,6 +34,7 @@ if (rlang::is_empty(args)) {
   year <- 2016
   agr_by <- "nation"
 
+  dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -45,7 +47,9 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
-states <- file.path(tmpDir, "states.csv") %>% read.csv()
+#read some data
+states <- file.path(tmpDir, "states.csv") %>% read.csv
+lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
 ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>%
   read.csv() %>%
   select(Race, Hispanic.Origin, label_cause, factor)
@@ -268,8 +272,8 @@ if (!file.exists(attrBurdenDir)) {
   total_burden <- total_burden %>%
     mutate(
       Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-      Life.Expectancy = ifelse(Gender.Code == "M", 80, 82.5), # TODO
-      YLL = Deaths * (abs(Life.Expectancy - Single.Year.Ages.Code) + (Life.Expectancy - Single.Year.Ages.Code)) / 2
+      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
+      YLL = Deaths * Life.Expectancy
     )
 
   ## ----- join total_burden and pafs-----
