@@ -50,8 +50,6 @@ attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), "
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
-
-glimpse(lifeExpectancy) #TODO löschen
 ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>%
   read.csv() %>%
   select(Race, Hispanic.Origin, label_cause, factor)
