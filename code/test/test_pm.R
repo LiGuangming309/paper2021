@@ -75,10 +75,11 @@ join <- join %>%
 write.csv(join, "C:/Users/Daniel/Desktop/paper2021/data/test/pm.csv")
 ## --plot ---
 join$ethnicity <- paste0(join$race, ", ",join$hispanic_origin)
-join <- join %>% filter(ethnicity %in% c(#"Black or African American, Not Hispanic or Latino",
-                                         "White, Not Hispanic or Latino",
+join <- join %>% filter(ethnicity %in% c("White, Not Hispanic or Latino",
                                          "White, Hispanic or Latino",
-                                         "Black or African American, All Origins"))
+                                         "Black or African American, All Origins",
+                                         "Asian or Pacific Islander, All Origins",
+                                         "American Indian or Alaska Native, All Origins"))
   
 g <- ggplot(join, aes(x = year, y = mean)) +
   geom_line(aes(color = ethnicity), size = 1) + 
