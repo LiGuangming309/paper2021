@@ -88,6 +88,7 @@ g <- ggplot(join, aes(x = year, y = mean)) +
   ylim(0, NA) +
   xlim(2000, 2016) +
   # scale_color_viridis(discrete = TRUE) +
-  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) 
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))
 
 ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm.png", plot = g)
