@@ -107,7 +107,6 @@ if(TRUE){
   
   ethn_suppr2_sub <- ethn_suppr2 %>% 
     filter(suppressed >= 10) %>%
-    select(Race, Hispanic.Origin, suppressed)  %>%
     as.data.frame
   
   print("Following ethnicites should be ignored, because data suppression is too high:")

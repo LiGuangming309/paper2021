@@ -6,6 +6,7 @@ for (p in packages) {
 }
 options(dplyr.summarise.inform = FALSE)
 options(dplyr.join.inform = FALSE)
+options(scipen=10000)
 
 attr_burd2<- lapply(2000:2016, function(year){
   attr_burd <- paste0("~/Desktop/paper2021/data/10_attr_burd/nation/attr_burd_",toString(year),".csv") %>%read.csv
@@ -18,25 +19,31 @@ attr_burd2<- lapply(2000:2016, function(year){
               attrYLL = sum(attrYLL))
 }) %>% do.call(rbind,.)
 
-attr_burd2 <- attr_burd2 %>% filter(label_cause %in% c("t2_dm"))
-#http://ihmeuw.org/5cwp 
-g1 <- ggplot(attr_burd2, aes(x = Year, y = Deaths)) +
-  geom_line(aes(color = label_cause), size = 1) +
-  ylab(paste("Deaths")) +
-  xlab("Year") +
-  ylim(0, NA) +
-  xlim(2000, 2016) +
-  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+label_causes <- attr_burd2$label_cause %>% unique
 
-g1
-
-g2 <- ggplot(attr_burd2, aes(x = Year, y = YLL)) +
-  geom_line(aes(color = label_cause), size = 1) +
-  ylab(paste("YLL")) +
-  xlab("Year") +
-  ylim(0, NA) +
-  xlim(2000, 2016) +
-  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+for(cause in label_causes){
+  #attr_burd2 <- attr_burd2 %>% filter(label_cause %in% c("neo_lung"))
+  attr_burd2_sub <- attr_burd2 %>% filter(label_cause %in% c(cause))
+  #http://ihmeuw.org/5cwp 
+  g1 <- ggplot(attr_burd2_sub, aes(x = Year, y = Deaths)) +
+    geom_line(aes(color = label_cause), size = 1) +
+    ylab(paste("Deaths")) +
+    xlab("Year") +
+    ylim(0, NA) +
+    xlim(2000, 2016) +
+    theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) 
+  
+  g2 <- ggplot(attr_burd2_sub, aes(x = Year, y = YLL)) +
+    geom_line(aes(color = label_cause), size = 1) +
+    ylab(paste("YLL")) +
+    xlab("Year") +
+    ylim(0, NA) +
+    xlim(2000, 2016) +
+    theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())
+  
+  ggsave(paste0("~/Desktop/paper2021/data/test/deaths_",cause,".png"), plot = g1)
+  ggsave(paste0("~/Desktop/paper2021/data/test/yll_",cause,".png"), plot = g2)
+}
 
 #http://ihmeuw.org/5cwq
 g1 <- ggplot(attr_burd2, aes(x = Year, y = attrDeaths)) +
