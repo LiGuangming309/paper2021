@@ -32,18 +32,21 @@ tracDir <- args[5]
 exp_tracDir <- args[7]
 
 # TODO l?schen
-# year <- 2016
-#agr_by <- "county"
+# year <- 2000
 
 # tmpDir <- "/Users/default/Desktop/own_code2/data/tmp"
 # exp_tracDir <- "/Users/default/Desktop/own_code2/data/03_exp_tracts"
 # censDir <- "/Users/default/Desktop/own_code2/data/06_demog"
 # cens_agrDir <- "/Users/default/Desktop/own_code2/data/07_dem.agr"
+# TODO l?schen
+if (rlang::is_empty(args)) {
+  year <- 2000
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
+  tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
+  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+}
 
-#tmpDir <- "C:/Users/Daniel/Desktop/paper2020/data/tmp"
-#expDir <- "C:/Users/Daniel/Desktop/paper2020/data/01_exposure"
-#tracDir <- "C:/Users/Daniel/Desktop/paper2020/data/02_tracts"
-#exp_tracDir <- "C:/Users/Daniel/Desktop/paper2020/data/03_exp_tracts"
 
 ## ---------------load data---------------
 
@@ -73,7 +76,7 @@ tic(paste("Assigned pm exposure to each tract for year", toString(year), "for al
 apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
-
+  
   exp_tracDirX <- paste0("exp_trac_", toString(year), "_", STUSPS, ".csv") %>%
     file.path(exp_tracDir, .)
 
@@ -152,7 +155,7 @@ apply(states, 1, function(state) {
 
   ## --------------plot-----------
   # save everything as interactive map via tmap
-  if (FALSE) {
+  if (TRUE) {
     tm <- tm_shape(tracts) +
       tm_polygons("pm", alpha = 0.6)
     #+tm_format("NLD",title=paste("Particulate Matter Exposure for",year,"in",name)) #TODO

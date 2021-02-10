@@ -131,8 +131,8 @@ summary.script <- file.path(code.dir, "11_summary.R")
 plot.script <- file.path(code.dir, "12_plot.R")
 
 #--------parameters of code-------------------
-years <- c(2000,2010,2001:2009,2011:2016)
-#years <- c(200)
+#years <- c(2000,2010,2001:2009,2011:2016)
+years <- c(2000)
 
 for (year in years) {
   args <- paste(
@@ -151,14 +151,14 @@ for (year in years) {
     uns.total.burden.dir, #13
     attr.burden.dir #14
   ) 
-   #runscript(script=download.meta.script, args = args)
+   runscript(script=download.meta.script, args = args)
    if(year %in% 2001:2009){
      #runscript(script=interp.script, args = args)
    }else{
     # runscript(script=download.cens.script, args = args)
    }
    sink(type="message", append = TRUE)
-   #runscript(script=download.other.script, args = args)
+   runscript(script=download.other.script, args = args)
    sink(type="message", append = TRUE)
    #runscript(script=assignTract.script, args = args)
    sink(type="message", append = TRUE)
@@ -187,6 +187,6 @@ args <- paste(
   data.dir #8
 ) 
 
-runscript(script = summary.script, args = args)
-runscript(script = plot.script, args = args)
+#runscript(script = summary.script, args = args)
+#runscript(script = plot.script, args = args)
   

@@ -197,7 +197,7 @@ if (!file.exists(attrBurdenDir)) {
     filter(
       Year == year,
       Hispanic.Origin != "Not Stated"
-    )
+    ) 
 
   # ---------check for missing stuff----------------
   # missing Genders
@@ -257,16 +257,15 @@ if (!file.exists(attrBurdenDir)) {
   suppressedRows <- sum(total_burden$Deaths == "Suppressed")
   suppressedRowsPerc <- (100 * suppressedRows / nrow(total_burden)) %>% round()
   print(paste0(suppressedRows, " (", suppressedRowsPerc, "%) rows suppressed in total burden data in ", toString(year)))
-  total_burden <- total_burden %>% filter(Deaths != "Suppressed")
+  total_burden <- total_burden %>% 
+    filter(Deaths != "Suppressed") %>%
+    mutate(Deaths = as.numeric(Deaths))
 
   #counter suppression bias
   total_burden <- left_join(total_burden, ethn_suppr,
     by = c("Race", "Hispanic.Origin", "label_cause")
   ) %>%
-    mutate(
-      Deaths = as.numeric(Deaths),
-      Deaths = Deaths * factor
-    )
+    mutate(Deaths = Deaths * factor)
   
   # calculate YLL
   total_burden <- total_burden %>%
