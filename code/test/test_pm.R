@@ -1,4 +1,4 @@
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes", "stats")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -65,12 +65,14 @@ censData_agr <- censData_agr %>%
 toc()
 ## --- calculate -----
 join <- inner_join(dem_agr, censData_agr, by = c("year", "race", "hispanic_origin"))
+
 join$prop <- join$pop_size.x/join$pop_size.y
-join$mean <- join$prop * join$pm
 
 join <- join %>%
   group_by(year, race, hispanic_origin) %>%
-  summarise(mean = sum(mean))
+  mutate(mean = weighted.mean(pm, prop),
+         median = weighted.median(pm, prop))
+  
 
 write.csv(join, "C:/Users/Daniel/Desktop/paper2021/data/test/pm.csv")
 ## --plot ---

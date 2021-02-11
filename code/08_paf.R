@@ -109,7 +109,7 @@ for (region in regions) {
 
         rr <- sapply(cens_agr_sub$pm, getRR) %>% as.numeric 
         props <- cens_agr_sub$prop
-
+        
         x <- sum(props*(rr-1)) 
         y<-x / (1 + x)
 
