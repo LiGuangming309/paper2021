@@ -57,7 +57,6 @@ g <- ggplot(dem_agr, aes(x = year, y = mean)) +
   geom_line(aes(color = ethnicity), size = 1) + 
   ylab(paste("pm exposure")) +
   xlab("Year") +
-  ylim(0, NA) +
   xlim(2000, 2016) +
   # scale_color_viridis(discrete = TRUE) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
@@ -70,7 +69,6 @@ g <- ggplot(dem_agr, aes(x = year, y = median)) +
   geom_line(aes(color = ethnicity), size = 1) + 
   ylab(paste("pm exposure")) +
   xlab("Year") +
-  ylim(0, NA) +
   xlim(2000, 2016) +
   # scale_color_viridis(discrete = TRUE) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
