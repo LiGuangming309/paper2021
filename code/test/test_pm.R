@@ -1,4 +1,4 @@
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes", "stats")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes", "stats","matrixStats")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -31,66 +31,50 @@ dem_agr <- lapply(2000:2016, function(year) {
   do.call(rbind, .) %>%
   as.data.frame
 
+
 dem_agr <- dem_agr %>%
   group_by(year,race, hispanic_origin,pm) %>%
   summarise(pop_size = sum(pop_size))
 
-toc()
-## --------- read demographic census data -----------
-tic(paste("aggregated census data by"))
-censData_agr <- lapply(2000:2016, function(year) {
-  censData_agr <- apply(states, 1, function(state) {
-    STUSPS <- state["STUSPS"]
-    name <- state["NAME"]
-    censData_agrDir<-file.path(censDir, year, paste0("agr_census_", toString(year), "_", STUSPS, ".csv"))
-    censData_agr <-fread(censData_agrDir)
-    return(censData_agr)
-  }) %>%
-    do.call(rbind, .) %>%
-    as.data.frame
-  
-  meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
-  censData_agr<- censData_agr %>%
-    left_join(meta, by = "variable")
-
-  return(censData_agr)
-}) %>%
-  do.call(rbind, .) %>%
-  as.data.frame()
-
-censData_agr <- censData_agr %>%
+dem_agr <- dem_agr %>%
   group_by(year, race, hispanic_origin) %>%
-  summarise(pop_size = sum(pop_size))
+  summarise(mean = weighted.mean(pm, pop_size),
+         median = matrixStats::weightedMedian(pm, pop_size)
+         )
 
+write.csv(dem_agr, "C:/Users/Daniel/Desktop/paper2021/data/test/pm.csv")
 toc()
-## --- calculate -----
-join <- inner_join(dem_agr, censData_agr, by = c("year", "race", "hispanic_origin"))
 
-join$prop <- join$pop_size.x/join$pop_size.y
-
-join <- join %>%
-  group_by(year, race, hispanic_origin) %>%
-  mutate(mean = weighted.mean(pm, prop),
-         median = weighted.median(pm, prop))
-  
-
-write.csv(join, "C:/Users/Daniel/Desktop/paper2021/data/test/pm.csv")
 ## --plot ---
-join$ethnicity <- paste0(join$race, ", ",join$hispanic_origin)
-join <- join %>% filter(ethnicity %in% c("White, Not Hispanic or Latino",
+dem_agr$ethnicity <- paste0(dem_agr$race, ", ",dem_agr$hispanic_origin)
+dem_agr <- dem_agr %>% filter(ethnicity %in% c("White, Not Hispanic or Latino",
                                          "White, Hispanic or Latino",
                                          "Black or African American, All Origins",
                                          "Asian or Pacific Islander, All Origins",
                                          "American Indian or Alaska Native, All Origins"))
   
-g <- ggplot(join, aes(x = year, y = mean)) +
+g <- ggplot(dem_agr, aes(x = year, y = mean)) +
   geom_line(aes(color = ethnicity), size = 1) + 
-  ylab(paste("mean pm exposure")) +
+  ylab(paste("pm exposure")) +
   xlab("Year") +
   ylim(0, NA) +
   xlim(2000, 2016) +
   # scale_color_viridis(discrete = TRUE) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  guides(col = guide_legend(nrow = 3, byrow = TRUE))
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))+
+  ggtitle("population-weighted mean")
 
-ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm.png", plot = g)
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm_mean.png", plot = g)
+
+g <- ggplot(dem_agr, aes(x = year, y = median)) +
+  geom_line(aes(color = ethnicity), size = 1) + 
+  ylab(paste("pm exposure")) +
+  xlab("Year") +
+  ylim(0, NA) +
+  xlim(2000, 2016) +
+  # scale_color_viridis(discrete = TRUE) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
+  ggtitle("population-weighted median")
+
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm_median.png", plot = g)
