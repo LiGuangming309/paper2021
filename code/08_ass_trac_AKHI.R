@@ -37,6 +37,7 @@ if (rlang::is_empty(args)) {
   openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
 }
 exp_tracDir <- file.path(exp_tracDir, toString(year))
+exposure_locationsDir <- file.path(tmpDir, "openaq_locations.csv")
 ## ---------------load data---------------
 # load states, so we can loop over them
 states <- file.path(tmpDir, "states.csv") %>%
@@ -45,40 +46,45 @@ states <- file.path(tmpDir, "states.csv") %>%
 
 source(openaq.script) 
 
-## -----------------assign closest measurement location---------------
-tic("Downloaded all locations in US and CA in OpenAq")
-urlAQ <- paste0(base_url(), "locations")
+## -----------------get locations location---------------
+if(!file.exists(exposure_locationsDir)){
+  tic("Downloaded all locations in US and CA in OpenAq")
+  urlAQ <- paste0(base_url(), "locations")
+  #get locations
+  argsList <- list(country = "CA", limit = 1000, page = 1)
+  exposure_locations_CA <- getResults(urlAQ, argsList) %>%
+    select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
+  
+  argsList <- list(country = "US", limit = 20000, page = 1)
+  exposure_locations_US <- getResults(urlAQ, argsList) %>%
+    select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
+  
+  exposure_locations <- rbind(exposure_locations_CA, exposure_locations_US) %>%
+    filter(!is.na(longitude) & !is.na(latitude))
+  
+  #check that location measures pm2.5
+  exposure_locations <- exposure_locations %>%
+    mutate(measures_pm25 = sapply(parameters, function(paramter) {
+      paramter %>%
+        select(parameter) %>%
+        unlist %>%
+        is.element("pm25", .)
+    })) %>%
+    filter(measures_pm25) %>%
+    mutate(measures_pm25 = NULL) %>%
+    as.data.frame
+  
+  write.csv(exposure_locations, exposure_locationsDir)
+  toc()
+}
 
-#get locations
-argsList <- list(country = "CA", limit = 1000, page = 1)
-exposure_locations_CA <- getResults(urlAQ, argsList) %>%
-  select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
-
-argsList <- list(country = "US", limit = 20000, page = 1)
-exposure_locations_US <- getResults(urlAQ, argsList) %>%
-  select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
-
-exposure_locations <- rbind(exposure_locations_CA, exposure_locations_US) %>%
-  filter(!is.na(longitude) & !is.na(latitude))
-
-#check that location measures pm2.5
-exposure_locations <- exposure_locations %>%
-  mutate(measures_pm25 = sapply(parameters, function(paramter) {
-    paramter %>%
-      select(parameter) %>%
-      unlist %>%
-      is.element("pm25", .)
-  })) %>%
-  filter(measures_pm25) %>%
-  mutate(measures_pm25 = NULL)
-
-
+exposure_locations <- read.csv(exposure_locationsDir)
 exposure_locations <- st_as_sf(exposure_locations,
   coords = c("longitude", "latitude"),
   crs = st_crs(geometry),
   agr = "constant"
 )
-toc()
+
 #####------------assign to tracts--------
 apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
@@ -119,8 +125,10 @@ apply(states, 1, function(state) {
   })
   
   ## ---------------calculate annual pm---------------
+  print("test1")
   urlAQ <- paste0(base_url(), "averages")
   tracts$pm <- apply(tracts, 1, function(tract) {
+    print("test2")
     testthat::expect_equal(1, length(tract[["location_ids"]]))
       
     argsList <- list(
