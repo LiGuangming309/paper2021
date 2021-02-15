@@ -14,7 +14,7 @@ rm(list = ls(all = TRUE))
 packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
   "MALDIquant", "plyr", "RCurl", "sf", "sp", "stringr", "testthat", "tictoc",
-  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "Rtools", "stats", "xlsx"
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang",  "stats", "xlsx" #"Rtools",
 )
 
 options(tigris_use_cache = FALSE)
@@ -129,8 +129,8 @@ plot.script <- file.path(code.dir, "13_plot.R")
 #args <- paste(tmp.dir, exp.rr.dir)
 #runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000,2010,2001:2009,2011:2016)
-#years <- c(2000)
+# years <- c(2000,2010,2001:2009,2011:2016)
+years <- c(2009)
 
 for (year in years) {
   uns.total.burden.dir <- "TODO delte"
@@ -158,9 +158,9 @@ for (year in years) {
   #  runscript(script = download.cens.script, args = args)
   }
 
-  #runscript(script = download.other.script, args = args)
+  runscript(script = download.other.script, args = args)
   # runscript(script=assignTract.script, args = args)
-   runscript(script = assignTractAKHI.script, args = args)
+  # runscript(script = assignTractAKHI.script, args = args)
   # runscript(script = cens_agr.script, args = args)
   # runscript(script = paf.script, args = args)
   # runscript(script = calc.attr.burd.script, args = args)

@@ -30,7 +30,7 @@ exp_tracDir <- args[7]
 openaq.script <- args[16] #TODO warum 16?
 
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2009
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
@@ -121,6 +121,8 @@ apply(states, 1, function(state) {
   ## ---------------calculate annual pm---------------
   urlAQ <- paste0(base_url(), "averages")
   tracts$pm <- apply(tracts, 1, function(tract) {
+    testthat::expect_equal(1, length(tract[["location_ids"]]))
+      
     argsList <- list(
       limit = 10000,
       page = 1,
@@ -133,10 +135,9 @@ apply(states, 1, function(state) {
     exposure <- getResults(urlAQ, argsList) %>%
       filter(parameter == "pm25") %>%
       arrange(year) 
-    
-    testthat::expect_equal(1, nrow(exposure))
-
+    #take earliest year
     pm <- exposure[[1,"average"]]
+
     return(pm)
   })
 
