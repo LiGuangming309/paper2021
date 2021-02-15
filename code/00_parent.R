@@ -98,9 +98,6 @@ dir.create(paf.dir, recursive = T, showWarnings = F)
 total.burden.dir <- file.path(data.dir, "08_total_burden")
 if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wonder need to be downloaded")
 
-uns.total.burden.dir <- file.path(data.dir, "09_unsup_total_burden")
-if (!file.exists(uns.total.burden.dir)) warning("The unsepressed total burden data from CDC wonder need to be downloaded")
-
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
@@ -162,7 +159,7 @@ for (year in years) {
 
   runscript(script = download.other.script, args = args)
   # runscript(script=assignTract.script, args = args)
-  runscript(script = assignTractAKHI.script, args = args)
+  #runscript(script = assignTractAKHI.script, args = args)
   # runscript(script = cens_agr.script, args = args)
   # runscript(script = paf.script, args = args)
   # runscript(script = calc.attr.burd.script, args = args)
