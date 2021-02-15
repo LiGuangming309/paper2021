@@ -27,7 +27,7 @@ year <- args[1]
 tmpDir <- args[3]
 tracDir <- args[5]
 exp_tracDir <- args[7]
-openaq.script <- args[16] #TODO warum 16?
+openaq.script <- args[16] # TODO warum 16?
 
 if (rlang::is_empty(args)) {
   year <- 2009
@@ -41,40 +41,41 @@ exposure_locationsDir <- file.path(tmpDir, "openaq_locations.csv")
 ## ---------------load data---------------
 # load states, so we can loop over them
 states <- file.path(tmpDir, "states.csv") %>%
-  read.csv %>%
+  read.csv() %>%
   filter(STUSPS %in% c("AK", "HI"))
 
-source(openaq.script) 
+source(openaq.script)
 
 ## -----------------get locations location---------------
-if(!file.exists(exposure_locationsDir)){
+if (!file.exists(exposure_locationsDir)) {
   tic("Downloaded all locations in US and CA in OpenAq")
   urlAQ <- paste0(base_url(), "locations")
-  #get locations
+  # get locations
   argsList <- list(country = "CA", limit = 1000, page = 1)
   exposure_locations_CA <- getResults(urlAQ, argsList) %>%
     select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
-  
+
   argsList <- list(country = "US", limit = 20000, page = 1)
   exposure_locations_US <- getResults(urlAQ, argsList) %>%
     select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
-  
+
   exposure_locations <- rbind(exposure_locations_CA, exposure_locations_US) %>%
     filter(!is.na(longitude) & !is.na(latitude))
-  
-  #check that location measures pm2.5
+
+  # check that location measures pm2.5
   exposure_locations <- exposure_locations %>%
     mutate(measures_pm25 = sapply(parameters, function(paramter) {
       paramter %>%
         select(parameter) %>%
-        unlist %>%
+        unlist() %>%
         is.element("pm25", .)
     })) %>%
     filter(measures_pm25) %>%
     mutate(measures_pm25 = NULL) %>%
-    as.data.frame
-  
-  write.csv(exposure_locations, exposure_locationsDir)
+    select(id, name, country, longitude, latitude) %>%
+    as.data.frame()
+
+  write.csv(exposure_locations, exposure_locationsDir, row.names = FALSE)
   toc()
 }
 
@@ -85,23 +86,21 @@ exposure_locations <- st_as_sf(exposure_locations,
   agr = "constant"
 )
 
-#####------------assign to tracts--------
+##### ------------assign measurement location to tracts--------
 apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
 
-  exp_tracDirX <- file.path(exp_tracDir, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
-
+  tracts_locationsDir <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv"))
   # quit execution, if already calculated
-  if (file.exists(exp_tracDirX)) {
+  if (file.exists(tracts_locationsDir)) {
     return()
   }
-  
-  tic(paste("assigned pm exposure to all tracts in", name, "in", toString(year)))
+
+  tic(paste("assigned measurement location to all tracts in", name, "in", toString(year)))
   # load shape files
-  tracts <- paste0("tracts_", toString(year), "_", STUSPS, ".rds") %>%
-    file.path(tracDir, toString(year), .) %>%
-    readRDS(.)
+  tracts <- file.path(tracDir, toString(year), paste0("tracts_", toString(year), "_", STUSPS, ".rds")) %>%
+    readRDS()
 
   tracts$location_ids <- apply(tracts, 1, function(tract) {
     geometry <- tract[["geometry"]]
@@ -120,40 +119,60 @@ apply(states, 1, function(state) {
         exposure_locations[., ] %>%
         pull(id)
     )
-    #TODO analyse distance
+    # TODO analyse distance
     return(locations_of_tract)
   })
-  
-  ## ---------------calculate annual pm---------------
-  print("test1")
+
+  tracts_locations <- tracts %>%
+    as.data.frame() %>%
+    select(GEO_ID, location_ids)
+
+  write.csv(tracts_locations, tracts_locationsDir)
+  toc()
+})
+
+##### ------------assign annual pm to tracts--------
+apply(states, 1, function(state) {
+  STUSPS <- state["STUSPS"]
+  name <- state["NAME"]
+
+  exp_tracDirX <- file.path(exp_tracDir, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
+
+  # quit execution, if already calculated
+  if (file.exists(exp_tracDirX)) {
+    return()
+  }
+
+  tic(paste("assigned PM exposure to all tracts in", name, "in", toString(year)))
+  tracts_locations <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% read.csv()
+
   urlAQ <- paste0(base_url(), "averages")
-  tracts$pm <- apply(tracts, 1, function(tract) {
-    print("test2")
+  tracts_locations$pm <- apply(tracts_locations, 1, function(tract) {
     testthat::expect_equal(1, length(tract[["location_ids"]]))
-      
+
     argsList <- list(
       limit = 10000,
       page = 1,
       parameter_id = 2,
       temporal = "year",
       spatial = "location",
-      location = tract[["location_ids"]] #TODO multiple locations
-    ) 
-    
+      location = tract[["location_ids"]] # TODO multiple locations
+    )
+
     exposure <- getResults(urlAQ, argsList) %>%
       filter(parameter == "pm25") %>%
-      arrange(year) 
-    #take earliest year
-    pm <- exposure[[1,"average"]]
+      arrange(year)
+    # take earliest year
+    pm <- exposure[[1, "average"]]
 
     return(pm)
   })
 
   ## -----save as csv--------
-  tracts <- tracts %>%
-    as.data.frame %>%
-    select(c("GEO_ID", "pm"))  
-  
-  write.csv(tracts, exp_tracDirX, row.names = FALSE)
+  tract_exposure <- tracts_locations %>%
+    as.data.frame() %>%
+    select(c("GEO_ID", "pm"))
+
+  write.csv(tract_exposure, exp_tracDirX, row.names = FALSE)
   toc()
 })
