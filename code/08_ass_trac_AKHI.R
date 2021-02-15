@@ -27,7 +27,7 @@ year <- args[1]
 tmpDir <- args[3]
 tracDir <- args[5]
 exp_tracDir <- args[7]
-openaq.script <- args[15]
+openaq.script <- args[16] #TODO warum 16?
 
 if (rlang::is_empty(args)) {
   year <- 2000
@@ -46,6 +46,7 @@ states <- file.path(tmpDir, "states.csv") %>%
 source(openaq.script) 
 
 ## -----------------assign closest measurement location---------------
+tic("Downloaded all locations in US and CA in OpenAq")
 urlAQ <- paste0(base_url(), "locations")
 
 #get locations
@@ -77,6 +78,7 @@ exposure_locations <- st_as_sf(exposure_locations,
   crs = st_crs(geometry),
   agr = "constant"
 )
+toc()
 #####------------assign to tracts--------
 apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
@@ -88,7 +90,8 @@ apply(states, 1, function(state) {
   if (file.exists(exp_tracDirX)) {
     return()
   }
-
+  
+  tic(paste("assigned pm exposure to all tracts in", name, "in", toString(year)))
   # load shape files
   tracts <- paste0("tracts_", toString(year), "_", STUSPS, ".rds") %>%
     file.path(tracDir, toString(year), .) %>%
@@ -131,7 +134,8 @@ apply(states, 1, function(state) {
       filter(parameter == "pm25") %>%
       arrange(year) 
     
-    if(nrow(exposure) == 0) browser()
+    testthat::expect_equal(1, nrow(exposure))
+
     pm <- exposure[[1,"average"]]
     return(pm)
   })
@@ -142,4 +146,5 @@ apply(states, 1, function(state) {
     select(c("GEO_ID", "pm"))  
   
   write.csv(tracts, exp_tracDirX, row.names = FALSE)
+  toc()
 })
