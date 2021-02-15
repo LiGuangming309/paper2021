@@ -261,11 +261,11 @@ if (!file.exists(attrBurdenDir)) {
     filter(Deaths != "Suppressed") %>%
     mutate(Deaths = as.numeric(Deaths))
 
-  #counter suppression bias
-  total_burden <- left_join(total_burden, ethn_suppr,
-    by = c("Race", "Hispanic.Origin", "label_cause")
-  ) %>%
-    mutate(Deaths = Deaths * factor)
+  #counter suppression bias #TODO delete
+  #total_burden <- left_join(total_burden, ethn_suppr,
+  #  by = c("Race", "Hispanic.Origin", "label_cause")
+  #) %>%
+  #  mutate(Deaths = Deaths * factor)
   
   # calculate YLL
   total_burden <- total_burden %>%

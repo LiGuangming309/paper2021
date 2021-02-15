@@ -22,9 +22,9 @@ for (p in packages) {
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
-tmpDir <- args[3]
-exp_rrDir <- args[6]
-#cens_agrDir <- args[9]
+tmpDir <- args[1]
+exp_rrDir <- args[2]
+
 # TODO delete
 if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"

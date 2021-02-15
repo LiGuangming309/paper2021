@@ -10,15 +10,12 @@
 # clear memory
 rm(list = ls(all = TRUE))
 
-#console
-#con <- file("console.log")
-#sink(con, append=TRUE)
-#sink(con, append=TRUE, type="message")
-
-#install packages if missing
-packages <-c("bit64","cdcfluview","censusapi","data.table","dplyr", "ggplot2", "magrittr", "matrixStats",
-             "MALDIquant","plyr","RCurl","sf","sp","stringr","testthat", "tictoc", 
-             "tidyverse","tigris","tmap","viridis","hrbrthemes","rlang","Rtools","stats", "xlsx")
+# install packages if missing
+packages <- c(
+  "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
+  "MALDIquant", "plyr", "RCurl", "sf", "sp", "stringr", "testthat", "tictoc",
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "Rtools", "stats", "xlsx"
+)
 
 options(tigris_use_cache = FALSE)
 for (p in packages) {
@@ -35,9 +32,9 @@ if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
   BiocManager::install("rhdf5")
 }
 
-#download DataCombine
+# download DataCombine
 if ("DataCombine" %in% rownames(installed.packages()) == FALSE) {
-  devtools::install_github('christophergandrud/DataCombine')
+  devtools::install_github("christophergandrud/DataCombine")
 }
 # runtime configuration
 # run cripts from command line depending on OS
@@ -51,7 +48,7 @@ if (Sys.info()["sysname"] == "Darwin") {
   runscript <- function(script, args = "") {
     system(paste(exec, "--vanilla", script, args))
   }
-}else {
+} else {
   print(paste("no handler for", Sys.info()["sysname"], "implemented yet."))
 }
 
@@ -117,76 +114,70 @@ plot.dir <- file.path(data.dir, "13_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
 # paths of scripts
-download.meta.script <- file.path(code.dir, "01_download_meta.R")
-download.cens.script <- file.path(code.dir, "02_download_cens.R")
-interp.script <- file.path(code.dir, "03_interp.R")
-download.other.script <- file.path(code.dir, "04_download_other.R")
-assignTract.script <- file.path(code.dir, "05_ass_trac.R")
-mrbrtRR.script <- file.path(code.dir, "06_mrbrt_rr.R")
-cens_agr.script <- file.path(code.dir, "07_aggregate.R")
-paf.script <- file.path(code.dir, "08_paf.R")
-suppr.anal.script <- file.path(code.dir, "09_suppr_anal.R")
-calc.attr.burd.script <- file.path(code.dir, "10_calc_attr_burd.R")
-summary.script <- file.path(code.dir, "11_summary.R")
-plot.script <- file.path(code.dir, "12_plot.R")
+mrbrtRR.script <- file.path(code.dir, "01_mrbrt_rr.R")
+download.meta.script <- file.path(code.dir, "02_download_meta.R")
+download.cens.script <- file.path(code.dir, "03_download_cens.R")
+interp.script <- file.path(code.dir, "04_interp.R")
+download.other.script <- file.path(code.dir, "05_download_other.R")
+assignTract.script <- file.path(code.dir, "06_ass_trac.R")
+openaq.script <- file.path(code.dir, "07_openaq.R")
+assignTractAKHI.script <- file.path(code.dir, "08_ass_trac_AKHI.R")
+cens_agr.script <- file.path(code.dir, "09_aggregate.R")
+paf.script <- file.path(code.dir, "10_paf.R")
+calc.attr.burd.script <- file.path(code.dir, "11_calc_attr_burd.R")
+summary.script <- file.path(code.dir, "12_summary.R")
+plot.script <- file.path(code.dir, "13_plot.R")
 
 #--------parameters of code-------------------
-#years <- c(2000,2010,2001:2009,2011:2016)
+#args <- paste(tmp.dir, exp.rr.dir)
+#runscript(script=mrbrtRR.script, args = args)
+
+# years <- c(2000,2010,2001:2009,2011:2016)
 years <- c(2000)
 
 for (year in years) {
-  args <- paste(
+  args <- paste( #
     year, # 1
     data.dir, # 2
     tmp.dir, # 3
     exp.dir, # 4
     trac.dir, # 5
     exp.rr.dir, # 6
-    trac.exp.dir, # 7 
+    trac.exp.dir, # 7
     dem.dir, # 8
-    dem.agr.dir, # 9 
+    dem.agr.dir, # 9
     agr_by, # 10
     paf.dir, # 11
-    total.burden.dir, #12
-    uns.total.burden.dir, #13
-    attr.burden.dir #14
-  ) 
-   runscript(script=download.meta.script, args = args)
-   if(year %in% 2001:2009){
-     #runscript(script=interp.script, args = args)
-   }else{
-    # runscript(script=download.cens.script, args = args)
-   }
-   sink(type="message", append = TRUE)
-   runscript(script=download.other.script, args = args)
-   sink(type="message", append = TRUE)
-   #runscript(script=assignTract.script, args = args)
-   sink(type="message", append = TRUE)
-   
-   #runscript(script = cens_agr.script, args = args)
-   sink(type="message", append = TRUE)
-   #runscript(script=mrbrtRR.script, args = args)
-   #runscript(script = paf.script, args = args)
-   sink(type="message", append = TRUE)
-   #runscript(script = suppr.anal.script, args = args)
-   #runscript(script = calc.attr.burd.script, args = args)
-   
-   #save console
-   #  Restore output to console
-   sink(type="message", append = TRUE)
-}    
+    total.burden.dir, # 12
+    uns.total.burden.dir, # 13
+    attr.burden.dir, # 14
+    openaq.script #15
+  )
+  runscript(script = download.meta.script, args = args)
+  if (year %in% 2001:2009) {
+    runscript(script = interp.script, args = args)
+  } else {
+    runscript(script = download.cens.script, args = args)
+  }
+
+  runscript(script = download.other.script, args = args)
+  # runscript(script=assignTract.script, args = args)
+  runscript(script = assignTractAKHI.script, args = args)
+  # runscript(script = cens_agr.script, args = args)
+  # runscript(script = paf.script, args = args)
+  # runscript(script = calc.attr.burd.script, args = args)
+}
 
 args <- paste(
-  tmp.dir, #1
+  tmp.dir, # 1
   agr_by, # 2
   dem.dir, # 3
-  attr.burden.dir, #4
-  all.burden.dir, #5
-  summary.dir, #6
-  plot.dir, #7
-  data.dir #8
-) 
+  attr.burden.dir, # 4
+  all.burden.dir, # 5
+  summary.dir, # 6
+  plot.dir, # 7
+  data.dir # 8
+)
 
-#runscript(script = summary.script, args = args)
-#runscript(script = plot.script, args = args)
-  
+# runscript(script = summary.script, args = args)
+# runscript(script = plot.script, args = args)

@@ -31,13 +31,7 @@ expDir <- args[4]
 tracDir <- args[5]
 exp_tracDir <- args[7]
 
-# TODO l?schen
-# year <- 2000
 
-# tmpDir <- "/Users/default/Desktop/own_code2/data/tmp"
-# exp_tracDir <- "/Users/default/Desktop/own_code2/data/03_exp_tracts"
-# censDir <- "/Users/default/Desktop/own_code2/data/06_demog"
-# cens_agrDir <- "/Users/default/Desktop/own_code2/data/07_dem.agr"
 # TODO l?schen
 if (rlang::is_empty(args)) {
   year <- 2000
@@ -65,7 +59,8 @@ load(filepathM)
 
 # load states, so we can loop over them
 states <- file.path(tmpDir, "states.csv") %>%
-                read.csv
+                read.csv %>%
+                filter(!(STUSPS %in% c("AK", "HI")))
 
 # create folder, where calculations will be stored
 exp_tracDir <- file.path(exp_tracDir, toString(year))

@@ -1,11 +1,17 @@
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes", "stats")
+urlAQ <- paste0(base_url(), "averages")
 
-for (p in packages) {
-  suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
-}
-options(dplyr.summarise.inform = FALSE)
-options(dplyr.join.inform = FALSE)
+argsList <- list(
+  limit = 10000,
+  page = 1,
+  #parameter_id = 2,
+  parameter_id = "50",
+  temporal = "year",
+  spatial = "location",
+  location = 8670 #TODO multiple locations
+) 
 
-wt <- c(5,  5,  4,  2)*15
-x <- c(3.7,3.3,3.5,2.8)
-xm <- weighted.mean(x, wt)
+exposure <- getResults(urlAQ, argsList)
+
+tracts2 <- paste0("tracts_", toString(year), "_", STUSPS, ".rds") %>%
+  file.path(tracDir, toString(year), .) %>%
+  readRDS(.)

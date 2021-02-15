@@ -55,8 +55,7 @@ if (!file.exists(filepathStates)) {
   states1 <- states() %>%
     as.data.frame() %>%
     select(c(REGION, DIVISION, STATEFP, STUSPS, NAME)) %>%
-    #filter(!(STUSPS %in% c("AK", "HI", "AS", "GU", "MP", "PR", "VI"))) %>%
-    filter(!(STUSPS %in% c("HI", "AS", "GU", "MP", "PR", "VI"))) %>%
+    filter(!(STUSPS %in% c("AS", "GU", "MP", "PR", "VI"))) %>%
     arrange(STATEFP) %>%
     # rename it can be merged later
     setnames(
