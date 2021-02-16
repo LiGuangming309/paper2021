@@ -1,5 +1,6 @@
 #' @importFrom stats setNames
 ######################################################################################
+library("RJSONIO")
 # base URL for all queries
 base_url <- function() {
   "https://api.openaq.org/v2/" #toDO

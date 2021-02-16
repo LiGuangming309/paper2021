@@ -25,6 +25,7 @@ for (p in packages) {
 args <- commandArgs(trailingOnly = T)
 year <- args[1]
 tmpDir <- args[3]
+expDir <- args[4]
 tracDir <- args[5]
 exp_tracDir <- args[7]
 openaq.script <- args[16] # TODO warum 16?
@@ -32,12 +33,18 @@ openaq.script <- args[16] # TODO warum 16?
 if (rlang::is_empty(args)) {
   year <- 2000
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
   openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
 }
+
 exp_tracDir <- file.path(exp_tracDir, toString(year))
 dir.create(exp_tracDir, recursive = T, showWarnings = F)
+
+expDir <- file.path(expDir, "openaq")
+dir.create(expDir, recursive = T, showWarnings = F)
+
 exposure_locationsDir <- file.path(tmpDir, "openaq_locations.csv")
 ## ---------------load data---------------
 # load states, so we can loop over them
@@ -52,15 +59,9 @@ if (!file.exists(exposure_locationsDir)) {
   tic("Downloaded all locations in US and CA in OpenAq")
   urlAQ <- paste0(base_url(), "locations")
   # get locations
-  argsList <- list(country = "CA", limit = 1000, page = 1)
-  exposure_locations_CA <- getResults(urlAQ, argsList) %>%
-    select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
-
-  argsList <- list(country = "US", limit = 20000, page = 1)
-  exposure_locations_US <- getResults(urlAQ, argsList) %>%
-    select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude)
-
-  exposure_locations <- rbind(exposure_locations_CA, exposure_locations_US) %>%
+  argsList <- list(country = "US", country = "CA", limit = 20000, page = 1)
+  exposure_locations <- getResults(urlAQ, argsList) %>%
+    select(id, name, country, parameters, firstUpdated, lastUpdated, city, latitude, longitude) %>%
     filter(!is.na(longitude) & !is.na(latitude))
 
   # check that location measures pm2.5
@@ -83,7 +84,7 @@ if (!file.exists(exposure_locationsDir)) {
 exposure_locations <- read.csv(exposure_locationsDir)
 exposure_locations <- st_as_sf(exposure_locations,
   coords = c("longitude", "latitude"),
-  crs = 4326, 
+  crs = 4326,
   agr = "constant"
 )
 
@@ -126,11 +127,11 @@ apply(states, 1, function(state) {
           crs = st_crs(exposure_locations),
           agr = "constant"
         )
-      
+
       # plot(geometry)
       # plot(tract_centroid, add = TRUE, pch = 3, col = 'red')
       exposure_locations$dist <- st_distance(x = exposure_locations, y = tract_centroid) %>%
-        set_units(1, "km") 
+        set_units(1, "km")
 
       closest_measurement <- exposure_locations[which.min(exposure_locations$dist), ] %>% as.list()
 
@@ -151,7 +152,59 @@ apply(states, 1, function(state) {
   fwrite(tracts_locations, tracts_locationsDir, row.names = FALSE)
   toc()
 })
+##### ------------get pm data--------
+apply(states, 1, function(state) {
+  STUSPS <- state["STUSPS"]
+  name <- state["NAME"]
 
+  expDirX <- file.path(expDir, paste0("exp_", toString(year), "_", STUSPS, ".csv"))
+
+  # quit execution, if already calculated
+  if (file.exists(expDirX)) {
+    return()
+  }
+
+  tic(paste("downloaded PM exposure in", name, "in", toString(year)))
+  tracts_locations <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% fread()
+
+  location_ids <- sapply(tracts_locations$location_ids, function(id) {
+    id %>%
+      toString() %>%
+      strsplit(., "|", fixed = TRUE) %>%
+      unlist()
+  }) %>%
+    unlist() %>%
+    unique() %>%
+    as.list()
+
+  names(location_ids) <- rep_along(location_ids, "location")
+
+  argsList <- list(
+    limit = 10000,
+    page = 1,
+    parameter_id = 2,
+    temporal = "year",
+    spatial = "location"
+  )
+  argsList <- c(argsList, location_ids)
+
+  urlAQ <- paste0(base_url(), "averages")
+  exposure <- getResults(urlAQ, argsList) %>%
+    filter(parameter == "pm25") %>%
+    group_by(id) %>%
+    arrange(year) %>%
+    summarise(
+      id = first(id),
+      name = first(name),
+      year = first(year),
+      average = first(average),
+      subtitle = first(subtitle),
+      measurement_count = first(measurement_count)
+    )
+
+  write.csv(exposure, expDirX, row.names = FALSE)
+  toc()
+})
 ##### ------------assign annual pm to tracts--------
 apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
@@ -166,32 +219,16 @@ apply(states, 1, function(state) {
 
   tic(paste("assigned PM exposure to all tracts in", name, "in", toString(year)))
   tracts_locations <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% fread()
+  exposure <- file.path(expDir, paste0("exp_", toString(year), "_", STUSPS, ".csv")) %>% fread()
 
-  urlAQ <- paste0(base_url(), "averages")
   tracts_locations$pm <- apply(tracts_locations, 1, function(tract) {
     location_ids <- tract[["location_ids"]] %>%
-      toString %>%
+      toString() %>%
       strsplit(., "|", fixed = TRUE) %>%
       unlist()
 
-    pm <- sapply(location_ids, function(location_id) {
-      argsList <- list(
-        limit = 10000,
-        page = 1,
-        parameter_id = 2,
-        temporal = "year",
-        spatial = "location",
-        location = location_id
-      )
-
-      exposure <- getResults(urlAQ, argsList)
-
-      exposure <- exposure %>%
-        filter(parameter == "pm25") %>%
-        arrange(year)
-      # take earliest year
-      pm <- exposure[[1, "average"]]
-    })
+    exposure_sub <- exposure %>% filter(name %in% location_ids)
+    pm <- mean(exposure_sub$average)
 
     return(mean(pm))
   })

@@ -1,6 +1,10 @@
-library(dplyr)
-#library(raster)
-library(conflicted)
+test <- exposure
 
-d <- data.frame(a = 1:10, b = 1:10)
-select(d, a)
+test2 <- test %>%
+  arrange(year) %>%
+  summarise(id = first(id),
+            name = first(name),
+            year = first(year),
+            average = first(average),
+            subtitle = first(subtitle),
+            measurement_count = first(measurement_count))
