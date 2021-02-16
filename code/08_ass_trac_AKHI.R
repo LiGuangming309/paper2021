@@ -37,6 +37,7 @@ if (rlang::is_empty(args)) {
   openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
 }
 exp_tracDir <- file.path(exp_tracDir, toString(year))
+dir.create(exp_tracDir, recursive = T, showWarnings = F)
 exposure_locationsDir <- file.path(tmpDir, "openaq_locations.csv")
 ## ---------------load data---------------
 # load states, so we can loop over them
