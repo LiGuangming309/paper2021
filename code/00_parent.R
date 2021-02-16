@@ -13,8 +13,8 @@ rm(list = ls(all = TRUE))
 # install packages if missing
 packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
-  "MALDIquant", "plyr", "RJSONIO","RCurl", "sf", "sp", "stringr", "testthat", "tictoc",
-  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang",  "stats", "xlsx" #"Rtools",
+  "MALDIquant", "plyr", "RCurl", "sf", "sp", "stringr", "testthat", "tictoc",
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang",  "stats", "xlsx"
 )
 
 options(tigris_use_cache = FALSE)
