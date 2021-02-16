@@ -1,4 +1,3 @@
-
 #-------------------Header------------------------------------------------
 # Author: Daniel Fridljand
 # Date: 15/02/2021
@@ -39,11 +38,14 @@ if (rlang::is_empty(args)) {
   openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
 }
 
-exp_tracDir <- file.path(exp_tracDir, toString(year))
-dir.create(exp_tracDir, recursive = T, showWarnings = F)
-
 expDir <- file.path(expDir, "openaq")
 dir.create(expDir, recursive = T, showWarnings = F)
+
+tracts_locationsDir <- file.path(exp_tracDir, "openaq_tmp")
+dir.create(tracts_locationsDir, recursive = T, showWarnings = F)
+
+exp_tracDir <- file.path(exp_tracDir, toString(year))
+dir.create(exp_tracDir, recursive = T, showWarnings = F)
 
 exposure_locationsDir <- file.path(tmpDir, "openaq_locations.csv")
 ## ---------------load data---------------
@@ -93,9 +95,9 @@ apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
 
-  tracts_locationsDir <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv"))
+  tracts_locationsDirX <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) 
   # quit execution, if already calculated
-  if (file.exists(tracts_locationsDir)) {
+  if (file.exists(tracts_locationsDirX)) {
     return()
   }
 
@@ -149,7 +151,7 @@ apply(states, 1, function(state) {
     select(GEO_ID, location_ids, distance)
 
   # save as csv
-  fwrite(tracts_locations, tracts_locationsDir, row.names = FALSE)
+  fwrite(tracts_locations, tracts_locationsDirX, row.names = FALSE)
   toc()
 })
 ##### ------------get pm data--------
@@ -228,11 +230,14 @@ apply(states, 1, function(state) {
       unlist()
 
     exposure_sub <- exposure %>% filter(name %in% location_ids)
-    pm <- mean(exposure_sub$average)
+    pm <- mean(exposure_sub$average, na.rm = TRUE)
 
-    return(mean(pm))
+    return(pm)
   })
-
+  test_that("08_ass_trac_AKHI.R basic check", {
+    expect_false(any(is.na(tracts_locations)))
+    })
+  
   ## -----save as csv--------
   tract_exposure <- tracts_locations %>%
     as.data.frame() %>%
