@@ -1,17 +1,6 @@
-urlAQ <- paste0(base_url(), "averages")
+library(dplyr)
+#library(raster)
+library(conflicted)
 
-argsList <- list(
-  limit = 10000,
-  page = 1,
-  #parameter_id = 2,
-  parameter_id = "50",
-  temporal = "year",
-  spatial = "location",
-  location = 8670 #TODO multiple locations
-) 
-
-exposure <- getResults(urlAQ, argsList)
-
-tracts2 <- paste0("tracts_", toString(year), "_", STUSPS, ".rds") %>%
-  file.path(tracDir, toString(year), .) %>%
-  readRDS(.)
+d <- data.frame(a = 1:10, b = 1:10)
+select(d, a)

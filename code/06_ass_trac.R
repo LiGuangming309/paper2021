@@ -87,10 +87,8 @@ apply(states, 1, function(state) {
 
   tic(paste("Assigned pm exposure to each tract for year", toString(year), "in", name))
   # estimate pm exposure for each tract
-  #tracts$pm <- sapply(tracts$geometry, function(tract) {
-  tracts$pm <- apply(tracts,1, function(tract) {
+  tracts$pm <- sapply(tracts$geometry, function(geometry) {
     # get enclosing box, make sure in range of exposure data
-    geometry <-tract[["geometry"]]
     bbox <- st_bbox(geometry)
     long_min <- bbox$xmin %>%
       max(., long_vec[1])
@@ -100,7 +98,6 @@ apply(states, 1, function(state) {
       min(., long_vec[length(long_vec)])
     lat_max <- bbox$ymax %>%
       min(., lat_vec[length(lat_vec)])
-    
     
     # estimate corresponding grid in pm exposure data
     long_row_min <- -1 + ((long_min - long_vec[1]) / m_max_long) %>%
@@ -124,7 +121,7 @@ apply(states, 1, function(state) {
     ) %>%
       st_as_sf(.,
         coords = c("lng", "lat"),
-        crs = st_crs(geometry),
+        crs = 4326,
         agr = "constant"
       )
 
@@ -133,24 +130,37 @@ apply(states, 1, function(state) {
 
     # if there are points inside of the tract, the tract is assigned the mean of pm of those points
     # if there are none, the pm of the closest point
-    pm <- ifelse(nrow(points_in_tract) > 0,
-      points_in_tract$pm %>%
-        mean(., na.rm = TRUE),
-      geometry %>%
-        suppressWarnings(st_centroid) %>%
-        st_distance(x = points_subset, y = .) %>%
+    if (nrow(points_in_tract) > 0) {
+      pm <- points_in_tract$pm %>%
+        mean(., na.rm = TRUE)
+    } else {
+      tract_centroid <- geometry %>% st_centroid()
+      tract_centroid <- data.frame(
+        longitude = tract_centroid[1],
+        latitude = tract_centroid[2]
+      ) %>%
+        st_as_sf(
+          coords = c("longitude", "latitude"),
+          crs = st_crs(points_subset),
+          agr = "constant"
+        )
+      
+      pm <- st_distance(x = points_subset, y = tract_centroid) %>%
         which.min() %>%
         points_subset[., ] %>%
         pull(pm)
-    ) %>%
-      round() %>%
+    }
+    
+    pm <- pm %>%
+      round %>%
       prod(0.01)
+    return(pm)
   })
   toc()
 
   ## --------------plot-----------
   # save everything as interactive map via tmap
-  if (TRUE) {
+  if (FALSE) {
     tm <- tm_shape(tracts) +
       tm_polygons("pm", alpha = 0.6)
     #+tm_format("NLD",title=paste("Particulate Matter Exposure for",year,"in",name)) #TODO
@@ -165,7 +175,7 @@ apply(states, 1, function(state) {
   
   tracts <- tracts %>%
     as.data.frame() %>%
-    select(c("GEO_ID", "pm"))  
+    dplyr::select(c("GEO_ID", "pm"))  
 
   write.csv(tracts, exp_tracDirX, row.names = FALSE)
 })
