@@ -129,14 +129,13 @@ plot.script <- file.path(code.dir, "13_plot.R")
 #args <- paste(tmp.dir, exp.rr.dir)
 #runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000,2010,2001:2009,2011:2016)
-#years <- c(2000)
+# years <- c(2000,2010,2001:2009,2011:2016)
+years <- c(2012:2016)
 start.time <- Sys.time()
-end.time <- start.time +3600
+end.time <- start.time +7200
 
 while(Sys.time() <= end.time){
   
-
 for (year in years) {
   uns.total.burden.dir <- "TODO delte"
   args <- paste( #

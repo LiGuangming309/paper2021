@@ -248,10 +248,10 @@ getResults_bypage <- function(urlAQ, argsList){
   res <- client$retry(
     verb = "get",
     query = argsList,
-    pause_base = 1,
-    pause_cap = 60,
-    pause_min = 1,
-    times = 5,
+    pause_base = 5,
+    pause_cap = 30,
+    pause_min = 2,
+    times = 5000,
     terminate_on = NULL,
     retry_only_on = NULL,
     onwait = onwait
