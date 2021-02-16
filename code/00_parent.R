@@ -131,6 +131,11 @@ plot.script <- file.path(code.dir, "13_plot.R")
 
  years <- c(2000,2010,2001:2009,2011:2016)
 #years <- c(2000)
+start.time <- Sys.time()
+end.time <- start.time +3600
+
+while(Sys.time() <= end.time){
+  
 
 for (year in years) {
   uns.total.burden.dir <- "TODO delte"
@@ -165,7 +170,8 @@ for (year in years) {
   # runscript(script = paf.script, args = args)
   # runscript(script = calc.attr.burd.script, args = args)
 }
-
+}
+  
 args <- paste(
   tmp.dir, # 1
   agr_by, # 2
