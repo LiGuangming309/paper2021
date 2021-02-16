@@ -169,6 +169,7 @@ apply(states, 1, function(state) {
   urlAQ <- paste0(base_url(), "averages")
   tracts_locations$pm <- apply(tracts_locations, 1, function(tract) {
     location_ids <- tract[["location_ids"]] %>%
+      toString %>%
       strsplit(., "|", fixed = TRUE) %>%
       unlist()
 
