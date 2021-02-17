@@ -30,7 +30,7 @@ exp_tracDir <- args[7]
 openaq.script <- args[16] # TODO warum 16?
 
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2009
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
@@ -230,7 +230,7 @@ apply(states, 1, function(state) {
       unlist()
 
     exposure_sub <- exposure %>% filter(name %in% location_ids)
-    pm <- mean(exposure_sub$average, na.rm = TRUE)
+    pm <- mean(exposure_sub$average, na.rm = TRUE) %>% round(digits = 2)
 
     return(pm)
   })
