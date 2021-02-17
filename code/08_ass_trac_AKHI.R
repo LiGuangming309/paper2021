@@ -11,7 +11,7 @@ rm(list = ls(all = TRUE))
 
 # load packages, install if missing
 
-packages <- c("data.table", "plyr", "magrittr", "tigris", "sf", "tidyverse", "sp", "tmap", "tictoc", "units")
+packages <- c("data.table", "plyr", "magrittr", "testthat", "tigris", "sf", "tidyverse", "sp", "tmap", "tictoc", "units")
 
 options(tidyverse.quiet = TRUE)
 options(tigris.quiet = TRUE)
@@ -167,7 +167,7 @@ apply(states, 1, function(state) {
   }
 
   tic(paste("downloaded PM exposure in", name, "in", toString(year)))
-  tracts_locations <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% fread()
+  tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% fread()
 
   location_ids <- sapply(tracts_locations$location_ids, function(id) {
     id %>%
@@ -220,7 +220,7 @@ apply(states, 1, function(state) {
   }
 
   tic(paste("assigned PM exposure to all tracts in", name, "in", toString(year)))
-  tracts_locations <- file.path(tmpDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% fread()
+  tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% fread() #TODO
   exposure <- file.path(expDir, paste0("exp_", toString(year), "_", STUSPS, ".csv")) %>% fread()
 
   tracts_locations$pm <- apply(tracts_locations, 1, function(tract) {
