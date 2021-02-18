@@ -129,27 +129,27 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       Hispanic.Origin != "Not Stated"
     )
   
-  ###---- analyse suppression ------
- # suppressedRows <- sum(all_burden$Deaths == "Suppressed")
-#  suppressedRowsPerc <- (100*suppressedRows/nrow(all_burden)) %>% round
-#  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in all burden data"))
-#  all_burden <- all_burden %>% filter(Deaths != "Suppressed")
+  ###---- analyse suppression ------ #TODO delete
+  suppressedRows <- sum(all_burden$Deaths == "Suppressed")
+  suppressedRowsPerc <- (100*suppressedRows/nrow(all_burden)) %>% round
+  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in all burden data"))
+  all_burden <- all_burden %>% filter(Deaths != "Suppressed")
   
   #calculate YLL
-#  all_burden<-all_burden%>%
-#    mutate(
-#      Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-#      Deaths = as.numeric(Deaths),
-#      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
-#      YLL = Deaths * Life.Expectancy
-#    )%>%
-#    rename(allDeaths = Deaths,
-#           allYLL = YLL)
+  all_burden<-all_burden%>%
+    mutate(
+      Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
+      Deaths = as.numeric(Deaths),
+      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
+      YLL = Deaths * Life.Expectancy
+    )%>%
+    rename(allDeaths = Deaths,
+           allYLL = YLL)
   
-#  all_burden <- all_burden %>%
-#    group_by_at(vars(one_of(inverse_group_variables))) %>%
-#    summarise(allDeaths = sum(allDeaths),
-#              allYLL=sum(allYLL))
+  all_burden <- all_burden %>%
+    group_by_at(vars(one_of(inverse_group_variables))) %>%
+    summarise(allDeaths = sum(allDeaths),
+              allYLL=sum(allYLL))
   
   ## --------- read demographic census data -----------
   tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))

@@ -44,11 +44,12 @@ apply(states, 1, function(state) {
     exposure <- file.path(expDir, "openaq",paste0("exp_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
   }) %>% do.call(rbind,.)
   
-  exposure <- exposure %>%
+  occurance <- exposure %>%
     group_by(year) %>%
     summarise(n = n()) %>%
     as.data.frame
   
+  write.csv(dem_agr, paste0("C:/Users/Daniel/Desktop/paper2021/data/test/year_occur_openaq",occurance,".csv"))
   print(paste("exposure-years occurance in", name))
-  print(exposure)
+  print(occurance)
 })
