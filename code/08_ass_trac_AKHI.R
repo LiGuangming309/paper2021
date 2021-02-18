@@ -27,7 +27,7 @@ tmpDir <- args[3]
 expDir <- args[4]
 tracDir <- args[5]
 exp_tracDir <- args[7]
-openaq.script <- args[16] # TODO warum 16?
+openaq.script <- args[14] # TODO warum 16?
 
 if (rlang::is_empty(args)) {
   year <- 2009

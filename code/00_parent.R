@@ -147,9 +147,9 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, # 12
-    uns.total.burden.dir, # 13
-    attr.burden.dir, # 14
-    openaq.script #15
+    #uns.total.burden.dir, # 13 #TODO
+    attr.burden.dir, # 13
+    openaq.script #14
   )
   #runscript(script = download.meta.script, args = args)
   if (year %in% 2001:2009) {
@@ -160,7 +160,7 @@ for (year in years) {
 
   #runscript(script = download.other.script, args = args)
   # runscript(script=assignTract.script, args = args)
-   runscript(script = assignTractAKHI.script, args = args)
+  # runscript(script = assignTractAKHI.script, args = args)
   # runscript(script = cens_agr.script, args = args)
   # runscript(script = paf.script, args = args)
   # runscript(script = calc.attr.burd.script, args = args)
@@ -178,5 +178,5 @@ args <- paste(
   data.dir # 8
 )
 
-# runscript(script = summary.script, args = args)
+ runscript(script = summary.script, args = args)
 # runscript(script = plot.script, args = args) 

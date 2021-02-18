@@ -27,7 +27,7 @@ tmpDir <- args[3]
 agr_by <- args[10]
 pafDir <- args[11]
 totalBurdenDir <- args[12]
-attrBurdenDir <- args[14]
+attrBurdenDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -50,9 +50,9 @@ attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), "
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
-ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>%
-  read.csv() %>%
-  select(Race, Hispanic.Origin, label_cause, factor)
+#ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>% #TODO delete
+#  read.csv() %>%
+#  select(Race, Hispanic.Origin, label_cause, factor)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
@@ -334,5 +334,6 @@ if (!file.exists(attrBurdenDir)) {
     expect_equal(comp3$Deaths.x, comp3$Deaths.x)
     expect_equal(comp3$YLL.x, comp3$YLL.x)
   })
+
   fwrite(attrBurden, attrBurdenDir)
 }
