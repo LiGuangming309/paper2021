@@ -8,13 +8,13 @@ for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE))
 }
 
-if (rlang::is_empty(args)) {
+#if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
   openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
-}
+#}
 
 tracts_locationsDir <- file.path(exp_tracDir, "openaq_tmp")
 
@@ -34,6 +34,21 @@ apply(states, 1, function(state) {
   
   tracts_locations <- tracts_locations %>% filter(distance > 0)
   
-  median_distance <-median(tracts_locations$distance) 
+  median_distance <-median(tracts_locations$distance) %>% round(digits = 2)
   print(paste("median distance in",name,":",median_distance,"km"))
+  
+  mean_distance <-mean(tracts_locations$distance) %>% round(digits = 2)
+  print(paste("mean distance in",name,":",median_distance,"km"))
+  
+  exposure<-lapply(years, function(year){
+    exposure <- file.path(expDir, "openaq",paste0("exp_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
+  }) %>% do.call(rbind,.)
+  
+  exposure <- exposure %>%
+    group_by(year) %>%
+    summarise(n = n()) %>%
+    as.data.frame
+  
+  print(paste("exposure-years occurance in", name))
+  print(exposure)
 })
