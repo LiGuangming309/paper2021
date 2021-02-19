@@ -49,7 +49,7 @@ apply(states, 1, function(state) {
     summarise(n = n()) %>%
     as.data.frame
   
-  write.csv(dem_agr, paste0("C:/Users/Daniel/Desktop/paper2021/data/test/year_occur_openaq",occurance,".csv"))
+  write.csv(occurance, paste0("/Users/default/Desktop/paper2021/data/test/year_occur_openaq",STUSPS,".csv"))
   print(paste("exposure-years occurance in", name))
   print(occurance)
 })

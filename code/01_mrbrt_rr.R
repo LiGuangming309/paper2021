@@ -46,7 +46,7 @@ if (file.exists(causes_agesDir)) {
   causes_all_ages <- c("resp_copd", "lri", "neo_lung", "t2_dm")
   causes_age_specific <- c("cvd_ihd", "cvd_stroke")
 
-  age_ids <- seq.int(25, 95, 5) # TODO assuming folks do not get older
+  age_ids <- seq.int(25, 95, 5) 
 
   causes_ages <- data.frame(
     label_cause = rep(causes_age_specific, each = length(age_ids)),
@@ -62,8 +62,7 @@ if (file.exists(causes_agesDir)) {
   write.csv(causes_ages, causes_agesDir, row.names = FALSE)
 }
 
-
-tmrel <- mean(2.4, 5.9)
+tmrels <- runif(1000, min = 2.4, max = 5.9)
 ## ----------calculation---------
 
 tic("Calculated RR from MR-BRT for all causes")
@@ -81,31 +80,34 @@ apply(causes_ages, 1, function(cause_age) {
     read.csv() %>%
     filter(exposure_spline <= 50)
 
-  #if ("rr" %in% colnames(exp_rr)) {
+  # if ("rr" %in% colnames(exp_rr)) {
   #  return()
-  #} # TODO entkommentieren
+  # } 
 
   getMRBRT <- function(pm) {
     match.closest(pm, exp_rr$exposure_spline) %>%
       exp_rr[., "mean"] %>%
+      as.numeric %>%
       return(.)
   }
 
-  tmrelMRBR <- getMRBRT(tmrel)
+  getRR_tmrel <- function(tmrel, pm) {
+    rr <- ifelse(pm <= tmrel,
+      1,
+      getMRBRT(pm) / getMRBRT(tmrel)
+    ) 
+    return(rr)
+  }
 
   getRR <- function(pm) {
-    ifelse(pm <= tmrel,
-      1,
-      getMRBRT(pm) / tmrelMRBR
-    ) %>%
-      as.numeric() %>%
-      return(.)
+     rrs <- sapply(tmrels, getRR_tmrel, pm = pm)
+    return(mean(rrs))
   }
 
   exp_rr <- exp_rr %>% mutate(
     lower = NULL,
     upper = NULL,
-    rr = getRR(exposure_spline)
+    rr = sapply(exposure_spline, getRR)
   )
 
   write.csv(exp_rr, exp_rrDirX, row.names = FALSE)
@@ -113,13 +115,12 @@ apply(causes_ages, 1, function(cause_age) {
   plotDirX <- paste0(label_cause, "_", age_group_id, ".png") %>%
     file.path(plotsDir, .)
 
-  if (!file.exists(plotDirX)) {
+  if (TRUE || !file.exists(plotDirX)) {
     ggplot(data = exp_rr, aes(x = exposure_spline, y = rr)) +
       geom_point() +
       xlab("Exposure") +
       ylab("RR") +
-      ggtitle(paste(label_cause, age_group_id, "for TMREL =",tmrel))
-
+     ggtitle(paste(label_cause, age_group_id))
 
     ggsave(plotDirX)
   }
