@@ -75,7 +75,7 @@ attrBurden_gr1[attrBurden_gr1 == "crudeAllYLL"] <- "YLL from all causes"
 # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
 g <- ggplot(attrBurden_gr1, aes(x = Year, y = value)) +
   geom_line(aes(color = Ethnicity, linetype = measure), size = 1) +
-  # scale_color_manual(values = c("green","yellow", "steelblue"))+
+  #scale_color_manual(values = c("green","orange", "steelblue", "purple"))+
   #scale_linetype_manual(values = c("dashed", "solid")) +
   ylab(paste("YLL per 100.000")) +
   xlab("Year") +
