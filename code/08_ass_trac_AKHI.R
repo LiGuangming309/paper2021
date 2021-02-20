@@ -27,7 +27,6 @@ tmpDir <- args[3]
 expDir <- args[4]
 tracDir <- args[5]
 exp_tracDir <- args[7]
-#openaq.script <- args[14] # TODO warum 16?
 
 if (rlang::is_empty(args)) {
   year <- 2000
@@ -35,7 +34,7 @@ if (rlang::is_empty(args)) {
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  #openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
+  # openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
 }
 
 expDir <- file.path(expDir, "epa")
@@ -60,31 +59,36 @@ apply(states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
 
-  tracts_locationsDirX <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) 
+  tracts_locationsDirX <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv"))
   # quit execution, if already calculated
   if (file.exists(tracts_locationsDirX)) {
     return()
   }
 
   tic(paste("assigned measurement location to all tracts in", name, "in", toString(year)))
-  #read exposure 
-  exposure_locations <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year),".csv")) %>%
-    read.csv %>%
-    filter(Parameter.Name == "PM2.5 - Local Conditions", 
-           Pollutant.Standard == "PM25 Annual 2012",
-           Units.of.Measure == "Micrograms/cubic meter (LC)",
-           Event.Type %in% c("No Events","Events Excluded")#, 
-           #POC == 1 #TODO
-           ) 
-  
-  exposure_locations <- st_as_sf(exposure_locations,
-                                 coords = c("Longitude", "Latitude"),
-                                 crs = 4326,
-                                 agr = "constant"
-  )
+  # read exposure
+  exposure_locations <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year), ".csv")) %>%
+    read.csv() %>%
+    filter(
+      Parameter.Name == "PM2.5 - Local Conditions",
+      Pollutant.Standard == "PM25 Annual 2012",
+      Units.of.Measure == "Micrograms/cubic meter (LC)",
+      Event.Type %in% c("No Events", "Events Excluded")
+    )
+
+
   # load shape files
   tracts <- file.path(tracDir, toString(year), paste0("tracts_", toString(year), "_", STUSPS, ".rds")) %>%
     readRDS()
+
+  exposure_locations <- st_as_sf(exposure_locations,
+    coords = c("Longitude", "Latitude"),
+    crs = ifelse(is.na(st_crs(tracts)),
+      4326,
+      st_crs(tracts)
+    ),
+    agr = "constant"
+  )
 
   exposure_locations2 <- lapply(tracts$geometry, function(geometry) {
     # subset points, which are inside of the tract
@@ -118,8 +122,8 @@ apply(states, 1, function(state) {
       exposure_locations$dist <- st_distance(x = exposure_locations, y = tract_centroid) %>%
         set_units(1, "km")
 
-      closest_measurement <- exposure_locations[which.min(exposure_locations$dist), ] #%>% as.list() 
-      
+      closest_measurement <- exposure_locations[which.min(exposure_locations$dist), ] # %>% as.list()
+
       df <- data.frame(
         Location.State.Code = closest_measurement$State.Code,
         Location.County.Code = closest_measurement$County.Code,
@@ -134,12 +138,14 @@ apply(states, 1, function(state) {
 
   tracts_locations <- cbind(tracts, exposure_locations2) %>%
     as.data.frame() %>%
-    select(GEO_ID, 
-           Location.State.Code,
-           Location.County.Code,
-           Location.Site.Num,
-           Location.POC,
-           distance)
+    select(
+      GEO_ID,
+      Location.State.Code,
+      Location.County.Code,
+      Location.Site.Num,
+      Location.POC,
+      distance
+    )
 
   # save as csv
   fwrite(tracts_locations, tracts_locationsDirX, row.names = FALSE)
@@ -153,30 +159,32 @@ apply(states, 1, function(state) {
   exp_tracDirX <- file.path(exp_tracDir, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
 
   # quit execution, if already calculated #TODO
-  #if (file.exists(exp_tracDirX)) {
+  # if (file.exists(exp_tracDirX)) {
   #  return()
-  #}
+  # }
 
   tic(paste("assigned PM exposure to all tracts in", name, "in", toString(year)))
-  tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% 
-  read.csv()  %>%
-    mutate(Location.State.Code = Location.State.Code %>% as.character %>% str_pad(width = 2, pad = "0")
-           )
-  
-  exposure <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year),".csv")) %>% 
-    read.csv %>%
-    filter(Parameter.Name == "PM2.5 - Local Conditions",
-           Pollutant.Standard == "PM25 Annual 2012",
-           Units.of.Measure == "Micrograms/cubic meter (LC)",
-           Event.Type %in% c("No Events","Events Excluded")
-           )
-  
-  tract_exposure <- left_join(tracts_locations, exposure, 
-                                by = c("Location.State.Code"="State.Code",
-                                       "Location.County.Code"= "County.Code",
-                                       "Location.Site.Num" = "Site.Num",
-                                       "Location.POC" = "POC")
-                                ) 
+  tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>%
+    read.csv() %>%
+    mutate(Location.State.Code = Location.State.Code %>% as.character() %>% str_pad(width = 2, pad = "0"))
+
+  exposure <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year), ".csv")) %>%
+    read.csv() %>%
+    filter(
+      Parameter.Name == "PM2.5 - Local Conditions",
+      Pollutant.Standard == "PM25 Annual 2012",
+      Units.of.Measure == "Micrograms/cubic meter (LC)",
+      Event.Type %in% c("No Events", "Events Excluded")
+    )
+
+  tract_exposure <- left_join(tracts_locations, exposure,
+    by = c(
+      "Location.State.Code" = "State.Code",
+      "Location.County.Code" = "County.Code",
+      "Location.Site.Num" = "Site.Num",
+      "Location.POC" = "POC"
+    )
+  )
 
   tract_exposure <- tract_exposure %>%
     group_by(GEO_ID) %>%
@@ -184,8 +192,8 @@ apply(states, 1, function(state) {
 
   test_that("08_ass_trac_AKHI.R basic check2", {
     expect_false(any(is.na(tract_exposure)))
-    })
-  
+  })
+
   ## -----save as csv--------
   write.csv(tract_exposure, exp_tracDirX, row.names = FALSE)
   toc()
