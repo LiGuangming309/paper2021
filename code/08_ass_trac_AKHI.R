@@ -159,9 +159,9 @@ apply(states, 1, function(state) {
   exp_tracDirX <- file.path(exp_tracDir, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
 
   # quit execution, if already calculated #TODO
-  # if (file.exists(exp_tracDirX)) {
-  #  return()
-  # }
+   if (file.exists(exp_tracDirX)) {
+    return()
+   }
 
   tic(paste("assigned PM exposure to all tracts in", name, "in", toString(year)))
   tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>%

@@ -126,8 +126,8 @@ summary.script <- file.path(code.dir, "12_summary.R")
 plot.script <- file.path(code.dir, "13_plot.R")
 
 #--------parameters of code-------------------
-#args <- paste(tmp.dir, exp.rr.dir)
-#runscript(script=mrbrtRR.script, args = args)
+args <- paste(tmp.dir, exp.rr.dir)
+runscript(script=mrbrtRR.script, args = args)
 
  years <- c(2000,2010,2001:2009,2011:2016)
 #years <- c(2012:2016)
@@ -179,4 +179,4 @@ args <- paste(
 )
 
 # runscript(script = summary.script, args = args)
- runscript(script = plot.script, args = args) 
+# runscript(script = plot.script, args = args) 
