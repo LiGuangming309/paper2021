@@ -173,7 +173,8 @@ apply(states, 1, function(state) {
       Pollutant.Standard == "PM25 Annual 2012",
       Units.of.Measure == "Micrograms/cubic meter (LC)",
       Event.Type %in% c("No Events", "Events Excluded")
-    )
+    )%>%
+    mutate(State.Code = State.Code %>% as.character() %>% str_pad(width = 2, pad = "0"))
 
   tract_exposure <- left_join(tracts_locations, exposure,
     by = c(

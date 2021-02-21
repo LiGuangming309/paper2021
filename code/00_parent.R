@@ -130,7 +130,7 @@ plot.script <- file.path(code.dir, "13_plot.R")
 # runscript(script=mrbrtRR.script, args = args)
 
 # years <- c(2000,2010,2001:2009,2011:2016)
-years <- c(2006)
+years <- c(2010)
   
 for (year in years) {
   args <- paste( 
