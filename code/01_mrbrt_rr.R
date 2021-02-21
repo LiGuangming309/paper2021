@@ -150,11 +150,12 @@ apply(causes_ages, 1, function(cause_age) {
         names_to = "measure",
         values_to = "value"
       ) %>%
-      filter(interpolated == "not interpolated") %>%
+      #filter(interpolated == "not interpolated") %>%
       as.data.frame()
 
     exp_rr2[exp_rr2 == "mrbrt"] <- "MR-BRT"
     exp_rr2[exp_rr2 == "rr"] <- "RR"
+    
 
     ggplot(data = exp_rr2, aes(x = exposure_spline, y = value)) +
       #geom_point(aes(color = measure, shape = interpolated), size =2) +

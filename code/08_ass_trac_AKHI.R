@@ -83,9 +83,9 @@ apply(states, 1, function(state) {
 
   exposure_locations <- st_as_sf(exposure_locations,
     coords = c("Longitude", "Latitude"),
-    crs = ifelse(is.na(st_crs(tracts)),
+    crs = ifelse(is.na(st_crs(tracts)$input),
       4326,
-      st_crs(tracts)
+      st_crs(tracts)$input
     ),
     agr = "constant"
   )

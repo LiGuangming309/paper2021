@@ -1,5 +1,11 @@
-interp <- approx(exp_mrbrt$exposure_spline,
-              exp_mrbrt$mean,
-              xout = aim)
+A <- exp_rr2 %>% filter(interpolated == "not interpolated")
+B <- exp_rr2 %>% filter(interpolated == "not interpolated",
+                        measure == "MR-BRT")
 
-test(2)
+C <- exp_rr2 %>% filter(interpolated == "not interpolated",
+                        measure == "RR")
+
+
+class()
+test <- st_crs(tracts)
+test$input
