@@ -129,12 +129,11 @@ plot.script <- file.path(code.dir, "13_plot.R")
 #args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000,2010,2001:2009,2011:2016)
-#years <- c(2012:2016)
+# years <- c(2000,2010,2001:2009,2011:2016)
+years <- c(2006)
   
 for (year in years) {
-  uns.total.burden.dir <- "TODO delte"
-  args <- paste( #
+  args <- paste( 
     year, # 1
     data.dir, # 2
     tmp.dir, # 3
@@ -147,9 +146,7 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, # 12
-    #uns.total.burden.dir, # 13 #TODO
-    attr.burden.dir, # 13
-    openaq.script #14
+    attr.burden.dir # 13
   )
   #runscript(script = download.meta.script, args = args)
   if (year %in% 2001:2009) {
@@ -158,9 +155,9 @@ for (year in years) {
   #  runscript(script = download.cens.script, args = args)
   }
 
-  #runscript(script = download.other.script, args = args)
+  runscript(script = download.other.script, args = args)
   # runscript(script=assignTract.script, args = args)
-   runscript(script = assignTractAKHI.script, args = args)
+  # runscript(script = assignTractAKHI.script, args = args)
   # runscript(script = cens_agr.script, args = args)
   # runscript(script = paf.script, args = args)
   # runscript(script = calc.attr.burd.script, args = args)

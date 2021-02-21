@@ -31,7 +31,7 @@ tracDir <- args[5]
 exp_tracDir <- args[7]
 
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2006
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
@@ -92,7 +92,10 @@ apply(states, 1, function(state) {
     agr = "constant"
   )
 
-  exposure_locations2 <- lapply(tracts$geometry, function(geometry) {
+  tracts_locations <- list()
+  for(i in 1:nrow(tracts)){
+    row <- tracts[i,]
+    geometry <- row$geometry[[1]]
     # subset points, which are inside of the tract
     suppressMessages(points_in_tract <- exposure_locations[geometry, , op = st_within])
 
@@ -100,13 +103,14 @@ apply(states, 1, function(state) {
     # if there are none, the pm of the closest point
     if (nrow(points_in_tract) > 0) {
       df <- data.frame(
+        GEO_ID = row$GEO_ID,
         Location.State.Code = points_in_tract$State.Code,
         Location.County.Code = points_in_tract$County.Code,
         Location.Site.Num = points_in_tract$Site.Num,
         Location.POC = points_in_tract$POC,
         distance = 0
       )
-      return(df)
+      tracts_locations[[i]] <- df
     } else {
       tract_centroid <- geometry %>% st_centroid()
       tract_centroid <- data.frame(
@@ -124,9 +128,10 @@ apply(states, 1, function(state) {
       exposure_locations$dist <- st_distance(x = exposure_locations, y = tract_centroid) %>%
         set_units(1, "km")
 
-      closest_measurement <- exposure_locations[which.min(exposure_locations$dist), ] # %>% as.list()
+      closest_measurement <- exposure_locations[which.min(exposure_locations$dist), ] 
 
       df <- data.frame(
+        GEO_ID = row$GEO_ID,
         Location.State.Code = closest_measurement$State.Code,
         Location.County.Code = closest_measurement$County.Code,
         Location.Site.Num = closest_measurement$Site.Num,
@@ -134,20 +139,11 @@ apply(states, 1, function(state) {
         distance = closest_measurement$dist
       )
       exposure_locations$dist <- NULL
-      return(df)
+      tracts_locations[[i]] <- df
     }
-  }) %>% do.call(rbind, .)
+  }
 
-  tracts_locations <- cbind(tracts, exposure_locations2) %>%
-    as.data.frame() %>%
-    select(
-      GEO_ID,
-      Location.State.Code,
-      Location.County.Code,
-      Location.Site.Num,
-      Location.POC,
-      distance
-    )
+  tracts_locations <- do.call(rbind, tracts_locations)
 
   # save as csv
   fwrite(tracts_locations, tracts_locationsDirX, row.names = FALSE)
