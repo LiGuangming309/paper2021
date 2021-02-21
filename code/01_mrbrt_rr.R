@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 set.seed(0)
 # load packages, install if missing
-packages <- c("magrittr", "MALDIquant", "ggplot2", "dplyr", "tictoc")
+packages <- c("magrittr", "MALDIquant", "ggplot2", "dplyr", "tictoc", "tidyr")
 
 options(tidyverse.quiet = TRUE)
 for (p in packages) {
@@ -34,7 +34,7 @@ if (rlang::is_empty(args)) {
 plotsDir <- file.path(exp_rrDir, "plots")
 dir.create(plotsDir, recursive = T, showWarnings = F)
 
-
+mrbrtDir <- file.path(exp_rrDir, "mrbrt_summary")
 ## --------either load data or write it---------
 # write useful overview over causes
 causes_agesDir <- file.path(tmpDir, "causes_ages.csv")
@@ -46,7 +46,7 @@ if (file.exists(causes_agesDir)) {
   causes_all_ages <- c("resp_copd", "lri", "neo_lung", "t2_dm")
   causes_age_specific <- c("cvd_ihd", "cvd_stroke")
 
-  age_ids <- seq.int(25, 95, 5) 
+  age_ids <- seq.int(25, 95, 5)
 
   causes_ages <- data.frame(
     label_cause = rep(causes_age_specific, each = length(age_ids)),
@@ -69,61 +69,106 @@ tic("Calculated RR from MR-BRT for all causes")
 apply(causes_ages, 1, function(cause_age) {
   label_cause <- cause_age[1]
   age_group_id <- cause_age[2]
+  
+  tic(paste("Calculated RR from MR-BRT for", label_cause, "age group:", age_group_id))
 
-  exp_rrDirX <- ifelse(age_group_id == "all ages",
+  file_name <- ifelse(age_group_id == "all ages",
     paste0(label_cause, ".csv"),
     paste0(label_cause, "_", age_group_id, ".csv")
-  ) %>%
-    file.path(exp_rrDir, .)
-
-  exp_rr <- exp_rrDirX %>%
-    read.csv() %>%
-    filter(exposure_spline <= 50)
-
-  # if ("rr" %in% colnames(exp_rr)) {
-  #  return()
-  # } 
-
-  getMRBRT <- function(pm) {
-    match.closest(pm, exp_rr$exposure_spline) %>%
-      exp_rr[., "mean"] %>%
-      as.numeric %>%
-      return(.)
-  }
-
-  getRR_tmrel <- function(tmrel, pm) {
-    rr <- ifelse(pm <= tmrel,
-      1,
-      getMRBRT(pm) / getMRBRT(tmrel)
-    ) 
-    return(rr)
-  }
-
-  getRR <- function(pm) {
-     rrs <- sapply(tmrels, getRR_tmrel, pm = pm)
-    return(mean(rrs))
-  }
-
-  exp_rr <- exp_rr %>% mutate(
-    lower = NULL,
-    upper = NULL,
-    rr = sapply(exposure_spline, getRR)
   )
 
-  write.csv(exp_rr, exp_rrDirX, row.names = FALSE)
+  mrbrtDirX <- file.path(mrbrtDir, file_name)
+  exp_rrDirX <- file.path(exp_rrDir, file_name)
 
-  plotDirX <- paste0(label_cause, "_", age_group_id, ".png") %>%
-    file.path(plotsDir, .)
+  if (!file.exists(exp_rrDirX)) {
+    
+    exp_mrbrt <- read.csv(mrbrtDirX)
+    
+    ## --interpolate mrbrt data
+    # X values of points to interpolate from known data
+    aim <- exp_mrbrt$exposure_spline 
+    aim <- aim[aim < 10]
+    aim <- c(aim, seq(10,40,0.1))
+    
+    #model.lm <- lm(mean ~ exposure_spline, data = exp_mrbrt) #TODO
+    interp <- approx(exp_mrbrt$exposure_spline,
+                     exp_mrbrt$mean,
+                     xout = aim)
+    
+    exp_mrbrt_interp <- data.frame(
+      label = label_cause,
+      exposure_spline = interp$x,
+      #mean = predict(model.lm, newdata = data.frame(exposure_spline = aim)),
+      mean = interp$y,
+      row.names = NULL
+    )
+    
+    ## --calculate RR
+    getMRBRT <- function(pm) {
+      match.closest(pm, exp_mrbrt_interp$exposure_spline) %>%
+        exp_mrbrt_interp[., "mean"] %>%
+        as.numeric() %>%
+        return(.)
+    }
+    
+    getRR_tmrel <- function(tmrel, pm) {
+      rr <- ifelse(pm <= tmrel,
+                   1,
+                   getMRBRT(pm) / getMRBRT(tmrel)
+      )
+      return(rr)
+    }
+    
+    getRR <- function(pm) {
+      rrs <- sapply(tmrels, getRR_tmrel, pm = pm)
+      return(mean(rrs))
+    }
+    
+    exp_rr <- exp_mrbrt_interp %>% transmute(
+      label = label,
+      exposure_spline = exposure_spline,
+      mrbrt = mean,
+      rr = sapply(exposure_spline, getRR),
+      interpolated = sapply(exposure_spline, function(exposure_spline){
+        ifelse(exposure_spline %in% exp_mrbrt$exposure_spline,
+               "not interpolated",
+               "interpolated")
+      })
+    )
+    
+    write.csv(exp_rr, exp_rrDirX, row.names = FALSE)
+  }
+  
+  exp_rr <- read.csv(exp_rrDirX)
+  plotDirX <-file.path(plotsDir, paste0(label_cause, "_", age_group_id, ".png"))
 
-  if (TRUE || !file.exists(plotDirX)) {
-    ggplot(data = exp_rr, aes(x = exposure_spline, y = rr)) +
-      geom_point() +
+  if (!file.exists(plotDirX) || TRUE) {
+    exp_rr2 <- exp_rr %>%
+      pivot_longer(
+        cols = !c("exposure_spline", "label", "interpolated"),
+        names_to = "measure",
+        values_to = "value"
+      ) %>%
+      filter(interpolated == "not interpolated") %>%
+      as.data.frame()
+
+    exp_rr2[exp_rr2 == "mean"] <- "MRBRT"
+    exp_rr2[exp_rr2 == "rr"] <- "RR"
+
+    ggplot(data = exp_rr2, aes(x = exposure_spline, y = value)) +
+      #geom_point(aes(color = measure, shape = interpolated), size =2) +
+      geom_point(color = "black", size =2, shape = 2) +
+      geom_line(aes(color = measure), size =1) +
       xlab("Exposure") +
       ylab("RR") +
-     ggtitle(paste(label_cause, age_group_id))
+      ggtitle(paste(label_cause, ", ", age_group_id))
 
     ggsave(plotDirX)
   }
+
+  plotDirX <- paste0(label_cause, "_", age_group_id, ".png") %>%
+    file.path(plotsDir, .)
+  toc()
 })
 toc()
 ""
