@@ -19,6 +19,8 @@ options(tigris_use_cache = FALSE)
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE))
 }
+options(dplyr.summarise.inform = FALSE)
+options(dplyr.join.inform = FALSE)
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
