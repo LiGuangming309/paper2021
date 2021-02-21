@@ -89,7 +89,7 @@ apply(causes_ages, 1, function(cause_age) {
     ## --interpolate mrbrt data
     # X values of points to interpolate from known data
     aim <- exp_mrbrt$exposure_spline
-    aim <- aim[aim <= 40]
+    aim <- aim[aim < 40]
     aim <- c(aim, seq(10, 40, 0.1)) %>%
       unique() %>%
       sort()
@@ -160,13 +160,16 @@ apply(causes_ages, 1, function(cause_age) {
     exp_rr2[exp_rr2 == "mrbrt"] <- "MR-BRT"
     exp_rr2[exp_rr2 == "rr"] <- "RR"
 
-
-    ggplot(data = exp_rr2, aes(x = exposure_spline, y = value)) +
-      # geom_point(aes(color = measure, shape = interpolated), size =2) +
-      geom_point(color = "black", size = 2, shape = 2) +
-      geom_line(aes(color = measure), size = 1) +
+    ggplot(exp_rr2, aes(x = exposure_spline, y = value))+
+      geom_line(data = exp_rr2 %>% filter(interpolated == "interpolated"),
+                aes(color = measure),
+                size = 1) +
+      geom_point(data =exp_rr2 %>% filter(interpolated == "not interpolated"),
+                 color = "black",
+                 shape = 2,
+                 size = 1) +
       xlab("Exposure") +
-      ylab("RR") +
+      ylab("value") +
       ggtitle(paste0(label_cause, ", ", age_group_id))
 
     ggsave(plotDirX)
