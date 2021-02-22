@@ -177,6 +177,7 @@ apply(causes_ages, 1, function(cause_age) {
 
   plotDirX <- paste0(label_cause, "_", age_group_id, ".png") %>%
     file.path(plotsDir, .)
+  NA
 })
 toc()
-""
+NA
