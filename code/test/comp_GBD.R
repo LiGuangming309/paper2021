@@ -8,7 +8,7 @@ options(dplyr.summarise.inform = FALSE)
 options(dplyr.join.inform = FALSE)
 options(scipen=10000)
 
-attr_burd2<- lapply(2000:2016, function(year){
+attr_burd<- lapply(2000:2016, function(year){
   attr_burd <- paste0("~/Desktop/paper2021/data/10_attr_burd/nation/attr_burd_",toString(year),".csv") %>%read.csv
   attr_burd2 <- attr_burd %>% 
     filter(Hispanic.Origin == "All Origins") %>%
@@ -99,7 +99,7 @@ attr_burd3[attr_burd3 == "attrDeaths"] <- "attributate Deaths according to my co
 attr_burd3[attr_burd3 == "attrYLL"] <- "attributate YLL according to my code"
 
 attr_burd3_sub <- attr_burd3 %>% filter(measure_name %in% c("attributate YLL according to GBD","attributate YLL according to my code"))
-g <- ggplot(attr_burd3_sub, aes(x = Year, y = val)) +
+g1 <- ggplot(attr_burd3_sub, aes(x = Year, y = val)) +
   geom_line(aes(color = measure_name), size = 1) +
   ylab(paste("YLL")) +
   xlab("Year") +
@@ -109,7 +109,7 @@ g <- ggplot(attr_burd3_sub, aes(x = Year, y = val)) +
   ylim(0, NA)
 
 attr_burd3_sub <- attr_burd3 %>% filter(measure_name %in% c("attributate Deaths according to GBD","attributate Deaths according to my code"))
-g <- ggplot(attr_burd3_sub, aes(x = Year, y = val)) +
+g2 <- ggplot(attr_burd3_sub, aes(x = Year, y = val)) +
   geom_line(aes(color = measure_name), size = 1) +
   ylab(paste("Deaths")) +
   xlab("Year") +
@@ -122,6 +122,6 @@ g <- ggplot(attr_burd3_sub, aes(x = Year, y = val)) +
 fwrite(attr_burd2, "~/Desktop/paper2021/data/test/attr_burd2.csv", sep = ';')
 fwrite(attr_burd3, "~/Desktop/paper2021/data/test/attr_burd3.csv", sep = ';')
 
-ggsave("~/Desktop/paper2021/data/test/deaths_attr.png", plot = g3)
-ggsave("~/Desktop/paper2021/data/test/YL_attrL.png", plot = g4)
+ggsave("~/Desktop/paper2021/data/test/deaths_attr.png", plot = g1)
+ggsave("~/Desktop/paper2021/data/test/YL_attrL.png", plot = g2)
 

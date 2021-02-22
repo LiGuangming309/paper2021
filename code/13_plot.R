@@ -137,4 +137,24 @@ g <- ggplot(attrBurden_gr3, aes(x = Year, y = test3)) +
   guides(col = guide_legend(nrow = 2, byrow = TRUE))
 
 ggsave(file.path(plotDir, paste0("plot3.png")), plot = g)
+
+### -------plot 4 -------
+attrBurden_gr4 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)%>%
+  mutate(prop = 100 * crudeAttrYLL/crudeAllYLL)%>% 
+  filter(Ethnicity %in% c("Asian or Pacific Islander, All Origins",
+                          "White, Not Hispanic or Latino", 
+                          "White, Hispanic or Latino", 
+                          "Black or African American, All Origins",
+                          #"Asian or Pacific Islander, All Origins",
+                          "American Indian or Alaska Native, All Origins"))
+
+g <- ggplot(attrBurden_gr4, aes(x = Year, y = prop)) +
+  geom_line(aes(color = Ethnicity), size = 1) +
+  ylab(paste("%")) +
+  xlab("Year") +
+  xlim(2000, 2016) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))
+
+ggsave(file.path(plotDir, paste0("plot4.png")), plot = g)
 g

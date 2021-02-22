@@ -11,7 +11,7 @@ options(dplyr.join.inform = FALSE)
   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog/"
   dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/"
 
-  
+dir.create("C:/Users/Daniel/Desktop/paper2021/data/test/pm/", recursive = T, showWarnings = F)
 
 dem_agrDir <- file.path(dem_agrDir, "nation")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
@@ -42,7 +42,7 @@ dem_agr <- dem_agr %>%
          median = matrixStats::weightedMedian(pm, pop_size)
          )
 
-write.csv(dem_agr, "C:/Users/Daniel/Desktop/paper2021/data/test/pm.csv")
+write.csv(dem_agr, "C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm.csv")
 toc()
 
 ## --plot ---
@@ -63,7 +63,7 @@ g <- ggplot(dem_agr, aes(x = year, y = mean)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))+
   ggtitle("population-weighted mean")
 
-ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm_mean.png", plot = g)
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_mean.png", plot = g)
 
 g <- ggplot(dem_agr, aes(x = year, y = median)) +
   geom_line(aes(color = ethnicity), size = 1) + 
@@ -75,4 +75,4 @@ g <- ggplot(dem_agr, aes(x = year, y = median)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   ggtitle("population-weighted median")
 
-ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm_median.png", plot = g)
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_median.png", plot = g)
