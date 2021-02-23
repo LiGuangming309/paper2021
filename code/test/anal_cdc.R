@@ -53,10 +53,10 @@ all_burden <- all_burden %>%
 all_burden <- all_burden %>%
   filter(Population != "Not Applicable",
          ) %>%
-  filter(Ethnicity %in% c("White, Not Hispanic or Latino", 
-                          "White, Hispanic or Latino", 
-                          "Black or African American, All Origins",
-                          "Asian or Pacific Islander, All Origins",
+  filter(Ethnicity %in% c(#"White, Not Hispanic or Latino", 
+                          #"White, Hispanic or Latino", 
+                          #"Black or African American, All Origins",
+                          #"Asian or Pacific Islander, All Origins",
                           "American Indian or Alaska Native, All Origins"))
 
 #unique(all_burden$Single.Year.Ages.Code)

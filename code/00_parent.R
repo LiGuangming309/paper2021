@@ -110,6 +110,8 @@ dir.create(summary.dir, recursive = T, showWarnings = F)
 plot.dir <- file.path(data.dir, "13_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
+cdc.pop.dir <- file.path(data.dir, "14_cdc_population.")
+
 # paths of scripts
 mrbrtRR.script <- file.path(code.dir, "01_mrbrt_rr.R")
 download.meta.script <- file.path(code.dir, "02_download_meta.R")
@@ -146,7 +148,8 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, # 12
-    attr.burden.dir # 13
+    attr.burden.dir, # 13
+    cdc.pop.dir #14
   )
   #runscript(script = download.meta.script, args = args)
   if (year %in% 2001:2009) {

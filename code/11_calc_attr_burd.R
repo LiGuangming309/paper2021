@@ -252,20 +252,6 @@ if (!file.exists(attrBurdenDir)) {
     print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing_rows))
   }
-
-  ### ---- analyse suppression ------
-  suppressedRows <- sum(total_burden$Deaths == "Suppressed")
-  suppressedRowsPerc <- (100 * suppressedRows / nrow(total_burden)) %>% round()
-  print(paste0(suppressedRows, " (", suppressedRowsPerc, "%) rows suppressed in total burden data in ", toString(year)))
-  total_burden <- total_burden %>% 
-    filter(Deaths != "Suppressed") %>%
-    mutate(Deaths = as.numeric(Deaths))
-
-  #counter suppression bias #TODO delete
-  #total_burden <- left_join(total_burden, ethn_suppr,
-  #  by = c("Race", "Hispanic.Origin", "label_cause")
-  #) %>%
-  #  mutate(Deaths = Deaths * factor)
   
   # calculate YLL
   total_burden <- total_burden %>%
