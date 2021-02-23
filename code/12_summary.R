@@ -17,6 +17,7 @@ for (p in packages) {
 }
 options(dplyr.summarise.inform = FALSE)
 options(dplyr.join.inform = FALSE)
+options(scipen = 10000)
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
@@ -242,7 +243,9 @@ for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
       xlab("Year") +
       ylim(0, NA) +
       xlim(2000, 2016) +
-      geom_line() 
+      geom_line()  +
+      theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())  +
+      guides(col = guide_legend(nrow = 3, byrow = TRUE))
 
     ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
       plot = g

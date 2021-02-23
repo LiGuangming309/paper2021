@@ -59,6 +59,8 @@ attr_burd <- attr_burd %>% rename(cause_name = label_cause,
                                   year = Year,
                                   measure_name = measure)
 ##---- load GBD data -----
+#http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2019-permalink/30168d6453ca5d5037b5b377b448a055
+#http://ghdx.healthdata.org/gbd-results-tool?params=gbd-api-2019-permalink/946736cbf0b2ea57e0511e9931ec5602
 GBD_attributable <- read.csv("~/Desktop/paper2021/data/test/IHME/GBD_attributable.csv")
 if("rei_name" %in% colnames(GBD_attributable)) GBD_attributable$attributable <- "directly attributable to pm exposure"
 GBD_attributable <- GBD_attributable%>%
@@ -103,8 +105,9 @@ for(measure in unique(burden$measure_name)){
         ylab(paste(measure)) +
         xlab("Year") +
         xlim(2000, 2016) +
+        ylim(0,NA)+
         theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-        ggtitle(paste(measure, attr, "all causes", sep = "; "))
+        ggtitle(paste(measure, attr, "all causes", sep = "; ")) 
       g
       
       ggsave(paste0(plotDir, "/plot",i,".png"), plot = g)
@@ -125,6 +128,7 @@ for(measure in unique(burden$measure_name)){
         ylab(paste(measure)) +
         xlab("Year") +
         xlim(2000, 2016) +
+        ylim(0,NA)+
         theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
         ggtitle(paste(measure, attr, cause, sep = "; "))
       g
