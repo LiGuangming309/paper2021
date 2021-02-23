@@ -213,15 +213,15 @@ attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 attrBurden_gr_sub <- attrBurden_gr %>% 
   mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
-  filter(Ethnicity %in% c("White, Not Hispanic or Latino", 
-                          "White, Hispanic or Latino", 
-                          "Black or African American, All Origins",
-                          "Asian or Pacific Islander, All Origins",
+  filter(Ethnicity %in% c(#"White, Not Hispanic or Latino", 
+                          #"White, Hispanic or Latino", 
+                          #"Black or African American, All Origins",
+                          #"Asian or Pacific Islander, All Origins",
                           "American Indian or Alaska Native, All Origins"))
 
   for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
                     "crudeYLL","crudeAttrDeaths","crudeAttrYLL","crudeAllDeaths","crudeAllYLL",
-                    "propDeaths","propYll")) {
+                    "propDeaths","propYll", "allDeaths", "allYLL")) {
     
     g <- attrBurden_gr_sub %>%
       ggplot(aes_string(x = "Year", y = measure, color = "Ethnicity")) +
