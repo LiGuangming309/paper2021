@@ -20,6 +20,7 @@ dataDir <- "/Users/default/Desktop/paper2021/data"
 lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
 ### ---- load calculated dataa-----
 allBurdenDir <- "~/Desktop/paper2021/data/test/CDC summary"
+#allBurdenDir <- "/Users/default/Desktop/paper2021/data/11_all_burden/nation"
 
 files <- list.files(allBurdenDir)
 all_burden <- lapply(files, function(file) {

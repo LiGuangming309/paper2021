@@ -93,17 +93,9 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   files <- list.files(allBurdenDir)
   all_burden <- lapply(files, function(file) {
     fileDir <- file.path(allBurdenDir, file)
-    
-    columns <- c(unname(inverse_group_variables), "Notes","Gender","Gender.Code", "Single.Year.Ages", "Single.Year.Ages.Code", "Deaths") %>% unique
-    if (agr_by == "nation") columns <- columns[columns != "Nation"] # in this case this column does not exist
-    
-    all_burden <- read.delim(fileDir) %>%
-      select(any_of(columns)) %>%
-      filter(Single.Year.Ages != "Not Stated") 
+    all_burden <- read.delim(fileDir)
     
     notes_hisp_or <- all_burden$Notes[grepl("Hispanic Origin:", all_burden$Notes, fixed = TRUE)]
-    
-    all_burden<-all_burden %>%subset(select=-Notes)
     
     all_burden <- all_burden[!apply(is.na(all_burden) | all_burden == "", 1, all), ]
     
@@ -117,9 +109,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       }
     }
     
-    if (agr_by == "nation") {
-      all_burden[, "Nation"] <- "us"
-    }
+    all_burden <- all_burden %>% select(Race, Year, Deaths, Population, Crude.Rate, Hispanic.Origin, Single.Year.Ages.Code, Gender)
     return(all_burden)
   })
   
@@ -130,12 +120,6 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       Hispanic.Origin != "Not Stated"
     )
   
-  ###---- analyse suppression ------ #TODO delete
-  suppressedRows <- sum(all_burden$Deaths == "Suppressed")
-  suppressedRowsPerc <- (100*suppressedRows/nrow(all_burden)) %>% round
-  print(paste0(suppressedRows," (",suppressedRowsPerc,"%) rows suppressed in all burden data"))
-  all_burden <- all_burden %>% filter(Deaths != "Suppressed")
-  
   #calculate YLL
   all_burden<-all_burden%>%
     mutate(
@@ -143,14 +127,14 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       Deaths = as.numeric(Deaths),
       Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
       YLL = Deaths * Life.Expectancy
-    )%>%
+    )
+  
+  all_burden <- all_burden  %>%
+    group_by(Ethnicity, Year) %>%
+    summarise(Deaths = sum(Deaths),
+              YLL = sum(YLL)) %>%
     rename(allDeaths = Deaths,
            allYLL = YLL)
-  
-  all_burden <- all_burden %>%
-    group_by_at(vars(one_of(inverse_group_variables))) %>%
-    summarise(allDeaths = sum(allDeaths),
-              allYLL=sum(allYLL))
   
   ## --------- read demographic census data -----------
   tic(paste("aggregated census data by", paste(inverse_group_variables, collapse = ", ")))
@@ -214,9 +198,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
       propDeaths = attrDeaths/allDeaths,
       propYll = attrYLL/allYLL,
       #test
-      effPaf = attrDeaths / Deaths,
-      test1= Deaths/allDeaths,
-      test2 = YLL/allYLL,
+      effPaf = attrDeaths / Deaths
     )
 
   test_that("10 plot basic chackes", {
@@ -239,12 +221,12 @@ attrBurden_gr_sub <- attrBurden_gr %>%
 
   for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
                     "crudeYLL","crudeAttrDeaths","crudeAttrYLL","crudeAllDeaths","crudeAllYLL",
-                    "propDeaths","propYll","test1","test2")) {
+                    "propDeaths","propYll")) {
     
     g <- attrBurden_gr_sub %>%
       ggplot(aes_string(x = "Year", y = measure, color = "Ethnicity")) +
-      scale_color_viridis(discrete = TRUE) +
-      theme_ipsum() +
+      #scale_color_viridis(discrete = TRUE) +
+      #theme_ipsum() +
       ylab(paste("burden measured in", measure)) +
       xlab("Year") +
       ylim(0, NA) +
