@@ -228,16 +228,22 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 ## ---plot ------
-for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
-  attrBurden_gr_his <- attrBurden_gr %>% filter(Hispanic.Origin == his_or)
+
+attrBurden_gr_sub <- attrBurden_gr %>% 
+  mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
+  filter(Ethnicity %in% c("White, Not Hispanic or Latino", 
+                          "White, Hispanic or Latino", 
+                          "Black or African American, All Origins",
+                          "Asian or Pacific Islander, All Origins",
+                          "American Indian or Alaska Native, All Origins"))
 
   for (measure in c("Deaths", "YLL", "attrDeaths", "attrYLL","effPaf","pop_size","crudeDeaths",
                     "crudeYLL","crudeAttrDeaths","crudeAttrYLL","crudeAllDeaths","crudeAllYLL",
                     "propDeaths","propYll","test1","test2")) {
-    g <- attrBurden_gr_his %>%
-      ggplot(aes_string(x = "Year", y = measure, group = "Race", color = "Race")) +
+    
+    g <- attrBurden_gr_sub %>%
+      ggplot(aes_string(x = "Year", y = measure, color = "Ethnicity")) +
       scale_color_viridis(discrete = TRUE) +
-      ggtitle(paste("hispanic origin:", his_or)) +
       theme_ipsum() +
       ylab(paste("burden measured in", measure)) +
       xlab("Year") +
@@ -247,8 +253,8 @@ for (his_or in unique(attrBurden_gr$Hispanic.Origin)) {
       theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin())  +
       guides(col = guide_legend(nrow = 3, byrow = TRUE))
 
-    ggsave(file.path(summaryDir, paste0(measure, "_", his_or, ".png")),
+    ggsave(file.path(summaryDir, paste0(measure, ".png")),
       plot = g
     )
   }
-}
+

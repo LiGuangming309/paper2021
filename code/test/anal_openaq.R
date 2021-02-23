@@ -1,5 +1,9 @@
 #TODO
-packages <- c("data.table", "plyr", "magrittr", "testthat", "tigris", "sf", "tidyverse", "sp", "tmap", "tictoc", "units")
+#------------------SET-UP--------------------------------------------------
+# clear memory
+rm(list = ls(all = TRUE))
+
+packages <- c("data.table", "plyr", "magrittr", "testthat", "tigris", "sf", "tidyverse", "sp", "tmap", "tictoc", "units", "stats","matrixStats")
 
 options(tidyverse.quiet = TRUE)
 options(tigris.quiet = TRUE)
@@ -9,14 +13,18 @@ for (p in packages) {
 }
 
 #if (rlang::is_empty(args)) {
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
-  tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
-  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
+  #tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
+  #exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  #openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
+  exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 #}
 
-tracts_locationsDir <- file.path(exp_tracDir, "openaq_tmp")
+tracts_locationsDir <- file.path(exp_tracDir, "epa_tmp")
 
 years <- 2000:2016
 
@@ -30,26 +38,32 @@ apply(states, 1, function(state) {
   
   tracts_locations<-lapply(years, function(year){
     tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
-  }) %>% do.call(rbind,.)
+    tracts_locations <- tracts_locations %>% filter(distance > 0)
+    
+    censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
+    
+    meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+    censData<- censData %>%
+      left_join(meta, by = "variable" )%>%
+      filter(hispanic_origin == "All Origins") %>% 
+      group_by(year, GEO_ID) %>%
+      summarize(pop_size = sum(pop_size))
+    
+    tracts_locations <- tracts_locations %>%
+      left_join(censData, by = "GEO_ID")
+  }) %>% do.call(rbind,.) %>%
+    as.data.frame()
   
-  tracts_locations <- tracts_locations %>% filter(distance > 0)
+  any(is.na(tracts_locations))
+  tracts_locations <- tracts_locations[rowSums(is.na(tracts_locations)) == 0,]
   
   median_distance <-median(tracts_locations$distance) %>% round(digits = 2)
-  print(paste("median distance in",name,":",median_distance,"km"))
-  
   mean_distance <-mean(tracts_locations$distance) %>% round(digits = 2)
-  print(paste("mean distance in",name,":",median_distance,"km"))
+  weighted_mean_distance <- weighted.mean(tracts_locations$distance, tracts_locations$pop_size, na.rm = TRUE) %>% round(digits = 2)
+  weighted_median_distance = matrixStats::weightedMedian(tracts_locations$distance, tracts_locations$pop_size, na.rm = TRUE) %>% round(digits = 2)
   
-  exposure<-lapply(years, function(year){
-    exposure <- file.path(expDir, "openaq",paste0("exp_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
-  }) %>% do.call(rbind,.)
-  
-  occurance <- exposure %>%
-    group_by(year) %>%
-    summarise(n = n()) %>%
-    as.data.frame
-  
-  write.csv(occurance, paste0("/Users/default/Desktop/paper2021/data/test/year_occur_openaq",STUSPS,".csv"))
-  print(paste("exposure-years occurance in", name))
-  print(occurance)
+  print(paste("mean distance in",name,":",mean_distance,"km"))
+  print(paste("median distance in",name,":",median_distance,"km"))
+  print(paste("weighted mean distance in",name,":",weighted_mean_distance,"km"))
+  print(paste("weighted median distance in",name,":",weighted_median_distance,"km"))
 })
