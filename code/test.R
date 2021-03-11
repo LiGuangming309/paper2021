@@ -1,4 +1,3 @@
 test <- burden %>%
-  filter(source == "my code",
-         measure_name == measure
-         )
+  filter(attributable == "overall",
+         measure_name == "Deaths")
