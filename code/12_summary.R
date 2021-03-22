@@ -46,6 +46,7 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 allBurdenDir <- file.path(allBurdenDir, agr_by)
 summaryDir <- file.path(summaryDir, agr_by)
 dir.create(summaryDir, recursive = T, showWarnings = F)
+cdcPopDir <- file.path(cdcPopDir, agr_by)
 
 lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
 states <- file.path(tmpDir, "states.csv") %>% read.csv()

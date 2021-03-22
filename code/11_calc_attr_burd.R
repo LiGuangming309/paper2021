@@ -32,7 +32,7 @@ attrBurdenDir <- args[13]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2000
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -59,8 +59,8 @@ if (!file.exists(attrBurdenDir)) {
   join_variables <- c(
     "Year" = "year",
     # "Year.code"="year",
-    "Gender" = "gender",
-    "Gender.Code" = "gender_label",
+    #"Gender" = "gender",
+    #"Gender.Code" = "gender_label",
     "Race" = "race",
     "Hispanic.Origin" = "hispanic_origin",
     "label_cause" = "label_cause"

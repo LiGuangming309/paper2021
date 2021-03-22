@@ -53,7 +53,8 @@ attrBurden_gr<-attrBurden_gr %>%
                           "White, Hispanic or Latino", 
                           "Black or African American, All Origins",
                           "Asian or Pacific Islander, All Origins",
-                          "American Indian or Alaska Native, All Origins"))
+                          "American Indian or Alaska Native, All Origins")) #
+
 
 #attrBurden_gr1[attrBurden_gr1 == "crudeYLL"] <- "YLL from causes associated with PM exposure"
 #attrBurden_gr1[attrBurden_gr1 == "crudeAttrYLL"] <- "YLL directly attributable to PM exposure"
@@ -143,13 +144,13 @@ ggsave(file.path(plotDir, paste0("plot3.png")), plot = g)
 
 ### -------plot 4 -------
 attrBurden_gr4 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)%>%
-  mutate(prop = 100 * crudeAttrYLL/crudeAllYLL)%>% 
-  filter(Ethnicity %in% c("Asian or Pacific Islander, All Origins",
-                          "White, Not Hispanic or Latino", 
-                          "White, Hispanic or Latino", 
-                          "Black or African American, All Origins",
+  mutate(prop = 100 * crudeAttrYLL/crudeAllYLL)#%>% 
+  #filter(Ethnicity %in% c("Asian or Pacific Islander, All Origins",
+  #                        "White, Not Hispanic or Latino", 
+  #                        "White, Hispanic or Latino", 
+  #                        "Black or African American, All Origins",
                           #"Asian or Pacific Islander, All Origins",
-                          "American Indian or Alaska Native, All Origins"))
+  #                        "American Indian or Alaska Native, All Origins"))
 
 g <- ggplot(attrBurden_gr4, aes(x = Year, y = prop)) +
   geom_line(aes(color = Ethnicity), size = 1) +
