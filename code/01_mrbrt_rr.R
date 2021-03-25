@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 set.seed(0)
 # load packages, install if missing
-packages <- c("magrittr", "MALDIquant", "ggplot2", "dplyr", "tictoc", "tidyr")
+packages <- c("magrittr", "MALDIquant", "ggplot2", "dplyr", "tictoc", "tidyr", "Rmisc")
 
 options(tidyverse.quiet = TRUE)
 for (p in packages) {
@@ -34,7 +34,10 @@ if (rlang::is_empty(args)) {
 plotsDir <- file.path(exp_rrDir, "plots")
 dir.create(plotsDir, recursive = T, showWarnings = F)
 
-mrbrtDir <- file.path(exp_rrDir, "mrbrt_summary")
+mrbrtDir <- file.path(exp_rrDir, "mrbrt")
+
+n<-100 #number of effect samples, <=1000
+m<-100 #number of TMREL samples, <= 1000
 ## --------either load data or write it---------
 # write useful overview over causes
 causes_agesDir <- file.path(tmpDir, "causes_ages.csv")
@@ -65,7 +68,8 @@ if (file.exists(causes_agesDir)) {
 # tmrels <- runif(1000, min = 2.4, max = 5.9)
 tmrels <- file.path(mrbrtDir, "tmrel_draws.csv") %>%
   read.csv() %>%
-  unlist()
+  unlist() 
+tmrels <- tmrels[1:m]
 ## ----------calculation---------
 
 tic("Calculated RR from MR-BRT for all causes")
@@ -84,94 +88,69 @@ apply(causes_ages, 1, function(cause_age) {
     tic(paste("Calculated RR from MR-BRT for", label_cause, "age group:", age_group_id))
 
     mrbrtDirX <- file.path(mrbrtDir, file_name)
-    exp_mrbrt <- read.csv(mrbrtDirX)
-
+    exp_mrbrt <- read.csv(mrbrtDirX) 
+    exposure_spline <- exp_mrbrt$exposure_spline
+    exp_mrbrt <- exp_mrbrt[, paste0("draw_",(0:(n-1)))]
+    
     ## --interpolate mrbrt data
     # X values of points to interpolate from known data
-    aim <- exp_mrbrt$exposure_spline
-    aim <- aim[aim < 40]
-    aim <- c(aim, seq(10, 40, 0.1)) %>%
+    aim <- exposure_spline[exposure_spline < 30]
+    aim <- c(aim, seq(10, 30, 0.1)) %>%
       unique() %>%
       sort()
 
-    interp <- approx(exp_mrbrt$exposure_spline,
-      exp_mrbrt$mean,
-      xout = aim
-    )
-
-    exp_mrbrt_interp <- data.frame(
-      label = label_cause,
-      exposure_spline = interp$x,
-      mean = interp$y,
-      row.names = NULL
-    )
+    exp_mrbrt_interp <- apply(exp_mrbrt, 2, function(col){
+      interp <- approx(exposure_spline,
+                       col,
+                       xout = aim
+      )
+      return(interp$y)
+    })
+    
+    exp_mrbrt_interp <- as.matrix(exp_mrbrt_interp)
+    rownames(exp_mrbrt_interp) <-aim
+    #exp_mrbrt_interp <- cbind(label = label_cause,
+    #                          exposure_spline = aim,
+    #                          exp_mrbrt_interp)
 
     ## --calculate RR
-    getMRBRT <- function(pm) {
-      match.closest(pm, exp_mrbrt_interp$exposure_spline) %>%
-        exp_mrbrt_interp[., "mean"] %>%
-        as.numeric() %>%
-        return(.)
-    }
-
-    getRR_tmrel <- function(tmrel, pm) {
-      rr <- ifelse(pm <= tmrel,
-        1,
-        getMRBRT(pm) / getMRBRT(tmrel)
-      )
-      return(rr)
-    }
-
-    getRR <- function(pm) {
-      rrs <- sapply(tmrels, getRR_tmrel, pm = pm)
-      return(mean(rrs))
-    }
-
-    exp_rr <- exp_mrbrt_interp %>% transmute(
-      label = label,
-      exposure_spline = exposure_spline,
-      mrbrt = mean,
-      rr = sapply(exposure_spline, getRR),
-      interpolated = sapply(exposure_spline, function(exposure_spline) {
-        ifelse(exposure_spline %in% exp_mrbrt$exposure_spline,
-          "not interpolated",
-          "interpolated"
-        )
+    exp_rr_interp <- lapply(tmrels, function(tmrel){
+      tmrel_pos <- match.closest(tmrel, aim)
+      exp_rr_interp<- apply(exp_mrbrt_interp, 2, function(col){
+        tmrel_mrbrt <- col[tmrel_pos]
+        col <- col/tmrel_mrbrt
       })
-    )
-
-    write.csv(exp_rr, exp_rrDirX, row.names = FALSE)
+      
+      exp_rr_interp <- apply(exp_rr_interp, 1:2, function(x) max(x,1))
+    })
+    
+    exp_rr_interp <- do.call(cbind, exp_rr_interp) %>% as.data.frame
+    
+    exp_rr_interp <- tibble::rownames_to_column(exp_rr_interp, "exposure_spline")
+    write.csv(exp_rr_interp, exp_rrDirX, row.names = FALSE)
     toc()
   }
 
   exp_rr <- read.csv(exp_rrDirX)
   plotDirX <- file.path(plotsDir, paste0(label_cause, "_", age_group_id, ".png"))
 
+  #https://stackoverflow.com/questions/14069629/how-can-i-plot-data-with-confidence-intervals
   if (!file.exists(plotDirX) && TRUE) {
-    exp_rr2 <- exp_rr %>%
-      pivot_longer(
-        cols = !c("exposure_spline", "label", "interpolated"),
-        names_to = "measure",
-        values_to = "value"
-      ) %>%
-      # filter(interpolated == "not interpolated") %>%
-      as.data.frame()
-
-    exp_rr2[exp_rr2 == "mrbrt"] <- "MR-BRT"
-    exp_rr2[exp_rr2 == "rr"] <- "RR"
-
-    ggplot(exp_rr2, aes(x = exposure_spline, y = value))+
-      geom_line(data = exp_rr2 %>% filter(interpolated == "interpolated"),
-                aes(color = measure),
-                size = 1) +
-      geom_point(data =exp_rr2 %>% filter(interpolated == "not interpolated"),
-                 color = "black",
-                 shape = 2,
-                 size = 1) +
-      xlab("Exposure") +
-      ylab("value") +
-      ggtitle(paste0(label_cause, ", ", age_group_id))
-
+    exp_rr_ci <- apply(exp_rr, 1, function(row){
+      val <- row[-1]
+      CI <- CI(val, 0.95)
+      return(c(row[1], CI))
+    })
+    exp_rr_ci <- t(exp_rr_ci)
+    exp_rr_ci <- as.data.frame(exp_rr_ci)
+    
+    g<-ggplot(data=exp_rr_ci, 
+              aes(x=exposure_spline, y=mean)) + 
+          geom_point() + 
+          geom_line()
+    
+    g<-g+geom_ribbon(aes(ymin=exp_rr_ci$lower, ymax=exp_rr_ci$upper), linetype=2, alpha=0.1, color = "red")
+    g
     ggsave(plotDirX)
   }
 
