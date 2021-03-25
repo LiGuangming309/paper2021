@@ -59,10 +59,10 @@ group_variables <- c(
   "Hispanic.Origin" = "hispanic_origin"
 )
 
-# agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
-#                    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
-# agr_by_new <- agr_by_replace[[agr_by]]
-# group_variables[agr_by_new] <- agr_by
+ agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
+                    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
+ agr_by_new <- agr_by_replace[[agr_by]]
+ group_variables[agr_by_new] <- agr_by
 
 inverse_group_variables <- setNames(names(group_variables), group_variables)
 
@@ -81,68 +81,15 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     print("Years missing in attributable burden data:")
     print(missing)
   }
-
+  
+  columns <- c(inverse_group_variables, "measure", "attr")
   attrBurden_gr <- attrBurden %>%
-    group_by_at(vars(one_of(inverse_group_variables))) %>%
+    group_by_at(vars(one_of(columns))) %>%
     summarise(
-      Deaths = sum(Deaths),
-      YLL = sum(YLL),
-      attrDeaths = sum(attrDeaths),
-      attrYLL = sum(attrYLL)
+      value = sum(value)
     ) %>%
     as.data.frame()
-  ## ---------- read all burden data----------
-  files <- list.files(allBurdenDir)
-  all_burden <- lapply(files, function(file) {
-    fileDir <- file.path(allBurdenDir, file)
-    all_burden <- read.delim(fileDir)
-
-    notes_hisp_or <- all_burden$Notes[grepl("Hispanic Origin:", all_burden$Notes, fixed = TRUE)]
-
-    all_burden <- all_burden[!apply(is.na(all_burden) | all_burden == "", 1, all), ]
-
-    if (!"Hispanic.Origin" %in% colnames(all_burden)) {
-      if (rlang::is_empty(notes_hisp_or)) {
-        all_burden[, "Hispanic.Origin"] <- "All Origins"
-      } else if (grepl("Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
-        all_burden[, "Hispanic.Origin"] <- "Hispanic or Latino"
-      } else if (grepl("Not Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
-        all_burden[, "Hispanic.Origin"] <- "Not Hispanic or Latino"
-      }
-    }
-
-    all_burden <- all_burden %>% select(Race, Year, Deaths, Crude.Rate, Hispanic.Origin, Single.Year.Ages.Code, Gender)
-    return(all_burden)
-  })
-
-  all_burden <- all_burden %>%
-    do.call(rbind, .) %>%
-    as.data.frame() %>%
-    filter(
-      Hispanic.Origin != "Not Stated",
-      !(Single.Year.Ages.Code %in% c("NS", ""))
-    )
-
-  # calculate YLL
-  all_burden <- all_burden %>%
-    mutate(
-      Single.Year.Ages.Code = as.numeric(Single.Year.Ages.Code),
-      Deaths = as.numeric(Deaths),
-      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
-      YLL = Deaths * Life.Expectancy
-    )
-
-  all_burden <- all_burden %>%
-    group_by_at(vars(one_of(inverse_group_variables))) %>%
-    summarise(
-      Deaths = sum(Deaths),
-      YLL = sum(YLL)
-    ) %>%
-    rename(
-      allDeaths = Deaths,
-      allYLL = YLL
-    )
-
+  
   ### ---- read cdc population data------
   files <- list.files(cdcPopDir)
   cdc_pop <- lapply(files, function(file) {
@@ -164,6 +111,9 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     }
 
     cdc_pop <- cdc_pop %>% select(Race, Year, Hispanic.Origin, Population) # Gender
+    if (agr_by == "nation") {
+      cdc_pop[, "Nation"] <- "us"
+    }
     return(cdc_pop)
   })
 
@@ -179,26 +129,22 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     summarise(Population = sum(Population))
   ## ---------------- join/write --------------------
   # join everything
-
+  all_burden <- attrBurden_gr %>% 
+    filter(attr == "overall") %>%
+    rename(overall_value = value) %>% 
+    subset(select = -attr)
+  
   attrBurden_gr <- attrBurden_gr %>%
-    left_join(all_burden, by = unname(inverse_group_variables)) %>%
+    left_join(all_burden, by = unname(c(inverse_group_variables, "measure"))) %>%
     left_join(cdc_pop, by = unname(inverse_group_variables))
 
   # calculations
   attrBurden_gr <- attrBurden_gr %>%
     mutate(
       # Crude Rates Per 100,000
-      crudeDeaths = Deaths * 100000 / Population,
-      crudeYLL = YLL * 100000 / Population,
-      crudeAttrDeaths = attrDeaths * 100000 / Population,
-      crudeAttrYLL = attrYLL * 100000 / Population,
-      crudeAllDeaths = allDeaths * 100000 / Population,
-      crudeAllYLL = allYLL * 100000 / Population,
+      crude_rate = value * 100000 / Population,
       # proportions
-      propDeaths = attrDeaths / allDeaths,
-      propYll = attrYLL / allYLL,
-      # test
-      effPaf = attrDeaths / Deaths
+      prop = 100* value / overall_value,
     )
 
   test_that("10 plot basic chackes", {
@@ -221,24 +167,60 @@ attrBurden_gr_sub <- attrBurden_gr %>%
     "American Indian or Alaska Native, All Origins"
   ))
 
-for (measure in c(
-  "Deaths", "YLL", "attrDeaths", "attrYLL", "effPaf", "Population", "crudeDeaths",
-  "crudeYLL", "crudeAttrDeaths", "crudeAttrYLL", "crudeAllDeaths", "crudeAllYLL",
-  "propDeaths", "propYll", "allDeaths", "allYLL"
-)) {
-  g <- attrBurden_gr_sub %>%
-    ggplot(aes_string(x = "Year", y = measure, color = "Ethnicity")) +
+i <- 1
+#TODO population
+for(location in attrBurden_gr_sub[, get(agr_by_new)] %>% unique){
+  attrBurden_gr_sub2 <- attrBurden_gr_sub %>%
+    filter(measure == "Deaths" &
+             attr == "total")
+  
+  g <- attrBurden_gr_sub2 %>%
+    ggplot(aes_string(x = "Year", y = "Population", color = "Ethnicity")) +
     # scale_color_viridis(discrete = TRUE) +
     # theme_ipsum() +
-    ylab(paste("burden measured in", measure)) +
+    ylab(paste("Population")) +
     xlab("Year") +
     ylim(0, NA) +
     xlim(2000, 2016) +
     geom_line() +
     theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-    guides(col = guide_legend(nrow = 3, byrow = TRUE))
-
-  ggsave(file.path(summaryDir, paste0(measure, ".png")),
-    plot = g
+    guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
+    ggtitle(paste("Population", location, sep = ", "))
+  
+  ggsave(file.path(summaryDir, paste0("plot",i, ".png")),
+         plot = g
   )
+  i <- i+1
 }
+
+for(measure2 in attrBurden_gr_sub$measure %>% unique){
+  for(location in attrBurden_gr_sub[, get(agr_by_new)] %>% unique){
+    for(attr2 in attrBurden_gr_sub$attr %>% unique){
+      for(column in c("value", "crude_rate", "prop")){
+        attrBurden_gr_sub2 <- attrBurden_gr_sub %>%
+          filter(measure == measure2 &
+                 attr == attr2 &
+                 get(agr_by_new) == location)
+
+        g <- attrBurden_gr_sub2 %>%
+          ggplot(aes_string(x = "Year", y = column, color = "Ethnicity")) +
+          # scale_color_viridis(discrete = TRUE) +
+          # theme_ipsum() +
+          ylab(paste("burden measured in", measure2, column)) +
+          xlab("Year") +
+          ylim(0, NA) +
+          xlim(2000, 2016) +
+          geom_line() +
+          theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+          guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
+          ggtitle(paste(measure2, location, attr2, column, sep = ", "))
+        
+        ggsave(file.path(summaryDir, paste0("plot",i, ".png")),
+               plot = g
+        )
+        i <- i+1
+      }
+    }
+  }
+}
+

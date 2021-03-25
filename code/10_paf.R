@@ -57,6 +57,9 @@ dir.create(pafDir, recursive = T, showWarnings = F)
 # load some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 causes_ages <- file.path(tmpDir, "causes_ages.csv") %>% read.csv
+#example pm exposures
+example_exp_rr<-file.path(exp_rrDir, "cvd_ihd_25.csv") %>% read.csv
+pm_levels <- example_exp_rr$exposure_spline
 
 ### -----calculation
 regions <- states[, agr_by] %>% unique
@@ -67,18 +70,44 @@ for (region in regions) {
   if (!file.exists(pafDirX)) {
     tic(paste("Calculated PAF in", agr_by, region, "in year", year, "by pm"))
 
+    #read census data aggregated by pm exposure
     cens_agr <- paste0("cens_agr_", toString(year), "_", region, ".csv") %>%
       file.path(cens_agrDir, .) %>%
-      read.csv()
+      read.csv() %>%
+      select(variable, pm, prop) 
 
+    #add column, if something from pm_levels missing
+    test <- merge(cens_agr$variable%>% unique,
+                  pm_levels) %>%
+      rename(variable = x,
+             pm = y)
+    test$prop <- 0
+    cens_agr <- rbind(cens_agr, test)
+    
+    #make wider
+    cens_agr <- cens_agr %>%
+      mutate(pm = sapply(pm, function(x) pm_levels[match.closest(x, pm_levels)]
+      )) %>% 
+      pivot_wider(names_from = pm,
+                  names_sort = TRUE,
+                  values_fn = sum,
+                  values_from = prop,
+                  values_fill = 0)
+    #as matrix
+    matrix_cens_agr <- cens_agr %>%
+      subset(select=-variable) %>%
+      as.matrix
+    rownames(matrix_cens_agr) <- cens_agr$variable
+    
     censMetaAll <- paste0("cens_meta_", toString(year), ".csv") %>%
       file.path(censDir, "meta", .) %>%
       read.csv()
 
+    #loop over all exp_rr curves
     pafs <- apply(causes_ages, 1, function(cause_age) {
       label_cause <- cause_age[["label_cause"]]
       age_group_idX <- cause_age[["age_group_id"]]
-      tic(paste("Calculated PAF in", agr_by, region, "in year", year, "by pm", "for", label_cause))
+      #tic(paste("Calculated PAF in", agr_by, region, "in year", year, "by pm")
 
       exp_rr <- ifelse(age_group_idX == "all ages",
         paste0(label_cause, ".csv"),
@@ -87,11 +116,11 @@ for (region in regions) {
         file.path(exp_rrDir, .) %>%
         read.csv
 
-      getRR <- function(pm) {
-        match.closest(pm, exp_rr$exposure_spline) %>%
-          exp_rr[., "rr"] %>%
-          return(.)
-      }
+      matrix_exp_rr <- matrix(data = exp_rr$rr,
+                              dimnames = list(exp_rr$exposure_spline,
+                                              #paste0("draw", 1:ncol(exp_rr))
+                                              "draw1"
+                                              ))
       
       ifelse(age_group_idX == "all ages",
              censMeta <- censMetaAll,
@@ -101,27 +130,17 @@ for (region in regions) {
       if(nrow(censMeta)==0){
         return() #TODO
       }
+      #subset rows with right age
+      matrix_cens_agr_sub <- matrix_cens_agr %>% subset(rownames(.) %in% censMeta$variable)
       
-      pafs <- apply(censMeta, 1, function(row) {
-        variableX <- row[["variable"]]
-        
-        cens_agr_sub <- cens_agr %>% filter(variable == variableX)
-
-        rr <- sapply(cens_agr_sub$pm, getRR) %>% as.numeric 
-        props <- cens_agr_sub$prop
-        
-        x <- sum(props*(rr-1)) 
-        y<-x / (1 + x)
-
-        return(y)
-      })
-
-      toc()
-
+      #apply formular sum(prop * (rr-1))/(1+sum(prop * (rr-1)))
+      matrix <- matrix_cens_agr_sub %*% (matrix_exp_rr-1)
+      matrix <- apply(matrix, 1:2, function(x) x/(1+x))
+      #write to dataframe
       result<-data.frame(
-        label_cause = rep(label_cause, nrow(censMeta)),
-        censMeta$variable,
-        pafs
+        label_cause = rep(label_cause, nrow(matrix)),
+        variable = rownames(matrix),
+        pafs =rowMeans(matrix) 
       )
       
       test_that("07_paf sum(props)", {
@@ -133,8 +152,7 @@ for (region in regions) {
 
     pafs[, agr_by] <- region
     
-    pafs <- left_join(pafs,census_meta, by= c("censMeta.variable"="variable"))%>%
-                select(!censMeta.variable)
+    pafs <- left_join(pafs,census_meta, by= "variable")
     
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))

@@ -101,9 +101,6 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
-all.burden.dir <- file.path(data.dir, "11_all_burden")
-if (!file.exists(all.burden.dir)) warning("The all burden data from CDC wonder need to be downloaded")
-
 summary.dir <- file.path(data.dir, "12_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
@@ -163,7 +160,7 @@ for (year in years) {
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
   # runscript(script = paf.script, args = args)
-  # runscript(script = calc.attr.burd.script, args = args)
+   runscript(script = calc.attr.burd.script, args = args)
 } 
 
   
@@ -178,5 +175,5 @@ args <- paste(
   data.dir # 8
 )
 
- runscript(script = summary.script, args = args)
- runscript(script = plot.script, args = args) 
+# runscript(script = summary.script, args = args)
+# runscript(script = plot.script, args = args) 

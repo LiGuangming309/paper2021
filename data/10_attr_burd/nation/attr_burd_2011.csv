@@ -1,1009 +1,481 @@
-Year,Gender,Gender.Code,Race,Hispanic.Origin,label_cause,Nation,min_age,max_age,Deaths,YLL,attrDeaths,attrYLL
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,0,4,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,5,9,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,10,14,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,15,17,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,18,19,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,20,24,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,25,29,2,128.29860062,0.194929418070297,12.504585779045
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,30,34,2,118.3925542,0.179982577878151,10.6542985532474
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,35,44,22,1134.33485372,1.67686425740625,86.4602532787827
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,45,54,62,2538.92965384,3.97745425977179,162.878654305271
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,55,64,124,3975.17559032,6.297798376226,201.893986918794
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,65,74,127,2962.77043322,4.77730943615835,111.449379116479
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,75,84,200,2976.2520972,5.42994073730598,80.8043625353932
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_ihd,us,85,150,203,1712.438425491,3.45217303394455,29.1213485456675
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,0,4,2,176.87240563,0.20031190653923,17.7148243929627
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,5,9,2,168.06016112,0.202420779836544,17.0094344366828
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,10,14,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,15,17,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,18,19,1,74.0665492,0.10392776177316,7.69757068061763
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,20,24,2,138.21513584,0.2158248591852,14.9151311149656
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,25,29,1,64.14930031,0.104794748574802,6.72250979723592
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,30,34,3,177.5888313,0.289066110178663,17.1116375583553
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,35,44,11,552.36176527,0.887465775295473,44.5638329326288
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,45,54,23,973.98054611,1.54703439106214,65.5122348285938
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,55,64,20,647.02174897,1.09077164622641,35.2876489134149
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,65,74,25,606.88082174,0.981982557414133,23.8378552551134
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,75,84,26,409.90827266,0.7437718660864,11.7260861877147
-2011,Female,F,American Indian or Alaska Native,All Origins,cvd_stroke,us,85,150,12,106.324527446,0.208709784821578,1.84924743704255
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,0,4,3,264.87291616,0.0763919343614934,6.74471814181069
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,5,9,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,10,14,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,15,17,1,74.0665492,0.0254205504389098,1.88281244977459
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,18,19,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,20,24,1,69.10756792,0.0276427017847951,1.91031989108503
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,25,29,2,128.29860062,0.057996513532632,3.72043576353779
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,30,34,3,177.5888313,0.0866169120179982,5.12739872536374
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,35,44,8,414.280027,0.226983662228766,11.7543497145865
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,45,54,17,697.78345729,0.483646773917165,19.8518069418279
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,55,64,22,712.19006814,0.626257600965467,20.2733837956722
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,65,74,20,465.29825938,0.54732294800905,12.7334207513671
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,75,84,38,557.17860014,1.05629485889735,15.4880234425133
-2011,Female,F,American Indian or Alaska Native,All Origins,lri,us,85,150,57,451.484046522,1.6475228673686,13.049654226265
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,0,4,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,10,14,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,18,19,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,20,24,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,25,29,1,64.14930031,0.0448713964861978,2.87846868852218
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,30,34,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,35,44,3,152.88739986,0.131823005505675,6.71802551783104
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,45,54,38,1573.30019686,1.67386507872623,69.3024278388698
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,55,64,76,2392.49015932,3.35056851745505,105.476344817613
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,65,74,103,2443.0682399,4.3682796677785,103.611702129617
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,75,84,83,1292.05365191,3.5712402646815,55.5931810340936
-2011,Female,F,American Indian or Alaska Native,All Origins,neo_lung,us,85,150,26,248.559521191,1.162725944713,11.1156386190084
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,0,4,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,5,9,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,15,17,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,20,24,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,25,29,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,30,34,1,59.1962771,0.0396820146355654,2.34902753425319
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,35,44,3,152.88739986,0.117011731228303,5.96320644687081
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,45,54,21,865.91957417,0.821258419603239,33.8639876660173
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,55,64,65,2096.99388074,2.54350104340723,82.0570172873965
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,65,74,102,2360.2823067,3.83877388691174,88.82931455588
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,75,84,90,1342.21203618,3.43960306000834,51.2964069647194
-2011,Female,F,American Indian or Alaska Native,All Origins,resp_copd,us,85,150,57,510.123643469,2.26418044328631,20.2633680210608
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,20,24,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,25,29,0,0,0,0
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,30,34,1,59.1962771,0.0638112827445884,3.7773903754551
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,35,44,5,256.45740661,0.313839214905947,16.0972782294595
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,45,54,21,880.31532227,1.32081919597244,55.3684464839466
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,55,64,40,1335.99648251,2.5190784061675,84.1369972451669
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,65,74,38,866.05664242,2.30409726680551,52.5125984920706
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,75,84,35,536.78637543,2.14888704387665,32.9569510711725
-2011,Female,F,American Indian or Alaska Native,All Origins,t2_dm,us,85,150,24,202.818044723,1.53078403106653,12.9362760030878
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,0,4,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,5,9,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,10,14,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,15,17,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,18,19,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,20,24,2,138.21513584,0.294987730531004,20.385884623238
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,25,29,3,192.44790093,0.411716098976118,26.4112996756807
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,30,34,1,59.1962771,0.125425392189385,7.42471627141901
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,35,44,24,1223.09919888,2.57324688131407,131.139008293987
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,45,54,78,3216.27270406,7.14151784895914,294.475242604674
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,55,64,271,8678.81035881,19.859144179596,635.991683479629
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,65,74,465,10685.30550018,26.3796547601375,606.182086239455
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,75,84,1037,15282.20313433,41.3077225886099,608.749284103846
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_ihd,us,85,150,1561,12900.668590066,37.6293380795751,310.982459851472
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,0,4,1,88.8718951,0.153840696786262,13.6721142668996
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,5,9,2,168.06016112,0.303449750942748,25.4989070176311
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,10,14,2,158.09266952,0.305619955379554,24.1581373022685
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,15,17,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,18,19,1,74.0665492,0.156836845382386,11.6163639248873
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,20,24,1,69.10756792,0.158235443660494,10.9352666701189
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,25,29,1,64.14930031,0.147625585818231,9.47007803809338
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,30,34,6,355.1776626,0.8069719985133,47.7697380359341
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,35,44,45,2283.44055684,5.12310102990246,259.962148188179
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,45,54,85,3546.50027885,8.20262595458553,342.242532179292
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,55,64,148,4799.14840493,11.6950748839874,379.232432263682
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,65,74,155,3642.30124576,9.23532093401629,217.018199632006
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,75,84,244,3697.8884242,10.3029906364554,156.144712332744
-2011,Female,F,Asian or Pacific Islander,All Origins,cvd_stroke,us,85,150,198,1735.37241262,4.92267007292093,43.1447769746316
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,0,4,9,793.74736391,0.370683167085446,32.6920874133204
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,5,9,3,252.09024168,0.12160262674081,10.2182785213379
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,10,14,2,158.09266952,0.0817597544931118,6.46280892355793
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,15,17,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,18,19,1,74.0665492,0.0421306013677327,3.12046825902876
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,20,24,3,207.32270376,0.12769880959945,8.82495415769713
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,25,29,2,128.29860062,0.085117317979124,5.46021639262459
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,30,34,3,177.5888313,0.125157152433263,7.40883747648636
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,35,44,14,720.05482672,0.576709472173349,29.6616027895403
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,45,54,16,686.94021562,0.668378960051621,28.6960241833582
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,55,64,38,1224.21373604,1.59708962757323,51.4520805200568
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,65,74,62,1434.07848316,2.6085207348516,60.3358622375386
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,75,84,218,3210.68435314,9.02070171156286,132.856081833294
-2011,Female,F,Asian or Pacific Islander,All Origins,lri,us,85,150,430,3527.369360181,17.8556832605669,146.473465205629
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,0,4,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,10,14,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,18,19,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,20,24,1,69.10756792,0.0647788094356573,4.47670597285142
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,25,29,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,30,34,4,236.7851084,0.254398977401716,15.0594723602286
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,35,44,37,1883.96619143,2.32381119258938,118.323830327163
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,45,54,106,4412.41985302,6.74009579521848,280.567287717723
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,55,64,284,9179.31823846,18.1549361150093,586.795549995004
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,65,74,371,8662.2512128,23.729214466458,554.038859274575
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,75,84,421,6365.78506177,26.4694567839386,400.234851753831
-2011,Female,F,Asian or Pacific Islander,All Origins,neo_lung,us,85,150,211,1924.220271378,13.2899279861685,121.197861782651
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,0,4,1,88.00051053,0.0562928269242374,4.95379750850982
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,5,9,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,15,17,1,74.0665492,0.0567854915816057,4.20590540607518
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,20,24,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,25,29,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,30,34,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,35,44,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,45,54,5,202.97227205,0.285351892233789,11.5837043800918
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,55,64,31,984.47101212,1.77970104761065,56.518196503622
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,65,74,74,1711.5003607,4.25252645632714,98.3540616741919
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,75,84,225,3330.40895597,12.7192126684623,188.267465706372
-2011,Female,F,Asian or Pacific Islander,All Origins,resp_copd,us,85,150,269,2259.943755279,15.2567550095099,128.176238697262
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,20,24,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,25,29,0,0,0,0
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,30,34,1,59.1962771,0.0887405025085613,5.25310737649004
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,35,44,5,256.45740661,0.438195327357512,22.4756874485455
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,45,54,9,371.10838893,0.796428549275943,32.8401462021836
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,55,64,29,914.64125022,2.57682885631811,81.2715160946816
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,65,74,64,1485.44027384,5.6849497824241,131.947708774542
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,75,84,99,1484.54929863,8.63488681393395,129.483991549243
-2011,Female,F,Asian or Pacific Islander,All Origins,t2_dm,us,85,150,109,974.705387737,9.49591514481719,84.9148592031807
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,0,4,2,176.00102106,0.303928832963732,26.7458924655955
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,5,9,0,0,0,0
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,10,14,1,79.04633476,0.15175688825151,11.9958257908648
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,15,17,1,74.0665492,0.152015712970463,11.2592792838999
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,18,19,2,148.1330984,0.30490293377481,22.5831081456563
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,20,24,9,621.96811128,1.37834363137676,95.2539761224685
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,25,29,23,1475.43390713,3.28990020567107,211.044796283524
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,30,34,49,2900.6175779,6.48941367110954,384.149129891528
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,35,44,311,15890.45395657,35.5743192174534,1817.65942624202
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,45,54,1300,53650.9313671,126.103984822249,5204.30479601255
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,55,64,2643,85590.8600333,204.713418114265,6629.4353071345
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,65,74,3383,78686.09234992,203.550278503174,4734.4297996313
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,75,84,4852,72667.26418948,209.826205563999,3142.51778928179
-2011,Female,F,Black or African American,All Origins,cvd_ihd,us,85,150,6184,51257.415263968,162.342989469337,1345.61481669207
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,0,4,12,1065.59135663,1.95185848986596,173.323628013838
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,5,9,3,252.09024168,0.487268505310479,40.9452117555903
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,10,14,2,158.09266952,0.324860682997032,25.6790462985456
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,15,17,2,148.1330984,0.325426239175198,24.1031985548408
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,18,19,1,74.0665492,0.163187096313178,12.0867050978851
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,20,24,10,691.0756792,1.63941455672973,113.295952828237
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,25,29,11,705.64230341,1.68933423340119,108.369609062416
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,30,34,31,1835.0845901,4.39478410815548,260.154857861048
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,35,44,192,9829.21057581,23.2738073574292,1191.47475738025
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,45,54,471,19627.67807677,48.0225337317428,2001.21195863583
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,55,64,550,18028.50095454,45.812302180762,1501.68569744644
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,65,74,441,10209.53025906,27.7865652826905,643.282945689284
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,75,84,617,9242.70478085,28.1859235956066,422.227181150382
-2011,Female,F,Black or African American,All Origins,cvd_stroke,us,85,150,536,4564.976465084,14.4443829644704,123.019157249006
-2011,Female,F,Black or African American,All Origins,lri,us,0,4,58,5141.49914725,2.54420026196542,225.534542712559
-2011,Female,F,Black or African American,All Origins,lri,us,5,9,5,420.1504028,0.218961563122081,18.399357788692
-2011,Female,F,Black or African American,All Origins,lri,us,10,14,6,474.27800856,0.262768167707528,20.7708605488811
-2011,Female,F,Black or African American,All Origins,lri,us,15,17,0,0,0,0
-2011,Female,F,Black or African American,All Origins,lri,us,18,19,4,296.2661968,0.176137157887047,13.0458714705892
-2011,Female,F,Black or African American,All Origins,lri,us,20,24,20,1382.1513584,0.885440173543014,61.1906169322204
-2011,Female,F,Black or African American,All Origins,lri,us,25,29,22,1411.28460682,0.977899479891345,62.7315674085427
-2011,Female,F,Black or African American,All Origins,lri,us,30,34,29,1716.6920359,1.28193505790427,75.8857829119056
-2011,Female,F,Black or African American,All Origins,lri,us,35,44,90,4561.94589315,3.96509180265779,200.983714056638
-2011,Female,F,Black or African American,All Origins,lri,us,45,54,185,7697.11879115,8.18126561447068,340.390125927198
-2011,Female,F,Black or African American,All Origins,lri,us,55,64,310,10021.84494494,13.7330022518191,443.967803858847
-2011,Female,F,Black or African American,All Origins,lri,us,65,74,416,9668.53986562,18.4802721236047,429.512614794659
-2011,Female,F,Black or African American,All Origins,lri,us,75,84,654,9833.02213526,29.1734500062275,438.628715096538
-2011,Female,F,Black or African American,All Origins,lri,us,85,150,976,8010.544542005,43.6435097330448,358.205203571705
-2011,Female,F,Black or African American,All Origins,neo_lung,us,0,4,2,177.7437902,0.133885458403141,11.8986544146193
-2011,Female,F,Black or African American,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Female,F,Black or African American,All Origins,neo_lung,us,10,14,0,0,0,0
-2011,Female,F,Black or African American,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Female,F,Black or African American,All Origins,neo_lung,us,18,19,0,0,0,0
-2011,Female,F,Black or African American,All Origins,neo_lung,us,20,24,0,0,0,0
-2011,Female,F,Black or African American,All Origins,neo_lung,us,25,29,3,192.44790093,0.203321923298553,13.0429591172857
-2011,Female,F,Black or African American,All Origins,neo_lung,us,30,34,11,651.1590481,0.741706469312389,43.9062616842788
-2011,Female,F,Black or African American,All Origins,neo_lung,us,35,44,89,4473.1467358,5.98231425149961,300.671567040734
-2011,Female,F,Black or African American,All Origins,neo_lung,us,45,54,823,33924.60376141,55.5134494617252,2288.30106490654
-2011,Female,F,Black or African American,All Origins,neo_lung,us,55,64,1709,55381.00423195,115.467335961725,3741.77707521841
-2011,Female,F,Black or African American,All Origins,neo_lung,us,65,74,1942,45606.99169166,131.544631949354,3089.26618763989
-2011,Female,F,Black or African American,All Origins,neo_lung,us,75,84,1675,25796.17214479,113.898389132036,1754.1148973518
-2011,Female,F,Black or African American,All Origins,neo_lung,us,85,150,693,6229.036660114,47.2294005910626,424.52188703743
-2011,Female,F,Black or African American,All Origins,resp_copd,us,0,4,1,88.8718951,0.0598991526889382,5.3233512143502
-2011,Female,F,Black or African American,All Origins,resp_copd,us,5,9,0,0,0,0
-2011,Female,F,Black or African American,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Female,F,Black or African American,All Origins,resp_copd,us,15,17,1,74.0665492,0.0599240963540116,4.43837103086994
-2011,Female,F,Black or African American,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Female,F,Black or African American,All Origins,resp_copd,us,20,24,1,69.10756792,0.0604422466439874,4.17701666518675
-2011,Female,F,Black or African American,All Origins,resp_copd,us,25,29,3,192.44790093,0.182040297903543,11.6777577387362
-2011,Female,F,Black or African American,All Origins,resp_copd,us,30,34,6,355.1776626,0.362115468841738,21.435887635752
-2011,Female,F,Black or African American,All Origins,resp_copd,us,35,44,39,1987.53619818,2.34603349165201,119.559653507718
-2011,Female,F,Black or African American,All Origins,resp_copd,us,45,54,275,11269.04378215,16.6036941974149,680.391843113083
-2011,Female,F,Black or African American,All Origins,resp_copd,us,55,64,584,18852.0143739,35.3203596271791,1140.17110853236
-2011,Female,F,Black or African American,All Origins,resp_copd,us,65,74,912,21163.131207,55.3083191912567,1283.43992969649
-2011,Female,F,Black or African American,All Origins,resp_copd,us,75,84,1153,17436.26159485,70.2072321298808,1061.71003058713
-2011,Female,F,Black or African American,All Origins,resp_copd,us,85,150,915,7978.076026345,55.8482718992186,486.952742242571
-2011,Female,F,Black or African American,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Female,F,Black or African American,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Female,F,Black or African American,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Female,F,Black or African American,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Female,F,Black or African American,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Female,F,Black or African American,All Origins,t2_dm,us,20,24,1,69.10756792,0.094322099375464,6.51837088894687
-2011,Female,F,Black or African American,All Origins,t2_dm,us,25,29,1,64.14930031,0.0946405181880095,6.07112302273664
-2011,Female,F,Black or African American,All Origins,t2_dm,us,30,34,4,236.7851084,0.376871185789422,22.3093711449962
-2011,Female,F,Black or African American,All Origins,t2_dm,us,35,44,24,1223.09919888,2.25494084774975,114.917347683521
-2011,Female,F,Black or African American,All Origins,t2_dm,us,45,54,109,4464.14390883,10.2727633756355,420.725633488027
-2011,Female,F,Black or African American,All Origins,t2_dm,us,55,64,258,8332.13008925,24.3526303203518,786.470092420872
-2011,Female,F,Black or African American,All Origins,t2_dm,us,65,74,311,7288.31991076,29.4192430160686,689.443262487137
-2011,Female,F,Black or African American,All Origins,t2_dm,us,75,84,367,5542.67980643,34.8367879594292,526.128504478507
-2011,Female,F,Black or African American,All Origins,t2_dm,us,85,150,322,2746.372683222,30.6249996169332,261.203920408787
-2011,Female,F,White,All Origins,cvd_ihd,us,0,4,6,531.48860146,0.77082047025063,68.2803822850412
-2011,Female,F,White,All Origins,cvd_ihd,us,5,9,3,252.09024168,0.381547733286231,32.0614867655274
-2011,Female,F,White,All Origins,cvd_ihd,us,10,14,1,79.04633476,0.126607171662343,10.0078328742383
-2011,Female,F,White,All Origins,cvd_ihd,us,15,17,2,148.1330984,0.253327484802,18.7630926167996
-2011,Female,F,White,All Origins,cvd_ihd,us,18,19,3,222.1996476,0.390789991511448,28.9444661331502
-2011,Female,F,White,All Origins,cvd_ihd,us,20,24,12,829.29081504,1.58085185574719,109.248826992507
-2011,Female,F,White,All Origins,cvd_ihd,us,25,29,44,2822.56921364,5.39128853018254,345.847386980538
-2011,Female,F,White,All Origins,cvd_ihd,us,30,34,119,7044.3569749,13.3492583473897,790.226396211566
-2011,Female,F,White,All Origins,cvd_ihd,us,35,44,942,47685.85422159,89.8487139369338,4548.31494139487
-2011,Female,F,White,All Origins,cvd_ihd,us,45,54,4119,170275.81177663,325.931409253158,13473.7157790926
-2011,Female,F,White,All Origins,cvd_ihd,us,55,64,9933,318691.68992899,619.751877256112,19884.2014597216
-2011,Female,F,White,All Origins,cvd_ihd,us,65,74,16882,391634.17003586,815.875091552957,18926.9378233191
-2011,Female,F,White,All Origins,cvd_ihd,us,75,84,36123,531718.87693935,1272.02108778458,18723.739009495
-2011,Female,F,White,All Origins,cvd_ihd,us,85,150,77251,634049.206093194,1660.7210439162,13630.6178487959
-2011,Female,F,White,All Origins,cvd_stroke,us,0,4,23,2042.31081816,3.16221448357051,280.792384745143
-2011,Female,F,White,All Origins,cvd_stroke,us,5,9,7,588.21056392,0.952646290081185,80.0509445007071
-2011,Female,F,White,All Origins,cvd_stroke,us,10,14,7,553.32434332,0.948340342601078,74.9628281876579
-2011,Female,F,White,All Origins,cvd_stroke,us,15,17,5,370.332746,0.67768666846068,50.1939129717271
-2011,Female,F,White,All Origins,cvd_stroke,us,18,19,11,814.7320412,1.53350513200573,113.581433308155
-2011,Female,F,White,All Origins,cvd_stroke,us,20,24,33,2280.54974136,4.65297570851682,321.555834806436
-2011,Female,F,White,All Origins,cvd_stroke,us,25,29,43,2758.41991333,5.65727180847503,362.910028177162
-2011,Female,F,White,All Origins,cvd_stroke,us,30,34,85,5031.6835535,10.2009613743202,603.858936200655
-2011,Female,F,White,All Origins,cvd_stroke,us,35,44,401,20427.72374707,40.4638263145108,2061.30639825997
-2011,Female,F,White,All Origins,cvd_stroke,us,45,54,1160,48270.0184598,96.1941550509743,4002.8393448581
-2011,Female,F,White,All Origins,cvd_stroke,us,55,64,1858,59795.53767213,124.410738922172,4003.87891605936
-2011,Female,F,White,All Origins,cvd_stroke,us,65,74,2629,60939.20910452,132.640381559366,3074.55304205002
-2011,Female,F,White,All Origins,cvd_stroke,us,75,84,5775,85620.91723699,214.172686946255,3175.35271055395
-2011,Female,F,White,All Origins,cvd_stroke,us,85,150,7068,60939.751062484,155.444705051916,1340.23226228707
-2011,Female,F,White,All Origins,lri,us,0,4,96,8497.71793137,3.47309466357886,307.431029167079
-2011,Female,F,White,All Origins,lri,us,5,9,27,2268.81217512,0.965485984167839,81.1298650291744
-2011,Female,F,White,All Origins,lri,us,10,14,16,1264.74135616,0.569216127892518,44.994448596183
-2011,Female,F,White,All Origins,lri,us,15,17,12,888.7985904,0.427125517267296,31.6357131392536
-2011,Female,F,White,All Origins,lri,us,18,19,8,592.5323936,0.294018165587756,21.7769109271993
-2011,Female,F,White,All Origins,lri,us,20,24,50,3455.378396,1.86156143688863,128.647983437034
-2011,Female,F,White,All Origins,lri,us,25,29,85,5452.69052635,3.16886850122541,203.280697128008
-2011,Female,F,White,All Origins,lri,us,30,34,81,4794.8984451,2.97146695189841,175.899781078071
-2011,Female,F,White,All Origins,lri,us,35,44,297,15180.26957091,10.7035170014987,547.078361749388
-2011,Female,F,White,All Origins,lri,us,45,54,728,30188.09515996,25.7972245220657,1069.73773177881
-2011,Female,F,White,All Origins,lri,us,55,64,1394,44918.88264665,49.0528875722478,1580.63192276694
-2011,Female,F,White,All Origins,lri,us,65,74,2424,56091.93160572,85.5453430696627,1979.53941115981
-2011,Female,F,White,All Origins,lri,us,75,84,5883,86030.39497327,212.082520443352,3101.40115598643
-2011,Female,F,White,All Origins,lri,us,85,150,13765,111699.964824564,501.824005313017,4072.1920625925
-2011,Female,F,White,All Origins,neo_lung,us,0,4,0,0,0,0
-2011,Female,F,White,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Female,F,White,All Origins,neo_lung,us,10,14,1,79.04633476,0.0548133691355516,4.33279592601226
-2011,Female,F,White,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Female,F,White,All Origins,neo_lung,us,18,19,1,74.0665492,0.0565372322266188,4.18751769234469
-2011,Female,F,White,All Origins,neo_lung,us,20,24,11,760.18324712,0.62958455688139,43.5090575260638
-2011,Female,F,White,All Origins,neo_lung,us,25,29,13,833.94090403,0.744927907862685,47.7866040707834
-2011,Female,F,White,All Origins,neo_lung,us,30,34,28,1657.4957588,1.58019282805981,93.5415325212612
-2011,Female,F,White,All Origins,neo_lung,us,35,44,498,24989.42595489,27.6390398026728,1386.91513777741
-2011,Female,F,White,All Origins,neo_lung,us,45,54,4332,178175.77109784,236.616273389876,9732.06070303289
-2011,Female,F,White,All Origins,neo_lung,us,55,64,10880,349229.58022898,590.300143709536,18947.6352386753
-2011,Female,F,White,All Origins,neo_lung,us,65,74,18227,426016.83724024,991.829980445338,23181.8879327027
-2011,Female,F,White,All Origins,neo_lung,us,75,84,18747,285891.26372271,1041.09009955663,15876.5970134659
-2011,Female,F,White,All Origins,neo_lung,us,85,150,8791,80039.578227502,493.383683459166,4492.11943219236
-2011,Female,F,White,All Origins,resp_copd,us,0,4,6,532.35998603,0.297434870696912,26.3904039348405
-2011,Female,F,White,All Origins,resp_copd,us,5,9,0,0,0,0
-2011,Female,F,White,All Origins,resp_copd,us,10,14,1,79.04633476,0.0487617776768143,3.85443980173416
-2011,Female,F,White,All Origins,resp_copd,us,15,17,1,74.0665492,0.0487857869209507,3.61339488724131
-2011,Female,F,White,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Female,F,White,All Origins,resp_copd,us,20,24,3,207.32270376,0.15297183245591,10.5715113012937
-2011,Female,F,White,All Origins,resp_copd,us,25,29,6,384.89580186,0.306341189018323,19.6515729316589
-2011,Female,F,White,All Origins,resp_copd,us,30,34,10,591.962771,0.502550445242258,29.7491154132891
-2011,Female,F,White,All Origins,resp_copd,us,35,44,181,9109.05131252,8.93886477808882,449.859546625905
-2011,Female,F,White,All Origins,resp_copd,us,45,54,1826,74868.29435462,88.6957478724568,3636.63710827944
-2011,Female,F,White,All Origins,resp_copd,us,55,64,6122,195494.69144522,295.327767488362,9430.74334863491
-2011,Female,F,White,All Origins,resp_copd,us,65,74,14588,337980.25230424,705.756802668998,16351.2381568071
-2011,Female,F,White,All Origins,resp_copd,us,75,84,23814,356755.51146398,1176.47362220326,17624.65141568
-2011,Female,F,White,All Origins,resp_copd,us,85,150,21744,189646.98331171,1086.10491581181,9472.79805204787
-2011,Female,F,White,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Female,F,White,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Female,F,White,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Female,F,White,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Female,F,White,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Female,F,White,All Origins,t2_dm,us,20,24,0,0,0,0
-2011,Female,F,White,All Origins,t2_dm,us,25,29,3,192.44790093,0.242951832907437,15.5851900900441
-2011,Female,F,White,All Origins,t2_dm,us,30,34,7,414.3739397,0.55906925017711,33.0948182515735
-2011,Female,F,White,All Origins,t2_dm,us,35,44,59,2978.81928091,4.64169779349441,234.352184464721
-2011,Female,F,White,All Origins,t2_dm,us,45,54,243,10039.12083191,18.8405152461381,778.363000376228
-2011,Female,F,White,All Origins,t2_dm,us,55,64,869,27917.08132595,66.9551177867904,2150.96831811552
-2011,Female,F,White,All Origins,t2_dm,us,65,74,1425,33125.0466357,110.127427702043,2559.98328315779
-2011,Female,F,White,All Origins,t2_dm,us,75,84,2322,34408.00455002,182.877984828034,2709.93390786455
-2011,Female,F,White,All Origins,t2_dm,us,85,150,2625,22750.355112719,208.731787250238,1809.03706028778
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,0,4,1,88.8718951,0.141373781256794,12.5641558577441
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,5,9,1,84.03008056,0.141269551992893,11.8708918346379
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,10,14,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,15,17,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,18,19,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,20,24,3,207.32270376,0.429889725605247,29.7086334103748
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,25,29,3,192.44790093,0.399885647127219,25.6523844672227
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,30,34,14,828.7478794,1.73067795369743,102.449691717934
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,35,44,80,4083.57762364,8.49245138524736,433.494805583083
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,45,54,326,13472.76155612,29.0167394232905,1199.18899198178
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,55,64,783,25184.76524259,55.3283724689988,1779.60673293271
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,65,74,1284,29820.3144486,69.8068406190102,1621.23203888021
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,75,84,2558,37864.71552886,99.5172287672236,1473.10068705684
-2011,Female,F,White,Hispanic or Latino,cvd_ihd,us,85,150,3614,30183.648044504,84.2190382000995,703.386222379203
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,0,4,8,710.10377623,1.21264431945814,107.637913808885
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,5,9,5,420.1504028,0.75742846897928,63.6467752667664
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,10,14,2,158.09266952,0.303636885015426,24.001382858413
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,15,17,1,74.0665492,0.152479766271422,11.2936501105468
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,18,19,3,222.1996476,0.458971494795048,33.994434800635
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,20,24,12,829.29081504,1.8440464669314,127.437566461098
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,25,29,12,769.79160372,1.72016344890146,110.347281665865
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,30,34,21,1243.1218191,2.78337438665147,164.765401465263
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,35,44,82,4182.21240986,9.23945572011655,471.236175280773
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,45,54,199,8309.58811373,18.6421986252348,778.437146281633
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,55,64,204,6637.84566988,15.5220932032718,505.064995866723
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,65,74,232,5422.05890204,13.218138171274,308.920360948064
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,75,84,420,6290.70969828,17.2692736705942,258.657112766329
-2011,Female,F,White,Hispanic or Latino,cvd_stroke,us,85,150,287,2550.60593307,6.86847583466078,61.0410286238108
-2011,Female,F,White,Hispanic or Latino,lri,us,0,4,23,2033.59697246,0.931387706255235,82.3507486794396
-2011,Female,F,White,Hispanic or Latino,lri,us,5,9,11,924.33088616,0.445163885039047,37.4071571222337
-2011,Female,F,White,Hispanic or Latino,lri,us,10,14,4,316.18533904,0.162312744582643,12.830227544094
-2011,Female,F,White,Hispanic or Latino,lri,us,15,17,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,lri,us,18,19,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,lri,us,20,24,11,760.18324712,0.452568120028193,31.2758820932751
-2011,Female,F,White,Hispanic or Latino,lri,us,25,29,13,833.94090403,0.534883609161331,34.3124092749869
-2011,Female,F,White,Hispanic or Latino,lri,us,30,34,15,887.9441565,0.615561638163558,36.4389573048599
-2011,Female,F,White,Hispanic or Latino,lri,us,35,44,43,2199.61143221,1.75098726868759,89.5695724153347
-2011,Female,F,White,Hispanic or Latino,lri,us,45,54,73,3022.89759741,2.9518671241849,122.235507364001
-2011,Female,F,White,Hispanic or Latino,lri,us,55,64,109,3512.05113156,4.39717639436452,141.679892949512
-2011,Female,F,White,Hispanic or Latino,lri,us,65,74,198,4606.01349834,7.9406396742876,184.720674369812
-2011,Female,F,White,Hispanic or Latino,lri,us,75,84,447,6632.69610739,17.9470250457012,266.302378433675
-2011,Female,F,White,Hispanic or Latino,lri,us,85,150,686,5688.949223629,27.3017853874472,226.411764990675
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,0,4,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,5,9,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,10,14,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,15,17,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,18,19,1,74.0665492,0.0624428791003243,4.62492857707382
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,20,24,3,207.32270376,0.188263708641321,13.0104470318012
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,25,29,2,128.29860062,0.125538733768481,8.0532219330514
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,30,34,5,295.9813855,0.313087104339358,18.5335909849093
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,35,44,33,1657.08529581,2.05079063105734,102.979848470001
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,45,54,159,6580.24111793,9.81563426986895,406.221636611034
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,55,64,322,10422.17774542,19.8318048741921,641.896259041357
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,65,74,505,11747.68287554,30.9366580968585,719.671383269109
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,75,84,568,8702.22138488,34.8409291442394,533.791335683255
-2011,Female,F,White,Hispanic or Latino,neo_lung,us,85,150,277,2532.396469589,16.842688664879,153.979658170853
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,0,4,2,176.87240563,0.110727290464811,9.79230111670142
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,5,9,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,10,14,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,15,17,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,18,19,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,20,24,1,69.10756792,0.0562309765720372,3.88598603265999
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,25,29,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,30,34,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,35,44,11,557.2969858,0.612318170364447,31.0220973358797
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,45,54,57,2335.95738179,3.15119420938374,129.141322366033
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,55,64,145,4643.12789205,7.99755110795561,256.094155982373
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,65,74,320,7339.3474648,17.5484640551374,402.482109919397
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,75,84,634,9386.60251362,34.8074561832002,515.337154104014
-2011,Female,F,White,Hispanic or Latino,resp_copd,us,85,150,774,6720.300517508,42.1269002620302,365.769288930142
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,0,4,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,5,9,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,10,14,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,15,17,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,18,19,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,20,24,0,0,0,0
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,25,29,1,64.14930031,0.0876755663310745,5.62432623442142
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,30,34,3,177.5888313,0.262469937759447,15.537243166028
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,35,44,11,562.23220633,0.955366170283794,48.8306936156091
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,45,54,43,1766.67530351,3.71186813559682,152.503855001037
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,55,64,141,4494.14548279,12.1433905532299,387.05080709612
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,65,74,231,5361.23644494,19.8054366605168,459.660730875815
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,75,84,317,4749.34071065,27.2211013364792,407.830551312523
-2011,Female,F,White,Hispanic or Latino,t2_dm,us,85,150,240,2137.675740073,20.4283127222374,181.954618820631
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,0,4,5,442.61670636,0.62267098315674,55.1209159421559
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,5,9,2,168.06016112,0.246800777436186,20.7386892102333
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,10,14,1,79.04633476,0.122994246263222,9.72224436367653
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,15,17,2,148.1330984,0.246511855349894,18.2582824626562
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,18,19,3,222.1996476,0.383181578538945,28.3809372393884
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,20,24,9,621.96811128,1.1652164986046,80.5252783188216
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,25,29,41,2630.12131271,4.93498639445621,316.575924243735
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,30,34,105,6215.6090955,11.5232660482391,682.134450088581
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,35,44,861,43552.95920484,80.5473105091056,4074.4178033248
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,45,54,3783,156392.30709371,295.340601426122,12209.6214738237
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,55,64,9124,292673.72086538,563.26758977358,18068.1303531245
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,65,74,15560,360947.79894484,745.211845478987,17286.797903166
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,75,84,33493,492765.70557985,1172.1837961628,17245.752108961
-2011,Female,F,White,Not Hispanic or Latino,cvd_ihd,us,85,150,73529,603001.178936149,1575.05414205977,12916.8015959731
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,0,4,15,1332.20704193,1.99770314117765,177.423612824169
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,5,9,2,168.06016112,0.263900845429902,22.1756093013268
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,10,14,5,395.2316738,0.65758528874445,51.9797068673451
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,15,17,4,296.2661968,0.527215770590512,39.0490528114581
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,18,19,8,592.5323936,1.0929851108498,80.9536354876242
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,20,24,21,1451.25892632,2.90865528526883,201.010092682583
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,25,29,31,1988.62830961,4.00497192006311,256.916146433246
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,30,34,64,3788.5617344,7.50988789058458,444.557404560979
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,35,44,319,16245.51133721,31.5509335840757,1606.77444902715
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,45,54,958,39827.13038436,78.3383560716338,3256.77653586783
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,55,64,1651,53062.27024486,109.348549840289,3514.40478649846
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,65,74,2393,55423.21201156,119.607798596816,2770.18319258977
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,75,84,5349,79235.31603041,197.113099885008,2919.85768613243
-2011,Female,F,White,Not Hispanic or Latino,cvd_stroke,us,85,150,6772,58311.095779863,148.375734797089,1277.60656868881
-2011,Female,F,White,Not Hispanic or Latino,lri,us,0,4,73,6464.12095891,2.54617098637926,225.462427918119
-2011,Female,F,White,Not Hispanic or Latino,lri,us,5,9,16,1344.48128896,0.552192964197131,46.4008192661501
-2011,Female,F,White,Not Hispanic or Latino,lri,us,10,14,11,869.50968236,0.378229229228336,29.8976342695998
-2011,Female,F,White,Not Hispanic or Latino,lri,us,15,17,12,888.7985904,0.413646830992345,30.6373933591186
-2011,Female,F,White,Not Hispanic or Latino,lri,us,18,19,8,592.5323936,0.28724492115842,21.2752400854302
-2011,Female,F,White,Not Hispanic or Latino,lri,us,20,24,39,2695.19514888,1.4224042666718,98.2988994687195
-2011,Female,F,White,Not Hispanic or Latino,lri,us,25,29,71,4554.60032201,2.59234563845188,166.297158868368
-2011,Female,F,White,Not Hispanic or Latino,lri,us,30,34,66,3906.9542886,2.36072083634029,139.745884783743
-2011,Female,F,White,Not Hispanic or Latino,lri,us,35,44,254,12980.6581387,8.95355905447422,457.571217365322
-2011,Female,F,White,Not Hispanic or Latino,lri,us,45,54,654,27120.76424198,22.826804580724,946.606093932058
-2011,Female,F,White,Not Hispanic or Latino,lri,us,55,64,1281,41281.15631948,44.5529323022158,1435.75063455034
-2011,Female,F,White,Not Hispanic or Latino,lri,us,65,74,2215,51220.99903952,77.4020863394506,1789.89263659135
-2011,Female,F,White,Not Hispanic or Latino,lri,us,75,84,5424,79211.7806392,194.235092485246,2836.5979974882
-2011,Female,F,White,Not Hispanic or Latino,lri,us,85,150,13055,105803.452643554,474.079435661154,3842.14792188875
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,0,4,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,5,9,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,10,14,1,79.04633476,0.0531166255012715,4.19867456069506
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,15,17,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,18,19,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,20,24,8,552.86054336,0.449288835108712,31.049258687973
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,25,29,11,705.64230341,0.618330987875484,39.6655002322034
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,30,34,23,1361.5143733,1.26800995193329,75.0614684802008
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,35,44,463,23233.70587286,25.1770163440273,1263.40257557952
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,45,54,4167,171352.92296999,224.440234492216,9229.2993070101
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,55,64,10544,338355.8856921,565.919187323183,18160.2890607824
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,65,74,17702,413790.67801966,954.518086069602,22312.2068702276
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,75,84,18164,276955.678357,1002.53430271228,15286.1466573355
-2011,Female,F,White,Not Hispanic or Latino,neo_lung,us,85,150,8504,77417.788046134,475.576373685132,4329.50034074607
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,0,4,4,355.4875804,0.191304851632868,17.0016247064373
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,5,9,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,10,14,1,79.04633476,0.0471596064485187,3.72779403847946
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,15,17,1,74.0665492,0.0472754129323441,3.50152669790378
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,18,19,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,20,24,2,138.21513584,0.0999429813912678,6.90681637462433
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,25,29,6,384.89580186,0.300148119081101,19.2542918284152
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,30,34,10,591.962771,0.490240221189071,29.0203959790735
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,35,44,170,8551.75432672,8.21545779258649,413.273980727865
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,45,54,1767,72453.06749709,84.5649719469187,3467.45422770777
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,55,64,5967,190521.06051459,284.570040188054,9086.07103189333
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,65,74,14251,330239.47118042,682.813554727637,15822.8887255686
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,75,84,23148,346887.29790892,1136.11581151359,17025.4079820092
-2011,Female,F,White,Not Hispanic or Latino,resp_copd,us,85,150,20950,182745.181729462,1042.43941944805,9093.11604529777
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,0,4,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,5,9,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,10,14,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,15,17,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,18,19,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,20,24,0,0,0,0
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,25,29,2,128.29860062,0.159294306690055,10.2186183175336
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,30,34,4,236.7851084,0.313019787508323,18.5296060791258
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,35,44,48,2416.58707458,3.70986334835354,186.775162835193
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,45,54,200,8272.4455284,15.3185441035475,633.609108354949
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,55,64,728,23422.93584316,55.5645814883945,1787.75498263008
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,65,74,1194,27763.81019076,91.545181572567,2128.67926721894
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,75,84,2004,29641.56032468,156.996103920745,2322.16042170983
-2011,Female,F,White,Not Hispanic or Latino,t2_dm,us,85,150,2383,20595.071466487,188.917988332488,1632.72323584245
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,0,4,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,5,9,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,10,14,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,15,17,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,18,19,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,20,24,2,138.21513584,0.199699058849339,13.8007162729908
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,25,29,2,128.29860062,0.190919181023812,12.2473318784358
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,30,34,9,532.7664939,0.807952511919253,47.8277807792131
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,35,44,37,1864.22530931,2.85573473962409,143.884675088731
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,45,54,168,6984.93958576,10.825935571331,450.110154315934
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,55,64,286,9272.45521401,14.532842498437,471.171787409155
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,65,74,288,6816.26208888,10.9406148221676,258.937840421456
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,75,84,245,3745.91025825,6.36984645613695,97.3913191164115
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_ihd,us,85,150,134,1186.836523212,2.12415768311128,18.8136411893869
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,0,4,1,88.00051053,0.100486410539409,8.84285542879517
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,5,9,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,10,14,1,79.04633476,0.10150120596176,8.02329830499699
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,15,17,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,18,19,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,20,24,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,25,29,1,64.14930031,0.102648950628539,6.58485836037651
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,30,34,3,177.5888313,0.288418004671574,17.0732721251676
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,35,44,4,202.20479297,0.326820831894647,16.5211846628851
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,45,54,19,801.04584653,1.28360720254791,54.1172746408944
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,55,64,20,633.03742078,1.09129842226482,34.5416369265903
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,65,74,18,418.32916392,0.713802726421729,16.5891387637677
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,75,84,19,290.18366983,0.520031778645818,7.94235420819294
-2011,Male,M,American Indian or Alaska Native,All Origins,cvd_stroke,us,85,150,9,87.539174867,0.145882222365769,1.41893437485152
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,0,4,3,265.74430073,0.0766795402505688,6.7923836013951
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,5,9,1,84.03008056,0.0257528130450963,2.16401095482606
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,10,14,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,15,17,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,18,19,1,74.0665492,0.027249281247296,2.01826023016749
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,20,24,2,138.21513584,0.0547596114440564,3.78430356714294
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,25,29,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,30,34,3,177.5888313,0.0864173014142109,5.11558252074985
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,35,44,12,621.4200405,0.345115914656645,17.8718288052606
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,45,54,21,889.91248767,0.600160793256228,25.4328849775548
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,55,64,32,1070.6617631,0.911345958114266,30.4919771971462
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,65,74,38,879.23472808,1.04969766730638,24.2876485021142
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,75,84,26,390.58432306,0.690659702794649,10.3754174031103
-2011,Male,M,American Indian or Alaska Native,All Origins,lri,us,85,150,40,350.798662982,1.07803008700915,9.45428782942949
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,0,4,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,10,14,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,18,19,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,20,24,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,25,29,1,64.14930031,0.0438930093006243,2.81570583513537
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,30,34,1,59.1962771,0.0445825109420332,2.63911867153838
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,35,44,5,246.58696555,0.222586369128924,10.9773794672587
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,45,54,44,1835.10153758,1.9470061699764,81.2035003682144
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,55,64,95,3055.87289737,4.19028607428064,134.789280490749
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,65,74,135,3124.29064374,5.78105438061028,133.790326757725
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,75,84,106,1658.38096034,4.36842064817405,68.3443927329054
-2011,Male,M,American Indian or Alaska Native,All Origins,neo_lung,us,85,150,27,242.619598624,1.12755447072459,10.1321041894036
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,0,4,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,5,9,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,15,17,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,20,24,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,25,29,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,30,34,2,118.3925542,0.0791812594571082,4.68723577594997
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,35,44,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,45,54,18,747.01536056,0.707104631174773,29.3454456117038
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,55,64,54,1736.23740394,2.11405412877892,67.9722194877731
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,65,74,95,2246.40646762,3.60877145377768,85.3343950939854
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,75,84,86,1308.5810867,3.14291911621393,47.8228431686677
-2011,Male,M,American Indian or Alaska Native,All Origins,resp_copd,us,85,150,38,329.800025149,1.40860252741606,12.2251881307042
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,20,24,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,25,29,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,30,34,0,0,0,0
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,35,44,6,305.77479972,0.381250624716412,19.4294722359643
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,45,54,15,637.70831235,0.947814238310617,40.2952678889576
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,55,64,35,1138.11486411,2.2054401122915,71.7155478200967
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,65,74,25,589.31004086,1.53155684453161,36.1024730652134
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,75,84,24,375.70124328,1.41643623007866,22.1732021944745
-2011,Male,M,American Indian or Alaska Native,All Origins,t2_dm,us,85,150,17,145.767333005,1.01469760902078,8.70057436902994
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,0,4,2,177.7437902,0.28666309913496,25.4762928753631
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,5,9,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,10,14,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,15,17,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,18,19,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,20,24,3,207.32270376,0.442113574521963,30.5533938796305
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,25,29,7,449.04510217,0.964812879500078,61.8920711500063
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,30,34,27,1598.2994817,3.41629123873421,202.231722822412
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,35,44,132,6766.52735808,14.2813321206773,732.083518972648
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,45,54,428,17827.41269436,39.3964678554057,1640.97451205235
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,55,64,702,22706.26809039,51.7098647677416,1672.56132811133
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,65,74,867,20257.87454424,49.58694024844,1158.62285419334
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,75,84,1127,17010.89416251,46.0439331116703,694.985335393356
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_ihd,us,85,150,1091,9414.701581462,26.0356786657742,224.672910274153
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,0,4,1,88.8718951,0.153665533407604,13.6565471654861
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,5,9,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,10,14,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,15,17,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,18,19,1,74.0665492,0.156211669332521,11.5700592922313
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,20,24,3,207.32270376,0.474307158542355,32.778214173908
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,25,29,4,256.59720124,0.593130088575864,38.04888017495
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,30,34,6,355.1776626,0.814161690027978,48.1953410071005
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,35,44,50,2539.89796345,5.74370742415615,291.768615785337
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,45,54,111,4696.96803097,10.7678628427648,455.642410219242
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,55,64,155,5029.56824339,12.3116206611091,399.49765355986
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,65,74,164,3842.68043728,9.85167387460315,230.834356539024
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,75,84,181,2697.66279713,7.84178771192002,116.875684936121
-2011,Male,M,Asian or Pacific Islander,All Origins,cvd_stroke,us,85,150,127,1114.196892536,3.12547082072964,27.4203927257394
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,0,4,9,796.36151762,0.370182689488628,32.7554720442019
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,5,9,1,84.03008056,0.0408260356506077,3.430615064666
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,10,14,2,158.09266952,0.0821461471087142,6.49335184359963
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,15,17,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,18,19,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,20,24,2,138.21513584,0.0850497498128554,5.87758136177091
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,25,29,3,192.44790093,0.128343705358988,8.23315889797185
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,30,34,3,177.5888313,0.126418925326923,7.48352973433673
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,35,44,14,724.99004725,0.582370682534589,30.1580677605548
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,45,54,37,1524.06829359,1.5541698460189,64.0178644640826
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,55,64,48,1550.05533189,2.02831198324598,65.4999125909754
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,65,74,97,2209.9143539,4.11543310364087,93.760357610837
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,75,84,264,3931.74460024,11.2148701535874,167.022746851363
-2011,Male,M,Asian or Pacific Islander,All Origins,lri,us,85,150,379,3167.014797467,15.5788908074625,130.18094383999
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,0,4,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,10,14,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,18,19,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,20,24,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,25,29,3,192.44790093,0.19528153220045,12.5271736541236
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,30,34,2,118.3925542,0.128403418912683,7.60100436654254
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,35,44,40,2041.78881182,2.53623567417277,129.461440591618
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,45,54,134,5517.39393068,8.56738249364966,352.758389345349
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,55,64,364,11604.25473879,23.3910750971257,745.703280333005
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,65,74,573,13370.9882925,36.9469720657943,862.159739851763
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,75,84,554,8466.63696914,35.7111701571404,545.764464735909
-2011,Male,M,Asian or Pacific Islander,All Origins,neo_lung,us,85,150,227,2084.404356135,14.1589033102619,130.012686070503
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,0,4,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,5,9,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,15,17,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,20,24,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,25,29,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,30,34,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,35,44,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,45,54,11,455.17644737,0.631192869021495,26.1185570660438
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,55,64,54,1722.25307575,3.11663508764365,99.4006364015677
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,65,74,152,3464.22656968,8.80715653609928,200.723589971618
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,75,84,360,5330.20024552,20.8819124917132,309.179930806268
-2011,Male,M,Asian or Pacific Islander,All Origins,resp_copd,us,85,150,358,3121.282779753,20.103000196622,175.27136406449
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,20,24,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,25,29,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,30,34,0,0,0,0
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,35,44,3,152.88739986,0.265337716597591,13.5222645251318
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,45,54,18,732.61961246,1.60165117477372,65.1889479421569
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,55,64,49,1580.30877011,4.37572481996142,141.122373644347
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,65,74,66,1519.23128364,5.90782129689558,135.990105036339
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,75,84,84,1251.1853178,7.49674262192056,111.664455950863
-2011,Male,M,Asian or Pacific Islander,All Origins,t2_dm,us,85,150,72,612.186050696,6.21532674168778,52.8463379413761
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,0,4,4,353.74481126,0.607584668879084,53.7324810042753
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,5,9,1,84.03008056,0.151534173315963,12.7334287913334
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,10,14,1,79.04633476,0.151419414897299,11.9691497591352
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,15,17,7,518.4658444,1.05895030714972,78.4327950248599
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,18,19,2,148.1330984,0.300683356369584,22.2705786081689
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,20,24,20,1382.1513584,2.9922679091111,206.788357763732
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,25,29,52,3335.76361612,7.25178050020658,465.196645089954
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,30,34,120,7103.553252,15.4904166330731,916.974995405843
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,35,44,727,36929.62286651,81.2279392693896,4126.15840913664
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,45,54,2663,110249.91799381,253.29089305573,10486.4063792614
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,55,64,4999,161860.36564345,381.251049533738,12344.3557270414
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,65,74,4882,114660.3474083,290.192948959374,6815.57237671466
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,75,84,4432,67570.77457648,189.608117083807,2890.78685409313
-2011,Male,M,Black or African American,All Origins,cvd_ihd,us,85,150,2781,24519.305468,72.3066017219473,637.507247383474
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,0,4,14,1240.72099312,2.27610327417504,201.714936769867
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,5,9,3,252.09024168,0.486570749199324,40.8865792533588
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,10,14,5,395.2316738,0.810341913525045,64.0545581665597
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,15,17,1,74.0665492,0.161922050427117,11.9930075145249
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,18,19,0,0,0,0
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,20,24,11,760.18324712,1.76154846300991,121.736330051829
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,25,29,19,1218.83670589,2.8448340763614,182.494115496629
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,30,34,34,2012.6734214,4.69769724377914,278.086187774656
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,35,44,196,9991.93360454,23.2016778307171,1182.80420611456
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,45,54,560,23284.7314801,55.9695536825706,2327.2071938566
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,55,64,747,24412.61957231,61.2559416409942,2001.89825947151
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,65,74,490,11485.4649116,30.4955097725363,714.806341742492
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,75,84,398,6188.83245942,17.9835588581648,279.641288435428
-2011,Male,M,Black or African American,All Origins,cvd_stroke,us,85,150,181,1606.553458771,4.82997764948097,42.8708138042004
-2011,Male,M,Black or African American,All Origins,lri,us,0,4,75,6648.83582567,3.28808208034068,291.492239113502
-2011,Male,M,Black or African American,All Origins,lri,us,5,9,7,588.21056392,0.306035611987581,25.7161971295453
-2011,Male,M,Black or African American,All Origins,lri,us,10,14,9,711.41701284,0.393133789323531,31.0757851163351
-2011,Male,M,Black or African American,All Origins,lri,us,15,17,3,222.1996476,0.130910118705575,9.6960607478843
-2011,Male,M,Black or African American,All Origins,lri,us,18,19,3,222.1996476,0.129968353724607,9.62630746558663
-2011,Male,M,Black or African American,All Origins,lri,us,20,24,16,1105.72108672,0.689315924347064,47.6369470601523
-2011,Male,M,Black or African American,All Origins,lri,us,25,29,26,1667.88180806,1.12255101224336,72.0108619976937
-2011,Male,M,Black or African American,All Origins,lri,us,30,34,30,1775.888313,1.2882198438675,76.2578188432993
-2011,Male,M,Black or African American,All Origins,lri,us,35,44,95,4867.75550506,4.07728474468374,208.918160648752
-2011,Male,M,Black or African American,All Origins,lri,us,45,54,222,9182.79842314,9.60869118267843,397.453487570895
-2011,Male,M,Black or African American,All Origins,lri,us,55,64,404,13108.06315958,17.6028545832272,571.136954618428
-2011,Male,M,Black or African American,All Origins,lri,us,65,74,443,10313.60439238,19.4293126119942,452.339151006744
-2011,Male,M,Black or African American,All Origins,lri,us,75,84,586,8836.1691029,25.8489502692506,389.770811794455
-2011,Male,M,Black or African American,All Origins,lri,us,85,150,523,4547.638390148,23.1568123503632,201.355275024789
-2011,Male,M,Black or African American,All Origins,neo_lung,us,0,4,0,0,0,0
-2011,Male,M,Black or African American,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Male,M,Black or African American,All Origins,neo_lung,us,10,14,0,0,0,0
-2011,Male,M,Black or African American,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Male,M,Black or African American,All Origins,neo_lung,us,18,19,1,74.0665492,0.0661542942017621,4.89982028628609
-2011,Male,M,Black or African American,All Origins,neo_lung,us,20,24,3,207.32270376,0.197403379867028,13.6420674817982
-2011,Male,M,Black or African American,All Origins,neo_lung,us,25,29,5,320.74650155,0.329630678071152,21.1455773589753
-2011,Male,M,Black or African American,All Origins,neo_lung,us,30,34,8,473.5702168,0.524740108014158,31.06266083949
-2011,Male,M,Black or African American,All Origins,neo_lung,us,35,44,86,4340.00021806,5.6386832027752,284.556817786228
-2011,Male,M,Black or African American,All Origins,neo_lung,us,45,54,1099,44988.55456373,72.6316980194881,2973.24395760337
-2011,Male,M,Black or African American,All Origins,neo_lung,us,55,64,2831,91390.38104418,188.290623638855,6078.40050914915
-2011,Male,M,Black or African American,All Origins,neo_lung,us,65,74,3079,72359.4384557,206.043683695461,4842.22320543925
-2011,Male,M,Black or African American,All Origins,neo_lung,us,75,84,1989,30903.87004289,133.822945243262,2079.25938087208
-2011,Male,M,Black or African American,All Origins,neo_lung,us,85,150,544,5068.943299575,36.7297101528379,342.244151056175
-2011,Male,M,Black or African American,All Origins,resp_copd,us,0,4,5,441.74532179,0.299333149606254,26.4458036990457
-2011,Male,M,Black or African American,All Origins,resp_copd,us,5,9,1,84.03008056,0.0597037133594094,5.01690784332232
-2011,Male,M,Black or African American,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Male,M,Black or African American,All Origins,resp_copd,us,15,17,1,74.0665492,0.0595926866337721,4.41382465652046
-2011,Male,M,Black or African American,All Origins,resp_copd,us,18,19,0,0,0,0
-2011,Male,M,Black or African American,All Origins,resp_copd,us,20,24,0,0,0,0
-2011,Male,M,Black or African American,All Origins,resp_copd,us,25,29,0,0,0,0
-2011,Male,M,Black or African American,All Origins,resp_copd,us,30,34,4,236.7851084,0.234639433514499,13.8897809249113
-2011,Male,M,Black or African American,All Origins,resp_copd,us,35,44,34,1721.20835051,1.99345445922985,100.9161900467
-2011,Male,M,Black or African American,All Origins,resp_copd,us,45,54,228,9276.64936936,13.4788315437787,548.414009387299
-2011,Male,M,Black or African American,All Origins,resp_copd,us,55,64,745,23932.58285017,44.3311793897552,1424.10687730344
-2011,Male,M,Black or African American,All Origins,resp_copd,us,65,74,1234,28777.8679187,73.902665308193,1723.46932016132
-2011,Male,M,Black or African American,All Origins,resp_copd,us,75,84,1288,19691.12901912,77.5713568325157,1185.92204625564
-2011,Male,M,Black or African American,All Origins,resp_copd,us,85,150,709,6366.845083351,42.8576985291444,384.863649032472
-2011,Male,M,Black or African American,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Male,M,Black or African American,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Male,M,Black or African American,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Male,M,Black or African American,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Male,M,Black or African American,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Male,M,Black or African American,All Origins,t2_dm,us,20,24,1,69.10756792,0.0921223405702557,6.36635090790832
-2011,Male,M,Black or African American,All Origins,t2_dm,us,25,29,2,128.29860062,0.18451897142693,11.8367629109584
-2011,Male,M,Black or African American,All Origins,t2_dm,us,30,34,6,355.1776626,0.551071436295308,32.621377444832
-2011,Male,M,Black or African American,All Origins,t2_dm,us,35,44,20,1001.15352379,1.83649580792609,91.9307124765383
-2011,Male,M,Black or African American,All Origins,t2_dm,us,45,54,131,5403.28829977,12.1159119212365,499.7386650768
-2011,Male,M,Black or African American,All Origins,t2_dm,us,55,64,274,8904.75251264,25.4921398903539,828.471520953282
-2011,Male,M,Black or African American,All Origins,t2_dm,us,65,74,324,7547.49573144,30.3090549703369,706.041552508019
-2011,Male,M,Black or African American,All Origins,t2_dm,us,75,84,294,4510.55146958,27.6375623125806,424.015807158568
-2011,Male,M,Black or African American,All Origins,t2_dm,us,85,150,122,1093.051367903,11.5045299496164,103.074116381224
-2011,Male,M,White,All Origins,cvd_ihd,us,0,4,7,619.48911199,0.89823844418364,79.4927051632289
-2011,Male,M,White,All Origins,cvd_ihd,us,5,9,0,0,0,0
-2011,Male,M,White,All Origins,cvd_ihd,us,10,14,4,316.18533904,0.5059357901961,39.992369838906
-2011,Male,M,White,All Origins,cvd_ihd,us,15,17,3,222.1996476,0.379554601530819,28.1122995683688
-2011,Male,M,White,All Origins,cvd_ihd,us,18,19,9,666.5989428,1.16254207931014,86.1054801142947
-2011,Male,M,White,All Origins,cvd_ihd,us,20,24,63,4353.77677896,8.24179943946599,569.570714545914
-2011,Male,M,White,All Origins,cvd_ihd,us,25,29,165,10584.63455115,20.2034177134865,1296.03511019082
-2011,Male,M,White,All Origins,cvd_ihd,us,30,34,408,24152.0810568,45.8737509712245,2715.555274109
-2011,Male,M,White,All Origins,cvd_ihd,us,35,44,3071,155915.15359993,293.47929469192,14899.9900066069
-2011,Male,M,White,All Origins,cvd_ihd,us,45,54,13712,567042.16389584,1084.47080575526,44846.8985105988
-2011,Male,M,White,All Origins,cvd_ihd,us,55,64,28203,910885.78036057,1744.87898353155,56355.1910984254
-2011,Male,M,White,All Origins,cvd_ihd,us,65,74,34194,800390.6152524,1620.16283826381,37923.7038932867
-2011,Male,M,White,All Origins,cvd_ihd,us,75,84,48856,729207.78240712,1679.49265423031,25067.5273039203
-2011,Male,M,White,All Origins,cvd_ihd,us,85,150,51949,451886.382879348,1093.46249511143,9511.65203815534
-2011,Male,M,White,All Origins,cvd_stroke,us,0,4,29,2576.41357333,3.98250021027721,353.81267577751
-2011,Male,M,White,All Origins,cvd_stroke,us,5,9,9,756.27072504,1.2237523574444,102.832009181543
-2011,Male,M,White,All Origins,cvd_stroke,us,10,14,11,869.50968236,1.48875895410513,117.680938663141
-2011,Male,M,White,All Origins,cvd_stroke,us,15,17,15,1110.998238,2.03074700414898,150.410422895553
-2011,Male,M,White,All Origins,cvd_stroke,us,18,19,11,814.7320412,1.5206582441207,112.629908654551
-2011,Male,M,White,All Origins,cvd_stroke,us,20,24,41,2833.41028472,5.74100033845666,396.746570818637
-2011,Male,M,White,All Origins,cvd_stroke,us,25,29,51,3271.61431581,6.70564208026052,430.162247578005
-2011,Male,M,White,All Origins,cvd_stroke,us,30,34,107,6334.0016497,12.8720150224827,761.975368106247
-2011,Male,M,White,All Origins,cvd_stroke,us,35,44,417,21241.47813948,42.163553858575,2147.76068961561
-2011,Male,M,White,All Origins,cvd_stroke,us,45,54,1315,54638.93621655,108.999161255131,4528.97203002019
-2011,Male,M,White,All Origins,cvd_stroke,us,55,64,2337,75475.60247566,155.158115117897,5010.9765586269
-2011,Male,M,White,All Origins,cvd_stroke,us,65,74,2915,67901.78068762,144.152216981491,3357.87040243958
-2011,Male,M,White,All Origins,cvd_stroke,us,75,84,4525,67735.29396217,163.77568358383,2451.57880031073
-2011,Male,M,White,All Origins,cvd_stroke,us,85,150,3485,31232.143134645,75.0257655577852,672.371721287537
-2011,Male,M,White,All Origins,lri,us,0,4,128,11340.74719,4.62471455937242,409.747801904335
-2011,Male,M,White,All Origins,lri,us,5,9,23,1932.69185288,0.821622977709176,69.0410450068491
-2011,Male,M,White,All Origins,lri,us,10,14,21,1659.97302996,0.746235591055588,58.9871883404065
-2011,Male,M,White,All Origins,lri,us,15,17,18,1333.1978856,0.639871073236807,47.3930423275508
-2011,Male,M,White,All Origins,lri,us,18,19,18,1333.1978856,0.65526689356573,48.5333576114173
-2011,Male,M,White,All Origins,lri,us,20,24,64,4422.88434688,2.3641725817427,163.382217267385
-2011,Male,M,White,All Origins,lri,us,25,29,99,6350.78073069,3.68851051117745,236.615368478114
-2011,Male,M,White,All Origins,lri,us,30,34,130,7695.516023,4.78210991306382,283.083103536383
-2011,Male,M,White,All Origins,lri,us,35,44,341,17483.48582206,12.3170394330317,631.509631369983
-2011,Male,M,White,All Origins,lri,us,45,54,1022,42373.35077344,36.1996146202942,1500.87961660379
-2011,Male,M,White,All Origins,lri,us,55,64,1973,63666.24425675,68.8104884257218,2220.42846606096
-2011,Male,M,White,All Origins,lri,us,65,74,3025,70085.3456729,104.570151700256,2422.75544759671
-2011,Male,M,White,All Origins,lri,us,75,84,6088,89903.77052712,214.091268488691,3161.56574803996
-2011,Male,M,White,All Origins,lri,us,85,150,9146,77728.14750064,326.385183835165,2773.81540686237
-2011,Male,M,White,All Origins,neo_lung,us,0,4,1,88.8718951,0.0556201798285317,4.94307078716441
-2011,Male,M,White,All Origins,neo_lung,us,5,9,0,0,0,0
-2011,Male,M,White,All Origins,neo_lung,us,10,14,2,158.09266952,0.109510739356809,8.65642256301346
-2011,Male,M,White,All Origins,neo_lung,us,15,17,0,0,0,0
-2011,Male,M,White,All Origins,neo_lung,us,18,19,5,370.332746,0.280108873870909,20.7466976879163
-2011,Male,M,White,All Origins,neo_lung,us,20,24,8,552.86054336,0.454415432627419,31.4035453741956
-2011,Male,M,White,All Origins,neo_lung,us,25,29,14,898.09020434,0.801638722045658,51.4245631206315
-2011,Male,M,White,All Origins,neo_lung,us,30,34,28,1657.4957588,1.58406570746629,93.7707925637822
-2011,Male,M,White,All Origins,neo_lung,us,35,44,501,25231.14732429,27.8623327820499,1403.19086471516
-2011,Male,M,White,All Origins,neo_lung,us,45,54,4918,201574.47646686,268.489640426799,11004.6073008962
-2011,Male,M,White,All Origins,neo_lung,us,55,64,15534,499212.12388296,835.628326551316,26854.3705210793
-2011,Male,M,White,All Origins,neo_lung,us,65,74,23748,555989.1029658,1266.9580704364,29662.071798771
-2011,Male,M,White,All Origins,neo_lung,us,75,84,22004,336673.66870996,1193.28800925765,18257.982726067
-2011,Male,M,White,All Origins,neo_lung,us,85,150,8053,74704.618602106,442.784105316027,4107.53976290929
-2011,Male,M,White,All Origins,resp_copd,us,0,4,5,441.74532179,0.247542051664879,21.8701086538517
-2011,Male,M,White,All Origins,resp_copd,us,5,9,2,168.06016112,0.0979195734967808,8.22818964933533
-2011,Male,M,White,All Origins,resp_copd,us,10,14,0,0,0,0
-2011,Male,M,White,All Origins,resp_copd,us,15,17,2,148.1330984,0.097448901744937,7.21770387557734
-2011,Male,M,White,All Origins,resp_copd,us,18,19,2,148.1330984,0.0997528153826646,7.38834680837864
-2011,Male,M,White,All Origins,resp_copd,us,20,24,8,552.86054336,0.404786285770348,27.9737957369589
-2011,Male,M,White,All Origins,resp_copd,us,25,29,2,128.29860062,0.102050072335818,6.54644073692761
-2011,Male,M,White,All Origins,resp_copd,us,30,34,21,1243.1218191,1.05818614026563,62.6406799825438
-2011,Male,M,White,All Origins,resp_copd,us,35,44,174,8739.1534581,8.61218980869206,432.547404301407
-2011,Male,M,White,All Origins,resp_copd,us,45,54,1730,70804.2360533,83.9961141451222,3437.73450490819
-2011,Male,M,White,All Origins,resp_copd,us,55,64,6825,218207.90576018,326.36315904883,10434.4353777761
-2011,Male,M,White,All Origins,resp_copd,us,65,74,14875,344920.18513526,705.147717032665,16350.902931537
-2011,Male,M,White,All Origins,resp_copd,us,75,84,21812,327901.79220308,1051.57443210294,15808.4146763933
-2011,Male,M,White,All Origins,resp_copd,us,85,150,15163,136060.923567659,741.636341148406,6654.86549680087
-2011,Male,M,White,All Origins,t2_dm,us,0,4,0,0,0,0
-2011,Male,M,White,All Origins,t2_dm,us,5,9,0,0,0,0
-2011,Male,M,White,All Origins,t2_dm,us,10,14,0,0,0,0
-2011,Male,M,White,All Origins,t2_dm,us,15,17,0,0,0,0
-2011,Male,M,White,All Origins,t2_dm,us,18,19,0,0,0,0
-2011,Male,M,White,All Origins,t2_dm,us,20,24,3,207.32270376,0.240980416124097,16.6535704746859
-2011,Male,M,White,All Origins,t2_dm,us,25,29,3,192.44790093,0.24272349377986,15.5705422947766
-2011,Male,M,White,All Origins,t2_dm,us,30,34,13,769.5516023,1.04032080640958,61.5831187291167
-2011,Male,M,White,All Origins,t2_dm,us,35,44,89,4497.82283845,7.01367491733255,354.452440726317
-2011,Male,M,White,All Origins,t2_dm,us,45,54,512,21151.93209274,39.6725539329452,1638.96712252973
-2011,Male,M,White,All Origins,t2_dm,us,55,64,1302,41865.20265207,99.5177971916681,3199.94834632626
-2011,Male,M,White,All Origins,t2_dm,us,65,74,1911,44674.7103843,144.99457314203,3389.63399393793
-2011,Male,M,White,All Origins,t2_dm,us,75,84,2442,36669.1249685,188.122483126494,2824.85128712119
-2011,Male,M,White,All Origins,t2_dm,us,85,150,1791,15995.02633023,139.696471097013,1247.59839946227
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,0,4,2,176.87240563,0.282809902598044,25.010633904251
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,5,9,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,10,14,1,79.04633476,0.141392606533504,11.1765673086363
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,15,17,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,18,19,4,296.2661968,0.568426735132976,42.1014067443219
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,20,24,12,829.29081504,1.71788636642419,118.718948746502
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,25,29,24,1539.58320744,3.21035921397348,205.94229732016
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,30,34,71,4202.9356741,8.76725653264481,518.988947113227
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,35,44,348,17665.84529634,36.9067080314604,1873.52929448554
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,45,54,1247,51737.43498529,110.542618269276,4586.36048581427
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,55,64,2030,65777.58998188,142.424155792169,4614.93483902103
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,65,74,2337,54692.30580294,125.323710041881,2932.92369446706
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,75,84,2901,43766.00417681,111.974723052514,1689.30927156617
-2011,Male,M,White,Hispanic or Latino,cvd_ihd,us,85,150,2254,19894.749489315,52.9554649636192,467.40714709024
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,0,4,5,443.48809093,0.758098326778295,67.2415159360267
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,5,9,2,168.06016112,0.302268954821788,25.3996846244619
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,10,14,4,316.18533904,0.606547713101888,47.9453735777643
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,15,17,7,518.4658444,1.06661854947914,79.0007552726294
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,18,19,3,222.1996476,0.457211221311198,33.8640574180379
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,20,24,16,1105.72108672,2.45626453929613,169.746468478895
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,25,29,22,1411.28460682,3.16473524656502,203.015551733542
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,30,34,40,2367.851084,5.29575552825492,313.489011704435
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,35,44,126,6431.14123518,14.1830291972492,723.913205636438
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,45,54,306,12800.03136622,28.547707394831,1194.15539244284
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,55,64,334,10850.47920228,25.2297637071417,819.625827493351
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,65,74,236,5511.60439774,13.260718667027,309.694217467707
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,75,84,265,4072.52139237,10.811741636743,166.154902280805
-2011,Male,M,White,Hispanic or Latino,cvd_stroke,us,85,150,161,1471.824430119,3.88558209108821,35.5210847633323
-2011,Male,M,White,Hispanic or Latino,lri,us,0,4,36,3187.18883962,1.45829768591302,129.10750303849
-2011,Male,M,White,Hispanic or Latino,lri,us,5,9,6,504.18048336,0.242166093125524,20.3492363142383
-2011,Male,M,White,Hispanic or Latino,lri,us,10,14,2,158.09266952,0.0810390782151234,6.40584210523447
-2011,Male,M,White,Hispanic or Latino,lri,us,15,17,4,296.2661968,0.163003252293566,12.0730884057615
-2011,Male,M,White,Hispanic or Latino,lri,us,18,19,2,148.1330984,0.081510498999756,6.03720138448198
-2011,Male,M,White,Hispanic or Latino,lri,us,20,24,11,760.18324712,0.4520385369238,31.239283892919
-2011,Male,M,White,Hispanic or Latino,lri,us,25,29,20,1282.9860062,0.826205543010846,53.0005074963894
-2011,Male,M,White,Hispanic or Latino,lri,us,30,34,32,1894.2808672,1.31156916367879,77.6400116489451
-2011,Male,M,White,Hispanic or Latino,lri,us,35,44,66,3368.45801745,2.68457310690463,137.013209172478
-2011,Male,M,White,Hispanic or Latino,lri,us,45,54,132,5519.70036084,5.3140183916544,222.210524499433
-2011,Male,M,White,Hispanic or Latino,lri,us,55,64,157,5062.10646345,6.28486751062198,202.641200302207
-2011,Male,M,White,Hispanic or Latino,lri,us,65,74,244,5646.76843694,9.64619744325036,223.237062537039
-2011,Male,M,White,Hispanic or Latino,lri,us,75,84,419,6200.17517511,16.6942146767151,247.033545122974
-2011,Male,M,White,Hispanic or Latino,lri,us,85,150,458,3932.850458092,18.3852332298142,157.874176703063
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,0,4,1,88.8718951,0.0618459721893469,5.49636875276916
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,5,9,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,10,14,1,79.04633476,0.0618402885217919,4.88824814814855
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,15,17,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,18,19,2,148.1330984,0.124366137084704,9.2113706111982
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,20,24,1,69.10756792,0.0626876052496302,4.33218793753097
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,25,29,4,256.59720124,0.252038561267993,16.1680973564808
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,30,34,9,532.7664939,0.562886825582971,33.3208045031489
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,35,44,52,2643.4679702,3.22826688464829,164.111925169713
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,45,54,230,9408.7032548,14.1389626189259,578.388276574712
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,55,64,636,20411.20883315,38.8877942256187,1248.02969968501
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,65,74,916,21507.45302546,55.351569096297,1299.64112688222
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,75,84,882,13431.16987082,53.6891829372615,817.583374439784
-2011,Male,M,White,Hispanic or Latino,neo_lung,us,85,150,347,3230.690881324,21.2684363739505,198.016551738737
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,0,4,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,5,9,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,10,14,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,15,17,1,74.0665492,0.0557033211189042,4.12575277425672
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,18,19,1,74.0665492,0.0557106303482541,4.12629414365198
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,20,24,2,138.21513584,0.112333232791724,7.76307651482726
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,25,29,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,30,34,3,177.5888313,0.168068712641315,9.94904208535558
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,35,44,8,399.47436541,0.444837568719482,22.2126506843428
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,45,54,63,2616.95305331,3.46777583786765,144.047723287339
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,55,64,193,6221.15188032,10.5647656760168,340.544102852292
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,65,74,439,10140.5976875,23.7377626545305,548.325970571654
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,75,84,759,11454.97563131,41.355969544526,624.152336418635
-2011,Male,M,White,Hispanic or Latino,resp_copd,us,85,150,597,5313.019380251,32.7682759235383,291.622252996937
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,0,4,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,5,9,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,10,14,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,15,17,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,18,19,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,20,24,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,25,29,0,0,0,0
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,30,34,4,236.7851084,0.34956642747418,20.6930311056186
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,35,44,21,1055.40613743,1.82228627884716,91.5834344214177
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,45,54,115,4783.52824195,9.88842538534159,411.317931297364
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,55,64,198,6437.67926964,16.941025051323,550.812554441183
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,65,74,267,6259.39250586,22.6017013693196,529.861124235224
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,75,84,304,4666.1274568,25.9049378098829,397.617570991418
-2011,Male,M,White,Hispanic or Latino,t2_dm,us,85,150,141,1280.833540063,12.0864252768065,109.792190595737
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,0,4,4,353.74481126,0.497536265697092,44.0002181010058
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,5,9,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,10,14,3,237.13900428,0.368768256295881,29.1497790360257
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,15,17,3,222.1996476,0.369234325544814,27.3479123392938
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,18,19,5,370.332746,0.632059624391535,46.8144752673292
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,20,24,51,3524.48596392,6.53509142179707,451.62427429525
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,25,29,141,9045.05134371,16.9143698253323,1085.04498947965
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,30,34,336,19889.9491056,36.9577740479889,2187.76263354394
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,35,44,2716,137894.21611076,254.584893881437,12925.5465299785
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,45,54,12417,513320.68558689,969.256067582736,40069.1945816883
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,55,64,26070,841786.98276191,1596.7986218513,51559.811813064
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,65,74,31747,743101.8311135,1491.44824362242,34910.3197419231
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,75,84,45844,683732.6628058,1565.05212709835,23341.707928864
-2011,Male,M,White,Not Hispanic or Latino,cvd_ihd,us,85,150,49619,431335.759977048,1038.87929600635,9030.93151146376
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,0,4,24,2132.9254824,3.19248061207116,283.721802064772
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,5,9,7,588.21056392,0.923664499564611,77.6156023088263
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,10,14,7,553.32434332,0.920084076528456,72.7292739206138
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,15,17,8,592.5323936,1.05290405161106,77.9849697415296
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,18,19,8,592.5323936,1.08171726680602,80.1190651623779
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,20,24,25,1727.689198,3.4271021417564,236.838694030208
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,25,29,29,1860.32970899,3.73414571120516,239.542834629398
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,30,34,67,3966.1505657,7.88060280285528,466.502347232858
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,35,44,288,14662.38472497,28.5440967832312,1453.21016896706
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,45,54,1006,41720.00063672,82.2568502036471,3411.28811418563
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,55,64,1998,64455.21031136,131.287406426553,4235.31401023849
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,65,74,2672,62214.80271772,130.974874743363,3049.61676389837
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,75,84,4252,63541.40361196,152.791767340078,2283.3027650848
-2011,Male,M,White,Not Hispanic or Latino,cvd_stroke,us,85,150,3321,29730.348160794,71.0999539833442,636.502976856747
-2011,Male,M,White,Not Hispanic or Latino,lri,us,0,4,92,8153.55835038,3.20452877470287,284.003395108822
-2011,Male,M,White,Not Hispanic or Latino,lri,us,5,9,17,1428.51136952,0.586715621707525,49.3017609578938
-2011,Male,M,White,Not Hispanic or Latino,lri,us,10,14,19,1501.88036044,0.652877674076512,51.6075871823821
-2011,Male,M,White,Not Hispanic or Latino,lri,us,15,17,14,1036.9316888,0.481798533107846,35.6851547569201
-2011,Male,M,White,Not Hispanic or Latino,lri,us,18,19,16,1185.0647872,0.567793620591834,42.0545141350112
-2011,Male,M,White,Not Hispanic or Latino,lri,us,20,24,53,3662.70109976,1.91051446593268,132.031008216585
-2011,Male,M,White,Not Hispanic or Latino,lri,us,25,29,79,5067.79472449,2.87382528248295,184.353881084469
-2011,Male,M,White,Not Hispanic or Latino,lri,us,30,34,98,5801.2351558,3.51485408946682,208.066276646146
-2011,Male,M,White,Not Hispanic or Latino,lri,us,35,44,274,14065.7104115,9.68105017983448,496.97389893705
-2011,Male,M,White,Not Hispanic or Latino,lri,us,45,54,887,36734.74619899,30.9580560766693,1282.11536954966
-2011,Male,M,White,Not Hispanic or Latino,lri,us,55,64,1804,58213.12787828,62.2257399449188,2007.95729308989
-2011,Male,M,White,Not Hispanic or Latino,lri,us,65,74,2774,64280.77444468,95.0074231292206,2201.56839824791
-2011,Male,M,White,Not Hispanic or Latino,lri,us,75,84,5650,83421.14126202,197.199921437893,2911.61814214686
-2011,Male,M,White,Not Hispanic or Latino,lri,us,85,150,8669,73627.853981218,307.595154312868,2612.47792214535
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,0,4,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,5,9,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,10,14,1,79.04633476,0.053083186166162,4.19603130381784
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,15,17,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,18,19,3,222.1996476,0.164162299797851,12.1589350547627
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,20,24,7,483.75297544,0.388738691142727,26.8647855012779
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,25,29,10,641.4930031,0.560082854454182,35.9289232288633
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,30,34,19,1124.7292649,1.05001566250281,62.1570181168567
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,35,44,447,22489.04456787,24.3577047326969,1225.46198502156
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,45,54,4683,191958.00235731,252.198559005668,10337.7176135213
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,55,64,14866,477795.51348493,791.556679406428,25440.7527303525
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,65,74,22793,533572.3416217,1205.60542503164,28222.5994693966
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,75,84,21101,322921.97292985,1136.40472186624,17391.1215028597
-2011,Male,M,White,Not Hispanic or Latino,neo_lung,us,85,150,7701,71426.349270891,421.201937560174,3906.62468585236
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,0,4,5,441.74532179,0.238812257170082,21.0988394781988
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,5,9,2,168.06016112,0.0946654315762032,7.95474384159552
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,10,14,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,15,17,1,74.0665492,0.0471993165030419,3.49589049797892
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,18,19,1,74.0665492,0.0486450434277806,3.60297050237985
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,20,24,6,414.64540752,0.296396187137309,20.4832196338206
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,25,29,2,128.29860062,0.099686317843545,6.39480754014368
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,30,34,18,1065.5329878,0.884778747011332,52.3756078802736
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,35,44,165,8290.36169958,7.99198193687989,401.554066383298
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,45,54,1660,67900.2426695,79.4403377692706,3249.40856161477
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,55,64,6602,211023.2134205,312.298851957721,9982.17317292507
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,65,74,14406,334079.44371108,676.723562717805,15693.4215867655
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,75,84,21024,316001.05691472,1006.13667914034,15122.7289768367
-2011,Male,M,White,Not Hispanic or Latino,resp_copd,us,85,150,14552,130628.716666461,707.764596477587,6353.37966876188
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,0,4,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,5,9,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,10,14,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,15,17,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,18,19,0,0,0,0
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,20,24,3,207.32270376,0.236304145729927,16.3304048008085
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,25,29,3,192.44790093,0.238092604458652,15.2734739850081
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,30,34,9,532.7664939,0.705643632009328,41.7714759742746
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,35,44,68,3442.41670102,5.26456129274815,266.51196643676
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,45,54,397,16368.40385079,30.3983691535138,1253.33194637308
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,55,64,1103,35397.26994421,83.5560008938178,2681.46357125759
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,65,74,1641,38347.06058286,123.577812610085,2887.77932166742
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,75,84,2133,31932.93909793,163.331487337527,2445.2200834147
-2011,Male,M,White,Not Hispanic or Latino,t2_dm,us,85,150,1650,14714.192790167,128.113392646334,1142.47585357607
+Year,Race,Hispanic.Origin,label_cause,Gender,Gender.Code,Nation,measure,attr,value
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Female,F,us,Deaths,attributable,25.9864520967614
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Female,F,us,YLL,attributable,695.766869032681
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Male,M,us,Deaths,attributable,48.8477025226002
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Male,M,us,YLL,attributable,1514.18524647171
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Female,F,us,Deaths,attributable,6.57608218699374
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Female,F,us,YLL,attributable,263.948013535328
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Male,M,us,Deaths,attributable,4.67449775594197
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Male,M,us,YLL,attributable,171.654807796518
+2011,American Indian or Alaska Native,All Origins,lri,Female,F,us,Deaths,attributable,4.86209732352223
+2011,American Indian or Alaska Native,All Origins,lri,Female,F,us,YLL,attributable,112.536323843804
+2011,American Indian or Alaska Native,All Origins,lri,Male,M,us,Deaths,attributable,4.94586867053855
+2011,American Indian or Alaska Native,All Origins,lri,Male,M,us,YLL,attributable,137.788585588897
+2011,American Indian or Alaska Native,All Origins,neo_lung,Female,F,us,Deaths,attributable,14.3033738753462
+2011,American Indian or Alaska Native,All Origins,neo_lung,Female,F,us,YLL,attributable,354.695788645555
+2011,American Indian or Alaska Native,All Origins,neo_lung,Male,M,us,Deaths,attributable,17.7253836331375
+2011,American Indian or Alaska Native,All Origins,neo_lung,Male,M,us,YLL,attributable,444.691808512929
+2011,American Indian or Alaska Native,All Origins,resp_copd,Female,F,us,Deaths,attributable,13.0640105990807
+2011,American Indian or Alaska Native,All Origins,resp_copd,Female,F,us,YLL,attributable,284.622328476198
+2011,American Indian or Alaska Native,All Origins,resp_copd,Male,M,us,Deaths,attributable,11.0606331168185
+2011,American Indian or Alaska Native,All Origins,resp_copd,Male,M,us,YLL,attributable,247.387327268784
+2011,American Indian or Alaska Native,All Origins,t2_dm,Female,F,us,Deaths,attributable,10.2013164415392
+2011,American Indian or Alaska Native,All Origins,t2_dm,Female,F,us,YLL,attributable,257.785937900359
+2011,American Indian or Alaska Native,All Origins,t2_dm,Male,M,us,Deaths,attributable,7.49719565894958
+2011,American Indian or Alaska Native,All Origins,t2_dm,Male,M,us,YLL,attributable,198.416537573736
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Female,F,us,Deaths,attributable,135.722753559888
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Female,F,us,YLL,attributable,2641.7416651434
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Male,M,us,Deaths,attributable,232.1640975616
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Male,M,us,YLL,attributable,6444.05393972459
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Female,F,us,Deaths,attributable,51.514363788351
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Female,F,us,YLL,attributable,1540.86540682637
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Male,M,us,Deaths,attributable,51.8335994751691
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Male,M,us,YLL,attributable,1666.288155579
+2011,Asian or Pacific Islander,All Origins,lri,Female,F,us,Deaths,attributable,33.2812331964785
+2011,Asian or Pacific Islander,All Origins,lri,Female,F,us,YLL,attributable,523.66276791347
+2011,Asian or Pacific Islander,All Origins,lri,Male,M,us,Deaths,attributable,35.9070138292369
+2011,Asian or Pacific Islander,All Origins,lri,Male,M,us,YLL,attributable,614.91360206435
+2011,Asian or Pacific Islander,All Origins,neo_lung,Female,F,us,Deaths,attributable,91.0266201262197
+2011,Asian or Pacific Islander,All Origins,neo_lung,Female,F,us,YLL,attributable,2080.69441918403
+2011,Asian or Pacific Islander,All Origins,neo_lung,Male,M,us,Deaths,attributable,121.635423749258
+2011,Asian or Pacific Islander,All Origins,neo_lung,Male,M,us,YLL,attributable,2785.98817894881
+2011,Asian or Pacific Islander,All Origins,resp_copd,Female,F,us,Deaths,attributable,34.4066253926496
+2011,Asian or Pacific Islander,All Origins,resp_copd,Female,F,us,YLL,attributable,492.059369876125
+2011,Asian or Pacific Islander,All Origins,resp_copd,Male,M,us,Deaths,attributable,53.5398971810996
+2011,Asian or Pacific Islander,All Origins,resp_copd,Male,M,us,YLL,attributable,810.694078309989
+2011,Asian or Pacific Islander,All Origins,t2_dm,Female,F,us,Deaths,attributable,27.7159449766354
+2011,Asian or Pacific Islander,All Origins,t2_dm,Female,F,us,YLL,attributable,488.187016648867
+2011,Asian or Pacific Islander,All Origins,t2_dm,Male,M,us,Deaths,attributable,25.8626043718367
+2011,Asian or Pacific Islander,All Origins,t2_dm,Male,M,us,YLL,attributable,520.334485040215
+2011,Black or African American,All Origins,cvd_ihd,Female,F,us,Deaths,attributable,954.181457566595
+2011,Black or African American,All Origins,cvd_ihd,Female,F,us,YLL,attributable,23636.9939429778
+2011,Black or African American,All Origins,cvd_ihd,Male,M,us,Deaths,attributable,1295.88218658699
+2011,Black or African American,All Origins,cvd_ihd,Male,M,us,YLL,attributable,39068.885425078
+2011,Black or African American,All Origins,cvd_stroke,Female,F,us,Deaths,attributable,198.50164902465
+2011,Black or African American,All Origins,cvd_stroke,Female,F,us,YLL,attributable,6640.85990702359
+2011,Black or African American,All Origins,cvd_stroke,Male,M,us,Deaths,attributable,206.775237204941
+2011,Black or African American,All Origins,cvd_stroke,Male,M,us,YLL,attributable,7450.19381845221
+2011,Black or African American,All Origins,lri,Female,F,us,Deaths,attributable,123.523933393845
+2011,Black or African American,All Origins,lri,Female,F,us,YLL,attributable,2689.24677707898
+2011,Black or African American,All Origins,lri,Male,M,us,Deaths,attributable,107.072122476737
+2011,Black or African American,All Origins,lri,Male,M,us,YLL,attributable,2784.48605813806
+2011,Black or African American,All Origins,neo_lung,Female,F,us,Deaths,attributable,470.714435198416
+2011,Black or African American,All Origins,neo_lung,Female,F,us,YLL,attributable,11667.500554411
+2011,Black or African American,All Origins,neo_lung,Male,M,us,Deaths,attributable,644.275272412834
+2011,Black or African American,All Origins,neo_lung,Male,M,us,YLL,attributable,16670.6781478728
+2011,Black or African American,All Origins,resp_copd,Female,F,us,Deaths,attributable,236.358331799034
+2011,Black or African American,All Origins,resp_copd,Female,F,us,YLL,attributable,4819.27769196425
+2011,Black or African American,All Origins,resp_copd,Male,M,us,Deaths,attributable,254.788455045731
+2011,Black or African American,All Origins,resp_copd,Male,M,us,YLL,attributable,5417.45840931067
+2011,Black or African American,All Origins,t2_dm,Female,F,us,Deaths,attributable,132.327198939521
+2011,Black or African American,All Origins,t2_dm,Female,F,us,YLL,attributable,2833.78762602353
+2011,Black or African American,All Origins,t2_dm,Male,M,us,Deaths,attributable,109.723407600343
+2011,Black or African American,All Origins,t2_dm,Male,M,us,YLL,attributable,2704.09686581813
+2011,White,All Origins,cvd_ihd,Female,F,us,Deaths,attributable,4806.39371528477
+2011,White,All Origins,cvd_ihd,Female,F,us,YLL,attributable,90590.9067326784
+2011,White,All Origins,cvd_ihd,Male,M,us,Deaths,attributable,7593.21231062368
+2011,White,All Origins,cvd_ihd,Male,M,us,YLL,attributable,193419.826804524
+2011,White,All Origins,cvd_stroke,Female,F,us,Deaths,attributable,791.112095653225
+2011,White,All Origins,cvd_stroke,Female,F,us,YLL,attributable,19546.0689769661
+2011,White,All Origins,cvd_stroke,Male,M,us,Deaths,attributable,724.839570566005
+2011,White,All Origins,cvd_stroke,Male,M,us,YLL,attributable,20595.7803439757
+2011,White,All Origins,lri,Female,F,us,Deaths,attributable,898.73633527035
+2011,White,All Origins,lri,Female,F,us,YLL,attributable,13345.3770745359
+2011,White,All Origins,lri,Male,M,us,Deaths,attributable,780.696250604084
+2011,White,All Origins,lri,Male,M,us,YLL,attributable,14027.7374410062
+2011,White,All Origins,neo_lung,Female,F,us,Deaths,attributable,3383.92527625738
+2011,White,All Origins,neo_lung,Female,F,us,YLL,attributable,73810.5729655831
+2011,White,All Origins,neo_lung,Male,M,us,Deaths,attributable,4038.29584442544
+2011,White,All Origins,neo_lung,Male,M,us,YLL,attributable,91500.7080665347
+2011,White,All Origins,resp_copd,Female,F,us,Deaths,attributable,3362.65456672498
+2011,White,All Origins,resp_copd,Female,F,us,YLL,attributable,57059.7580663453
+2011,White,All Origins,resp_copd,Male,M,us,Deaths,attributable,2919.43763912732
+2011,White,All Origins,resp_copd,Male,M,us,YLL,attributable,53260.7656571604
+2011,White,All Origins,t2_dm,Female,F,us,Deaths,attributable,592.976551689823
+2011,White,All Origins,t2_dm,Female,F,us,YLL,attributable,10291.3177626082
+2011,White,All Origins,t2_dm,Male,M,us,Deaths,attributable,620.541578123796
+2011,White,All Origins,t2_dm,Male,M,us,YLL,attributable,12749.2588216023
+2011,White,Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,attributable,349.22376752355
+2011,White,Hispanic or Latino,cvd_ihd,Female,F,us,YLL,attributable,7392.25523610174
+2011,White,Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,attributable,594.815511508226
+2011,White,Hispanic or Latino,cvd_ihd,Male,M,us,YLL,attributable,17086.4035335814
+2011,White,Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,attributable,89.9923804621558
+2011,White,Hispanic or Latino,cvd_stroke,Female,F,us,YLL,attributable,3026.48122620481
+2011,White,Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,attributable,110.026042773689
+2011,White,Hispanic or Latino,cvd_stroke,Male,M,us,YLL,attributable,4188.76704883026
+2011,White,Hispanic or Latino,lri,Female,F,us,Deaths,attributable,65.431358597903
+2011,White,Hispanic or Latino,lri,Female,F,us,YLL,attributable,1265.5351725419
+2011,White,Hispanic or Latino,lri,Male,M,us,Deaths,attributable,63.6249342111211
+2011,White,Hispanic or Latino,lri,Male,M,us,YLL,attributable,1525.86239262365
+2011,White,Hispanic or Latino,neo_lung,Female,F,us,Deaths,attributable,115.007838106945
+2011,White,Hispanic or Latino,neo_lung,Female,F,us,YLL,attributable,2602.76230977244
+2011,White,Hispanic or Latino,neo_lung,Male,M,us,Deaths,attributable,187.689877526598
+2011,White,Hispanic or Latino,neo_lung,Male,M,us,YLL,attributable,4379.18803179945
+2011,White,Hispanic or Latino,resp_copd,Female,F,us,Deaths,attributable,106.410842255109
+2011,White,Hispanic or Latino,resp_copd,Female,F,us,YLL,attributable,1713.5244157872
+2011,White,Hispanic or Latino,resp_copd,Male,M,us,Deaths,attributable,112.731203102099
+2011,White,Hispanic or Latino,resp_copd,Male,M,us,YLL,attributable,1996.86920232929
+2011,White,Hispanic or Latino,t2_dm,Female,F,us,Deaths,attributable,84.6156210824344
+2011,White,Hispanic or Latino,t2_dm,Female,F,us,YLL,attributable,1658.99282612219
+2011,White,Hispanic or Latino,t2_dm,Male,M,us,Deaths,attributable,89.594367598995
+2011,White,Hispanic or Latino,t2_dm,Male,M,us,YLL,attributable,2111.67783708796
+2011,White,Not Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,attributable,4450.85091379241
+2011,White,Not Hispanic or Latino,cvd_ihd,Female,F,us,YLL,attributable,83012.9779602423
+2011,White,Not Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,attributable,6978.29408380964
+2011,White,Not Hispanic or Latino,cvd_ihd,Male,M,us,YLL,attributable,175709.256389044
+2011,White,Not Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,attributable,703.297378027621
+2011,White,Not Hispanic or Latino,cvd_stroke,Female,F,us,YLL,attributable,16619.6684797732
+2011,White,Not Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,attributable,619.167650642616
+2011,White,Not Hispanic or Latino,cvd_stroke,Male,M,us,YLL,attributable,16604.2893883217
+2011,White,Not Hispanic or Latino,lri,Female,F,us,Deaths,attributable,832.602866096683
+2011,White,Not Hispanic or Latino,lri,Female,F,us,YLL,attributable,12066.5819598353
+2011,White,Not Hispanic or Latino,lri,Male,M,us,Deaths,attributable,716.460253143474
+2011,White,Not Hispanic or Latino,lri,Male,M,us,YLL,attributable,12499.8146022049
+2011,White,Not Hispanic or Latino,neo_lung,Female,F,us,Deaths,attributable,3250.55394702686
+2011,White,Not Hispanic or Latino,neo_lung,Female,F,us,YLL,attributable,70730.8197136422
+2011,White,Not Hispanic or Latino,neo_lung,Male,M,us,Deaths,attributable,3833.54111029691
+2011,White,Not Hispanic or Latino,neo_lung,Male,M,us,YLL,attributable,86665.5836802097
+2011,White,Not Hispanic or Latino,resp_copd,Female,F,us,Deaths,attributable,3239.89532680951
+2011,White,Not Hispanic or Latino,resp_copd,Female,F,us,YLL,attributable,54987.6244428295
+2011,White,Not Hispanic or Latino,resp_copd,Male,M,us,Deaths,attributable,2792.06619330027
+2011,White,Not Hispanic or Latino,resp_copd,Male,M,us,YLL,attributable,50918.0721126616
+2011,White,Not Hispanic or Latino,t2_dm,Female,F,us,Deaths,attributable,512.524576860294
+2011,White,Not Hispanic or Latino,t2_dm,Female,F,us,YLL,attributable,8720.4504029881
+2011,White,Not Hispanic or Latino,t2_dm,Male,M,us,Deaths,attributable,535.421664316223
+2011,White,Not Hispanic or Latino,t2_dm,Male,M,us,YLL,attributable,10750.1580974857
+2011,American Indian or Alaska Native,All Origins,all-cause,Female,F,us,Deaths,overall,7305
+2011,American Indian or Alaska Native,All Origins,all-cause,Female,F,us,YLL,overall,214772.567500351
+2011,American Indian or Alaska Native,All Origins,all-cause,Male,M,us,Deaths,overall,8635
+2011,American Indian or Alaska Native,All Origins,all-cause,Male,M,us,YLL,overall,300893.409390831
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Female,F,us,Deaths,total,742
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Female,F,us,YLL,total,15546.592208611
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Male,M,us,Deaths,total,1171
+2011,American Indian or Alaska Native,All Origins,cvd_ihd,Male,M,us,YLL,total,30669.909209782
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Female,F,us,Deaths,total,128
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Female,F,us,YLL,total,4095.430065596
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Male,M,us,Deaths,total,95
+2011,American Indian or Alaska Native,All Origins,cvd_stroke,Male,M,us,YLL,total,2841.125045797
+2011,American Indian or Alaska Native,All Origins,lri,Female,F,us,Deaths,total,172
+2011,American Indian or Alaska Native,All Origins,lri,Female,F,us,YLL,total,4012.148923672
+2011,American Indian or Alaska Native,All Origins,lri,Male,M,us,Deaths,total,179
+2011,American Indian or Alaska Native,All Origins,lri,Male,M,us,YLL,total,4942.256903022
+2011,American Indian or Alaska Native,All Origins,neo_lung,Female,F,us,Deaths,total,330
+2011,American Indian or Alaska Native,All Origins,neo_lung,Female,F,us,YLL,total,8166.508469351
+2011,American Indian or Alaska Native,All Origins,neo_lung,Male,M,us,Deaths,total,414
+2011,American Indian or Alaska Native,All Origins,neo_lung,Male,M,us,YLL,total,10286.198180614
+2011,American Indian or Alaska Native,All Origins,resp_copd,Female,F,us,Deaths,total,339
+2011,American Indian or Alaska Native,All Origins,resp_copd,Female,F,us,YLL,total,7387.615118219
+2011,American Indian or Alaska Native,All Origins,resp_copd,Male,M,us,Deaths,total,293
+2011,American Indian or Alaska Native,All Origins,resp_copd,Male,M,us,YLL,total,6486.432898169
+2011,American Indian or Alaska Native,All Origins,t2_dm,Female,F,us,Deaths,total,164
+2011,American Indian or Alaska Native,All Origins,t2_dm,Female,F,us,YLL,total,4137.626551063
+2011,American Indian or Alaska Native,All Origins,t2_dm,Male,M,us,Deaths,total,122
+2011,American Indian or Alaska Native,All Origins,t2_dm,Male,M,us,YLL,total,3192.376593325
+2011,American Indian or Alaska Native,Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,292
+2011,American Indian or Alaska Native,Hispanic or Latino,all-cause,Female,F,us,YLL,overall,10288.311804536
+2011,American Indian or Alaska Native,Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,438
+2011,American Indian or Alaska Native,Hispanic or Latino,all-cause,Male,M,us,YLL,overall,17907.952844037
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,26
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,587.144967945
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,46
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,1164.404856306
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,4
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,118.471953285
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,1
+2011,American Indian or Alaska Native,Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,88.00051053
+2011,American Indian or Alaska Native,Hispanic or Latino,lri,Female,F,us,Deaths,total,4
+2011,American Indian or Alaska Native,Hispanic or Latino,lri,Female,F,us,YLL,total,54.304255132
+2011,American Indian or Alaska Native,Hispanic or Latino,lri,Male,M,us,Deaths,total,7
+2011,American Indian or Alaska Native,Hispanic or Latino,lri,Male,M,us,YLL,total,187.723235255
+2011,American Indian or Alaska Native,Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,6
+2011,American Indian or Alaska Native,Hispanic or Latino,neo_lung,Female,F,us,YLL,total,139.00272162
+2011,American Indian or Alaska Native,Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,10
+2011,American Indian or Alaska Native,Hispanic or Latino,neo_lung,Male,M,us,YLL,total,211.173249794
+2011,American Indian or Alaska Native,Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,10
+2011,American Indian or Alaska Native,Hispanic or Latino,resp_copd,Female,F,us,YLL,total,204.441347822
+2011,American Indian or Alaska Native,Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,8
+2011,American Indian or Alaska Native,Hispanic or Latino,resp_copd,Male,M,us,YLL,total,146.760395775
+2011,American Indian or Alaska Native,Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,6
+2011,American Indian or Alaska Native,Hispanic or Latino,t2_dm,Female,F,us,YLL,total,179.04344558
+2011,American Indian or Alaska Native,Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,3
+2011,American Indian or Alaska Native,Hispanic or Latino,t2_dm,Male,M,us,YLL,total,61.531819584
+2011,American Indian or Alaska Native,Not Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,7006
+2011,American Indian or Alaska Native,Not Hispanic or Latino,all-cause,Female,F,us,YLL,overall,204278.838836292
+2011,American Indian or Alaska Native,Not Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,8175
+2011,American Indian or Alaska Native,Not Hispanic or Latino,all-cause,Male,M,us,YLL,overall,282201.970835854
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,713
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,14865.389000982
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,1123
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,29425.933522146
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,124
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,3976.958112311
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,93
+2011,American Indian or Alaska Native,Not Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,2718.209654317
+2011,American Indian or Alaska Native,Not Hispanic or Latino,lri,Female,F,us,Deaths,total,168
+2011,American Indian or Alaska Native,Not Hispanic or Latino,lri,Female,F,us,YLL,total,3957.84466854
+2011,American Indian or Alaska Native,Not Hispanic or Latino,lri,Male,M,us,Deaths,total,172
+2011,American Indian or Alaska Native,Not Hispanic or Latino,lri,Male,M,us,YLL,total,4754.533667767
+2011,American Indian or Alaska Native,Not Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,324
+2011,American Indian or Alaska Native,Not Hispanic or Latino,neo_lung,Female,F,us,YLL,total,8027.505747731
+2011,American Indian or Alaska Native,Not Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,404
+2011,American Indian or Alaska Native,Not Hispanic or Latino,neo_lung,Male,M,us,YLL,total,10075.02493082
+2011,American Indian or Alaska Native,Not Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,329
+2011,American Indian or Alaska Native,Not Hispanic or Latino,resp_copd,Female,F,us,YLL,total,7183.173770397
+2011,American Indian or Alaska Native,Not Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,285
+2011,American Indian or Alaska Native,Not Hispanic or Latino,resp_copd,Male,M,us,YLL,total,6339.672502394
+2011,American Indian or Alaska Native,Not Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,158
+2011,American Indian or Alaska Native,Not Hispanic or Latino,t2_dm,Female,F,us,YLL,total,3958.583105483
+2011,American Indian or Alaska Native,Not Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,119
+2011,American Indian or Alaska Native,Not Hispanic or Latino,t2_dm,Male,M,us,YLL,total,3130.844773741
+2011,Asian or Pacific Islander,All Origins,all-cause,Female,F,us,Deaths,overall,25844
+2011,Asian or Pacific Islander,All Origins,all-cause,Female,F,us,YLL,overall,551180.791147573
+2011,Asian or Pacific Islander,All Origins,all-cause,Male,M,us,Deaths,overall,27489
+2011,Asian or Pacific Islander,All Origins,all-cause,Male,M,us,YLL,overall,704260.55851152
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Female,F,us,Deaths,total,3442
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Female,F,us,YLL,total,52376.218800196
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Male,M,us,Deaths,total,4386
+2011,Asian or Pacific Islander,All Origins,cvd_ihd,Male,M,us,YLL,total,96416.089508872
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Female,F,us,Deaths,total,889
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Female,F,us,YLL,total,20682.17712897
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Male,M,us,Deaths,total,803
+2011,Asian or Pacific Islander,All Origins,cvd_stroke,Male,M,us,YLL,total,20903.010376656
+2011,Asian or Pacific Islander,All Origins,lri,Female,F,us,Deaths,total,801
+2011,Asian or Pacific Islander,All Origins,lri,Female,F,us,YLL,total,12594.547934851
+2011,Asian or Pacific Islander,All Origins,lri,Male,M,us,Deaths,total,859
+2011,Asian or Pacific Islander,All Origins,lri,Male,M,us,YLL,total,14654.523560107
+2011,Asian or Pacific Islander,All Origins,neo_lung,Female,F,us,Deaths,total,1435
+2011,Asian or Pacific Islander,All Origins,neo_lung,Female,F,us,YLL,total,32733.853505178
+2011,Asian or Pacific Islander,All Origins,neo_lung,Male,M,us,Deaths,total,1897
+2011,Asian or Pacific Islander,All Origins,neo_lung,Male,M,us,YLL,total,43396.307554195
+2011,Asian or Pacific Islander,All Origins,resp_copd,Female,F,us,Deaths,total,606
+2011,Asian or Pacific Islander,All Origins,resp_copd,Female,F,us,YLL,total,8651.363415849
+2011,Asian or Pacific Islander,All Origins,resp_copd,Male,M,us,Deaths,total,935
+2011,Asian or Pacific Islander,All Origins,resp_copd,Male,M,us,YLL,total,14093.139118073
+2011,Asian or Pacific Islander,All Origins,t2_dm,Female,F,us,Deaths,total,316
+2011,Asian or Pacific Islander,All Origins,t2_dm,Female,F,us,YLL,total,5546.098283067
+2011,Asian or Pacific Islander,All Origins,t2_dm,Male,M,us,Deaths,total,292
+2011,Asian or Pacific Islander,All Origins,t2_dm,Male,M,us,YLL,total,5848.418434566
+2011,Asian or Pacific Islander,Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,357
+2011,Asian or Pacific Islander,Hispanic or Latino,all-cause,Female,F,us,YLL,overall,11036.214013574
+2011,Asian or Pacific Islander,Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,508
+2011,Asian or Pacific Islander,Hispanic or Latino,all-cause,Male,M,us,YLL,overall,17954.39069878
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,36
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,703.033004989
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,55
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,1301.646964435
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,13
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,424.40578977
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,13
+2011,Asian or Pacific Islander,Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,356.087007068
+2011,Asian or Pacific Islander,Hispanic or Latino,lri,Female,F,us,Deaths,total,7
+2011,Asian or Pacific Islander,Hispanic or Latino,lri,Female,F,us,YLL,total,176.899182962
+2011,Asian or Pacific Islander,Hispanic or Latino,lri,Male,M,us,Deaths,total,9
+2011,Asian or Pacific Islander,Hispanic or Latino,lri,Male,M,us,YLL,total,257.888313612
+2011,Asian or Pacific Islander,Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,13
+2011,Asian or Pacific Islander,Hispanic or Latino,neo_lung,Female,F,us,YLL,total,326.129406622
+2011,Asian or Pacific Islander,Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,25
+2011,Asian or Pacific Islander,Hispanic or Latino,neo_lung,Male,M,us,YLL,total,599.199302204
+2011,Asian or Pacific Islander,Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,6
+2011,Asian or Pacific Islander,Hispanic or Latino,resp_copd,Female,F,us,YLL,total,87.778174854
+2011,Asian or Pacific Islander,Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,13
+2011,Asian or Pacific Islander,Hispanic or Latino,resp_copd,Male,M,us,YLL,total,211.933460557
+2011,Asian or Pacific Islander,Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,5
+2011,Asian or Pacific Islander,Hispanic or Latino,t2_dm,Female,F,us,YLL,total,55.567870534
+2011,Asian or Pacific Islander,Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,2
+2011,Asian or Pacific Islander,Hispanic or Latino,t2_dm,Male,M,us,YLL,total,30.34223946
+2011,Asian or Pacific Islander,Not Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,25435
+2011,Asian or Pacific Islander,Not Hispanic or Latino,all-cause,Female,F,us,YLL,overall,538558.421327175
+2011,Asian or Pacific Islander,Not Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,26909
+2011,Asian or Pacific Islander,Not Hispanic or Latino,all-cause,Male,M,us,YLL,overall,684092.746223252
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,3396
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,51490.455301574
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,4316
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,94724.953668749
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,873
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,20193.415361725
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,788
+2011,Asian or Pacific Islander,Not Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,20490.720288518
+2011,Asian or Pacific Islander,Not Hispanic or Latino,lri,Female,F,us,Deaths,total,794
+2011,Asian or Pacific Islander,Not Hispanic or Latino,lri,Female,F,us,YLL,total,12417.648751889
+2011,Asian or Pacific Islander,Not Hispanic or Latino,lri,Male,M,us,Deaths,total,848
+2011,Asian or Pacific Islander,Not Hispanic or Latino,lri,Male,M,us,YLL,total,14354.058846255
+2011,Asian or Pacific Islander,Not Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,1421
+2011,Asian or Pacific Islander,Not Hispanic or Latino,neo_lung,Female,F,us,YLL,total,32397.733917312
+2011,Asian or Pacific Islander,Not Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,1870
+2011,Asian or Pacific Islander,Not Hispanic or Latino,neo_lung,Male,M,us,YLL,total,42765.829870627
+2011,Asian or Pacific Islander,Not Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,600
+2011,Asian or Pacific Islander,Not Hispanic or Latino,resp_copd,Female,F,us,YLL,total,8563.585240995
+2011,Asian or Pacific Islander,Not Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,920
+2011,Asian or Pacific Islander,Not Hispanic or Latino,resp_copd,Male,M,us,YLL,total,13816.037338346
+2011,Asian or Pacific Islander,Not Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,311
+2011,Asian or Pacific Islander,Not Hispanic or Latino,t2_dm,Female,F,us,YLL,total,5490.530412533
+2011,Asian or Pacific Islander,Not Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,290
+2011,Asian or Pacific Islander,Not Hispanic or Latino,t2_dm,Male,M,us,YLL,total,5818.076195106
+2011,Black or African American,All Origins,all-cause,Female,F,us,Deaths,overall,143209
+2011,Black or African American,All Origins,all-cause,Female,F,us,YLL,overall,3621023.79659683
+2011,Black or African American,All Origins,all-cause,Male,M,us,Deaths,overall,146864
+2011,Black or African American,All Origins,all-cause,Male,M,us,YLL,overall,4666048.38742672
+2011,Black or African American,All Origins,cvd_ihd,Female,F,us,Deaths,total,18760
+2011,Black or African American,All Origins,cvd_ihd,Female,F,us,YLL,total,363218.283760068
+2011,Black or African American,All Origins,cvd_ihd,Male,M,us,Deaths,total,20691
+2011,Black or African American,All Origins,cvd_ihd,Male,M,us,YLL,total,528795.22235245
+2011,Black or African American,All Origins,cvd_stroke,Female,F,us,Deaths,total,2879
+2011,Black or African American,All Origins,cvd_stroke,Female,F,us,YLL,total,76432.377600254
+2011,Black or African American,All Origins,cvd_stroke,Male,M,us,Deaths,total,2659
+2011,Black or African American,All Origins,cvd_stroke,Male,M,us,YLL,total,82923.938318951
+2011,Black or African American,All Origins,lri,Female,F,us,Deaths,total,2775
+2011,Black or African American,All Origins,lri,Female,F,us,YLL,total,60635.337928655
+2011,Black or African American,All Origins,lri,Male,M,us,Deaths,total,2442
+2011,Black or African American,All Origins,lri,Male,M,us,YLL,total,63798.382878618
+2011,Black or African American,All Origins,neo_lung,Female,F,us,Deaths,total,6947
+2011,Black or African American,All Origins,neo_lung,Female,F,us,YLL,total,172432.305964954
+2011,Black or African American,All Origins,neo_lung,Male,M,us,Deaths,total,9645
+2011,Black or African American,All Origins,neo_lung,Male,M,us,YLL,total,250126.893595445
+2011,Black or African American,All Origins,resp_copd,Female,F,us,Deaths,total,3890
+2011,Black or African American,All Origins,resp_copd,Female,F,us,YLL,total,79465.734758175
+2011,Black or African American,All Origins,resp_copd,Male,M,us,Deaths,total,4249
+2011,Black or African American,All Origins,resp_copd,Male,M,us,YLL,total,90602.909651161
+2011,Black or African American,All Origins,t2_dm,Female,F,us,Deaths,total,1397
+2011,Black or African American,All Origins,t2_dm,Female,F,us,YLL,total,29966.787574002
+2011,Black or African American,All Origins,t2_dm,Male,M,us,Deaths,total,1174
+2011,Black or African American,All Origins,t2_dm,Male,M,us,YLL,total,29012.876736263
+2011,Black or African American,Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,922
+2011,Black or African American,Hispanic or Latino,all-cause,Female,F,us,YLL,overall,29953.519933565
+2011,Black or African American,Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,1056
+2011,Black or African American,Hispanic or Latino,all-cause,Male,M,us,YLL,overall,43508.312907986
+2011,Black or African American,Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,124
+2011,Black or African American,Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,2009.536107547
+2011,Black or African American,Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,141
+2011,Black or African American,Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,3440.706043364
+2011,Black or African American,Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,14
+2011,Black or African American,Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,401.558473945
+2011,Black or African American,Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,22
+2011,Black or African American,Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,704.117511815
+2011,Black or African American,Hispanic or Latino,lri,Female,F,us,Deaths,total,22
+2011,Black or African American,Hispanic or Latino,lri,Female,F,us,YLL,total,605.257598059
+2011,Black or African American,Hispanic or Latino,lri,Male,M,us,Deaths,total,15
+2011,Black or African American,Hispanic or Latino,lri,Male,M,us,YLL,total,400.474181219
+2011,Black or African American,Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,39
+2011,Black or African American,Hispanic or Latino,neo_lung,Female,F,us,YLL,total,886.778741591
+2011,Black or African American,Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,43
+2011,Black or African American,Hispanic or Latino,neo_lung,Male,M,us,YLL,total,1139.872305948
+2011,Black or African American,Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,18
+2011,Black or African American,Hispanic or Latino,resp_copd,Female,F,us,YLL,total,313.008010421
+2011,Black or African American,Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,25
+2011,Black or African American,Hispanic or Latino,resp_copd,Male,M,us,YLL,total,492.604851731
+2011,Black or African American,Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,9
+2011,Black or African American,Hispanic or Latino,t2_dm,Female,F,us,YLL,total,207.57502234
+2011,Black or African American,Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,7
+2011,Black or African American,Hispanic or Latino,t2_dm,Male,M,us,YLL,total,172.73309231
+2011,Black or African American,Not Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,141739
+2011,Black or African American,Not Hispanic or Latino,all-cause,Female,F,us,YLL,overall,3574873.62371348
+2011,Black or African American,Not Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,145036
+2011,Black or African American,Not Hispanic or Latino,all-cause,Male,M,us,YLL,overall,4596925.93732567
+2011,Black or African American,Not Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,18533
+2011,Black or African American,Not Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,359326.343925628
+2011,Black or African American,Not Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,20393
+2011,Black or African American,Not Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,521518.245725266
+2011,Black or African American,Not Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,2861
+2011,Black or African American,Not Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,75897.638948239
+2011,Black or African American,Not Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,2631
+2011,Black or African American,Not Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,82046.235457096
+2011,Black or African American,Not Hispanic or Latino,lri,Female,F,us,Deaths,total,2737
+2011,Black or African American,Not Hispanic or Latino,lri,Female,F,us,YLL,total,59716.265859995
+2011,Black or African American,Not Hispanic or Latino,lri,Male,M,us,Deaths,total,2410
+2011,Black or African American,Not Hispanic or Latino,lri,Male,M,us,YLL,total,62912.568650951
+2011,Black or African American,Not Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,6885
+2011,Black or African American,Not Hispanic or Latino,neo_lung,Female,F,us,YLL,total,170919.650164709
+2011,Black or African American,Not Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,9565
+2011,Black or African American,Not Hispanic or Latino,neo_lung,Male,M,us,YLL,total,247970.688819861
+2011,Black or African American,Not Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,3857
+2011,Black or African American,Not Hispanic or Latino,resp_copd,Female,F,us,YLL,total,78845.5183088
+2011,Black or African American,Not Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,4200
+2011,Black or African American,Not Hispanic or Latino,resp_copd,Male,M,us,YLL,total,89586.386854158
+2011,Black or African American,Not Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,1381
+2011,Black or African American,Not Hispanic or Latino,t2_dm,Female,F,us,YLL,total,29566.493982578
+2011,Black or African American,Not Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,1163
+2011,Black or African American,Not Hispanic or Latino,t2_dm,Male,M,us,YLL,total,28708.492592783
+2011,White,All Origins,all-cause,Female,F,us,Deaths,overall,1084087
+2011,White,All Origins,all-cause,Female,F,us,YLL,overall,19786176.168819
+2011,White,All Origins,all-cause,Male,M,us,Deaths,overall,1071891
+2011,White,All Origins,all-cause,Male,M,us,YLL,overall,25274495.4696207
+2011,White,All Origins,cvd_ihd,Female,F,us,Deaths,total,145440
+2011,White,All Origins,cvd_ihd,Female,F,us,YLL,total,2105984.78392309
+2011,White,All Origins,cvd_ihd,Male,M,us,Deaths,total,180644
+2011,White,All Origins,cvd_ihd,Male,M,us,YLL,total,3656242.84382355
+2011,White,All Origins,cvd_stroke,Female,F,us,Deaths,total,19105
+2011,White,All Origins,cvd_stroke,Female,F,us,YLL,total,350432.721003784
+2011,White,All Origins,cvd_stroke,Male,M,us,Deaths,total,15268
+2011,White,All Origins,cvd_stroke,Male,M,us,YLL,total,336792.185126285
+2011,White,All Origins,lri,Female,F,us,Deaths,total,24866
+2011,White,All Origins,lri,Female,F,us,YLL,total,371325.108595174
+2011,White,All Origins,lri,Male,M,us,Deaths,total,22096
+2011,White,All Origins,lri,Male,M,us,YLL,total,397309.33349752
+2011,White,All Origins,neo_lung,Female,F,us,Deaths,total,61529
+2011,White,All Origins,neo_lung,Female,F,us,YLL,total,1347747.18926607
+2011,White,All Origins,neo_lung,Male,M,us,Deaths,total,74816
+2011,White,All Origins,neo_lung,Male,M,us,YLL,total,1697110.8817691
+2011,White,All Origins,resp_copd,Female,F,us,Deaths,total,68302
+2011,White,All Origins,resp_copd,Female,F,us,YLL,total,1165724.4383389
+2011,White,All Origins,resp_copd,Male,M,us,Deaths,total,60621
+2011,White,All Origins,resp_copd,Male,M,us,YLL,total,1109464.54882037
+2011,White,All Origins,t2_dm,Female,F,us,Deaths,total,7553
+2011,White,All Origins,t2_dm,Female,F,us,YLL,total,131825.249577839
+2011,White,All Origins,t2_dm,Male,M,us,Deaths,total,8066
+2011,White,All Origins,t2_dm,Male,M,us,YLL,total,166023.14147328
+2011,White,Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,66176
+2011,White,Hispanic or Latino,all-cause,Female,F,us,YLL,overall,1660993.23619806
+2011,White,Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,79877
+2011,White,Hispanic or Latino,all-cause,Male,M,us,YLL,overall,2588077.18305802
+2011,White,Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,8667
+2011,White,Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,142011.202904064
+2011,White,Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,11231
+2011,White,Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,260657.924366345
+2011,White,Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,1488
+2011,White,Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,37819.83801007
+2011,White,Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,1527
+2011,White,Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,47690.857884539
+2011,White,Hispanic or Latino,lri,Female,F,us,Deaths,total,1633
+2011,White,Hispanic or Latino,lri,Female,F,us,YLL,total,31418.400495849
+2011,White,Hispanic or Latino,lri,Male,M,us,Deaths,total,1589
+2011,White,Hispanic or Latino,lri,Male,M,us,YLL,total,37961.370320102
+2011,White,Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,1875
+2011,White,Hispanic or Latino,neo_lung,Female,F,us,YLL,total,42347.474128249
+2011,White,Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,3081
+2011,White,Hispanic or Latino,neo_lung,Male,M,us,YLL,total,71807.216427074
+2011,White,Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,1944
+2011,White,Hispanic or Latino,resp_copd,Female,F,us,YLL,total,31228.612729118
+2011,White,Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,2066
+2011,White,Hispanic or Latino,resp_copd,Male,M,us,YLL,total,36610.109063641
+2011,White,Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,987
+2011,White,Hispanic or Latino,t2_dm,Female,F,us,YLL,total,19313.044019903
+2011,White,Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,1050
+2011,White,Hispanic or Latino,t2_dm,Male,M,us,YLL,total,24719.752260143
+2011,White,Not Hispanic or Latino,all-cause,Female,F,us,Deaths,overall,1016470
+2011,White,Not Hispanic or Latino,all-cause,Female,F,us,YLL,overall,18089323.1913715
+2011,White,Not Hispanic or Latino,all-cause,Male,M,us,Deaths,overall,989791
+2011,White,Not Hispanic or Latino,all-cause,Male,M,us,YLL,overall,22620910.8717282
+2011,White,Not Hispanic or Latino,cvd_ihd,Female,F,us,Deaths,total,136518
+2011,White,Not Hispanic or Latino,cvd_ihd,Female,F,us,YLL,total,1959861.4250925
+2011,White,Not Hispanic or Latino,cvd_ihd,Male,M,us,Deaths,total,168956
+2011,White,Not Hispanic or Latino,cvd_ihd,Male,M,us,YLL,total,3384815.04097828
+2011,White,Not Hispanic or Latino,cvd_stroke,Female,F,us,Deaths,total,17592
+2011,White,Not Hispanic or Latino,cvd_stroke,Female,F,us,YLL,total,312117.282225843
+2011,White,Not Hispanic or Latino,cvd_stroke,Male,M,us,Deaths,total,13712
+2011,White,Not Hispanic or Latino,cvd_stroke,Male,M,us,YLL,total,288337.844813054
+2011,White,Not Hispanic or Latino,lri,Female,F,us,Deaths,total,23179
+2011,White,Not Hispanic or Latino,lri,Female,F,us,YLL,total,338935.003696154
+2011,White,Not Hispanic or Latino,lri,Male,M,us,Deaths,total,20446
+2011,White,Not Hispanic or Latino,lri,Male,M,us,YLL,total,358181.031713078
+2011,White,Not Hispanic or Latino,neo_lung,Female,F,us,Deaths,total,59587
+2011,White,Not Hispanic or Latino,neo_lung,Female,F,us,YLL,total,1303805.72251257
+2011,White,Not Hispanic or Latino,neo_lung,Male,M,us,Deaths,total,71631
+2011,White,Not Hispanic or Latino,neo_lung,Male,M,us,YLL,total,1622714.44545835
+2011,White,Not Hispanic or Latino,resp_copd,Female,F,us,Deaths,total,66277
+2011,White,Not Hispanic or Latino,resp_copd,Female,F,us,YLL,total,1133021.50733026
+2011,White,Not Hispanic or Latino,resp_copd,Male,M,us,Deaths,total,58444
+2011,White,Not Hispanic or Latino,resp_copd,Male,M,us,YLL,total,1070289.45065909
+2011,White,Not Hispanic or Latino,t2_dm,Female,F,us,Deaths,total,6563
+2011,White,Not Hispanic or Latino,t2_dm,Female,F,us,YLL,total,112477.494137087
+2011,White,Not Hispanic or Latino,t2_dm,Male,M,us,Deaths,total,7007
+2011,White,Not Hispanic or Latino,t2_dm,Male,M,us,YLL,total,141134.820065567

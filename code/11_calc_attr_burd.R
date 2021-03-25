@@ -274,7 +274,7 @@ if (!file.exists(attrBurdenDir)) {
   }
 
   # missing causes
-  label_causes_all <- c("resp_copd", "lri", "neo_lung", "t2_dm", "cvd_ihd", "cvd_stroke")
+  label_causes_all <- c("resp_copd", "lri", "neo_lung", "t2_dm", "cvd_ihd", "cvd_stroke", "all-cause")
   missing <- setdiff(label_causes_all, total_burden$label_cause)
   if (length(missing) > 0) {
     print("Causes in total burden data missing:")
@@ -316,7 +316,13 @@ if (!file.exists(attrBurdenDir)) {
     )
 
   total_burden <- rbind(total_burden, total_burden_yll)
-  total_burden$attr <- "not attributable"
+  total_burden$attr <- sapply(total_burden$label_cause, function(cause){
+    if(cause == "all-cause"){
+      "overall"
+    }else{
+      "total"
+    }
+  })
   ## ----- join total_burden and pafs-----
   
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
