@@ -4,6 +4,7 @@ library(dplyr)
 library(magrittr)
 library(Rmisc)
 library(ggplot2)
+library(data.table)
 
 cvd_ihd_25 <- read.csv("~/Desktop/cvd_ihd_25.csv")
 columns<- paste0("draw_",0:999)
@@ -35,14 +36,27 @@ df3 <- lapply(classes, function(class){
   return(df3)
 }) %>% do.call(rbind,.)
 
-df4 <- rbind(df1, df2, df3)
-df4 <- df4 %>% filter(exposure_spline <= 50)
+lower <- function(x){quantile(x,p=.025)}
+upper <- function(x){quantile(x,p=.975)}
+df4<-apply(cvd_ihd_25[,columns], 1, function(row){ 
+  c(mean = mean(row),
+    lower = lower(row),
+    upper = upper(row))} )
+df4 <- t(df4) %>% as.data.frame
+df4 <- data.frame(exposure_spline=cvd_ihd_25$exposure_spline,
+                  mean = df4[, 1],
+                  lower = df4[, 2],
+                  upper = df4[, 3])
+df4$source <- "quantile"
 
-g<-ggplot(data=df4, 
+df5 <- rbind(df1, df4)
+df5 <- df5 %>% filter(exposure_spline <= 50)
+
+g<-ggplot(data=df5, 
           aes(x=exposure_spline, y=mean, color = source)) + 
   geom_point() + 
-  geom_line()
+  geom_line() +
+  geom_ribbon(aes(ymin=lower, ymax=upper, color = source), linetype=2, alpha=0.1)
 
-g<-g+geom_ribbon(aes(ymin=lower, ymax=upper, color = source), linetype=2, alpha=0.1)
 g
 

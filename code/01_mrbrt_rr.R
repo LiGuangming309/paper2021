@@ -138,23 +138,30 @@ apply(causes_ages, 1, function(cause_age) {
   if (!file.exists(plotDirX) && TRUE) {
     exp_rr_ci <- apply(exp_rr, 1, function(row){
       val <- row[-1]
-      CI <- CI(val, 0.95)
-      return(c(row[1], CI))
+      return(c(row[1], 
+               mean = mean(val),
+               lower = (quantile(val,p=.025) %>% unname),
+               upper = (quantile(val,p=.975))%>% unname))
     })
     exp_rr_ci <- t(exp_rr_ci)
     exp_rr_ci <- as.data.frame(exp_rr_ci)
+    exp_rr_ci$value <- "rr"
     
-    g<-ggplot(data=exp_rr_ci, 
-              aes(x=exposure_spline, y=mean)) + 
+    exp_mrbrt <- read.csv(file.path(mrbrtDir, file_name)) %>%
+      select(exposure_spline, mean, lower, upper) %>%
+      filter(exposure_spline <= 30)
+    exp_mrbrt$value <- "MR-BRT"
+    
+    
+    g<-ggplot(data=rbind(exp_rr_ci, exp_mrbrt), 
+              aes(x=exposure_spline, y=mean, color = value)) + 
           geom_point() + 
           geom_line()+
-      geom_ribbon(aes(ymin=lower, ymax=upper), linetype=2, alpha=0.1, color = "red")
-
+      geom_ribbon(aes(ymin=lower, ymax=upper), linetype=2, alpha=0.15) #, color = "red"
+    g
     ggsave(plotDirX)
   }
-
-  plotDirX <- paste0(label_cause, "_", age_group_id, ".png") %>%
-    file.path(plotsDir, .)
+  
   NA
 })
 toc()
