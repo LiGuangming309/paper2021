@@ -31,7 +31,7 @@ attrBurdenDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2011
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -305,10 +305,10 @@ if (!file.exists(attrBurdenDir)) {
   
   ##--- calculate YLL-----
   total_burden$measure <- "Deaths"
-  total_burden <- total_burden %>% rename(value = Deaths)
+  total_burden <- total_burden %>% dplyr::rename(value = Deaths)
   
   total_burden_yll <- total_burden %>%
-    mutate(
+    dplyr::mutate(
       Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(max_age, lifeExpectancy$Age)], #TODO max_age?
       value = value * Life.Expectancy,
       measure= "YLL",
@@ -349,18 +349,26 @@ if (!file.exists(attrBurdenDir)) {
 
   attrBurden <- burden_paf %>%
     mutate(
-      value = value * pafs,
-      attr = "attributable"
+      #value = value * pafs,
+      mean = value* mean,
+      lower = value* lower,
+      upper = value* upper,
+      attr = "attributable",
+      value = NULL
     )
 
   # group "out" ages
   columns <- c(unname(inverse_join_variables), "measure", "attr")
   attrBurden <- attrBurden %>%
-    group_by_at(vars(one_of(columns))) %>%
-    summarize(value = sum(value))
+    dplyr::group_by_at(vars(one_of(columns))) %>%
+    dplyr::summarize(mean = sum(mean),
+              lower = sum(lower),
+              upper = sum(upper))
   total_burden <- total_burden %>%
-    group_by_at(vars(one_of(columns))) %>%
-    summarize(value = sum(value))
+    dplyr::group_by_at(vars(one_of(columns))) %>%
+    dplyr::summarize(mean = sum(value),
+              lower = mean,
+              upper = mean)
 
   attrBurden <- rbind(attrBurden, total_burden)
   # some basic tests

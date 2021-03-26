@@ -84,10 +84,10 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   
   columns <- c(inverse_group_variables, "measure", "attr")
   attrBurden_gr <- attrBurden %>%
-    group_by_at(vars(one_of(columns))) %>%
-    summarise(
-      value = sum(value)
-    ) %>%
+    dplyr::group_by_at(vars(one_of(columns))) %>%
+    dplyr::summarize(mean = sum(mean),
+                     lower = sum(lower),
+                     upper = sum(upper)) %>%
     as.data.frame()
   
   ### ---- read cdc population data------
