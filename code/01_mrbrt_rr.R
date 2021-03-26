@@ -147,10 +147,9 @@ apply(causes_ages, 1, function(cause_age) {
     g<-ggplot(data=exp_rr_ci, 
               aes(x=exposure_spline, y=mean)) + 
           geom_point() + 
-          geom_line()
-    
-    g<-g+geom_ribbon(aes(ymin=exp_rr_ci$lower, ymax=exp_rr_ci$upper), linetype=2, alpha=0.1, color = "red")
-    g
+          geom_line()+
+      geom_ribbon(aes(ymin=lower, ymax=upper), linetype=2, alpha=0.1, color = "red")
+
     ggsave(plotDirX)
   }
 
