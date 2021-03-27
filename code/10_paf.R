@@ -33,7 +33,7 @@ pafDir <- args[11]
 # TODO löschen
 if (rlang::is_empty(args)) {
   year <- 2011
-  agr_by <-"STATEFP" #"nation"
+  agr_by <-"nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"

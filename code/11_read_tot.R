@@ -21,7 +21,6 @@ options(dplyr.join.inform = FALSE)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
 
-year <- args[1]
 dataDir <- args[2]
 tmpDir <- args[3]
 agr_by <- args[10]
@@ -30,7 +29,6 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2011
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -139,10 +137,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>%
     do.call(rbind, .) %>%
     as.data.frame() %>%
-    filter(
-      Year == year,
-      Hispanic.Origin != "Not Stated"
-    )
+    filter(Hispanic.Origin != "Not Stated")
 
   # parse age groups
   if ("Single.Year.Ages.Code" %in% colnames(total_burden)) {

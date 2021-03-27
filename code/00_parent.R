@@ -104,13 +104,14 @@ dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
+cdc.pop.dir <- file.path(data.dir, "11_cdc_population")
+
 summary.dir <- file.path(data.dir, "12_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
 plot.dir <- file.path(data.dir, "13_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
-cdc.pop.dir <- file.path(data.dir, "14_cdc_population.")
 
 # paths of scripts
 mrbrtRR.script <- file.path(code.dir, "01_mrbrt_rr.R")
@@ -174,11 +175,11 @@ args <- paste(
   tmp.dir, # 1
   agr_by, # 2
   dem.dir, # 3
-  attr.burden.dir, # 4
-  summary.dir, # 5
-  plot.dir, # 6
-  cdc.pop.dir, #7
-  data.dir # 8
+  total.burden.parsed.dir, # 4
+  attr.burden.dir, # 5
+  cdc.pop.dir, # 6
+  summary.dir, # 7
+  plot.dir # 8
 )
 
 # runscript(script = summary.script, args = args)

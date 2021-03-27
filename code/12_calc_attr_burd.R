@@ -22,7 +22,6 @@ options(dplyr.join.inform = FALSE)
 args <- commandArgs(trailingOnly = T)
 
 year <- args[1]
-dataDir <- args[2]
 tmpDir <- args[3]
 agr_by <- args[10]
 pafDir <- args[11]
