@@ -43,6 +43,8 @@ if (Sys.info()["sysname"] == "Darwin") {
     system(paste("Rscript", script, args))
   }
 } else if (Sys.info()["sysname"] == "Windows") {
+  memory.limit(size=56000)
+  
   exec <- paste0("C:/Program Files/R/R-", R.Version()$major, ".", R.Version()$minor, "/bin/Rscript.exe")
   exec <- shQuote(exec)
   runscript <- function(script, args = "") {
