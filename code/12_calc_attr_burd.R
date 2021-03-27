@@ -54,6 +54,7 @@ total_burden <- file.path(totalBurdenParsedDir,  agr_by, "total_burden.csv") %>%
 #  select(Race, Hispanic.Origin, label_cause, factor)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
+  print("test2")
   ## ----determine join variables
   join_variables <- c(
     "Year" = "year",
@@ -95,7 +96,7 @@ if (!file.exists(attrBurdenDir)) {
     # TODO old people still included
     filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
     as.data.frame()
-
+  print("test3")
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
   } else if (agr_by == "Census_Region") {
@@ -142,7 +143,7 @@ if (!file.exists(attrBurdenDir)) {
   }
   
   ## ----- join total_burden and pafs-----
-  
+  print("test")
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   tic("1")
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
@@ -160,7 +161,7 @@ if (!file.exists(attrBurdenDir)) {
   tic("3")
   test_that("09_calc distinct rows", {
     burden_paf_sub <- burden_paf %>%
-      select(min_age.x, max_age.y, measure, Gender.Code, Race, Hispanic.Origin, label_cause)
+      select(min_age.x, max_age.x, measure, Gender.Code, Race, Hispanic.Origin, label_cause)
 
     dub_ind <- duplicated(burden_paf_sub) | duplicated(burden_paf_sub, fromLast = TRUE)
     burden_paf_sub <- burden_paf[dub_ind, ]

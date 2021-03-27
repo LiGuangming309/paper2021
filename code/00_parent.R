@@ -166,7 +166,7 @@ for (year in years) {
   #  runscript(script = cens_agr.script, args = args)
    runscript(script = paf.script, args = args)
   #runscript(script = read.total.burden.script, args = args)
-   runscript(script = calc.attr.burd.script, args = args)
+  # runscript(script = calc.attr.burd.script, args = args)
 } 
 
   
