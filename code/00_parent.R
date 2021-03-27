@@ -98,6 +98,9 @@ dir.create(paf.dir, recursive = T, showWarnings = F)
 total.burden.dir <- file.path(data.dir, "08_total_burden")
 if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wonder need to be downloaded")
 
+total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
+dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
+
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
@@ -120,9 +123,10 @@ openaq.script <- file.path(code.dir, "07_openaq.R")
 assignTractAKHI.script <- file.path(code.dir, "08_ass_trac_AKHI.R")
 cens_agr.script <- file.path(code.dir, "09_aggregate.R")
 paf.script <- file.path(code.dir, "10_paf.R")
-calc.attr.burd.script <- file.path(code.dir, "11_calc_attr_burd.R")
-summary.script <- file.path(code.dir, "12_summary.R")
-plot.script <- file.path(code.dir, "13_plot.R")
+read.total.burden.script <- file.path(code.dir, "11_read_tot.R")
+calc.attr.burd.script <- file.path(code.dir, "12_calc_attr_burd.R")
+summary.script <- file.path(code.dir, "13_summary.R")
+plot.script <- file.path(code.dir, "14_plot.R")
 
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
@@ -145,7 +149,8 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, # 12
-    attr.burden.dir # 13
+    total.burden.parsed.dir, # 13
+    attr.burden.dir # 14
     
   )
   #runscript(script = download.meta.script, args = args)
@@ -160,6 +165,7 @@ for (year in years) {
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
   # runscript(script = paf.script, args = args)
+  runscript(script = read.total.burden.script, args = args)
   # runscript(script = calc.attr.burd.script, args = args)
 } 
 

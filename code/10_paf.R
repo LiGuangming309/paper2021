@@ -33,7 +33,7 @@ pafDir <- args[11]
 # TODO löschen
 if (rlang::is_empty(args)) {
   year <- 2011
-  agr_by <- "STATEFP" #"nation"
+  agr_by <- "nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
@@ -147,13 +147,15 @@ for (region in regions) {
       #    upper = (quantile(row,p=.975))%>% unname)
       # })
       # result <- t(result) %>% as.data.frame
-      
+
       # too expensive for granular geographic level
       if (!calc_conf) {
-        result <- data.frame(variable = rownames(result),
-                              label_cause = label_cause,
-                             draw0 = rowMeans(result))
-      }else{
+        result <- data.frame(
+          variable = rownames(result),
+          label_cause = label_cause,
+          draw0 = rowMeans(result)
+        )
+      } else {
         # write to dataframe
         result <- as.data.frame(result)
         result <- tibble::add_column(result, label_cause = label_cause, .before = 1)
@@ -167,11 +169,9 @@ for (region in regions) {
       toc()
       return(result)
     }) %>% do.call(rbind, .)
-    
-    pafs <- right_join(census_meta,pafs,  by = "variable")
-    #!!(mycols[2])
-    #pafs <- tibble::add_column(pafs, (agr_by) = region, .before = 1)
     census_meta[, agr_by] <- region
+
+    pafs <- right_join(census_meta, pafs, by = "variable")
 
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))
@@ -179,6 +179,16 @@ for (region in regions) {
       pafs_dis <- pafs %>% distinct(label_cause, year, gender_label, min_age, max_age, race, hispanic_origin)
       expect_equal(nrow(pafs_dis), nrow(pafs))
       # TODO löschen
+      
+      # missing causes
+      label_causes_all <- c("resp_copd", "lri", "neo_lung", "t2_dm", "cvd_ihd", "cvd_stroke")
+      missing <- setdiff(label_causes_all, pafs$label_cause)
+      if (length(missing) > 0) {
+        print("Causes in paf data missing:")
+        print(missing)
+      }
+      
+      if (!(150 %in% pafs$max_age)) print("max_age 150 missing in paf data")
     })
 
     write.csv(pafs, pafDirX, row.names = FALSE)
