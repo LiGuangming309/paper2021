@@ -135,8 +135,8 @@ plot.script <- file.path(code.dir, "14_plot.R")
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000,2010,2001:2009,2011:2016)
-#years <- c(2012)
+# years <- c(2000,2010,2001:2009,2011:2016)
+ years <- c(2009)
   
 for (year in years) {
   args <- paste( 
@@ -167,8 +167,8 @@ for (year in years) {
   # runscript(script=assignTract.script, args = args)
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
-  # runscript(script = paf.script, args = args)
-  #runscript(script = read.total.burden.script, args = args)
+    runscript(script = paf.script, args = args)
+   runscript(script = read.total.burden.script, args = args)
    runscript(script = calc.attr.burd.script, args = args)
 } 
 
