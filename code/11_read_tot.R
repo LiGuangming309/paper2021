@@ -26,6 +26,7 @@ dataDir <- args[2]
 tmpDir <- args[3]
 agr_by <- args[10]
 totalBurdenDir <- args[12]
+totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {

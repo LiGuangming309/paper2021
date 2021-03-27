@@ -164,9 +164,9 @@ for (year in years) {
   # runscript(script=assignTract.script, args = args)
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
-  # runscript(script = paf.script, args = args)
-  runscript(script = read.total.burden.script, args = args)
-  # runscript(script = calc.attr.burd.script, args = args)
+   runscript(script = paf.script, args = args)
+  #runscript(script = read.total.burden.script, args = args)
+   runscript(script = calc.attr.burd.script, args = args)
 } 
 
   
@@ -181,5 +181,5 @@ args <- paste(
   data.dir # 8
 )
 
- runscript(script = summary.script, args = args)
+# runscript(script = summary.script, args = args)
 # runscript(script = plot.script, args = args) 
