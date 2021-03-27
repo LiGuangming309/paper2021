@@ -30,7 +30,7 @@ attrBurdenDir <- args[14]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2000
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -152,16 +152,18 @@ if (!file.exists(attrBurdenDir)) {
   rm(total_burden)
   
   tic("4")
-  memory.limit(size=500000)
+  #memory.limit(size=500000)
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
   rm(pafs)
   toc()
   
   tic("5")
   # filter those, where age in correct interval
-  burden_paf <- as.data.table(burden_paf) 
-  burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
-                             (min_age.y <= min_age.x & max_age.x <= max_age.y)]
+  #burden_paf <- as.data.table(burden_paf) 
+  #burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
+  #                           (min_age.y <= min_age.x & max_age.x <= max_age.y)]
+  burden_paf <- burden_paf %>% filter((min_age.x <= min_age.y & max_age.y <= max_age.x) |
+                                      (min_age.y <= min_age.x & max_age.x <= max_age.y))
   toc()
   ## ----- calculate attributable burden------
   tic("6")

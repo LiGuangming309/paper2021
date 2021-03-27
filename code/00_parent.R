@@ -136,7 +136,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 # years <- c(2000,2010,2001:2009,2011:2016)
- years <- c(2009)
+ years <- c(2000)
   
 for (year in years) {
   args <- paste( 
