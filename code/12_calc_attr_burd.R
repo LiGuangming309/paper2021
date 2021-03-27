@@ -100,7 +100,7 @@ if (!file.exists(attrBurdenDir)) {
     filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
     as.data.frame()
   toc()
-  tic()
+  tic(3)
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
   } else if (agr_by == "Census_Region") {
@@ -150,19 +150,19 @@ if (!file.exists(attrBurdenDir)) {
   toc()
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   rm(total_burden)
-  tic("1")
+  tic("4")
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
   rm(pafs)
   toc()
   
-  tic("2")
+  tic("5")
   # filter those, where age in correct interval
   burden_paf <- as.data.table(burden_paf) 
   burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
                              (min_age.y <= min_age.x & max_age.x <= max_age.y)]
   toc()
   ## ----- calculate attributable burden------
-  tic("3")
+  tic("6")
   test_that("09_calc distinct rows", {
     burden_paf_sub <- burden_paf %>%
       select(min_age.x, max_age.x, measure, Gender.Code, Race, Hispanic.Origin, label_cause)
@@ -173,14 +173,14 @@ if (!file.exists(attrBurdenDir)) {
     expect_equal(nrow(burden_paf_sub), 0)
   })
   toc()
-  tic(4)
+  tic(7)
   burden_paf <- pivot_longer(burden_paf,
                              cols = colnames(burden_paf) %>% grep('draw', ., value=TRUE),
                              names_to = "draw", 
                              values_to = "paf") 
   toc()
   
-  tic(5)
+  tic(8)
   attrBurden <- burden_paf %>%
     mutate(
       value = value * paf,
@@ -191,7 +191,7 @@ if (!file.exists(attrBurdenDir)) {
   toc()
 
   # group "out" ages
-  tic(6)
+  tic(9)
   columns <- c(unname(inverse_group_variables), "draw", "measure", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
@@ -200,7 +200,7 @@ if (!file.exists(attrBurdenDir)) {
   toc()
   
   #group "out" draw, mean and confidence interval
-  tic(7)
+  tic(10)
   columns <- c(unname(inverse_group_variables), "measure", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
