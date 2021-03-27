@@ -33,7 +33,7 @@ pafDir <- args[11]
 # TODO löschen
 if (rlang::is_empty(args)) {
   year <- 2011
-  agr_by <- "nation"
+  agr_by <-"STATEFP" #"nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
@@ -124,6 +124,11 @@ for (region in regions) {
         fread()
 
       exp_rr <- as.matrix(exp_rr[, -1])
+      # too expensive for granular geographic level
+      if (!calc_conf) {
+        exp_rr <- as.matrix(rowMeans(exp_rr))
+        colnames(exp_rr) <- "draw0"
+      } 
       rownames(exp_rr) <- pm_levels
 
       ifelse(age_group_idX == "all ages",
@@ -148,19 +153,11 @@ for (region in regions) {
       # })
       # result <- t(result) %>% as.data.frame
 
-      # too expensive for granular geographic level
-      if (!calc_conf) {
-        result <- data.frame(
-          variable = rownames(result),
-          label_cause = label_cause,
-          draw0 = rowMeans(result)
-        )
-      } else {
         # write to dataframe
         result <- as.data.frame(result)
         result <- tibble::add_column(result, label_cause = label_cause, .before = 1)
         result <- tibble::rownames_to_column(result, "variable")
-      }
+      
 
       test_that("07_paf sum(props)", {
         expect_false(any(is.na(result)))

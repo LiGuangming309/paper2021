@@ -54,7 +54,6 @@ total_burden <- file.path(totalBurdenParsedDir,  agr_by, "total_burden.csv") %>%
 #  select(Race, Hispanic.Origin, label_cause, factor)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
-  print("test2")
   ## ----determine join variables
   join_variables <- c(
     "Year" = "year",
@@ -86,17 +85,23 @@ if (!file.exists(attrBurdenDir)) {
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
 
+  tic(1)
   pafs <- lapply(regions, function(region) {
     file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
       fread()
   }) %>%
-    do.call(rbind, .) %>%
+    do.call(rbind, .) 
+  toc()
+  
+  tic(2)
+  pafs <- pafs%>%
     # TODO Asian, Pacific Islander immer noch dabei
     filter(!(race %in% c("ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
     # TODO old people still included
     filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
     as.data.frame()
-  print("test3")
+  toc()
+  tic()
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
   } else if (agr_by == "Census_Region") {
@@ -130,7 +135,7 @@ if (!file.exists(attrBurdenDir)) {
   missing_rows <- anti_join(filter(total_burden, label_cause != "all-cause") , pafs, by = join_variables)
   if (nrow(missing_rows) > 0) {
     print(paste(nrow(missing_rows), "rows are still missing in pafs data for", agr_by, ":"))
-    print(head(missing_rows))
+    #print(head(missing_rows))
   }
   
   # other side
@@ -139,11 +144,11 @@ if (!file.exists(attrBurdenDir)) {
     distinct()
   if (nrow(missing_rows) > 0) {
     print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
-    print(head(missing_rows))
+    #print(head(missing_rows))
   }
   
   ## ----- join total_burden and pafs-----
-  print("test")
+  toc()
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   tic("1")
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
@@ -151,11 +156,9 @@ if (!file.exists(attrBurdenDir)) {
   
   tic("2")
   # filter those, where age in correct interval
-  burden_paf <- burden_paf %>%
-    filter(
-      (min_age.x <= min_age.y & max_age.y <= max_age.x) |
-      (min_age.y <= min_age.x & max_age.x <= max_age.y)
-    )
+  burden_paf <- as.data.table(burden_paf) 
+  burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
+                             (min_age.y <= min_age.x & max_age.x <= max_age.y)]
   toc()
   ## ----- calculate attributable burden------
   tic("3")
