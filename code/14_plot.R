@@ -44,11 +44,12 @@ if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/12_summary"  
   plotDir <- "/Users/default/Desktop/paper2021/data/13_plot" 
 }
-plotDir <- file.path(plotDir, agr_by)
 summaryDir <- file.path(summaryDir, agr_by)
+plotDir <- file.path(plotDir, agr_by)
+dir.create(plotDir, recursive = T, showWarnings = F)
 
-attrBurden_gr <- fread(file.path(summaryDir, "attr_burd.csv"))
-attrBurden_gr<-attrBurden_gr %>% 
+attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
+attrBurden<-attrBurden %>% 
   mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
   filter(Ethnicity %in% c("White, Not Hispanic or Latino", 
                           "White, Hispanic or Latino", 
@@ -60,17 +61,17 @@ agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code",
                     "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")
 agr_by_new <- agr_by_replace[[agr_by]]
 
-for(location in attrBurden_gr[, get(agr_by_new)] %>% unique){
-  attrBurden_gr <- attrBurden_gr %>% filter(get(agr_by_new) == location)
+for(location in attrBurden[, get(agr_by_new)] %>% unique){
+  attrBurden <- attrBurden %>% filter(get(agr_by_new) == location)
   
   ### -------plot 1 ---------
-  attrBurden_gr1 <- attrBurden_gr %>% 
+  attrBurden1 <- attrBurden %>% 
     filter(measure == "YLL",
-           attr == "overall") 
+           measure2 == "crude rate") 
   
   # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
   # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
-  g <- ggplot(attrBurden_gr1, aes(x = Year, y = crude_rate)) +
+  g <- ggplot(attrBurden1, aes(x = Year, y = overall_value)) +
     geom_line(aes(color = Ethnicity), size = 1) +
     #scale_color_manual(values = c("green","orange", "steelblue", "purple"))+
     #scale_linetype_manual(values = c("dashed", "solid")) +
@@ -83,18 +84,19 @@ for(location in attrBurden_gr[, get(agr_by_new)] %>% unique){
     ggtitle(paste("YLL from all causes in", location))
   
   ggsave(file.path(plotDir, paste0(location,"_plot1.png")), plot = g)
-  ### -------plot 2 ---------
-
   
-  attrBurden_gr2 <- attrBurden_gr2 %>% filter(measure == "crudeAttrYLL")
-  attrBurden_gr2 <- attrBurden_gr2 %>% 
+  ### -------plot 2 ---------
+  attrBurden2 <- attrBurden %>% 
     filter(measure == "YLL",
-           attr == "attributable") 
+           measure2 == "crude rate",
+           attr == "attributable")
   
   # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
   # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
-  g <- ggplot(attrBurden_gr2, aes(x = Year, y = crude_rate)) +
-    geom_line(aes(color = Ethnicity), size = 1) +
+  
+  g <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity)) +
+    geom_line(size = 1) +
+    geom_ribbon(aes(ymin=lower, ymax=upper), linetype=0, alpha=0.15) +
     # scale_color_manual(values = c("green","yellow", "steelblue"))+
     #scale_linetype_manual(values = c("dashed", "solid")) +
     ylab(paste("YLL per 100.000")) +
@@ -134,17 +136,17 @@ for(location in attrBurden_gr[, get(agr_by_new)] %>% unique){
   #ggsave(file.path(plotDir, paste0("plot3.png")), plot = g)
   
   ### -------plot 4 -------
-  attrBurden_gr4 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)%>%
-    mutate(prop = 100 * crudeAttrYLL/crudeAllYLL)#%>% 
-  #filter(Ethnicity %in% c("Asian or Pacific Islander, All Origins",
-  #                        "White, Not Hispanic or Latino", 
-  #                        "White, Hispanic or Latino", 
-  #                        "Black or African American, All Origins",
-  #"Asian or Pacific Islander, All Origins",
-  #                        "American Indian or Alaska Native, All Origins"))
+  attrBurden4 <- attrBurden %>% 
+    filter(measure == "YLL",
+           measure2 == "crude rate",
+           attr == "attributable") %>%
+    mutate(mean = 100*mean/overall_value,
+           lower = 100*lower/overall_value,
+           upper = 100*upper/overall_value)
   
-  g <- ggplot(attrBurden_gr4, aes(x = Year, y = prop)) +
-    geom_line(aes(color = Ethnicity), size = 1) +
+  g <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Ethnicity)) +
+    geom_line(size = 1) +
+    geom_ribbon(aes(ymin=lower, ymax=upper), linetype=0, alpha=0.15)+
     ylab(paste("%")) +
     xlab("Year") +
     xlim(2000, 2016) +
@@ -152,6 +154,6 @@ for(location in attrBurden_gr[, get(agr_by_new)] %>% unique){
     guides(col = guide_legend(nrow = 3, byrow = TRUE)) + 
     ggtitle("proportion of all YLL directly attributable to PM exposure")
   
-  ggsave(file.path(plotDir, paste0("plot4.png")), plot = g)
+  ggsave(file.path(plotDir, paste0(location,"_plot4.png")), plot = g)
   g
 }

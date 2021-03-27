@@ -138,19 +138,21 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 
   attrBurden <- attrBurden %>%
     left_join(all_burden, by = unname(c(inverse_group_variables, "measure"))) %>%
-    left_join(cdc_pop, by = unname(inverse_group_variables))
+    left_join(cdc_pop, by = unname(inverse_group_variables)) %>% 
+    mutate(measure2 = "absolute number")
 
   # calculations
-  attrBurden <- attrBurden %>%
+  attrBurden_crude <- attrBurden %>%
     mutate(
       # Crude Rates Per 100,000
-      crude_rate_mean = mean * 100000 / Population,
-      crude_rate_lower = lower * 100000 / Population,
-      crude_rate_upper = upper * 100000 / Population,
-      # proportions
-      prop = 100 * mean / overall_value,
+      mean = mean * 100000 / Population,
+      lower = lower * 100000 / Population,
+      upper = upper * 100000 / Population,
+      overall_value = overall_value * 100000 / Population,
+      measure2 = "crude rate"
     )
 
+  attrBurden <- rbind(attrBurden, attrBurden_crude)
   test_that("10 plot basic chackes", {
     expect_false(any(is.na(attrBurden)))
   })
