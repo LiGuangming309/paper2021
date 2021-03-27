@@ -131,26 +131,28 @@ if (!file.exists(attrBurdenDir)) {
   
   # give some feedback on what is still missing from total burden
   # one side
-  missing_rows <- anti_join(filter(total_burden, label_cause != "all-cause") , pafs, by = join_variables)
-  if (nrow(missing_rows) > 0) {
-    print(paste(nrow(missing_rows), "rows are still missing in pafs data for", agr_by, ":"))
-    #print(head(missing_rows))
+  missing <- anti_join(filter(total_burden, label_cause != "all-cause") , pafs, by = join_variables)
+  if (nrow(missing) > 0) {
+    print(paste(nrow(missing), "rows are still missing in pafs data for", agr_by, ":"))
+    #print(head(missing))
   }
   
   # other side
-  missing_rows <- anti_join(pafs, total_burden, by = inverse_join_variables) %>%
+  missing <- anti_join(pafs, total_burden, by = inverse_join_variables) %>%
     select(gender, race, hispanic_origin) %>%
     distinct()
-  if (nrow(missing_rows) > 0) {
-    print(paste(nrow(missing_rows), "rows are still missing in total burden data for", agr_by, ":"))
-    #print(head(missing_rows))
+  if (nrow(missing) > 0) {
+    print(paste(nrow(missing), "rows are still missing in total burden data for", agr_by, ":"))
+    #print(head(missing))
   }
-  
+  rm(missing)
   ## ----- join total_burden and pafs-----
   toc()
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
+  rm(total_burden)
   tic("1")
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
+  rm(pafs)
   toc()
   
   tic("2")
@@ -185,6 +187,7 @@ if (!file.exists(attrBurdenDir)) {
       attr = "attributable",
       paf = NULL
     )
+  rm(burden_paf)
   toc()
 
   # group "out" ages
