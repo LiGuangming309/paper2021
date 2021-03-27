@@ -33,7 +33,7 @@ pafDir <- args[11]
 # TODO löschen
 if (rlang::is_empty(args)) {
   year <- 2011
-  agr_by <- "nation"
+  agr_by <- "STATEFP" #"nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
@@ -45,7 +45,7 @@ if (rlang::is_empty(args)) {
 
 # load meta data
 census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>%
-  read.csv() %>%
+  fread() %>%
   # filter(relevant == TRUE) %>%
   select(variable, year, gender, gender_label, min_age, max_age, race, hispanic_origin)
 
@@ -61,7 +61,9 @@ causes_ages <- file.path(tmpDir, "causes_ages.csv") %>% read.csv()
 example_exp_rr <- file.path(exp_rrDir, "cvd_ihd_25.csv") %>% read.csv()
 pm_levels <- example_exp_rr$exposure_spline
 
-### -----calculation
+#
+calc_conf <- (agr_by == "nation")
+### -----calculation-------
 regions <- states[, agr_by] %>% unique()
 for (region in regions) {
   pafDirX <- paste0("paf_", toString(year), "_", region, ".csv") %>%
@@ -73,7 +75,7 @@ for (region in regions) {
     # read census data aggregated by pm exposure
     cens_agr <- paste0("cens_agr_", toString(year), "_", region, ".csv") %>%
       file.path(cens_agrDir, .) %>%
-      read.csv() %>%
+      fread() %>%
       select(variable, pm, prop)
 
     # add column, if something from pm_levels missing
@@ -106,7 +108,7 @@ for (region in regions) {
 
     censMetaAll <- paste0("cens_meta_", toString(year), ".csv") %>%
       file.path(censDir, "meta", .) %>%
-      read.csv()
+      fread()
 
     # loop over all exp_rr curves
     pafs <- apply(causes_ages, 1, function(cause_age) {
@@ -119,9 +121,9 @@ for (region in regions) {
         paste0(label_cause, "_", age_group_idX, ".csv")
       ) %>%
         file.path(exp_rrDir, .) %>%
-        read.csv()
+        fread()
 
-      exp_rr <- as.matrix(exp_rr[,-1])
+      exp_rr <- as.matrix(exp_rr[, -1])
       rownames(exp_rr) <- pm_levels
 
       ifelse(age_group_idX == "all ages",
@@ -138,30 +140,38 @@ for (region in regions) {
       # apply formular sum(prop * (rr-1))/(1+sum(prop * (rr-1)))
       result <- matrix_cens_agr_sub %*% (exp_rr - 1)
       result <- apply(result, 1:2, function(x) x / (1 + x))
+
+      # result <- apply(result, 1, function(row){
+      #  c(mean = mean(row),
+      #    lower = (quantile(row,p=.025) %>% unname),
+      #    upper = (quantile(row,p=.975))%>% unname)
+      # })
+      # result <- t(result) %>% as.data.frame
       
-      result <- apply(result, 1, function(row){
-        c(mean = mean(row),
-          lower = (quantile(row,p=.025) %>% unname),
-          upper = (quantile(row,p=.975))%>% unname)
-      })
-      result <- t(result) %>% as.data.frame
-      
-      result$label_cause <- label_cause
-      
-      result <- tibble::rownames_to_column(result, "variable")
-      # write to dataframe
+      # too expensive for granular geographic level
+      if (!calc_conf) {
+        result <- data.frame(variable = rownames(result),
+                              label_cause = label_cause,
+                             draw0 = rowMeans(result))
+      }else{
+        # write to dataframe
+        result <- as.data.frame(result)
+        result <- tibble::add_column(result, label_cause = label_cause, .before = 1)
+        result <- tibble::rownames_to_column(result, "variable")
+      }
 
       test_that("07_paf sum(props)", {
         expect_false(any(is.na(result)))
       })
-      
+
       toc()
       return(result)
     }) %>% do.call(rbind, .)
-
-    pafs[, agr_by] <- region
-
-    pafs <- left_join(pafs, census_meta, by = "variable")
+    
+    pafs <- right_join(census_meta,pafs,  by = "variable")
+    #!!(mycols[2])
+    #pafs <- tibble::add_column(pafs, (agr_by) = region, .before = 1)
+    census_meta[, agr_by] <- region
 
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))
