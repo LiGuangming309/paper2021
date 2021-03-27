@@ -63,10 +63,14 @@ if (!file.exists(attrBurdenDir)) {
   )
   
   if(agr_by == "nation"){
-    join_variables <- c(join_variables,
-                        "Gender" = "gender",
-                        "Gender.Code" = "gender_label")
+    join_variables <- c(join_variables, "Gender.Code" = "gender_label")
   }
+  
+  group_variables <- c(
+    "Year" = "year",
+    "Race" = "race",
+    "Hispanic.Origin" = "hispanic_origin"
+  )
 
   agr_by_replace <- c(
     "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
@@ -74,8 +78,10 @@ if (!file.exists(attrBurdenDir)) {
   )
   agr_by_new <- agr_by_replace[[agr_by]]
   join_variables[agr_by_new] <- agr_by
+  group_variables[agr_by_new] <- agr_by
 
   inverse_join_variables <- setNames(names(join_variables), join_variables)
+  inverse_group_variables <- setNames(names(group_variables), group_variables)
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
 
@@ -179,27 +185,30 @@ if (!file.exists(attrBurdenDir)) {
   toc()
 
   # group "out" ages
-  columns <- c(unname(inverse_join_variables), "measure", "attr")
+  tic(6)
+  columns <- c(unname(inverse_group_variables), "draw", "measure", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
-    dplyr::summarize(mean = sum(value),
+    dplyr::summarize(value = sum(value)
+    )
+  toc()
+  
+  #group "out" draw, mean and confidence interval
+  tic(7)
+  columns <- c(unname(inverse_group_variables), "measure", "attr")
+  attrBurden <- attrBurden %>%
+    dplyr::group_by_at(vars(one_of(columns))) %>%
+    dplyr::summarize(mean = mean(value),
                      lower = quantile(value,p=.025),
                      upper = quantile(value,p=.975) 
               )
-  
-  total_burden <- total_burden %>%
-    dplyr::group_by_at(vars(one_of(columns))) %>%
-    dplyr::summarize(mean = sum(value),
-              lower = mean,
-              upper = mean)
-
-  attrBurden <- rbind(attrBurden, total_burden)
+  toc()
   # some basic tests
   test_that("09_read burden join2", {
     expect_false(any(is.na(attrBurden)))
 
     # test that total number of deaths/YLL has not changed
-    columns <- unname(inverse_join_variables)
+    #columns <- unname(inverse_join_variables)
     #comp1 <- total_burden %>%
     #  group_by_at(vars(one_of(columns))) %>%
     #  summarize(Deaths = sum(Deaths), YLL = sum(YLL))
