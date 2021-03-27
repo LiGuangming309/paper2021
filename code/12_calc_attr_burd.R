@@ -150,7 +150,9 @@ if (!file.exists(attrBurdenDir)) {
   toc()
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   rm(total_burden)
+  
   tic("4")
+  memory.limit(size=500000)
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
   rm(pafs)
   toc()
