@@ -26,10 +26,10 @@ tmpDir <- args[1]
 agr_by <- args[2]
 censDir <- args[3]
 attrBurdenDir <- args[4]
-allBurdenDir <- args[5]
-summaryDir <- args[6]
+summaryDir <- args[5]
+cdcPopDir <- args[7]
 dataDir <- args[8]
-cdcPopDir <- args[14]
+
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -43,7 +43,7 @@ if (rlang::is_empty(args)) {
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
-allBurdenDir <- file.path(allBurdenDir, agr_by)
+#allBurdenDir <- file.path(allBurdenDir, agr_by)
 summaryDir <- file.path(summaryDir, agr_by)
 dir.create(summaryDir, recursive = T, showWarnings = F)
 cdcPopDir <- file.path(cdcPopDir, agr_by)
@@ -131,7 +131,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   # join everything
   all_burden <- attrBurden_gr %>% 
     filter(attr == "overall") %>%
-    rename(overall_value = value) %>% 
+    rename(overall_value = mean) %>% 
     subset(select = -attr)
   
   attrBurden_gr <- attrBurden_gr %>%
@@ -142,9 +142,11 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   attrBurden_gr <- attrBurden_gr %>%
     mutate(
       # Crude Rates Per 100,000
-      crude_rate = value * 100000 / Population,
+      crude_rate_mean = mean * 100000 / Population,
+      crude_rate_lower = lower * 100000 / Population,
+      crude_rate_upper = upper * 100000 / Population,
       # proportions
-      prop = 100* value / overall_value,
+      prop = 100* mean / overall_value,
     )
 
   test_that("10 plot basic chackes", {
@@ -196,7 +198,7 @@ for(location in attrBurden_gr_sub[, get(agr_by_new)] %>% unique){
 for(measure2 in attrBurden_gr_sub$measure %>% unique){
   for(location in attrBurden_gr_sub[, get(agr_by_new)] %>% unique){
     for(attr2 in attrBurden_gr_sub$attr %>% unique){
-      for(column in c("value", "crude_rate", "prop")){
+      for(column in c( "crude_rate", "prop")){ #TODO mean, lower, upper
         attrBurden_gr_sub2 <- attrBurden_gr_sub %>%
           filter(measure == measure2 &
                  attr == attr2 &

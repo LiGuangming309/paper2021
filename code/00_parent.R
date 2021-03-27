@@ -126,7 +126,7 @@ plot.script <- file.path(code.dir, "13_plot.R")
 
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
- runscript(script=mrbrtRR.script, args = args)
+# runscript(script=mrbrtRR.script, args = args)
 
  years <- c(2000,2010,2001:2009,2011:2016)
 #years <- c(2006)
@@ -145,8 +145,8 @@ for (year in years) {
     agr_by, # 10
     paf.dir, # 11
     total.burden.dir, # 12
-    attr.burden.dir, # 13
-    cdc.pop.dir #14
+    attr.burden.dir # 13
+    
   )
   #runscript(script = download.meta.script, args = args)
   if (year %in% 2001:2009) {
@@ -159,8 +159,8 @@ for (year in years) {
   # runscript(script=assignTract.script, args = args)
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
-   runscript(script = paf.script, args = args)
-   runscript(script = calc.attr.burd.script, args = args)
+  # runscript(script = paf.script, args = args)
+  # runscript(script = calc.attr.burd.script, args = args)
 } 
 
   
@@ -169,11 +169,11 @@ args <- paste(
   agr_by, # 2
   dem.dir, # 3
   attr.burden.dir, # 4
-  all.burden.dir, # 5
-  summary.dir, # 6
-  plot.dir, # 7
+  summary.dir, # 5
+  plot.dir, # 6
+  cdc.pop.dir, #7
   data.dir # 8
 )
 
  runscript(script = summary.script, args = args)
- runscript(script = plot.script, args = args) 
+# runscript(script = plot.script, args = args) 
