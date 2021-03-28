@@ -23,10 +23,8 @@ args <- commandArgs(trailingOnly = T)
 
 tmpDir <- args[1]
 agr_by <- args[2]
-censDir <- args[3]
-attrBurdenDir <- args[4]
-summaryDir <- args[6]
-plotDir <- args[7]
+summaryDir <- args[7]
+plotDir <- args[8]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -96,7 +94,6 @@ for(location in attrBurden[, get(agr_by_new)] %>% unique){
   
   g <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity)) +
     geom_line(size = 1) +
-    geom_ribbon(aes(ymin=lower, ymax=upper), linetype=0, alpha=0.15) +
     # scale_color_manual(values = c("green","yellow", "steelblue"))+
     #scale_linetype_manual(values = c("dashed", "solid")) +
     ylab(paste("YLL per 100.000")) +
@@ -109,6 +106,8 @@ for(location in attrBurden[, get(agr_by_new)] %>% unique){
   
   ggsave(file.path(plotDir, paste0(location,"_plot2.png")), plot = g)
   
+  g <- g +geom_ribbon(aes(ymin=lower, ymax=upper), linetype=0, alpha=0.15) 
+  ggsave(file.path(plotDir, paste0(location,"_plot2_conf.png")), plot = g)
   ### -------plot 3 -------
   #attrBurden_gr2 <- attrBurden_gr %>% select(Year,Ethnicity, crudeAllYLL,crudeAttrYLL)
   #attrBurden_gr3<-inner_join(attrBurden_gr2,attrBurden_gr2,by = "Year") %>%
@@ -146,7 +145,6 @@ for(location in attrBurden[, get(agr_by_new)] %>% unique){
   
   g <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Ethnicity)) +
     geom_line(size = 1) +
-    geom_ribbon(aes(ymin=lower, ymax=upper), linetype=0, alpha=0.15)+
     ylab(paste("%")) +
     xlab("Year") +
     xlim(2000, 2016) +
@@ -155,5 +153,6 @@ for(location in attrBurden[, get(agr_by_new)] %>% unique){
     ggtitle("proportion of all YLL directly attributable to PM exposure")
   
   ggsave(file.path(plotDir, paste0(location,"_plot4.png")), plot = g)
-  g
+  g <- g +  geom_ribbon(aes(ymin=lower, ymax=upper), linetype=0, alpha=0.15)
+  ggsave(file.path(plotDir, paste0(location,"_plot4_conf.png")), plot = g)
 }
