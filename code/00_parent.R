@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_by <- "STATEFP" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_by <- "nation" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -136,7 +136,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 # years <- c(2000,2010,2001:2009,2011:2016)
- years <- c(2000)
+ years <- c(2001:2010)
   
 for (year in years) {
   args <- paste( 
@@ -167,8 +167,8 @@ for (year in years) {
   # runscript(script=assignTract.script, args = args)
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
-    runscript(script = paf.script, args = args)
-   runscript(script = read.total.burden.script, args = args)
+  #  runscript(script = paf.script, args = args)
+  # runscript(script = read.total.burden.script, args = args)
    runscript(script = calc.attr.burd.script, args = args)
 } 
 

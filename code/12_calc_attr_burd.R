@@ -84,23 +84,18 @@ if (!file.exists(attrBurdenDir)) {
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
 
-  tic(1)
+  tic("calc_attr_burd: 1 read all PAFs")
   pafs <- lapply(regions, function(region) {
     file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
       fread()
   }) %>%
-    do.call(rbind, .) 
-  toc()
-  
-  tic(2)
-  pafs <- pafs%>%
+    do.call(rbind, .) %>%
     # TODO Asian, Pacific Islander immer noch dabei
     filter(!(race %in% c("ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
     # TODO old people still included
     filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
     as.data.frame()
-  toc()
-  tic(3)
+
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
   } else if (agr_by == "Census_Region") {
@@ -146,18 +141,19 @@ if (!file.exists(attrBurdenDir)) {
     #print(head(missing))
   }
   rm(missing)
-  ## ----- join total_burden and pafs-----
   toc()
+  ## ----- join total_burden and pafs-----
+  tic("calc_attr_burd: 2 joined PAFs and total burden data")
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   rm(total_burden)
   
-  tic("4")
+  
   #memory.limit(size=500000)
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
   rm(pafs)
   toc()
   
-  tic("5")
+  tic("calc_attr_burd: 3 filtered out wrong age combinations from joined burden_paf")
   # filter those, where age in correct interval
   #burden_paf <- as.data.table(burden_paf) 
   #burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
@@ -166,7 +162,7 @@ if (!file.exists(attrBurdenDir)) {
                                       (min_age.y <= min_age.x & max_age.x <= max_age.y))
   toc()
   ## ----- calculate attributable burden------
-  tic("6")
+  tic("calc_attr_burd: 4 pivot_longer")
   test_that("09_calc distinct rows", {
     burden_paf_sub <- burden_paf %>%
       select(min_age.x, max_age.x, measure, Gender.Code, Race, Hispanic.Origin, label_cause)
@@ -176,15 +172,14 @@ if (!file.exists(attrBurdenDir)) {
 
     expect_equal(nrow(burden_paf_sub), 0)
   })
-  toc()
-  tic(7)
+
   burden_paf <- pivot_longer(burden_paf,
                              cols = colnames(burden_paf) %>% grep('draw', ., value=TRUE),
                              names_to = "draw", 
                              values_to = "paf") 
   toc()
   
-  tic(8)
+  tic("calc_attr_burd: 5 calculated attributable burden")
   attrBurden <- burden_paf %>%
     mutate(
       value = value * paf,
@@ -195,7 +190,7 @@ if (!file.exists(attrBurdenDir)) {
   toc()
 
   # group "out" ages
-  tic(9)
+  tic("calc_attr_burd: 6 grouped by group_variables and draw")
   columns <- c(unname(inverse_group_variables), "draw", "measure", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
@@ -204,7 +199,7 @@ if (!file.exists(attrBurdenDir)) {
   toc()
   
   #group "out" draw, mean and confidence interval
-  tic(10)
+  tic("calc_attr_burd: 7 grouped out draws, calculate mean, lower, upper")
   columns <- c(unname(inverse_group_variables), "measure", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
