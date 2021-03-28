@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "dplyr", "magrittr", "censusapi", "stringr", "data.table", "tidyverse",
-  "tigris", "tictoc", "cdcfluview", "testthat", "rlang"
+  "tictoc", "cdcfluview", "testthat", "rlang" #"tigris", 
 )
 
 options(dplyr.summarise.inform = FALSE)
@@ -33,11 +33,11 @@ censDir <- args[8]
 if (rlang::is_empty(args)) {
   year <- 2016
 
-   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
 # quits, if not downloadable year
@@ -65,17 +65,14 @@ censDir <- file.path(censDir, year)
 dir.create(censDir, recursive = T, showWarnings = F)
 
 # relevant groups for each year and table names
+groups <- census_meta$group %>% unique
 if (year == 2000) {
   # decennical census, sex by age for races
-  groups <- c("P012A", "P012B", "P012C", "P012D", "P012E", "P012I", "PCT012J", "PCT012K", "PCT012L", "PCT012M")
   tablename <- "dec/sf1"
 } else if (year == 2010) {
   # decennical census, sex by age for races
-  groups <- c("PCT12A", "PCT12B", "PCT12C", "PCT12D", "PCT12E", "PCT12I", "PCT12J", "PCT12K", "PCT12L", "PCT12M")
   tablename <- "dec/sf1"
 } else if (year %in% 2011:2016) {
-  # american community survey, sex by age for races
-  groups <- c("B01001A", "B01001B", "B01001C", "B01001D", "B01001E", "B01001H")
   # "not hispanic or latino" only available for white
   tablename <- "acs/acs5"
 }
