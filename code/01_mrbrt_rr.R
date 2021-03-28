@@ -36,8 +36,8 @@ dir.create(plotsDir, recursive = T, showWarnings = F)
 
 mrbrtDir <- file.path(exp_rrDir, "mrbrt")
 
-n<-100 #number of effect samples, <=1000
-m<-100 #number of TMREL samples, <= 1000
+n<-10 #number of effect samples, <=1000
+m<-10 #number of TMREL samples, <= 1000
 ## --------either load data or write it---------
 # write useful overview over causes
 causes_agesDir <- file.path(tmpDir, "causes_ages.csv")
@@ -69,6 +69,7 @@ if (file.exists(causes_agesDir)) {
 tmrels <- file.path(mrbrtDir, "tmrel_draws.csv") %>%
   read.csv() %>%
   unlist() 
+
 tmrels <- tmrels[1:m]
 ## ----------calculation---------
 

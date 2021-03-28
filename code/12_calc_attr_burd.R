@@ -30,7 +30,7 @@ attrBurdenDir <- args[14]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2001
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -46,7 +46,9 @@ attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), "
 
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
-total_burden <- file.path(totalBurdenParsedDir,  agr_by, "total_burden.csv") %>% read.csv
+total_burden <- file.path(totalBurdenParsedDir,  agr_by, "total_burden.csv") %>% 
+  read.csv %>% 
+  filter(Year == year)
 
 #ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>% #TODO delete
 #  read.csv() %>%
@@ -123,32 +125,37 @@ if (!file.exists(attrBurdenDir)) {
     print(missing)
   }
 
-  
   # give some feedback on what is still missing from total burden
   # one side
-  missing <- anti_join(filter(total_burden, label_cause != "all-cause") , pafs, by = join_variables)
+  total_burden_test <- total_burden %>%
+    filter(label_cause != "all-cause") %>%
+    select(all_of(inverse_join_variables)) %>%
+    distinct()
+  
+  pafs_test <- pafs %>%
+    select(all_of(join_variables)) %>%
+    distinct()
+  
+  missing <- anti_join(total_burden_test , pafs_test, by = inverse_join_variables)
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in pafs data for", agr_by, ":"))
-    #print(head(missing))
+    print(head(missing))
   }
   
   # other side
-  missing <- anti_join(pafs, total_burden, by = inverse_join_variables) %>%
-    select(gender, race, hispanic_origin) %>%
-    distinct()
+  missing <- anti_join(pafs_test, total_burden_test, by = join_variables) 
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in total burden data for", agr_by, ":"))
-    #print(head(missing))
+    print(head(missing))
   }
-  rm(missing)
+  rm(missing, total_burden_test, pafs_test)
   toc()
   ## ----- join total_burden and pafs-----
   tic("calc_attr_burd: 2 joined PAFs and total burden data")
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   rm(total_burden)
   
-  
-  #memory.limit(size=500000)
+  memory.limit(size=500000)
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
   rm(pafs)
   toc()
