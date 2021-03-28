@@ -124,7 +124,6 @@ if (!file.exists(attrBurdenDir)) {
     print("Regions in paf data missing:")
     print(missing)
   }
-
   # give some feedback on what is still missing from total burden
   # one side
   total_burden_test <- total_burden %>%
@@ -172,7 +171,7 @@ if (!file.exists(attrBurdenDir)) {
   tic("calc_attr_burd: 4 pivot_longer")
   test_that("09_calc distinct rows", {
     burden_paf_sub <- burden_paf %>%
-      select(min_age.x, max_age.x, measure, Gender.Code, Race, Hispanic.Origin, label_cause)
+      select(c(min_age.x, max_age.x, measure, inverse_join_variables))
 
     dub_ind <- duplicated(burden_paf_sub) | duplicated(burden_paf_sub, fromLast = TRUE)
     burden_paf_sub <- burden_paf[dub_ind, ]
