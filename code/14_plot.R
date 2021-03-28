@@ -28,7 +28,7 @@ plotDir <- args[8]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
@@ -53,7 +53,8 @@ attrBurden<-attrBurden %>%
                           "White, Hispanic or Latino", 
                           "Black or African American, All Origins",
                           "Asian or Pacific Islander, All Origins",
-                          "American Indian or Alaska Native, All Origins")) #
+                          "American Indian or Alaska Native, All Origins"
+                          )) #
 
 agr_by_replace <- c("county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
                     "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county"= "County.Code")

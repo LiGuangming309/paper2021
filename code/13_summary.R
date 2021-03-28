@@ -32,7 +32,7 @@ summaryDir <- args[7]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   dataDir <- "/Users/default/Desktop/paper2021/data"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
@@ -108,8 +108,8 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
         cdc_pop[, "Hispanic.Origin"] <- "Not Hispanic or Latino"
       }
     }
-
-    cdc_pop <- cdc_pop %>% select(Race, Year, Hispanic.Origin, Population) # Gender
+  
+    cdc_pop <- cdc_pop %>% select(all_of(c(unname(inverse_group_variables), "Population"))) # Gender
     if (agr_by == "nation") {
       cdc_pop[, "Nation"] <- "us"
     }
