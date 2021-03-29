@@ -42,7 +42,7 @@ totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by)
 dir.create(totalBurdenParsedDir, recursive = T, showWarnings = F)
 totalBurdenParsedDir <- file.path(
   totalBurdenParsedDir,
-  "total_burden.csv"
+  "total_burden_wond.csv"
 )
 
 if (!file.exists(totalBurdenParsedDir)) {
@@ -78,17 +78,17 @@ if (!file.exists(totalBurdenParsedDir)) {
     total_burden <- read.delim(fileDir)
 
     if (agr_by_new == "Nation") {
-      columns <- c(unname(inverse_join_variables), "Notes", "Deaths", "Single.Year.Ages", "Single.Year.Ages.Code")
+      columns <- c(unname(inverse_join_variables), "Notes", "Deaths", "Single.Year.Ages.Code")
       columns <- columns[columns != "Nation"] # in this case this column does not exist
 
       total_burden <- total_burden %>%
         select(any_of(columns)) %>%
-        filter(Single.Year.Ages != "Not Stated")
+        filter(Single.Year.Ages.Code != "NS")
     } else {
-      columns <- c(unname(inverse_join_variables), "Notes", "Deaths", "Five.Year.Age.Groups", "Five.Year.Age.Groups.Code")
+      columns <- c(unname(inverse_join_variables), "Notes", "Deaths", "Five.Year.Age.Groups.Code")
       total_burden <- total_burden %>%
         select(any_of(columns)) %>%
-        filter(Five.Year.Age.Groups != "Not Stated")
+        filter(Five.Year.Age.Groups.Code != "NS")
     }
 
     cause_icd <- total_burden$Notes[grepl("UCD - ICD-10 Codes:", total_burden$Notes, fixed = TRUE)]
@@ -144,8 +144,8 @@ if (!file.exists(totalBurdenParsedDir)) {
     total_burden <- total_burden %>%
       mutate(
         min_age = as.numeric(Single.Year.Ages.Code),
-        max_age = as.numeric(Single.Year.Ages.Code) # ,
-        # Single.Year.Ages.Code = NULL
+        max_age = as.numeric(Single.Year.Ages.Code) ,
+        Single.Year.Ages.Code = NULL
       )
   } else if ("Five.Year.Age.Groups.Code" %in% colnames(total_burden)) {
     total_burden <- total_burden %>%
@@ -165,8 +165,8 @@ if (!file.exists(totalBurdenParsedDir)) {
             unlist() %>%
             tail(1) %>%
             as.numeric()
-        }) # ,
-        # Five.Year.Age.Groups.Code = NULL
+        })  ,
+        Five.Year.Age.Groups.Code = NULL
       )
   }
   # ---------check for missing stuff----------------
@@ -254,5 +254,6 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   })
   
+  total_burden <- total_burden %>% tibble::add_column(source = "wond")
   fwrite(total_burden, totalBurdenParsedDir)
 }

@@ -40,19 +40,15 @@ if (rlang::is_empty(args)) {
 }
 
 totalBurdenDir <- file.path(totalBurdenDir, "nvss", paste0("mort", year, ".csv"))
-totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
+totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by,"nvss")
 dir.create(totalBurdenParsedDir, recursive = T, showWarnings = F)
 totalBurdenParsedDir <- file.path(
   totalBurdenParsedDir,
-  "total_burden_nvss.csv"
+  paste0("total_burden_nvss_",year,".csv")
 )
 
 if (!file.exists(totalBurdenParsedDir)) {
   lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
-
-  ## ----determine join variables
-
-
   ## ----- read total burden ---------
   tic(paste("read", year, "total burden data"))
   total_burden <- fread(totalBurdenDir)
@@ -77,7 +73,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   if (year <= 2004) {
     if (agr_by == "nation") {
       total_burden <- total_burden %>% tibble::add_column(nation = "us")
-      selectcolumns <- c(selectcolumns, "nation")
+      selectcolumns <- c(selectcolumns, "Nation" = "nation")
     } else if (agr_by == "STATEFP") {
 
       # if staters==0 (foreign resident), take state of occurance
@@ -98,7 +94,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   } else {
     if (agr_by == "nation") {
       total_burden <- total_burden %>% tibble::add_column(nation = "us")
-      selectcolumns <- c(selectcolumns, "nation")
+      selectcolumns <- c(selectcolumns, "Nation" = "nation")
     } else {
       # TODO
       print(paste("in", year, "no geopgraphic identifier available"))
@@ -109,7 +105,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% select(all_of(selectcolumns))
 
   #---------find and replace stuff--------
-  replacecolumns <- c("Hispanic.Origin", "Gender.Code", "Race", "label_cause")
+  replacecolumns <- c("Hispanic.Origin", "Gender.Code", "Race", "label_cause") #TODO education
 
   findreplaces <- list(
     data.frame(
@@ -158,23 +154,37 @@ if (!file.exists(totalBurdenParsedDir)) {
       select(all_of(replacecolumn)) %>%
       left_join(findreplace,
         by = setNames("from", replacecolumn),
-        na.replace = "other"
+        na.replace = "oth"
       ) %>%
-      select(to)
+      select(to) %>%
+      unlist %>%
+      replace_na("oth")
   }
 
-  ### ----raplce age---
+  ### ----replce age---
   total_burden <- total_burden %>% mutate(
     min_age = Single.Year.Ages.Code,
     max_age = Single.Year.Ages.Code,
     Single.Year.Ages.Code = NULL
   )
 
+  
+  # TODO seperate education
+  columns <- colnames(total_burden)
+  total_burden_race <- total_burden %>%
+    group_by_at(setdiff(columns, "Education")) %>%
+    summarise(value = n()) %>%
+    mutate(Education = 666) #TODO
+  
+  total_burden_educ <- total_burden %>%
+    group_by_at(setdiff(columns, c("Hispanic.Origin","Race" ))) %>%
+    summarise(value = n()) %>%
+    mutate(Hispanic.Origin = "All Origins",
+           Race = "All")
+  
+  total_burden <- rbind(total_burden_race, total_burden_educ)
+  rm(total_burden_race, total_burden_educ, columns)
   ### --- calculate burden----
-  total_burden <- total_burden %>%
-    group_by_at(colnames(total_burden)) %>%
-    summarise(value = n())
-
   total_burden <- total_burden %>% tibble::add_column(measure = "deaths")
 
   total_burden_yll <- total_burden %>%
@@ -188,10 +198,23 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- rbind(total_burden, total_burden_yll)
   rm(total_burden_yll)
 
+  #--- add all-cause rows---
+  total_burden_all <- total_burden %>%
+    group_by_at( setdiff(colnames(total_burden),"label_cause")) %>%
+    summarise(value = sum(value)) %>%
+    mutate(label_cause = "all-cause",
+           attr = "overall")
+  
+  total_burden_cause <- total_burden %>% 
+    filter(label_cause != "oth") %>%
+    mutate(attr = "total")
+  
+  total_burden <- rbind(total_burden_all, total_burden_cause)
+  rm(total_burden_all, total_burden_cause)
 
-  # TODO add attr
-  # TODO all-cause
-
+  #add source
+  total_burden <- total_burden %>% tibble::add_column(source = "nvss")
+  
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
 }

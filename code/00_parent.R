@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_by <- "STATEFP" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_by <- "nation" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -102,6 +102,7 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 
 total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
 dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
+source <- "nvss" #c("wond","nvss")
 
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
@@ -127,17 +128,18 @@ assignTractAKHI.script <- file.path(code.dir, "08_ass_trac_AKHI.R")
 cens_agr.script <- file.path(code.dir, "09_aggregate.R")
 paf.script <- file.path(code.dir, "10_paf.R")
 read.total.burden.script <- file.path(code.dir, "11_read_tot.R")
-calc.attr.burd.script <- file.path(code.dir, "12_calc_attr_burd.R")
-summary.script <- file.path(code.dir, "13_summary.R")
-plot.script <- file.path(code.dir, "14_plot.R")
+read.total.burden.nvs.script <- file.path(code.dir, "12_read_tot_nvss.R")
+calc.attr.burd.script <- file.path(code.dir, "13_calc_attr_burd.R")
+
+summary.script <- file.path(code.dir, "15_summary.R")
+plot.script <- file.path(code.dir, "16_plot.R")
 
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000,2010,2001:2009,2011:2016)
-# years <- c(2001:2010)
-#years <- c(2001)
+# years <- c(2000,2010,2001:2009,2011:2016)
+years <- c(2000)
 
 for (year in years) {
   args <- paste( 
@@ -154,7 +156,8 @@ for (year in years) {
     paf.dir, # 11
     total.burden.dir, # 12
     total.burden.parsed.dir, # 13
-    attr.burden.dir # 14
+    source, # 14
+    attr.burden.dir #15
     
   )
   #runscript(script = download.meta.script, args = args)
@@ -169,7 +172,11 @@ for (year in years) {
   # runscript(script = assignTractAKHI.script, args = args)
   #  runscript(script = cens_agr.script, args = args)
   #  runscript(script = paf.script, args = args)
-  # runscript(script = read.total.burden.script, args = args)
+  if(source == "wonder"){
+    # runscript(script = read.total.burden.script, args = args)
+  }else if(source == "nvss"){
+     runscript(script = read.total.burden.nvs.script, args = args)
+  }
   # runscript(script = calc.attr.burd.script, args = args)
 } 
 
