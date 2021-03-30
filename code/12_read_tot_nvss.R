@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2000
+  year <- 2003
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -96,7 +96,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   }
 
-  # https://data.nber.org/mortality/2000/interim2000p1.pdf
+  # https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
   total_burden <- total_burden %>% select(all_of(selectcolumns))
 
   #---------find and replace stuff--------
@@ -108,8 +108,8 @@ if (!file.exists(totalBurdenParsedDir)) {
       to = c("Not Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Unkown")
     ),
     data.frame(
-      from = c(1, 2),
-      to = c("M", "F")
+      from = c(1,"M", 2,"F"),
+      to = c("M","M", "F","M")
     ),
     data.frame(
       from = c(1, 2, 3, 4, 5, 6, 7, 18, 28, 38, 48, 58, 68, 78),
@@ -158,9 +158,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       missing <- replacement %>% filter(to == "oth")
       if (nrow(missing) > 0) {
         print(paste("no value assigned in", replacecolumn, "for"))
-        print(
-          missing$from %>% unique() # %>% sort
-        )
+        print(missing[,1] %>% unique %>% sort)
       }
     }
 

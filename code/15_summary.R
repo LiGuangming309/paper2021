@@ -32,7 +32,7 @@ summaryDir <- args[7]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   dataDir <- "/Users/default/Desktop/paper2021/data"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
@@ -53,7 +53,8 @@ group_variables <- c(
   # "Gender" = "gender",
   # "Gender.Code" = "gender_label",
   "Race" = "race",
-  "Hispanic.Origin" = "hispanic_origin"
+  "Hispanic.Origin" = "hispanic_origin",
+  "source" = "source"
 )
 
 agr_by_replace <- c(
@@ -67,13 +68,20 @@ inverse_group_variables <- setNames(names(group_variables), group_variables)
 
 if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   ### --------read attributable burden data----------
-  files <- list.files(attrBurdenDir)
-
-  attrBurden <- lapply(files, function(file) {
-    attrBurden <- file.path(attrBurdenDir, file) %>% read.csv()
+  sources <- c("wonder","nvss")
+  attrBurden<-lapply(sources, function(source){
+    attrBurdenDir <- file.path(attrBurdenDir, source)
+    if(!file.exists(attrBurdenDir)) return(NA)
+    files <- list.files(attrBurdenDir)
+    attrBurden <- lapply(files, function(file) {
+      attrBurden <- file.path(attrBurdenDir, file) %>% read.csv()
+    }) %>%
+      do.call(rbind, .) %>%
+      as.data.frame()
   }) %>%
     do.call(rbind, .) %>%
     as.data.frame()
+  
 
   missing <- setdiff(2000:2016, attrBurden$Year)
   if (length(missing) > 0) {
@@ -127,6 +135,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     group_by_at(vars(one_of(inverse_group_variables))) %>%
     summarise(Population = sum(Population))
   ## --- read overall burden ---
+  #TODO
   all_burden <- file.path(totalBurdenParsedDir, agr_by, "total_burden.csv") %>%
     read.csv() %>%
     filter(attr == "overall") %>%
