@@ -52,10 +52,13 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv
 if(source == "wonder"){
   total_burden <- file.path(totalBurdenParsedDir,  agr_by, "total_burden_wond.csv") %>% 
     read.csv %>% 
-    filter(Year == year)
+    filter(Year == year,
+           attr != "overall")
 }else if(source == "nvss"){
   total_burden <- file.path(totalBurdenParsedDir,  agr_by,"nvss", paste0("total_burden_nvss_",year,".csv")) %>% 
-    read.csv
+    read.csv %>%
+    filter(Education == 666,#TODO
+           attr != "overall") 
 }
 
 #intense computation
@@ -135,7 +138,6 @@ if (!file.exists(attrBurdenDir)) {
   # give some feedback on what is still missing from total burden
   # one side
   total_burden_test <- total_burden %>%
-    filter(label_cause != "all-cause") %>%
     select(all_of(inverse_join_variables)) %>%
     distinct()
   

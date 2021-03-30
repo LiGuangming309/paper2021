@@ -30,7 +30,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
 
   year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -279,8 +279,9 @@ if (!file.exists(totalBurdenParsedDir)) {
   )
   total_burden <- total_burden %>% tibble::add_column(source = "nvss")
   #------filter ------
+  #total_burden$Race %>% unique()
   total_burden <- total_burden %>%
-    filter(Hispanic.Origin != "Unknown" & # TODO
+    filter(Hispanic.Origin != "Unkown" & # TODO
       Race != "Guama")
 
 
