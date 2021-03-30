@@ -1,12 +1,9 @@
-#install.packages('gmodels')
-library(gmodels)
-library(dplyr)
-library(magrittr)
-library(Rmisc)
-library(ggplot2)
-library(data.table)
+replacement <- total_burden %>%
+  select(all_of(replacecolumn)) %>%
+  anti_join(findreplace,
+            by = setNames("from", replacecolumn)
+  ) 
 
-a <- colnames(total_burden)
-b <- colnames(total_burden_yll)
-
-setdiff(b,a)
+a <- c(123,NA)
+a
+replace_na(a, 5)

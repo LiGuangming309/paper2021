@@ -31,8 +31,9 @@ attrBurdenDir <- args[15]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2000
   agr_by <- "nation"
+  source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -41,7 +42,7 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
 }
 
-attrBurdenDir <- file.path(attrBurdenDir, agr_by)
+attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
@@ -57,10 +58,9 @@ if(source == "wonder"){
     read.csv
 }
 
+#intense computation
+if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 
-#ethn_suppr <- file.path(tmpDir, "ethn_suppr.csv") %>% #TODO delete
-#  read.csv() %>%
-#  select(Race, Hispanic.Origin, label_cause, factor)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
@@ -162,7 +162,6 @@ if (!file.exists(attrBurdenDir)) {
   total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
   rm(total_burden)
   
-  memory.limit(size=500000)
   burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
   rm(pafs)
   toc()

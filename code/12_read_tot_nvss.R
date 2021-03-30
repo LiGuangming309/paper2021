@@ -30,7 +30,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -40,11 +40,11 @@ if (rlang::is_empty(args)) {
 }
 
 totalBurdenDir <- file.path(totalBurdenDir, "nvss", paste0("mort", year, ".csv"))
-totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by,"nvss")
+totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
 dir.create(totalBurdenParsedDir, recursive = T, showWarnings = F)
 totalBurdenParsedDir <- file.path(
   totalBurdenParsedDir,
-  paste0("total_burden_nvss_",year,".csv")
+  paste0("total_burden_nvss_", year, ".csv")
 )
 
 if (!file.exists(totalBurdenParsedDir)) {
@@ -52,10 +52,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   ## ----- read total burden ---------
   tic(paste("read", year, "total burden data"))
   total_burden <- fread(totalBurdenDir)
-
-  test <- total_burden$ucod %>%
-    unique() %>%
-    sort()
+  numberDeaths <- nrow(total_burden)
 
   selectcolumns <- c(
     "Year" = "year",
@@ -75,18 +72,16 @@ if (!file.exists(totalBurdenParsedDir)) {
       total_burden <- total_burden %>% tibble::add_column(nation = "us")
       selectcolumns <- c(selectcolumns, "Nation" = "nation")
     } else if (agr_by == "STATEFP") {
-
       # if staters==0 (foreign resident), take state of occurance
-      total_burden <- total_burden %>% mutate(
-        staters = if (staters == 0) stateoc
-      )
+      total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
+        ifelse(row["staters"] != 0, row["staters"], row["stateoc"])
+      })
       selectcolumns <- c(selectcolumns, "State.Code" = "staters") # residence, not occurance
     } else if (agr_by == "county") {
       # if staters==0 (foreign resident), take state of occurance
-      total_burden <- total_burden %>% mutate(
-        staters = if (staters == 0) stateoc,
-        countyrs = if (countyrs == 0) countyoc
-      )
+      total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) ifelse(row["staters"] != 0, row["staters"], row["stateoc"]))
+      total_burden$countyrs <- apply(total_burden[, c("countyrs", "countyoc")], 1, function(row) ifelse(row["countyrs"] != 0, row["countyrs"], row["countyoc"]))
+
       selectcolumns <- c(selectcolumns, "State.Code" = "staters", "County.Code" = "countyrs") # residence, not occurance
     } else {
 
@@ -105,7 +100,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% select(all_of(selectcolumns))
 
   #---------find and replace stuff--------
-  replacecolumns <- c("Hispanic.Origin", "Gender.Code", "Race", "label_cause") #TODO education
+  replacecolumns <- c("Hispanic.Origin", "Gender.Code", "Race", "label_cause") # TODO education
 
   findreplaces <- list(
     data.frame(
@@ -117,13 +112,13 @@ if (!file.exists(totalBurdenParsedDir)) {
       to = c("M", "F")
     ),
     data.frame(
-      from = c(1, 2, 3, 4, 5, 6, 7, 18, 28, 38, 48, 58, 78),
+      from = c(1, 2, 3, 4, 5, 6, 7, 18, 28, 38, 48, 58, 68, 78),
       to = c(
         "White", "Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander",
         "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander", "Guama",
-        "Asian or Pacific Islander"
+        "Asian or Pacific Islander", "Asian or Pacific Islander"
       )
-    ), 
+    ),
     lapply(c("", 0:9), function(end) {
       data.frame(
         from = c(
@@ -150,71 +145,145 @@ if (!file.exists(totalBurdenParsedDir)) {
     replacecolumn <- replacecolumns[i]
     findreplace <- findreplaces[[i]]
 
-    total_burden[, replacecolumn] <- total_burden %>%
+    # TODO anti_join
+    replacement <- total_burden %>%
       select(all_of(replacecolumn)) %>%
       left_join(findreplace,
         by = setNames("from", replacecolumn),
         na.replace = "oth"
       ) %>%
-      select(to) %>%
-      unlist %>%
-      replace_na("oth")
+      mutate(to = replace_na(to, "oth"))
+
+    if (replacecolumn != "label_cause") {
+      missing <- replacement %>% filter(to == "oth")
+      if (nrow(missing) > 0) {
+        print(paste("no value assigned in", replacecolumn, "for"))
+        print(
+          missing$from %>% unique() # %>% sort
+        )
+      }
+    }
+
+    total_burden[, replacecolumn] <- replacement %>% select(to)
   }
 
-  ### ----replce age---
-  total_burden <- total_burden %>% mutate(
-    min_age = Single.Year.Ages.Code,
-    max_age = Single.Year.Ages.Code,
-    Single.Year.Ages.Code = NULL
-  )
-
-  
-  # TODO seperate education
-  columns <- colnames(total_burden)
-  total_burden_race <- total_burden %>%
-    group_by_at(setdiff(columns, "Education")) %>%
+  ### --- calculate burden in Deaths and YLL----
+  # Deaths
+  total_burden <- total_burden %>%
+    group_by_at(colnames(total_burden)) %>%
     summarise(value = n()) %>%
-    mutate(Education = 666) #TODO
-  
-  total_burden_educ <- total_burden %>%
-    group_by_at(setdiff(columns, c("Hispanic.Origin","Race" ))) %>%
-    summarise(value = n()) %>%
-    mutate(Hispanic.Origin = "All Origins",
-           Race = "All")
-  
-  total_burden <- rbind(total_burden_race, total_burden_educ)
-  rm(total_burden_race, total_burden_educ, columns)
-  ### --- calculate burden----
-  total_burden <- total_burden %>% tibble::add_column(measure = "deaths")
+    mutate(measure = "Deaths")
 
+  # YLL
   total_burden_yll <- total_burden %>%
     dplyr::mutate(
-      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(max_age, lifeExpectancy$Age)],
+      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
       value = value * Life.Expectancy,
       measure = "YLL",
       Life.Expectancy = NULL
     )
 
-  total_burden <- rbind(total_burden, total_burden_yll)
+  total_burden <- rbind(total_burden, total_burden_yll) %>% distinct()
   rm(total_burden_yll)
+
+  ## --- seperate stuff----
+
+  inverse_selectcolumns <- c(names(selectcolumns), "measure")
+  # setdiff(colnames(total_burden),"value")
+
+  # seperate education, add "All Education"
+  total_burden_race <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, "Education")) %>%
+    summarise(value = sum(value)) %>%
+    mutate(Education = 666) # TODO
+
+  total_burden_educ <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
+    summarise(value = sum(value)) %>%
+    mutate(
+      Hispanic.Origin = "All Origins",
+      Race = "All"
+    )
+
+  total_burden <- rbind(total_burden_race, total_burden_educ) %>% distinct()
+  rm(total_burden_race, total_burden_educ)
+
+  # add Hispanic Origin All Origins
+  total_burden_all_his <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, "Hispanic.Origin")) %>%
+    summarise(value = sum(value)) %>%
+    mutate(Hispanic.Origin = "All Origins") # TODO doppelt gezählt
+
+  total_burden <- rbind(total_burden, total_burden_all_his) %>% distinct()
+  rm(total_burden_all_his)
 
   #--- add all-cause rows---
   total_burden_all <- total_burden %>%
-    group_by_at( setdiff(colnames(total_burden),"label_cause")) %>%
+    group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
     summarise(value = sum(value)) %>%
-    mutate(label_cause = "all-cause",
-           attr = "overall")
-  
-  total_burden_cause <- total_burden %>% 
+    mutate(
+      label_cause = "all-cause",
+      attr = "overall"
+    )
+
+  total_burden_cause <- total_burden %>%
     filter(label_cause != "oth") %>%
     mutate(attr = "total")
-  
-  total_burden <- rbind(total_burden_all, total_burden_cause)
+
+  total_burden <- rbind(total_burden_all, total_burden_cause) %>% distinct()
   rm(total_burden_all, total_burden_cause)
 
-  #add source
+  #----test----
+  total_burden <- total_burden %>% as.data.frame()
+  test_that("numbers add up", {
+    test1 <- total_burden %>%
+      filter(
+        measure == "Deaths",
+        label_cause == "all-cause",
+        attr == "overall",
+        Race == "All",
+        Hispanic.Origin == "All Origins",
+        Education != 666
+      )
+
+    expect_equal(sum(test1$value), numberDeaths)
+
+    test2 <- total_burden %>%
+      filter(
+        measure == "Deaths",
+        label_cause == "all-cause",
+        attr == "overall",
+        Race != "All",
+        Hispanic.Origin == "All Origins",
+        Education == 666
+      )
+    expect_equal(sum(test2$value), numberDeaths)
+
+    test3 <- total_burden %>%
+      filter(
+        measure == "Deaths",
+        label_cause == "all-cause",
+        attr == "overall",
+        Race != "All",
+        Hispanic.Origin != "All Origins",
+        Education == 666
+      )
+    expect_equal(sum(test3$value), numberDeaths)
+  })
+
+  ### ----add columns---
+  total_burden <- total_burden %>% dplyr::mutate(
+    min_age = Single.Year.Ages.Code,
+    max_age = Single.Year.Ages.Code,
+    Single.Year.Ages.Code = NULL
+  )
   total_burden <- total_burden %>% tibble::add_column(source = "nvss")
-  
+  #------filter ------
+  total_burden <- total_burden %>%
+    filter(Hispanic.Origin != "Unknown" & # TODO
+      Race != "Guama")
+
+
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
 }

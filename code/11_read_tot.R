@@ -57,7 +57,7 @@ if (!file.exists(totalBurdenParsedDir)) {
 
   if (agr_by == "nation") {
     join_variables <- c(join_variables,
-      "Gender" = "gender",
+      #"Gender" = "gender",
       "Gender.Code" = "gender_label"
     )
   }
@@ -255,5 +255,6 @@ if (!file.exists(totalBurdenParsedDir)) {
   })
   
   total_burden <- total_burden %>% tibble::add_column(source = "wond")
+  total_burden <- total_burden %>% tibble::add_column(Education = 666)
   fwrite(total_burden, totalBurdenParsedDir)
 }
