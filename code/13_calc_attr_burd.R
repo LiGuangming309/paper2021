@@ -222,6 +222,7 @@ if (!file.exists(attrBurdenDir)) {
                      lower = quantile(value,p=.025),
                      upper = quantile(value,p=.975) 
               )
+  attrBurden <- attrBurden %>% tibble::add_column(source = source)
   toc()
   # some basic tests
   test_that("09_read burden join2", {
