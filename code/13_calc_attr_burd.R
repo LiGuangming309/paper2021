@@ -33,7 +33,7 @@ attrBurdenDir <- args[15]
 if (rlang::is_empty(args)) {
   year <- 2002
   agr_by <- "nation"
-  source <- "wonder"
+  source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -71,7 +71,8 @@ if (!file.exists(attrBurdenDir)) {
     "Year" = "year",
     "Race" = "race",
     "Hispanic.Origin" = "hispanic_origin",
-    "label_cause" = "label_cause"
+    "label_cause" = "label_cause"#,
+    #"Education" = "Education"
   )
   
   if(agr_by == "nation"){
@@ -81,7 +82,8 @@ if (!file.exists(attrBurdenDir)) {
   group_variables <- c(
     "Year" = "year",
     "Race" = "race",
-    "Hispanic.Origin" = "hispanic_origin"
+    "Hispanic.Origin" = "hispanic_origin"#,
+    #"Education" = "Education"
   )
 
   agr_by_replace <- c(

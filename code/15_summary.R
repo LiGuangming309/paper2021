@@ -50,11 +50,10 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c(
   "Year" = "year",
-  # "Gender" = "gender",
   # "Gender.Code" = "gender_label",
   "Race" = "race",
-  "Hispanic.Origin" = "hispanic_origin",
-  "source" = "source"
+  "Hispanic.Origin" = "hispanic_origin"#,
+  #"Education" = "Education"
 )
 
 agr_by_replace <- c(
@@ -89,14 +88,6 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     print(missing)
   }
 
-  # columns <- c(inverse_group_variables, "measure", "attr")
-  # attrBurden_gr <- attrBurden %>%
-  #  dplyr::group_by_at(vars(one_of(columns))) %>%
-  #  dplyr::summarize(mean = sum(mean),
-  #                   lower = sum(lower),
-  #                   upper = sum(upper)) %>%
-  #  as.data.frame()
-
   ### ---- read cdc population data------
   files <- list.files(cdcPopDir)
   cdc_pop <- lapply(files, function(file) {
@@ -116,11 +107,12 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
         cdc_pop[, "Hispanic.Origin"] <- "Not Hispanic or Latino"
       }
     }
-  
+    
+    if (agr_by == "nation") cdc_pop[, "Nation"] <- "us"
+    cdc_pop <- cdc_pop %>% tibble::add_column(Education = 666)
+    
     cdc_pop <- cdc_pop %>% select(all_of(c(unname(inverse_group_variables), "Population"))) # Gender
-    if (agr_by == "nation") {
-      cdc_pop[, "Nation"] <- "us"
-    }
+    
     return(cdc_pop)
   })
 
@@ -134,19 +126,33 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   cdc_pop <- cdc_pop %>%
     group_by_at(vars(one_of(inverse_group_variables))) %>%
     summarise(Population = sum(Population))
+  
   ## --- read overall burden ---
   #TODO
-  all_burden <- file.path(totalBurdenParsedDir, agr_by, "total_burden.csv") %>%
-    read.csv() %>%
+  #all_burden <- file.path(totalBurdenParsedDir, agr_by, "total_burden.csv") %>%
+  #  read.csv() %>%
+  #  filter(attr == "overall") %>%
+  #  group_by_at(vars(one_of(c(inverse_group_variables, "measure")))) %>%
+  #  summarise(overall_value = sum(value))
+  
+  all_burden_wond <- file.path(totalBurdenParsedDir,  agr_by, "total_burden_wond.csv") %>% read.csv
+  totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
+  files <- list.files(totalBurdenParsedDir)
+  all_burden_nvss <- lapply(files, function(file)
+    file.path(totalBurdenParsedDir, file) %>% fread
+  ) %>% do.call(rbind,.)
+  
+  all_burden <- rbind(all_burden_wond, all_burden_nvss)  %>%
     filter(attr == "overall") %>%
-    group_by_at(vars(one_of(c(inverse_group_variables, "measure")))) %>%
+    group_by_at(vars(one_of(c(inverse_group_variables, "source","measure")))) %>%
     summarise(overall_value = sum(value))
-
+  
+  rm(all_burden_wond, all_burden_nvss)
   ## ---------------- join/write --------------------
   # join everything
 
   attrBurden <- attrBurden %>%
-    left_join(all_burden, by = unname(c(inverse_group_variables, "measure"))) %>%
+    left_join(all_burden, by = unname(c(inverse_group_variables,"source", "measure"))) %>%
     left_join(cdc_pop, by = unname(inverse_group_variables)) %>% 
     mutate(measure2 = "absolute number")
 
@@ -165,7 +171,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   test_that("10 plot basic chackes", {
     expect_false(any(is.na(attrBurden)))
   })
-
+  #TODO drop attr
   fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
   #fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
 }

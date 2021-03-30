@@ -254,7 +254,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   })
   
-  total_burden <- total_burden %>% tibble::add_column(source = "wond")
+  total_burden <- total_burden %>% tibble::add_column(source = "wonder")
   total_burden <- total_burden %>% tibble::add_column(Education = 666)
   fwrite(total_burden, totalBurdenParsedDir)
 }

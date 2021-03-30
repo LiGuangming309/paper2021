@@ -28,7 +28,7 @@ plotDir <- args[8]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
 
   # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
@@ -71,7 +71,7 @@ for(location in attrBurden[, get(agr_by_new)] %>% unique){
   # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
   # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
   g <- ggplot(attrBurden1, aes(x = Year, y = overall_value)) +
-    geom_line(aes(color = Ethnicity), size = 1) +
+    geom_line(aes(color = Ethnicity, linetype = source), size = 1) +
     #scale_color_manual(values = c("green","orange", "steelblue", "purple"))+
     #scale_linetype_manual(values = c("dashed", "solid")) +
     ylab(paste("YLL per 100.000")) +
@@ -93,7 +93,7 @@ for(location in attrBurden[, get(agr_by_new)] %>% unique){
   # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
   # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
   
-  g <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity)) +
+  g <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity, linetype = source)) +
     geom_line(size = 1) +
     # scale_color_manual(values = c("green","yellow", "steelblue"))+
     #scale_linetype_manual(values = c("dashed", "solid")) +
