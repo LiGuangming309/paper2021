@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc")
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "readxl")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -243,9 +243,19 @@ if (!file.exists(totalBurdenParsedDir)) {
       measure = "YLL",
       Life.Expectancy = NULL
     )
-
-  total_burden <- rbind(total_burden, total_burden_yll)
-  rm(total_burden_yll)
+  #------age-standartised Deaths rates----- 
+  #see https://www.cdc.gov/nchs/data/nvsr/nvsr57/nvsr57_14.pdf, page 125 for more information
+  standartpopulation <- read_excel(file.path(dataDir,"standartpopulation.xlsx")) 
+  standartpopulation <- standartpopulation %>% mutate(prop = popsize/sum(standartpopulation$popsize))
+  total_burden_age_adj <- total_burden %>%
+    dplyr::mutate(
+      value = value * standartpopulation$prop[findInterval(max_age, standartpopulation$max_age)], 
+      measure = "age-adjusted Death" 
+    )
+  
+  total_burden <- rbind(total_burden, total_burden_yll, total_burden_age_adj)
+  rm(total_burden_yll, total_burden_age_adj)
+  
   total_burden$attr <- sapply(total_burden$label_cause, function(cause) {
     if (cause == "all-cause") {
       "overall"
