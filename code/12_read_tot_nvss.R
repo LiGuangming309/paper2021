@@ -38,6 +38,7 @@ if (rlang::is_empty(args)) {
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 }
+findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
 
 totalBurdenDir <- file.path(totalBurdenDir, "nvss", paste0("mort", year, ".csv"))
 totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
@@ -49,20 +50,33 @@ totalBurdenParsedDir <- file.path(
 
 if (!file.exists(totalBurdenParsedDir)) {
   lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
+
   ## ----- read total burden ---------
   tic(paste("read", year, "total burden data"))
   total_burden <- fread(totalBurdenDir)
   numberDeaths <- nrow(total_burden)
 
-  selectcolumns <- c(
-    "Year" = "year",
-    "label_cause" = "ucod", # record_1/enum_1
-    "Education" = "educ", # 52-53
-    "Gender.Code" = "sex", # 59
-    "Race" = "race", # 60
-    "Single.Year.Ages.Code" = "age", # 64
-    "Hispanic.Origin" = "hispanic" # 80 - 81
-  )
+  if(2000 <= year & year <= 2002){
+    selectcolumns <- c(
+      "Year" = "year",
+      "label_cause" = "ucod", # record_1/enum_1
+      "Education" = "educ", # 52-53
+      "Gender.Code" = "sex", # 59
+      "Race" = "race", # 60
+      "Single.Year.Ages.Code" = "age", # 64
+      "Hispanic.Origin" = "hispanic" # 80 - 81
+    )
+  }else if (2003 <= year & year <= 2003){
+    selectcolumns <- c(
+      "Year" = "year",
+      "label_cause" = "ucod", # record_1/enum_1
+      "Education" = "educ", # 52-53
+      "Gender.Code" = "sex", # 59
+      "Race" = "race", # 60
+      "Single.Year.Ages.Code" = "age", # 64 #TODO
+      "Hispanic.Origin" = "hspanicr" # 80 - 81
+    )
+  }
 
   # All public-use micro-data files from 2005-present contain individual-level vital event data at the national level only.
   # Specifically, these files contain no geographic identifiers at the state, county, or city level.
@@ -100,69 +114,28 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% select(all_of(selectcolumns))
 
   #---------find and replace stuff--------
-  replacecolumns <- c("Hispanic.Origin", "Gender.Code", "Race", "label_cause") # TODO education
+  for (replacecolumnX in findreplace$replacecolumns %>% unique()) {
+    if (replacecolumnX %in% colnames(total_burden)) {
+      findreplace_sub <- findreplace %>% filter(replacecolumns == replacecolumnX)
 
-  findreplaces <- list(
-    data.frame(
-      from = c(0, 1, 2, 3, 4, 5, 99),
-      to = c("Not Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Hispanic or Latino", "Unkown")
-    ),
-    data.frame(
-      from = c(1,"M", 2,"F"),
-      to = c("M","M", "F","M")
-    ),
-    data.frame(
-      from = c(1, 2, 3, 4, 5, 6, 7, 18, 28, 38, 48, 58, 68, 78),
-      to = c(
-        "White", "Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander",
-        "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander", "Guama",
-        "Asian or Pacific Islander", "Asian or Pacific Islander"
-      )
-    ),
-    lapply(c("", 0:9), function(end) {
-      data.frame(
-        from = c(
-          "I20", "I21", "I22", "I23", "I24", "I25",
-          "G45", "G46", "I61", "I62", "I63", "I65", "I66", "I67", "I68", "I69",
-          "C33", "C34", "D02", "D14", "D38",
-          "J41", "J42", "J43", "J44", # TODO Format
-          "A48", "A70", "B97", "J09", "J10", "J11", "J12", "J13", "J14", "J15", "J16", "J20", "J21", "P23", "U04",
-          "E11"
-        ),
-        to = c(
-          "cvd_ihd", "cvd_ihd", "cvd_ihd", "cvd_ihd", "cvd_ihd", "cvd_ihd",
-          "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke", "cvd_stroke",
-          "neo_lung", "neo_lung", "neo_lung", "neo_lung", "neo_lung",
-          "resp_copd", "resp_copd", "resp_copd", "resp_copd",
-          "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri", "lri",
-          "t2_dm"
-        )
-      ) %>% mutate(from = paste0(from, end))
-    }) %>% do.call(rbind, .)
-  )
+      replacement <- total_burden %>%
+        select(all_of(replacecolumnX)) %>%
+        mutate(across(everything(), as.character)) %>%
+        left_join(findreplace_sub,
+          by = setNames("from", replacecolumnX),
+          na.replace = "oth"
+        ) %>%
+        mutate(to = replace_na(to, "oth"))
 
-  for (i in seq_along(replacecolumns)) {
-    replacecolumn <- replacecolumns[i]
-    findreplace <- findreplaces[[i]]
-
-    # TODO anti_join
-    replacement <- total_burden %>%
-      select(all_of(replacecolumn)) %>%
-      left_join(findreplace,
-        by = setNames("from", replacecolumn),
-        na.replace = "oth"
-      ) %>%
-      mutate(to = replace_na(to, "oth"))
-
-    if (replacecolumn != "label_cause") {
-      missing <- replacement %>% filter(to == "oth")
-      if (nrow(missing) > 0) {
-        print(paste("no value assigned in", replacecolumn, "for"))
-        print(missing[,1] %>% unique %>% sort)
+      if (replacecolumnX != "label_cause") {
+        missing <- replacement %>% filter(to == "oth")
+        if (nrow(missing) > 0) {
+          print(paste("no value assigned in", replacecolumnX, "for"))
+          print(missing[, 1] %>% unique() %>% sort())
+        }
       }
+      total_burden[, replacecolumnX] <- replacement %>% select(to)
     }
-
-    total_burden[, replacecolumn] <- replacement %>% select(to)
   }
 
   ### --- calculate burden in Deaths and YLL----
@@ -277,7 +250,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   )
   total_burden <- total_burden %>% tibble::add_column(source = "nvss")
   #------filter ------
-  #total_burden$Race %>% unique()
+  # total_burden$Race %>% unique()
   total_burden <- total_burden %>%
     filter(Hispanic.Origin != "Unkown" & # TODO
       Race != "Guama")
