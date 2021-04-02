@@ -75,8 +75,9 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
     ### -------plot 1 ---------
     attrBurden1 <- attrBurdenX %>%
       filter(
-        measure == "YLL",
-        #measure == "Deaths",
+        #measure == "YLL",
+        #measure == "age-adjusted Death",
+        measure == "Deaths",
         measure2 == "crude rate"
       )
 

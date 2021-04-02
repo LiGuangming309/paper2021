@@ -31,9 +31,9 @@ attrBurdenDir <- args[15]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2002
+  year <- 2000
   agr_by <- "nation"
-  source <- "nvss"
+  source <- "wonder"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -82,8 +82,10 @@ if (!file.exists(attrBurdenDir)) {
   group_variables <- c(
     "Year" = "year",
     "Race" = "race",
-    "Hispanic.Origin" = "hispanic_origin"#,
+    "Hispanic.Origin" = "hispanic_origin",
     #"Education" = "Education"
+    "min_age",
+    "max_age"
   )
 
   agr_by_replace <- c(
@@ -175,14 +177,21 @@ if (!file.exists(attrBurdenDir)) {
   #burden_paf <- as.data.table(burden_paf) 
   #burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
   #                           (min_age.y <= min_age.x & max_age.x <= max_age.y)]
-  burden_paf <- burden_paf %>% filter((min_age.x <= min_age.y & max_age.y <= max_age.x) |
-                                      (min_age.y <= min_age.x & max_age.x <= max_age.y))
+  burden_paf <- burden_paf %>% 
+    filter((min_age.x <= min_age.y & max_age.y <= max_age.x) |
+                                      (min_age.y <= min_age.x & max_age.x <= max_age.y)) %>%
+    mutate(min_age = pmin(min_age.y, min_age.x),
+           max_age = pmax(max_age.y, max_age.x),
+           min_age.x = NULL,
+           min_age.y = NULL,
+           max_age.x = NULL,
+           max_age.y = NULL)
   toc()
   ## ----- calculate attributable burden------
   tic("calc_attr_burd: 4 pivot_longer")
   test_that("09_calc distinct rows", {
     burden_paf_sub <- burden_paf %>%
-      select(c(min_age.x, max_age.x, measure, inverse_join_variables))
+      select(c(min_age, max_age, measure, inverse_join_variables))
 
     dub_ind <- duplicated(burden_paf_sub) | duplicated(burden_paf_sub, fromLast = TRUE)
     burden_paf_sub <- burden_paf[dub_ind, ]
