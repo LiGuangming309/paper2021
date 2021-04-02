@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2004
+  year <- 2006
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -67,11 +67,22 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age", # 64
       "Hispanic.Origin" = "hispanic" # 80 - 81
     )
-  }else if (2003 <= year & year <= 2016){
+  }else if (2003 <= year & year <= 2005){
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
       "Education" = "educ", # 52-53
+      "Gender.Code" = "sex", # 59
+      "Race" = "race", # 60
+      "min_age" = "ager52", # 64, Single Year
+      "max_age" = "ager52",
+      "Hispanic.Origin" = "hspanicr" # 80 - 81
+    )
+  }else if (2005 <= year & year <= 2016){
+    selectcolumns <- c(
+      "Year" = "year",
+      "label_cause" = "ucod", # record_1/enum_1
+      "Education" = "educ1989", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
       "min_age" = "ager52", # 64, Single Year
