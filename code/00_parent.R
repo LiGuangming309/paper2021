@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_bys <- c("nation","STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_bys <- c("nation") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -174,27 +174,29 @@ for (agr_by in agr_bys) {
       #  runscript(script = cens_agr.script, args = args)
       #  runscript(script = paf.script, args = args)
       if (source == "wonder") {
-        runscript(script = read.total.burden.script, args = args)
+      #  runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
         # runscript(script = read.nvs.findrepl.script, args = args)
-        runscript(script = read.total.burden.nvs.script, args = args)
+      #  runscript(script = read.total.burden.nvs.script, args = args)
       }
-      runscript(script = calc.attr.burd.script, args = args)
+      #runscript(script = calc.attr.burd.script, args = args)
     }
   }
 }
 
-
-args <- paste(
-  tmp.dir, # 1
-  agr_by, # 2
-  dem.dir, # 3
-  total.burden.parsed.dir, # 4
-  attr.burden.dir, # 5
-  cdc.pop.dir, # 6
-  summary.dir, # 7
-  plot.dir # 8
-)
-
-# runscript(script = summary.script, args = args)
-# runscript(script = plot.script, args = args)
+for (agr_by in agr_bys) {
+  args <- paste(
+    tmp.dir, # 1
+    agr_by, # 2
+    dem.dir, # 3
+    total.burden.parsed.dir, # 4
+    attr.burden.dir, # 5
+    cdc.pop.dir, # 6
+    summary.dir, # 7
+    plot.dir # 8
+  )
+  
+  runscript(script = summary.script, args = args)
+  runscript(script = plot.script, args = args)
+  
+}
