@@ -102,7 +102,7 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 
 total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
 dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
-source <- "wonder" #c("wonder","nvss")
+source <- "nvss" #c("wonder","nvss")
 
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
@@ -128,6 +128,7 @@ assignTractAKHI.script <- file.path(code.dir, "08_ass_trac_AKHI.R")
 cens_agr.script <- file.path(code.dir, "09_aggregate.R")
 paf.script <- file.path(code.dir, "10_paf.R")
 read.total.burden.script <- file.path(code.dir, "11_read_tot.R")
+read.nvs.findrepl.script <- file.path(code.dir, "12_nvss_findrepl.R")
 read.total.burden.nvs.script <- file.path(code.dir, "12_read_tot_nvss.R")
 calc.attr.burd.script <- file.path(code.dir, "13_calc_attr_burd.R")
 
@@ -173,9 +174,10 @@ for (year in years) {
   #  runscript(script = cens_agr.script, args = args)
   #  runscript(script = paf.script, args = args)
   if(source == "wonder"){
-    # runscript(script = read.total.burden.script, args = args)
+     runscript(script = read.total.burden.script, args = args)
   }else if(source == "nvss"){
-   #  runscript(script = read.total.burden.nvs.script, args = args)
+    runscript(script = read.nvs.findrepl.script, args = args)
+     runscript(script = read.total.burden.nvs.script, args = args)
   }
    runscript(script = calc.attr.burd.script, args = args)
 } 
