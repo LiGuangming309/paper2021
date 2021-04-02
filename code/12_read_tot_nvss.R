@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2000
+  year <- 2003
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -63,7 +63,8 @@ if (!file.exists(totalBurdenParsedDir)) {
       "Education" = "educ", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
-      "Single.Year.Ages.Code" = "age", # 64
+      "min_age" = "age", # 64, Single Year
+      "max_age" = "age", # 64
       "Hispanic.Origin" = "hispanic" # 80 - 81
     )
   }else if (2003 <= year & year <= 2003){
@@ -73,7 +74,8 @@ if (!file.exists(totalBurdenParsedDir)) {
       "Education" = "educ", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
-      "Single.Year.Ages.Code" = "age", # 64 #TODO
+      "min_age" = "ager52", # 64, Single Year
+      "max_age" = "ager52",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
   }
@@ -137,7 +139,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       total_burden[, replacecolumnX] <- replacement %>% select(to)
     }
   }
-
+  rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
   ### --- calculate burden in Deaths and YLL----
   # Deaths
   total_burden <- total_burden %>%
@@ -146,25 +148,28 @@ if (!file.exists(totalBurdenParsedDir)) {
     mutate(measure = "Deaths")
   
   #age-standartised Deaths rates, see https://www.cdc.gov/nchs/data/nvsr/nvsr57/nvsr57_14.pdf, page 125 for more information
-  standartpopulation <- read_excel("Desktop/paper2021/data/standartpopulation.xlsx") 
+  standartpopulation <- read_excel(file.path(dataDir,"standartpopulation.xlsx")) 
   standartpopulation <- standartpopulation %>% mutate(prop = popsize/sum(standartpopulation$popsize))
   total_burden_age_adj <- total_burden %>%
+    filter(min_age != "unknown") %>%
     dplyr::mutate(
-      value = value * standartpopulation$prop[findInterval(Single.Year.Ages.Code, standartpopulation$min_age)], 
+      value = value * standartpopulation$prop[findInterval(min_age, standartpopulation$min_age)], 
       measure = "age-adjusted Death"
     )
+  rm(standartpopulation)
   
   # YLL
   total_burden_yll <- total_burden %>%
+    filter(max_age != "unknown") %>%
     dplyr::mutate(
-      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(Single.Year.Ages.Code, lifeExpectancy$Age)],
+      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(max_age, lifeExpectancy$Age)],
       value = value * Life.Expectancy,
       measure = "YLL",
       Life.Expectancy = NULL
     )
 
   total_burden <- rbind(total_burden, total_burden_yll, total_burden_age_adj) %>% distinct()
-  rm(total_burden_yll, total_burden_age_adj)
+  rm(total_burden_yll, total_burden_age_adj, lifeExpectancy)
 
   ## --- seperate stuff----
 
@@ -251,18 +256,13 @@ if (!file.exists(totalBurdenParsedDir)) {
     expect_equal(sum(test3$value), numberDeaths)
   })
 
-  ### ----add columns---
-  total_burden <- total_burden %>% dplyr::mutate(
-    min_age = Single.Year.Ages.Code,
-    max_age = Single.Year.Ages.Code,
-    Single.Year.Ages.Code = NULL
-  )
   total_burden <- total_burden %>% tibble::add_column(source = "nvss")
   #------filter ------
   # total_burden$Race %>% unique()
   total_burden <- total_burden %>%
     filter(Hispanic.Origin != "Unkown" & # TODO
-      Race != "Guama")
+      Race != "Guama" &
+      min_age != "unknown") 
 
 
   fwrite(total_burden, totalBurdenParsedDir)

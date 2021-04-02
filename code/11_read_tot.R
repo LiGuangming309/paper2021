@@ -225,7 +225,6 @@ if (!file.exists(totalBurdenParsedDir)) {
     print(missing)
   }
 
-
   # analyse suppression
   nrow_suppressed <- nrow(total_burden)
   total_burden <- total_burden %>% filter(Deaths != "Suppressed")
