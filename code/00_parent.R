@@ -13,8 +13,8 @@ rm(list = ls(all = TRUE))
 # install packages if missing
 packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
-  "MALDIquant", "plyr", "RCurl","readxl", "sf", "sp", "stringr", "testthat", "tictoc",
-  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang",  "stats", "xlsx"
+  "MALDIquant", "plyr", "RCurl", "readxl", "sf", "sp", "stringr", "testthat", "tictoc",
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx"
 )
 
 options(tigris_use_cache = FALSE)
@@ -43,8 +43,8 @@ if (Sys.info()["sysname"] == "Darwin") {
     system(paste("Rscript", script, args))
   }
 } else if (Sys.info()["sysname"] == "Windows") {
-  memory.limit(size=500000)
-  
+  memory.limit(size = 500000)
+
   exec <- paste0("C:/Program Files/R/R-", R.Version()$major, ".", R.Version()$minor, "/bin/Rscript.exe")
   exec <- shQuote(exec)
   runscript <- function(script, args = "") {
@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_by <- "nation" # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_bys <- c("nation","STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -102,7 +102,7 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 
 total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
 dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
-source <- "nvss" #c("wonder","nvss")
+sources <- c("wonder","nvss")
 
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
@@ -139,50 +139,52 @@ plot.script <- file.path(code.dir, "16_plot.R")
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000,2010,2001:2009,2011:2016)
-#years <- c(2000)
+years <- c(2000, 2010, 2001:2009, 2011:2016)
+# years <- c(2004)
+for (agr_by in agr_bys) {
+  for (source in sources) {
+    for (year in years) {
+      args <- paste(
+        year, # 1
+        data.dir, # 2
+        tmp.dir, # 3
+        exp.dir, # 4
+        trac.dir, # 5
+        exp.rr.dir, # 6
+        trac.exp.dir, # 7
+        dem.dir, # 8
+        dem.agr.dir, # 9
+        agr_by, # 10
+        paf.dir, # 11
+        total.burden.dir, # 12
+        total.burden.parsed.dir, # 13
+        source, # 14
+        attr.burden.dir # 15
+      )
+      # runscript(script = download.meta.script, args = args)
+      if (year %in% 2001:2009) {
+        #  runscript(script = interp.script, args = args)
+      } else {
+        #  runscript(script = download.cens.script, args = args)
+      }
 
-for (year in years) {
-  args <- paste( 
-    year, # 1
-    data.dir, # 2
-    tmp.dir, # 3
-    exp.dir, # 4
-    trac.dir, # 5
-    exp.rr.dir, # 6
-    trac.exp.dir, # 7
-    dem.dir, # 8
-    dem.agr.dir, # 9
-    agr_by, # 10
-    paf.dir, # 11
-    total.burden.dir, # 12
-    total.burden.parsed.dir, # 13
-    source, # 14
-    attr.burden.dir #15
-    
-  )
-  #runscript(script = download.meta.script, args = args)
-  if (year %in% 2001:2009) {
-  #  runscript(script = interp.script, args = args)
-  } else {
-  #  runscript(script = download.cens.script, args = args)
+      # runscript(script = download.other.script, args = args)
+      # runscript(script=assignTract.script, args = args)
+      # runscript(script = assignTractAKHI.script, args = args)
+      #  runscript(script = cens_agr.script, args = args)
+      #  runscript(script = paf.script, args = args)
+      if (source == "wonder") {
+        runscript(script = read.total.burden.script, args = args)
+      } else if (source == "nvss") {
+        # runscript(script = read.nvs.findrepl.script, args = args)
+        runscript(script = read.total.burden.nvs.script, args = args)
+      }
+      runscript(script = calc.attr.burd.script, args = args)
+    }
   }
+}
 
-  #runscript(script = download.other.script, args = args)
-  # runscript(script=assignTract.script, args = args)
-  # runscript(script = assignTractAKHI.script, args = args)
-  #  runscript(script = cens_agr.script, args = args)
-  #  runscript(script = paf.script, args = args)
-  if(source == "wonder"){
-     runscript(script = read.total.burden.script, args = args)
-  }else if(source == "nvss"){
-    runscript(script = read.nvs.findrepl.script, args = args)
-     runscript(script = read.total.burden.nvs.script, args = args)
-  }
-   runscript(script = calc.attr.burd.script, args = args)
-} 
 
-  
 args <- paste(
   tmp.dir, # 1
   agr_by, # 2
@@ -195,4 +197,4 @@ args <- paste(
 )
 
 # runscript(script = summary.script, args = args)
-# runscript(script = plot.script, args = args) 
+# runscript(script = plot.script, args = args)
