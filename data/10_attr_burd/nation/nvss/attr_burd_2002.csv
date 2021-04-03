@@ -1,37 +1,1333 @@
-Year,Race,Hispanic.Origin,Nation,measure,attr,mean,lower,upper,source
-2002,American Indian or Alaska Native,All Origins,us,age-adjusted Death,attributable,14.4138183799316,10.4104240453585,19.9617473466468,nvss
-2002,American Indian or Alaska Native,All Origins,us,Deaths,attributable,184.358937268173,133.088069592704,257.962972512478,nvss
-2002,American Indian or Alaska Native,All Origins,us,YLL,attributable,5028.72287904867,3643.5498655118,6951.88693497647,nvss
-2002,American Indian or Alaska Native,Hispanic or Latino,us,age-adjusted Death,attributable,0.431528917861112,0.338818443493985,0.556033108494269,nvss
-2002,American Indian or Alaska Native,Hispanic or Latino,us,Deaths,attributable,4.94623477830396,3.88847663987151,6.31858220076841,nvss
-2002,American Indian or Alaska Native,Hispanic or Latino,us,YLL,attributable,147.501566545665,116.255191560937,188.865326771629,nvss
-2002,American Indian or Alaska Native,Not Hispanic or Latino,us,age-adjusted Death,attributable,13.2719491186826,9.38083544864509,18.7916281534757,nvss
-2002,American Indian or Alaska Native,Not Hispanic or Latino,us,Deaths,attributable,172.26845862306,121.333876546079,244.884012096668,nvss
-2002,American Indian or Alaska Native,Not Hispanic or Latino,us,YLL,attributable,4640.05493697477,3285.79437563897,6564.60859469434,nvss
-2002,Asian or Pacific Islander,All Origins,us,age-adjusted Death,attributable,67.5211348068249,53.846212173356,86.5933772146682,nvss
-2002,Asian or Pacific Islander,All Origins,us,Deaths,attributable,979.504557808395,777.107426080324,1249.21838424315,nvss
-2002,Asian or Pacific Islander,All Origins,us,YLL,attributable,23629.0140007553,18770.4524344626,30214.7778347129,nvss
-2002,Asian or Pacific Islander,Hispanic or Latino,us,age-adjusted Death,attributable,0.942470075938329,0.726998005195152,1.2302225259516,nvss
-2002,Asian or Pacific Islander,Hispanic or Latino,us,Deaths,attributable,11.6456594589806,9.05250715784774,15.3849574485172,nvss
-2002,Asian or Pacific Islander,Hispanic or Latino,us,YLL,attributable,334.303350673763,258.154316190551,437.0906180713,nvss
-2002,Asian or Pacific Islander,Not Hispanic or Latino,us,age-adjusted Death,attributable,67.5276688313772,53.9232319489627,86.6095230740065,nvss
-2002,Asian or Pacific Islander,Not Hispanic or Latino,us,Deaths,attributable,997.631535478616,789.479535158389,1286.25101309815,nvss
-2002,Asian or Pacific Islander,Not Hispanic or Latino,us,YLL,attributable,23717.4801571924,18912.2124407012,30429.4760805824,nvss
-2002,Black or African American,All Origins,us,age-adjusted Death,attributable,545.925182212272,426.19452275999,704.953921763627,nvss
-2002,Black or African American,All Origins,us,Deaths,attributable,7136.95279966454,5563.59135793165,9181.0273927022,nvss
-2002,Black or African American,All Origins,us,YLL,attributable,189252.812492661,148023.995052919,244658.595075302,nvss
-2002,Black or African American,Hispanic or Latino,us,age-adjusted Death,attributable,2.87020221784834,2.26870115678088,3.6770529518584,nvss
-2002,Black or African American,Hispanic or Latino,us,Deaths,attributable,38.3923061661918,30.2675161679475,49.0553113832874,nvss
-2002,Black or African American,Hispanic or Latino,us,YLL,attributable,1016.72714862433,800.355715148291,1300.72159769643,nvss
-2002,Black or African American,Not Hispanic or Latino,us,age-adjusted Death,attributable,548.929588732554,427.4949721082,707.841121128227,nvss
-2002,Black or African American,Not Hispanic or Latino,us,Deaths,attributable,7263.76740929869,5649.28651573985,9413.66218774239,nvss
-2002,Black or African American,Not Hispanic or Latino,us,YLL,attributable,190775.46297195,148817.768082709,246175.947074002,nvss
-2002,White,All Origins,us,age-adjusted Death,attributable,2847.79531600194,2147.42772021164,3845.4850657556,nvss
-2002,White,All Origins,us,Deaths,attributable,47091.9054183626,35622.0545092843,63077.8154467612,nvss
-2002,White,All Origins,us,YLL,attributable,1005060.27892453,754989.982242123,1357196.07040647,nvss
-2002,White,Hispanic or Latino,us,age-adjusted Death,attributable,158.258534717944,121.648744296044,206.9435210779,nvss
-2002,White,Hispanic or Latino,us,Deaths,attributable,2232.41071925314,1704.48744634985,2912.96697712425,nvss
-2002,White,Hispanic or Latino,us,YLL,attributable,55655.0526012212,42620.2603140626,72765.8134150398,nvss
-2002,White,Not Hispanic or Latino,us,age-adjusted Death,attributable,2681.13647005333,2019.25406683383,3627.07644532991,nvss
-2002,White,Not Hispanic or Latino,us,Deaths,attributable,44724.9548009161,33785.6288960868,59985.4752660941,nvss
-2002,White,Not Hispanic or Latino,us,YLL,attributable,946462.91471163,710104.350731963,1280422.72019983,nvss
+Year,Race,Hispanic.Origin,min_age,max_age,Nation,measure,attr,mean,lower,upper,source
+2002,American Indian or Alaska Native,All Origins,0,4,us,age-adjusted Death,attributable,0.00475704673598367,0.00311297673750889,0.0070327231126852,nvss
+2002,American Indian or Alaska Native,All Origins,0,4,us,Deaths,attributable,0.085997751146037,0.0562763020112171,0.127137361831831,nvss
+2002,American Indian or Alaska Native,All Origins,0,4,us,YLL,attributable,7.56784600528315,4.95234330772757,11.1881527486384,nvss
+2002,American Indian or Alaska Native,All Origins,15,17,us,age-adjusted Death,attributable,0.0356270530393083,0.0237451618248773,0.0546771571549486,nvss
+2002,American Indian or Alaska Native,All Origins,15,17,us,Deaths,attributable,0.256964922916659,0.171265180738947,0.394366366988635,nvss
+2002,American Indian or Alaska Native,All Origins,15,17,us,YLL,attributable,19.0325051058809,12.6850209354481,29.209355923389,nvss
+2002,American Indian or Alaska Native,All Origins,18,19,us,age-adjusted Death,attributable,0.0205478101567466,0.0147724671983581,0.0296441624111658,nvss
+2002,American Indian or Alaska Native,All Origins,18,19,us,Deaths,attributable,0.148203850798686,0.106548411139331,0.213812517709773,nvss
+2002,American Indian or Alaska Native,All Origins,18,19,us,YLL,attributable,10.9769478068103,7.89167313583309,15.8363553625268,nvss
+2002,American Indian or Alaska Native,All Origins,22,24,us,age-adjusted Death,attributable,0.0601294517274502,0.0376055082450713,0.101841008423464,nvss
+2002,American Indian or Alaska Native,All Origins,22,24,us,Deaths,attributable,0.433691776614739,0.271234797803083,0.734542002405215,nvss
+2002,American Indian or Alaska Native,All Origins,22,24,us,YLL,attributable,29.9713839087486,18.7443772114441,50.7624113213112,nvss
+2002,American Indian or Alaska Native,All Origins,25,29,us,age-adjusted Death,attributable,0.15317511008415,0.0890967796019839,0.23504808153214,nvss
+2002,American Indian or Alaska Native,All Origins,25,29,us,Deaths,attributable,1.12981883316764,0.657177393335033,1.733713454288,nvss
+2002,American Indian or Alaska Native,All Origins,25,29,us,YLL,attributable,72.4770876247651,42.1574699619921,111.216505030608,nvss
+2002,American Indian or Alaska Native,All Origins,30,34,us,age-adjusted Death,attributable,0.170439974233572,0.109737717140347,0.251142740605885,nvss
+2002,American Indian or Alaska Native,All Origins,30,34,us,Deaths,attributable,1.25716438335124,0.809424843669934,1.85242757778326,nvss
+2002,American Indian or Alaska Native,All Origins,30,34,us,YLL,attributable,74.4194511971105,47.9149373375096,109.656816202139,nvss
+2002,American Indian or Alaska Native,All Origins,35,39,us,age-adjusted Death,attributable,0.379564399969248,0.259759978786341,0.620233003911095,nvss
+2002,American Indian or Alaska Native,All Origins,35,39,us,Deaths,attributable,2.33414813855424,1.59740552855892,3.81415040943323,nvss
+2002,American Indian or Alaska Native,All Origins,35,39,us,YLL,attributable,126.633637139508,86.663424967307,206.927628527829,nvss
+2002,American Indian or Alaska Native,All Origins,40,44,us,age-adjusted Death,attributable,1.24473415126385,0.821432225838051,1.8793073490987,nvss
+2002,American Indian or Alaska Native,All Origins,40,44,us,Deaths,attributable,7.65454795655963,5.05143396230967,11.5568840255446,nvss
+2002,American Indian or Alaska Native,All Origins,40,44,us,YLL,attributable,377.502350652999,249.123554488431,569.955392614461,nvss
+2002,American Indian or Alaska Native,All Origins,45,49,us,age-adjusted Death,attributable,1.311669525369,0.894416308541382,1.89365411219425,nvss
+2002,American Indian or Alaska Native,All Origins,45,49,us,Deaths,attributable,9.72798002159161,6.63342695106721,14.0442611610177,nvss
+2002,American Indian or Alaska Native,All Origins,45,49,us,YLL,attributable,432.246454797936,294.745186194447,624.033158336302,nvss
+2002,American Indian or Alaska Native,All Origins,50,54,us,age-adjusted Death,attributable,2.16170152873217,1.32473330298274,3.29342476379136,nvss
+2002,American Indian or Alaska Native,All Origins,50,54,us,Deaths,attributable,16.0322313490013,9.82486735881723,24.4256420425444,nvss
+2002,American Indian or Alaska Native,All Origins,50,54,us,YLL,attributable,635.433286988864,389.40604237424,968.103919662699,nvss
+2002,American Indian or Alaska Native,All Origins,55,59,us,age-adjusted Death,attributable,1.68649840204035,1.15833427511722,2.5130546766351,nvss
+2002,American Indian or Alaska Native,All Origins,55,59,us,Deaths,attributable,19.3297198589905,13.276192265581,28.8032546196984,nvss
+2002,American Indian or Alaska Native,All Origins,55,59,us,YLL,attributable,674.894867673504,463.536672422071,1005.66220601931,nvss
+2002,American Indian or Alaska Native,All Origins,60,61,us,age-adjusted Death,attributable,0.77233706195827,0.501695400836357,1.19170732814885,nvss
+2002,American Indian or Alaska Native,All Origins,60,61,us,Deaths,attributable,8.85210387766025,5.75015756965937,13.6586958986471,nvss
+2002,American Indian or Alaska Native,All Origins,60,61,us,YLL,attributable,267.806577779817,173.962036788955,413.222512535486,nvss
+2002,American Indian or Alaska Native,All Origins,62,64,us,age-adjusted Death,attributable,1.15984152818471,0.761090813088219,1.78907887844399,nvss
+2002,American Indian or Alaska Native,All Origins,62,64,us,Deaths,attributable,13.2934675737081,8.72320554021766,20.5054410274692,nvss
+2002,American Indian or Alaska Native,All Origins,62,64,us,YLL,attributable,402.173099970751,263.906959891337,620.360093298393,nvss
+2002,American Indian or Alaska Native,All Origins,65,66,us,age-adjusted Death,attributable,0.549439186421572,0.363930227605242,0.843391187689843,nvss
+2002,American Indian or Alaska Native,All Origins,65,66,us,Deaths,attributable,8.3203864431123,5.51114701469816,12.7718240302407,nvss
+2002,American Indian or Alaska Native,All Origins,65,66,us,YLL,attributable,213.674973433922,141.531189687817,327.991876221509,nvss
+2002,American Indian or Alaska Native,All Origins,67,69,us,age-adjusted Death,attributable,1.05479713313672,0.7083796406423,1.61171124483516,nvss
+2002,American Indian or Alaska Native,All Origins,67,69,us,Deaths,attributable,15.9732323133768,10.7272879405704,24.4068146632862,nvss
+2002,American Indian or Alaska Native,All Origins,67,69,us,YLL,attributable,410.206907281335,275.486358883833,626.788852950631,nvss
+2002,American Indian or Alaska Native,All Origins,70,74,us,age-adjusted Death,attributable,1.59111740985323,1.05216054906299,2.42650015083801,nvss
+2002,American Indian or Alaska Native,All Origins,70,74,us,Deaths,attributable,24.0949536427586,15.9333054226028,36.7455024290015,nvss
+2002,American Indian or Alaska Native,All Origins,70,74,us,YLL,attributable,512.938195029169,339.19139440945,782.245609218531,nvss
+2002,American Indian or Alaska Native,All Origins,75,79,us,age-adjusted Death,attributable,1.00852743739115,0.67850268673814,1.555893790839,nvss
+2002,American Indian or Alaska Native,All Origins,75,79,us,Deaths,attributable,22.4912885817616,15.1313679381928,34.6981697819282,nvss
+2002,American Indian or Alaska Native,All Origins,75,79,us,YLL,attributable,384.680084655188,258.799573810675,593.460656581323,nvss
+2002,American Indian or Alaska Native,All Origins,80,84,us,age-adjusted Death,attributable,0.778706168102393,0.53324650397282,1.13494923681851,nvss
+2002,American Indian or Alaska Native,All Origins,80,84,us,Deaths,attributable,17.3660175200529,11.8919927821623,25.3106359475622,nvss
+2002,American Indian or Alaska Native,All Origins,80,84,us,YLL,attributable,229.903926298978,157.434819409874,335.080543063443,nvss
+2002,American Indian or Alaska Native,All Origins,85,150,us,age-adjusted Death,attributable,0.235048990733235,0.159506323591523,0.338038737641092,nvss
+2002,American Indian or Alaska Native,All Origins,85,150,us,Deaths,attributable,15.1560785094883,10.2850488979833,21.7969097886974,nvss
+2002,American Indian or Alaska Native,All Origins,85,150,us,YLL,attributable,133.052727678928,91.0397115453395,191.053224739515,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,30,34,us,age-adjusted Death,attributable,0.00864098707685855,0.00499212268503931,0.0123828390244775,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,30,34,us,Deaths,attributable,0.0637358767441374,0.0368218715425913,0.0913357576844701,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,30,34,us,YLL,attributable,3.7729266209574,2.17971771117584,5.40673682102835,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,40,44,us,age-adjusted Death,attributable,0.054867078533798,0.0394137794321183,0.0763784156733538,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,40,44,us,Deaths,attributable,0.337407536739352,0.242376787449824,0.469692460051904,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,40,44,us,YLL,attributable,16.6400601276514,11.9533913074019,23.1640076931827,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,50,54,us,age-adjusted Death,attributable,0.141491012295623,0.102371119736363,0.197835306023606,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,50,54,us,Deaths,attributable,1.04936625744916,0.759234081696871,1.46724298105629,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,50,54,us,YLL,attributable,41.5913565436205,30.0920438100256,58.1537909457634,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,55,59,us,age-adjusted Death,attributable,0.0887979925749855,0.0661730998422325,0.118500614508908,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,55,59,us,Deaths,attributable,1.01775389673576,0.758439783046272,1.3581890613144,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,55,59,us,YLL,attributable,35.5347561409276,26.4808347328044,47.4210093833846,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,60,61,us,age-adjusted Death,attributable,0.00810113087265252,0.00494262781529858,0.0130801777052896,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,60,61,us,Deaths,attributable,0.0928507196448837,0.0566496896299403,0.14991782408046,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,60,61,us,YLL,attributable,2.80905351045903,1.71384788540157,4.53552962889501,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,62,64,us,age-adjusted Death,attributable,0.0159038976680769,0.011079410065534,0.0224294156205625,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,62,64,us,Deaths,attributable,0.1822817538505,0.126986122554612,0.257073662223349,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,62,64,us,YLL,attributable,5.51464977874934,3.84176681350329,7.77736215806324,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,65,66,us,age-adjusted Death,attributable,0.0119591931830529,0.00730762778593441,0.0186623984581008,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,65,66,us,Deaths,attributable,0.181103043412135,0.110662451212111,0.282612472798037,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,65,66,us,YLL,attributable,4.65088830362251,2.84191082764609,7.25774133570497,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,67,69,us,age-adjusted Death,attributable,0.0234510809538028,0.0169732816008909,0.0326975887698925,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,67,69,us,Deaths,attributable,0.355129486331609,0.257033472706881,0.495153205389926,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,67,69,us,YLL,attributable,9.12004317063001,6.60084971146214,12.7159776448842,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,70,74,us,age-adjusted Death,attributable,0.0279062273693799,0.0195256752047015,0.0396338445011764,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,70,74,us,Deaths,attributable,0.422595624085035,0.295685432129262,0.600191814900849,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,70,74,us,YLL,attributable,8.99630021535851,6.29461065173641,12.7770034659953,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,75,79,us,age-adjusted Death,attributable,0.0309728019776857,0.0234041493077283,0.042048774776967,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,75,79,us,Deaths,attributable,0.690728086950111,0.521938676703149,0.937734654462822,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,75,79,us,YLL,attributable,11.8138779819468,8.92698582427146,16.0385584379269,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,80,84,us,age-adjusted Death,attributable,0.012630917435727,0.00867979004268464,0.0167786226931158,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,80,84,us,Deaths,attributable,0.281683570091272,0.193569015022649,0.374182031151821,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,80,84,us,YLL,attributable,3.72913125666935,2.56260691388485,4.95369292429853,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,85,150,us,age-adjusted Death,attributable,0.00379397251224302,0.00231370856923894,0.00527352261711042,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,85,150,us,Deaths,attributable,0.244637277867132,0.1491891057012,0.340039421386829,nvss
+2002,American Indian or Alaska Native,Hispanic or Latino,85,150,us,YLL,attributable,2.05541771596251,1.25375257745833,2.85613795583987,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,1,1,us,age-adjusted Death,attributable,0.00177039533619213,0.000865262698383316,0.00292611019387998,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,1,1,us,Deaths,attributable,0.0320051548790329,0.0156421936426761,0.0528981341250452,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,1,1,us,YLL,attributable,2.81646996894661,1.37652102636462,4.6550628090884,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,4,4,us,age-adjusted Death,attributable,0.00219404236852845,0.00133888078155571,0.00345604265826623,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,4,4,us,Deaths,attributable,0.0396638334841911,0.0242042474368566,0.0624782376484703,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,4,4,us,YLL,attributable,3.49043759618572,2.12998613143782,5.49811681008005,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,15,15,us,age-adjusted Death,attributable,0.0169405148927759,0.0115385816916664,0.0257838249008648,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,15,15,us,Deaths,attributable,0.122185747409076,0.0832235759633347,0.185969313005968,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,15,15,us,YLL,attributable,9.04987667201308,6.16408308368827,13.7741052714467,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,16,16,us,age-adjusted Death,attributable,0.0141396856452809,0.00798923250549042,0.0270255104916384,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,16,16,us,Deaths,attributable,0.1019843888827,0.0576234164715093,0.194925137720626,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,16,16,us,YLL,attributable,7.55363175681243,4.26796761115913,14.4374323033015,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,19,19,us,age-adjusted Death,attributable,0.0185868045261295,0.0129647205374554,0.0275902678235314,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,19,19,us,Deaths,attributable,0.134059833325373,0.0935097946458704,0.198998526111644,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,19,19,us,YLL,attributable,9.92934924073751,6.92594780582026,14.7391341249756,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,22,22,us,age-adjusted Death,attributable,0.0157445884723086,0.00914242170379288,0.0291091186226749,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,22,22,us,Deaths,attributable,0.11355996687903,0.0659409490253011,0.209953442256215,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,22,22,us,YLL,attributable,7.84785312408552,4.55701861347525,14.5093717707592,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,23,23,us,age-adjusted Death,attributable,0.0049966617518351,0.00250692590565821,0.00804315773814764,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,23,23,us,Deaths,attributable,0.0360390964833462,0.0180815410523706,0.0580123594816914,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,23,23,us,YLL,attributable,2.49057430799828,1.24957132637497,4.00909307308044,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,24,24,us,age-adjusted Death,attributable,0.0315172536994875,0.0182819088541578,0.0582890303586031,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,24,24,us,Deaths,attributable,0.227322441137579,0.131860732188396,0.420417489385364,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,24,24,us,YLL,attributable,15.7097010406554,9.11257450569052,29.0540302024549,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,25,25,us,age-adjusted Death,attributable,0.0716281193012948,0.0447390732145575,0.11978107931166,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,25,25,us,Deaths,attributable,0.528328643775892,0.329995176556453,0.883504631980443,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,25,25,us,YLL,attributable,33.8919128319547,21.1689596817714,56.6762039621895,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,27,27,us,age-adjusted Death,attributable,0.0324685994287278,0.0204749740286965,0.049938956237566,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,27,27,us,Deaths,attributable,0.239488224300933,0.151023304331436,0.368349487295556,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,27,27,us,YLL,attributable,15.3630020213892,9.68803930336579,23.6293618795572,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,29,29,us,age-adjusted Death,attributable,0.0321729234983202,0.0144608647161632,0.0501427502683997,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,29,29,us,Deaths,attributable,0.2373073201416,0.106663264620701,0.369852671030803,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,29,29,us,YLL,attributable,15.2230985455248,6.84237379419835,23.7257900644106,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,30,30,us,age-adjusted Death,attributable,0.0479754243541951,0.0215390380006753,0.0748972994265657,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,30,30,us,Deaths,attributable,0.353866486107315,0.158871834778558,0.552442099757867,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,30,30,us,YLL,attributable,20.9475785680119,9.40462115493695,32.7025156189725,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,31,31,us,age-adjusted Death,attributable,0.0231269481856098,0.0131943112842333,0.0370917048143123,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,31,31,us,Deaths,attributable,0.170584252228966,0.097321172946529,0.273588226118999,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,31,31,us,YLL,attributable,10.0979526638422,5.76105112143975,16.1954044446377,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,32,32,us,age-adjusted Death,attributable,0.0281124736127427,0.0172465787622093,0.0437939695352959,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,32,32,us,Deaths,attributable,0.207357462430783,0.127210677260479,0.323024096623563,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,32,32,us,YLL,attributable,12.2747898048055,7.53039850119001,19.1218239337056,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,33,33,us,age-adjusted Death,attributable,0.0237426527069873,0.0153204915578165,0.0359077859411635,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,33,33,us,Deaths,attributable,0.17512568564812,0.113003867833996,0.264855646530245,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,33,33,us,YLL,attributable,10.3667886149536,6.68940827367299,15.6784682435041,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,34,34,us,age-adjusted Death,attributable,0.0340454791713447,0.0193448118989249,0.0548439566499858,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,34,34,us,Deaths,attributable,0.251119281264889,0.142687234208506,0.404528745398275,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,34,34,us,YLL,attributable,14.8653265589092,8.44655305483935,23.9465957075117,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,35,35,us,age-adjusted Death,attributable,0.0466836811502228,0.0294990164368917,0.069211084376643,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,35,35,us,Deaths,attributable,0.287083371007609,0.181405511978811,0.425616637856843,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,35,35,us,YLL,attributable,15.5750232097446,9.84172315355282,23.0908150124031,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,36,36,us,age-adjusted Death,attributable,0.0479313134863449,0.0313088223421993,0.0825631161482783,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,36,36,us,Deaths,attributable,0.294755741480697,0.192534993788381,0.507725550358133,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,36,36,us,YLL,attributable,15.991269360724,10.4455266301808,27.5454381187362,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,37,37,us,age-adjusted Death,attributable,0.0914575042799799,0.0591418025688812,0.152582483874567,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,37,37,us,Deaths,attributable,0.562421985278986,0.363695142084138,0.938312762579043,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,37,37,us,YLL,attributable,30.5128626699826,19.7314120262357,50.9059197816819,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,38,38,us,age-adjusted Death,attributable,0.0534307322895027,0.0333965196240631,0.0883119608508916,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,38,38,us,Deaths,attributable,0.328574661704936,0.205373380962526,0.543078326231027,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,38,38,us,YLL,attributable,17.8260341733716,11.1420426893004,29.4634186092698,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,39,39,us,age-adjusted Death,attributable,0.0968606944968267,0.0634078462637574,0.166420868414049,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,39,39,us,Deaths,attributable,0.595649143537054,0.389929367291225,1.02341252303088,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,39,39,us,YLL,attributable,32.3155228493127,21.1546873105405,55.522804206332,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,40,40,us,age-adjusted Death,attributable,0.16288638878722,0.106683852897462,0.270422213455602,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,40,40,us,Deaths,attributable,1.00167708355766,0.656057092484385,1.66297341429346,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,40,40,us,YLL,attributable,49.4001024990915,32.3550255326561,82.0135136041896,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,41,41,us,age-adjusted Death,attributable,0.17781266905044,0.108902636914907,0.280687443167219,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,41,41,us,Deaths,attributable,1.09346690708895,0.669701603362097,1.72609990040529,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,41,41,us,YLL,attributable,53.9269373096815,33.0279372394058,85.1267473354196,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,42,42,us,age-adjusted Death,attributable,0.230253709422516,0.145762727049653,0.358101202169917,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,42,42,us,Deaths,attributable,1.41595541438374,0.89637436503819,2.20215925025283,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,42,42,us,YLL,attributable,69.8312297973958,44.206846934315,108.604753435542,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,43,43,us,age-adjusted Death,attributable,0.24083933163163,0.151666214017895,0.384254119469268,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,43,43,us,Deaths,attributable,1.48105216839135,0.932678120393063,2.36298777694551,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,43,43,us,YLL,attributable,73.041632004974,45.9972535085206,116.536397109747,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,44,44,us,age-adjusted Death,attributable,0.272165573679998,0.179826698934932,0.420856676796032,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,44,44,us,Deaths,attributable,1.67369428543663,1.10585227333051,2.58807682917884,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,44,44,us,YLL,attributable,82.5422390208388,54.5377512854279,127.637202383495,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,45,45,us,age-adjusted Death,attributable,0.179303813556908,0.119867332677879,0.27102288868122,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,45,45,us,Deaths,attributable,1.32980440754395,0.888994518039018,2.01003773854031,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,45,45,us,YLL,attributable,59.0876255357993,39.5009784050003,89.3126511943596,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,46,46,us,age-adjusted Death,attributable,0.218863354447137,0.142362401388216,0.326893986995328,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,46,46,us,Deaths,attributable,1.62319722944032,1.05582890335183,2.42440501449811,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,46,46,us,YLL,attributable,72.1240428440577,46.9139841297035,107.72436520071,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,47,47,us,age-adjusted Death,attributable,0.275187396973382,0.171880407520954,0.421145735041137,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,47,47,us,Deaths,attributable,2.04092376027243,1.27474881296528,3.12342188136615,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,47,47,us,YLL,attributable,90.6850196991148,56.6413226527131,138.784005730095,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,48,48,us,age-adjusted Death,attributable,0.222857776646066,0.146625205444296,0.331337757614387,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,48,48,us,Deaths,attributable,1.65282180986812,1.08744393434208,2.45736218165543,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,48,48,us,YLL,attributable,73.4403613229576,48.3187449365237,109.18876157409,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,49,49,us,age-adjusted Death,attributable,0.315569306648185,0.218372154776893,0.460743764692627,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,49,49,us,Deaths,attributable,2.34041566959287,1.61955425345718,3.41710015466118,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,49,49,us,YLL,attributable,103.992439714071,71.9621733243697,151.833106591857,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,50,50,us,age-adjusted Death,attributable,0.461231343147101,0.301787849460693,0.686139633450159,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,50,50,us,Deaths,attributable,3.42071627394454,2.23820567111736,5.08874569175309,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,50,50,us,YLL,attributable,135.579192845435,88.7106950738839,201.691101579726,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,51,51,us,age-adjusted Death,attributable,0.319847434418159,0.192903286736453,0.49302531770395,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,51,51,us,Deaths,attributable,2.37214434870846,1.43066472398499,3.65651587385444,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,51,51,us,YLL,attributable,94.0193194508615,56.7040213150011,144.925048177715,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,52,52,us,age-adjusted Death,attributable,0.418140839021198,0.243080554247895,0.660086705688702,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,52,52,us,Deaths,attributable,3.10113610900996,1.80280377764796,4.89552449093567,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,52,52,us,YLL,attributable,122.912716779801,71.4536551581226,194.0328299344,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,53,53,us,age-adjusted Death,attributable,0.335329135755372,0.201368992163242,0.521502142135409,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,53,53,us,Deaths,attributable,2.48696418586697,1.49345051847642,3.86771387288523,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,53,53,us,YLL,attributable,98.5701735989154,59.1925198216285,153.295825507969,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,54,54,us,age-adjusted Death,attributable,0.417853460244432,0.256156539589438,0.644058315232873,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,54,54,us,Deaths,attributable,3.09900476803958,1.89978165332847,4.77665014101989,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,54,54,us,YLL,attributable,122.828241639129,75.2973478399092,189.321276236022,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,55,55,us,age-adjusted Death,attributable,0.34757788089541,0.208698743977549,0.541603347045938,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,55,55,us,Deaths,attributable,3.98374706952679,2.39199055933211,6.20756056479154,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,55,55,us,YLL,attributable,139.092054667439,83.5160656126046,216.736238109611,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,56,56,us,age-adjusted Death,attributable,0.27510928744888,0.179636799707903,0.422749969947521,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,56,56,us,Deaths,attributable,3.15315179104814,2.05889849081297,4.84532833212061,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,56,56,us,YLL,attributable,110.091919401725,71.8861956948694,169.174061879653,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,57,57,us,age-adjusted Death,attributable,0.255774801139213,0.172306922688846,0.387556547801448,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,57,57,us,Deaths,attributable,2.93155051141976,1.97488745990549,4.44196062650064,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,57,57,us,YLL,attributable,102.354737105133,68.9529605522481,155.090526458857,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,58,58,us,age-adjusted Death,attributable,0.356417107816716,0.236270378377811,0.537157020453055,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,58,58,us,Deaths,attributable,4.08505744133159,2.70800151336966,6.15659920761622,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,58,58,us,YLL,attributable,142.629294238004,94.5495504517216,214.956928390784,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,59,59,us,age-adjusted Death,attributable,0.311999908396643,0.212950484222992,0.47322175230077,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,59,59,us,Deaths,attributable,3.57597185864012,2.44072167449842,5.42380822424026,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,59,59,us,YLL,attributable,124.85463172497,85.2175066971969,189.371618444979,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,60,60,us,age-adjusted Death,attributable,0.410558962410668,0.274845642703295,0.622377373006795,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,60,60,us,Deaths,attributable,4.7056016889165,3.15013003954913,7.13334815629905,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,60,60,us,YLL,attributable,142.360629983563,95.3022645364658,215.808307748344,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,61,61,us,age-adjusted Death,attributable,0.346989033207275,0.21854118816722,0.548907723739708,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,61,61,us,Deaths,attributable,3.97699802023182,2.50479925733261,6.2912793249542,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,61,61,us,YLL,attributable,120.317863906146,75.778789585214,190.332830382265,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,62,62,us,age-adjusted Death,attributable,0.32324283124786,0.208363348473755,0.503653805601608,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,62,62,us,Deaths,attributable,3.70483207507872,2.38814643998847,5.77260373114818,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,62,62,us,YLL,attributable,112.083908298869,72.2496407825041,174.641110348833,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,63,63,us,age-adjusted Death,attributable,0.37072730146091,0.233904459651408,0.586054662698117,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,63,63,us,Deaths,attributable,4.24907303359988,2.68088465032658,6.71703716902709,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,63,63,us,YLL,attributable,128.549068514282,81.1059781436014,203.213469014605,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,64,64,us,age-adjusted Death,attributable,0.376148607778761,0.23909947516636,0.600336663193088,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,64,64,us,Deaths,attributable,4.31120907373312,2.74042706936809,6.88072962687926,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,64,64,us,YLL,attributable,130.428897365689,82.9073410395433,208.165728675315,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,65,65,us,age-adjusted Death,attributable,0.240813808141519,0.147757615795076,0.387601341348975,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,65,65,us,Deaths,attributable,3.64674379638727,2.23755511749148,5.86960854921201,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,65,65,us,YLL,attributable,93.6516457668159,57.4624187897802,150.736802839083,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,66,66,us,age-adjusted Death,attributable,0.265913304404939,0.175992463646563,0.411332754846297,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,66,66,us,Deaths,attributable,4.02683592232252,2.66512717840851,6.22898322800952,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,66,66,us,YLL,attributable,103.412751872517,68.4428521364986,159.965866353128,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,67,67,us,age-adjusted Death,attributable,0.311002453916847,0.19918425623619,0.488578865294515,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,67,67,us,Deaths,attributable,4.7096396931524,3.016330153047,7.39875325177219,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,67,67,us,YLL,attributable,120.947764048956,77.4620589712862,190.006607905246,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,68,68,us,age-adjusted Death,attributable,0.373290310369469,0.243426861160977,0.588452128214045,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,68,68,us,Deaths,attributable,5.65289064650043,3.68631434660564,8.91117566968734,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,68,68,us,YLL,attributable,145.171293061242,94.66785292552,228.846969729595,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,69,69,us,age-adjusted Death,attributable,0.280001867769411,0.187313894835713,0.424587681346181,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,69,69,us,Deaths,attributable,4.2401849052812,2.83657232631712,6.42970810071538,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,69,69,us,YLL,attributable,108.891744774774,72.8457170364904,165.120660801222,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,70,70,us,age-adjusted Death,attributable,0.2943826979629,0.193657219565125,0.4648504073323,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,70,70,us,Deaths,attributable,4.45795980656172,2.93263193470909,7.03942332987382,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,70,70,us,YLL,attributable,94.9019404890024,62.43045550439,149.856652575751,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,71,71,us,age-adjusted Death,attributable,0.31515343223852,0.202713811603742,0.492305280974036,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,71,71,us,Deaths,attributable,4.77249968677287,3.06977968004863,7.4551839164709,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,71,71,us,YLL,attributable,101.597928404658,65.3500841531849,158.707447145238,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,72,72,us,age-adjusted Death,attributable,0.324348909436722,0.208099432873086,0.497983002603171,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,72,72,us,Deaths,attributable,4.9117506279301,3.15133638605832,7.54116401988962,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,72,72,us,YLL,attributable,104.562330306912,67.0862796318472,160.537808793154,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,73,73,us,age-adjusted Death,attributable,0.310872127166263,0.200450156349443,0.481847313378402,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,73,73,us,Deaths,attributable,4.7076661008868,3.03550020571332,7.29681455739418,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,73,73,us,YLL,attributable,100.217738053818,64.6203358435264,155.336048536336,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,74,74,us,age-adjusted Death,attributable,0.25242743333162,0.159387647785853,0.395336024315339,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,74,74,us,Deaths,attributable,3.822613759752,2.41367353587233,5.98673807489119,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,74,74,us,YLL,attributable,81.3765666990661,51.3827652559981,127.446878204307,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,75,75,us,age-adjusted Death,attributable,0.21159286280186,0.132582131110473,0.330474254644297,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,75,75,us,Deaths,attributable,4.71875723225564,2.95672964466319,7.36994508476096,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,75,75,us,YLL,attributable,80.7073336404281,50.5704689118554,126.051964021702,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,76,76,us,age-adjusted Death,attributable,0.208352174327976,0.136727769167952,0.329991767219908,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,76,76,us,Deaths,attributable,4.64648625878738,3.04918200485627,7.35918507616161,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,76,76,us,YLL,attributable,79.4712459840532,52.1517292125428,125.867930056559,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,77,77,us,age-adjusted Death,attributable,0.195909260491546,0.131192917043557,0.30567115460156,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,77,77,us,Deaths,attributable,4.36899537899824,2.92574861893952,6.81680824375786,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,77,77,us,YLL,attributable,74.7251766452385,50.0405844832792,116.591379936026,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,78,78,us,age-adjusted Death,attributable,0.163349863513026,0.107637788679409,0.260431924105705,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,78,78,us,Deaths,attributable,3.64288445098389,2.40044294060424,5.80792286238326,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,78,78,us,YLL,attributable,62.3061277213756,41.0560110971314,99.335893995159,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,79,79,us,age-adjusted Death,attributable,0.164817624969097,0.108464763522782,0.258978736872376,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,79,79,us,Deaths,attributable,3.67561717123894,2.41888540350864,5.77551516357768,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,79,79,us,YLL,attributable,62.8659722831015,41.3714420323367,98.7816084425687,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,80,80,us,age-adjusted Death,attributable,0.179387650094344,0.119166796826869,0.280338868662722,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,80,80,us,Deaths,attributable,4.00054500917973,2.6575527025129,6.25186996606464,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,80,80,us,YLL,attributable,52.9621143065276,35.182608790338,82.766785778559,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,81,81,us,age-adjusted Death,attributable,0.160381261485739,0.109133486478755,0.235739434299404,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,81,81,us,Deaths,attributable,3.57668130925001,2.43379867252484,5.25725275322655,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,81,81,us,YLL,attributable,47.3506994431641,32.2203907711477,69.599322246291,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,82,82,us,age-adjusted Death,attributable,0.134574029264171,0.0904815871617894,0.203015027085568,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,82,82,us,Deaths,attributable,3.00115119884142,2.01784047983451,4.52746191261502,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,82,82,us,YLL,attributable,39.7314147146171,26.7136347422938,59.9378221677681,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,83,83,us,age-adjusted Death,attributable,0.129446541488903,0.0868177175429905,0.190389449670478,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,83,83,us,Deaths,attributable,2.88680249301808,1.93613209405621,4.24589743094985,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,83,83,us,YLL,attributable,38.2175836704162,25.6319199115739,56.2102674899952,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,84,84,us,age-adjusted Death,attributable,0.121306633877247,0.0789174473531236,0.181346822458674,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,84,84,us,Deaths,attributable,2.70527345936459,1.75994724263182,4.04423674169375,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,84,84,us,YLL,attributable,35.8143707561136,23.299457154923,53.5405371280051,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,85,85,us,age-adjusted Death,attributable,0.0412683884959899,0.0274903906218584,0.0604436194035627,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,85,85,us,Deaths,attributable,2.66100668653858,1.77259437371612,3.89743533133364,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,85,85,us,YLL,attributable,26.5839390900164,17.7085390655187,38.9360853467922,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,86,86,us,age-adjusted Death,attributable,0.0359587904916219,0.0239229972248407,0.0538882534608405,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,86,86,us,Deaths,attributable,2.31864110582714,1.54256703247647,3.47474200014175,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,86,86,us,YLL,attributable,23.1636448870017,15.4105242354591,34.7133023575551,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,87,87,us,age-adjusted Death,attributable,0.0254148253662544,0.0163295715036414,0.0395881743826669,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,87,87,us,Deaths,attributable,1.63876087003942,1.05293907862969,2.55266562566087,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,87,87,us,YLL,attributable,16.371518107269,10.5190522344009,25.5015922556808,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,88,88,us,age-adjusted Death,attributable,0.0209459794565154,0.0136687131462622,0.0327288050385496,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,88,88,us,Deaths,attributable,1.35060741214316,0.88136557796813,2.11037000047775,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,88,88,us,YLL,attributable,13.4928128367999,8.80500186612444,21.0829787966731,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,89,89,us,age-adjusted Death,attributable,0.0259360439467898,0.0172235912376048,0.0397823679140188,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,89,89,us,Deaths,attributable,1.67236930929524,1.11058592593038,2.56518732336322,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,89,89,us,YLL,attributable,16.7072725067626,11.0949546870801,25.6266862852098,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,90,90,us,age-adjusted Death,attributable,0.0218472711640417,0.0139260525868409,0.0336927688954339,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,90,90,us,Deaths,attributable,1.40872315999898,0.897958956024478,2.17252688041019,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,90,90,us,YLL,attributable,10.7312655142618,6.84040431195505,16.549712145408,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,91,91,us,age-adjusted Death,attributable,0.0157138302646358,0.0111843861241253,0.0225206735857263,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,91,91,us,Deaths,attributable,1.01323577026497,0.721174907617695,1.45214449075941,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,91,91,us,YLL,attributable,7.71855137191666,5.49371206183214,11.0620372674379,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,92,92,us,age-adjusted Death,attributable,0.0137520851878277,0.00928985499511933,0.0200891961134538,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,92,92,us,Deaths,attributable,0.886741449625872,0.599014576529649,1.29536158627275,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,92,92,us,YLL,attributable,6.75495243397822,4.56312826407808,9.86770822968383,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,93,93,us,age-adjusted Death,attributable,0.0105611370640349,0.00688110316746233,0.015515280482147,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,93,93,us,Deaths,attributable,0.680987491129637,0.443697033170034,1.00043317927296,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,93,93,us,YLL,attributable,5.18757537798158,3.37996194429095,7.62102475554026,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,94,94,us,age-adjusted Death,attributable,0.010542397781099,0.00720204712000345,0.0156645572239495,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,94,94,us,Deaths,attributable,0.679779172631857,0.464391662518089,1.01005861953263,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,94,94,us,YLL,attributable,5.17837074005579,3.53760793788232,7.69434871162423,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,95,95,us,age-adjusted Death,attributable,0.00589022220853137,0.00363643150842998,0.00906093696123432,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,95,95,us,Deaths,attributable,0.379804524802879,0.234478953788371,0.58425382523701,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,95,95,us,YLL,attributable,2.24933877533181,1.3886685605685,3.46016094574863,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,96,96,us,age-adjusted Death,attributable,0.00633134563159595,0.00417630212462846,0.00971488362046739,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,96,96,us,Deaths,attributable,0.408248387554575,0.269290085793428,0.626420638535955,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,96,96,us,YLL,attributable,2.4177935441127,1.59483258421411,3.70988795527997,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,97,97,us,age-adjusted Death,attributable,0.00222391024286613,0.00125926406144606,0.00353919870249243,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,97,97,us,Deaths,attributable,0.143398863929554,0.0811979873638954,0.228209332991914,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,97,97,us,YLL,attributable,0.849259563568079,0.480883637579895,1.35153761492899,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,98,98,us,age-adjusted Death,attributable,0.003099612387508,0.00209283958380618,0.00475157174317063,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,98,98,us,Deaths,attributable,0.199864583751267,0.134947361147916,0.306383763479726,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,98,98,us,YLL,attributable,1.18366983195001,0.799206729346506,1.81451466299596,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,99,99,us,age-adjusted Death,attributable,0.00146551191211472,0.000931037147610134,0.00226902298820238,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,99,99,us,Deaths,attributable,0.0944969537087246,0.0600337489661638,0.146307756701065,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,99,99,us,YLL,attributable,0.559644891640211,0.355541418176133,0.866487071080367,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,100,150,us,age-adjusted Death,attributable,0.00530312955731858,0.00360441941621127,0.00777952820154538,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,100,150,us,Deaths,attributable,0.341948491954717,0.232414797795162,0.501627936463749,nvss
+2002,American Indian or Alaska Native,Not Hispanic or Latino,100,150,us,YLL,attributable,2.02514175553643,1.37644388758371,2.97082076329449,nvss
+2002,Asian or Pacific Islander,All Origins,0,4,us,age-adjusted Death,attributable,0.0323380772809571,0.0246240295250062,0.0415196109050942,nvss
+2002,Asian or Pacific Islander,All Origins,0,4,us,Deaths,attributable,0.58460681109411,0.445152482376498,0.750590306226672,nvss
+2002,Asian or Pacific Islander,All Origins,0,4,us,YLL,attributable,51.445697835597,39.1736457128287,66.0523301468162,nvss
+2002,Asian or Pacific Islander,All Origins,5,9,us,age-adjusted Death,attributable,0.0416226640997226,0.0322023163402631,0.0547295693014025,nvss
+2002,Asian or Pacific Islander,All Origins,5,9,us,Deaths,attributable,0.285941735879401,0.221225297150881,0.375984295778879,nvss
+2002,Asian or Pacific Islander,All Origins,5,9,us,YLL,attributable,24.0277071014123,18.5895795414985,31.5939906635941,nvss
+2002,Asian or Pacific Islander,All Origins,10,14,us,age-adjusted Death,attributable,0.0416230956193694,0.0322063457268839,0.0547154808170817,nvss
+2002,Asian or Pacific Islander,All Origins,10,14,us,Deaths,attributable,0.285944700357518,0.221252978459365,0.375887509911137,nvss
+2002,Asian or Pacific Islander,All Origins,10,14,us,YLL,attributable,22.6028805073082,17.489237001946,29.7125299405386,nvss
+2002,Asian or Pacific Islander,All Origins,15,17,us,age-adjusted Death,attributable,0.0259089035943619,0.0171368300489865,0.0408684661685699,nvss
+2002,Asian or Pacific Islander,All Origins,15,17,us,Deaths,attributable,0.186871459944631,0.123601696938423,0.294769321704542,nvss
+2002,Asian or Pacific Islander,All Origins,15,17,us,YLL,attributable,13.8409241820649,9.15475116749316,21.8325464686801,nvss
+2002,Asian or Pacific Islander,All Origins,18,19,us,age-adjusted Death,attributable,0.00900860364506845,0.0052314938949784,0.0128532336412894,nvss
+2002,Asian or Pacific Islander,All Origins,18,19,us,Deaths,attributable,0.0649757682367851,0.0377328549734069,0.0927056803777633,nvss
+2002,Asian or Pacific Islander,All Origins,18,19,us,YLL,attributable,4.81253093491764,2.79474235934431,6.86638983681908,nvss
+2002,Asian or Pacific Islander,All Origins,21,21,us,age-adjusted Death,attributable,0.0261148597594016,0.0172740328010672,0.0411378612741214,nvss
+2002,Asian or Pacific Islander,All Origins,21,21,us,Deaths,attributable,0.188356946549859,0.12459129028406,0.296712370220392,nvss
+2002,Asian or Pacific Islander,All Origins,21,21,us,YLL,attributable,13.0168904768982,8.61020105554614,20.50507027771,nvss
+2002,Asian or Pacific Islander,All Origins,22,24,us,age-adjusted Death,attributable,0.0523161806012971,0.0346100295101153,0.0823806199276308,nvss
+2002,Asian or Pacific Islander,All Origins,22,24,us,Deaths,attributable,0.377337505312994,0.249629503607766,0.594181326930801,nvss
+2002,Asian or Pacific Islander,All Origins,22,24,us,YLL,attributable,26.0768772771811,17.2512878754095,41.062426407666,nvss
+2002,Asian or Pacific Islander,All Origins,25,29,us,age-adjusted Death,attributable,0.378880667256975,0.279966052896749,0.526017985931082,nvss
+2002,Asian or Pacific Islander,All Origins,25,29,us,Deaths,attributable,2.79462187528305,2.06502818268963,3.87990598970914,nvss
+2002,Asian or Pacific Islander,All Origins,25,29,us,YLL,attributable,179.273037930428,132.470113039971,248.893254508419,nvss
+2002,Asian or Pacific Islander,All Origins,30,34,us,age-adjusted Death,attributable,0.644340238135799,0.469670181894149,0.840199194649984,nvss
+2002,Asian or Pacific Islander,All Origins,30,34,us,Deaths,attributable,4.75265032036612,3.464284873631,6.1973049877773,nvss
+2002,Asian or Pacific Islander,All Origins,30,34,us,YLL,attributable,281.339205323797,205.072767332799,366.857383329677,nvss
+2002,Asian or Pacific Islander,All Origins,35,39,us,age-adjusted Death,attributable,2.57936675080551,1.92727842198401,3.69136757675357,nvss
+2002,Asian or Pacific Islander,All Origins,35,39,us,Deaths,attributable,15.8619304142569,11.8518842692154,22.7002288905305,nvss
+2002,Asian or Pacific Islander,All Origins,35,39,us,YLL,attributable,860.551182349242,642.995698163738,1231.54674753752,nvss
+2002,Asian or Pacific Islander,All Origins,40,44,us,age-adjusted Death,attributable,4.64694858756245,3.45260822432511,6.20035812270747,nvss
+2002,Asian or Pacific Islander,All Origins,40,44,us,Deaths,attributable,28.5766167651522,21.2319676466455,38.1293777068129,nvss
+2002,Asian or Pacific Islander,All Origins,40,44,us,YLL,attributable,1409.32424276083,1047.10529492842,1880.44150940656,nvss
+2002,Asian or Pacific Islander,All Origins,45,49,us,age-adjusted Death,attributable,6.18111529247496,4.45601405361287,8.14007104068889,nvss
+2002,Asian or Pacific Islander,All Origins,45,49,us,Deaths,attributable,45.8421613930803,33.0479704308771,60.3707312906283,nvss
+2002,Asian or Pacific Islander,All Origins,45,49,us,YLL,attributable,2036.91945280041,1468.43106434304,2682.47205648182,nvss
+2002,Asian or Pacific Islander,All Origins,50,54,us,age-adjusted Death,attributable,8.43311297035775,5.84624981612802,11.5789757514279,nvss
+2002,Asian or Pacific Islander,All Origins,50,54,us,Deaths,attributable,62.5440729610504,43.3586359312019,85.8753234727294,nvss
+2002,Asian or Pacific Islander,All Origins,50,54,us,YLL,attributable,2478.91793713339,1718.50816953395,3403.64593534309,nvss
+2002,Asian or Pacific Islander,All Origins,55,59,us,age-adjusted Death,attributable,6.33360512400224,4.74490889823768,8.54658164287253,nvss
+2002,Asian or Pacific Islander,All Origins,55,59,us,Deaths,attributable,72.5923087720194,54.3835438257187,97.9562321012888,nvss
+2002,Asian or Pacific Islander,All Origins,55,59,us,YLL,attributable,2534.5518186607,1898.79495831407,3420.13018212707,nvss
+2002,Asian or Pacific Islander,All Origins,60,61,us,age-adjusted Death,attributable,2.68435901124294,1.97644196061884,3.70461232097813,nvss
+2002,Asian or Pacific Islander,All Origins,60,61,us,Deaths,attributable,30.7666509648086,22.6528939310564,42.4602349246452,nvss
+2002,Asian or Pacific Islander,All Origins,60,61,us,YLL,attributable,930.79697420014,685.327927047428,1284.56809409944,nvss
+2002,Asian or Pacific Islander,All Origins,62,64,us,age-adjusted Death,attributable,4.62569834974121,3.40215777614259,6.40404223402126,nvss
+2002,Asian or Pacific Islander,All Origins,62,64,us,Deaths,attributable,53.0172178903453,38.9936667887511,73.3996203014566,nvss
+2002,Asian or Pacific Islander,All Origins,62,64,us,YLL,attributable,1603.95312604184,1179.69248916475,2220.59087816158,nvss
+2002,Asian or Pacific Islander,All Origins,65,66,us,age-adjusted Death,attributable,2.65950881612445,1.93576046152111,3.81021882389233,nvss
+2002,Asian or Pacific Islander,All Origins,65,66,us,Deaths,attributable,40.2740496962681,29.3140269190685,57.6997306181952,nvss
+2002,Asian or Pacific Islander,All Origins,65,66,us,YLL,attributable,1034.27365516782,752.81045730254,1481.78074315206,nvss
+2002,Asian or Pacific Islander,All Origins,67,69,us,age-adjusted Death,attributable,4.77287628076173,3.52565331742827,6.81998116201389,nvss
+2002,Asian or Pacific Islander,All Origins,67,69,us,Deaths,attributable,72.2776534373941,53.3904366313912,103.277815279747,nvss
+2002,Asian or Pacific Islander,All Origins,67,69,us,YLL,attributable,1856.15485334651,1371.11421528766,2652.26676514304,nvss
+2002,Asian or Pacific Islander,All Origins,70,74,us,age-adjusted Death,attributable,8.57314500098363,6.08875743252822,11.8920177995295,nvss
+2002,Asian or Pacific Islander,All Origins,70,74,us,Deaths,attributable,129.826705491459,92.2045897871875,180.085778600685,nvss
+2002,Asian or Pacific Islander,All Origins,70,74,us,YLL,attributable,2763.77688742248,1962.86975937215,3833.7020936174,nvss
+2002,Asian or Pacific Islander,All Origins,75,79,us,age-adjusted Death,attributable,6.60187471780489,4.80815083959417,9.35218676542097,nvss
+2002,Asian or Pacific Islander,All Origins,75,79,us,Deaths,attributable,147.229181828593,107.227135394245,208.564213142012,nvss
+2002,Asian or Pacific Islander,All Origins,75,79,us,YLL,attributable,2518.13647420201,1833.9608853821,3567.1810832827,nvss
+2002,Asian or Pacific Islander,All Origins,80,84,us,age-adjusted Death,attributable,5.95577241002347,4.46917715342939,7.97831066968302,nvss
+2002,Asian or Pacific Islander,All Origins,80,84,us,Deaths,attributable,132.820378538873,99.6676434910036,177.925241311202,nvss
+2002,Asian or Pacific Islander,All Origins,80,84,us,YLL,attributable,1758.37243532336,1319.47250065188,2355.50329935484,nvss
+2002,Asian or Pacific Islander,All Origins,85,150,us,age-adjusted Death,attributable,2.11683484781128,1.62602942807942,2.73289475633859,nvss
+2002,Asian or Pacific Islander,All Origins,85,150,us,Deaths,attributable,136.494587979151,104.847204805399,176.218444316765,nvss
+2002,Asian or Pacific Islander,All Origins,85,150,us,YLL,attributable,1187.41089429661,913.805534418719,1532.08898199354,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,22,24,us,age-adjusted Death,attributable,0.0247156613979856,0.0161843791051046,0.0395427340366614,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,22,24,us,Deaths,attributable,0.178265039742701,0.116732016106093,0.285207299981664,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,22,24,us,YLL,attributable,12.3194633417802,8.06706573149038,19.7099828547626,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,30,34,us,age-adjusted Death,attributable,0.0360795169721329,0.0231802201714305,0.0514634552225862,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,30,34,us,Deaths,attributable,0.266122333741515,0.17097718612552,0.379594184057808,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,30,34,us,YLL,attributable,15.7534514106614,10.1212128876646,22.4705625050344,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,35,39,us,age-adjusted Death,attributable,0.0483142397619308,0.0334036554789141,0.070569816565466,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,35,39,us,Deaths,attributable,0.297110563622697,0.20541726321892,0.433972221809375,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,35,39,us,YLL,attributable,16.1190246165848,11.1444234164023,23.5441272803164,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,40,44,us,age-adjusted Death,attributable,0.0521147067302655,0.0371585442772762,0.0733254819339583,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,40,44,us,Deaths,attributable,0.32048170406815,0.228508118683461,0.450918308404603,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,40,44,us,YLL,attributable,15.8053221840916,11.2694247179388,22.238115476086,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,45,49,us,age-adjusted Death,attributable,0.112112162690581,0.0778875492469059,0.152778745635854,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,45,49,us,Deaths,attributable,0.831478400418418,0.577651998731523,1.13308158535688,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,45,49,us,YLL,attributable,36.9453463128224,25.666996437539,50.346577314126,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,50,54,us,age-adjusted Death,attributable,0.182694798118364,0.123090494531727,0.259573695005529,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,50,54,us,Deaths,attributable,1.35495360056046,0.912899056121328,1.92512494214892,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,50,54,us,YLL,attributable,53.7032307842265,36.1825147911393,76.3018224490714,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,55,59,us,age-adjusted Death,attributable,0.127204116021014,0.0895096683312034,0.181166862972872,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,55,59,us,Deaths,attributable,1.45794382290669,1.02591073399186,2.0764352369152,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,55,59,us,YLL,attributable,50.9039350085749,35.8195511426531,72.4984890972791,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,60,61,us,age-adjusted Death,attributable,0.035889110622766,0.024475442010649,0.0501398779520168,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,60,61,us,Deaths,attributable,0.411341305445122,0.280524094726948,0.574675785879146,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,60,61,us,YLL,attributable,12.4444887716182,8.48681836904315,17.3859183846247,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,62,64,us,age-adjusted Death,attributable,0.0303080173046555,0.0211200470708275,0.0429934485977765,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,62,64,us,Deaths,attributable,0.347373874337305,0.242066397924772,0.492767331508594,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,62,64,us,YLL,attributable,10.5092540465057,7.32334081475502,14.9079060206295,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,65,66,us,age-adjusted Death,attributable,0.0285859529178152,0.0203472932009329,0.0426799749051475,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,65,66,us,Deaths,attributable,0.432888991172795,0.308127535652645,0.646320636330973,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,65,66,us,YLL,attributable,11.1169768761467,7.9129909944677,16.5980926176979,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,67,69,us,age-adjusted Death,attributable,0.0901264055037446,0.0641211082256398,0.133282665641482,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,67,69,us,Deaths,attributable,1.36482169647148,0.971012648501919,2.01835491845385,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,67,69,us,YLL,attributable,35.0498431448453,24.936474199994,51.8331614197875,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,70,74,us,age-adjusted Death,attributable,0.0500026662904191,0.0347796388095739,0.0716943887842653,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,70,74,us,Deaths,attributable,0.757211201901883,0.52668255632114,1.0856979902961,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,70,74,us,YLL,attributable,16.119663599193,11.2121236586776,23.1125560873051,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,75,79,us,age-adjusted Death,attributable,0.0665616124669055,0.0481120528397858,0.0897601077439901,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,75,79,us,Deaths,attributable,1.48439832071711,1.07295252916446,2.00175068278,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,75,79,us,YLL,attributable,25.3884284841965,18.351259344237,34.2369722086453,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,80,84,us,age-adjusted Death,attributable,0.0338950086981799,0.0244630126385869,0.0469793389870683,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,80,84,us,Deaths,attributable,0.755896561509626,0.545552511944549,1.04769174477973,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,80,84,us,YLL,attributable,10.0071065324153,7.22241955321602,13.8701026529399,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,85,150,us,age-adjusted Death,attributable,0.0209027821319638,0.0155711098740777,0.0275403357793166,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,85,150,us,Deaths,attributable,1.34782202667836,1.00403308686924,1.77581486287987,nvss
+2002,Asian or Pacific Islander,Hispanic or Latino,85,150,us,YLL,attributable,11.149891671085,8.31271182320515,14.6575921569339,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,1,1,us,age-adjusted Death,attributable,0.0287078741839411,0.0220976214780364,0.0369561961947464,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,1,1,us,Deaths,attributable,0.518980106150208,0.399480151921304,0.668093029151781,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,1,1,us,YLL,attributable,45.6705142961319,35.1544573156767,58.7925276468909,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,2,2,us,age-adjusted Death,attributable,0.00354599389986858,0.00205118063324697,0.0050742647215362,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,2,2,us,Deaths,attributable,0.0641043735516729,0.0370811832306011,0.0917324085699886,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,2,2,us,YLL,attributable,5.64121759975305,3.26316305534937,8.07249878630554,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,7,7,us,age-adjusted Death,attributable,0.0323573461360539,0.0253653339827891,0.0421959452972369,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,7,7,us,Deaths,attributable,0.222290329624901,0.174256208416217,0.289880095528162,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,7,7,us,YLL,attributable,18.6790743060894,14.6427632312949,24.3586477799719,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,9,9,us,age-adjusted Death,attributable,0.00933205946105113,0.00540653036278127,0.0133474907599419,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,9,9,us,Deaths,attributable,0.064109910774321,0.0371420885821835,0.0916953481975095,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,9,9,us,YLL,attributable,5.38716096706061,3.12105269572754,7.70516749601398,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,11,11,us,age-adjusted Death,attributable,0.0324624927212511,0.025465975781361,0.0422888367007896,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,11,11,us,Deaths,attributable,0.223012671592754,0.174947603145702,0.290518246154861,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,11,11,us,YLL,attributable,17.6283342944428,13.8289668037148,22.9644025394452,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,12,12,us,age-adjusted Death,attributable,0.00929534752363378,0.00538211563483032,0.013304387039597,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,12,12,us,Deaths,attributable,0.0638577050268113,0.0369743629009394,0.0913992318175313,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,12,12,us,YLL,attributable,5.04771752855466,2.92268786740538,7.22477427505542,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,17,17,us,age-adjusted Death,attributable,0.0259850248793045,0.0171967292486898,0.0409542925102751,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,17,17,us,Deaths,attributable,0.187420494974164,0.124033727991273,0.29538835576431,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,17,17,us,YLL,attributable,13.8815893120923,9.18675021672503,21.8783961853244,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,18,18,us,age-adjusted Death,attributable,0.0090106793699036,0.00523472386836957,0.0128544315829315,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,18,18,us,Deaths,attributable,0.0649907396819864,0.0377561515919223,0.0927143206933508,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,18,18,us,YLL,attributable,4.81363981820024,2.79646785948577,6.86702979517865,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,21,21,us,age-adjusted Death,attributable,0.0261414385638084,0.0172947087358728,0.0411680648834097,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,21,21,us,Deaths,attributable,0.188548649759722,0.124740418251161,0.296930217824123,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,21,21,us,YLL,attributable,13.0301386194943,8.62050692666133,20.520125195781,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,24,24,us,age-adjusted Death,attributable,0.0262511845614329,0.0173747058717169,0.041301087830392,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,24,24,us,Deaths,attributable,0.189340207562409,0.125317408377823,0.29788966376201,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,24,24,us,YLL,attributable,13.0848412541061,8.66038131102877,20.586430171099,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,25,25,us,age-adjusted Death,attributable,0.0518248101803655,0.038043588904116,0.0686733914185999,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,25,25,us,Deaths,attributable,0.382259536389092,0.280609318325573,0.506534585936336,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,25,25,us,YLL,attributable,24.5216817961852,18.0008914310516,32.4938392706315,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,26,26,us,age-adjusted Death,attributable,0.0805900457334855,0.0549739745248011,0.110206380631564,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,26,26,us,Deaths,attributable,0.594431767573155,0.405487756581842,0.812881703198246,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,26,26,us,YLL,attributable,38.1323819718545,26.0117558689968,52.1457924949686,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,27,27,us,age-adjusted Death,attributable,0.088036672360504,0.0586094285794449,0.121117175783445,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,27,27,us,Deaths,attributable,0.649358047711953,0.432302847204567,0.893359672763002,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,27,27,us,YLL,attributable,41.6558644113894,27.7319251701938,57.3083979329171,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,28,28,us,age-adjusted Death,attributable,0.0532132242858982,0.0368217291779945,0.0722575636515709,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,28,28,us,Deaths,attributable,0.392500471772162,0.271596887198201,0.532971422103143,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,28,28,us,YLL,attributable,25.1786306355291,17.4227502801386,34.1897438131423,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,29,29,us,age-adjusted Death,attributable,0.105212771663488,0.0757180396918159,0.145557884254127,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,29,29,us,Deaths,attributable,0.776048868839532,0.55849587578133,1.07363421417489,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,29,29,us,YLL,attributable,49.7829919424229,35.827119657393,68.8728836281961,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,30,30,us,age-adjusted Death,attributable,0.0648293998162501,0.038905074536754,0.0848078614364836,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,30,30,us,Deaths,attributable,0.478181323422033,0.28696363197172,0.625542354753144,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,30,30,us,YLL,attributable,28.3065541253354,16.9871786758203,37.0297785697536,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,31,31,us,age-adjusted Death,attributable,0.181856496206119,0.133437040645548,0.236601893823753,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,31,31,us,Deaths,attributable,1.34137259137387,0.98423093334598,1.74517436585064,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,31,31,us,YLL,attributable,79.4042636133125,58.2628070607403,103.307825348711,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,32,32,us,age-adjusted Death,attributable,0.064394992368762,0.0465224007008941,0.0843539622373176,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,32,32,us,Deaths,attributable,0.474977136298088,0.34314899102841,0.622194396567928,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,32,32,us,YLL,attributable,28.1168781764661,20.3131427595032,36.8315919093024,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,33,33,us,age-adjusted Death,attributable,0.146170200106586,0.105187712276704,0.193360493048709,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,33,33,us,Deaths,attributable,1.07815065278934,0.775864030930029,1.42622601359318,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,33,33,us,YLL,attributable,63.8225047980635,45.928262166857,84.4272703078902,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,34,34,us,age-adjusted Death,attributable,0.161958745001879,0.118664923454074,0.213597808839741,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,34,34,us,Deaths,attributable,1.19460687966076,0.875271872049945,1.57549635197196,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,34,34,us,YLL,attributable,70.7162798739646,51.8128362757043,93.2635186213714,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,35,35,us,age-adjusted Death,attributable,0.36201483995763,0.259666200530977,0.47234473317779,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,35,35,us,Deaths,attributable,2.2262263396793,1.59682883501175,2.90470491909189,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,35,35,us,YLL,attributable,120.778597481813,86.6321378351039,157.5878337137,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,36,36,us,age-adjusted Death,attributable,0.550365429022457,0.409005053132854,0.79368117535556,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,36,36,us,Deaths,attributable,3.38449665401036,2.51519474299138,4.88077764461528,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,36,36,us,YLL,attributable,183.617789335897,136.45588862087,264.794943816062,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,37,37,us,age-adjusted Death,attributable,0.521721381566787,0.389805006934119,0.745367255504489,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,37,37,us,Deaths,attributable,3.20834881176087,2.39712320599117,4.58366904829863,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,37,37,us,YLL,attributable,174.061308506815,130.050199142117,248.676025930972,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,38,38,us,age-adjusted Death,attributable,0.433038945435423,0.335560894410757,0.613450802258589,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,38,38,us,Deaths,attributable,2.66299223133538,2.06354662640628,3.77244295909336,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,38,38,us,YLL,attributable,144.47428865296,111.952797850545,204.664890338631,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,39,39,us,age-adjusted Death,attributable,0.636079065283065,0.4789494499038,0.906821321673551,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,39,39,us,Deaths,attributable,3.91159646775112,2.94532091799206,5.57653800028954,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,39,39,us,YLL,attributable,212.21433188049,159.791357809633,302.541761578487,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,40,40,us,age-adjusted Death,attributable,0.809088181772799,0.609020564786904,1.16177710384506,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,40,40,us,Deaths,attributable,4.97552371498544,3.74519901696201,7.1443999083544,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,40,40,us,YLL,attributable,245.379858980064,184.703452194701,352.343178815362,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,41,41,us,age-adjusted Death,attributable,0.637902481906847,0.481465800204838,0.831076168948975,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,41,41,us,Deaths,attributable,3.92280964927857,2.96079532594917,5.11073981887185,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,41,41,us,YLL,attributable,193.462745569172,146.018707008086,252.048364730233,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,42,42,us,age-adjusted Death,attributable,0.881378686404699,0.643472254767223,1.14488330711495,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,42,42,us,Deaths,attributable,5.42007738449545,3.95706121490292,7.04051075490929,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,42,42,us,YLL,attributable,267.304087057783,195.151943495701,347.219636595044,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,43,43,us,age-adjusted Death,attributable,0.826531424255373,0.622274875929348,1.12452804378601,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,43,43,us,Deaths,attributable,5.08279170949269,3.82670699211316,6.91533515885004,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,43,43,us,YLL,attributable,250.6700368333,188.72321304683,341.046302516412,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,44,44,us,age-adjusted Death,attributable,1.31249476645953,0.962990972014461,1.75876349927589,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,44,44,us,Deaths,attributable,8.0712448697557,5.92195576021935,10.8155942662814,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,44,44,us,YLL,attributable,398.052756128813,292.055420206766,533.396914148464,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,45,45,us,age-adjusted Death,attributable,0.992877754515846,0.716963440875743,1.3518978377957,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,45,45,us,Deaths,attributable,7.36366498802027,5.31735005971773,10.0263327789137,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,45,45,us,YLL,attributable,327.19208698279,236.267519786347,445.503258506973,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,46,46,us,age-adjusted Death,attributable,1.13976639187851,0.820471108296526,1.5030324611274,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,46,46,us,Deaths,attributable,8.45306266176802,6.08501333257426,11.1472207525273,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,46,46,us,YLL,attributable,375.597643048636,270.377348078996,495.308033161603,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,47,47,us,age-adjusted Death,attributable,1.27149370471172,0.912557443933538,1.67774520266897,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,47,47,us,Deaths,attributable,9.43001656879651,6.76797044639942,12.4429755340191,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,47,47,us,YLL,attributable,419.006949181747,300.723400453151,552.882720747736,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,48,48,us,age-adjusted Death,attributable,1.45186321459611,1.04556961161993,1.91133218510313,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,48,48,us,Deaths,attributable,10.7677246993304,7.75445346278102,14.175370359449,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,48,48,us,YLL,attributable,478.445763374854,344.556116556896,629.858775379875,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,49,49,us,age-adjusted Death,attributable,1.32747536700336,0.964465443474411,1.72931924129041,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,49,49,us,Deaths,attributable,9.84520384105955,7.1529454517098,12.8254737225022,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,49,49,us,YLL,attributable,437.455098346794,317.829118275545,569.878385374052,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,50,50,us,age-adjusted Death,attributable,1.60812692230817,1.15413979887531,2.13348450113992,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,50,50,us,Deaths,attributable,11.9266524607229,8.55966284832623,15.8229601298588,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,50,50,us,YLL,attributable,472.709743947344,339.259993248988,627.138877074414,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,51,51,us,age-adjusted Death,attributable,1.32798763571342,0.915121450405807,1.83232723748979,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,51,51,us,Deaths,attributable,9.84900307530324,6.78698636714397,13.5894311902263,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,51,51,us,YLL,attributable,390.362655170468,269.000425589015,538.613543027021,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,52,52,us,age-adjusted Death,attributable,1.41918023414614,0.983084017213922,1.95602254215607,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,52,52,us,Deaths,attributable,10.5253317987452,7.29102986235243,14.5068158128657,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,52,52,us,YLL,attributable,417.168766838041,288.978057396681,574.973842071301,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,53,53,us,age-adjusted Death,attributable,2.20512162481661,1.60268878914786,2.96667772341839,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,53,53,us,Deaths,attributable,16.3542559284213,11.886320616676,22.002326855765,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,53,53,us,YLL,attributable,648.196646781874,471.11120188073,872.056457458307,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,54,54,us,age-adjusted Death,attributable,1.80511717106991,1.26050517407037,2.47494748282496,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,54,54,us,Deaths,attributable,13.3876280855576,9.34852027382411,18.3554159045026,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,54,54,us,YLL,attributable,530.615129872124,370.526150525399,727.512097869791,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,55,55,us,age-adjusted Death,attributable,1.22141902371556,0.849080469035819,1.68876140713765,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,55,55,us,Deaths,attributable,13.9992350602291,9.73169472579792,19.3556571824516,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,55,55,us,YLL,attributable,488.781625518965,339.780962792977,675.800466234309,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,56,56,us,age-adjusted Death,attributable,0.951300863356967,0.712734008575704,1.28897340153841,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,56,56,us,Deaths,attributable,10.9032888309052,8.16896636431804,14.7735062940377,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,56,56,us,YLL,attributable,380.68703149452,285.218488094719,515.815213470403,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,57,57,us,age-adjusted Death,attributable,1.18912823715231,0.894696141108193,1.59392580745347,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,57,57,us,Deaths,attributable,13.629135771941,10.2545165448236,18.2687035438731,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,57,57,us,YLL,attributable,475.859652928705,358.03522436232,637.849609345173,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,58,58,us,age-adjusted Death,attributable,1.30722558637809,0.979038037231682,1.76251007652733,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,58,58,us,Deaths,attributable,14.9827028277188,11.2211971076221,20.2009239894354,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,58,58,us,YLL,attributable,523.119285539029,391.786761129108,705.312856171137,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,59,59,us,age-adjusted Death,attributable,1.61358206095506,1.2132339619061,2.17220146517422,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,59,59,us,Deaths,attributable,18.4939927426079,13.9054223702116,24.8965820236228,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,59,59,us,YLL,attributable,645.715554898318,485.506166615406,869.261197416701,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,60,60,us,age-adjusted Death,attributable,1.49330493513592,1.11896498979539,2.01150986785963,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,60,60,us,Deaths,attributable,17.1154422828411,12.8249631061587,23.0548230536607,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,60,60,us,YLL,attributable,517.800975711908,387.999229005951,697.487664926955,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,61,61,us,age-adjusted Death,attributable,1.30407775400834,0.96407579301211,1.79557947842359,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,61,61,us,Deaths,attributable,14.9466240992737,11.0497080692238,20.5799473397011,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,61,61,us,YLL,attributable,452.18676878494,334.291660421297,622.614165412501,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,62,62,us,age-adjusted Death,attributable,1.39079483526004,1.01324015826745,1.90909328956383,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,62,62,us,Deaths,attributable,15.9405277315313,11.6132030635156,21.8809803954174,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,62,62,us,YLL,attributable,482.255770920079,351.339321418383,661.97488858579,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,63,63,us,age-adjusted Death,attributable,1.51098792251149,1.11641967702144,2.09248628186131,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,63,63,us,Deaths,attributable,17.3181149873194,12.795790126917,23.9829303059086,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,63,63,us,YLL,attributable,523.932521855724,387.116646080768,725.566100344372,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,64,64,us,age-adjusted Death,attributable,1.69355023797381,1.24229904143129,2.3979400517098,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,64,64,us,Deaths,attributable,19.4105441354443,14.2385503733106,27.483873914216,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,64,64,us,YLL,attributable,587.235697818247,430.76510406131,831.481681510003,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,65,65,us,age-adjusted Death,attributable,1.4507528279965,1.04294903325608,2.0856920717613,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,65,65,us,Deaths,attributable,21.9693543174171,15.7938116021137,31.5845037399178,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,65,65,us,YLL,attributable,564.192688912967,405.599222773559,811.118334910668,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,66,66,us,age-adjusted Death,attributable,1.21815178146943,0.896799418104535,1.74600004836876,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,66,66,us,Deaths,attributable,18.4469797907982,13.5806071081045,26.4404059469,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,66,66,us,YLL,attributable,473.734957346583,348.762149796893,679.013297869452,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,67,67,us,age-adjusted Death,attributable,1.40999024801852,1.03085039411541,2.01853396111936,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,67,67,us,Deaths,attributable,21.3520695910691,15.6105968704857,30.5675004989049,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,67,67,us,YLL,attributable,548.340264460642,400.894104425874,785.000781117774,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,68,68,us,age-adjusted Death,attributable,1.5837621642945,1.16913904872139,2.27054004928617,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,68,68,us,Deaths,attributable,23.98357009578,17.704759564839,34.3837336533347,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,68,68,us,YLL,attributable,615.919553509281,454.674077404493,883.005065349723,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,69,69,us,age-adjusted Death,attributable,1.6632893414718,1.23404270760051,2.36266673956199,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,69,69,us,Deaths,attributable,25.1878832630926,18.6876227038213,35.7788464952344,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,69,69,us,YLL,attributable,646.84739391562,479.914882810243,918.832812230041,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,70,70,us,age-adjusted Death,attributable,1.54585768548581,1.15575375468166,2.20867966482734,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,70,70,us,Deaths,attributable,23.4095667858468,17.5020604821788,33.446956086432,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,70,70,us,YLL,attributable,498.347542459612,372.587366056966,712.025494572817,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,71,71,us,age-adjusted Death,attributable,1.53651702472358,1.100958133468,2.12360653706275,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,71,71,us,Deaths,attributable,23.26811726951,16.6722675675935,32.1586582794703,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,71,71,us,YLL,attributable,495.336336848956,354.922568433116,684.59995304406,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,72,72,us,age-adjusted Death,attributable,1.80456299178574,1.25897137904575,2.51523098058602,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,72,72,us,Deaths,attributable,27.3272489907115,19.0651279583857,38.0891903405423,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,72,72,us,YLL,attributable,581.747945243335,405.862259291523,810.850306378235,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,73,73,us,age-adjusted Death,attributable,1.69129506882026,1.19704755858488,2.33357423769432,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,73,73,us,Deaths,attributable,25.6119856568029,18.1273897536829,35.3382866223348,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,73,73,us,YLL,attributable,545.233076132589,385.89950072964,752.288517514181,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,74,74,us,age-adjusted Death,attributable,2.0609246652307,1.47832287032134,2.84905115866687,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,74,74,us,Deaths,attributable,31.2094405871231,22.3868589513506,43.1443683343634,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,74,74,us,YLL,attributable,664.392816851926,476.575933414565,918.465947152919,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,75,75,us,age-adjusted Death,attributable,1.36585305740848,0.947974688074604,1.89185850936021,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,75,75,us,Deaths,attributable,30.4600491127155,21.140894622406,42.1905583450964,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,75,75,us,YLL,attributable,520.97389745745,361.583601734062,721.606834434658,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,76,76,us,age-adjusted Death,attributable,1.32258033663842,0.954145571736703,1.88126362672467,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,76,76,us,Deaths,attributable,29.495019095213,21.2785122221886,41.9542806257095,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,76,76,us,YLL,attributable,504.468492376806,363.937346373548,717.565654990206,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,77,77,us,age-adjusted Death,attributable,1.3545191808903,0.985290713122347,1.9263124416731,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,77,77,us,Deaths,attributable,30.2072910041412,21.973083670474,42.9589195276442,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,77,77,us,YLL,attributable,516.650845434433,375.816959342551,734.748511207591,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,78,78,us,age-adjusted Death,attributable,1.3508265154325,0.990716481213862,1.90889724604473,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,78,78,us,Deaths,attributable,30.1249404389823,22.0940843605887,42.5705412088563,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,78,78,us,YLL,attributable,515.242361333508,377.886496423428,728.105876926924,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,79,79,us,age-adjusted Death,attributable,1.30389545527102,0.95942139186926,1.8284278657976,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,79,79,us,Deaths,attributable,29.0783253659505,21.3961689052966,40.7759841288669,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,79,79,us,YLL,attributable,497.341565057133,365.949689181461,697.412643547281,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,80,80,us,age-adjusted Death,attributable,1.29584762645633,0.929378524842089,1.85484137235939,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,80,80,us,Deaths,attributable,28.8988497923399,20.7261794066673,41.3650348343929,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,80,80,us,YLL,attributable,382.583918570359,274.38818469851,547.62031127399,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,81,81,us,age-adjusted Death,attributable,1.23604610688872,0.928199126327927,1.65843173240304,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,81,81,us,Deaths,attributable,27.56520909566,20.6998775021762,36.9848804343051,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,81,81,us,YLL,attributable,364.928216444943,274.039981024025,489.632652721123,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,82,82,us,age-adjusted Death,attributable,1.22456776208901,0.920861150125073,1.63435604041219,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,82,82,us,Deaths,attributable,27.3092291830073,20.5362324348576,36.4479656055202,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,82,82,us,YLL,attributable,361.539368834686,271.873529017827,482.524585077908,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,83,83,us,age-adjusted Death,attributable,1.1090771695356,0.837081008602219,1.49273714107347,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,83,83,us,Deaths,attributable,24.7336599428518,18.6678416796336,33.2897059334798,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,83,83,us,YLL,attributable,327.442116538189,247.138418046604,440.713254527575,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,84,84,us,age-adjusted Death,attributable,1.09704025289254,0.818587451646824,1.47140936789029,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,84,84,us,Deaths,attributable,24.4652232540555,18.2554146985066,32.8140727640836,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,84,84,us,YLL,attributable,323.888357097044,241.678410755741,434.416477906457,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,85,85,us,age-adjusted Death,attributable,0.343960218397022,0.254974976867111,0.457523300776972,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,85,85,us,Deaths,attributable,22.1787298805401,16.4409162332407,29.5013352104367,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,85,85,us,YLL,attributable,221.569531268314,164.247732987496,294.723685692261,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,86,86,us,age-adjusted Death,attributable,0.282006171072924,0.211913635677907,0.386578641686612,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,86,86,us,Deaths,attributable,18.1839013884226,13.6642990448345,24.9267874974338,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,86,86,us,YLL,attributable,181.660470593365,136.508824030113,249.023124930037,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,87,87,us,age-adjusted Death,attributable,0.292911499250756,0.224083905917708,0.393156770305444,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,87,87,us,Deaths,attributable,18.8870824976857,14.449044261824,25.3509485775622,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,87,87,us,YLL,attributable,188.68537732226,144.3485709782,253.260570997171,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,88,88,us,age-adjusted Death,attributable,0.287714994075198,0.216521137613967,0.39262535713308,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,88,88,us,Deaths,attributable,18.5520092001147,13.9613931138526,25.3166827858385,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,88,88,us,YLL,attributable,185.337934349501,139.476847626121,252.918249527382,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,89,89,us,age-adjusted Death,attributable,0.24070028888055,0.181666612036891,0.3291590021581,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,89,89,us,Deaths,attributable,15.5204770892654,11.7139555715375,21.2243399269682,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,89,89,us,YLL,attributable,155.052379115111,117.024539243824,212.035002654678,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,90,90,us,age-adjusted Death,attributable,0.204027575298853,0.150751666634789,0.28457420512188,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,90,90,us,Deaths,attributable,13.1558018593641,9.72054416326412,18.3494895304504,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,90,90,us,YLL,attributable,100.217279600881,74.0484314598549,139.781363573643,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,91,91,us,age-adjusted Death,attributable,0.158358950916793,0.119683450351468,0.206603650816837,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,91,91,us,Deaths,attributable,10.2110657241624,7.71724977058924,13.3219085194061,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,91,91,us,YLL,attributable,77.7850897756546,58.7878858526957,101.48263444363,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,92,92,us,age-adjusted Death,attributable,0.128624119910102,0.098529570515636,0.16637357854678,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,92,92,us,Deaths,attributable,8.29374869251753,6.35323683621325,10.7278529913848,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,92,92,us,YLL,attributable,63.1794960537394,48.3972105381174,81.721833016929,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,93,93,us,age-adjusted Death,attributable,0.0988812459902925,0.076200180843303,0.128676920919333,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,93,93,us,Deaths,attributable,6.37591304974274,4.9134264295099,8.29715332845661,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,93,93,us,YLL,attributable,48.5699516948989,37.429130930097,63.2054316337591,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,94,94,us,age-adjusted Death,attributable,0.0980978758678468,0.0752918959478422,0.126962722527046,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,94,94,us,Deaths,attributable,6.32540094568844,4.85485975733809,8.18662094398093,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,94,94,us,YLL,attributable,48.1851643813354,36.9829861323052,62.3634263346244,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,95,95,us,age-adjusted Death,attributable,0.0498389373397396,0.037447883562341,0.0654349351824339,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,95,95,us,Deaths,attributable,3.21364003646306,2.41465858464017,4.21927791221107,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,95,95,us,YLL,attributable,19.0323302433713,14.3004751890144,24.9880788459881,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,96,96,us,age-adjusted Death,attributable,0.0564684407653316,0.0423381695183065,0.0745956623959077,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,96,96,us,Deaths,attributable,3.64111379026968,2.72998671113521,4.80996626368325,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,96,96,us,YLL,attributable,21.5639833098346,16.167961581511,28.4863473665982,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,97,97,us,age-adjusted Death,attributable,0.0470569322868732,0.035817561678519,0.0612840286665109,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,97,97,us,Deaths,attributable,3.0342549352401,2.3095346001046,3.95162534818761,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,97,97,us,YLL,attributable,17.9699472606855,13.6778932048846,23.4029442536938,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,98,98,us,age-adjusted Death,attributable,0.0379529458634717,0.0279637236322357,0.0502335212813064,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,98,98,us,Deaths,attributable,2.44722525878007,1.80311512704517,3.23908300976966,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,98,98,us,YLL,attributable,14.493346727247,10.6786952413351,19.1830126673049,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,99,99,us,age-adjusted Death,attributable,0.0226725580343826,0.0158527533390354,0.031148048415394,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,99,99,us,Deaths,attributable,1.46193807728375,1.02219360078282,2.0084420091675,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,99,99,us,YLL,attributable,8.65812224347526,6.05379755106961,11.8947147656297,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,100,150,us,age-adjusted Death,attributable,0.0553814307561614,0.0398356875868238,0.0742924079318822,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,100,150,us,Deaths,attributable,3.57102283183506,2.5686254029934,4.79041226155464,nvss
+2002,Asian or Pacific Islander,Not Hispanic or Latino,100,150,us,YLL,attributable,21.1488794858636,15.2123219733993,28.3705415445806,nvss
+2002,Black or African American,All Origins,0,4,us,age-adjusted Death,attributable,0.248131503461271,0.194739688243532,0.317590789020719,nvss
+2002,Black or African American,All Origins,0,4,us,Deaths,attributable,4.48571403024947,3.52049836322684,5.74139695409776,nvss
+2002,Black or African American,All Origins,0,4,us,YLL,attributable,394.745124753537,309.805653283992,505.245863115989,nvss
+2002,Black or African American,All Origins,5,9,us,age-adjusted Death,attributable,0.290506198352508,0.231399339373874,0.363671883779727,nvss
+2002,Black or African American,All Origins,5,9,us,Deaths,attributable,1.99573593947812,1.58968029108817,2.49837371027868,nvss
+2002,Black or African American,All Origins,5,9,us,YLL,attributable,167.701851770833,133.580962924783,209.938544143703,nvss
+2002,Black or African American,All Origins,10,14,us,age-adjusted Death,attributable,0.576947726728445,0.450826098279796,0.73278462035204,nvss
+2002,Black or African American,All Origins,10,14,us,Deaths,attributable,3.96354817887559,3.09711067059549,5.03412529931228,nvss
+2002,Black or African American,All Origins,10,14,us,YLL,attributable,313.303956184789,244.815246856659,397.929153633224,nvss
+2002,Black or African American,All Origins,15,17,us,age-adjusted Death,attributable,0.198634959034858,0.157332855385378,0.252945642650252,nvss
+2002,Black or African American,All Origins,15,17,us,Deaths,attributable,1.43268141994876,1.13478442945463,1.82440454712918,nvss
+2002,Black or African American,All Origins,15,17,us,YLL,attributable,106.113768878561,84.0495667755953,135.127349150647,nvss
+2002,Black or African American,All Origins,18,19,us,age-adjusted Death,attributable,0.288844742018445,0.226284974358249,0.370258533269297,nvss
+2002,Black or African American,All Origins,18,19,us,Deaths,attributable,2.0833316408674,1.63211088295768,2.67053958562909,nvss
+2002,Black or African American,All Origins,18,19,us,YLL,attributable,154.305185478222,120.88482101244,197.797651609544,nvss
+2002,Black or African American,All Origins,20,20,us,age-adjusted Death,attributable,0.212436440801536,0.153622002051243,0.304040397780441,nvss
+2002,Black or African American,All Origins,20,20,us,Deaths,attributable,1.53222646776389,1.10801939952334,2.19293235657186,nvss
+2002,Black or African American,All Origins,20,20,us,YLL,attributable,105.888444689814,76.5725259092365,151.548221775756,nvss
+2002,Black or African American,All Origins,21,21,us,age-adjusted Death,attributable,0.268663912792173,0.194516227114021,0.391589483277157,nvss
+2002,Black or African American,All Origins,21,21,us,Deaths,attributable,1.93777468950233,1.4029745107249,2.82439193817874,nvss
+2002,Black or African American,All Origins,21,21,us,YLL,attributable,133.914895968439,96.9561562899497,195.186857700388,nvss
+2002,Black or African American,All Origins,22,24,us,age-adjusted Death,attributable,0.660395097833421,0.485544280668567,0.927772092690905,nvss
+2002,Black or African American,All Origins,22,24,us,Deaths,attributable,4.76318867075734,3.50205358037789,6.69168129116676,nvss
+2002,Black or African American,All Origins,22,24,us,YLL,attributable,329.172384580137,242.018405665444,462.4458193283,nvss
+2002,Black or African American,All Origins,25,29,us,age-adjusted Death,attributable,2.34541465422997,1.55644312426384,3.24994090057158,nvss
+2002,Black or African American,All Origins,25,29,us,Deaths,attributable,17.2997665644283,11.480316570894,23.9715475584146,nvss
+2002,Black or African American,All Origins,25,29,us,YLL,attributable,1109.76792063441,736.454275360146,1537.75800322018,nvss
+2002,Black or African American,All Origins,30,34,us,age-adjusted Death,attributable,5.20274046870056,3.75561615251806,6.83441956688509,nvss
+2002,Black or African American,All Origins,30,34,us,Deaths,attributable,38.3753872439985,27.7014056456851,50.410643975997,nvss
+2002,Black or African American,All Origins,30,34,us,YLL,attributable,2271.68005711554,1639.82008466148,2984.12244959257,nvss
+2002,Black or African American,All Origins,35,39,us,age-adjusted Death,attributable,16.5644913383343,12.382172218191,24.0961962337498,nvss
+2002,Black or African American,All Origins,35,39,us,Deaths,attributable,101.864075310022,76.1447180944527,148.180629136456,nvss
+2002,Black or African American,All Origins,35,39,us,YLL,attributable,5526.39232159048,4131.04997150506,8039.18642147229,nvss
+2002,Black or African American,All Origins,40,44,us,age-adjusted Death,attributable,45.0192481346586,32.5914075719074,60.2914237247674,nvss
+2002,Black or African American,All Origins,40,44,us,Deaths,attributable,276.847866241245,200.422308633247,370.76478845053,nvss
+2002,Black or African American,All Origins,40,44,us,YLL,attributable,13653.4150510842,9884.30578287961,18285.1528233608,nvss
+2002,Black or African American,All Origins,45,49,us,age-adjusted Death,attributable,60.4184294009803,43.6737600376951,80.2107162557675,nvss
+2002,Black or African American,All Origins,45,49,us,Deaths,attributable,448.092497981405,323.905874839139,594.88173671958,nvss
+2002,Black or African American,All Origins,45,49,us,YLL,attributable,19910.2376078198,14392.2135712337,26432.5709088995,nvss
+2002,Black or African American,All Origins,50,54,us,age-adjusted Death,attributable,85.3544713079511,57.2989802353252,118.940238171836,nvss
+2002,Black or African American,All Origins,50,54,us,Deaths,attributable,633.030329345856,424.957143705848,882.118733660036,nvss
+2002,Black or African American,All Origins,50,54,us,YLL,attributable,25089.9911673828,16843.0649967652,34962.5447788319,nvss
+2002,Black or African American,All Origins,55,59,us,age-adjusted Death,attributable,59.6428671752109,44.1063809101545,81.572037456469,nvss
+2002,Black or African American,All Origins,55,59,us,Deaths,attributable,683.593837200818,505.523151374334,934.933961664617,nvss
+2002,Black or African American,All Origins,55,59,us,YLL,attributable,23867.5974440202,17650.2806477037,32643.107967632,nvss
+2002,Black or African American,All Origins,60,61,us,age-adjusted Death,attributable,24.9230941266656,18.1509356454064,34.6142356059989,nvss
+2002,Black or African American,All Origins,60,61,us,Deaths,attributable,285.654837801721,208.036070938345,396.729387106201,nvss
+2002,Black or African American,All Origins,60,61,us,YLL,attributable,8642.0409876785,6293.80641966476,12002.4280028759,nvss
+2002,Black or African American,All Origins,62,64,us,age-adjusted Death,attributable,40.398275265721,29.3747471587541,56.4745375794176,nvss
+2002,Black or African American,All Origins,62,64,us,Deaths,attributable,463.022877891877,336.67724370237,647.280180790862,nvss
+2002,Black or African American,All Origins,62,64,us,YLL,attributable,14008.0340307485,10185.6441924295,19582.4509605868,nvss
+2002,Black or African American,All Origins,65,66,us,age-adjusted Death,attributable,21.6620770850726,15.9401982527741,30.8002501642861,nvss
+2002,Black or African American,All Origins,65,66,us,Deaths,attributable,328.037855621751,241.38906128392,466.421016637796,nvss
+2002,Black or African American,All Origins,65,66,us,YLL,attributable,8424.30583778021,6199.0872190532,11978.1093126516,nvss
+2002,Black or African American,All Origins,67,69,us,age-adjusted Death,attributable,35.9664217904814,26.4408578656888,50.9782450057084,nvss
+2002,Black or African American,All Origins,67,69,us,Deaths,attributable,544.654505299826,400.404923359683,771.984796719078,nvss
+2002,Black or African American,All Origins,67,69,us,YLL,attributable,13987.2153470643,10282.7569304207,19825.2607686138,nvss
+2002,Black or African American,All Origins,70,74,us,age-adjusted Death,attributable,59.6921509701106,41.6155881098826,82.7668476474822,nvss
+2002,Black or African American,All Origins,70,74,us,Deaths,attributable,903.943104106964,630.202183769865,1253.37284657535,nvss
+2002,Black or African American,All Origins,70,74,us,YLL,attributable,19243.321697323,13415.8702041539,26682.0519828702,nvss
+2002,Black or African American,All Origins,75,79,us,age-adjusted Death,attributable,40.1697176244006,28.5976525984944,57.3538695483459,nvss
+2002,Black or African American,All Origins,75,79,us,Deaths,attributable,895.829580675919,637.759602274701,1279.05536673293,nvss
+2002,Black or African American,All Origins,75,79,us,YLL,attributable,15321.8343928271,10907.9307261939,21876.34225424,nvss
+2002,Black or African American,All Origins,80,84,us,age-adjusted Death,attributable,33.9876071494991,24.805500185826,45.5460745321851,nvss
+2002,Black or African American,All Origins,80,84,us,Deaths,attributable,757.961610425133,553.190366875437,1015.72834619124,nvss
+2002,Black or African American,All Origins,80,84,us,YLL,attributable,10034.4451466443,7323.53501247923,13446.9480163131,nvss
+2002,Black or African American,All Origins,85,150,us,age-adjusted Death,attributable,11.3093455092171,8.44427678167807,14.673700276159,nvss
+2002,Black or African American,All Origins,85,150,us,Deaths,attributable,729.232352344605,544.491263118048,946.167659416032,nvss
+2002,Black or African American,All Origins,85,150,us,YLL,attributable,6249.59455612822,4677.93457710042,8091.77239359766,nvss
+2002,Black or African American,Hispanic or Latino,0,4,us,age-adjusted Death,attributable,0.0121802130588983,0.00949936853472056,0.0159771003181906,nvss
+2002,Black or African American,Hispanic or Latino,0,4,us,Deaths,attributable,0.220193533862401,0.171729305309099,0.288833550195278,nvss
+2002,Black or African American,Hispanic or Latino,0,4,us,YLL,attributable,19.3771433952961,15.112266540163,25.4174998753768,nvss
+2002,Black or African American,Hispanic or Latino,10,14,us,age-adjusted Death,attributable,0.0320210442777565,0.0249681764608569,0.0420116451089352,nvss
+2002,Black or African American,Hispanic or Latino,10,14,us,Deaths,attributable,0.219979984066274,0.171527793171899,0.288613979653416,nvss
+2002,Black or African American,Hispanic or Latino,10,14,us,YLL,attributable,17.3886114610022,13.5586433597099,22.8138772520997,nvss
+2002,Black or African American,Hispanic or Latino,30,34,us,age-adjusted Death,attributable,0.0372426331207976,0.023809609632226,0.053014104374541,nvss
+2002,Black or African American,Hispanic or Latino,30,34,us,Deaths,attributable,0.274701472540246,0.175619559588241,0.39103176431841,nvss
+2002,Black or African American,Hispanic or Latino,30,34,us,YLL,attributable,16.2613044882705,10.3960241135655,23.1476246754945,nvss
+2002,Black or African American,Hispanic or Latino,35,39,us,age-adjusted Death,attributable,0.152313497839949,0.109638467628431,0.224316226302368,nvss
+2002,Black or African American,Hispanic or Latino,35,39,us,Deaths,attributable,0.936658621010313,0.67422662702186,1.37944259818256,nvss
+2002,Black or African American,Hispanic or Latino,35,39,us,YLL,attributable,50.8161782782477,36.5785567016173,74.8383663177561,nvss
+2002,Black or African American,Hispanic or Latino,40,44,us,age-adjusted Death,attributable,0.152112696427439,0.108701644009456,0.206227611888892,nvss
+2002,Black or African American,Hispanic or Latino,40,44,us,Deaths,attributable,0.935423783804117,0.668465588561557,1.26820586031762,nvss
+2002,Black or African American,Hispanic or Latino,40,44,us,YLL,attributable,46.1326624703113,32.9669802115978,62.54460695769,nvss
+2002,Black or African American,Hispanic or Latino,45,49,us,age-adjusted Death,attributable,0.400007007076159,0.283677363240578,0.53287182319333,nvss
+2002,Black or African American,Hispanic or Latino,45,49,us,Deaths,attributable,2.96664677959856,2.10388948497205,3.95203696497828,nvss
+2002,Black or African American,Hispanic or Latino,45,49,us,YLL,attributable,131.817967375861,93.4827959296153,175.60212536937,nvss
+2002,Black or African American,Hispanic or Latino,50,54,us,age-adjusted Death,attributable,0.360194699171213,0.259971775077989,0.492585985556797,nvss
+2002,Black or African American,Hispanic or Latino,50,54,us,Deaths,attributable,2.67137931441611,1.92807729784293,3.65325757268354,nvss
+2002,Black or African American,Hispanic or Latino,50,54,us,YLL,attributable,105.879418878223,76.4188382931025,144.795906264904,nvss
+2002,Black or African American,Hispanic or Latino,55,59,us,age-adjusted Death,attributable,0.290039853743798,0.216991933927984,0.392306363876873,nvss
+2002,Black or African American,Hispanic or Latino,55,59,us,Deaths,attributable,3.32427775444526,2.4870425548071,4.49640041370033,nvss
+2002,Black or African American,Hispanic or Latino,55,59,us,YLL,attributable,116.06676204119,86.8347947186739,156.991285147878,nvss
+2002,Black or African American,Hispanic or Latino,60,61,us,age-adjusted Death,attributable,0.101759146324237,0.0729697621990255,0.145488082196158,nvss
+2002,Black or African American,Hispanic or Latino,60,61,us,Deaths,attributable,1.16630753350129,0.836339399893826,1.66750461682693,nvss
+2002,Black or African American,Hispanic or Latino,60,61,us,YLL,attributable,35.2848129103017,25.3021423656397,50.4477479067383,nvss
+2002,Black or African American,Hispanic or Latino,62,64,us,age-adjusted Death,attributable,0.231029012552053,0.151949479715866,0.349115309205728,nvss
+2002,Black or African American,Hispanic or Latino,62,64,us,Deaths,attributable,2.64792785248282,1.74156161196101,4.00136822974004,nvss
+2002,Black or African American,Hispanic or Latino,62,64,us,YLL,attributable,80.1089216961062,52.6882266337861,121.055146533911,nvss
+2002,Black or African American,Hispanic or Latino,65,66,us,age-adjusted Death,attributable,0.135046086601928,0.0971942299792892,0.199089859366247,nvss
+2002,Black or African American,Hispanic or Latino,65,66,us,Deaths,attributable,2.04505913652819,1.47185270627553,3.01490066192886,nvss
+2002,Black or African American,Hispanic or Latino,65,66,us,YLL,attributable,52.5189496492913,37.7984953057577,77.4253483594918,nvss
+2002,Black or African American,Hispanic or Latino,67,69,us,age-adjusted Death,attributable,0.170952778899897,0.124079492309905,0.247547253229302,nvss
+2002,Black or African American,Hispanic or Latino,67,69,us,Deaths,attributable,2.58880913324538,1.87898743154344,3.74871115985241,nvss
+2002,Black or African American,Hispanic or Latino,67,69,us,YLL,attributable,66.4829364061106,48.2540795746426,96.2702589560597,nvss
+2002,Black or African American,Hispanic or Latino,70,74,us,age-adjusted Death,attributable,0.291746542509091,0.198625619778252,0.408912974071134,nvss
+2002,Black or African American,Hispanic or Latino,70,74,us,Deaths,attributable,4.41803940655773,3.00787048849063,6.192339479885,nvss
+2002,Black or African American,Hispanic or Latino,70,74,us,YLL,attributable,94.0521070248471,64.0321488940307,131.823762058769,nvss
+2002,Black or African American,Hispanic or Latino,75,79,us,age-adjusted Death,attributable,0.216982110094857,0.149820469451871,0.318547246407302,nvss
+2002,Black or African American,Hispanic or Latino,75,79,us,Deaths,attributable,4.83894346776235,3.34116384836653,7.10395947620953,nvss
+2002,Black or African American,Hispanic or Latino,75,79,us,YLL,attributable,82.762940684953,57.1456449622338,121.502675258514,nvss
+2002,Black or African American,Hispanic or Latino,80,84,us,age-adjusted Death,attributable,0.217571645465254,0.149795271007043,0.290402796048004,nvss
+2002,Black or African American,Hispanic or Latino,80,84,us,Deaths,attributable,4.85209076515177,3.34060189489513,6.47630679018693,nvss
+2002,Black or African American,Hispanic or Latino,80,84,us,YLL,attributable,64.2354941989029,44.225309052657,85.7380431213669,nvss
+2002,Black or African American,Hispanic or Latino,85,150,us,age-adjusted Death,attributable,0.0660547447909368,0.0482231781591167,0.0867110783843926,nvss
+2002,Black or African American,Hispanic or Latino,85,150,us,Deaths,attributable,4.25924355111086,3.1094550624389,5.59117445063941,nvss
+2002,Black or African American,Hispanic or Latino,85,150,us,YLL,attributable,36.4862277809586,26.6951547318706,47.8687408304985,nvss
+2002,Black or African American,Not Hispanic or Latino,1,1,us,age-adjusted Death,attributable,0.141614684819136,0.114039053060586,0.178685512303687,nvss
+2002,Black or African American,Not Hispanic or Latino,1,1,us,Deaths,attributable,2.56010611196616,2.06159465112046,3.23027144220752,nvss
+2002,Black or African American,Not Hispanic or Latino,1,1,us,YLL,attributable,225.290644863996,181.421381804518,284.265536064742,nvss
+2002,Black or African American,Not Hispanic or Latino,2,2,us,age-adjusted Death,attributable,0.0549091655647199,0.0422759181509635,0.0718717810638419,nvss
+2002,Black or African American,Not Hispanic or Latino,2,2,us,Deaths,attributable,0.992646282020367,0.764262806399568,1.29929594670519,nvss
+2002,Black or African American,Not Hispanic or Latino,2,2,us,YLL,attributable,87.3533795934987,67.2555171422525,114.338706639616,nvss
+2002,Black or African American,Not Hispanic or Latino,3,3,us,age-adjusted Death,attributable,0.0200508139411182,0.0142409245928438,0.0260728147659286,nvss
+2002,Black or African American,Not Hispanic or Latino,3,3,us,Deaths,attributable,0.362478025397665,0.257447016435841,0.471343579401139,nvss
+2002,Black or African American,Not Hispanic or Latino,3,3,us,YLL,attributable,31.8982512909008,22.6554688807794,41.4784756223378,nvss
+2002,Black or African American,Not Hispanic or Latino,4,4,us,age-adjusted Death,attributable,0.0192657547163299,0.0143030476310466,0.0253646076360776,nvss
+2002,Black or African American,Not Hispanic or Latino,4,4,us,Deaths,attributable,0.348285747794514,0.258570074895494,0.458540631712591,nvss
+2002,Black or African American,Not Hispanic or Latino,4,4,us,YLL,attributable,30.6493236162401,22.7542985985838,40.3518096894567,nvss
+2002,Black or African American,Not Hispanic or Latino,5,5,us,age-adjusted Death,attributable,0.046002744163311,0.0356418271110442,0.0601541965311936,nvss
+2002,Black or African American,Not Hispanic or Latino,5,5,us,Deaths,attributable,0.316032258044741,0.244854243102459,0.413250707243287,nvss
+2002,Black or African American,Not Hispanic or Latino,5,5,us,YLL,attributable,26.5562161030583,20.5751217733575,34.7254902211304,nvss
+2002,Black or African American,Not Hispanic or Latino,6,6,us,age-adjusted Death,attributable,0.0112529916209534,0.00791852641842394,0.0154775676215332,nvss
+2002,Black or African American,Not Hispanic or Latino,6,6,us,Deaths,attributable,0.0773064393529107,0.0543991413972497,0.106328670896429,nvss
+2002,Black or African American,Not Hispanic or Latino,6,6,us,YLL,attributable,6.49606632663184,4.57116423400572,8.93480678126465,nvss
+2002,Black or African American,Not Hispanic or Latino,7,7,us,age-adjusted Death,attributable,0.0205196277674604,0.0146871118276294,0.0273838276432551,nvss
+2002,Black or African American,Not Hispanic or Latino,7,7,us,Deaths,attributable,0.140966901334552,0.100898352901808,0.188122970518527,nvss
+2002,Black or African American,Not Hispanic or Latino,7,7,us,YLL,attributable,11.8454600754359,8.47849672271026,15.8079883678584,nvss
+2002,Black or African American,Not Hispanic or Latino,8,8,us,age-adjusted Death,attributable,0.0321909966162592,0.0251252837551172,0.0421814074951112,nvss
+2002,Black or African American,Not Hispanic or Latino,8,8,us,Deaths,attributable,0.221147532269623,0.172607097762601,0.289780222911509,nvss
+2002,Black or African American,Not Hispanic or Latino,8,8,us,YLL,attributable,18.5830449522616,14.5041883302192,24.3502554759489,nvss
+2002,Black or African American,Not Hispanic or Latino,9,9,us,age-adjusted Death,attributable,0.180508211591573,0.141402726264354,0.230367132511352,nvss
+2002,Black or African American,Not Hispanic or Latino,9,9,us,Deaths,attributable,1.24006553831629,0.971416459773866,1.58258917790645,nvss
+2002,Black or African American,Not Hispanic or Latino,9,9,us,YLL,attributable,104.202807084398,81.628203372108,132.985096112863,nvss
+2002,Black or African American,Not Hispanic or Latino,10,10,us,age-adjusted Death,attributable,0.0822911760022467,0.0641607610156819,0.104344444355774,nvss
+2002,Black or African American,Not Hispanic or Latino,10,10,us,Deaths,attributable,0.565328582938942,0.440775230922563,0.716831375256931,nvss
+2002,Black or African American,Not Hispanic or Latino,10,10,us,YLL,attributable,44.687152416388,34.8416664574212,56.6628928550306,nvss
+2002,Black or African American,Not Hispanic or Latino,11,11,us,age-adjusted Death,attributable,0.073491953222849,0.0568227331645493,0.0965792532898781,nvss
+2002,Black or African American,Not Hispanic or Latino,11,11,us,Deaths,attributable,0.504879183787018,0.390364031469853,0.663485625751384,nvss
+2002,Black or African American,Not Hispanic or Latino,11,11,us,YLL,attributable,39.9088489749842,30.8568459098292,52.446106881592,nvss
+2002,Black or African American,Not Hispanic or Latino,12,12,us,age-adjusted Death,attributable,0.0953996976790209,0.0726000630692631,0.123309615800441,nvss
+2002,Black or African American,Not Hispanic or Latino,12,12,us,Deaths,attributable,0.6553822477906,0.498752026281697,0.847119384480605,nvss
+2002,Black or African American,Not Hispanic or Latino,12,12,us,YLL,attributable,51.8055645546171,39.4245196316914,66.9616824473391,nvss
+2002,Black or African American,Not Hispanic or Latino,13,13,us,age-adjusted Death,attributable,0.131404523526664,0.10050466707997,0.175003556763137,nvss
+2002,Black or African American,Not Hispanic or Latino,13,13,us,Deaths,attributable,0.902730240178699,0.690452655792868,1.20224934872091,nvss
+2002,Black or African American,Not Hispanic or Latino,13,13,us,YLL,attributable,71.3575167631406,54.5777517657341,95.0334044839851,nvss
+2002,Black or African American,Not Hispanic or Latino,14,14,us,age-adjusted Death,attributable,0.1618628637132,0.126825592338999,0.210071077350522,nvss
+2002,Black or African American,Not Hispanic or Latino,14,14,us,Deaths,attributable,1.11197467114729,0.871273639295674,1.44315818833097,nvss
+2002,Black or African American,Not Hispanic or Latino,14,14,us,YLL,attributable,87.8975221001499,68.8709877593294,114.076365266445,nvss
+2002,Black or African American,Not Hispanic or Latino,15,15,us,age-adjusted Death,attributable,0.0513017050488068,0.0364108693039198,0.0732370088553947,nvss
+2002,Black or African American,Not Hispanic or Latino,15,15,us,Deaths,attributable,0.370020463629561,0.262618303391167,0.528231799425265,nvss
+2002,Black or African American,Not Hispanic or Latino,15,15,us,YLL,attributable,27.4061388744257,19.4512314889424,39.1243065611359,nvss
+2002,Black or African American,Not Hispanic or Latino,16,16,us,age-adjusted Death,attributable,0.0780894647023926,0.0596663977168535,0.10332954372151,nvss
+2002,Black or African American,Not Hispanic or Latino,16,16,us,Deaths,attributable,0.563230791379625,0.430351937139161,0.745278263911294,nvss
+2002,Black or African American,Not Hispanic or Latino,16,16,us,YLL,attributable,41.7165611206739,31.874682925433,55.2001892016764,nvss
+2002,Black or African American,Not Hispanic or Latino,17,17,us,age-adjusted Death,attributable,0.0691071045043913,0.0532752325636021,0.0910995813096739,nvss
+2002,Black or African American,Not Hispanic or Latino,17,17,us,Deaths,attributable,0.498444307542679,0.38425479688058,0.657068011298941,nvss
+2002,Black or African American,Not Hispanic or Latino,17,17,us,YLL,attributable,36.9180498280698,28.4604268184915,48.6667601866192,nvss
+2002,Black or African American,Not Hispanic or Latino,18,18,us,age-adjusted Death,attributable,0.0988672644994288,0.0773185363772852,0.127562226440264,nvss
+2002,Black or African American,Not Hispanic or Latino,18,18,us,Deaths,attributable,0.713093473463723,0.557670366906208,0.920059754819848,nvss
+2002,Black or African American,Not Hispanic or Latino,18,18,us,YLL,attributable,52.8163728364998,41.3047196678407,68.1456510973042,nvss
+2002,Black or African American,Not Hispanic or Latino,19,19,us,age-adjusted Death,attributable,0.189736775094701,0.147459877220108,0.244379201841643,nvss
+2002,Black or African American,Not Hispanic or Latino,19,19,us,Deaths,attributable,1.36850206871929,1.06357424346487,1.76261793795818,nvss
+2002,Black or African American,Not Hispanic or Latino,19,19,us,YLL,attributable,101.360225803099,78.7752740314436,130.551028222582,nvss
+2002,Black or African American,Not Hispanic or Latino,20,20,us,age-adjusted Death,attributable,0.212450868748179,0.153631298642621,0.304060672386644,nvss
+2002,Black or African American,Not Hispanic or Latino,20,20,us,Deaths,attributable,1.53233053127408,1.10808645244192,2.19307858990232,nvss
+2002,Black or African American,Not Hispanic or Latino,20,20,us,YLL,attributable,105.895636265913,76.5771597733619,151.558327605572,nvss
+2002,Black or African American,Not Hispanic or Latino,21,21,us,age-adjusted Death,attributable,0.268663392364182,0.194509371656726,0.391597006610157,nvss
+2002,Black or African American,Not Hispanic or Latino,21,21,us,Deaths,attributable,1.93777093584529,1.40292506481498,2.82444620123222,nvss
+2002,Black or African American,Not Hispanic or Latino,21,21,us,YLL,attributable,133.91463656233,96.9527392033715,195.190607688042,nvss
+2002,Black or African American,Not Hispanic or Latino,22,22,us,age-adjusted Death,attributable,0.212423452732442,0.151525581646026,0.311447435818548,nvss
+2002,Black or African American,Not Hispanic or Latino,22,22,us,Deaths,attributable,1.53213278956463,1.092898684733,2.24635661696194,nvss
+2002,Black or African American,Not Hispanic or Latino,22,22,us,YLL,attributable,105.881970817297,75.5275700848647,155.240242479238,nvss
+2002,Black or African American,Not Hispanic or Latino,23,23,us,age-adjusted Death,attributable,0.270958818932361,0.202823764612649,0.378937998949285,nvss
+2002,Black or African American,Not Hispanic or Latino,23,23,us,Deaths,attributable,1.95432700941393,1.46289374487,2.73314140192175,nvss
+2002,Black or African American,Not Hispanic or Latino,23,23,us,YLL,attributable,135.058786540964,101.097028833347,188.880755068271,nvss
+2002,Black or African American,Not Hispanic or Latino,24,24,us,age-adjusted Death,attributable,0.176932141207013,0.132685131640789,0.23729553429427,nvss
+2002,Black or African American,Not Hispanic or Latino,24,24,us,Deaths,attributable,1.27614692061609,0.957009399195706,1.71152603082599,nvss
+2002,Black or African American,Not Hispanic or Latino,24,24,us,YLL,attributable,88.1914099923751,66.1365920549957,118.279401422155,nvss
+2002,Black or African American,Not Hispanic or Latino,25,25,us,age-adjusted Death,attributable,0.185383990891643,0.140072458256423,0.238478847264253,nvss
+2002,Black or African American,Not Hispanic or Latino,25,25,us,Deaths,attributable,1.36739137423888,1.03317373990627,1.75901876488447,nvss
+2002,Black or African American,Not Hispanic or Latino,25,25,us,YLL,attributable,87.7171999073533,66.2773725136532,112.839822999499,nvss
+2002,Black or African American,Not Hispanic or Latino,26,26,us,age-adjusted Death,attributable,0.301890964947724,0.213949808259487,0.41890950548418,nvss
+2002,Black or African American,Not Hispanic or Latino,26,26,us,Deaths,attributable,2.22674622250124,1.57809269790228,3.0898743825218,nvss
+2002,Black or African American,Not Hispanic or Latino,26,26,us,YLL,attributable,142.84421214139,101.233542394751,198.213279684567,nvss
+2002,Black or African American,Not Hispanic or Latino,27,27,us,age-adjusted Death,attributable,0.588158665029602,0.365952097164112,0.828427380227726,nvss
+2002,Black or African American,Not Hispanic or Latino,27,27,us,Deaths,attributable,4.3382553227879,2.69926080801292,6.11047614445208,nvss
+2002,Black or African American,Not Hispanic or Latino,27,27,us,YLL,attributable,278.296043522977,173.155692188234,391.982769227547,nvss
+2002,Black or African American,Not Hispanic or Latino,28,28,us,age-adjusted Death,attributable,0.45272207857229,0.272283948171272,0.623327554679254,nvss
+2002,Black or African American,Not Hispanic or Latino,28,28,us,Deaths,attributable,3.33927574970095,2.00836501729388,4.59766087402884,nvss
+2002,Black or African American,Not Hispanic or Latino,28,28,us,YLL,attributable,214.212202885467,128.835210626484,294.936728131613,nvss
+2002,Black or African American,Not Hispanic or Latino,29,29,us,age-adjusted Death,attributable,0.825330421854198,0.533985712528826,1.14558532794455,nvss
+2002,Black or African American,Not Hispanic or Latino,29,29,us,Deaths,attributable,6.0876329952353,3.93867590058249,8.44983155423379,nvss
+2002,Black or African American,Not Hispanic or Latino,29,29,us,YLL,attributable,390.517397188414,252.663303170226,542.050781941458,nvss
+2002,Black or African American,Not Hispanic or Latino,30,30,us,age-adjusted Death,attributable,0.657392088087927,0.440072080542338,0.911167455272952,nvss
+2002,Black or African American,Not Hispanic or Latino,30,30,us,Deaths,attributable,4.84892069925138,3.24596942855046,6.72076651729689,nvss
+2002,Black or African American,Not Hispanic or Latino,30,30,us,YLL,attributable,287.038053348811,192.149305750602,397.844357082309,nvss
+2002,Black or African American,Not Hispanic or Latino,31,31,us,age-adjusted Death,attributable,0.746303755095633,0.547938861599344,0.974139236072798,nvss
+2002,Black or African American,Not Hispanic or Latino,31,31,us,Deaths,attributable,5.50473270303222,4.04159425718238,7.18524605229893,nvss
+2002,Black or African American,Not Hispanic or Latino,31,31,us,YLL,attributable,325.859682450128,239.247333573937,425.339816343568,nvss
+2002,Black or African American,Not Hispanic or Latino,32,32,us,age-adjusted Death,attributable,1.12246352924774,0.806762069564496,1.47161590842702,nvss
+2002,Black or African American,Not Hispanic or Latino,32,32,us,Deaths,attributable,8.27928528460804,5.95067292315654,10.8546314581823,nvss
+2002,Black or African American,Not Hispanic or Latino,32,32,us,YLL,attributable,490.10286589761,352.257683290641,642.553771616939,nvss
+2002,Black or African American,Not Hispanic or Latino,33,33,us,age-adjusted Death,attributable,1.14791788044236,0.809825396686868,1.53021368030693,nvss
+2002,Black or African American,Not Hispanic or Latino,33,33,us,Deaths,attributable,8.46703644959788,5.97326800843579,11.2868483256304,nvss
+2002,Black or African American,Not Hispanic or Latino,33,33,us,YLL,attributable,501.217035886196,353.59522821993,668.13940106969,nvss
+2002,Black or African American,Not Hispanic or Latino,34,34,us,age-adjusted Death,attributable,1.56066916920053,1.13741549144192,2.05256839287448,nvss
+2002,Black or African American,Not Hispanic or Latino,34,34,us,Deaths,attributable,11.5114878568598,8.38957088172962,15.1397340296359,nvss
+2002,Black or African American,Not Hispanic or Latino,34,34,us,YLL,attributable,681.437225007959,496.631362664958,896.215890838628,nvss
+2002,Black or African American,Not Hispanic or Latino,35,35,us,age-adjusted Death,attributable,2.11614082137794,1.54293215573299,2.80368533793954,nvss
+2002,Black or African American,Not Hispanic or Latino,35,35,us,Deaths,attributable,13.0133019839009,9.48832983154218,17.2413875304786,nvss
+2002,Black or African American,Not Hispanic or Latino,35,35,us,YLL,attributable,706.00564471322,514.766692439544,935.390336308571,nvss
+2002,Black or African American,Not Hispanic or Latino,36,36,us,age-adjusted Death,attributable,2.6791124269505,2.00481336925315,3.91217938670348,nvss
+2002,Black or African American,Not Hispanic or Latino,36,36,us,Deaths,attributable,16.4753208805955,12.3286888716909,24.0581209246811,nvss
+2002,Black or African American,Not Hispanic or Latino,36,36,us,YLL,attributable,893.82921832997,668.863594043611,1305.21593943112,nvss
+2002,Black or African American,Not Hispanic or Latino,37,37,us,age-adjusted Death,attributable,3.05180406819734,2.28811570356501,4.44832833908646,nvss
+2002,Black or African American,Not Hispanic or Latino,37,37,us,Deaths,attributable,18.7672046840858,14.0708691613483,27.3551927240751,nvss
+2002,Black or African American,Not Hispanic or Latino,37,37,us,YLL,attributable,1018.1699048285,763.381428189622,1484.09070190699,nvss
+2002,Black or African American,Not Hispanic or Latino,38,38,us,age-adjusted Death,attributable,3.90806171036474,2.89704893290375,5.66404004686498,nvss
+2002,Black or African American,Not Hispanic or Latino,38,38,us,Deaths,attributable,24.0327990911213,17.8155311050923,34.8312658751919,nvss
+2002,Black or African American,Not Hispanic or Latino,38,38,us,YLL,attributable,1303.84216377834,966.539125835974,1889.6872101189,nvss
+2002,Black or African American,Not Hispanic or Latino,39,39,us,age-adjusted Death,attributable,4.50809057154795,3.34897749500211,6.54753020255708,nvss
+2002,Black or African American,Not Hispanic or Latino,39,39,us,Deaths,attributable,27.7227032273445,20.5946858732077,40.2643278338655,nvss
+2002,Black or African American,Not Hispanic or Latino,39,39,us,YLL,attributable,1504.0291072495,1117.3155357163,2184.445021445,nvss
+2002,Black or African American,Not Hispanic or Latino,40,40,us,age-adjusted Death,attributable,5.64454416171476,4.22029758880307,8.17482143055937,nvss
+2002,Black or African American,Not Hispanic or Latino,40,40,us,Deaths,attributable,34.7113750634178,25.9529074956654,50.2714275277117,nvss
+2002,Black or African American,Not Hispanic or Latino,40,40,us,YLL,attributable,1711.87452939123,1279.92974131119,2479.25575358503,nvss
+2002,Black or African American,Not Hispanic or Latino,41,41,us,age-adjusted Death,attributable,7.16510432439333,5.15149852740065,9.59958376760569,nvss
+2002,Black or African American,Not Hispanic or Latino,41,41,us,Deaths,attributable,44.062127329867,31.6793690332162,59.0330668099212,nvss
+2002,Black or African American,Not Hispanic or Latino,41,41,us,YLL,attributable,2173.02925478993,1562.34389608789,2911.35696235378,nvss
+2002,Black or African American,Not Hispanic or Latino,42,42,us,age-adjusted Death,attributable,8.68231523738828,6.36096538852795,11.6222647432888,nvss
+2002,Black or African American,Not Hispanic or Latino,42,42,us,Deaths,attributable,53.3922832366072,39.1170392224439,71.471633321065,nvss
+2002,Black or African American,Not Hispanic or Latino,42,42,us,YLL,attributable,2633.16822142022,1929.15040063255,3524.79463670874,nvss
+2002,Black or African American,Not Hispanic or Latino,43,43,us,age-adjusted Death,attributable,10.2673306278759,7.45650882663258,13.7814886844614,nvss
+2002,Black or African American,Not Hispanic or Latino,43,43,us,Deaths,attributable,63.1394057896872,45.8541322611071,84.7498768639734,nvss
+2002,Black or African American,Not Hispanic or Latino,43,43,us,YLL,attributable,3113.87089606182,2261.40626643895,4179.64299332467,nvss
+2002,Black or African American,Not Hispanic or Latino,44,44,us,age-adjusted Death,attributable,12.3912860164503,8.96100202795139,16.532488547112,nvss
+2002,Black or African American,Not Hispanic or Latino,44,44,us,Deaths,attributable,76.2007638017001,55.1060800349508,101.667272723778,nvss
+2002,Black or African American,Not Hispanic or Latino,44,44,us,YLL,attributable,3758.0230236907,2717.68821183479,5013.96485534014,nvss
+2002,Black or African American,Not Hispanic or Latino,45,45,us,age-adjusted Death,attributable,10.8597582907092,7.85030009032638,14.4753565126517,nvss
+2002,Black or African American,Not Hispanic or Latino,45,45,us,Deaths,attributable,80.5412565040824,58.2216487958046,107.356293820181,nvss
+2002,Black or African American,Not Hispanic or Latino,45,45,us,YLL,attributable,3578.71546935649,2586.98118505794,4770.19661851921,nvss
+2002,Black or African American,Not Hispanic or Latino,46,46,us,age-adjusted Death,attributable,11.0379356136119,7.96205318246768,14.685190263482,nvss
+2002,Black or African American,Not Hispanic or Latino,46,46,us,Deaths,attributable,81.8627063083008,59.0504641541517,108.912523111517,nvss
+2002,Black or African American,Not Hispanic or Latino,46,46,us,YLL,attributable,3637.43187212449,2623.80820356871,4839.34505350157,nvss
+2002,Black or African American,Not Hispanic or Latino,47,47,us,age-adjusted Death,attributable,12.3470742570336,8.92716864538746,16.3720442685708,nvss
+2002,Black or African American,Not Hispanic or Latino,47,47,us,Deaths,attributable,91.5719160767577,66.2082304666469,121.423053960535,nvss
+2002,Black or African American,Not Hispanic or Latino,47,47,us,YLL,attributable,4068.84430224771,2941.85152869696,5395.22948121687,nvss
+2002,Black or African American,Not Hispanic or Latino,48,48,us,age-adjusted Death,attributable,13.7148050115168,9.90497680308032,18.2117516632394,nvss
+2002,Black or African American,Not Hispanic or Latino,48,48,us,Deaths,attributable,101.71567347692,73.4601319852931,135.067219990753,nvss
+2002,Black or African American,Not Hispanic or Latino,48,48,us,YLL,attributable,4519.56512659343,3264.07759361704,6001.48508434782,nvss
+2002,Black or African American,Not Hispanic or Latino,49,49,us,age-adjusted Death,attributable,12.9760405527354,9.42774755760056,17.1972048181487,nvss
+2002,Black or African American,Not Hispanic or Latino,49,49,us,Deaths,attributable,96.2366364506802,69.9207674762028,127.542846473548,nvss
+2002,Black or African American,Not Hispanic or Latino,49,49,us,YLL,attributable,4276.11331799162,3106.81187577055,5667.15218376944,nvss
+2002,Black or African American,Not Hispanic or Latino,50,50,us,age-adjusted Death,attributable,15.0463350825309,10.9197015556272,19.9451542587831,nvss
+2002,Black or African American,Not Hispanic or Latino,50,50,us,Deaths,attributable,111.590948977682,80.985824950839,147.92297785711,nvss
+2002,Black or African American,Not Hispanic or Latino,50,50,us,YLL,attributable,4422.87801139498,3209.85194311221,5862.88845231636,nvss
+2002,Black or African American,Not Hispanic or Latino,51,51,us,age-adjusted Death,attributable,15.9532524675204,10.6732706668,22.2895531515295,nvss
+2002,Black or African American,Not Hispanic or Latino,51,51,us,Deaths,attributable,118.317090000079,79.1581734602397,165.310181836605,nvss
+2002,Black or African American,Not Hispanic or Latino,51,51,us,YLL,attributable,4689.46684769433,3137.41345536459,6552.02572433589,nvss
+2002,Black or African American,Not Hispanic or Latino,52,52,us,age-adjusted Death,attributable,17.5243702613506,11.7198170009691,24.4310026781877,nvss
+2002,Black or African American,Not Hispanic or Latino,52,52,us,Deaths,attributable,129.969264739481,86.9198707731377,181.192214474908,nvss
+2002,Black or African American,Not Hispanic or Latino,52,52,us,YLL,attributable,5151.29773910595,3445.04629378759,7181.5059247978,nvss
+2002,Black or African American,Not Hispanic or Latino,53,53,us,age-adjusted Death,attributable,18.0675135619105,12.1732143129853,25.152760895631,nvss
+2002,Black or African American,Not Hispanic or Latino,53,53,us,Deaths,attributable,133.99747998312,90.2824860568135,186.545124932848,nvss
+2002,Black or African American,Not Hispanic or Latino,53,53,us,YLL,attributable,5310.95499437153,3578.32266911373,7393.66712763982,nvss
+2002,Black or African American,Not Hispanic or Latino,54,54,us,age-adjusted Death,attributable,19.0741408766482,12.8704004908386,26.5522672513937,nvss
+2002,Black or African American,Not Hispanic or Latino,54,54,us,Deaths,attributable,141.463118406183,95.4531583018507,196.924545667746,nvss
+2002,Black or African American,Not Hispanic or Latino,54,54,us,YLL,attributable,5606.85361630183,3783.26090815747,7805.05274770996,nvss
+2002,Black or African American,Not Hispanic or Latino,55,55,us,age-adjusted Death,attributable,12.587637656268,8.45556394333588,17.5671069779255,nvss
+2002,Black or African American,Not Hispanic or Latino,55,55,us,Deaths,attributable,144.27260013278,96.9130371405792,201.344546905829,nvss
+2002,Black or African American,Not Hispanic or Latino,55,55,us,YLL,attributable,5037.26065798298,3383.70715426625,7029.92088514871,nvss
+2002,Black or African American,Not Hispanic or Latino,56,56,us,age-adjusted Death,attributable,10.6801727945551,7.91304103975177,14.6040049660942,nvss
+2002,Black or African American,Not Hispanic or Latino,56,56,us,Deaths,attributable,122.41028388441,90.6949371230045,167.383096522586,nvss
+2002,Black or African American,Not Hispanic or Latino,56,56,us,YLL,attributable,4273.94048887988,3166.60293241744,5844.16088812846,nvss
+2002,Black or African American,Not Hispanic or Latino,57,57,us,age-adjusted Death,attributable,11.7941308311646,8.69669392929393,16.1485059551745,nvss
+2002,Black or African American,Not Hispanic or Latino,57,57,us,Deaths,attributable,135.177860038814,99.6767368111705,185.085319901357,nvss
+2002,Black or African American,Not Hispanic or Latino,57,57,us,YLL,attributable,4719.71889033097,3480.2013992465,6462.23190994853,nvss
+2002,Black or African American,Not Hispanic or Latino,58,58,us,age-adjusted Death,attributable,12.0846154444148,8.93816448530439,16.4926245004722,nvss
+2002,Black or African American,Not Hispanic or Latino,58,58,us,Deaths,attributable,138.50723538283,102.444339908944,189.029417963258,nvss
+2002,Black or African American,Not Hispanic or Latino,58,58,us,YLL,attributable,4835.96363410512,3576.83193192211,6599.93962423495,nvss
+2002,Black or African American,Not Hispanic or Latino,59,59,us,age-adjusted Death,attributable,13.0514628568988,9.62279735972874,17.8551043652656,nvss
+2002,Black or African American,Not Hispanic or Latino,59,59,us,Deaths,attributable,149.588710234567,110.291226483439,204.645415030382,nvss
+2002,Black or African American,Not Hispanic or Latino,59,59,us,YLL,attributable,5222.87200930396,3850.80504249877,7145.17030274912,nvss
+2002,Black or African American,Not Hispanic or Latino,60,60,us,age-adjusted Death,attributable,13.7358312538663,10.1681579638755,18.6675210601285,nvss
+2002,Black or African American,Not Hispanic or Latino,60,60,us,Deaths,attributable,157.432565513483,116.541850668753,213.956889681925,nvss
+2002,Black or African American,Not Hispanic or Latino,60,60,us,YLL,attributable,4762.87639457827,3525.79167925159,6472.93154373548,nvss
+2002,Black or African American,Not Hispanic or Latino,61,61,us,age-adjusted Death,attributable,12.3394137583223,8.9889114862439,17.1191979813779,nvss
+2002,Black or African American,Not Hispanic or Latino,61,61,us,Deaths,attributable,141.427593933076,103.025974205578,196.210859607274,nvss
+2002,Black or African American,Not Hispanic or Latino,61,61,us,YLL,attributable,4278.67097565755,3116.88994568376,5936.05311922176,nvss
+2002,Black or African American,Not Hispanic or Latino,62,62,us,age-adjusted Death,attributable,12.8321136238323,9.28955613932888,18.0427051490272,nvss
+2002,Black or African American,Not Hispanic or Latino,62,62,us,Deaths,attributable,147.074649609707,106.471798354717,206.795592339209,nvss
+2002,Black or African American,Not Hispanic or Latino,62,62,us,YLL,attributable,4449.51382569541,3221.13797369674,6256.27767700255,nvss
+2002,Black or African American,Not Hispanic or Latino,63,63,us,age-adjusted Death,attributable,13.1105087718527,9.5459218938411,18.2577945342848,nvss
+2002,Black or African American,Not Hispanic or Latino,63,63,us,Deaths,attributable,150.265462132758,109.410122049637,209.260828924456,nvss
+2002,Black or African American,Not Hispanic or Latino,63,63,us,YLL,attributable,4546.04687523313,3310.03236807136,6330.85955973202,nvss
+2002,Black or African American,Not Hispanic or Latino,64,64,us,age-adjusted Death,attributable,14.0028779584483,10.1747175091952,19.5018425685841,nvss
+2002,Black or African American,Not Hispanic or Latino,64,64,us,Deaths,attributable,160.49330840099,116.61703258015,223.519425294925,nvss
+2002,Black or African American,Not Hispanic or Latino,64,64,us,YLL,attributable,4855.47439043277,3528.06619056329,6762.23112412991,nvss
+2002,Black or African American,Not Hispanic or Latino,65,65,us,age-adjusted Death,attributable,10.4348912962916,7.58283541366171,14.6027840790554,nvss
+2002,Black or African American,Not Hispanic or Latino,65,65,us,Deaths,attributable,158.019905064431,114.830034943619,221.136041414134,nvss
+2002,Black or African American,Not Hispanic or Latino,65,65,us,YLL,attributable,4058.09264359638,2948.93810927563,5678.97153545828,nvss
+2002,Black or African American,Not Hispanic or Latino,66,66,us,age-adjusted Death,attributable,11.1490700950726,8.20694291828652,15.8308052862122,nvss
+2002,Black or African American,Not Hispanic or Latino,66,66,us,Deaths,attributable,168.835012072063,124.28115482887,239.732478028763,nvss
+2002,Black or African American,Not Hispanic or Latino,66,66,us,YLL,attributable,4335.8342747503,3191.65132989454,6156.5446778555,nvss
+2002,Black or African American,Not Hispanic or Latino,67,67,us,age-adjusted Death,attributable,11.5994011887805,8.5091344309132,16.4328605652201,nvss
+2002,Black or African American,Not Hispanic or Latino,67,67,us,Deaths,attributable,175.654563388384,128.857366768281,248.849651876676,nvss
+2002,Black or African American,Not Hispanic or Latino,67,67,us,YLL,attributable,4510.96645837049,3309.17254976421,6390.68186524034,nvss
+2002,Black or African American,Not Hispanic or Latino,68,68,us,age-adjusted Death,attributable,11.3297855731633,8.34263799685676,16.052512310864,nvss
+2002,Black or African American,Not Hispanic or Latino,68,68,us,Deaths,attributable,171.571661825349,126.336041921081,243.08987984473,nvss
+2002,Black or African American,Not Hispanic or Latino,68,68,us,YLL,attributable,4406.11389064666,3244.42267024514,6242.76576250568,nvss
+2002,Black or African American,Not Hispanic or Latino,69,69,us,age-adjusted Death,attributable,12.6848769586075,9.28672208403901,17.9857791387815,nvss
+2002,Black or African American,Not Hispanic or Latino,69,69,us,Deaths,attributable,192.092375074909,140.632700467241,272.366144631532,nvss
+2002,Black or African American,Not Hispanic or Latino,69,69,us,YLL,attributable,4933.10417991076,3611.5736620808,6994.60645444169,nvss
+2002,Black or African American,Not Hispanic or Latino,70,70,us,age-adjusted Death,attributable,12.1611094939293,8.94316881728233,17.1315698519747,nvss
+2002,Black or African American,Not Hispanic or Latino,70,70,us,Deaths,attributable,184.160746206508,135.430130257741,259.430497620592,nvss
+2002,Black or African American,Not Hispanic or Latino,70,70,us,YLL,attributable,3920.45081949268,2883.06371520445,5522.80835057834,nvss
+2002,Black or African American,Not Hispanic or Latino,71,71,us,age-adjusted Death,attributable,11.3412199715679,7.90595328185375,15.7280295103253,nvss
+2002,Black or African American,Not Hispanic or Latino,71,71,us,Deaths,attributable,171.744817682853,119.723143401248,238.176101648076,nvss
+2002,Black or African American,Not Hispanic or Latino,71,71,us,YLL,attributable,3656.13804840549,2548.69023572123,5070.3405156857,nvss
+2002,Black or African American,Not Hispanic or Latino,72,72,us,age-adjusted Death,attributable,12.2152145918392,8.46269617888009,17.0091679863015,nvss
+2002,Black or African American,Not Hispanic or Latino,72,72,us,Deaths,attributable,184.9800822391,128.154132976067,257.576915187944,nvss
+2002,Black or African American,Not Hispanic or Latino,72,72,us,YLL,attributable,3937.89300892002,2728.1708289996,5483.34891681322,nvss
+2002,Black or African American,Not Hispanic or Latino,73,73,us,age-adjusted Death,attributable,12.363203978686,8.62650206506304,17.1158407688276,nvss
+2002,Black or African American,Not Hispanic or Latino,73,73,us,Deaths,attributable,187.221147162161,130.634713736196,259.192305563284,nvss
+2002,Black or African American,Not Hispanic or Latino,73,73,us,YLL,attributable,3985.60124748405,2780.97792863506,5517.73767039537,nvss
+2002,Black or African American,Not Hispanic or Latino,74,74,us,age-adjusted Death,attributable,12.0709795598983,8.40960005536543,16.7349123150813,nvss
+2002,Black or African American,Not Hispanic or Latino,74,74,us,Deaths,attributable,182.795871076079,127.350076262984,253.423747330317,nvss
+2002,Black or African American,Not Hispanic or Latino,74,74,us,YLL,attributable,3891.39508457728,2711.05390878366,5394.93544832811,nvss
+2002,Black or African American,Not Hispanic or Latino,75,75,us,age-adjusted Death,attributable,8.94217608753895,6.17777642432017,12.4260939746833,nvss
+2002,Black or African American,Not Hispanic or Latino,75,75,us,Deaths,attributable,199.420516960872,137.771316080813,277.115778081007,nvss
+2002,Black or African American,Not Hispanic or Latino,75,75,us,YLL,attributable,3410.79174132767,2356.37372844882,4739.65378123928,nvss
+2002,Black or African American,Not Hispanic or Latino,76,76,us,age-adjusted Death,attributable,8.02727136007149,5.70673505549417,11.4811029758633,nvss
+2002,Black or African American,Not Hispanic or Latino,76,76,us,Deaths,attributable,179.017119405802,127.266567308069,256.04142306236,nvss
+2002,Black or African American,Not Hispanic or Latino,76,76,us,YLL,attributable,3061.82193151861,2176.70560349943,4379.20824059558,nvss
+2002,Black or African American,Not Hispanic or Latino,77,77,us,age-adjusted Death,attributable,8.29623664112968,5.92855447747571,11.7886063475945,nvss
+2002,Black or African American,Not Hispanic or Latino,77,77,us,Deaths,attributable,185.015345661701,132.213388235154,262.899091795063,nvss
+2002,Black or African American,Not Hispanic or Latino,77,77,us,YLL,attributable,3164.41268240032,2261.31362789464,4496.49847850453,nvss
+2002,Black or African American,Not Hispanic or Latino,78,78,us,age-adjusted Death,attributable,7.59561913260494,5.38292071396413,10.8832760696517,nvss
+2002,Black or African American,Not Hispanic or Latino,78,78,us,Deaths,attributable,169.390792490964,120.045145726218,242.709215160978,nvss
+2002,Black or African American,Not Hispanic or Latino,78,78,us,YLL,attributable,2897.17790771995,2053.19391339156,4151.18062690416,nvss
+2002,Black or African American,Not Hispanic or Latino,79,79,us,age-adjusted Death,attributable,7.88915842723728,5.61702862221767,11.2883588709763,nvss
+2002,Black or African American,Not Hispanic or Latino,79,79,us,Deaths,attributable,175.937046703681,125.266013625879,251.743014189456,nvss
+2002,Black or African American,Not Hispanic or Latino,79,79,us,YLL,attributable,3009.14186281163,2142.48910420796,4305.69034129424,nvss
+2002,Black or African American,Not Hispanic or Latino,80,80,us,age-adjusted Death,attributable,7.55907437454614,5.3422300547427,10.9131184938778,nvss
+2002,Black or African American,Not Hispanic or Latino,80,80,us,Deaths,attributable,168.57580355841,119.137698565932,243.374734561208,nvss
+2002,Black or African American,Not Hispanic or Latino,80,80,us,YLL,attributable,2231.72866619137,1577.2312010456,3221.97112682764,nvss
+2002,Black or African American,Not Hispanic or Latino,81,81,us,age-adjusted Death,attributable,6.92550058617524,5.07123578510959,9.33597035890408,nvss
+2002,Black or African American,Not Hispanic or Latino,81,81,us,Deaths,attributable,154.44640024842,113.094223598024,208.202569159699,nvss
+2002,Black or African American,Not Hispanic or Latino,81,81,us,YLL,attributable,2044.67338460609,1497.22329929107,2756.33650951214,nvss
+2002,Black or African American,Not Hispanic or Latino,82,82,us,age-adjusted Death,attributable,7.18223155495564,5.21440585230486,9.59182770087277,nvss
+2002,Black or African American,Not Hispanic or Latino,82,82,us,Deaths,attributable,160.171787672338,116.287076046231,213.908473729698,nvss
+2002,Black or African American,Not Hispanic or Latino,82,82,us,YLL,attributable,2120.47021291296,1539.49259408412,2831.87540967825,nvss
+2002,Black or African American,Not Hispanic or Latino,83,83,us,age-adjusted Death,attributable,6.31032368438721,4.62753890819252,8.42406366393522,nvss
+2002,Black or African American,Not Hispanic or Latino,83,83,us,Deaths,attributable,140.72726806225,103.199287544144,187.866031078752,nvss
+2002,Black or African American,Not Hispanic or Latino,83,83,us,YLL,attributable,1863.04956951014,1366.22696425702,2487.10667908386,nvss
+2002,Black or African American,Not Hispanic or Latino,84,84,us,age-adjusted Death,attributable,5.91274354906987,4.27459368504615,7.90267235830322,nvss
+2002,Black or African American,Not Hispanic or Latino,84,84,us,Deaths,attributable,131.860786867718,95.3282147571969,176.23842246423,nvss
+2002,Black or African American,Not Hispanic or Latino,84,84,us,YLL,attributable,1745.66866529735,1262.02399798598,2333.17196890293,nvss
+2002,Black or African American,Not Hispanic or Latino,85,85,us,age-adjusted Death,attributable,1.94703606359873,1.40101307677567,2.61510779610149,nvss
+2002,Black or African American,Not Hispanic or Latino,85,85,us,Deaths,attributable,125.54587598378,90.3380359906789,168.623481193637,nvss
+2002,Black or African American,Not Hispanic or Latino,85,85,us,YLL,attributable,1254.22605551471,902.493352773877,1684.57913911866,nvss
+2002,Black or African American,Not Hispanic or Latino,86,86,us,age-adjusted Death,attributable,1.46437496922518,1.08200907879318,2.01434038949913,nvss
+2002,Black or African American,Not Hispanic or Latino,86,86,us,Deaths,attributable,94.4236430527593,69.7684958995647,129.885693160584,nvss
+2002,Black or African American,Not Hispanic or Latino,86,86,us,YLL,attributable,943.309307815827,696.999919157922,1297.58161567681,nvss
+2002,Black or African American,Not Hispanic or Latino,87,87,us,age-adjusted Death,attributable,1.52698126880176,1.12420646342036,2.10924447266346,nvss
+2002,Black or African American,Not Hispanic or Latino,87,87,us,Deaths,attributable,98.4605291019659,72.4894047292924,136.005156727829,nvss
+2002,Black or African American,Not Hispanic or Latino,87,87,us,YLL,attributable,983.638531108776,724.182291515301,1358.71616582964,nvss
+2002,Black or African American,Not Hispanic or Latino,88,88,us,age-adjusted Death,attributable,1.25297676073071,0.918604750722966,1.73340247035786,nvss
+2002,Black or African American,Not Hispanic or Latino,88,88,us,Deaths,attributable,80.7925790149489,59.2321016895887,111.770673200215,nvss
+2002,Black or African American,Not Hispanic or Latino,88,88,us,YLL,attributable,807.132507529531,591.73943134203,1116.60928303404,nvss
+2002,Black or African American,Not Hispanic or Latino,89,89,us,age-adjusted Death,attributable,1.18608785711694,0.866130520286103,1.64873606579779,nvss
+2002,Black or African American,Not Hispanic or Latino,89,89,us,Deaths,attributable,76.4795484785428,55.8485366134523,106.311340358046,nvss
+2002,Black or African American,Not Hispanic or Latino,89,89,us,YLL,attributable,764.044550759927,557.937002980558,1062.06955846945,nvss
+2002,Black or African American,Not Hispanic or Latino,90,90,us,age-adjusted Death,attributable,1.05118950892718,0.765517900209072,1.46898768400668,nvss
+2002,Black or African American,Not Hispanic or Latino,90,90,us,Deaths,attributable,67.7812343543834,49.3609836817171,94.7210732487035,nvss
+2002,Black or African American,Not Hispanic or Latino,90,90,us,YLL,attributable,516.33879771084,376.018395221124,721.559079662188,nvss
+2002,Black or African American,Not Hispanic or Latino,91,91,us,age-adjusted Death,attributable,0.733767826605519,0.540919615048863,0.959124394409851,nvss
+2002,Black or African American,Not Hispanic or Latino,91,91,us,Deaths,attributable,47.3137227821218,34.8787719846334,61.8448289298936,nvss
+2002,Black or African American,Not Hispanic or Latino,91,91,us,YLL,attributable,360.422924858773,265.696890351946,471.116894203163,nvss
+2002,Black or African American,Not Hispanic or Latino,92,92,us,age-adjusted Death,attributable,0.74366578503648,0.554521216234137,0.969839369815875,nvss
+2002,Black or African American,Not Hispanic or Latino,92,92,us,Deaths,attributable,47.9519481775823,35.7558101492122,62.5357359955838,nvss
+2002,Black or African American,Not Hispanic or Latino,92,92,us,YLL,attributable,365.284750355157,272.377925829664,476.380034171421,nvss
+2002,Black or African American,Not Hispanic or Latino,93,93,us,age-adjusted Death,attributable,0.602094759092673,0.449208451142914,0.784039133998747,nvss
+2002,Black or African American,Not Hispanic or Latino,93,93,us,Deaths,attributable,38.8233763969516,28.9651894756464,50.5552422596128,nvss
+2002,Black or African American,Not Hispanic or Latino,93,93,us,YLL,attributable,295.745801663481,220.648845536328,385.115928544914,nvss
+2002,Black or African American,Not Hispanic or Latino,94,94,us,age-adjusted Death,attributable,0.499860360038784,0.366143694670209,0.657726159602831,nvss
+2002,Black or African American,Not Hispanic or Latino,94,94,us,Deaths,attributable,32.2312503316682,23.6091317170294,42.4105174057027,nvss
+2002,Black or African American,Not Hispanic or Latino,94,94,us,YLL,attributable,245.528798693151,179.847870902332,323.071655099462,nvss
+2002,Black or African American,Not Hispanic or Latino,95,95,us,age-adjusted Death,attributable,0.419132894404601,0.307036390458137,0.553130589661074,nvss
+2002,Black or African American,Not Hispanic or Latino,95,95,us,Deaths,attributable,27.0259022754739,19.7978626691267,35.6661418402653,nvss
+2002,Black or African American,Not Hispanic or Latino,95,95,us,YLL,attributable,160.057097682294,117.2500517035,211.227698904931,nvss
+2002,Black or African American,Not Hispanic or Latino,96,96,us,age-adjusted Death,attributable,0.336456606505549,0.245566750107458,0.444706311582414,nvss
+2002,Black or African American,Not Hispanic or Latino,96,96,us,Deaths,attributable,21.6948931681291,15.8342689851093,28.6748892262101,nvss
+2002,Black or African American,Not Hispanic or Latino,96,96,us,YLL,attributable,128.484947500509,93.7762266674561,169.82299051949,nvss
+2002,Black or African American,Not Hispanic or Latino,97,97,us,age-adjusted Death,attributable,0.282187972240785,0.20254035129355,0.37612414426398,nvss
+2002,Black or African American,Not Hispanic or Latino,97,97,us,Deaths,attributable,18.1956240202222,13.05990489884,24.2526761846373,nvss
+2002,Black or African American,Not Hispanic or Latino,97,97,us,YLL,attributable,107.761019096038,77.345446335462,143.633056967881,nvss
+2002,Black or African American,Not Hispanic or Latino,98,98,us,age-adjusted Death,attributable,0.225700544069103,0.166162302690341,0.297798606339964,nvss
+2002,Black or African American,Not Hispanic or Latino,98,98,us,Deaths,attributable,14.5532859123307,10.7142298166698,19.2022056492349,nvss
+2002,Black or African American,Not Hispanic or Latino,98,98,us,YLL,attributable,86.1897849376212,63.4535162185325,113.722356944369,nvss
+2002,Black or African American,Not Hispanic or Latino,99,99,us,age-adjusted Death,attributable,0.169367084783555,0.121628330258375,0.224906592444257,nvss
+2002,Black or African American,Not Hispanic or Latino,99,99,us,Deaths,attributable,10.9208757965526,7.84265661649252,14.502091507618,nvss
+2002,Black or African American,Not Hispanic or Latino,99,99,us,YLL,attributable,64.677347913424,46.4470286083212,85.8865932901282,nvss
+2002,Black or African American,Not Hispanic or Latino,100,150,us,age-adjusted Death,attributable,0.458672817495082,0.325786407715623,0.61030235416708,nvss
+2002,Black or African American,Not Hispanic or Latino,100,150,us,Deaths,attributable,29.5754566332656,21.0068733214261,39.3526063031671,nvss
+2002,Black or African American,Not Hispanic or Latino,100,150,us,YLL,attributable,175.156474078016,124.410246915544,233.060265182522,nvss
+2002,White,All Origins,0,4,us,age-adjusted Death,attributable,0.510810906640149,0.390949321768243,0.677931196616552,nvss
+2002,White,All Origins,0,4,us,Deaths,attributable,9.23442456422229,7.06757035406447,12.255620256947,nvss
+2002,White,All Origins,0,4,us,YLL,attributable,812.634076102334,621.949799364366,1078.50083947315,nvss
+2002,White,All Origins,5,9,us,age-adjusted Death,attributable,0.762778877142321,0.562911300550621,1.01198460346249,nvss
+2002,White,All Origins,5,9,us,Deaths,attributable,5.24018154387359,3.86711994311409,6.95218916078995,nvss
+2002,White,All Origins,5,9,us,YLL,attributable,440.332877280723,324.95440035506,584.193015249538,nvss
+2002,White,All Origins,10,14,us,age-adjusted Death,attributable,1.14910417199757,0.86614201327414,1.51251330896407,nvss
+2002,White,All Origins,10,14,us,Deaths,attributable,7.89418094094165,5.95027147229958,10.3907496182775,nvss
+2002,White,All Origins,10,14,us,YLL,attributable,624.006069313686,470.347150712271,821.350672733705,nvss
+2002,White,All Origins,15,17,us,age-adjusted Death,attributable,0.858235438658699,0.643737877641988,1.14215894342368,nvss
+2002,White,All Origins,15,17,us,Deaths,attributable,6.19013879974729,4.64304622457256,8.23797535349378,nvss
+2002,White,All Origins,15,17,us,YLL,attributable,458.482219966312,343.894411630177,610.158406827934,nvss
+2002,White,All Origins,18,19,us,age-adjusted Death,attributable,0.618130110273745,0.439652773314385,0.86230951715193,nvss
+2002,White,All Origins,18,19,us,Deaths,attributable,4.45834675025488,3.17105489696768,6.21952364010483,nvss
+2002,White,All Origins,18,19,us,YLL,attributable,330.214358928413,234.869093542158,460.658653690387,nvss
+2002,White,All Origins,20,20,us,age-adjusted Death,attributable,0.573176220732618,0.432267676489406,0.761245823153106,nvss
+2002,White,All Origins,20,20,us,Deaths,attributable,4.13411076172126,3.11778889053518,5.49058812277682,nvss
+2002,White,All Origins,20,20,us,YLL,attributable,285.698340254455,215.462807512882,379.441191615544,nvss
+2002,White,All Origins,21,21,us,age-adjusted Death,attributable,0.842996993336137,0.613337542525807,1.16223369836979,nvss
+2002,White,All Origins,21,21,us,Deaths,attributable,6.0802294585688,4.42377970928849,8.38276722981339,nvss
+2002,White,All Origins,21,21,us,YLL,attributable,420.189870277228,305.716656722772,579.312655691879,nvss
+2002,White,All Origins,22,24,us,age-adjusted Death,attributable,1.79845414344853,1.26630584156517,2.63773174793488,nvss
+2002,White,All Origins,22,24,us,Deaths,attributable,12.971592958601,9.13340159253953,19.0249958236812,nvss
+2002,White,All Origins,22,24,us,YLL,attributable,896.435241417113,631.187170897062,1314.77119106277,nvss
+2002,White,All Origins,25,29,us,age-adjusted Death,attributable,6.29890974523153,3.93293599374103,9.13045978043703,nvss
+2002,White,All Origins,25,29,us,Deaths,attributable,46.4607262542598,29.0093158929698,67.3462249170267,nvss
+2002,White,All Origins,25,29,us,YLL,attributable,2980.42308110521,1860.92731700577,4320.21320694715,nvss
+2002,White,All Origins,30,34,us,age-adjusted Death,attributable,13.6345050175607,9.33770729071143,18.7569701960192,nvss
+2002,White,All Origins,30,34,us,Deaths,attributable,100.568039685403,68.8748814990685,138.351316796733,nvss
+2002,White,All Origins,30,34,us,YLL,attributable,5953.25354462092,4077.13657044852,8189.8828862493,nvss
+2002,White,All Origins,35,39,us,age-adjusted Death,attributable,50.6257461908706,35.4154384948219,76.5016612546698,nvss
+2002,White,All Origins,35,39,us,Deaths,attributable,311.325275088796,217.788812242318,470.450364228999,nvss
+2002,White,All Origins,35,39,us,YLL,attributable,16890.2098657592,11815.612285697,25523.1618473132,nvss
+2002,White,All Origins,40,44,us,age-adjusted Death,attributable,142.668166137356,96.2771305746301,199.331460393826,nvss
+2002,White,All Origins,40,44,us,Deaths,attributable,877.344225241976,592.060491274532,1225.79767035908,nvss
+2002,White,All Origins,40,44,us,YLL,attributable,43268.3300490469,29198.8799930858,60453.1455824211,nvss
+2002,White,All Origins,45,49,us,age-adjusted Death,attributable,194.293951208819,133.868568347436,270.855160990552,nvss
+2002,White,All Origins,45,49,us,Deaths,attributable,1440.97856900637,992.834500776077,2008.79378829802,nvss
+2002,White,All Origins,45,49,us,YLL,attributable,64027.4626911598,44114.9336459393,89257.3783544708,nvss
+2002,White,All Origins,50,54,us,age-adjusted Death,attributable,292.694820482838,183.63446873404,433.046753103596,nvss
+2002,White,All Origins,50,54,us,Deaths,attributable,2170.76733964629,1361.92265549341,3211.68562746152,nvss
+2002,White,All Origins,50,54,us,YLL,attributable,86037.7944836381,53979.4474496955,127294.317965284,nvss
+2002,White,All Origins,55,59,us,age-adjusted Death,attributable,257.26941552099,180.514139061399,364.117651900112,nvss
+2002,White,All Origins,55,59,us,Deaths,attributable,2948.68096186194,2068.95407337612,4173.3168548678,nvss
+2002,White,All Origins,55,59,us,YLL,attributable,102952.844742941,72237.2851629449,145710.861154338,nvss
+2002,White,All Origins,60,61,us,age-adjusted Death,attributable,112.995314077925,78.2023209842269,162.486823791336,nvss
+2002,White,All Origins,60,61,us,Deaths,attributable,1295.0903267163,896.312119311333,1862.33487139026,nvss
+2002,White,All Origins,60,61,us,YLL,attributable,39180.9351886311,27116.5233274227,56342.0329765569,nvss
+2002,White,All Origins,62,64,us,age-adjusted Death,attributable,196.694992515344,136.354305223938,282.726357649594,nvss
+2002,White,All Origins,62,64,us,Deaths,attributable,2254.41014256998,1562.81827386099,3240.45447271563,nvss
+2002,White,All Origins,62,64,us,YLL,attributable,68203.6579707824,47280.6260973406,98034.8891950249,nvss
+2002,White,All Origins,65,66,us,age-adjusted Death,attributable,112.547996840942,78.5890201377919,163.470033655284,nvss
+2002,White,All Origins,65,66,us,Deaths,attributable,1704.3611927532,1190.10626451796,2475.49480541953,nvss
+2002,White,All Origins,65,66,us,YLL,attributable,43769.5214126526,30562.994422564,63572.9230126926,nvss
+2002,White,All Origins,67,69,us,age-adjusted Death,attributable,201.798973921805,141.128127914386,291.73394719698,nvss
+2002,White,All Origins,67,69,us,Deaths,attributable,3055.92591199832,2137.16202131186,4417.84867050045,nvss
+2002,White,All Origins,67,69,us,YLL,attributable,78478.9135128229,54884.2341939328,113454.30933508,nvss
+2002,White,All Origins,70,74,us,age-adjusted Death,attributable,423.756449257577,292.089779697783,608.007428666344,nvss
+2002,White,All Origins,70,74,us,Deaths,attributable,6417.1204069869,4423.23719026546,9207.30972927997,nvss
+2002,White,All Origins,70,74,us,YLL,attributable,136608.943418073,94162.7584845976,196007.052083735,nvss
+2002,White,All Origins,75,79,us,age-adjusted Death,attributable,340.20259818382,238.016506064291,492.754586123556,nvss
+2002,White,All Origins,75,79,us,Deaths,attributable,7586.89801420821,5308.03399753055,10988.9777765095,nvss
+2002,White,All Origins,75,79,us,YLL,attributable,129762.621637542,90786.0374517832,187950.142828614,nvss
+2002,White,All Origins,80,84,us,age-adjusted Death,attributable,355.137638271388,252.117145381128,491.584123326748,nvss
+2002,White,All Origins,80,84,us,Deaths,attributable,7919.96609360383,5622.49400754546,10962.8751484984,nvss
+2002,White,All Origins,80,84,us,YLL,attributable,104850.251300953,74434.6506868686,145134.486778843,nvss
+2002,White,All Origins,85,150,us,age-adjusted Death,attributable,137.196733809424,96.7534703850045,185.343939800824,nvss
+2002,White,All Origins,85,150,us,Deaths,attributable,8846.51519827597,6238.71299615511,11951.0715366877,nvss
+2002,White,All Origins,85,150,us,YLL,attributable,76731.6635819676,54211.4450990437,103476.12318831,nvss
+2002,White,Hispanic or Latino,0,4,us,age-adjusted Death,attributable,0.118739560941923,0.0943522943590214,0.153025204265641,nvss
+2002,White,Hispanic or Latino,0,4,us,Deaths,attributable,2.14657029451313,1.70569800564865,2.76638514731491,nvss
+2002,White,Hispanic or Latino,0,4,us,YLL,attributable,188.899281805688,150.102295307084,243.443305286322,nvss
+2002,White,Hispanic or Latino,5,9,us,age-adjusted Death,attributable,0.218882854272774,0.170454613892067,0.280652974741167,nvss
+2002,White,Hispanic or Latino,5,9,us,Deaths,attributable,1.50369383264471,1.17099876327415,1.92804570569864,nvss
+2002,White,Hispanic or Latino,5,9,us,YLL,attributable,126.35551389471,98.3991204135876,162.013835973218,nvss
+2002,White,Hispanic or Latino,10,14,us,age-adjusted Death,attributable,0.357488010048698,0.270642614956362,0.459260463833264,nvss
+2002,White,Hispanic or Latino,10,14,us,Deaths,attributable,2.4558913841865,1.85927596893247,3.15505355290647,nvss
+2002,White,Hispanic or Latino,10,14,us,YLL,attributable,194.129212488606,146.96895065146,249.395419328772,nvss
+2002,White,Hispanic or Latino,15,17,us,age-adjusted Death,attributable,0.179983343455016,0.138066628134384,0.234550232920666,nvss
+2002,White,Hispanic or Latino,15,17,us,Deaths,attributable,1.29815412816133,0.995824168133433,1.69172517457575,nvss
+2002,White,Hispanic or Latino,15,17,us,YLL,attributable,96.1497966026441,73.757259743604,125.300245875593,nvss
+2002,White,Hispanic or Latino,18,19,us,age-adjusted Death,attributable,0.184326917305665,0.142180106618607,0.23851607674329,nvss
+2002,White,Hispanic or Latino,18,19,us,Deaths,attributable,1.32948274011481,1.0254931862375,1.72032935778045,nvss
+2002,White,Hispanic or Latino,18,19,us,YLL,attributable,98.4701987812647,75.9547415327245,127.41885901825,nvss
+2002,White,Hispanic or Latino,20,20,us,age-adjusted Death,attributable,0.119161071625055,0.089974311450988,0.160510141253352,nvss
+2002,White,Hispanic or Latino,20,20,us,Deaths,attributable,0.85946529315839,0.648951850745931,1.1577010321062,nvss
+2002,White,Hispanic or Latino,20,20,us,YLL,attributable,59.3955561218261,44.8474841022341,80.0059027073332,nvss
+2002,White,Hispanic or Latino,21,21,us,age-adjusted Death,attributable,0.214477327990242,0.167917064382572,0.273657671383441,nvss
+2002,White,Hispanic or Latino,21,21,us,Deaths,attributable,1.54694664174372,1.21112446370043,1.97379284654871,nvss
+2002,White,Hispanic or Latino,21,21,us,YLL,attributable,106.90572011292,83.6978661347513,136.404023202875,nvss
+2002,White,Hispanic or Latino,22,24,us,age-adjusted Death,attributable,0.346411461233755,0.255369205902154,0.498534216458218,nvss
+2002,White,Hispanic or Latino,22,24,us,Deaths,attributable,2.49853936375724,1.84188482380324,3.59574524342948,nvss
+2002,White,Hispanic or Latino,22,24,us,YLL,attributable,172.667978781647,127.2881805618,248.49320863332,nvss
+2002,White,Hispanic or Latino,25,29,us,age-adjusted Death,attributable,1.54612555998027,1.10286018541323,2.15635471928165,nvss
+2002,White,Hispanic or Latino,25,29,us,Deaths,attributable,11.4042142691977,8.13469112015716,15.9052614455175,nvss
+2002,White,Hispanic or Latino,25,29,us,YLL,attributable,731.572365954348,521.834743596052,1020.31139297757,nvss
+2002,White,Hispanic or Latino,30,34,us,age-adjusted Death,attributable,1.81051891693453,1.30195225140502,2.40398268797799,nvss
+2002,White,Hispanic or Latino,30,34,us,Deaths,attributable,13.3543783257942,9.60319318663653,17.7317640835667,nvss
+2002,White,Hispanic or Latino,30,34,us,YLL,attributable,790.529479871949,568.473284920968,1049.65442016264,nvss
+2002,White,Hispanic or Latino,35,39,us,age-adjusted Death,attributable,4.91626400557934,3.62786896832959,7.25300809328146,nvss
+2002,White,Hispanic or Latino,35,39,us,Deaths,attributable,30.2327838917294,22.3097413773032,44.6026954614905,nvss
+2002,White,Hispanic or Latino,35,39,us,YLL,attributable,1640.20754373961,1210.36177935115,2419.81280417482,nvss
+2002,White,Hispanic or Latino,40,44,us,age-adjusted Death,attributable,11.5570122247972,8.24872743313587,15.9757103880038,nvss
+2002,White,Hispanic or Latino,40,44,us,Deaths,attributable,71.0703600599649,50.7259157735954,98.2433407012405,nvss
+2002,White,Hispanic or Latino,40,44,us,YLL,attributable,3505.00488554653,2501.66992907116,4845.10545380274,nvss
+2002,White,Hispanic or Latino,45,49,us,age-adjusted Death,attributable,14.7956952205361,10.5376646756169,19.9652652097307,nvss
+2002,White,Hispanic or Latino,45,49,us,Deaths,attributable,109.732081692179,78.1524533855385,148.072130463959,nvss
+2002,White,Hispanic or Latino,45,49,us,YLL,attributable,4875.76076264204,3472.57301461161,6579.33644038794,nvss
+2002,White,Hispanic or Latino,50,54,us,age-adjusted Death,attributable,20.0397551133159,13.1015258236526,28.5928329716204,nvss
+2002,White,Hispanic or Latino,50,54,us,Deaths,attributable,148.624583867711,97.1672963348019,212.058374864186,nvss
+2002,White,Hispanic or Latino,50,54,us,YLL,attributable,5890.69642263454,3851.20031976649,8404.8781008802,nvss
+2002,White,Hispanic or Latino,55,59,us,age-adjusted Death,attributable,15.6119923515808,11.327788928232,21.8874342841617,nvss
+2002,White,Hispanic or Latino,55,59,us,Deaths,attributable,178.936095184951,129.832904875329,250.861769351851,nvss
+2002,White,Hispanic or Latino,55,59,us,YLL,attributable,6247.53246104043,4533.1004171148,8758.80881182623,nvss
+2002,White,Hispanic or Latino,60,61,us,age-adjusted Death,attributable,6.80694001027567,4.6345683757957,10.1528062603724,nvss
+2002,White,Hispanic or Latino,60,61,us,Deaths,attributable,78.0174136758151,53.1188812649254,116.365897861615,nvss
+2002,White,Hispanic or Latino,60,61,us,YLL,attributable,2360.29500472546,1607.02879266394,3520.46850187121,nvss
+2002,White,Hispanic or Latino,62,64,us,age-adjusted Death,attributable,11.2838827242666,7.62590666127111,16.8907028693792,nvss
+2002,White,Hispanic or Latino,62,64,us,Deaths,attributable,129.329676042325,87.4039603327498,193.591973933418,nvss
+2002,White,Hispanic or Latino,62,64,us,YLL,attributable,3912.66736415908,2644.27031411018,5856.82282328252,nvss
+2002,White,Hispanic or Latino,65,66,us,age-adjusted Death,attributable,6.43824754390544,4.40564607825506,9.45394598119901,nvss
+2002,White,Hispanic or Latino,65,66,us,Deaths,attributable,97.4970641074914,66.7165335283139,143.165041591209,nvss
+2002,White,Hispanic or Latino,65,66,us,YLL,attributable,2503.81189930176,1713.34031498823,3676.60644945058,nvss
+2002,White,Hispanic or Latino,67,69,us,age-adjusted Death,attributable,10.3575583362796,7.10408188473996,15.2066540712164,nvss
+2002,White,Hispanic or Latino,67,69,us,Deaths,attributable,156.848819841551,107.580070852823,230.280696219159,nvss
+2002,White,Hispanic or Latino,67,69,us,YLL,attributable,4028.0181265534,2762.75254024112,5913.81445842654,nvss
+2002,White,Hispanic or Latino,70,74,us,age-adjusted Death,attributable,20.451677706382,13.6131281126695,29.260248907098,nvss
+2002,White,Hispanic or Latino,70,74,us,Deaths,attributable,309.708273695132,206.149268920363,443.100136184883,nvss
+2002,White,Hispanic or Latino,70,74,us,YLL,attributable,6593.1317092417,4388.54689136839,9432.80437230304,nvss
+2002,White,Hispanic or Latino,75,79,us,age-adjusted Death,attributable,13.8035090292142,9.51218322860881,20.5335922405404,nvss
+2002,White,Hispanic or Latino,75,79,us,Deaths,attributable,307.833672646628,212.132313019322,457.922047115413,nvss
+2002,White,Hispanic or Latino,75,79,us,YLL,attributable,5265.03774218825,3628.20813194965,7832.07645971334,nvss
+2002,White,Hispanic or Latino,80,84,us,age-adjusted Death,attributable,12.18998287924,8.56623523764352,16.7359239562649,nvss
+2002,White,Hispanic or Latino,80,84,us,Deaths,attributable,271.85023686905,191.036616006682,373.229801616972,nvss
+2002,White,Hispanic or Latino,80,84,us,YLL,attributable,3598.95046456866,2529.08118030464,4941.0866195688,nvss
+2002,White,Hispanic or Latino,85,150,us,age-adjusted Death,attributable,4.66354819081921,3.28201079349098,6.31988729295254,nvss
+2002,White,Hispanic or Latino,85,150,us,Deaths,attributable,300.70796003994,211.625725768767,407.509548049135,nvss
+2002,White,Hispanic or Latino,85,150,us,YLL,attributable,2568.62861305766,1811.4440896245,3475.10094066844,nvss
+2002,White,Not Hispanic or Latino,0,4,us,age-adjusted Death,attributable,0.396541370239899,0.301093135710033,0.528883302347947,nvss
+2002,White,Not Hispanic or Latino,0,4,us,Deaths,attributable,7.16866324205825,5.44315286219635,9.5611368029177,nvss
+2002,White,Not Hispanic or Latino,0,4,us,YLL,attributable,630.846025118771,479.00023076611,841.384919903929,nvss
+2002,White,Not Hispanic or Latino,5,9,us,age-adjusted Death,attributable,0.557605452841818,0.405937525157797,0.747417413945281,nvss
+2002,White,Not Hispanic or Latino,5,9,us,Deaths,attributable,3.83066952993218,2.78873260789144,5.1346504937302,nvss
+2002,White,Not Hispanic or Latino,5,9,us,YLL,attributable,321.891469198938,234.337425701416,431.465094635592,nvss
+2002,White,Not Hispanic or Latino,10,14,us,age-adjusted Death,attributable,0.81651514234005,0.608931812834394,1.08360187785875,nvss
+2002,White,Not Hispanic or Latino,10,14,us,Deaths,attributable,5.60934198284743,4.18327426559939,7.44418956976795,nvss
+2002,White,Not Hispanic or Latino,10,14,us,YLL,attributable,443.39792415948,330.672497991463,588.435900748778,nvss
+2002,White,Not Hispanic or Latino,15,17,us,age-adjusted Death,attributable,0.68653017103437,0.513618208409818,0.917249210372541,nvss
+2002,White,Not Hispanic or Latino,15,17,us,Deaths,attributable,4.95169140947932,3.70454056884811,6.61578358385945,nvss
+2002,White,Not Hispanic or Latino,15,17,us,YLL,attributable,366.754695403417,274.382536305985,490.008260310478,nvss
+2002,White,Not Hispanic or Latino,18,19,us,age-adjusted Death,attributable,0.444774409329649,0.308464791523841,0.637589506226323,nvss
+2002,White,Not Hispanic or Latino,18,19,us,Deaths,attributable,3.20799538717374,2.22484389289712,4.59870026687726,nvss
+2002,White,Not Hispanic or Latino,18,19,us,YLL,attributable,237.605148177477,164.786509655584,340.609859572718,nvss
+2002,White,Not Hispanic or Latino,20,20,us,age-adjusted Death,attributable,0.458283099820892,0.341495149684351,0.608752399243396,nvss
+2002,White,Not Hispanic or Latino,20,20,us,Deaths,attributable,3.30542863844371,2.46307980394091,4.39070874524252,nvss
+2002,White,Not Hispanic or Latino,20,20,us,YLL,attributable,228.430134135962,170.217454843227,303.431202828785,nvss
+2002,White,Not Hispanic or Latino,21,21,us,age-adjusted Death,attributable,0.616856920456448,0.440168380346538,0.863889955046188,nvss
+2002,White,Not Hispanic or Latino,21,21,us,Deaths,attributable,4.44916369705935,3.17477378219589,6.23092276147546,nvss
+2002,White,Not Hispanic or Latino,21,21,us,YLL,attributable,307.470882381728,219.400894783738,430.603917942939,nvss
+2002,White,Not Hispanic or Latino,22,24,us,age-adjusted Death,attributable,1.4606613007898,1.01972489906306,2.14813528907959,nvss
+2002,White,Not Hispanic or Latino,22,24,us,Deaths,attributable,10.5352165431891,7.35490330325181,15.4937153618588,nvss
+2002,White,Not Hispanic or Latino,22,24,us,YLL,attributable,728.063192810349,508.279479574507,1070.73298670281,nvss
+2002,White,Not Hispanic or Latino,25,29,us,age-adjusted Death,attributable,4.77400876573537,2.86778349645956,6.9409280423884,nvss
+2002,White,Not Hispanic or Latino,25,29,us,Deaths,attributable,35.2130643827973,21.1527564887492,51.1962499497711,nvss
+2002,White,Not Hispanic or Latino,25,29,us,YLL,attributable,2258.89344192743,1356.93452838107,3284.20361277369,nvss
+2002,White,Not Hispanic or Latino,30,34,us,age-adjusted Death,attributable,11.7230049211402,7.96913855205294,16.2277506883716,nvss
+2002,White,Not Hispanic or Latino,30,34,us,Deaths,attributable,86.4688246931556,58.7803254411595,119.695806568045,nvss
+2002,White,Not Hispanic or Latino,30,34,us,YLL,attributable,5118.63250704736,3479.57643284305,7085.54613331001,nvss
+2002,White,Not Hispanic or Latino,35,39,us,age-adjusted Death,attributable,45.5410224395726,31.6237562505048,68.923249565253,nvss
+2002,White,Not Hispanic or Latino,35,39,us,Deaths,attributable,280.05654050748,194.471693847445,423.846584898053,nvss
+2002,White,Not Hispanic or Latino,35,39,us,YLL,attributable,15193.7992895073,10550.5976702218,22994.7850131075,nvss
+2002,White,Not Hispanic or Latino,40,44,us,age-adjusted Death,attributable,130.767658960871,87.6241120342941,182.990867351454,nvss
+2002,White,Not Hispanic or Latino,40,44,us,Deaths,attributable,804.161527717939,538.848369377861,1125.31046756605,nvss
+2002,White,Not Hispanic or Latino,40,44,us,YLL,attributable,39659.1501864037,26574.5968592904,55497.3786997527,nvss
+2002,White,Not Hispanic or Latino,45,49,us,age-adjusted Death,attributable,178.964053579045,122.934175204473,249.964054684303,nvss
+2002,White,Not Hispanic or Latino,45,49,us,Deaths,attributable,1327.28458207507,911.739715858324,1853.85516935057,nvss
+2002,White,Not Hispanic or Latino,45,49,us,YLL,attributable,58975.6613229599,40511.6230711336,82372.9410301054,nvss
+2002,White,Not Hispanic or Latino,50,54,us,age-adjusted Death,attributable,271.685491305746,169.992311121561,402.590054208881,nvss
+2002,White,Not Hispanic or Latino,50,54,us,Deaths,attributable,2014.95192231067,1260.74577050916,2985.80391515439,nvss
+2002,White,Not Hispanic or Latino,50,54,us,YLL,attributable,79862.0912614359,49969.3281348417,118341.555508364,nvss
+2002,White,Not Hispanic or Latino,55,59,us,age-adjusted Death,attributable,240.875191419585,168.641628926473,341.028733452319,nvss
+2002,White,Not Hispanic or Latino,55,59,us,Deaths,attributable,2760.77935531296,1932.87787273846,3908.68433289033,nvss
+2002,White,Not Hispanic or Latino,55,59,us,YLL,attributable,96392.2825199698,67486.2008175525,136471.248153996,nvss
+2002,White,Not Hispanic or Latino,60,61,us,age-adjusted Death,attributable,105.754686969391,73.0520088030219,151.981357968101,nvss
+2002,White,Not Hispanic or Latino,60,61,us,Deaths,attributable,1212.10222934125,837.282065367259,1741.92698300705,nvss
+2002,White,Not Hispanic or Latino,60,61,us,YLL,attributable,36670.2599116999,25330.6612373024,52699.2803641549,nvss
+2002,White,Not Hispanic or Latino,62,64,us,age-adjusted Death,attributable,184.754662506677,127.844161065846,265.404203778566,nvss
+2002,White,Not Hispanic or Latino,62,64,us,Deaths,attributable,2117.55662772989,1465.27966822903,3041.91744399612,nvss
+2002,White,Not Hispanic or Latino,62,64,us,YLL,attributable,64063.3686143779,44329.747917789,92028.461462277,nvss
+2002,White,Not Hispanic or Latino,65,66,us,age-adjusted Death,attributable,105.742986738976,73.7247732070343,153.638330558514,nvss
+2002,White,Not Hispanic or Latino,65,66,us,Deaths,attributable,1601.31009047125,1116.44494727152,2326.60923049021,nvss
+2002,White,Not Hispanic or Latino,65,66,us,YLL,attributable,41123.0768402782,28671.3058437516,59749.4081452971,nvss
+2002,White,Not Hispanic or Latino,67,69,us,age-adjusted Death,attributable,190.767758365389,133.22983997102,275.633979182344,nvss
+2002,White,Not Hispanic or Latino,67,69,us,Deaths,attributable,2888.87562029191,2017.55495732398,4174.04014916806,nvss
+2002,White,Not Hispanic or Latino,67,69,us,YLL,attributable,74188.9124549942,51812.6177017354,107193.088215743,nvss
+2002,White,Not Hispanic or Latino,70,74,us,age-adjusted Death,attributable,402.055982027973,276.908010797543,576.984929233917,nvss
+2002,White,Not Hispanic or Latino,70,74,us,Deaths,attributable,6088.50119341689,4193.33334055514,8737.52309940721,nvss
+2002,White,Not Hispanic or Latino,70,74,us,YLL,attributable,129613.231836318,89268.5193236059,186006.140293303,nvss
+2002,White,Not Hispanic or Latino,75,79,us,age-adjusted Death,attributable,325.422189437489,227.505301537269,471.287451884354,nvss
+2002,White,Not Hispanic or Latino,75,79,us,Deaths,attributable,7257.27838647646,5073.62239344896,10510.2366998698,nvss
+2002,White,Not Hispanic or Latino,75,79,us,YLL,attributable,124124.96749252,86776.7751378672,179761.987791601,nvss
+2002,White,Not Hispanic or Latino,80,84,us,age-adjusted Death,attributable,342.069721705885,242.939858231714,473.644670729665,nvss
+2002,White,Not Hispanic or Latino,80,84,us,Deaths,attributable,7628.53695470266,5417.83025123844,10562.8053136077,nvss
+2002,White,Not Hispanic or Latino,80,84,us,YLL,attributable,100992.101141083,71725.1635467256,139838.072345946,nvss
+2002,White,Not Hispanic or Latino,85,150,us,age-adjusted Death,attributable,132.184630543507,93.231112715048,178.555376914792,nvss
+2002,White,Not Hispanic or Latino,85,150,us,Deaths,attributable,8523.33222965766,6011.5895815094,11513.3415479466,nvss
+2002,White,Not Hispanic or Latino,85,150,us,YLL,attributable,73967.2742046488,52264.5273699426,99738.1943430209,nvss

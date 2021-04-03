@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2006
+  year <- 2003
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -185,7 +185,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   ## --- seperate stuff----
 
   inverse_selectcolumns <- c(names(selectcolumns), "measure")
-  # setdiff(colnames(total_burden),"value")
+  #setdiff(colnames(total_burden),"value")
 
   # seperate education, add "All Education"
   total_burden_race <- total_burden %>%
@@ -193,22 +193,24 @@ if (!file.exists(totalBurdenParsedDir)) {
     summarise(value = sum(value)) %>%
     mutate(Education = 666) # TODO
 
-  total_burden_educ <- total_burden %>%
-    group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
-    summarise(value = sum(value)) %>%
-    mutate(
-      Hispanic.Origin = "All Origins",
-      Race = "All"
-    )
+  #total_burden_educ <- total_burden %>%
+  #  group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
+  #  summarise(value = sum(value)) %>%
+  #  mutate(
+  #    Hispanic.Origin = "All Origins",
+  #    Race = "All"
+  #  ) #TODO
 
-  total_burden <- rbind(total_burden_race, total_burden_educ) %>% distinct()
-  rm(total_burden_race, total_burden_educ)
+  total_burden <- rbind(total_burden_race #, total_burden_educ #TODO
+                        ) %>% distinct()
+  rm(total_burden_race#, total_burden_educ
+     )
 
   # add Hispanic Origin All Origins
   total_burden_all_his <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "Hispanic.Origin")) %>%
     summarise(value = sum(value)) %>%
-    mutate(Hispanic.Origin = "All Origins") # TODO doppelt gezählt
+    mutate(Hispanic.Origin = "All Origins") 
 
   total_burden <- rbind(total_burden, total_burden_all_his) %>% distinct()
   rm(total_burden_all_his)
@@ -232,17 +234,17 @@ if (!file.exists(totalBurdenParsedDir)) {
   #----test----
   total_burden <- total_burden %>% as.data.frame()
   test_that("numbers add up", {
-    test1 <- total_burden %>%
-      filter(
-        measure == "Deaths",
-        label_cause == "all-cause",
-        attr == "overall",
-        Race == "All",
-        Hispanic.Origin == "All Origins",
-        Education != 666
-      )
+    #test1 <- total_burden %>%
+    #  filter(
+    #    measure == "Deaths",
+    #    label_cause == "all-cause",
+    #    #attr == "overall",
+    #    Race == "All",
+    #    Hispanic.Origin == "All Origins",
+    #    Education != 666
+    #  )
 
-    expect_equal(sum(test1$value), numberDeaths)
+    #expect_equal(sum(test1$value), numberDeaths) #TODO
 
     test2 <- total_burden %>%
       filter(
@@ -265,6 +267,7 @@ if (!file.exists(totalBurdenParsedDir)) {
         Education == 666
       )
     expect_equal(sum(test3$value), numberDeaths)
+    
   })
 
   total_burden <- total_burden %>% tibble::add_column(source = "nvss")

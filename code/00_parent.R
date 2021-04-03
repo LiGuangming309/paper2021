@@ -102,17 +102,21 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 
 total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
 dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
-sources <- c("wonder","nvss")
+sources <- "nvss" #c("wonder","nvss")
 
 attr.burden.dir <- file.path(data.dir, "10_attr_burd")
 dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 
 cdc.pop.dir <- file.path(data.dir, "11_cdc_population")
+if (!file.exists(cdc.pop.dir)) warning("The population data from CDC wonder need to be downloaded")
 
-summary.dir <- file.path(data.dir, "12_summary")
+pop.summary.dir <- file.path(data.dir, "12_population_summary")
+dir.create(pop.summary.dir, recursive = T, showWarnings = F)
+
+summary.dir <- file.path(data.dir, "13_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
-plot.dir <- file.path(data.dir, "13_plot")
+plot.dir <- file.path(data.dir, "14_plot")
 dir.create(plot.dir, recursive = T, showWarnings = F)
 
 
@@ -129,18 +133,18 @@ cens_agr.script <- file.path(code.dir, "09_aggregate.R")
 paf.script <- file.path(code.dir, "10_paf.R")
 read.total.burden.script <- file.path(code.dir, "11_read_tot.R")
 read.nvs.findrepl.script <- file.path(code.dir, "12_nvss_findrepl.R")
-read.total.burden.nvs.script <- file.path(code.dir, "12_read_tot_nvss.R")
-calc.attr.burd.script <- file.path(code.dir, "13_calc_attr_burd.R")
+read.total.burden.nvs.script <- file.path(code.dir, "13_read_tot_nvss.R")
+calc.attr.burd.script <- file.path(code.dir, "14_calc_attr_burd.R")
 
-summary.script <- file.path(code.dir, "15_summary.R")
-plot.script <- file.path(code.dir, "16_plot.R")
+summary.script <- file.path(code.dir, "16_summary.R")
+plot.script <- file.path(code.dir, "17_plot.R")
 
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
-years <- c(2000, 2010, 2001:2009, 2011:2016)
-# years <- c(2004)
+#years <- c(2000, 2010, 2001:2009, 2011:2016)
+ years <- c(2000:2008)
 for (agr_by in agr_bys) {
   for (source in sources) {
     for (year in years) {
@@ -176,8 +180,8 @@ for (agr_by in agr_bys) {
       if (source == "wonder") {
       #  runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
-        # runscript(script = read.nvs.findrepl.script, args = args)
-      #  runscript(script = read.total.burden.nvs.script, args = args)
+         runscript(script = read.nvs.findrepl.script, args = args)
+        runscript(script = read.total.burden.nvs.script, args = args)
       }
       #runscript(script = calc.attr.burd.script, args = args)
     }
@@ -192,11 +196,12 @@ for (agr_by in agr_bys) {
     total.burden.parsed.dir, # 4
     attr.burden.dir, # 5
     cdc.pop.dir, # 6
-    summary.dir, # 7
-    plot.dir # 8
+    pop.summary.dir, #7
+    summary.dir, # 8
+    plot.dir # ß
   )
   
-  runscript(script = summary.script, args = args)
-  runscript(script = plot.script, args = args)
+  #runscript(script = summary.script, args = args)
+  #runscript(script = plot.script, args = args)
   
 }

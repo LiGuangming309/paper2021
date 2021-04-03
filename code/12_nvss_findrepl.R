@@ -46,7 +46,7 @@ if(!file.exists(findreplaceDir)){
           "A48", "A70", "B97", "J09", "J10", "J11", "J12", "J13", "J14", "J15", "J16", "J20", "J21", "P23", "U04",
           "E11"
         ),
-        to = c(rep("cvd_ihd", 6), rep("cvd_stroke", 10), rep("neo_lung", 5), rep("resp_copd", 4), rep("resp_copd", 15), "t2_dm")
+        to = c(rep("cvd_ihd", 6), rep("cvd_stroke", 10), rep("neo_lung", 5), rep("resp_copd", 4), rep("lri", 15), "t2_dm")
       ) %>% mutate(from = paste0(from, end))
     }) %>% do.call(rbind, .)
   
@@ -71,7 +71,7 @@ if(!file.exists(findreplaceDir)){
       )
     )
   findreplaces2 <- merge(data.frame(Year = 2000:2002), findreplaces2)
-  ####----- 2003 -------
+  ####----- 2003-2016 -------
   findreplaces3 <-
     rbind(
       data.frame(
