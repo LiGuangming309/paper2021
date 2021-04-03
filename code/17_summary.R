@@ -27,8 +27,8 @@ agr_by <- args[2]
 censDir <- args[3]
 totalBurdenParsedDir <- args[4]
 attrBurdenDir <- args[5]
-cdcPopDir <- args[6]
-summaryDir <- args[7]
+pop.summary.dir <- args[7]
+summaryDir <- args[8]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -37,15 +37,15 @@ if (rlang::is_empty(args)) {
   dataDir <- "/Users/default/Desktop/paper2021/data"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/10_attr_burd"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/12_summary"
-  cdcPopDir <- "/Users/default/Desktop/paper2021/data/11_cdc_population"
+  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/12_population_summary"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/13_summary"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by)
 summaryDir <- file.path(summaryDir, agr_by)
 dir.create(summaryDir, recursive = T, showWarnings = F)
-cdcPopDir <- file.path(cdcPopDir, agr_by)
 
+pop.summary <- file.path(pop.summary.dir, paste0("pop_",agr_by,".csv")) %>% read.csv()
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c(
@@ -87,43 +87,9 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
     print("Years missing in attributable burden data:")
     print(missing)
   }
-
+  rm(missing)
   ### ---- read cdc population data------
-  files <- list.files(cdcPopDir)
-  cdc_pop <- lapply(files, function(file) {
-    fileDir <- file.path(cdcPopDir, file)
-    cdc_pop <- read.delim(fileDir)
-
-    notes_hisp_or <- cdc_pop$Notes[grepl("Hispanic Origin:", cdc_pop$Notes, fixed = TRUE)]
-
-    cdc_pop <- cdc_pop[!apply(is.na(cdc_pop) | cdc_pop == "", 1, all), ]
-
-    if (!"Hispanic.Origin" %in% colnames(cdc_pop)) {
-      if (rlang::is_empty(notes_hisp_or)) {
-        cdc_pop[, "Hispanic.Origin"] <- "All Origins"
-      } else if (grepl("Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
-        cdc_pop[, "Hispanic.Origin"] <- "Hispanic or Latino"
-      } else if (grepl("Not Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
-        cdc_pop[, "Hispanic.Origin"] <- "Not Hispanic or Latino"
-      }
-    }
-    
-    if (agr_by == "nation") cdc_pop[, "Nation"] <- "us"
-    cdc_pop <- cdc_pop %>% tibble::add_column(Education = 666)
-    
-    cdc_pop <- cdc_pop %>% select(all_of(c(unname(inverse_group_variables), "Population"))) # Gender
-    
-    return(cdc_pop)
-  })
-
-  cdc_pop <- cdc_pop %>%
-    do.call(rbind, .) %>%
-    as.data.frame() %>%
-    filter(
-      Hispanic.Origin != "Not Stated"
-    )
-
-  cdc_pop <- cdc_pop %>%
+  pop.summary <- pop.summary %>%
     group_by_at(vars(one_of(inverse_group_variables))) %>%
     summarise(Population = sum(Population))
   
@@ -153,7 +119,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 
   attrBurden <- attrBurden %>%
     left_join(all_burden, by = unname(c(inverse_group_variables,"source", "measure"))) %>%
-    left_join(cdc_pop, by = unname(inverse_group_variables)) %>% 
+    left_join(pop.summary, by = unname(inverse_group_variables)) %>% 
     mutate(measure2 = "absolute number")
 
   # calculations

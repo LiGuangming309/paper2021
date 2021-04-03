@@ -23,8 +23,8 @@ args <- commandArgs(trailingOnly = T)
 
 tmpDir <- args[1]
 agr_by <- args[2]
-summaryDir <- args[7]
-plotDir <- args[8]
+summaryDir <- args[8]
+plotDir <- args[9]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -39,8 +39,8 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/10_attr_burd"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/12_summary"
-  plotDir <- "/Users/default/Desktop/paper2021/data/13_plot"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/13_summary"
+  plotDir <- "/Users/default/Desktop/paper2021/data/14_plot"
 }
 summaryDir <- file.path(summaryDir, agr_by)
 plotDir <- file.path(plotDir, agr_by)
