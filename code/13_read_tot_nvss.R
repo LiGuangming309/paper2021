@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "readxl")
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -49,14 +49,13 @@ totalBurdenParsedDir <- file.path(
 )
 
 if (!file.exists(totalBurdenParsedDir)) {
-  lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
 
   ## ----- read total burden ---------
   tic(paste("read", year, "total burden data"))
   total_burden <- fread(totalBurdenDir)
   numberDeaths <- nrow(total_burden)
 
-  if(2000 <= year & year <= 2002){
+  if (2000 <= year & year <= 2002) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
@@ -67,59 +66,53 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age", # 64
       "Hispanic.Origin" = "hispanic" # 80 - 81
     )
-  }else if (2003 <= year & year <= 2005){
+  } else if (2003 <= year & year <= 2005) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
       "Education" = "educ", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
-      "min_age" = "ager52", # 64, Single Year
-      "max_age" = "ager52",
+      "min_age" = "age", # 64, Single Year
+      "max_age" = "age",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
-  }else if (2005 <= year & year <= 2016){
+  } else if (2005 <= year & year <= 2016) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
-      "Education" = "educ1989", # 52-53
+      "Education" = "educ2003", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
-      "min_age" = "ager52", # 64, Single Year
-      "max_age" = "ager52",
+      "min_age" = "age", # 64, Single Year
+      "max_age" = "age",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
   }
 
-  # All public-use micro-data files from 2005-present contain individual-level vital event data at the national level only.
-  # Specifically, these files contain no geographic identifiers at the state, county, or city level.
-  # see https://www.cdc.gov/nchs/nvss/dvs_data_release.htm
-  if (year <= 2004) {
-    if (agr_by == "nation") {
-      total_burden <- total_burden %>% tibble::add_column(nation = "us")
-      selectcolumns <- c(selectcolumns, "Nation" = "nation")
-    } else if (agr_by == "STATEFP") {
-      # if staters==0 (foreign resident), take state of occurance
-      total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
-        ifelse(row["staters"] != 0, row["staters"], row["stateoc"])
-      })
-      selectcolumns <- c(selectcolumns, "State.Code" = "staters") # residence, not occurance
-    } else if (agr_by == "county") {
-      # if staters==0 (foreign resident), take state of occurance
-      total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) ifelse(row["staters"] != 0, row["staters"], row["stateoc"]))
-      total_burden$countyrs <- apply(total_burden[, c("countyrs", "countyoc")], 1, function(row) ifelse(row["countyrs"] != 0, row["countyrs"], row["countyoc"]))
-
-      selectcolumns <- c(selectcolumns, "State.Code" = "staters", "County.Code" = "countyrs") # residence, not occurance
-    } else {
-
-    }
+  if (agr_by == "nation") {
+    total_burden <- total_burden %>% tibble::add_column(nation = "us")
+    selectcolumns <- c(selectcolumns, "nation" = "nation")
   } else {
-    if (agr_by == "nation") {
-      total_burden <- total_burden %>% tibble::add_column(nation = "us")
-      selectcolumns <- c(selectcolumns, "Nation" = "nation")
+    # All public-use micro-data files from 2005-present contain individual-level vital event data at the national level only.
+    # Specifically, these files contain no geographic identifiers at the state, county, or city level.
+    # see https://www.cdc.gov/nchs/nvss/dvs_data_release.htm
+    if (year <= 2004) {
+      if (agr_by == "STATEFP") {
+        # if staters==0 (foreign resident), take state of occurance
+        total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
+          ifelse(row["staters"] != 0, row["staters"], row["stateoc"])
+        })
+        selectcolumns <- c(selectcolumns, "STATEFP" = "staters") # residence, not occurance
+      } else if (agr_by == "county") {
+        # if staters==0 (foreign resident), take state of occurance
+        total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) ifelse(row["staters"] != 0, row["staters"], row["stateoc"]))
+        total_burden$countyrs <- apply(total_burden[, c("countyrs", "countyoc")], 1, function(row) ifelse(row["countyrs"] != 0, row["countyrs"], row["countyoc"]))
+        selectcolumns <- c(selectcolumns, "STATEFP" = "staters", "County.Code" = "countyrs") # residence, not occurance
+      }
     } else {
-      # TODO
       print(paste("in", year, "no geopgraphic identifier available"))
+      quit()
     }
   }
 
@@ -151,66 +144,39 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   }
   rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
-  ### --- calculate burden in Deaths and YLL----
+
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%
-    summarise(value = n()) %>%
-    mutate(measure = "Deaths")
-  
-  #age-standartised Deaths rates, see https://www.cdc.gov/nchs/data/nvsr/nvsr57/nvsr57_14.pdf, page 125 for more information
-  standartpopulation <- read_excel(file.path(dataDir,"standartpopulation.xlsx")) 
-  standartpopulation <- standartpopulation %>% mutate(prop = popsize/sum(standartpopulation$popsize))
-  total_burden_age_adj <- total_burden %>%
-    filter(min_age != "unknown") %>%
-    dplyr::mutate(
-      value = value * standartpopulation$prop[findInterval(min_age, standartpopulation$min_age)], 
-      measure = "age-adjusted Death"
-    )
-  rm(standartpopulation)
-  
-  # YLL
-  total_burden_yll <- total_burden %>%
-    filter(max_age != "unknown") %>%
-    dplyr::mutate(
-      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(max_age, lifeExpectancy$Age)],
-      value = value * Life.Expectancy,
-      measure = "YLL",
-      Life.Expectancy = NULL
-    )
+    summarise(Deaths = n())
 
-  total_burden <- rbind(total_burden, total_burden_yll, total_burden_age_adj) %>% distinct()
-  rm(total_burden_yll, total_burden_age_adj, lifeExpectancy)
 
   ## --- seperate stuff----
-
-  inverse_selectcolumns <- c(names(selectcolumns), "measure")
-  #setdiff(colnames(total_burden),"value")
+  inverse_selectcolumns <- c(names(selectcolumns))
+  # setdiff(colnames(total_burden),"Deaths")
 
   # seperate education, add "All Education"
   total_burden_race <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "Education")) %>%
-    summarise(value = sum(value)) %>%
+    summarise(Deaths = sum(Deaths)) %>%
     mutate(Education = 666) # TODO
 
-  #total_burden_educ <- total_burden %>%
-  #  group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
-  #  summarise(value = sum(value)) %>%
-  #  mutate(
-  #    Hispanic.Origin = "All Origins",
-  #    Race = "All"
-  #  ) #TODO
+   total_burden_educ <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(
+      Hispanic.Origin = "All Origins",
+      Race = "All",
+      Education = as.numeric(Education)) 
 
-  total_burden <- rbind(total_burden_race #, total_burden_educ #TODO
-                        ) %>% distinct()
-  rm(total_burden_race#, total_burden_educ
-     )
+  total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
+  rm(total_burden_race, total_burden_educ)
 
   # add Hispanic Origin All Origins
   total_burden_all_his <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "Hispanic.Origin")) %>%
-    summarise(value = sum(value)) %>%
-    mutate(Hispanic.Origin = "All Origins") 
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(Hispanic.Origin = "All Origins")
 
   total_burden <- rbind(total_burden, total_burden_all_his) %>% distinct()
   rm(total_burden_all_his)
@@ -218,7 +184,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   #--- add all-cause rows---
   total_burden_all <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
-    summarise(value = sum(value)) %>%
+    summarise(Deaths = sum(Deaths)) %>%
     mutate(
       label_cause = "all-cause",
       attr = "overall"
@@ -234,49 +200,54 @@ if (!file.exists(totalBurdenParsedDir)) {
   #----test----
   total_burden <- total_burden %>% as.data.frame()
   test_that("numbers add up", {
-    #test1 <- total_burden %>%
-    #  filter(
-    #    measure == "Deaths",
-    #    label_cause == "all-cause",
-    #    #attr == "overall",
-    #    Race == "All",
-    #    Hispanic.Origin == "All Origins",
-    #    Education != 666
-    #  )
+    expect_false(any(is.na(total_burden)))
 
-    #expect_equal(sum(test1$value), numberDeaths) #TODO
+    total_burden_test <- total_burden %>% select(setdiff(colnames(total_burden), c("Deaths")))
+    total_burden_test <- total_burden_test[duplicated(total_burden_test), ]
+    expect_equal(nrow(total_burden_test), 0)
+
+     test1 <- total_burden %>%
+      filter(
+        label_cause == "all-cause",
+        #attr == "overall",
+        Race == "All",
+        Hispanic.Origin == "All Origins",
+        Education != 666
+      )
+
+     expect_equal(sum(test1$Deaths), numberDeaths) 
 
     test2 <- total_burden %>%
       filter(
-        measure == "Deaths",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
         Hispanic.Origin == "All Origins",
         Education == 666
       )
-    expect_equal(sum(test2$value), numberDeaths)
+    expect_equal(sum(test2$Deaths), numberDeaths)
 
     test3 <- total_burden %>%
       filter(
-        measure == "Deaths",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
         Hispanic.Origin != "All Origins",
         Education == 666
       )
-    expect_equal(sum(test3$value), numberDeaths)
-    
+    expect_equal(sum(test3$Deaths), numberDeaths)
   })
+
+  ## --write to csv----
 
   total_burden <- total_burden %>% tibble::add_column(source = "nvss")
   #------filter ------
   # total_burden$Race %>% unique()
   total_burden <- total_burden %>%
-    filter(Hispanic.Origin != "Unkown" & # TODO
+    filter(Hispanic.Origin != "Unknown" & # TODO
       Race != "Guama" &
-      min_age != "unknown") 
+      min_age != "Unknown")%>% 
+    mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
 
   fwrite(total_burden, totalBurdenParsedDir)

@@ -1,7 +1,7 @@
 #-------------------Header------------------------------------------------
 # Author: Daniel Fridljand
 # Date: 03/27/2021
-# Purpose: calculate attributable burden
+# Purpose: read total burden
 #
 #***************************************************************************
 #*
@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "readxl")
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -29,7 +29,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -48,55 +48,28 @@ totalBurdenParsedDir <- file.path(
 if (!file.exists(totalBurdenParsedDir)) {
   lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
   ## ----determine join variables
-  join_variables <- c(
-    "Year" = "year",
-    "Race" = "race",
-    "Hispanic.Origin" = "hispanic_origin",
-    "label_cause" = "label_cause"
-  )
-
-  if (agr_by == "nation") {
-    join_variables <- c(join_variables,
-      #"Gender" = "gender",
-      "Gender.Code" = "gender_label"
-    )
-  }
+  select_columns <- c("Year", "Race", "Hispanic.Origin","label_cause", "Gender.Code")
 
   agr_by_replace <- c(
     "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
-    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "Nation", "county" = "County.Code"
+    "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "nation", "county" = "County.Code"
   )
   agr_by_new <- agr_by_replace[[agr_by]]
-  join_variables[agr_by_new] <- agr_by
-
-  inverse_join_variables <- setNames(names(join_variables), join_variables)
+  select_columns <- c(select_columns, agr_by_new)
 
   ## ----- read total burden ---------
   files <- list.files(totalBurdenDir)
   total_burden <- lapply(files, function(file) {
     fileDir <- file.path(totalBurdenDir, file)
     total_burden <- read.delim(fileDir)
-
-    if (agr_by_new == "Nation") {
-      columns <- c(unname(inverse_join_variables), "Notes", "Deaths", "Single.Year.Ages.Code")
-      columns <- columns[columns != "Nation"] # in this case this column does not exist
-
-      total_burden <- total_burden %>%
-        select(any_of(columns)) %>%
-        filter(Single.Year.Ages.Code != "NS")
-    } else {
-      columns <- c(unname(inverse_join_variables), "Notes", "Deaths", "Five.Year.Age.Groups.Code")
-      total_burden <- total_burden %>%
-        select(any_of(columns)) %>%
-        filter(Five.Year.Age.Groups.Code != "NS")
-    }
-
+    
     cause_icd <- total_burden$Notes[grepl("UCD - ICD-10 Codes:", total_burden$Notes, fixed = TRUE)]
     notes_hisp_or <- total_burden$Notes[grepl("Hispanic Origin:", total_burden$Notes, fixed = TRUE)]
-
-    total_burden <- total_burden %>% subset(select = -Notes)
+    notes_gender <- total_burden$Notes[grepl("Gender:", total_burden$Notes, fixed = TRUE)]
+    notes_race <- total_burden$Notes[grepl("Race:", total_burden$Notes, fixed = TRUE)]
+    total_burden$Notes <-NULL
     total_burden <- total_burden[!apply(is.na(total_burden) | total_burden == "", 1, all), ]
-
+    
     if (rlang::is_empty(cause_icd)) {
       total_burden$label_cause <- "all-cause"
     } else {
@@ -120,17 +93,57 @@ if (!file.exists(totalBurdenParsedDir)) {
 
     if (!"Hispanic.Origin" %in% colnames(total_burden)) {
       if (rlang::is_empty(notes_hisp_or)) {
-        total_burden[, "Hispanic.Origin"] <- "All Origins"
-      } else if (grepl("Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
-        total_burden[, "Hispanic.Origin"] <- "Hispanic or Latino"
-      } else if (grepl("Not Hispanic or Latino", notes_hisp_or, fixed = TRUE)) {
-        total_burden[, "Hispanic.Origin"] <- "Not Hispanic or Latino"
+        total_burden$Hispanic.Origin <- "All Origins"
+      } else if (notes_hisp_or == "Hispanic Origin: Hispanic or Latino") {
+        total_burden$Hispanic.Origin <- "Hispanic or Latino"
+      } else if (notes_hisp_or == "Hispanic Origin: Not Hispanic or Latino") {
+        total_burden$Hispanic.Origin <- "Not Hispanic or Latino"
+      }
+    }
+    
+    if (!"Gender.Code" %in% colnames(total_burden)) {
+      if (rlang::is_empty(notes_gender)) {
+        total_burden$Gender.Code <- "All"
+      }else if (notes_gender == "Gender: Female") {
+        total_burden$Gender.Code <- "Female"
+      } else if (notes_gender == "Gender: Male") {
+        total_burden$Gender.Code <- "Male"
+      }else{
+        print(paste("Gender missing in", file))
+      }
+    }
+    
+    if (!"Race" %in% colnames(total_burden)) {
+      if (notes_race == "Race: White") {
+        total_burden$Race <- "White"
+      } else if (notes_race == "Race: American Indian or Alaska Native") {
+        total_burden$Race <- "American Indian or Alaska Native"
+      }else if (notes_race == "Race: Asian or Pacific Islander") {
+        total_burden$Race <- "Asian or Pacific Islander"
+      }else if (notes_race == "Race: Black or African American") {
+        total_burden$Race <- "Black or African American"
+      }else{
+        print(paste("Race missing in", file))
       }
     }
 
     if (agr_by == "nation") {
-      total_burden[, "Nation"] <- "us"
+      total_burden$nation <- "us" 
+      columns <- c(select_columns, "Deaths", "Single.Year.Ages.Code")
+      
+      total_burden <- total_burden %>%
+        select(all_of(columns)) %>%
+        filter(Single.Year.Ages.Code != "NS")
+    } else {
+      columns <- c(select_columns,"Deaths", "Five.Year.Age.Groups", "Five.Year.Age.Groups.Code")
+      total_burden <- total_burden %>%
+        select(all_of(columns)) %>%
+        filter(Five.Year.Age.Groups.Code != "NS")
+      
+      total_burden$Five.Year.Age.Groups.Code[total_burden$Five.Year.Age.Groups == "< 1 year"] <- "0-0"
+      total_burden$Five.Year.Age.Groups <- NULL
     }
+    
     return(total_burden)
   })
 
@@ -144,7 +157,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     total_burden <- total_burden %>%
       mutate(
         min_age = as.numeric(Single.Year.Ages.Code),
-        max_age = as.numeric(Single.Year.Ages.Code) ,
+        max_age = as.numeric(Single.Year.Ages.Code),
         Single.Year.Ages.Code = NULL
       )
   } else if ("Five.Year.Age.Groups.Code" %in% colnames(total_burden)) {
@@ -165,7 +178,7 @@ if (!file.exists(totalBurdenParsedDir)) {
             unlist() %>%
             tail(1) %>%
             as.numeric()
-        })  ,
+        }),
         Five.Year.Age.Groups.Code = NULL
       )
   }
@@ -231,30 +244,12 @@ if (!file.exists(totalBurdenParsedDir)) {
   print(paste(100 * (1 - nrow(total_burden) / nrow_suppressed), "% rows suppressed"))
   total_burden <- total_burden %>% mutate(Deaths = as.numeric(Deaths))
 
-  ## --- calculate YLL-----
-  total_burden$measure <- "Deaths"
-  total_burden <- total_burden %>% dplyr::rename(value = Deaths)
-
-  total_burden_yll <- total_burden %>%
-    dplyr::mutate(
-      Life.Expectancy = lifeExpectancy$Life.Expectancy[findInterval(max_age, lifeExpectancy$Age)], # TODO max_age?
-      value = value * Life.Expectancy,
-      measure = "YLL",
-      Life.Expectancy = NULL
-    )
-  #------age-standartised Deaths rates----- 
-  #see https://www.cdc.gov/nchs/data/nvsr/nvsr57/nvsr57_14.pdf, page 125 for more information
-  standartpopulation <- read_excel(file.path(dataDir,"standartpopulation.xlsx")) 
-  standartpopulation <- standartpopulation %>% mutate(prop = popsize/sum(standartpopulation$popsize))
-  total_burden_age_adj <- total_burden %>%
-    dplyr::mutate(
-      value = value * standartpopulation$prop[findInterval(max_age, standartpopulation$max_age)], 
-      measure = "age-adjusted Death" 
-    )
+  ## --write to csv----
+  locations <- total_burden[,agr_by_new]
+  total_burden[,agr_by_new] <- NULL
+  total_burden[,agr_by] <- locations
   
-  total_burden <- rbind(total_burden, total_burden_yll, total_burden_age_adj)
-  rm(total_burden_yll, total_burden_age_adj)
-  
+  total_burden <- total_burden %>% tibble::add_column(Education = 666)
   total_burden$attr <- sapply(total_burden$label_cause, function(cause) {
     if (cause == "all-cause") {
       "overall"
@@ -263,7 +258,12 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   })
   
+  test_that("basic check", {
+    expect_false(any(is.na(total_burden)))
+    total_burden_test <- total_burden %>% select(setdiff(colnames(total_burden),c("Deaths")))
+    total_burden_test <- total_burden_test[duplicated(total_burden_test), ]
+    expect_equal(nrow(total_burden_test), 0)
+  })
   total_burden <- total_burden %>% tibble::add_column(source = "wonder")
-  total_burden <- total_burden %>% tibble::add_column(Education = 666)
   fwrite(total_burden, totalBurdenParsedDir)
 }
