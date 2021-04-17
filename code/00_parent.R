@@ -151,8 +151,8 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 years <- c(2000, 2010, 2001:2009, 2011:2016)
-# years <- c(2000:2003)
-# years <- c(2000)
+# years <- c(2000,2010,2001  )
+# years <- c(2001)
 for (agr_by in agr_bys) {
   for (source in sources) {
     for (year in years) {
@@ -179,9 +179,9 @@ for (agr_by in agr_bys) {
        runscript(script = download.meta.script, args = args)
        runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
-       #  runscript(script = download.cens.script, args = args)
+         runscript(script = download.cens.script, args = args)
        } else{
-       #  runscript(script = interp.script, args = args)
+         runscript(script = interp.script, args = args)
        }
        
       # runscript(script = download.other.script, args = args)

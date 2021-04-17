@@ -57,7 +57,8 @@ crosswalk <- read.dta(file.path(dataDir, "crosswalk_2010_2000.dta")) %>%
   filter(state %in% possible_states)
 
 meta00 <- read.csv(file.path(censDir, "meta", "cens_meta_2000.csv"))
-meta10 <- read.csv(file.path(censDir, "meta", "cens_meta_2010.csv"))
+meta10 <- read.csv(file.path(censDir, "meta", "cens_meta_2010.csv")) %>%
+  filter(Education == 666)
 
 # states, for which 2000 and 2010 still needs to be calculated
 missing_statesDir <- file.path(censDir10_in00, "missing_states.csv")
@@ -92,8 +93,8 @@ if (!file.exists(meta_crosswalkDir)) {
     expect_true(rlang::is_empty(missing_variables))
 
     test <- meta_crosswalk %>%
-      group_by(Gender.Code, Race, Hispanic.Origin, Education) %>%
-      summarise(min_age = min(min_age.y), max_age = max(max_age.y))
+      group_by(Gender.Code, Race, Hispanic.Origin, Education, min_age.x, max_age.x) %>%
+      summarize(min_age = min(min_age.y), max_age = max(max_age.y))
     expect_equal(test$min_age.x, test$min_age)
     expect_equal(test$max_age.x, test$max_age)
   })
@@ -119,13 +120,14 @@ apply(missing_states, 1, function(state) {
     censData10 <- file.path(censDir10, paste0("census_2010_", STUSPS, ".csv")) %>%
       fread(colClasses = c(pop_size = "numeric")) %>%
       select(GEO_ID, variable, pop_size) %>%
-      mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0"))
+      mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0")) %>%
+      filter(variable %in% meta10$variable)
 
     censData10_old <- censData10
 
     # translate variables
     censData10 <- censData10 %>%
-      left_join(meta_crosswalk, by = c("variable" = "variable10")) %>%
+      right_join(meta_crosswalk, by = c("variable" = "variable10")) %>%
       mutate(variable = NULL) %>%
       rename(variable = variable00)
 
@@ -164,20 +166,28 @@ apply(missing_states, 1, function(state) {
       )
 
       return(censData10_sub)
-    }) %>% do.call(rbind, .)
+    }) %>% rbindlist()
 
     test_that("03_interp old censData10", {
+      expect_false(any(is.na(censData10)))
+      expect_false(any(censData10== ""))
+      
+      expect_false(any(is.na(meta00)))
+      expect_false(any(meta00== ""))
+      expect_false(any(is.na(meta10)))
+      expect_false(any(meta10 == ""))
+      
       test1 <- test1 %>%
         left_join(meta00, by = "variable") %>%
-        group_by(gender, gender_label, race, hispanic_origin) %>%
+        group_by(Gender.Code, Race, Hispanic.Origin, Education) %>%
         summarise(pop_size = sum(pop_size))
 
       test2 <- censData10_old %>%
         left_join(meta10, by = "variable") %>%
-        group_by(gender, gender_label, race, hispanic_origin) %>%
+        group_by(Gender.Code, Race, Hispanic.Origin, Education) %>%
         summarise(pop_size = sum(pop_size))
 
-      test3 <- full_join(test1, test2, by = c("gender", "gender_label", "race", "hispanic_origin"))
+      test3 <- full_join(test1, test2, by = c("Gender.Code", "Race", "Hispanic.Origin", "Education"))
       expect_equal(test3$pop_size.x, test3$pop_size.y)
     })
 
@@ -321,6 +331,7 @@ apply(states, 1, function(state) {
     # testthat
     test_that("02_interp actual interpolation", {
       expect_false(any(is.na(censDataYear)))
+      expect_false(any(censDataYear== ""))
 
       censData00_agr <- censData00 %>%
         ungroup() %>%
