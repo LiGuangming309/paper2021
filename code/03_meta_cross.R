@@ -77,10 +77,11 @@ if (!file.exists(aim_metaDir)) {
       "White" = "W",
       "American Indian or Alaska Native" = "I",
       "Asian or Pacific Islander" = "A",
-      "Black or African American" = "B"
+      "Black or African American" = "B",
+      "All" ="U",
     )
     Hispanic.Origin <- substring(row[["Hispanic.Origin"]], 1, 1)
-    Education <- min(row[["Education"]], 66)
+    Education <- min(row[["Education"]] %>% as.numeric(), 66)
     Gender.Code <- row[["Gender.Code"]]
     min_age <- sprintf("%02d", as.numeric(row[["min_age"]]))
     paste0(Race, Hispanic.Origin, Education, Gender.Code, min_age)
