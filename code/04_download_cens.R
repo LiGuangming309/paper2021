@@ -46,6 +46,9 @@ if (!year %in% c(2000, 2009:2016)) {
   quit()
 }
 
+#intense computation
+if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
+
 ## ----------download useful data to tmp-------------------------------------------------------------------------------
 
 states <- read.csv(file.path(tmpDir, "states.csv"))
