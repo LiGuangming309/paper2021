@@ -173,7 +173,8 @@ for (region in regions) {
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))
 
-      pafs_dis <- pafs %>% distinct(label_cause, year, gender_label, min_age, max_age, race, hispanic_origin)
+      pafs_dis <- pafs %>% distinct(label_cause, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
+      
       expect_equal(nrow(pafs_dis), nrow(pafs))
       # TODO löschen
       

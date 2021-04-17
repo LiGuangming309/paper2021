@@ -222,22 +222,24 @@ if (agr_by != "county") {
         cens_agr <- cens_agrDirX %>%
           read.csv() %>%
           left_join(., census_meta, by = "variable") %>%
-          group_by(race, hispanic_origin, pm) %>%
+          filter(Education == 666) %>%
+          group_by(Race, Hispanic.Origin, pm) %>%
           summarise(pop_size = sum(pop_size))
 
         # print total pop sizes, regardless of pm
         cens_agr %>%
-          group_by(race, hispanic_origin) %>%
+          filter(Education == 666) %>%
+          group_by(Race, Hispanic.Origin) %>%
           summarise(pop_size = sum(pop_size)) %>%
           write.csv(., file.path(cens_agr_plotDir, "total_pop.csv"))
 
         # seperate plot for all his or.
-        for (his_or in unique(cens_agr$hispanic_origin)) {
-          cens_agr_his <- cens_agr %>% filter(hispanic_origin == his_or)
+        for (his_or in unique(cens_agr$Hispanic.Origin)) {
+          cens_agr_his <- cens_agr %>% filter(Hispanic.Origin == his_or)
 
           # totals
           g <- cens_agr_his %>%
-            ggplot(aes(x = pm, y = pop_size, group = race, color = race)) +
+            ggplot(aes(x = pm, y = pop_size, group = Race, color = Race)) +
             scale_color_viridis(discrete = TRUE) +
             ggtitle(paste("hispanic origin:", his_or, "year:", year)) +
             theme_ipsum() +
@@ -259,7 +261,7 @@ if (agr_by != "county") {
 
           test_that("06_aggregate plot race", {
             cens_agr_his %>%
-              group_by(race) %>%
+              group_by(Race) %>%
               summarise(sum_prop = sum(prop)) %>%
               apply(1, function(row) {
                 expect_equal(1, row[["sum_prop"]] %>% as.numeric())
@@ -269,7 +271,7 @@ if (agr_by != "county") {
 
           # totals
           g <- cens_agr_his %>%
-            ggplot(aes(x = pm, y = prop, group = race, color = race)) +
+            ggplot(aes(x = pm, y = prop, group = Race, color = Race)) +
             scale_color_viridis(discrete = TRUE) +
             ggtitle(paste("hispanic origin:", his_or)) +
             theme_ipsum() +
