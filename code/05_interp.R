@@ -32,7 +32,7 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
-if (!year %in% 2001:2009) {
+if (!year %in% 2001:2008) {
   print(paste("can not interpolate census data for", year))
   quit()
 }
@@ -63,13 +63,8 @@ missing_states <- read.csv(missing_statesDir)
 ## -----pair meta data from 2000 and 2010 -----
 meta_crosswalkDir <- file.path(censDir, "meta", "2000_2010_cross.csv")
 if (!file.exists(meta_crosswalkDir)) {
-  meta_crosswalk <- full_join(meta00, meta10,
-    by = c(
-      "gender",
-      "gender_label",
-      "race",
-      "hispanic_origin"
-    )
+  meta_crosswalk <- inner_join(meta00, meta10,
+    by = c("Gender.Code", "Race", "Hispanic.Origin", "Education")
   )
 
   meta_crosswalk <- meta_crosswalk %>% filter(
@@ -90,19 +85,17 @@ if (!file.exists(meta_crosswalkDir)) {
     expect_true(rlang::is_empty(missing_variables))
 
     test <- meta_crosswalk %>%
-      group_by(gender_label, race, hispanic_origin, min_age.x, max_age.x) %>%
-      summarise(
-        min_age = min(min_age.y),
-        max_age = max(max_age.y)
-      )
+      group_by(Gender.Code, Race, Hispanic.Origin, Education) %>%
+      summarise(min_age = min(min_age.y), max_age = max(max_age.y))
     expect_equal(test$min_age.x, test$min_age)
     expect_equal(test$max_age.x, test$max_age)
   })
   meta_crosswalk <- meta_crosswalk %>%
     select(
-      variable00, variable10, gender, gender_label,
-      race, hispanic_origin, year.x, min_age.x, max_age.x,
-      year.y, min_age.y, max_age.y
+      variable00, variable10, 
+      Gender.Code, Race, Hispanic.Origin, Education,
+      Year.x, min_age.x, max_age.x,
+      Year.y, min_age.y, max_age.y
     )
 
   fwrite(meta_crosswalk, meta_crosswalkDir)
