@@ -179,16 +179,16 @@ for (agr_by in agr_bys) {
        runscript(script = download.meta.script, args = args)
        runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
-         runscript(script = download.cens.script, args = args)
+       #  runscript(script = download.cens.script, args = args)
        } else{
-         runscript(script = interp.script, args = args)
+       #  runscript(script = interp.script, args = args)
        }
        
       # runscript(script = download.other.script, args = args)
       # runscript(script=assignTract.script, args = args)
       # runscript(script = assignTractAKHI.script, args = args)
-      #  runscript(script = cens_agr.script, args = args)
-      #  runscript(script = paf.script, args = args)
+        runscript(script = cens_agr.script, args = args)
+        runscript(script = paf.script, args = args)
       if (source == "wonder") {
       #  runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {

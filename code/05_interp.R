@@ -27,9 +27,13 @@ censDir <- args[8]
 
 if (rlang::is_empty(args)) {
   year <- 2001
-  dataDir <- "/Users/default/Desktop/paper2021/data"
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #dataDir <- "/Users/default/Desktop/paper2021/data"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 
 if (!year %in% 2001:2008) {
@@ -79,6 +83,9 @@ if (!file.exists(meta_crosswalkDir)) {
     )
 
   test_that("03 interp meta crosswalk", {
+    expect_false(any(is.na(meta_crosswalk)))
+    expect_false(any(meta_crosswalk== ""))
+    
     missing_variables <- setdiff(meta00$variable, meta_crosswalk$variable00)
     expect_true(rlang::is_empty(missing_variables))
     missing_variables <- setdiff(meta10$variable, meta_crosswalk$variable10)
