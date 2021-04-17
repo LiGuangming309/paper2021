@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2016
+  year <- 2009
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"

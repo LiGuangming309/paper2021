@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2009
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
@@ -97,7 +97,7 @@ filepathCensMeta <- paste0("cens_meta_", toString(year), ".csv") %>%
   file.path(censMetaDir, .)
 
 # relevant groups for each year and table names
-if (year %in% 2000:2009) {
+if (year %in% 2000:2008) {
   # decennical census, sex by age for races
   table_groups <- data.frame(
     #groups = c("P012A", "P012B", "P012C", "P012D", "P012E", "P012I", "PCT012J", "PCT012K", "PCT012L", "PCT012M"),
@@ -113,7 +113,7 @@ if (year %in% 2000:2009) {
     tablename = "dec/sf1",
     vintage = year
   )
-} else if (year %in% 2011:2016) {
+} else if (year %in% c(2009,2011:2016)) {
   # american community survey, sex by age for races
   table_groups <- data.frame(
     groups = c("B01001A", "B01001B", "B01001C", "B01001D", "B01001E", "B01001H"),
