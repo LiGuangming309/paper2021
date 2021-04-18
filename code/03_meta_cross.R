@@ -57,18 +57,22 @@ if (!file.exists(aim_metaDir)) {
   aim_meta1 <- rbind(
     merge(
       aim_meta1,
-      data.frame(Year = c(2000:2008, 2010)),
-      data.frame(
-        min_age = c(0, 1, seq(5, 85, 5)),
-        max_age = c(0, 4, seq(9, 84, 5), 150)
+      merge(
+        data.frame(Year = c(2000:2008, 2010)),
+        data.frame(
+          min_age = c(0, 1, seq(5, 85, 5)),
+          max_age = c(0, 4, seq(9, 84, 5), 150)
+        )
       )
     ),
     merge(
       aim_meta1,
-      data.frame(Year = c(2009, 2011:2016)),
-      data.frame(
-        min_age = c(seq(0, 40, 5), seq(45, 85, 10)),
-        max_age = c(seq(4, 44, 5), seq(54, 84, 10), 150)
+      merge(
+        data.frame(Year = c(2009, 2011:2016)),
+        data.frame(
+          min_age = c(seq(0, 40, 5), seq(45, 85, 10)),
+          max_age = c(seq(4, 44, 5), seq(54, 84, 10), 150)
+        )
       )
     )
   )
