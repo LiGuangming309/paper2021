@@ -78,9 +78,17 @@ g <- ggplot(dem_agr1, aes(x = year, y = median)) +
 ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_median_ethn.png", plot = g)
 
 dem_agr2 <- dem_agr %>% filter(Education != 666)
+replaces3 <- data.frame(
+  Education = c(1:7, 666),
+  Education2 = c(
+    "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
+    "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
+  )
+)
+dem_agr2 <- dem_agr2 %>% left_join(replaces3, by = "Education")
 
 g <- ggplot(dem_agr2, aes(x = year, y = mean)) +
-  geom_line(aes(color = Education), size = 1) + 
+  geom_line(aes(color = Education2), size = 1) + 
   ylab(paste("pm exposure")) +
   xlab("Year") +
   xlim(2000, 2016) +
@@ -92,13 +100,13 @@ g <- ggplot(dem_agr2, aes(x = year, y = mean)) +
 ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_mean_educ.png", plot = g)
 
 g <- ggplot(dem_agr2, aes(x = year, y = median)) +
-  geom_line(aes(color = Education), size = 1) + 
+  geom_line(aes(color = Education2), size = 1) + 
   ylab(paste("pm exposure")) +
   xlab("Year") +
   xlim(2000, 2016) +
   # scale_color_viridis(discrete = TRUE) +
   theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
+  guides(col = guide_legend(nrow = 4, byrow = TRUE)) +
   ggtitle("population-weighted median")
 
 ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_median_educ.png", plot = g)
