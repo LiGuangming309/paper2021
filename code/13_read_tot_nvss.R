@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2003
+  year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -181,6 +181,13 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- rbind(total_burden, total_burden_all_his) %>% distinct()
   rm(total_burden_all_his)
 
+  #add Gender A
+  total_burden_all_gend <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, "Gender.Code")) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(Gender.Code = "A")
+  total_burden <- rbind(total_burden, total_burden_all_gend) %>% distinct()
+  rm(total_burden_all_gend)
   #--- add all-cause rows---
   total_burden_all <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
@@ -208,6 +215,7 @@ if (!file.exists(totalBurdenParsedDir)) {
 
      test1 <- total_burden %>%
       filter(
+        Gender.Code != "A",
         label_cause == "all-cause",
         #attr == "overall",
         Race == "All",
@@ -219,6 +227,7 @@ if (!file.exists(totalBurdenParsedDir)) {
 
     test2 <- total_burden %>%
       filter(
+        Gender.Code != "A",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
@@ -229,6 +238,7 @@ if (!file.exists(totalBurdenParsedDir)) {
 
     test3 <- total_burden %>%
       filter(
+        Gender.Code != "A",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
@@ -236,6 +246,17 @@ if (!file.exists(totalBurdenParsedDir)) {
         Education == 666
       )
     expect_equal(sum(test3$Deaths), numberDeaths)
+    
+    test4 <- total_burden %>%
+      filter(
+        Gender.Code == "A",
+        label_cause == "all-cause",
+        attr == "overall",
+        Race != "All",
+        Hispanic.Origin != "All Origins",
+        Education == 666
+      )
+    expect_equal(sum(test4$Deaths), numberDeaths)
   })
 
   ## --write to csv----

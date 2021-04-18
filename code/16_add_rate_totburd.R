@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2000
   agr_by <- "nation"
   source <- "wonder"
   
@@ -66,7 +66,6 @@ if(!file.exists(totalBurdenParsed2Dir)){
   }
   
   ##---aggregate total burden by ages available in PAF file------
-  #TODO entcomment
   pafDir <- file.path(pafDir, agr_by, year)
   paf <- file.path(pafDir, list.files(pafDir)[[1]]) %>% read.csv
   paf <- paf %>% 
@@ -94,7 +93,6 @@ if(!file.exists(totalBurdenParsed2Dir)){
     ungroup()
   
   rm(paf, pafDir)
-  ####--- 11_read_to
   ## --- measure 1: Deaths and YLL-----
   tic(paste("added YLL and age-adjusted rate to total burden in",year,agr_by))
   # Deaths
@@ -121,7 +119,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
   pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_",year,  ".csv")) %>% 
     read.csv() %>%
     filter(Year == year & Education != 666)
-  pop_summary1 <- rbind(pop_summary1, pop_summary2)
+  pop_summary <- rbind(pop_summary1, pop_summary2)
   rm(pop_summary1, pop_summary2)
   #------measure 2: absolute number, crude rate and age-standartised rates----- 
   # absolute number

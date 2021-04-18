@@ -29,7 +29,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -244,6 +244,14 @@ if (!file.exists(totalBurdenParsedDir)) {
   print(paste(100 * (1 - nrow(total_burden) / nrow_suppressed), "% rows suppressed"))
   total_burden <- total_burden %>% mutate(Deaths = as.numeric(Deaths))
 
+  #add Gender A
+  total_burden_all_gend <- total_burden %>%
+    group_by_at(setdiff(colnames(total_burden), c("Gender.Code", "Deaths"))) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(Gender.Code = "A")
+  total_burden <- rbind(total_burden, total_burden_all_gend) %>% distinct()
+  rm(total_burden_all_gend)
+  
   ## --write to csv----
   locations <- total_burden[,agr_by_new]
   total_burden[,agr_by_new] <- NULL

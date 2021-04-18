@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2002
+  year <- 2000
   agr_by <- "nation"
   source <- "nvss"
 
@@ -56,30 +56,14 @@ if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
-  join_variables <- c(
-    "Year" = "year",
-    "Race" = "race",
-    "Hispanic.Origin" = "hispanic_origin",
-    "label_cause" = "label_cause"#,
-    #"Education" = "Education"
-  )
+  join_variables <- c("Year", "Race", "Hispanic.Origin", "label_cause", "Education", agr_by)
   
   if(agr_by == "nation"){
-    join_variables <- c(join_variables, "Gender.Code" = "gender_label")
+    join_variables <- c(join_variables, "Gender.Code")
   }#else TODO more complicated
   
-  group_variables <- c(
-    "Year" = "year",
-    "Race" = "race",
-    #"Education" = "Education",
-    "Hispanic.Origin" = "hispanic_origin"
-  )
+  group_variables <- c("Year","Race","Education", "Hispanic.Origin", agr_by)
 
-  join_variables[agr_by] <- agr_by
-  group_variables[agr_by] <- agr_by
-
-  inverse_join_variables <- setNames(names(join_variables), join_variables)
-  inverse_group_variables <- setNames(names(group_variables), group_variables)
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
 
@@ -88,11 +72,7 @@ if (!file.exists(attrBurdenDir)) {
     file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
       fread()
   }) %>%
-    do.call(rbind, .) %>%
-    # TODO Asian, Pacific Islander immer noch dabei
-    filter(!(race %in% c("ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER"))) %>%
-    # TODO old people still included
-    filter(!(100 <= min_age & max_age < 150 | 100 < min_age)) %>%
+    rbindlist %>%
     as.data.frame()
 
   if (agr_by == "STATEFP") {
@@ -124,14 +104,14 @@ if (!file.exists(attrBurdenDir)) {
   # give some feedback on what is still missing from total burden
   # one side
   total_burden_test <- total_burden %>%
-    select(all_of(inverse_join_variables)) %>%
+    select(all_of(join_variables)) %>%
     distinct()
   
   pafs_test <- pafs %>%
     select(all_of(join_variables)) %>%
     distinct()
   
-  missing <- anti_join(total_burden_test , pafs_test, by = inverse_join_variables)
+  missing <- anti_join(total_burden_test , pafs_test, by = join_variables)
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in pafs data for", agr_by, ":"))
     print(head(missing))
