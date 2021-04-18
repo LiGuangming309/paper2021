@@ -28,16 +28,16 @@ dem_agr <- lapply(2000:2016, function(year) {
   toc()
   return(dem_agr)
 }) %>%
-  do.call(rbind, .) %>%
+  rbindlist() %>%
   as.data.frame
 
 
 dem_agr <- dem_agr %>%
-  group_by(year,race, hispanic_origin,pm) %>%
+  group_by(year,Race, Hispanic.Origin, Education, pm) %>%
   summarise(pop_size = sum(pop_size))
 
 dem_agr <- dem_agr %>%
-  group_by(year, race, hispanic_origin) %>%
+  group_by(year, Race, Education, Hispanic.Origin) %>%
   summarise(mean = weighted.mean(pm, pop_size),
          median = matrixStats::weightedMedian(pm, pop_size)
          )
@@ -46,15 +46,15 @@ write.csv(dem_agr, "C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm.csv")
 toc()
 
 ## --plot ---
-dem_agr$ethnicity <- paste0(dem_agr$race, ", ",dem_agr$hispanic_origin)
-dem_agr <- dem_agr %>% filter(ethnicity %in% c("White, Not Hispanic or Latino",
+dem_agr$Ethnicity <- paste0(dem_agr$Race, ", ",dem_agr$Hispanic.Origin)
+dem_agr1 <- dem_agr %>% filter(Ethnicity %in% c("White, Not Hispanic or Latino",
                                          "White, Hispanic or Latino",
                                          "Black or African American, All Origins",
                                          "Asian or Pacific Islander, All Origins",
                                          "American Indian or Alaska Native, All Origins"))
   
-g <- ggplot(dem_agr, aes(x = year, y = mean)) +
-  geom_line(aes(color = ethnicity), size = 1) + 
+g <- ggplot(dem_agr1, aes(x = year, y = mean)) +
+  geom_line(aes(color = Ethnicity), size = 1) + 
   ylab(paste("pm exposure")) +
   xlab("Year") +
   xlim(2000, 2016) +
@@ -63,10 +63,10 @@ g <- ggplot(dem_agr, aes(x = year, y = mean)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))+
   ggtitle("population-weighted mean")
 
-ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_mean.png", plot = g)
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_mean_ethn.png", plot = g)
 
-g <- ggplot(dem_agr, aes(x = year, y = median)) +
-  geom_line(aes(color = ethnicity), size = 1) + 
+g <- ggplot(dem_agr1, aes(x = year, y = median)) +
+  geom_line(aes(color = Ethnicity), size = 1) + 
   ylab(paste("pm exposure")) +
   xlab("Year") +
   xlim(2000, 2016) +
@@ -75,4 +75,30 @@ g <- ggplot(dem_agr, aes(x = year, y = median)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   ggtitle("population-weighted median")
 
-ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_median.png", plot = g)
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_median_ethn.png", plot = g)
+
+dem_agr2 <- dem_agr %>% filter(Education != 666)
+
+g <- ggplot(dem_agr2, aes(x = year, y = mean)) +
+  geom_line(aes(color = Education), size = 1) + 
+  ylab(paste("pm exposure")) +
+  xlab("Year") +
+  xlim(2000, 2016) +
+  # scale_color_viridis(discrete = TRUE) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))+
+  ggtitle("population-weighted mean")
+
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_mean_educ.png", plot = g)
+
+g <- ggplot(dem_agr2, aes(x = year, y = median)) +
+  geom_line(aes(color = Education), size = 1) + 
+  ylab(paste("pm exposure")) +
+  xlab("Year") +
+  xlim(2000, 2016) +
+  # scale_color_viridis(discrete = TRUE) +
+  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
+  ggtitle("population-weighted median")
+
+ggsave("C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm_median_educ.png", plot = g)
