@@ -40,6 +40,7 @@ if (rlang::is_empty(args)) {
 # load states, so we can loop over them
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 plotDir <- file.path(pop.summary.dir, "plot", agr_by)
+dir.create(plotDir, recursive = T, showWarnings = F)
 # load meta data
 census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% fread()
 
