@@ -29,7 +29,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2009
   agr_by <- "nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -81,7 +81,8 @@ if (TRUE) {
   pop.summary <- lapply(files, function(file) {
     fread(file.path(pop.summary.dir, file))
   }) %>%
-    rbindlist() %>%
+    #rbindlist() %>%
+    do.call(rbind,.) %>%
     as.data.frame()
 
   for (location in pop.summary[, agr_by] %>% unique()) {
@@ -101,7 +102,7 @@ if (TRUE) {
 
     pop.summary_sub1 <- pop.summary_sub1 %>%
       group_by(Ethnicity, Year) %>%
-      summarise(Population = sum(Population))
+      summarize(Population = sum(Population))
 
     g <- ggplot(pop.summary_sub1, aes(x = Year, y = Population)) +
       geom_line(aes(color = Ethnicity), size = 1) +
@@ -121,19 +122,30 @@ if (TRUE) {
 
     pop.summary_sub2 <- pop.summary_sub2 %>%
       group_by(Education, Year) %>%
-      summarise(Population = sum(Population))
+      summarize(Population = sum(Population)) %>%
+      arrange(Year, Education)
+    
+    replaces3 <- data.frame(
+      Education = c(1:7, 666),
+      Education2 = c(
+        "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
+        "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
+      )
+    )
+    pop.summary_sub2 <- pop.summary_sub2 %>% left_join(replaces3, by = "Education")
 
-    g <- ggplot(pop.summary_sub2, aes(x = Year, y = Population)) +
-      geom_line(aes(color = Education), size = 1) +
+    g <- ggplot(pop.summary_sub2, aes(x = Year, y = Population, color = Education2)) +
+      geom_line( size = 1) +
       ylab(paste("Population")) +
       xlab("Year") +
       ylim(0, NA) +
       xlim(2000, 2016) +
       theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-      guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-      ggtitle(paste("Population in", location))
+      guides(col = guide_legend(nrow = 4, byrow = TRUE)) +
+      ggtitle(paste("Population 25+ in", location))
 
     ggsave(file.path(plotDir, paste0(location, "_plot_educ_cens.png")), plot = g)
+    
   }
   toc()
 }
