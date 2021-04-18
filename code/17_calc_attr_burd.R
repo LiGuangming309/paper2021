@@ -48,7 +48,9 @@ attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), "
 
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
-total_burden <- file.path(totalBurdenParsed2Dir,agr_by,source, paste0("total_burden_",year,".csv")) %>% fread
+total_burden <- file.path(totalBurdenParsed2Dir,agr_by,source, paste0("total_burden_",year,".csv")) %>% 
+  fread%>% 
+  filter(label_cause != "all-cause")
 
 #intense computation
 if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
@@ -56,13 +58,8 @@ if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
-  join_variables <- c("Year", "Race", "Hispanic.Origin", "label_cause", "Education", agr_by)
-  
-  if(agr_by == "nation"){
-    join_variables <- c(join_variables, "Gender.Code")
-  }#else TODO more complicated
-  
-  group_variables <- c("Year","Race","Education", "Hispanic.Origin", agr_by)
+  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause", "min_age","max_age", agr_by)
+  group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
 
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
@@ -111,7 +108,7 @@ if (!file.exists(attrBurdenDir)) {
     select(all_of(join_variables)) %>%
     distinct()
   
-  missing <- anti_join(total_burden_test , pafs_test, by = join_variables)
+  missing <- anti_join(total_burden_test , pafs_test, by = join_variables) 
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in pafs data for", agr_by, ":"))
     print(head(missing))
@@ -127,36 +124,17 @@ if (!file.exists(attrBurdenDir)) {
   toc()
   ## ----- join total_burden and pafs-----
   tic("calc_attr_burd: 2 joined PAFs and total burden data")
-  total_burden_cause <- total_burden %>% filter(label_cause != "all-cause")
-  rm(total_burden)
   
-  burden_paf <- inner_join(total_burden_cause, pafs, by = join_variables)
+  burden_paf <- inner_join(total_burden, pafs, by = join_variables)
   rm(pafs)
   toc()
   
-  tic("calc_attr_burd: 3 filtered out wrong age combinations from joined burden_paf")
-  # filter those, where age in correct interval
-  #burden_paf <- as.data.table(burden_paf) 
-  #burden_paf <- burden_paf[(min_age.x <= min_age.y & max_age.y <= max_age.x) |
-  #                           (min_age.y <= min_age.x & max_age.x <= max_age.y)]
-  burden_paf <- burden_paf %>% 
-    filter((min_age.x <= min_age.y & max_age.y <= max_age.x) |
-                                      (min_age.y <= min_age.x & max_age.x <= max_age.y)) 
-  #TODO join instead correctly
-  toc()
   ## ----- calculate attributable burden------
-  tic("calc_attr_burd: 4 pivot_longer")
+  tic("calc_attr_burd: 3 pivot_longer")
   test_that("09_calc distinct rows", {
-    #TODO check fot STATEFP
-    burden_paf_sub3 <- burden_paf %>% select(c(min_age.x, max_age.x, min_age.y, max_age.y, measure1,measure2, inverse_join_variables))
-    burden_paf_sub1 <- burden_paf %>% select(c(min_age.x, max_age.x, measure1,measure2, inverse_join_variables))
+    burden_paf_sub1 <- burden_paf %>% select(c(join_variables,"measure1","measure2"))
     burden_paf_sub1 <- burden_paf_sub1[duplicated(burden_paf_sub1), ]
-    
-    burden_paf_sub2 <- burden_paf %>% select(c(min_age.y, max_age.y, measure1,measure2, inverse_join_variables))
-    burden_paf_sub2 <- burden_paf_sub2[duplicated(burden_paf_sub2) , ]
-
     expect_equal(nrow(burden_paf_sub1), 0)
-    expect_equal(nrow(burden_paf_sub2), 0)
   })
 
   burden_paf <- pivot_longer(burden_paf,
@@ -165,7 +143,7 @@ if (!file.exists(attrBurdenDir)) {
                              values_to = "paf") 
   toc()
   
-  tic("calc_attr_burd: 5 calculated attributable burden")
+  tic("calc_attr_burd: 4 calculated attributable burden")
   attrBurden <- burden_paf %>%
     mutate(
       value = value * paf,
@@ -176,8 +154,8 @@ if (!file.exists(attrBurdenDir)) {
   toc()
 
   # group "out" ages
-  tic("calc_attr_burd: 6 grouped by group_variables and draw")
-  columns <- c(unname(inverse_group_variables), "draw", "measure1","measure2", "attr")
+  tic("calc_attr_burd: 5 grouped by group_variables and draw")
+  columns <- c(group_variables, "draw", "measure1","measure2", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
     dplyr::summarize(value = sum(value)
@@ -185,8 +163,8 @@ if (!file.exists(attrBurdenDir)) {
   toc()
   
   #group "out" draw, mean and confidence interval
-  tic("calc_attr_burd: 7 grouped out draws, calculate mean, lower, upper")
-  columns <- c(unname(inverse_group_variables), "measure1","measure2", "attr")
+  tic("calc_attr_burd: 6 grouped out draws, calculate mean, lower, upper")
+  columns <- c(group_variables, "measure1","measure2", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
     dplyr::summarize(mean = mean(value),
@@ -195,25 +173,5 @@ if (!file.exists(attrBurdenDir)) {
               )
   attrBurden <- attrBurden %>% tibble::add_column(source = source)
   toc()
-  # some basic tests
-  test_that("09_read burden join2", {
-    expect_false(any(is.na(attrBurden)))
-
-    # test that total number of deaths/YLL has not changed
-    #columns <- unname(inverse_join_variables)
-    #comp1 <- total_burden %>%
-    #  group_by_at(vars(one_of(columns))) %>%
-    #  summarize(Deaths = sum(Deaths), YLL = sum(YLL))
-
-    #comp2 <- attrBurden %>%
-    #  group_by_at(vars(one_of(columns))) %>%
-    #  summarize(Deaths = sum(Deaths), YLL = sum(YLL))
-
-    #comp3 <- inner_join(comp1, comp2, by = columns)
-
-    #expect_equal(comp3$Deaths.x, comp3$Deaths.x)
-    #expect_equal(comp3$YLL.x, comp3$YLL.x)
-  })
-
   fwrite(attrBurden, attrBurdenDir)
 }
