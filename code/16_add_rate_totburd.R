@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2010
   agr_by <- "nation"
   source <- "wonder"
   
@@ -70,12 +70,11 @@ if(!file.exists(totalBurdenParsed2Dir)){
   pafDir <- file.path(pafDir, agr_by, year)
   paf <- file.path(pafDir, list.files(pafDir)[[1]]) %>% read.csv
   paf <- paf %>% 
-    select(hispanic_origin, race, min_age, max_age, year) %>% 
-    mutate(Education = 666) %>% #TODO Education
+    select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>% 
     distinct() %>%
     arrange(min_age, max_age)
   
-  total_burden <- total_burden %>% left_join(paf, by=c("Hispanic.Origin"="hispanic_origin", "Race" ="race", "Education" = "Education", "Year" = "year")) 
+  total_burden <- total_burden %>% left_join(paf, by=c("Hispanic.Origin", "Race", "Education", "Year")) 
   
   test_that("paf min_age and max_age compatible with total burden",{
     total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
@@ -114,15 +113,21 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   total_burden <- rbind(total_burden, total_burden_yll)
   rm(lifeExpectancy, total_burden_yll)
+  #---read population data----
+  pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>% 
+    read.csv() %>%
+    filter(Year == year)
+  
+  pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_",year,  ".csv")) %>% 
+    read.csv() %>%
+    filter(Year == year & Education != 666)
+  pop_summary1 <- rbind(pop_summary1, pop_summary2)
+  rm(pop_summary1, pop_summary2)
   #------measure 2: absolute number, crude rate and age-standartised rates----- 
   # absolute number
   total_burden$measure2 <- "absolute number"
   
   # crude rate
-  pop_summary <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>% 
-    read.csv() %>%
-    filter(Year == year)
-  
   pop_summary_agr <- pop_summary %>%
     group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("min_age","max_age", "Gender.Code","Population"))))) %>%
     summarise(Population = sum(Population))

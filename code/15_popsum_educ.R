@@ -70,7 +70,7 @@ if (!file.exists(pop.summary.dirX)) {
 
   pop.summary <- pop.summary %>%
     left_join(census_meta, by = "variable") %>%
-    select(-c(age_group_id))
+    select(-c(age_group_id, variable))
   write.csv(pop.summary, pop.summary.dirX, row.names = FALSE)
   toc()
 }
