@@ -69,7 +69,7 @@ if (!file.exists(pop.summary.dir)) {
   })
 
   cdc_pop <- cdc_pop %>%
-    do.call(rbind, .) %>%
+    rbindlist %>%
     as.data.frame() %>%
     distinct
 

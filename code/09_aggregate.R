@@ -58,7 +58,7 @@ cens_agrDir <- file.path(cens_agrDir, agr_by, year)
 dir.create(cens_agrDir, recursive = T, showWarnings = F)
 
 # load states, so we can loop over them
-states <- file.path(tmpDir, "states.csv") %>% read.csv()
+states <- file.path(tmpDir, "states.csv") %>% fread()
 
 
 ## ---- calculate county-------
@@ -75,12 +75,12 @@ apply(states, 1, function(state) {
   if (!file.exists(cens_agrDirCX)) {
     tic(paste("Aggregated Census data in", name, "in year", year, "by pm and county"))
 
-    # read demographic census data by tract, make data wider
-    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv()
+    # read demographic census data by tract
+    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
 
     # read pm exposure data by tract
     exp_tracData <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv")) %>%
-      read.csv()
+      fread()
 
     # tigris does not provide all tract boundaries
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID")
@@ -140,7 +140,7 @@ apply(states, 1, function(state) {
       # test that population does not change
       if (nrow(anti) == 0) {
         comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
-          read.csv() %>%
+          fread() %>%
           group_by(state, county, variable) %>%
           summarise(pop_size = sum(pop_size))
 
@@ -178,9 +178,9 @@ if (agr_by != "county") {
       cens_agr <- lapply(statesX, function(STUSPS) {
         paste0("cens_agr_", toString(year), "_", STUSPS, ".csv") %>%
           file.path(cens_agrDirC, .) %>%
-          read.csv()
+          fread()
       }) %>%
-        do.call(rbind, .) %>%
+        rbindlist %>%
         as.data.frame() %>%
         group_by(variable, pm) %>%
         summarise(pop_size = sum(pop_size))
@@ -212,14 +212,14 @@ if (agr_by != "county") {
     #---- -----Plot-----------    
     if (FALSE) {
       census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% 
-                        read.csv  
+                        fread  
 
       cens_agr_plotDir <- file.path(cens_agrDir, "plots", region)
       if (!file.exists(cens_agr_plotDir)) {
         tic(paste("Plotted aggregated Census data in", agr_by, region, "in year", year, "by pm"))
         dir.create(cens_agr_plotDir, recursive = TRUE)
         cens_agr <- cens_agrDirX %>%
-          read.csv() %>%
+          fread() %>%
           left_join(., census_meta, by = "variable") %>%
           filter(Education == 666) %>%
           group_by(Race, Hispanic.Origin, pm) %>%
