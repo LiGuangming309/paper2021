@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2011
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
@@ -70,8 +70,8 @@ if (!file.exists(aim_metaDir)) {
       merge(
         data.frame(Year = c(2009, 2011:2016)),
         data.frame(
-          min_age = c(seq(0, 40, 5), seq(45, 85, 10)),
-          max_age = c(seq(4, 44, 5), seq(54, 84, 10), 150)
+          min_age = c(0, 5, 10, 15, 20, 25, 30, 35, 45, 55, 65, 75, 85),
+          max_age = c(4, 9, 14, 19, 24, 29, 34, 44, 54, 64, 74, 84, 150)
         )
       )
     )
@@ -82,8 +82,8 @@ if (!file.exists(aim_metaDir)) {
   aim_meta2 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta2)
   # Ignoring 18-25!
   aim_meta2 <- merge(aim_meta2, data.frame(
-    min_age = seq(25, 65, 10),
-    max_age = c(seq(34, 64, 10), 150)
+    min_age = c(25,35,45,65),
+    max_age = c(34,44,64,150)
   ))
 
   aim_meta <- rbind(aim_meta1, aim_meta2)
@@ -181,12 +181,9 @@ if (!file.exists(cross_bridgeDir)) {
   rm(replaces1, replaces2, replaces3, replaces4)
 
   test_that("check ages", {
-    # test <-downloaded_meta %>%
-    #  select(min_age, max_age) %>%
-    #  distinct %>%
-    #  arrange(min_age)
-
-    missing <- downloaded_meta %>% filter(!variable %in% cross_bridge$variable.y)
+    missing <- downloaded_meta %>% 
+      filter(!variable %in% cross_bridge$variable.y) %>%
+      filter(!(min_age == 18 & Education2 != 666))
     expect_equal(0, nrow(missing))
 
     cross_bridge_test <- cross_bridge %>%
