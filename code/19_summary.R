@@ -45,22 +45,7 @@ dir.create(summaryDir, recursive = T, showWarnings = F)
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
-group_variables <- c(
-  "Year" = "year",
-  # "Gender.Code" = "gender_label",
-  "Race" = "race",
-  "Hispanic.Origin" = "hispanic_origin"#,
-  #"Education" = "Education"
-)
-
-agr_by_replace <- c(
-  "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
-  "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "nation", "county" = "County.Code"
-)
-agr_by_new <- agr_by_replace[[agr_by]]
-group_variables[agr_by_new] <- agr_by
-
-inverse_group_variables <- setNames(names(group_variables), group_variables)
+group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
 
 if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   ### --------read attributable burden data----------
@@ -91,7 +76,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   #all_burden <- file.path(totalBurdenParsedDir, agr_by, "total_burden.csv") %>%
   #  read.csv() %>%
   #  filter(attr == "overall") %>%
-  #  group_by_at(vars(one_of(c(inverse_group_variables, "measure")))) %>%
+  #  group_by_at(vars(one_of(c(group_variables, "measure")))) %>%
   #  summarise(overall_value = sum(value))
   all_burden<-lapply(sources, function(source){
     totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, source)
@@ -108,7 +93,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   
   all_burden <- all_burden  %>%
     filter(attr == "overall") %>%
-    group_by_at(vars(all_of(c(inverse_group_variables, "source","measure1","measure2")))) %>%
+    group_by_at(vars(all_of(c(group_variables, "source","measure1","measure2")))) %>%
     summarise(overall_value = sum(value))
   
   ## ---------------- join/write --------------------
@@ -139,7 +124,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 ## ---plot ------
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
 attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
-if (TRUE) {
+if (FALSE) {
   
   attrBurden_gr_sub <- attrBurden_gr %>%
     mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
