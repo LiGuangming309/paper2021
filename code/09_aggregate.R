@@ -58,7 +58,7 @@ cens_agrDir <- file.path(cens_agrDir, agr_by, year)
 dir.create(cens_agrDir, recursive = T, showWarnings = F)
 
 # load states, so we can loop over them
-states <- file.path(tmpDir, "states.csv") %>% fread()
+states <- file.path(tmpDir, "states.csv") %>% fread() %>% as.data.frame()
 
 
 ## ---- calculate county-------
