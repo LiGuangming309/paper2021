@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2000
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
@@ -60,8 +60,8 @@ if (!file.exists(aim_metaDir)) {
       merge(
         data.frame(Year = c(2000:2008, 2010)),
         data.frame(
-          min_age = c(0, 1, seq(5, 85, 5)),
-          max_age = c(0, 4, seq(9, 84, 5), 150)
+          min_age = c(0, seq(5, 85, 5)),
+          max_age = c(4, seq(9, 84, 5), 150)
         )
       )
     ),
