@@ -47,7 +47,7 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 
 group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
 
-if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
+#if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
   ### --------read attributable burden data----------
   sources <- c("wonder","nvss")
   attrBurden<-lapply(sources, function(source){
@@ -119,7 +119,7 @@ if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
 
   fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
   fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
-}
+#}
 
 ## ---plot ------
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
