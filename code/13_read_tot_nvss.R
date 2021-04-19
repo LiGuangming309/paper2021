@@ -173,7 +173,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       Education = as.numeric(Education)) 
    
   #counter, that only proportion  
-  total_burden_educ$Deaths <- total_burden_educ$Deaths / prop
+  if(prop > 0) total_burden_educ$Deaths <- total_burden_educ$Deaths / prop
   
   total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
   rm(total_burden_race, total_burden_educ, prop)

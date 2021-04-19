@@ -52,16 +52,43 @@ if (!file.exists(aim_metaDir)) {
     Hispanic.Origin = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins", "All Origins", "All Origins"),
     Education = 666
   )
-  aim_meta1 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta1)
+  aim_meta1 <- merge(data.frame(Gender.Code = "A"), aim_meta1) #c("A", "M", "F")
 
   aim_meta1 <- rbind(
+    merge(
+      aim_meta1,
+      merge(
+        data.frame(Year = c(2000:2008)),
+        data.frame(
+          min_age = c(0, 5, 10, 15, 18, 20, 21, 22, 25, 30, 35, 40, 45, 50, 55, 60, 62, 65, 67, 70, 75, 80, 85),
+          max_age = c(4, 9, 14, 17, 19, 20, 21, 24, 29, 34, 39, 44, 49, 54, 59, 61, 64, 66, 69, 74, 79, 84, 150),
+          agr_by2 = "nation"
+        )
+      )
+    ),
+    merge(
+      aim_meta1,
+      data.frame(Year = 2010, min_age = 0:85, max_age = c(0:84,150), agr_by = "nation")
+    ),
+    merge(
+      aim_meta1,
+      merge(
+        data.frame(Year = c(2009, 2011:2016)),
+        data.frame(
+          min_age = c(0, 5, 10, 15, 18, 20, 25, 30, 35, 45, 55, 65, 75, 85),
+          max_age = c(4, 9, 14, 17, 19, 24, 29, 34, 44, 54, 64, 74, 84, 150),
+          agr_by2 = "nation"
+        )
+      )
+    ),
     merge(
       aim_meta1,
       merge(
         data.frame(Year = c(2000:2008, 2010)),
         data.frame(
           min_age = c(0, seq(5, 85, 5)),
-          max_age = c(4, seq(9, 84, 5), 150)
+          max_age = c(4, seq(9, 84, 5), 150),
+          agr_by2 = "STATEFP"
         )
       )
     ),
@@ -71,7 +98,8 @@ if (!file.exists(aim_metaDir)) {
         data.frame(Year = c(2009, 2011:2016)),
         data.frame(
           min_age = c(0, 5, 10, 15, 20, 25, 30, 35, 45, 55, 65, 75, 85),
-          max_age = c(4, 9, 14, 19, 24, 29, 34, 44, 54, 64, 74, 84, 150)
+          max_age = c(4, 9, 14, 19, 24, 29, 34, 44, 54, 64, 74, 84, 150),
+          agr_by2 = "STATEFP"
         )
       )
     )
@@ -79,11 +107,12 @@ if (!file.exists(aim_metaDir)) {
 
   aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = 1:7)
   aim_meta2 <- merge(data.frame(Year = 2009:2016), aim_meta2)
-  aim_meta2 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta2)
+  aim_meta2 <- merge(data.frame(Gender.Code = "A"), aim_meta2)
   # Ignoring 18-25!
   aim_meta2 <- merge(aim_meta2, data.frame(
     min_age = c(25,35,45,65),
-    max_age = c(34,44,64,150)
+    max_age = c(34,44,64,150),
+    agr_by2 = "nation"
   ))
 
   aim_meta <- rbind(aim_meta1, aim_meta2)
@@ -98,16 +127,17 @@ if (!file.exists(aim_metaDir)) {
       "All" = "U",
     )
     Hispanic.Origin <- substring(row[["Hispanic.Origin"]], 1, 1)
+    agr_by2 <- substring(row[["agr_by2"]], 1, 1)
     Education <- min(row[["Education"]] %>% as.numeric(), 66)
     Gender.Code <- row[["Gender.Code"]]
     min_age <- sprintf("%02d", as.numeric(row[["min_age"]]))
     max_age <- sprintf("%03d", as.numeric(row[["max_age"]]))
-    paste0(Race, Hispanic.Origin, Education, Gender.Code, min_age, max_age)
+    paste0(Race, Hispanic.Origin, Education, Gender.Code, min_age, max_age, agr_by2)
   })
 
   aim_meta <- aim_meta %>% filter(Year == year)
   test_that("dublicate variable names", {
-    aim_meta_test <- aim_meta %>% select(Year, Race, Hispanic.Origin, Education, Gender.Code, min_age)
+    aim_meta_test <- aim_meta %>% select(Year, Race, Hispanic.Origin, Education, Gender.Code, min_age, agr_by2)
     aim_meta_test <- aim_meta_test[duplicated(aim_meta_test), ]
     expect_equal(nrow(aim_meta_test), 0)
 

@@ -33,7 +33,7 @@ if (rlang::is_empty(args)) {
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
-  unsTotalBurdenDir <- "/Users/default/Desktop/paper2021/data/09_unsup_total_burden"
+  unsTotalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden/nation"
 }
 
 totalBurdenDir <- file.path(totalBurdenDir, agr_by)

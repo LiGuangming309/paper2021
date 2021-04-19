@@ -65,34 +65,6 @@ if(!file.exists(totalBurdenParsed2Dir)){
       read.csv 
   }
   
-  ##---aggregate total burden by ages available in PAF file------
-  #pafDir <- file.path(pafDir, agr_by, year)
-  #paf <- file.path(pafDir, list.files(pafDir)[[1]]) %>% read.csv
-  #paf <- paf %>% 
-  #  select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>% 
-  #  distinct() %>%
-  #  arrange(min_age, max_age)
-  
-  #total_burden <- total_burden %>% left_join(paf, by=c("Hispanic.Origin", "Race", "Education", "Year")) 
-  
-  #test_that("paf min_age and max_age compatible with total burden",{
-  #  total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
-  #  expect_equal(0,nrow(total_burden_test))
-  #})
-  
-  #case 1: total_burden inside pad
-  #good
-  #total_burden <- total_burden %>% 
-   # filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
-   # mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
-  #         min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
-  
-  #total_burden <- total_burden %>%
-  #  group_by_at(vars(all_of(setdiff(colnames(total_burden),"Deaths")))) %>% 
-  #  summarise(Deaths = sum(Deaths)) %>%
-  #  ungroup()
-  
-  #rm(paf, pafDir)
   ## --- measure 1: Deaths and YLL-----
   tic(paste("added YLL and age-adjusted rate to total burden in",year,agr_by))
   # Deaths
@@ -194,7 +166,34 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   total_burden <- rbind(total_burden, total_burden_crude, total_burden_age_adj)
   rm(total_burden_crude, total_burden_age_adj, standartpopulation,  full_stand_popsize,pop_summary_agr,pop_summary)
+  ##---aggregate total burden by ages available in PAF file------
+  pafDir <- file.path(pafDir, agr_by, year)
+  paf <- file.path(pafDir, list.files(pafDir)[[1]]) %>% read.csv
+  paf <- paf %>% 
+    select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>% 
+    distinct() %>%
+    arrange(min_age, max_age)
   
+  total_burden <- total_burden %>% left_join(paf, by=c("Hispanic.Origin", "Race", "Education", "Year")) 
+  
+  test_that("paf min_age and max_age compatible with total burden",{
+    total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    expect_equal(0,nrow(total_burden_test))
+  })
+  
+  #case 1: total_burden inside pad
+  #good
+  total_burden <- total_burden %>% 
+   filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
+   mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
+           min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
+  
+  total_burden <- total_burden %>%
+    group_by_at(vars(all_of(setdiff(colnames(total_burden),"value")))) %>% 
+    summarise(value = sum(value)) %>%
+    ungroup()
+  
+  rm(paf, pafDir)
   ##----finish------
   test_that("basic check",{
     expect_false(any(is.na(total_burden)))

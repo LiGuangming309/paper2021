@@ -58,7 +58,7 @@ if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
-  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause", agr_by)
+  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause","min_age","max_age", agr_by)
   group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
 
   ## ----- read paf------
@@ -100,22 +100,23 @@ if (!file.exists(attrBurdenDir)) {
   }
   # give some feedback on what is still missing from total burden
   # one side
+  
   total_burden_test <- total_burden %>%
-    select(all_of(join_variables)) %>%
+    select(all_of(setdiff(join_variables,c("min_age","max_age")))) %>%
     distinct()
   
   pafs_test <- pafs %>%
-    select(all_of(join_variables)) %>%
+    select(all_of(setdiff(join_variables,c("min_age","max_age")))) %>%
     distinct()
   
-  missing <- anti_join(total_burden_test , pafs_test, by = join_variables) 
+  missing <- anti_join(total_burden_test , pafs_test, by = setdiff(join_variables,c("min_age","max_age"))) 
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in pafs data for", agr_by, ":"))
     print(head(missing))
   }
   
   # other side
-  missing <- anti_join(pafs_test, total_burden_test, by = join_variables) 
+  missing <- anti_join(pafs_test, total_burden_test, by = setdiff(join_variables,c("min_age","max_age"))) 
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing))
@@ -128,18 +129,17 @@ if (!file.exists(attrBurdenDir)) {
   burden_paf <- inner_join(total_burden, pafs, by = join_variables)
   rm(pafs)
   toc()
-  tic("calc_attr_burd: 3 filtered wrong age combinations")
-  test_that("paf min_age and max_age compatible with total burden",{
-    burden_paf_test <- burden_paf %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
-    expect_equal(0,nrow(burden_paf_test))
-  })
+  #tic("calc_attr_burd: 3 filtered wrong age combinations")
+  #test_that("paf min_age and max_age compatible with total burden",{
+  #  burden_paf_test <- burden_paf %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+  #  expect_equal(0,nrow(burden_paf_test))
+  #})
   
-  burden_paf <- burden_paf %>% 
-     filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
-     mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
-             min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
-
-  toc()
+  #burden_paf <- burden_paf %>% 
+  #   filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
+  #   mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
+  #           min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
+  #toc()
   
   ## ----- calculate attributable burden------
   tic("calc_attr_burd: 3 pivot_longer")
