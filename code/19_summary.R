@@ -112,11 +112,48 @@ group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code",
 
   attrBurden <- rbind(attrBurden, attrBurden_prop)
   test_that("10 plot basic chackes", {
+    test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden),"overall_value")) 
+    
+    test <- attrBurden[rowSums(is.na(attrBurden)) > 0, ]
     expect_false(any(is.na(attrBurden)))
     expect_false(any(is.na(all_burden)))
   })
   rm(attrBurden_prop)
 
+  replaces3 <- data.frame(
+    Education = c(1:7, 666),
+    Education2 = c(
+      "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
+      "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
+    )
+  )
+  
+  attrBurden <- attrBurden %>%
+    left_join(replaces3, by = "Education") %>%
+    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
+  attrBurden$Education <- NULL 
+  attrBurden$Race <- NULL 
+  attrBurden$Hispanic.Origin <- NULL 
+  attrBurden <- attrBurden %>% rename(Education = Education2)
+  
+  all_burden <- all_burden %>%
+    left_join(replaces3, by = "Education") %>%
+    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
+  all_burden$Education <- NULL 
+  all_burden$Race <- NULL 
+  all_burden$Hispanic.Origin <- NULL 
+  all_burden <- all_burden %>% rename(Education = Education2)
+  
+  if(agr_by == "STATEFP"){
+    states <- states %>% select(NAME, STATEFP, STUSPS)
+    attrBurden <- attrBurden %>% left_join(states, by= "STATEFP")
+    attrBurden$STATEFP <- NULL
+    attrBurden <- attrBurden %>% rename(STATEFP = STUSPS)
+    all_burden <- attrBurden %>% left_join(states, by= "STATEFP")
+    all_burden$STATEFP <- NULL
+    all_burden <- all_burden %>% rename(STATEFP = STUSPS)
+  }
+  
   fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
   fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
 #}

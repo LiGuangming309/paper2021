@@ -52,11 +52,11 @@ if (!file.exists(aim_metaDir)) {
     Hispanic.Origin = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins", "All Origins", "All Origins"),
     Education = 666
   )
-  aim_meta1 <- merge(data.frame(Gender.Code = "A"), aim_meta1) #c("A", "M", "F")
+  aim_meta1 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta1) # c("A", "M", "F")
 
-  aim_meta1 <- rbind(
-    merge(
-      aim_meta1,
+  aim_meta1 <- merge(
+    aim_meta1,
+    rbind(
       merge(
         data.frame(Year = c(2000:2008)),
         data.frame(
@@ -64,14 +64,8 @@ if (!file.exists(aim_metaDir)) {
           max_age = c(4, 9, 14, 17, 19, 20, 21, 24, 29, 34, 39, 44, 49, 54, 59, 61, 64, 66, 69, 74, 79, 84, 150),
           agr_by2 = "nation"
         )
-      )
-    ),
-    merge(
-      aim_meta1,
-      data.frame(Year = 2010, min_age = 0:85, max_age = c(0:84,150), agr_by = "nation")
-    ),
-    merge(
-      aim_meta1,
+      ),
+      data.frame(Year = 2010, min_age = 0:85, max_age = c(0:84, 150), agr_by = "nation"),
       merge(
         data.frame(Year = c(2009, 2011:2016)),
         data.frame(
@@ -79,10 +73,7 @@ if (!file.exists(aim_metaDir)) {
           max_age = c(4, 9, 14, 17, 19, 24, 29, 34, 44, 54, 64, 74, 84, 150),
           agr_by2 = "nation"
         )
-      )
-    ),
-    merge(
-      aim_meta1,
+      ),
       merge(
         data.frame(Year = c(2000:2008, 2010)),
         data.frame(
@@ -90,10 +81,7 @@ if (!file.exists(aim_metaDir)) {
           max_age = c(4, seq(9, 84, 5), 150),
           agr_by2 = "STATEFP"
         )
-      )
-    ),
-    merge(
-      aim_meta1,
+      ),
       merge(
         data.frame(Year = c(2009, 2011:2016)),
         data.frame(
@@ -107,11 +95,11 @@ if (!file.exists(aim_metaDir)) {
 
   aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = 1:7)
   aim_meta2 <- merge(data.frame(Year = 2009:2016), aim_meta2)
-  aim_meta2 <- merge(data.frame(Gender.Code = "A"), aim_meta2)
+  aim_meta2 <- merge(data.frame(Gender.Code = c("M", "F")), aim_meta2)
   # Ignoring 18-25!
   aim_meta2 <- merge(aim_meta2, data.frame(
-    min_age = c(25,35,45,65),
-    max_age = c(34,44,64,150),
+    min_age = c(25, 35, 45, 65),
+    max_age = c(34, 44, 64, 150),
     agr_by2 = "nation"
   ))
 
@@ -211,7 +199,7 @@ if (!file.exists(cross_bridgeDir)) {
   rm(replaces1, replaces2, replaces3, replaces4)
 
   test_that("check ages", {
-    missing <- downloaded_meta %>% 
+    missing <- downloaded_meta %>%
       filter(!variable %in% cross_bridge$variable.y) %>%
       filter(!(min_age == 18 & Education2 != 666))
     expect_equal(0, nrow(missing))

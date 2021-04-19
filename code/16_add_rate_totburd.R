@@ -33,9 +33,9 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2016
   agr_by <- "nation"
-  source <- "wonder"
+  source <- "nvss"
   
   dataDir <- "/Users/default/Desktop/paper2021/data"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
@@ -139,21 +139,20 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   #case 2 age group total burden inside age group population 
   total_burden_age_adj2 <- total_burden_age_adj %>%
-    filter(min_age.y < min_age.x & max_age.x < max_age.y)# %>%
-    #mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
-    #  min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL) 
+    filter(min_age.y < min_age.x & max_age.x < max_age.y) %>%
+    mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
+      min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL) 
   
-  #total_burden_age_adj2 <- total_burden_age_adj2%>%
-  #  group_by_at(vars(all_of(setdiff(colnames(total_burden_age_adj2),"value")))) %>%
-  #  summarise(value = sum(value)) %>%
-  #  ungroup()
+  total_burden_age_adj2 <- total_burden_age_adj2%>%
+    group_by_at(vars(all_of(setdiff(colnames(total_burden_age_adj2),"value")))) %>%
+    summarise(value = sum(value)) %>%
+    ungroup()
   
   #test_that("population min_age and max_age compatible with total burden",expect_equal(0,nrow(total_burden_age_adj2)))
   #TODO entcomment
   
   #combine cases
-  total_burden_age_adj <- rbind(total_burden_age_adj1#, total_burden_age_adj2
-                                ) %>% distinct
+  total_burden_age_adj <- rbind(total_burden_age_adj1, total_burden_age_adj2) %>% distinct
   rm(total_burden_age_adj1, total_burden_age_adj2)
   
   #calculate age-adjusted rate
@@ -178,6 +177,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   test_that("paf min_age and max_age compatible with total burden",{
     total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    #test <- total_burden %>% filter(Education != "666")
     expect_equal(0,nrow(total_burden_test))
   })
   

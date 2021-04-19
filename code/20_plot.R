@@ -50,19 +50,6 @@ allBurden <- fread(file.path(summaryDir, "all_burd.csv"))
 attrBurden <- attrBurden %>% filter(Gender.Code == "A")
 allBurden <- allBurden %>% filter(Gender.Code == "A")
 
-replaces3 <- data.frame(
-  Education = c(1:7, 666),
-  Education2 = c(
-    "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
-    "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
-  )
-)
-attrBurden <- attrBurden %>%
-  left_join(replaces3, by = "Education") %>%
-  mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
-allBurden <- allBurden %>%
-  left_join(replaces3, by = "Education") %>%
-  mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
 rm(replaces3)
 
 agr_by_replace <- c(
@@ -209,7 +196,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
   # https://www.datanovia.com/en/blog/how-to-create-a-ggplot-with-multiple-lines/
   # https://stackoverflow.com/questions/14794599/how-to-change-line-width-in-ggplot
   g <- ggplot(allBurden1, aes(x = Year, y = overall_value)) +
-    geom_line(aes(color = Education2), size = 1) +
+    geom_line(aes(color = Education), size = 1) +
     ylab(paste("YLL per 100.000")) +
     xlab("Year") +
     ylim(0, NA) +
