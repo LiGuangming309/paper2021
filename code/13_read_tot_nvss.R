@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2000
+  year <- 2015
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -66,6 +66,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age", # 64
       "Hispanic.Origin" = "hispanic" # 80 - 81
     )
+    prop <- 1
   } else if (2003 <= year & year <= 2005) {
     selectcolumns <- c(
       "Year" = "year",
@@ -77,6 +78,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
+    prop <- sum(!is.na(total_burden$educ2003))/nrow(total_burden)
   } else if (2005 <= year & year <= 2016) {
     selectcolumns <- c(
       "Year" = "year",
@@ -88,6 +90,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
+    prop <- sum(!is.na(total_burden$educ2003))/nrow(total_burden)
   }
 
   if (agr_by == "nation") {
@@ -168,9 +171,12 @@ if (!file.exists(totalBurdenParsedDir)) {
       Hispanic.Origin = "All Origins",
       Race = "All",
       Education = as.numeric(Education)) 
-
+   
+  #counter, that only proportion  
+  total_burden_educ$Deaths <- total_burden_educ$Deaths / prop
+  
   total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
-  rm(total_burden_race, total_burden_educ)
+  rm(total_burden_race, total_burden_educ, prop)
 
   # add Hispanic Origin All Origins
   total_burden_all_his <- total_burden %>%
