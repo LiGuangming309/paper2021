@@ -58,7 +58,7 @@ if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
-  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause", "min_age","max_age", agr_by)
+  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause", agr_by)
   group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
 
   ## ----- read paf------
@@ -127,6 +127,18 @@ if (!file.exists(attrBurdenDir)) {
   
   burden_paf <- inner_join(total_burden, pafs, by = join_variables)
   rm(pafs)
+  toc()
+  tic("calc_attr_burd: 3 filtered wrong age combinations")
+  test_that("paf min_age and max_age compatible with total burden",{
+    burden_paf_test <- burden_paf %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    expect_equal(0,nrow(burden_paf_test))
+  })
+  
+  burden_paf <- burden_paf %>% 
+     filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
+     mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
+             min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
+
   toc()
   
   ## ----- calculate attributable burden------
