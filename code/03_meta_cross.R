@@ -65,7 +65,7 @@ if (!file.exists(aim_metaDir)) {
           agr_by2 = "nation"
         )
       ),
-      data.frame(Year = 2010, min_age = 0:85, max_age = c(0:84, 150), agr_by = "nation"),
+      data.frame(Year = 2010, min_age = 0:85, max_age = c(0:84, 150), agr_by2 = "nation"),
       merge(
         data.frame(Year = c(2009, 2011:2016)),
         data.frame(
@@ -92,7 +92,7 @@ if (!file.exists(aim_metaDir)) {
       )
     )
   )
-
+  
   aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = 1:7)
   aim_meta2 <- merge(data.frame(Year = 2009:2016), aim_meta2)
   aim_meta2 <- merge(data.frame(Gender.Code = c("M", "F")), aim_meta2)
