@@ -211,7 +211,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
   allBurden2 <- allBurdenX %>% filter(measure1 == "Deaths", measure2 == "age-adjusted rate")
 
   g <- ggplot(allBurden2, aes(x = Year, y = overall_value)) +
-    geom_line(aes(color = Education2), size = 1) +
+    geom_line(aes(color = Education), size = 1) +
     ylab(paste("Deaths per 100.000")) +
     xlab("Year") +
     ylim(0, NA) +
@@ -234,7 +234,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
       attr == "attributable"
     )
 
-  g <- ggplot(attrBurden1, aes(x = Year, y = mean, color = Education2)) +
+  g <- ggplot(attrBurden1, aes(x = Year, y = mean, color = Education)) +
     geom_line(size = 1) +
     ylab(paste("YLL per 100.000")) +
     xlab("Year") +
@@ -253,7 +253,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
   attrBurden2 <- attrBurdenX %>%
     filter(measure1 == "Deaths", measure2 == "age-adjusted rate")
 
-  g <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Education2)) +
+  g <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Education)) +
     geom_line(size = 1) +
     ylab(paste("Deaths per 100.000")) +
     xlab("Year") +
@@ -277,7 +277,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
       attr == "attributable"
     )
 
-  g <- ggplot(attrBurden3, aes(x = Year, y = mean, color = Education2)) +
+  g <- ggplot(attrBurden3, aes(x = Year, y = mean, color = Education)) +
     geom_line(size = 1) +
     ylab(paste("%")) +
     xlab("Year") +
