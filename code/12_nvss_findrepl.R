@@ -93,13 +93,13 @@ if (!file.exists(findreplaceDir)) {
       #data.frame(replacecolumns = "max_age", from = c(1:52), to = c(rep(0, 22), 1, 2, 3, 4, seq(9, 124, 5), 150, "unknown")),
       data.frame(
         replacecolumns = "min_age",
-        from = c(sprintf("1%03d",1:135),sprintf("2%03d",c(0:11,999)),sprintf("4%03d",c(0:27,999)),sprintf("5%03d",c(0:23,999)),sprintf("6%03d",c(0:59,999)),"9999"),
-        to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown")
+        from = c(sprintf("1%03d",1:135),sprintf("2%03d",c(0:11,999)),sprintf("4%03d",c(0:27,999)),sprintf("5%03d",c(0:23,999)),sprintf("6%03d",c(0:59,999)),"1999","9999"),
+        to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown","Unknown")
       ),
       data.frame(
         replacecolumns = "max_age",
-        from = c(sprintf("1%03d",1:135),sprintf("2%03d",c(0:11,999)),sprintf("4%03d",c(0:27,999)),sprintf("5%03d",c(0:23,999)),sprintf("6%03d",c(0:59,999)),"9999"),
-        to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown")
+        from = c(sprintf("1%03d",1:135),sprintf("2%03d",c(0:11,999)),sprintf("4%03d",c(0:27,999)),sprintf("5%03d",c(0:23,999)),sprintf("6%03d",c(0:59,999)),"1999","9999"),
+        to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown","Unknown")
       ),
       data.frame(
         replacecolumns = "Education",
