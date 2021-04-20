@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2004
+  year <- 2006
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -158,26 +158,6 @@ if (!file.exists(totalBurdenParsedDir)) {
   inverse_selectcolumns <- c(names(selectcolumns))
   # setdiff(colnames(total_burden),"Deaths")
 
-  # seperate education, add "All Education"
-  total_burden_race <- total_burden %>%
-    group_by_at(setdiff(inverse_selectcolumns, "Education")) %>%
-    summarise(Deaths = sum(Deaths)) %>%
-    mutate(Education = 666) # TODO
-
-   total_burden_educ <- total_burden %>%
-    group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
-    summarise(Deaths = sum(Deaths)) %>%
-    mutate(
-      Hispanic.Origin = "All Origins",
-      Race = "All",
-      Education = as.numeric(Education)) 
-   
-  #counter, that only proportion  
-  if(prop > 0) total_burden_educ$Deaths <- total_burden_educ$Deaths / prop
-  
-  total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
-  rm(total_burden_race, total_burden_educ, prop)
-
   # add Hispanic Origin All Origins
   total_burden_all_his <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "Hispanic.Origin")) %>%
@@ -194,6 +174,27 @@ if (!file.exists(totalBurdenParsedDir)) {
     mutate(Gender.Code = "A")
   total_burden <- rbind(total_burden, total_burden_all_gend) %>% distinct()
   rm(total_burden_all_gend)
+  
+  # seperate education, add "All Education"
+  total_burden_race <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, "Education")) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(Education = 666) # TODO
+  
+  total_burden_educ <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(
+      Hispanic.Origin = "All Origins",
+      Race = "All",
+      Education = as.numeric(Education)) 
+  
+  #counter, that only proportion  
+  if(prop > 0) total_burden_educ$Deaths <- total_burden_educ$Deaths / prop
+  
+  total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
+  rm(total_burden_race, total_burden_educ, prop)
+  
   #--- add all-cause rows---
   total_burden_all <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
@@ -215,25 +216,24 @@ if (!file.exists(totalBurdenParsedDir)) {
   test_that("numbers add up", {
     expect_false(any(is.na(total_burden)))
 
-    total_burden_test <- total_burden %>% select(setdiff(colnames(total_burden), c("Deaths")))
+    total_burden_test <- total_burden %>% select(setdiff(colnames(total_burden), c("Deaths", "attr")))
     total_burden_test <- total_burden_test[duplicated(total_burden_test), ]
     expect_equal(nrow(total_burden_test), 0)
-
-     test1 <- total_burden %>%
-      filter(
-        Gender.Code != "A",
-        label_cause == "all-cause",
-        #attr == "overall",
-        Race == "All",
-        Hispanic.Origin == "All Origins",
-        Education != 666
-      )
-
-     expect_equal(sum(test1$Deaths), numberDeaths) 
+    
+     #test1 <- total_burden %>%
+    #  filter(
+    #    Gender.Code == "A",
+    #    label_cause == "all-cause",
+    #    attr == "overall",
+    #    Race == "All",
+    #    Hispanic.Origin == "All Origins",
+    #    Education != 666
+    #  )
+    # expect_equal(sum(test1$Deaths), numberDeaths) 
 
     test2 <- total_burden %>%
       filter(
-        Gender.Code != "A",
+        Gender.Code == "A",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
@@ -244,7 +244,7 @@ if (!file.exists(totalBurdenParsedDir)) {
 
     test3 <- total_burden %>%
       filter(
-        Gender.Code != "A",
+        Gender.Code == "A",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
@@ -255,7 +255,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     
     test4 <- total_burden %>%
       filter(
-        Gender.Code == "A",
+        Gender.Code != "A",
         label_cause == "all-cause",
         attr == "overall",
         Race != "All",
