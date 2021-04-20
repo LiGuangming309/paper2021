@@ -50,8 +50,6 @@ allBurden <- fread(file.path(summaryDir, "all_burd.csv"))
 attrBurden <- attrBurden %>% filter(Gender.Code == "A")
 allBurden <- allBurden %>% filter(Gender.Code == "A")
 
-rm(replaces3)
-
 agr_by_replace <- c(
   "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
   "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "nation", "county" = "County.Code"
@@ -225,7 +223,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
   ### -------plot 3 ---------
   attrBurdenX <- attrBurden %>%
     filter(Education != 666) %>%
-    filter(get(agr_by_new) == location, source == "wonder")
+    filter(get(agr_by_new) == location, source == "nvss")
 
   attrBurden1 <- attrBurdenX %>%
     filter(
