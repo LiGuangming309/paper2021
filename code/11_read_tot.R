@@ -103,11 +103,11 @@ if (!file.exists(totalBurdenParsedDir)) {
     
     if (!"Gender.Code" %in% colnames(total_burden)) {
       if (rlang::is_empty(notes_gender)) {
-        total_burden$Gender.Code <- "All"
+        total_burden$Gender.Code <- "A"
       }else if (notes_gender == "Gender: Female") {
-        total_burden$Gender.Code <- "Female"
+        total_burden$Gender.Code <- "F"
       } else if (notes_gender == "Gender: Male") {
-        total_burden$Gender.Code <- "Male"
+        total_burden$Gender.Code <- "M"
       }else{
         print(paste("Gender missing in", file))
       }

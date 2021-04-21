@@ -15,6 +15,8 @@ packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "ticto
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
 }
+options(dplyr.summarise.inform = FALSE)
+options(dplyr.join.inform = FALSE)
 options(scipen = 10000)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
@@ -47,12 +49,41 @@ if (!file.exists(pop.summary.dir)) {
   files <- list.files(cdcPopDir)
   cdc_pop <- lapply(files, function(file) {
     fileDir <- file.path(cdcPopDir, file)
-    cdc_pop <- read.delim(fileDir) %>% filter(Notes == "")
+    cdc_pop <- read.delim(fileDir) 
+    
+    notes_hisp_or <- cdc_pop$Notes[grepl("Hispanic Origin:", cdc_pop$Notes, fixed = TRUE)]
+    notes_gender <- cdc_pop$Notes[grepl("Gender:", cdc_pop$Notes, fixed = TRUE)]
+    notes_race <- cdc_pop$Notes[grepl("Race:", cdc_pop$Notes, fixed = TRUE)]
+    
+    cdc_pop <- cdc_pop%>% filter(Notes == "")
+    cdc_pop$Notes <-NULL
+    cdc_pop <- cdc_pop[!apply(is.na(cdc_pop) | cdc_pop == "", 1, all), ]
 
     if (!("Ethnicity" %in% colnames(cdc_pop))) cdc_pop$Ethnicity <- "All Origins"
-    if (!("Gender.Code" %in% colnames(cdc_pop))) cdc_pop$Gender.Code <- "A"
-    if (agr_by == "nation") cdc_pop$nation <- "us"
+    if (agr_by == "nation") cdc_pop$nation <- "us" 
 
+    if (!"Hispanic.Origin" %in% colnames(cdc_pop)) {
+      if (rlang::is_empty(notes_hisp_or)) {
+        cdc_pop$Hispanic.Origin <- "All Origins"
+      } else if (notes_hisp_or == "Hispanic Origin: Hispanic or Latino") {
+        cdc_pop$Hispanic.Origin <- "Hispanic or Latino"
+      } else if (notes_hisp_or == "Hispanic Origin: Not Hispanic or Latino") {
+        cdc_pop$Hispanic.Origin <- "Not Hispanic or Latino"
+      }
+    }
+    
+    if (!"Gender.Code" %in% colnames(cdc_pop)) {
+      if (rlang::is_empty(notes_gender)) {
+        cdc_pop$Gender.Code <- "A"
+      }else if (notes_gender == "Gender: Female") {
+        cdc_pop$Gender.Code <- "F"
+      } else if (notes_gender == "Gender: Male") {
+        cdc_pop$Gender.Code <- "M"
+      }else{
+        print(paste("Gender missing in", file))
+      }
+    }
+    
     cdc_pop <- cdc_pop %>%
       select(all_of(c(
         "min_age" = "Age.Code",
@@ -91,7 +122,7 @@ if (!file.exists(pop.summary.dir)) {
         "Black or African American, All Origins",
         "Asian or Pacific Islander, All Origins",
         "American Indian or Alaska Native, All Origins"
-      )) 
+      ) & Gender.Code == "A") 
     
     cdc_pop_sub <- cdc_pop_sub %>%
       group_by(Ethnicity, Year) %>%
@@ -107,6 +138,6 @@ if (!file.exists(pop.summary.dir)) {
       guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
       ggtitle(paste("Population in", location))
     
-    ggsave(file.path(plotDir, paste0(location, "_plot.png")), plot = g)
+    ggsave(file.path(plotDir, paste0(location, "_cdc_plot.png")), plot = g)
   }
 }
