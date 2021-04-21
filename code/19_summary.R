@@ -30,7 +30,7 @@ summaryDir <- args[6]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
@@ -145,14 +145,23 @@ group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code",
   all_burden <- all_burden %>% rename(Education = Education2)
   
   if(agr_by == "STATEFP"){
-    states <- states %>% select(NAME, STATEFP, STUSPS)
-    attrBurden <- attrBurden %>% left_join(states, by= "STATEFP")
-    attrBurden$STATEFP <- NULL
-    attrBurden <- attrBurden %>% rename(STATEFP = STUSPS)
-    all_burden <- attrBurden %>% left_join(states, by= "STATEFP")
-    all_burden$STATEFP <- NULL
-    all_burden <- all_burden %>% rename(STATEFP = STUSPS)
+    #states <- states %>% select(NAME, STATEFP)
+    
+    #attrBurden <- attrBurden %>% left_join(states, by= "STATEFP")
+    #attrBurden$STATEFP <- NULL
+    #attrBurden <- attrBurden %>% rename(STATEFP = NAME)
+    
+    #all_burden <- all_burden %>% left_join(states, by= "STATEFP")
+    #all_burden$STATEFP <- NULL
+    #all_burden <- all_burden %>% rename(STATEFP = NAME)
   }
+  
+  #attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
+  #attrBurden$Region <- attrBurden[, agr_by]
+  #attrBurden[, agr_by] <- NULL
+  #all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
+  #all_burden$Region <- all_burden[, agr_by]
+  #all_burden[, agr_by] <- NULL
   
   fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
   fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))

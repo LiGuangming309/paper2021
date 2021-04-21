@@ -50,13 +50,8 @@ allBurden <- fread(file.path(summaryDir, "all_burd.csv"))
 attrBurden <- attrBurden %>% filter(Gender.Code == "A")
 allBurden <- allBurden %>% filter(Gender.Code == "A")
 
-agr_by_replace <- c(
-  "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
-  "hhs_region_number" = "HHS.Region.Code", "STATEFP" = "State.Code", "nation" = "nation", "county" = "County.Code"
-)
-agr_by_new <- agr_by_replace[[agr_by]]
 ## -----by race -----
-for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
+for (location in attrBurden[, get(agr_by)] %>% unique()) {
   for (sourceX in attrBurden$source %>% unique()) {
     plotDirX <- file.path(plotDir, sourceX)
     dir.create(plotDirX, recursive = T, showWarnings = F)
@@ -70,7 +65,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
         "Asian or Pacific Islander, All Origins",
         "American Indian or Alaska Native, All Origins"
       )) %>%
-      filter(get(agr_by_new) == location, source == sourceX)
+      filter(get(agr_by) == location, source == sourceX)
     allBurden1 <- allBurdenX %>% filter(measure1 == "YLL", measure2 == "crude rate")
 
     g <- ggplot(allBurden1, aes(x = Year, y = overall_value)) +
@@ -110,7 +105,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
         "Asian or Pacific Islander, All Origins",
         "American Indian or Alaska Native, All Origins"
       )) %>%
-      filter(get(agr_by_new) == location, source == sourceX)
+      filter(get(agr_by) == location, source == sourceX)
 
     attrBurden1 <- attrBurdenX %>%
       filter(
@@ -180,13 +175,13 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
 }
 
 ## -----by Education -----
-for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
+for (location in attrBurden[, get(agr_by)] %>% unique()) {
   plotDirX <- file.path(plotDir, sourceX)
   dir.create(plotDirX, recursive = T, showWarnings = F)
 
   allBurdenX <- allBurden %>%
     filter(Education != 666) %>%
-    filter(get(agr_by_new) == location, source == "nvss")
+    filter(get(agr_by) == location, source == "nvss")
 
   ### -------plot 1 ---------
   allBurden1 <- allBurdenX %>% filter(measure1 == "YLL", measure2 == "crude rate")
@@ -223,7 +218,7 @@ for (location in attrBurden[, get(agr_by_new)] %>% unique()) {
   ### -------plot 3 ---------
   attrBurdenX <- attrBurden %>%
     filter(Education != 666) %>%
-    filter(get(agr_by_new) == location, source == "nvss")
+    filter(get(agr_by) == location, source == "nvss")
 
   attrBurden1 <- attrBurdenX %>%
     filter(
