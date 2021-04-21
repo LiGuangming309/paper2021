@@ -98,7 +98,6 @@ if (TRUE) {
         "American Indian or Alaska Native, All Origins"
       ) &
         Gender.Code == "A" &
-        agr_by2 == agr_by &
         Education == 666)
 
     pop.summary_sub1 <- pop.summary_sub1 %>%
@@ -119,7 +118,6 @@ if (TRUE) {
 
     ## --- by education---
     pop.summary_sub2 <- pop.summary_sub %>% filter(Education != 666 &
-                                                     agr_by2 == agr_by &
                                                      Gender.Code == "A")
 
     pop.summary_sub2 <- pop.summary_sub2 %>%

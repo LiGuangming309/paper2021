@@ -51,10 +51,6 @@ if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_num
   quit()
 }
 
-meta <- file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")) %>% 
-  read.csv() %>%
-  filter(agr_by2 == agr_by)
-
 cens_agrDirC <- file.path(cens_agrDir, "county", year)
 dir.create(cens_agrDirC, recursive = T, showWarnings = F)
 
@@ -80,9 +76,7 @@ apply(states, 1, function(state) {
     tic(paste("Aggregated Census data in", name, "in year", year, "by pm and county"))
 
     # read demographic census data by tract
-    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% 
-      fread() %>%
-      filter(variable %in% meta$variable)
+    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
 
     # read pm exposure data by tract
     exp_tracData <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv")) %>%
@@ -212,7 +206,7 @@ if (agr_by != "county") {
       # add region
       cens_agr[, agr_by] <- region
 
-      fwrite(cens_agr, cens_agrDirX)
+      write.csv(cens_agr, cens_agrDirX)
       toc()
     }
     #---- -----Plot-----------    
