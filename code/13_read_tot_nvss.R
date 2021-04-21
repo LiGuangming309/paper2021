@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2006
+  year <- 2001
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -272,11 +272,22 @@ if (!file.exists(totalBurdenParsedDir)) {
   # total_burden$Race %>% unique()
   total_burden <- total_burden %>%
     filter(Hispanic.Origin != "Unknown" & # TODO
-      Race != "Guama" &
+      #Race != "Guama" &
       min_age != "Unknown")%>% 
     mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
-
+  total_burden <- total_burden %>%
+    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
+    filter(Ethnicity %in% c(
+      "White, Not Hispanic or Latino",
+      "White, Hispanic or Latino",
+      "Black or African American, All Origins",
+      "Asian or Pacific Islander, All Origins",
+      "American Indian or Alaska Native, All Origins",
+      "All, All Origins"
+    ))  %>%
+    mutate(Ethnicity = NULL)
+  
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
 }

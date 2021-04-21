@@ -104,6 +104,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   test_that("add_rate anti join total burden with population",{
     test_anti_join <- total_burden %>% anti_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population"))
+    if(year <= 2008) test_anti_join <- test_anti_join %>% filter(Education == 666)
     expect_equal(0, nrow(test_anti_join))
   })
   
