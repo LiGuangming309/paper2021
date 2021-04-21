@@ -27,7 +27,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
   cdcPopDir <- "/Users/default/Desktop/paper2021/data/10_cdc_population"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
 }
