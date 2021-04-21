@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2006
+  year <- 2000
   agr_by <- "nation"
   source <- "nvss"
   
@@ -99,8 +99,13 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   # crude rate
   pop_summary_agr <- pop_summary %>%
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("min_age","max_age", "Gender.Code","Population"))))) %>%
+    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("min_age","max_age", "Population"))))) %>%
     summarise(Population = sum(Population))
+  
+  test_that("add_rate anti join total burden with population",{
+    test_anti_join <- total_burden %>% anti_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population"))
+    expect_equal(0, nrow(test_anti_join))
+  })
   
   total_burden_crude <- total_burden %>%
     left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
@@ -118,7 +123,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
   full_stand_popsize <- sum(standartpopulation$popsize)
   
   pop_summary_agr <- pop_summary %>% 
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population", "Gender.Code"))))) %>% #TODO Gender.Code?
+    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population"))))) %>% 
     summarise(Population = sum(Population))
 
   total_burden_age_adj <- total_burden %>% left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), c("min_age","max_age","Population")))
