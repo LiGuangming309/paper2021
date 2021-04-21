@@ -33,11 +33,11 @@ censDir <- args[8]
 if (rlang::is_empty(args)) {
   year <- 2000
 
-  # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
-  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
+  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_demog"
+   tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
 # quits, if not downloadable year

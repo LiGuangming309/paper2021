@@ -29,12 +29,16 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2009
-  agr_by <- "nation"
+  year <- 2000
+  agr_by <- "STATEFP"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  
+  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them
@@ -81,8 +85,8 @@ if (TRUE) {
   pop.summary <- lapply(files, function(file) {
     fread(file.path(pop.summary.dir, file))
   }) %>%
-    #rbindlist() %>%
-    do.call(rbind,.) %>%
+    rbindlist() %>%
+    #do.call(rbind,.) %>%
     as.data.frame()
 
   for (location in pop.summary[, agr_by] %>% unique()) {
