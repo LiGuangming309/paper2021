@@ -150,8 +150,8 @@ plot.script <- file.path(code.dir, "20_plot.R")
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
-years <- c(2000, 2010, 2001:2009, 2011:2016)
-# years <- c(2000:2001)
+#years <- c(2000, 2010, 2001:2009, 2011:2016)
+ years <- c(2000:2001)
 # years <- c(2001)
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -190,7 +190,7 @@ for (agr_by in agr_bys) {
       #  runscript(script = cens_agr.script, args = args)
       #  runscript(script = paf.script, args = args)
       if (source == "wonder") {
-      #  runscript(script = read.total.burden.script, args = args)
+        runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
       #   runscript(script = read.nvs.findrepl.script, args = args)
         runscript(script = read.total.burden.nvs.script, args = args)

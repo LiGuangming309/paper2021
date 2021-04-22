@@ -288,6 +288,9 @@ if (!file.exists(totalBurdenParsedDir)) {
     ))  %>%
     mutate(Ethnicity = NULL)
   
+  if(agr_by == "STATEFP") total_burden <- total_burden %>% filter(STATEFP != 0)
+  
+    #write
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
 }

@@ -33,9 +33,9 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2004
   agr_by <- "STATEFP"
-  source <- "nvss"
+  source <- "wonder"
   
   dataDir <- "/Users/default/Desktop/paper2021/data"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
@@ -103,12 +103,14 @@ if(!file.exists(totalBurdenParsed2Dir)){
     summarise(Population = sum(Population))
   
   test_that("add_rate anti join total burden with population",{
+    #expect_false(any(is.na(total_burden_crude)))
     test_anti_join <- total_burden %>% anti_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population"))
     if(year <= 2008) test_anti_join <- test_anti_join %>% filter(Education == 666)
+    
     test_anti_join <- test_anti_join %>%
-      select(Year, Education, Gender.Code, Race, Hispanic.Origin) %>%
+      select(all_of(c("Year", "Education", "Gender.Code", "Race", "Hispanic.Origin", agr_by))) %>%
       distinct
-    expect_equal(0, nrow(test_anti_join))
+    expect_equal(0, nrow(test_anti_join)) #TODO
   })
   
   total_burden_crude <- total_burden %>%
