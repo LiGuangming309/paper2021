@@ -151,7 +151,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 #years <- c(2000, 2010, 2001:2009, 2011:2016)
- years <- c(2000:2001)
+ years <- c(2000:2004)
 # years <- c(2001)
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -192,12 +192,12 @@ for (agr_by in agr_bys) {
       if (source == "wonder") {
         runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
-      #   runscript(script = read.nvs.findrepl.script, args = args)
+         runscript(script = read.nvs.findrepl.script, args = args)
         runscript(script = read.total.burden.nvs.script, args = args)
       }
     #  runscript(script=pop.summary.script, args = args)
     #  runscript(script=pop.summary.educ.script, args = args)
-      #runscript(script = add.rate.tot.burd, args = args)
+    #  runscript(script = add.rate.tot.burd, args = args)
      # runscript(script = calc.attr.burd.script, args = args)
     }
   }
