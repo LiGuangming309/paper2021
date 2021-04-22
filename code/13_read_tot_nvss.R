@@ -30,9 +30,9 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
-  year <- 2001
+  year <- 2004
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -124,6 +124,7 @@ if (!file.exists(totalBurdenParsedDir)) {
 
   #---------find and replace stuff--------
   for (replacecolumnX in findreplace$replacecolumns %>% unique()) {
+    #if(replacecolumnX == "STATEFP") browser()
     if (replacecolumnX %in% colnames(total_burden)) {
       findreplace_sub <- findreplace %>% filter(replacecolumns == replacecolumnX)
 
@@ -137,7 +138,9 @@ if (!file.exists(totalBurdenParsedDir)) {
         mutate(to = replace_na(to, "oth"))
 
       if (replacecolumnX != "label_cause") {
-        missing <- replacement %>% filter(to == "oth")
+        missing <- replacement %>% 
+          filter(to == "oth") %>%
+          distinct
         if (nrow(missing) > 0) {
           print(paste("no value assigned in", replacecolumnX, "for"))
           print(missing[, 1] %>% unique() %>% sort())

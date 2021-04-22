@@ -29,7 +29,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -46,7 +46,6 @@ totalBurdenParsedDir <- file.path(
 )
 
 if (!file.exists(totalBurdenParsedDir)) {
-  lifeExpectancy <- read.csv(file.path(dataDir, "IHME_GBD_2019_TMRLT_Y2021M01D05.csv"))
   ## ----determine join variables
   select_columns <- c("Year", "Race", "Hispanic.Origin","label_cause", "Gender.Code")
 
@@ -244,6 +243,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   print(paste(100 * (1 - nrow(total_burden) / nrow_suppressed), "% rows suppressed"))
   total_burden <- total_burden %>% mutate(Deaths = as.numeric(Deaths))
 
+  ##--- seperate, filter ----
   #add Gender A
   total_burden_all_gend <- total_burden %>%
     group_by_at(setdiff(colnames(total_burden), c("Gender.Code", "Deaths"))) %>%
@@ -252,6 +252,17 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- rbind(total_burden, total_burden_all_gend) %>% distinct()
   rm(total_burden_all_gend)
   
+  total_burden <- total_burden %>%
+    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
+    filter(Ethnicity %in% c(
+      "White, Not Hispanic or Latino",
+      "White, Hispanic or Latino",
+      "Black or African American, All Origins",
+      "Asian or Pacific Islander, All Origins",
+      "American Indian or Alaska Native, All Origins",
+      "All, All Origins"
+    ))  %>%
+    mutate(Ethnicity = NULL)
   ## --write to csv----
   locations <- total_burden[,agr_by_new]
   total_burden[,agr_by_new] <- NULL

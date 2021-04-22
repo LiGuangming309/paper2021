@@ -68,6 +68,11 @@ if (!file.exists(findreplaceDir)) {
         replacecolumns = "Race",
         from = c(1, 2, 3, 4, 5, 6, 7, 18, 28, 38, 48, 58, 68, 78),
         to = c("White", "Black or African American", "American Indian or Alaska Native", rep("Asian or Pacific Islander", 8), "Guama", rep("Asian or Pacific Islander", 2))
+      ),
+      data.frame(
+        replacecolumns = "STATEFP",
+        from = c(1:51,52:62),
+        to = c(states$STATEFP, rep(0, 11))
       )
     )
   findreplaces2 <- merge(data.frame(Year = 2000:2002), findreplaces2)
