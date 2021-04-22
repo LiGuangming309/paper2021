@@ -293,6 +293,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   
   if(agr_by == "STATEFP") total_burden <- total_burden %>% filter(STATEFP != 0)
   
+  total_burden <- total_burden %>% filter(!Education %in% 9:10)
     #write
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
