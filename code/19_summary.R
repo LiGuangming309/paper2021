@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
+packages <- c("dplyr","DataCombine" ,"magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -23,219 +23,124 @@ options(scipen = 10000)
 args <- commandArgs(trailingOnly = T)
 
 tmpDir <- args[1]
-agr_by <- args[2]
 totalBurdenParsed2Dir <- args[4]
 attrBurdenDir <- args[5]
 summaryDir <- args[6]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
-  dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
-totalBurdenParsed2Dir<- file.path(totalBurdenParsed2Dir, agr_by)
-attrBurdenDir <- file.path(attrBurdenDir, agr_by)
-summaryDir <- file.path(summaryDir, agr_by)
-dir.create(summaryDir, recursive = T, showWarnings = F)
+states <- file.path(tmpDir, "states.csv") %>% read.csv() %>% select(NAME, STATEFP)
 
-states <- file.path(tmpDir, "states.csv") %>% read.csv()
-
-group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
-
-#if (!file.exists(file.path(summaryDir, "attr_burd.csv"))) {
-  ### --------read attributable burden data----------
-  sources <- c("wonder","nvss")
+##--- read attr burden----
+agr_bys <- list.files(attrBurdenDir)
+attrBurden <- lapply(agr_bys, function(agr_by){
+  sources <- list.files(file.path(attrBurdenDir, agr_by))
   attrBurden<-lapply(sources, function(source){
-    attrBurdenDir <- file.path(attrBurdenDir, source)
-    if(!file.exists(attrBurdenDir)) return(NA)
-    files <- list.files(attrBurdenDir)
-    attrBurden <- lapply(files, function(file) {
-      attrBurden <- file.path(attrBurdenDir, file) %>% read.csv()
-    }) %>%
-      do.call(rbind, .) %>%
-      as.data.frame()
-  }) %>%
-    do.call(rbind, .) %>%
-    as.data.frame()
+    files <- list.files(file.path(attrBurdenDir, agr_by, source))
+    attrBurden<-lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% do.call(rbind,.)
+  }) %>% do.call(rbind,.)
   
+  #make compatible
+  attrBurden <- attrBurden %>% rename("Region":=!!agr_by)
+  attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
+  return(attrBurden)
+}) %>% do.call(rbind,.) %>% as.data.frame()
 
-  missing <- setdiff(2000:2016, attrBurden$Year)
-  if (length(missing) > 0) {
-    print("Years missing in attributable burden data:")
-    print(missing)
-  }
-  rm(missing)
-  
-  ## --- read overall burden ---
-  #TODO
-  #all_burden <- file.path(totalBurdenParsedDir, agr_by, "total_burden.csv") %>%
-  #  read.csv() %>%
-  #  filter(attr == "overall") %>%
-  #  group_by_at(vars(one_of(c(group_variables, "measure")))) %>%
-  #  summarise(overall_value = sum(value))
+##--- read all burden----
+agr_bys <- list.files(totalBurdenParsed2Dir)
+all_burden <- lapply(agr_bys, function(agr_by){
+  sources <- list.files(file.path(totalBurdenParsed2Dir, agr_by))
   all_burden<-lapply(sources, function(source){
-    totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, source)
-    if(!file.exists(totalBurdenParsed2Dir)) return(NA)
-    files <- list.files(totalBurdenParsed2Dir)
-    all_burden <- lapply(files, function(file) {
-      all_burden <- file.path(totalBurdenParsed2Dir, file) %>% read.csv()
-    }) %>%
-      do.call(rbind, .) %>%
-      as.data.frame()
-  }) %>%
-    do.call(rbind, .) %>%
-    as.data.frame()
+    files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
+    all_burden<-lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% do.call(rbind,.)
+  }) %>% do.call(rbind,.)
   
-  all_burden <- all_burden  %>%
-    filter(attr == "overall") %>%
-    group_by_at(vars(all_of(c(group_variables, "source","measure1","measure2")))) %>%
-    summarise(overall_value = sum(value))
-  
-  ## ---------------- join/write --------------------
-  # join everything
-  attrBurden_prop <- attrBurden %>% left_join(all_burden, by = setdiff(colnames(all_burden),"overall_value")) 
+  #make compatible
+  all_burden <- all_burden %>% rename("Region":=!!agr_by)
+  all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
+  return(all_burden)
+}) %>% do.call(rbind,.) %>% as.data.frame()
 
-  # calculations
-  attrBurden_prop <- attrBurden_prop %>%
-    mutate(
-      mean = 100*mean/overall_value, 
-      lower = 100*lower/overall_value,
-      upper = 100* upper/overall_value,
-      overall_value = NULL,
-      measure2 = "prop. of overall burden"
-    )
+group_variables <- setdiff(colnames(attrBurden),c("lower","mean", "upper"))
 
-  attrBurden <- rbind(attrBurden, attrBurden_prop)
-  test_that("10 plot basic chackes", {
-    test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden),"overall_value")) 
-    
-    test <- attrBurden[rowSums(is.na(attrBurden)) > 0, ]
-    expect_false(any(is.na(attrBurden)))
-    expect_false(any(is.na(all_burden)))
-  })
-  rm(attrBurden_prop)
+all_burden <- all_burden  %>%
+  filter(attr == "overall")  %>% #TODO delete
+  group_by_at(vars(all_of(c(group_variables)))) %>%
+  summarise(overall_value = sum(value))
+###----- add proportion ---
+# join everything
+attrBurden_prop <- attrBurden %>% left_join(all_burden %>% filter(attr == "overall"), 
+                                            by = setdiff(colnames(all_burden),c("overall_value","attr")) )
 
-  replaces3 <- data.frame(
-    Education = c(1:7, 666),
-    Education2 = c(
-      "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
-      "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
-    )
+# calculations
+attrBurden_prop <- attrBurden_prop %>%
+  mutate(
+    mean = 100*mean/overall_value, 
+    lower = 100*lower/overall_value,
+    upper = 100* upper/overall_value,
+    overall_value = NULL, attr.x = NULL, attr.y = NULL,
+    attr = "attributable",
+    measure3 = "prop. of overall burden",
   )
+
+test_that(" basic chackes", {
+  test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden),c("overall_value","attr"))) 
   
-  attrBurden <- attrBurden %>%
-    left_join(replaces3, by = "Education") %>%
-    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
-  attrBurden$Education <- NULL 
-  attrBurden$Race <- NULL 
-  attrBurden$Hispanic.Origin <- NULL 
-  attrBurden <- attrBurden %>% rename(Education = Education2)
-  
-  all_burden <- all_burden %>%
-    left_join(replaces3, by = "Education") %>%
-    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
-  all_burden$Education <- NULL 
-  all_burden$Race <- NULL 
-  all_burden$Hispanic.Origin <- NULL 
-  all_burden <- all_burden %>% rename(Education = Education2)
-  
-  if(agr_by == "STATEFP"){
-    #states <- states %>% select(NAME, STATEFP)
-    
-    #attrBurden <- attrBurden %>% left_join(states, by= "STATEFP")
-    #attrBurden$STATEFP <- NULL
-    #attrBurden <- attrBurden %>% rename(STATEFP = NAME)
-    
-    #all_burden <- all_burden %>% left_join(states, by= "STATEFP")
-    #all_burden$STATEFP <- NULL
-    #all_burden <- all_burden %>% rename(STATEFP = NAME)
-  }
-  
-  #attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
-  #attrBurden$Region <- attrBurden[, agr_by]
-  #attrBurden[, agr_by] <- NULL
-  #all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
-  #all_burden$Region <- all_burden[, agr_by]
-  #all_burden[, agr_by] <- NULL
-  
-  fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
-  fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
-#}
+  test <- attrBurden[rowSums(is.na(attrBurden)) > 0, ]
+  expect_false(any(is.na(attrBurden)))
+  expect_false(any(is.na(attrBurden_prop)))
+  expect_false(any(is.na(all_burden)))
+  #TODO
+})
 
-## ---plot ------
-all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
-attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
-if (FALSE) {
-  
-  attrBurden_gr_sub <- attrBurden_gr %>%
-    mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
-    filter(Ethnicity %in% c(
-      "White, Not Hispanic or Latino",
-      "White, Hispanic or Latino",
-      "Black or African American, All Origins",
-      "Asian or Pacific Islander, All Origins",
-      "American Indian or Alaska Native, All Origins"
-    ))
+attrBurden$measure3 <- "value"
+attrBurden <- rbind(attrBurden, attrBurden_prop)
+rm(attrBurden_prop)
+##--- sort ----
+all_burden <- rbind(all_burden %>% filter(Region == "us"), all_burden %>% filter(Region != "us"))
+attrBurden <- rbind(attrBurden %>% filter(Region == "us"),  attrBurden %>% filter(Region != "us"))
+##--Find replace----
+rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
+all_burden$Region <- sapply(all_burden$Region , function(x) rindreplace1[[x]])
+attrBurden$Region <- sapply(attrBurden$Region , function(x) rindreplace1[[x]])
 
-  i <- 1
-  # TODO population
-  for (location in attrBurden_gr_sub[, get(agr_by_new)] %>% unique()) {
-    attrBurden_gr_sub2 <- attrBurden_gr_sub %>%
-      filter(measure == "Deaths" &
-        attr == "total")
+rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
+                         c(1:7, 666))
+all_burden$Education <- sapply(all_burden$Education %>% as.character, function(x) rindreplace2[[x]])
+attrBurden$Education <- sapply(attrBurden$Education %>% as.character, function(x) rindreplace2[[x]])
 
-    g <- attrBurden_gr_sub2 %>%
-      ggplot(aes_string(x = "Year", y = "Population", color = "Ethnicity")) +
-      # scale_color_viridis(discrete = TRUE) +
-      # theme_ipsum() +
-      ylab(paste("Population")) +
-      xlab("Year") +
-      ylim(0, NA) +
-      xlim(2000, 2016) +
-      geom_line() +
-      theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-      guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-      ggtitle(paste("Population", location, sep = ", "))
+rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
+all_burden$Gender.Code <- sapply(all_burden$Gender.Code , function(x) rindreplace3[[x]])
+attrBurden$Gender.Code <- sapply(attrBurden$Gender.Code , function(x) rindreplace3[[x]])
 
-    ggsave(file.path(summaryDir, paste0("plot", i, ".png")),
-      plot = g
-    )
-    i <- i + 1
-  }
+rindreplace4 <- setNames(c("National Vital Statistics System", "Mortality Data from CDC WONDER"), c("nvss","wonder"))
+all_burden$source <- sapply(all_burden$source , function(x) rindreplace4[[x]])
+attrBurden$source <- sapply(attrBurden$source , function(x) rindreplace4[[x]])
 
-  for (measure2 in attrBurden_gr_sub$measure %>% unique()) {
-    for (location in attrBurden_gr_sub[, get(agr_by_new)] %>% unique()) {
-      for (attr2 in attrBurden_gr_sub$attr %>% unique()) {
-        for (column in c("crude_rate", "prop")) { # TODO mean, lower, upper
-          attrBurden_gr_sub2 <- attrBurden_gr_sub %>%
-            filter(measure == measure2 &
-              attr == attr2 &
-              get(agr_by_new) == location)
+rindreplace5 <- setNames(c("Years of Life Lost (YLL)", "Deaths"), c("YLL","Deaths"))
+all_burden$measure1 <- sapply(all_burden$measure1 , function(x) rindreplace5[[x]])
+attrBurden$measure1 <- sapply(attrBurden$measure1 , function(x) rindreplace5[[x]])
 
-          g <- attrBurden_gr_sub2 %>%
-            ggplot(aes_string(x = "Year", y = column, color = "Ethnicity")) +
-            # scale_color_viridis(discrete = TRUE) +
-            # theme_ipsum() +
-            ylab(paste("burden measured in", measure2, column)) +
-            xlab("Year") +
-            ylim(0, NA) +
-            xlim(2000, 2016) +
-            geom_line() +
-            theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-            guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-            ggtitle(paste(measure2, location, attr2, column, sep = ", "))
+rindreplace6 <- setNames(c("crude rate per 100,000", "age-adjusted rate per 100,000", "absolute number"), c("crude rate","age-adjusted rate", "absolute number"))
+all_burden$measure2 <- sapply(all_burden$measure2 , function(x) rindreplace6[[x]])
+attrBurden$measure2 <- sapply(attrBurden$measure2 , function(x) rindreplace6[[x]])
+#Years of Life lost;
 
-          ggsave(file.path(summaryDir, paste0("plot", i, ".png")),
-            plot = g
-          )
-          i <- i + 1
-        }
-      }
-    }
-  }
-}
+rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace5, rindreplace6)
+all_burden <- all_burden%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
+all_burden$Hispanic.Origin <- NULL 
+all_burden$Race <- NULL 
+
+attrBurden <- attrBurden%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
+attrBurden$Hispanic.Origin <- NULL 
+attrBurden$Race <- NULL 
+
+#--write---
+fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
+fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))

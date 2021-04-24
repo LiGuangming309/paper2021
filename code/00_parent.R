@@ -14,7 +14,7 @@ rm(list = ls(all = TRUE))
 packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
   "MALDIquant", "plyr", "RCurl", "readxl", "sf", "sp", "stringr", "testthat", "tictoc",
-  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx"
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr"
 )
 
 options(tigris_use_cache = FALSE)
@@ -190,20 +190,20 @@ for (agr_by in agr_bys) {
       #  runscript(script = cens_agr.script, args = args)
       #  runscript(script = paf.script, args = args)
       if (source == "wonder") {
-    #    runscript(script = read.total.burden.script, args = args)
+      #  runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
      #    runscript(script = read.nvs.findrepl.script, args = args)
-        runscript(script = read.total.burden.nvs.script, args = args)
+     #   runscript(script = read.total.burden.nvs.script, args = args)
       }
      # runscript(script=pop.summary.script, args = args)
     #  runscript(script=pop.summary.educ.script, args = args)
-    #  runscript(script = add.rate.tot.burd, args = args)
-    #  runscript(script = calc.attr.burd.script, args = args)
+      runscript(script = add.rate.tot.burd, args = args)
+      runscript(script = calc.attr.burd.script, args = args)
     }
   }
 }
 
-for (agr_by in agr_bys) { 
+ 
   args <- paste(
     tmp.dir, # 1
     agr_by, # 2
@@ -215,6 +215,6 @@ for (agr_by in agr_bys) {
   )
   
   runscript(script = summary.script, args = args)
-  runscript(script = plot.script, args = args)
+#  runscript(script = plot.script, args = args)
   
-}
+

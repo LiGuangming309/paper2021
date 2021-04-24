@@ -214,9 +214,9 @@ if(!file.exists(totalBurdenParsed2Dir)){
     expect_equal(nrow(total_burden_test), 0) #TODO
   })
   
-  total_burden <- total_burden %>% 
-    filter((measure1 == "Deaths" & measure2 == "age-adjusted rate") | 
-           (measure1 == "YLL" & measure2 == "crude rate"))
+  #total_burden <- total_burden %>% 
+  #  filter((measure1 == "Deaths" & measure2 == "age-adjusted rate") | 
+  #         (measure1 == "YLL" & measure2 == "crude rate"))
   
   fwrite(total_burden,totalBurdenParsed2Dir)
   toc()

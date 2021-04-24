@@ -1,0 +1,159 @@
+#-------------------Header------------------------------------------------
+# Author: Daniel Fridljand
+# Date: 01/16/2021
+# Purpose: summarize data
+#
+#***************************************************************************
+
+#------------------SET-UP--------------------------------------------------
+# clear memory #test
+rm(list = ls(all = TRUE))
+
+# load packages, install if missing
+packages <- c("dplyr","DataCombine" ,"magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
+
+for (p in packages) {
+  suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
+}
+options(dplyr.summarise.inform = FALSE)
+options(dplyr.join.inform = FALSE)
+options(scipen = 10000)
+
+# Pass in arguments
+args <- commandArgs(trailingOnly = T)
+
+tmpDir <- args[1]
+totalBurdenParsed2Dir <- args[4]
+attrBurdenDir <- args[5]
+summaryDir <- args[6]
+
+# TODO delete
+if (rlang::is_empty(args)) {
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+}
+
+states <- file.path(tmpDir, "states.csv") %>% read.csv() %>% select(NAME, STATEFP)
+
+##--- read attr burden----
+agr_bys <- list.files(attrBurdenDir)
+attrBurden <- lapply(agr_bys, function(agr_by){
+  sources <- list.files(file.path(attrBurdenDir, agr_by))
+  attrBurden<-lapply(sources, function(source){
+    files <- list.files(file.path(attrBurdenDir, agr_by, source))
+    attrBurden<-lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% do.call(rbind,.)
+  }) %>% do.call(rbind,.)
+  
+  #make compatible
+  attrBurden <- attrBurden %>% rename("Region":=!!agr_by)
+  attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
+  return(attrBurden)
+}) %>% do.call(rbind,.) %>% as.data.frame()
+
+##--- read all burden----
+agr_bys <- list.files(totalBurdenParsed2Dir)
+all_burden <- lapply(agr_bys, function(agr_by){
+  sources <- list.files(file.path(totalBurdenParsed2Dir, agr_by))
+  all_burden<-lapply(sources, function(source){
+    files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
+    all_burden<-lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% do.call(rbind,.)
+  }) %>% do.call(rbind,.)
+  
+  #make compatible
+  all_burden <- all_burden %>% rename("Region":=!!agr_by)
+  all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
+  return(all_burden)
+}) %>% do.call(rbind,.) %>% as.data.frame()
+
+group_variables <- setdiff(colnames(attrBurden),c("lower","mean", "upper"))
+
+all_burden <- all_burden  %>%
+  filter(attr == "overall")  %>% #TODO delete
+  group_by_at(vars(all_of(c(group_variables)))) %>%
+  summarise(overall_value = sum(value))
+###----- add proportion ---
+# join everything
+attrBurden_prop <- attrBurden %>% left_join(all_burden %>% filter(attr == "overall"), 
+                                            by = setdiff(colnames(all_burden),c("overall_value","attr")) )
+
+# calculations
+attrBurden_prop <- attrBurden_prop %>%
+  mutate(
+    mean = 100*mean/overall_value, 
+    lower = 100*lower/overall_value,
+    upper = 100* upper/overall_value,
+    overall_value = NULL, attr.x = NULL, attr.y = NULL,
+    attr = "attributable",
+    measure3 = "prop. of overall burden",
+  )
+
+test_that(" basic chackes", {
+  test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden),c("overall_value","attr"))) 
+  
+  test <- attrBurden[rowSums(is.na(attrBurden)) > 0, ]
+  expect_false(any(is.na(attrBurden)))
+  expect_false(any(is.na(attrBurden_prop)))
+  expect_false(any(is.na(all_burden)))
+  #TODO
+})
+
+attrBurden$measure3 <- "value"
+attrBurden <- rbind(attrBurden, attrBurden_prop)
+rm(attrBurden_prop)
+##--Find replace----
+
+findreplace <- rbind(
+  data.frame(from = c(states$STATEFP,"us"), to = c(states$NAME, "United States"), replacecolumns = "Region"),
+  data.frame(
+    from = c(1:7, 666),
+    to = c(
+      "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
+      "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
+    ), 
+    replacecolumns = "Education"
+  )
+)
+
+findreplaceF <-function(df){
+  for (replacecolumnX in findreplace$replacecolumns %>% unique()) {
+    findreplace_sub <- findreplace %>% filter(replacecolumns == replacecolumnX)
+    replacement <- df %>%
+      #df[, replacecolumnX] %>%
+      select(all_of(replacecolumnX)) %>%
+      #as.data.frame() %>%
+      mutate(across(everything(), as.character)) %>%
+      left_join(findreplace_sub,
+                by = setNames("from", replacecolumnX),
+                na.replace = "oth"
+      ) %>%
+      mutate(to = replace_na(to, "oth"))
+    
+    #replacement <- data.frame(from = df[, replacecolumnX]) %>%
+      #mutate(across(everything(), as.character)) %>%
+    #  left_join(findreplace_sub,
+    #            by = "from",
+    #            na.replace = "oth"
+    #  ) %>%
+    #  mutate(to = replace_na(to, "oth"))
+    
+    df[, replacecolumnX] <- replacement %>% select(to)
+  }
+  #rm(findreplace_sub, replacement, replacecolumnX)
+  return(df)
+}
+
+#attrBurden <- findreplaceF(attrBurden) #TODO
+#all_burden <- findreplaceF(all_burden)
+
+all_burden <- all_burden%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
+all_burden$Hispanic.Origin <- NULL 
+all_burden$Race <- NULL 
+
+attrBurden <- attrBurden%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
+attrBurden$Hispanic.Origin <- NULL 
+attrBurden$Race <- NULL 
+
+fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
+fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))

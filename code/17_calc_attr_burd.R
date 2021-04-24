@@ -46,6 +46,11 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), ".csv"))
 
+if(agr_by != "nation" & source == "nvss" & year >2004){
+  print(paste("in", year, "no geopgraphic identifier for nvss available"))
+  quit()
+}
+
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 total_burden <- file.path(totalBurdenParsed2Dir,agr_by,source, paste0("total_burden_",year,".csv")) %>% 
