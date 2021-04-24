@@ -70,7 +70,7 @@ all_burden <- lapply(agr_bys, function(agr_by){
 group_variables <- setdiff(colnames(attrBurden),c("lower","mean", "upper"))
 
 all_burden <- all_burden  %>%
-  filter(attr == "overall")  %>% #TODO delete
+  #filter(attr == "overall")  %>% #TODO delete
   group_by_at(vars(all_of(c(group_variables)))) %>%
   summarise(overall_value = sum(value))
 ###----- add proportion ---

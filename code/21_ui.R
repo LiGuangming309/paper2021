@@ -32,7 +32,7 @@ colnames(all_burden)
 ui <- fluidPage(
 
   # App title ----
-  titlePanel("Shiny Text"),
+  titlePanel("Explore data"),
 
   # Sidebar layout with a input and output definitions ----
   sidebarLayout(
@@ -98,37 +98,43 @@ server <- function(input, output) {
 
     # filter data accordingly
     allBurden1 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "overall")
-    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI)
-    attrBurden2 <- attrBurden1 %>% filter(measure3 == "prop. of overall burden")
-    attrBurden1 <- attrBurden1 %>% filter(measure3 == "value")
+    allBurden2 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "total")
+    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & measure3 == "value")
+    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & measure3 == "prop. of overall burden")
 
     if (input$raceOrEduc == "race") {
       allBurden1 <- allBurden1 %>% filter(Education == 666)
+      allBurden2 <- allBurden2 %>% filter(Education == 666)
       attrBurden1 <- attrBurden1 %>% filter(Education == 666)
       attrBurden2 <- attrBurden2 %>% filter(Education == 666)
       
       g1 <- ggplot(allBurden1, aes(x = Year, y = overall_value, color = Ethnicity))
-      g2 <- ggplot(attrBurden1, aes(x = Year, y = mean, color = Ethnicity))
-      g3 <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity))
+      g2 <- ggplot(allBurden2, aes(x = Year, y = overall_value, color = Ethnicity))
+      g3 <- ggplot(attrBurden1, aes(x = Year, y = mean, color = Ethnicity))
+      g4 <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity))
     } else {
       allBurden1 <- allBurden1 %>% filter(Education != 666)
+      allBurden2 <- allBurden2 %>% filter(Education != 666)
       attrBurden1 <- attrBurden1 %>% filter(Education != 666)
       attrBurden2 <- attrBurden2 %>% filter(Education != 666)
       
       g1 <- ggplot(allBurden1, aes(x = Year, y = overall_value, color = Education))
-      g2 <- ggplot(attrBurden1, aes(x = Year, y = mean, color = Education))
-      g3 <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Education))
+      g2 <- ggplot(allBurden2, aes(x = Year, y = overall_value, color = Education))
+      g3 <- ggplot(attrBurden1, aes(x = Year, y = mean, color = Education))
+      g4 <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Education))
     }
 
     g1 <- g1 + geom_line(size = 1)+xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("all-cause burden")
-    g2 <- g2 +geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM exposure")
-    g3 <- g3 +geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM exposure")
+    g2 <- g2 + geom_line(size = 1)+xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("total burden from causes associated with PM exposure ",
+                                                                                                                                      subtitle = "(resp_copd, lri, neo_lung, t2_dm, cvd_ihd, cvd_stroke)")
+    g3 <- g3 +geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM exposure")
+    g4 <- g4 +geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM exposure")
 
     if (input$conf) {
-      g2 <- g2 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
+      g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
-    ggarrange(g1, g2, g3, common.legend = TRUE, legend = "bottom")
+    ggarrange(g1, g2, g3, g4, common.legend = TRUE, legend = "bottom")
   })
 }
 shinyApp(ui = ui, server = server)
