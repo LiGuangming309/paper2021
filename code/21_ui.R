@@ -134,7 +134,7 @@ server <- function(input, output) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
-    ggarrange(g1, g2, g3, g4, common.legend = TRUE, legend = "bottom")
+    ggarrange(g1, g2, g3, g4, common.legend = TRUE, legend = "bottom", labels="AUTO")
   })
 }
 shinyApp(ui = ui, server = server)
