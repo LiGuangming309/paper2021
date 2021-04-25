@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr","data.table", "shiny", "ggplot2", "ggpubr")
+packages <- c("dplyr", "magrittr","shiny", "ggplot2", "ggpubr")
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) install.packages(p)
@@ -23,10 +23,10 @@ summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
-attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
-all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
-pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
-pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
+attrBurden <- read.csv(file.path(summaryDir, "attr_burd.csv"))
+all_burden <- read.csv(file.path(summaryDir, "all_burd.csv"))
+pm_summ <- read.csv(file.path(summaryDir, "pm_summary.csv"))
+pop_summary <- read.csv(file.path(summaryDir, "pop_summary.csv"))
 
 colnames(all_burden)
 # Define UI for dataset viewer app ----
@@ -64,7 +64,7 @@ ui <- fluidPage(
       ),
       selectInput(
         inputId = "measure2",
-        label = "measure2",
+        label = "rate",
         choices = unique(all_burden$measure2)
       ),
       selectInput(

@@ -49,3 +49,5 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv
 total_burden <- file.path(totalBurdenParsedDir,  agr_by, "total_burden.csv") %>% 
   read.csv %>% 
   filter(Year == year)
+#http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
+#https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R

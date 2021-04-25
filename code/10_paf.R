@@ -59,8 +59,8 @@ causes_ages <- file.path(tmpDir, "causes_ages.csv") %>% read.csv()
 example_exp_rr <- file.path(exp_rrDir, "cvd_ihd_25.csv") %>% read.csv()
 pm_levels <- example_exp_rr$exposure_spline
 
-#
-calc_conf <- (agr_by == "nation")
+#calc_conf <- (agr_by == "nation")
+calc_conf <- TRUE
 ### -----calculation-------
 regions <- states[, agr_by] %>% unique()
 for (region in regions) {
