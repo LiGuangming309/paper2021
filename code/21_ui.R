@@ -10,13 +10,18 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "tidyverse", "viridis", "hrbrthemes", "shiny", "ggplot2", "ggpubr")
+#packages <- c("dplyr", "magrittr", "data.table", "tidyverse", "viridis", "hrbrthemes", "shiny", "ggplot2", "ggpubr")
+packages <- c("dplyr", "magrittr","data.table", "shiny", "ggplot2", "ggpubr")
 
 for (p in packages) {
+  if (p %in% rownames(installed.packages()) == FALSE) install.packages(p)
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
 }
+options(scipen = 10000)
 
+#load calculated data
 summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+#if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
 attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
@@ -150,7 +155,15 @@ server <- function(input, output) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
-    ggarrange(g1, g2, g3, g4, g5, g6, common.legend = TRUE, legend = "bottom", labels = "AUTO", ncol = 2, nrow = 3)
+    
+    g_comb <- ggarrange(g1, g2, g3, g4, g5, g6, ncol = 2, nrow = 3,
+              common.legend = TRUE, legend = "bottom", 
+              #legend = NULL,
+              labels = "AUTO") 
+    #leg <- get_legend(g1)
+    #dp <- dp + theme(legend.position = "bottom")
+    #ggarrange(g_comb, leg)
+    g_comb
   })
 }
 shinyApp(ui = ui, server = server)
