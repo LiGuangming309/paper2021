@@ -104,8 +104,11 @@ attrBurden$measure3 <- "value"
 attrBurden <- rbind(attrBurden, attrBurden_prop)
 rm(attrBurden_prop)
 ##--- sort ----
-all_burden <- rbind(all_burden %>% filter(Region == "us"), all_burden %>% filter(Region != "us"))
-attrBurden <- rbind(attrBurden %>% filter(Region == "us"),  attrBurden %>% filter(Region != "us"))
+all_burden <- rbind(all_burden %>% filter(Region == "us"), 
+                    all_burden %>% 
+                      filter(Region != "us") %>%
+                      arrange(Region)
+                    )
 ##--Find replace----
 rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
 all_burden$Region <- sapply(all_burden$Region , function(x) rindreplace1[[x]])

@@ -51,11 +51,12 @@ if(!file.exists(pm_summDir)){
   tic(paste("summarized pm data"))
   agr_bys <- setdiff(list.files(dem_agrDir),"county")
   pm_summ <- lapply(agr_bys, function(agr_by){
+    tic(paste("summarized pm data by", agr_by))
     years <- list.files(file.path(dem_agrDir, agr_by))
     pm_summ <- lapply(years, function(year){
       meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
       files <- list.files(file.path(dem_agrDir, agr_by, year))
-      pm_summ<-lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% do.call(rbind,.)
+      pm_summ<-lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist
       pm_summ<- pm_summ %>% left_join(meta, by = "variable")
       return(pm_summ)
     }) %>% rbindlist
@@ -63,6 +64,7 @@ if(!file.exists(pm_summDir)){
     pm_summ <- pm_summ %>% rename("Region":=!!agr_by)
     pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
     
+    toc()
     return(pm_summ)
   }) %>% rbindlist
   
@@ -121,7 +123,7 @@ if(!file.exists(pop_summaryDir)){
     pop_summary2 <- pop_summary2 %>% rename("Region":=!!agr_by)
     pop_summary2 <- pop_summary2 %>% tibble::add_column(agr_by = agr_by)
   }) %>% rbindlist()
-  pop_summary2 <- pop_summary2 %>% filter(Education == 666)
+  pop_summary2 <- pop_summary2 %>% filter(Education != 666)
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
   rm(pop_summary1, pop_summary2)
