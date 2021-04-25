@@ -10,7 +10,6 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-#packages <- c("dplyr", "magrittr", "data.table", "tidyverse", "viridis", "hrbrthemes", "shiny", "ggplot2", "ggpubr")
 packages <- c("dplyr", "magrittr","data.table", "shiny", "ggplot2", "ggpubr")
 
 for (p in packages) {
@@ -149,7 +148,7 @@ server <- function(input, output) {
     g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM exposure")
     g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM exposure")
 
-    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab(paste("population-weighted", pm_metricI)) + ylim(0, NA) + xlim(2000, 2016) +ggtitle("particulate matter exposure")
+    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab(paste("population-weighted", pm_metricI)) + xlim(2000, 2016) +ggtitle("particulate matter exposure")
     g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("Population size")
     if (input$conf) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
