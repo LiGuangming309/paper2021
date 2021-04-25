@@ -33,8 +33,8 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2010
-  agr_by <- "nation"
+  year <- 2000
+  agr_by <- "STATEFP"
   source <- "nvss"
   
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -184,12 +184,14 @@ if(!file.exists(totalBurdenParsed2Dir)){
     distinct() %>%
     arrange(min_age, max_age)
   
-  total_burden <- total_burden %>% left_join(paf, by=c("Hispanic.Origin", "Race", "Education", "Year")) 
+  total_burden <- total_burden %>% inner_join(paf, by=c("Hispanic.Origin", "Race", "Education", "Year")) 
   
   test_that("paf min_age and max_age compatible with total burden",{
     total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
-    #test <- total_burden %>% filter(Education != "666")
+    total_burden_test2 <- total_burden %>% anti_join(paf, by=c("Hispanic.Origin", "Race", "Education", "Year")) 
+    if(year <= 2008) total_burden_test2 <- total_burden_test2 %>% filter(Education == 666)
     expect_equal(0,nrow(total_burden_test))
+    expect_equal(0,nrow(total_burden_test2))
   })
   
   #case 1: total_burden inside pad

@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "STATEFP"
 
-  year <- 2004
+  year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -293,7 +293,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   
   if(agr_by == "STATEFP") total_burden <- total_burden %>% filter(STATEFP != 0)
   
-  total_burden <- total_burden %>% filter(!Education %in% 9:10)
+  total_burden <- total_burden %>% filter(!Education %in% c(0,9:10))
     #write
   fwrite(total_burden, totalBurdenParsedDir)
   toc()

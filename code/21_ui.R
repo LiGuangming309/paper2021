@@ -17,7 +17,7 @@ for (p in packages) {
 }
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
-summaryDir <- args[6]
+summaryDir <- args[7]
 
 if (rlang::is_empty(args)) {
   # change directory here!
@@ -26,6 +26,8 @@ if (rlang::is_empty(args)) {
 
 attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
+pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
+pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
 
 colnames(all_burden)
 # Define UI for dataset viewer app ----

@@ -31,8 +31,8 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2016
-  agr_by <- "nation"
+  year <- 2000
+  agr_by <- "STATEFP"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -105,28 +105,28 @@ if (!file.exists(attrBurdenDir)) {
   }
   # give some feedback on what is still missing from total burden
   # one side
-  
+  test_variables <- setdiff(join_variables,c("min_age","max_age","label_cause"))
   total_burden_test <- total_burden %>%
-    select(all_of(setdiff(join_variables,c("min_age","max_age")))) %>%
+    select(all_of(test_variables)) %>%
     distinct()
   
   pafs_test <- pafs %>%
-    select(all_of(setdiff(join_variables,c("min_age","max_age")))) %>%
+    select(all_of(test_variables)) %>%
     distinct()
   
-  missing <- anti_join(total_burden_test , pafs_test, by = setdiff(join_variables,c("min_age","max_age"))) 
+  missing <- anti_join(total_burden_test , pafs_test, by = test_variables) 
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in pafs data for", agr_by, ":"))
     print(head(missing))
   }
   
   # other side
-  missing <- anti_join(pafs_test, total_burden_test, by = setdiff(join_variables,c("min_age","max_age"))) 
+  missing <- anti_join(pafs_test, total_burden_test, by = test_variables) 
   if (nrow(missing) > 0) {
     print(paste(nrow(missing), "rows are still missing in total burden data for", agr_by, ":"))
     print(head(missing))
   }
-  rm(missing, total_burden_test, pafs_test)
+  rm(missing, total_burden_test, pafs_test, test_variables)
   toc()
   ## ----- join total_burden and pafs-----
   tic("calc_attr_burd: 2 joined PAFs and total burden data")

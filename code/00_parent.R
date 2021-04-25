@@ -144,15 +144,15 @@ pop.summary.educ.script <- file.path(code.dir, "15_popsum_educ.R")
 add.rate.tot.burd <- file.path(code.dir, "16_add_rate_totburd.R")
 calc.attr.burd.script <- file.path(code.dir, "17_calc_attr_burd.R")
 summary.script <- file.path(code.dir, "19_summary.R")
-plot.script <- file.path(code.dir, "20_plot.R")
-
+summary.other.script <- file.path(code.dir, "20_summary_other.R")
+ui.script <- file.path(code.dir, "21_ui.R")
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
-years <- c(2000, 2010, 2001:2009, 2011:2016)
+#years <- c(2000, 2010, 2001:2009, 2011:2016)
 # years <- c(2000:2004)
-# years <- c(2001)
+ years <- c(2001)
 for (agr_by in agr_bys) {
   for (source in sources) {
     for (year in years) {
@@ -197,8 +197,8 @@ for (agr_by in agr_bys) {
       }
      # runscript(script=pop.summary.script, args = args)
     #  runscript(script=pop.summary.educ.script, args = args)
-      runscript(script = add.rate.tot.burd, args = args)
-      runscript(script = calc.attr.burd.script, args = args)
+     # runscript(script = add.rate.tot.burd, args = args)
+    #  runscript(script = calc.attr.burd.script, args = args)
     }
   }
 }
@@ -206,15 +206,16 @@ for (agr_by in agr_bys) {
  
   args <- paste(
     tmp.dir, # 1
-    agr_by, # 2
-    dem.dir, # 3
-    total.burden.parsed2.dir, # 4
-    attr.burden.dir, # 5
-    summary.dir, # 6
-    plot.dir # 7
+    dem.dir, # 2
+    dem.agr.dir, # 3
+    pop.summary.dir, # 4
+    total.burden.parsed2.dir, # 5
+    attr.burden.dir, # 6
+    summary.dir # 7
   )
   
-  runscript(script = summary.script, args = args)
-#  runscript(script = plot.script, args = args)
+  #runscript(script = summary.script, args = args)
+  #runscript(script = summary.other.script, args = args)
+  #runscript(script = ui.script, args = args)
   
 

@@ -40,8 +40,7 @@ dem_agr <- dem_agr %>%
 dem_agr <- dem_agr %>%
   group_by(Year, Race, Education, Hispanic.Origin) %>%
   summarise(mean = weighted.mean(pm, pop_size),
-         median = matrixStats::weightedMedian(pm, pop_size)
-         )
+         median = matrixStats::weightedMedian(pm, pop_size))
 
 write.csv(dem_agr, "C:/Users/Daniel/Desktop/paper2021/data/test/pm/pm.csv")
 toc()

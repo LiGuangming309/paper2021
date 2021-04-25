@@ -23,9 +23,9 @@ options(scipen = 10000)
 args <- commandArgs(trailingOnly = T)
 
 tmpDir <- args[1]
-totalBurdenParsed2Dir <- args[4]
-attrBurdenDir <- args[5]
-summaryDir <- args[6]
+totalBurdenParsed2Dir <- args[5]
+attrBurdenDir <- args[6]
+summaryDir <- args[7]
 
 # TODO delete
 if (rlang::is_empty(args)) {
@@ -37,6 +37,7 @@ if (rlang::is_empty(args)) {
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv() %>% select(NAME, STATEFP)
 
+tic("summarized all burden and attributable burden data")
 ##--- read attr burden----
 agr_bys <- list.files(attrBurdenDir)
 attrBurden <- lapply(agr_bys, function(agr_by){
@@ -144,3 +145,4 @@ attrBurden$Race <- NULL
 #--write---
 fwrite(attrBurden, file.path(summaryDir, "attr_burd.csv"))
 fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
+toc()
