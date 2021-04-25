@@ -79,7 +79,7 @@ if (!file.exists(pop.summary.dirX)) {
   toc()
 }
 
-if (TRUE) {
+if (FALSE) {
   tic("plotted population summary")
   files <- list.files(pop.summary.dir)
   pop.summary <- lapply(files, function(file) {
