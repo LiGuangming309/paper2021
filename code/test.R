@@ -1,30 +1,26 @@
-summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
+library(devtools)
+install_github("FridljDa/paper2021/data/14_summary")
+test <- read.csv("https://github.com/FridljDa/paper2021/blob/master/data/14_summary/all_burd.csv")
+#"https://raw.github.com/FridljDa/paper2021/master/master"
+test <- read.csv("https://raw.github.com/FridljDa/paper2021/blob/master/master")
+#https://github.com/FridljDa/paper2021/blob/45829c4a46e251e91f6d0a069581b84472300c1d/data/14_summary/all_burd.csv
+test <- read.csv("https://github.com/FridljDa/paper2021/blob/45829c4a46e251e91f6d0a069581b84472300c1d/data/14_summary/all_burd.csv")
 
-attrBurdenX <- attrBurden %>%
-  filter(Education == 666) %>%
-  filter(Region == "United States", source == "National Vital Statistics System", measure3 == "value")
+library(RCurl)
+x <- getURL("https://github.com/FridljDa/paper2021/blob/master/data/14_summary/all_burd.csv")
+y <- read.csv(text = x)
+#latent.growth.data <- read.csv("https://github.com/FridljDa/paper2021/blob/master/data/14_summary/all_burd.csv")
 
-attrBurden1 <- attrBurdenX %>%
-  filter(
-    measure1 == "Years of Life Lost (YLL)",
-    measure2 == "age-adjusted rate per 100,000",
-    attr == "attributable",
-    Gender.Code == "All genders"
-  )
+y <-download.file("https://raw.github.com/FridljDa/paper2021/blob/master/data/14_summary/all_burd.csv", 
+              destfile = "/tmp/test.csv", method = "curl")
 
-test <- read.csv("~/Desktop/test.csv")
+library(RCurl)
+x <- getURL("https://raw.github.com/aronlindberg/latent_growth_classes/master/LGC_data.csv")
+y <- read.csv(text = x)
 
-g <- ggplot(test, aes(x = Year, y = mean, color = Ethnicity)) +
-  geom_line(size = 1) +
-  ylab(paste("YLL per 100.000")) +
-  xlab("Year") +
-  ylim(0, NA) +
-  xlim(2000, 2016) +
-  theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-  guides(col = guide_legend(nrow = 3, byrow = TRUE)) 
+download.file("https://raw.github.com/aronlindberg/latent_growth_classes/master/LGC_data.csv", 
+              destfile = "/tmp/test.csv", method = "curl")
 
-g
-
-g <- g + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
-g
+urlfile<-'https://raw.github.com/aronlindberg/latent_growth_classes/master/LGC_data.csv'
+urlfile<-'https://raw.github.com/FridljDa/paper2021/master/data/14_summary/all_burd.csv'
+dsin<-read.csv(urlfile)

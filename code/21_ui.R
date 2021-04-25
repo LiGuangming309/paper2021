@@ -15,14 +15,9 @@ packages <- c("dplyr", "magrittr", "data.table", "tidyverse", "viridis", "hrbrth
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
 }
-# Pass in arguments
-args <- commandArgs(trailingOnly = T)
-summaryDir <- args[7]
 
-if (rlang::is_empty(args)) {
-  # change directory here!
-  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-}
+summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
 attrBurden <- fread(file.path(summaryDir, "attr_burd.csv"))
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
