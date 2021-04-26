@@ -244,13 +244,16 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% mutate(Deaths = as.numeric(Deaths))
 
   ##--- seperate, filter ----
-  #add Gender A
-  total_burden_all_gend <- total_burden %>%
+  if(!"A" %in% total_burden$Gender.Code){
+    #add Gender A
+    total_burden_all_gend <- total_burden %>%
+      filter(Gender.Code != "A")
     group_by_at(setdiff(colnames(total_burden), c("Gender.Code", "Deaths"))) %>%
-    summarise(Deaths = sum(Deaths)) %>%
-    mutate(Gender.Code = "A")
-  total_burden <- rbind(total_burden, total_burden_all_gend) %>% distinct()
-  rm(total_burden_all_gend)
+      summarise(Deaths = sum(Deaths)) %>%
+      mutate(Gender.Code = "A")
+    total_burden <- rbind(total_burden, total_burden_all_gend) %>% distinct()
+    rm(total_burden_all_gend)
+  }
   
   total_burden <- total_burden %>%
     mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%

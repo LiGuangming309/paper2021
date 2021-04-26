@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_bys <- c("nation","STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_bys <- c("STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -103,8 +103,8 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
 dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
 sources <- c("wonder"
-             ,
-             "nvss"
+             #,
+             #"nvss"
              )
 
 cdc.pop.dir <- file.path(data.dir, "10_cdc_population")
@@ -191,15 +191,15 @@ for (agr_by in agr_bys) {
       #  runscript(script = cens_agr.script, args = args)
       #  runscript(script = paf.script, args = args)
       if (source == "wonder") {
-      #  runscript(script = read.total.burden.script, args = args)
+        runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
       #   runscript(script = read.nvs.findrepl.script, args = args)
       #  runscript(script = read.total.burden.nvs.script, args = args)
       }
-      runscript(script=pop.summary.script, args = args)
-      runscript(script=pop.summary.educ.script, args = args)
-      #runscript(script = add.rate.tot.burd, args = args)
-     #runscript(script = calc.attr.burd.script, args = args)
+      #runscript(script=pop.summary.script, args = args)
+      #runscript(script=pop.summary.educ.script, args = args)
+      runscript(script = add.rate.tot.burd, args = args)
+     runscript(script = calc.attr.burd.script, args = args)
 
     } 
   }
@@ -216,8 +216,8 @@ for (agr_by in agr_bys) {
     summary.dir # 7
   )
   
-  #runscript(script = summary.script, args = args)
-  runscript(script = summary.other.script, args = args)
+  runscript(script = summary.script, args = args)
+  #runscript(script = summary.other.script, args = args)
   #runscript(script = ui.script, args = args)
 
   

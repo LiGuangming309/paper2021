@@ -69,7 +69,7 @@ ui <- fluidPage(
       ),
       selectInput(
         inputId = "source",
-        label = "source",
+        label = "source burden data",
         choices = unique(all_burden$source)
       ),
       checkboxInput(
@@ -174,6 +174,7 @@ server <- function(input, output) {
     #leg <- get_legend(g1)
     #dp <- dp + theme(legend.position = "bottom")
     #ggarrange(g_comb, leg)
+    print(allBurden1 %>% arrange(overall_value))
     g_comb
   })
 }
