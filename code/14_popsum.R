@@ -109,6 +109,9 @@ if (!file.exists(pop.summary.dir)) {
   cdc_pop$max_age[cdc_pop$max_age == "85+"] <- 150
   cdc_pop$min_age <- as.numeric(cdc_pop$min_age)
   cdc_pop$max_age <- as.numeric(cdc_pop$max_age)
+  
+  cdc_pop <- cdc_pop %>% tibble::add_column(source2 = "CDC")
+  
   write.csv(cdc_pop, pop.summary.dir, row.names = FALSE)
   
   ##---plot---
