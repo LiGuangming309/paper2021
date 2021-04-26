@@ -99,7 +99,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
   
   # crude rate
   pop_summary_agr <- pop_summary %>%
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("min_age","max_age", "Population"))))) %>%
+    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("min_age","max_age","source2", "Population"))))) %>%
     summarise(Population = sum(Population))
   
   test_that("add_rate anti join total burden with population",{
@@ -129,10 +129,10 @@ if(!file.exists(totalBurdenParsed2Dir)){
   full_stand_popsize <- sum(standartpopulation$popsize)
   
   pop_summary_agr <- pop_summary %>% 
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population"))))) %>% 
+    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("source2","Population"))))) %>% 
     summarise(Population = sum(Population))
 
-  total_burden_age_adj <- total_burden %>% left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), c("min_age","max_age","Population")))
+  total_burden_age_adj <- total_burden %>% left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), c("min_age","max_age","source2","Population")))
   
   #group by new age
   #case 1 age group population inside age group total burden
