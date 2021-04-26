@@ -88,8 +88,8 @@ ui <- fluidPage(
         choices = unique(pm_summ$pm_metric)
       ),
       selectInput(
-        inputId = "source population data",
-        label = "source2",
+        inputId = "source2",
+        label = "source population data",
         choices = unique(pop_summary$source2)
       ),
     ),
@@ -121,7 +121,7 @@ server <- function(input, output) {
     attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
     attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
-    pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI)#  & source2 == "CDC"
+    pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I)
 
     if (input$raceOrEduc == "race") {
       allBurden1 <- allBurden1 %>% filter(Education == 666)
