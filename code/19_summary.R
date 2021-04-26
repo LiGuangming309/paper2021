@@ -68,10 +68,9 @@ all_burden <- lapply(agr_bys, function(agr_by){
   return(all_burden)
 }) %>% do.call(rbind,.) %>% as.data.frame()
 
-group_variables <- setdiff(colnames(attrBurden),c("lower","mean", "upper"))
+group_variables <- setdiff(colnames(attrBurden),c("lower","mean", "upper", "method"))
 
 all_burden <- all_burden  %>%
-  #filter(attr == "overall")  %>% #TODO delete
   group_by_at(vars(all_of(c(group_variables)))) %>%
   summarise(overall_value = sum(value))
 ###----- add proportion ---

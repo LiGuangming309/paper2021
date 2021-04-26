@@ -78,6 +78,11 @@ ui <- fluidPage(
         value = FALSE, width = NULL
       ),
       selectInput(
+        inputId = "method",
+        label = "which method used to calculated attributable burden",
+        choices = unique(attrBurden$method)
+      ),
+      selectInput(
         inputId = "pm_metric",
         label = "median or mean PM exposure",
         choices = unique(pm_summ$pm_metric)
@@ -101,13 +106,14 @@ server <- function(input, output) {
     measure1I <- input$measure1
     measure2I <- input$measure2
     sourceI <- input$source
+    methodI <- method
     pm_metricI <- input$pm_metric
 
     # filter data accordingly
     allBurden1 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "overall")
     allBurden2 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "total")
-    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & measure3 == "value")
-    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & measure3 == "prop. of overall burden")
+    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
+    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
     pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI)
 

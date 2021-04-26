@@ -189,6 +189,7 @@ if (!file.exists(attrBurdenDir)) {
                      upper = quantile(value,p=.975) 
               )
   attrBurden <- attrBurden %>% tibble::add_column(source = source)
+  attrBurden <- attrBurden %>% tibble::add_column(method = "GBD")
   toc()
   fwrite(attrBurden, attrBurdenDir)
 }
