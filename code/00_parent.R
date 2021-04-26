@@ -149,7 +149,7 @@ summary.other.script <- file.path(code.dir, "20_summary_other.R")
 ui.script <- file.path(code.dir, "21_ui.R")
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
- runscript(script=mrbrtRR.script, args = args)
+# runscript(script=mrbrtRR.script, args = args)
 
 years <- c(2000, 2010, 2001:2009, 2011:2016)
 # years <- c(2000:2004)
@@ -199,7 +199,7 @@ for (agr_by in agr_bys) {
       #runscript(script=pop.summary.script, args = args)
       #runscript(script=pop.summary.educ.script, args = args)
       runscript(script = add.rate.tot.burd, args = args)
-     runscript(script = calc.attr.burd.script, args = args)
+     #runscript(script = calc.attr.burd.script, args = args)
 
     } 
   }
