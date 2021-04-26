@@ -79,12 +79,12 @@ ui <- fluidPage(
       ),
       selectInput(
         inputId = "method",
-        label = "which method used to calculated attributable burden",
+        label = "which method used to calculate attributable burden",
         choices = unique(attrBurden$method)
       ),
       selectInput(
         inputId = "pm_metric",
-        label = "median or mean PM exposure",
+        label = "median or mean PM2.5 exposure",
         choices = unique(pm_summ$pm_metric)
       ),
     ),
@@ -106,7 +106,7 @@ server <- function(input, output) {
     measure1I <- input$measure1
     measure2I <- input$measure2
     sourceI <- input$source
-    methodI <- method
+    methodI <- input$method
     pm_metricI <- input$pm_metric
 
     # filter data accordingly
@@ -148,11 +148,11 @@ server <- function(input, output) {
     }
 
     g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("all-cause burden")
-    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("total burden from causes associated with PM exposure ",
+    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("total burden from causes associated with PM2.5 exposure ",
       subtitle = "(resp_copd, lri, neo_lung, t2_dm, cvd_ihd, cvd_stroke)"
     )
-    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM exposure")
-    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM exposure")
+    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM2.5 exposure")
+    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
     g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(2000, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of particulate matter exposure"))
     g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("Population size")
