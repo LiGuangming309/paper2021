@@ -87,6 +87,11 @@ ui <- fluidPage(
         label = "median or mean PM2.5 exposure",
         choices = unique(pm_summ$pm_metric)
       ),
+      selectInput(
+        inputId = "source population data",
+        label = "source2",
+        choices = unique(pop_summary$source2)
+      ),
     ),
 
     # Main panel for displaying outputs ----
@@ -108,6 +113,7 @@ server <- function(input, output) {
     sourceI <- input$source
     methodI <- input$method
     pm_metricI <- input$pm_metric
+    source2I <- input$source2
 
     # filter data accordingly
     allBurden1 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "overall")
@@ -115,7 +121,7 @@ server <- function(input, output) {
     attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
     attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
-    pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI)
+    pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI)#  & source2 == "CDC"
 
     if (input$raceOrEduc == "race") {
       allBurden1 <- allBurden1 %>% filter(Education == 666)

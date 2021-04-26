@@ -123,7 +123,7 @@ if(!file.exists(pop_summaryDir)){
     pop_summary2 <- pop_summary2 %>% rename("Region":=!!agr_by)
     pop_summary2 <- pop_summary2 %>% tibble::add_column(agr_by = agr_by)
   }) %>% rbindlist()
-  #pop_summary2 <- pop_summary2 %>% filter(Education != 666)
+  pop_summary2 <- pop_summary2 %>% filter(Education != 666) #TODO
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
   rm(pop_summary1, pop_summary2)
