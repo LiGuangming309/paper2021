@@ -105,7 +105,7 @@ if (!file.exists(attrBurdenDir)) {
   }
   # give some feedback on what is still missing from total burden
   # one side
-  test_variables <- setdiff(join_variables,c("min_age","max_age","label_cause"))
+  test_variables <- setdiff(join_variables,c("min_age","max_age",agr_by))
   total_burden_test <- total_burden %>%
     select(all_of(test_variables)) %>%
     distinct()
