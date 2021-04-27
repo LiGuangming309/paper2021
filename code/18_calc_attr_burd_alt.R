@@ -23,7 +23,8 @@ args <- commandArgs(trailingOnly = T)
 
 year <- args[1]
 tmpDir <- args[3]
-cens_agrDir <- args[9]
+censDir <- args[8]
+dem_agrDir <- args[9]
 agr_by <- args[10]
 source <- args[14]
 totalBurdenParsed2Dir <- args[17]
@@ -35,12 +36,16 @@ if (rlang::is_empty(args)) {
   agr_by <- "nation"
   source <- "nvss"
 
-  dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
+}
+
+if(agr_by != "nation" & source == "nvss" & year >2004){
+  print(paste("in", year, "no geopgraphic identifier for nvss available"))
+  quit()
 }
 
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
