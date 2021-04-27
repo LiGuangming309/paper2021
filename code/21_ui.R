@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr","shiny", "ggplot2", "ggpubr")
+packages <- c("dplyr", "magrittr","shiny", "ggplot2", "ggpubr", "scales") 
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) install.packages(p)
@@ -167,28 +167,32 @@ server <- function(input, output) {
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
     #https://stackoverflow.com/questions/17180115/manually-setting-group-colors-for-ggplot2
-    #attrBurden$Ethnicity
-    #group.colors <- c(A = , B = , C =, D , E ) "#FFDB6D"
-    group.colors <- c(
-      "White, Not Hispanic or Latino" = "#333BFF",
-      "White, Hispanic or Latino" = "#CC6600",
-      "Black or African American, All Origins" = "#9633FF",
-      "Asian or Pacific Islander, All Origins" = "#E2FF33",
-      "American Indian or Alaska Native, All Origins" = "#E3DB71"
-    )
-    #for(g in list(g1, g2, g3, g4, g5, g6)) g <- g+  scale_colour_manual(values=group.colors)
-    lapply(list(g1, g2, g3, g4, g5, g6), function(g) g <- g+  scale_colour_manual(values=group.colors))
-    #g1 <- g1+  scale_colour_manual(values=group.colors)
+    group.colors <- c(hue_pal()(5),hue_pal()(7))
+    names(group.colors) <- c("White, Not Hispanic or Latino",
+                               "White, Hispanic or Latino",
+                               "Black or African American, All Origins",
+                               "Asian or Pacific Islander, All Origins",
+                               "American Indian or Alaska Native, All Origins",
+                               "Less than 9th grade", 
+                               "9th to 12th grade, no diploma", 
+                               "High school graduate, GED, or alternative",
+                               "Some college, no degree", 
+                               "Associate's degree",
+                               "Bachelor's degree", 
+                               "Graduate or professional degree"
+                             )
+
+    g1 <- g1+  scale_colour_manual(values=group.colors)
+    g2 <- g2+  scale_colour_manual(values=group.colors)
+    g3 <- g3+  scale_colour_manual(values=group.colors)
+    g4 <- g4+  scale_colour_manual(values=group.colors)
+    g5 <- g5+  scale_colour_manual(values=group.colors)
+    g6 <- g6+  scale_colour_manual(values=group.colors)
     
 
     g_comb <- ggarrange(g1, g2, g3, g4, g5, g6, ncol = 2, nrow = 3,
-              #common.legend = TRUE, legend = "bottom", 
-              #legend = NULL,
+              common.legend = TRUE, legend = "bottom", 
               labels = "AUTO") 
-    #leg <- get_legend(g1)
-    #dp <- dp + theme(legend.position = "bottom")
-    #ggarrange(g_comb, leg)
-    print(allBurden1 %>% arrange(overall_value))
     g_comb
   })
 }

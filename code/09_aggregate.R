@@ -206,7 +206,7 @@ if (agr_by != "county") {
       # add region
       cens_agr[, agr_by] <- region
 
-      write.csv(cens_agr, cens_agrDirX)
+      write.csv(cens_agr, cens_agrDirX, row.names = FALSE)
       toc()
     }
     #---- -----Plot-----------    
