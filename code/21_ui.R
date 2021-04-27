@@ -166,9 +166,23 @@ server <- function(input, output) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
+    #https://stackoverflow.com/questions/17180115/manually-setting-group-colors-for-ggplot2
+    #attrBurden$Ethnicity
+    #group.colors <- c(A = , B = , C =, D , E ) "#FFDB6D"
+    group.colors <- c(
+      "White, Not Hispanic or Latino" = "#333BFF",
+      "White, Hispanic or Latino" = "#CC6600",
+      "Black or African American, All Origins" = "#9633FF",
+      "Asian or Pacific Islander, All Origins" = "#E2FF33",
+      "American Indian or Alaska Native, All Origins" = "#E3DB71"
+    )
+    #for(g in list(g1, g2, g3, g4, g5, g6)) g <- g+  scale_colour_manual(values=group.colors)
+    lapply(list(g1, g2, g3, g4, g5, g6), function(g) g <- g+  scale_colour_manual(values=group.colors))
+    #g1 <- g1+  scale_colour_manual(values=group.colors)
     
+
     g_comb <- ggarrange(g1, g2, g3, g4, g5, g6, ncol = 2, nrow = 3,
-              common.legend = TRUE, legend = "bottom", 
+              #common.legend = TRUE, legend = "bottom", 
               #legend = NULL,
               labels = "AUTO") 
     #leg <- get_legend(g1)
