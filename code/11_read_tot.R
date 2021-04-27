@@ -46,6 +46,7 @@ totalBurdenParsedDir <- file.path(
 )
 
 if (!file.exists(totalBurdenParsedDir)) {
+  toc(paste("read cdc wonder burden data by", agr_by))
   ## ----determine join variables
   select_columns <- c("Year", "Race", "Hispanic.Origin","label_cause", "Gender.Code")
 
@@ -147,7 +148,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   })
 
   total_burden <- total_burden %>%
-    do.call(rbind, .) %>%
+    rbindlist %>%
     as.data.frame() %>%
     filter(Hispanic.Origin != "Not Stated")
 
@@ -288,4 +289,5 @@ if (!file.exists(totalBurdenParsedDir)) {
   })
   total_burden <- total_burden %>% tibble::add_column(source = "wonder")
   fwrite(total_burden, totalBurdenParsedDir)
+  toc()
 }
