@@ -175,7 +175,7 @@ server <- function(input, output) {
 
     g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(2000, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
     g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("Population size")
-    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle(paste(unique(attrBurden3$measure3)))
+    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%") + xlim(2000, 2016) + ggtitle(paste(unique(attrBurden3$measure3)))
     g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
     
     if (input$conf) {
