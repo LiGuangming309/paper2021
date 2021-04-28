@@ -43,7 +43,7 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
 }
 
-if(agr_by != "nation" & source == "nvss" & year >2004){
+if (agr_by != "nation" & source == "nvss" & year > 2004) {
   print(paste("in", year, "no geopgraphic identifier for nvss available"))
   quit()
 }
@@ -55,52 +55,68 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
 # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
-#----read some data-----
-group_variables <- c("Year", "Race", "Hispanic.Origin", "Education", "Gender.Code", agr_by)
-total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
-  fread() %>%
-  filter(label_cause == "all-cause")
-#total_burden <- total_burden %>% rename("Region" := !!agr_by)
-#total_burden <- total_burden %>% tibble::add_column(agr_by = agr_by)
-total_burden <- total_burden %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
-  #group_by(Year, Region, agr_by, Race, Hispanic.Origin, Gender.Code, Education, source, measure1, measure2) %>%
-  summarise(value = sum(value))
+if (!file.exists(attrBurdenDir)) {
+  #----read some data-----
+  group_variables <- c("Year", "Race", "Hispanic.Origin", "Education", "Gender.Code", agr_by)
+  total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
+    fread() %>%
+    filter(label_cause == "all-cause")
+  # total_burden <- total_burden %>% rename("Region" := !!agr_by)
+  # total_burden <- total_burden %>% tibble::add_column(agr_by = agr_by)
+  total_burden <- total_burden %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
+    # group_by(Year, Region, agr_by, Race, Hispanic.Origin, Gender.Code, Education, source, measure1, measure2) %>%
+    summarise(value = sum(value))
 
-meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
-files <- list.files(file.path(dem_agrDir, agr_by, year))
-pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
-pm_summ <- pm_summ %>% left_join(meta, by = "variable")
+  meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+  files <- list.files(file.path(dem_agrDir, agr_by, year))
+  pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
+  pm_summ <- pm_summ %>% left_join(meta, by = "variable")
 
-# make compatible
-#pm_summ <- pm_summ %>% rename("Region" := !!agr_by)
-#pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
-pm_summ <- pm_summ %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
-  #group_by(Year, Region, agr_by, Race, Hispanic.Origin, Gender.Code, Education, pm) %>%
-  summarise(pop_size = sum(pop_size))
+  # make compatible
+  # pm_summ <- pm_summ %>% rename("Region" := !!agr_by)
+  # pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
+  pm_summ <- pm_summ %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
+    # group_by(Year, Region, agr_by, Race, Hispanic.Origin, Gender.Code, Education, pm) %>%
+    summarise(pop_size = sum(pop_size))
 
-pm_summ <- pm_summ %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
-  summarise(pm_mean = weighted.mean(pm, pop_size))
-rm(meta)
+  pm_summ <- pm_summ %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
+    summarise(pm_mean = weighted.mean(pm, pop_size))
+  rm(meta)
 
-group_variables <- c("Year", "Race", "Hispanic.Origin", "Education", "Gender.Code", agr_by)
-## ---calculations----
-# 29 https://www.nejm.org/doi/full/10.1056/nejmoa1702747
-# Increases of 10 μg per cubic meter in PM2.5 and of 10 ppb in ozone were associated with increases in all-cause mortality of 7.3%
-# DI 2017
-
-if(!file.exists(attrBurdenDir)){
+  group_variables <- c("Year", "Race", "Hispanic.Origin", "Education", "Gender.Code", agr_by)
+  ## ---calculations----
+  # 29 https://www.nejm.org/doi/full/10.1056/nejmoa1702747
+  # Increases of 10 μg per cubic meter in PM2.5 and of 10 ppb in ozone were associated with increases in all-cause mortality of 7.3%
+  # DI 2017
   attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) %>%
     mutate(
-      lower = value * 0.0071 *pmax(0,pm_mean-5),
-      mean = value * 0.0073 *pmax(0,pm_mean-5),
-      upper = value * 0.0075 *pmax(0,pm_mean-5),
+      lower = value * 0.0071 * pmax(0, pm_mean - 5),
+      mean = value * 0.0073 * pmax(0, pm_mean - 5),
+      upper = value * 0.0075 * pmax(0, pm_mean - 5),
       attr = "attributable",
       method = "DI",
       pm_mean = NULL,
       value = NULL
     )
+
+  ## get the epa beta
+  ## using the different parametric distributions in the EPA documentation
+  set.seed(5)
+  expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
+  expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
+  expd <- rtriangle(1000, 0.1, 1.6, 0.95)
+  expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
+  expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
+  expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
+  expj <- rweibull(1000, 2.21, 1.41)
+  epa <- c(expa, expc, expd, expe, expg, expi, expj)
+  beta <- mean(epa / 100)
+
+  epa <- function(X, b = beta) {
+    (exp(b * X) - 1) * all_bmr
+  }
   fwrite(attrBurden, attrBurdenDir)
 }

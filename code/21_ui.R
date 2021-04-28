@@ -23,7 +23,8 @@ summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
-attrBurden <- read.csv(file.path(summaryDir, "attr_burd.csv"))
+attrBurden <- rbind(read.csv(file.path(summaryDir, "attr_burd.csv")), 
+                    read.csv(file.path(summaryDir, "attr_burd_prop.csv")))
 all_burden <- read.csv(file.path(summaryDir, "all_burd.csv"))
 pm_summ <- read.csv(file.path(summaryDir, "pm_summary.csv"))
 pop_summary <- read.csv(file.path(summaryDir, "pop_summary.csv"))
@@ -98,7 +99,7 @@ ui <- fluidPage(
     mainPanel(
 
       # Output:  ----
-      plotOutput(outputId = "plot1", height = "900px")
+      plotOutput(outputId = "plot1", height = "1200px")
     )
   )
 )
@@ -120,6 +121,10 @@ server <- function(input, output) {
     allBurden2 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "total")
     attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
     attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
+    attrBurden3 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method 
+                                         & measure3 %in% c("proportion of disparity to White, Not Hispanic attributable", "proportion of disparity to Graduate or professional degree attributable"))
+    attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden")
+    
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
     pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I)
 
@@ -128,6 +133,8 @@ server <- function(input, output) {
       allBurden2 <- allBurden2 %>% filter(Education == 666)
       attrBurden1 <- attrBurden1 %>% filter(Education == 666)
       attrBurden2 <- attrBurden2 %>% filter(Education == 666)
+      attrBurden3 <- attrBurden3 %>% filter(Education == 666)
+      attrBurden4 <- attrBurden4 %>% filter(Education == 666)
       pm_summ1 <- pm_summ1 %>% filter(Education == 666)
       pop_summary1 <- pop_summary1 %>% filter(Education == 666)
 
@@ -137,11 +144,15 @@ server <- function(input, output) {
       g4 <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Ethnicity))
       g5 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity))
       g6 <- ggplot(pop_summary1, aes(x = Year, y = Population, color = Ethnicity))
+      g7 <- ggplot(attrBurden3, aes(x = Year, y = mean, color = Ethnicity))
+      g8 <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Ethnicity))
     } else {
       allBurden1 <- allBurden1 %>% filter(Education != 666)
       allBurden2 <- allBurden2 %>% filter(Education != 666)
       attrBurden1 <- attrBurden1 %>% filter(Education != 666)
       attrBurden2 <- attrBurden2 %>% filter(Education != 666)
+      attrBurden3 <- attrBurden3 %>% filter(Education != 666)
+      attrBurden4 <- attrBurden4 %>% filter(Education != 666)
       pm_summ1 <- pm_summ1 %>% filter(Education != 666)
       pop_summary1 <- pop_summary1 %>% filter(Education != 666)
 
@@ -151,6 +162,8 @@ server <- function(input, output) {
       g4 <- ggplot(attrBurden2, aes(x = Year, y = mean, color = Education))
       g5 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Education))
       g6 <- ggplot(pop_summary1, aes(x = Year, y = Population, color = Education))
+      g7 <- ggplot(attrBurden3, aes(x = Year, y = mean, color = Education))
+      g8 <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Education))
     }
 
     g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("all-cause burden")
@@ -160,8 +173,11 @@ server <- function(input, output) {
     g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM2.5 exposure")
     g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
-    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(2000, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of particulate matter exposure"))
+    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(2000, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
     g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("Population size")
+    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle(paste(unique(attrBurden3$measure3)))
+    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
+    
     if (input$conf) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
@@ -188,10 +204,11 @@ server <- function(input, output) {
     g4 <- g4+  scale_colour_manual(values=group.colors)
     g5 <- g5+  scale_colour_manual(values=group.colors)
     g6 <- g6+  scale_colour_manual(values=group.colors)
-    
+    g7 <- g7+  scale_colour_manual(values=group.colors)
+    g8 <- g8+  scale_colour_manual(values=group.colors)
 
-    g_comb <- ggarrange(g1, g2, g3, g4, g5, g6, ncol = 2, nrow = 3,
-              common.legend = TRUE, legend = "bottom", 
+    g_comb <- ggarrange(g1, g2, g3, g4, g5, g6, g7,g8, ncol = 2, nrow = 4,
+              common.legend = TRUE, legend = "top", 
               labels = "AUTO") 
     g_comb
   })

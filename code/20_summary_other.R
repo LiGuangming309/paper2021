@@ -142,6 +142,9 @@ if(!file.exists(pop_summaryDir)){
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pop_summary$Gender.Code <- sapply(pop_summary$Gender.Code , function(x) rindreplace3[[x]])
   
+  rindreplace4 <- setNames(c("Official Bridged-Race Population Estimates", "Own Interpolation"), c("CDC","Census"))
+  pop_summary$source2 <- sapply(pop_summary$source2 , function(x) rindreplace4[[x]])
+  
   pop_summary <- pop_summary%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
   pop_summary$Hispanic.Origin <- NULL 
   pop_summary$Race <- NULL
