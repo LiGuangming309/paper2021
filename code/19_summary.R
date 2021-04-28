@@ -121,7 +121,7 @@ attrBurden_disp3 <- inner_join(attrBurden_disp1, attrBurden_disp2, by = c("Race.
 attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
-  attr = "attributable", measure3 = "prop. of disp.",#"proportion of disparity to White, Not Hispanic attributable",
+  attr = "attributable", measure3 = "proportion of disparity to White, Not Hispanic attributable",#"prop. of disp.",#
   Race = Race.x, Hispanic.Origin = Hispanic.Origin.x,
   Race.x = NULL, Race.y = NULL, Hispanic.Origin.x = NULL, Hispanic.Origin.y = NULL,
   overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,
@@ -143,7 +143,7 @@ attrBurden_disp6 <- inner_join(attrBurden_disp4, attrBurden_disp5, by = c("Educa
 attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
-  attr = "attributable", measure3 = "prop. of disp.",#"proportion of disparity to Graduate or professional degree attributable",
+  attr = "attributable", measure3 = "proportion of disparity to Graduate or professional degree attributable",#"prop. of disp.",#
   Education = Education.x, 
   Education.x = NULL, Education.y = NULL,
   overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,
