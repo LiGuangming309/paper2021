@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc")
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "RTriangle")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -51,8 +51,6 @@ if (agr_by != "nation" & source == "nvss" & year > 2004) {
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_", toString(year), ".csv"))
 # http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
-
-# 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
 if (!file.exists(attrBurdenDir)) {
@@ -91,7 +89,8 @@ if (!file.exists(attrBurdenDir)) {
   # 29 https://www.nejm.org/doi/full/10.1056/nejmoa1702747
   # Increases of 10 μg per cubic meter in PM2.5 and of 10 ppb in ozone were associated with increases in all-cause mortality of 7.3%
   # DI 2017
-  attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) %>%
+  attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) 
+  attrBurden1 <- attrBurden%>%
     mutate(
       lower = value * 0.0071 * pmax(0, pm_mean - 5),
       mean = value * 0.0073 * pmax(0, pm_mean - 5),
@@ -102,21 +101,32 @@ if (!file.exists(attrBurdenDir)) {
       value = NULL
     )
 
+  # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
   ## get the epa beta
   ## using the different parametric distributions in the EPA documentation
   set.seed(5)
   expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
   expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
-  expd <- rtriangle(1000, 0.1, 1.6, 0.95)
+  #expd <- rtriangle(1000, 0.1, 1.6, 0.95) #TODO
   expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
   expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
   expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
   expj <- rweibull(1000, 2.21, 1.41)
-  epa <- c(expa, expc, expd, expe, expg, expi, expj)
+  epa <- c(expa, expc, #expd,
+           expe, expg, expi, expj)
   beta <- mean(epa / 100)
 
-  epa <- function(X, b = beta) {
-    (exp(b * X) - 1) * all_bmr
-  }
+  #epa = function(X, b=beta) {(exp(beta*pm_mean)-1)*all_bmr}
+  attrBurden2 <- attrBurden%>%
+    mutate(
+      mean = value * (exp(beta*pm_mean)-1),
+      lower = mean, upper = mean,
+      attr = "attributable",
+      method = "EPA",
+      pm_mean = NULL,
+      value = NULL
+    )
+  
+  attrBurden <- rbind(attrBurden1, attrBurden2)
   fwrite(attrBurden, attrBurdenDir)
 }

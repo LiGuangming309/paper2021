@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr","shiny", "ggplot2", "ggpubr", "scales") 
+packages <- c("data.table","dplyr", "magrittr","shiny", "ggplot2", "ggpubr", "scales") 
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) install.packages(p)
@@ -23,11 +23,11 @@ summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
-attrBurden <- rbind(read.csv(file.path(summaryDir, "attr_burd.csv")), 
-                    read.csv(file.path(summaryDir, "attr_burd_prop.csv")))
-all_burden <- read.csv(file.path(summaryDir, "all_burd.csv"))
-pm_summ <- read.csv(file.path(summaryDir, "pm_summary.csv"))
-pop_summary <- read.csv(file.path(summaryDir, "pop_summary.csv"))
+attrBurden <- rbind(fread(file.path(summaryDir, "attr_burd.csv")), 
+                    fread(file.path(summaryDir, "attr_burd_prop.csv")))
+all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
+pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
+pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
 
 colnames(all_burden)
 # Define UI for dataset viewer app ----

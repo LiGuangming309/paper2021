@@ -1,9 +1,16 @@
 
+summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+attrBurden <- rbind(fread(file.path(summaryDir, "attr_burd.csv")), 
+                    fread(file.path(summaryDir, "attr_burd_prop.csv")))
 
-attr_burd_2001 <- read.csv("~/Desktop/paper2021/data/13_attr_burd/nation/wonder/attr_burd_2001.csv")
-attr_burd_alt_2001 <- read.csv("~/Desktop/paper2021/data/13_attr_burd/nation/nvss/attr_burd_alt_2001.csv")
+test <- attrBurden %>% filter(measure3 == "proportion of disparity to White, Not Hispanic attributable",
+                      measure1 == "YLL",
+                      measure2 == "crude rate per 100,000",
+                      source == "Mortality Data from CDC WONDER",
+                      method == "GBD",
+                      Gender.Code == "All genders",
+                      Region == "United States")
 
-setdiff(colnames(attr_burd_alt_2001), colnames(attr_burd_2001))
-colnames(attr_burd_2001)
-colnames(attr_burd_alt_2001)
-rbind(attr_burd_2001, attr_burd_alt_2001)
+nrow(test)/17
+
+nrow(attrBurden_disp1)*4
