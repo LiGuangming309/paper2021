@@ -200,7 +200,7 @@ attrBurden$Hispanic.Origin <- NULL
 attrBurden$Race <- NULL
 
 #--write---
-fwrite(attrBurden %>% filter(measure3 == "value"), file.path(summaryDir, "attr_burd.csv"))
-fwrite(attrBurden %>% filter(measure3 != "value"), file.path(summaryDir, "attr_burd_prop.csv"))
+fwrite(attrBurden %>% filter(measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd.csv"))
+fwrite(attrBurden %>% filter(!measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd_prop.csv"))
 fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
 toc()
