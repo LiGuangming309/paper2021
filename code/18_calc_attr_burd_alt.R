@@ -53,7 +53,7 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
 # http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
-#if (!file.exists(attrBurdenDir)) {
+if (!file.exists(attrBurdenDir)) {
   tic(paste("calculated attributable burden alternative way", year, agr_by, source))
   #----read some data-----
   group_variables <- c("Year", "Race", "Hispanic.Origin", "Education", "Gender.Code", agr_by)
@@ -124,4 +124,4 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
   attrBurden <- rbind(attrBurden1, attrBurden2)
   fwrite(attrBurden, attrBurdenDir)
   toc()
-#}
+}
