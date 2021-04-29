@@ -13,7 +13,7 @@ rm(list = ls(all = TRUE))
 # install packages if missing
 packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
-  "MALDIquant", "plyr", "RCurl", "readxl","RTriangle", "sf", "sp", "stringr", "testthat", "tictoc","truncnorm",
+  "MALDIquant", "plyr", "RCurl", "readxl","triangle", "sf", "sp", "stringr", "testthat", "tictoc","truncnorm",
   "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr"
 )
 

@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "RTriangle")
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -60,11 +60,10 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
   total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
     fread() %>%
     filter(label_cause == "all-cause")
-  # total_burden <- total_burden %>% rename("Region" := !!agr_by)
-  # total_burden <- total_burden %>% tibble::add_column(agr_by = agr_by)
+
   total_burden <- total_burden %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
-    # group_by(Year, Region, agr_by, Race, Hispanic.Origin, Gender.Code, Education, source, measure1, measure2) %>%
+
     summarise(value = sum(value))
 
   meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
@@ -72,12 +71,8 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
   pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
   pm_summ <- pm_summ %>% left_join(meta, by = "variable")
 
-  # make compatible
-  # pm_summ <- pm_summ %>% rename("Region" := !!agr_by)
-  # pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
   pm_summ <- pm_summ %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
-    # group_by(Year, Region, agr_by, Race, Hispanic.Origin, Gender.Code, Education, pm) %>%
     summarise(pop_size = sum(pop_size))
 
   pm_summ <- pm_summ %>%
@@ -108,13 +103,12 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
   set.seed(5)
   expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
   expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
-  #expd <- rtriangle(1000, 0.1, 1.6, 0.95) #TODO
+  expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95) 
   expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
   expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
   expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
   expj <- rweibull(1000, 2.21, 1.41)
-  epa <- c(expa, expc, #expd,
-           expe, expg, expi, expj)
+  epa <- c(expa, expc, expd, expe, expg, expi, expj)
   beta <- mean(epa / 100)
 
   attrBurden2 <- attrBurden%>%
