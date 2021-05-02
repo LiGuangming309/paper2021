@@ -122,8 +122,8 @@ dir.create(attr.burden.dir, recursive = T, showWarnings = F)
 summary.dir <- file.path(data.dir, "14_summary")
 dir.create(summary.dir, recursive = T, showWarnings = F)
 
-plot.dir <- file.path(data.dir, "15_plot")
-dir.create(plot.dir, recursive = T, showWarnings = F)
+figures.dir <- file.path(data.dir, "15_figures")
+dir.create(figures.dir, recursive = T, showWarnings = F)
 
 
 # paths of scripts

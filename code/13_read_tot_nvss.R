@@ -279,6 +279,8 @@ if (!file.exists(totalBurdenParsedDir)) {
       min_age != "Unknown")%>% 
     mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
+  #Only considering Education groups for above 25
+  total_burden <- total_burden %>%  filter(Education == 666 | min_age >= 25)
   total_burden <- total_burden %>%
     mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
     filter(Ethnicity %in% c(

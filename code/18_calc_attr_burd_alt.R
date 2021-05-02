@@ -53,17 +53,16 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
 # http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
-if (!file.exists(attrBurdenDir)) {
+#if (!file.exists(attrBurdenDir)) {
   tic(paste("calculated attributable burden alternative way", year, agr_by, source))
   #----read some data-----
   group_variables <- c("Year", "Race", "Hispanic.Origin", "Education", "Gender.Code", agr_by)
   total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
     fread() %>%
-    filter(label_cause == "all-cause")
+    dplyr::filter(label_cause == "all-cause")
 
   total_burden <- total_burden %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
-
     summarise(value = sum(value))
 
   meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
@@ -73,7 +72,7 @@ if (!file.exists(attrBurdenDir)) {
 
   pm_summ <- pm_summ %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
-    summarise(pop_size = sum(pop_size))
+    dplyr::summarise(pop_size = sum(pop_size))
 
   pm_summ <- pm_summ %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
@@ -85,17 +84,17 @@ if (!file.exists(attrBurdenDir)) {
   # 29 https://www.nejm.org/doi/full/10.1056/nejmoa1702747
   # Increases of 10 μg per cubic meter in PM2.5 and of 10 ppb in ozone were associated with increases in all-cause mortality of 7.3%
   # DI 2017
-  attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) 
-  attrBurden1 <- attrBurden%>%
-    mutate(
-      lower = value * 0.0071 * pmax(0, pm_mean - 5),
-      mean = value * 0.0073 * pmax(0, pm_mean - 5),
-      upper = value * 0.0075 * pmax(0, pm_mean - 5),
-      attr = "attributable",
-      method = "DI",
-      pm_mean = NULL,
-      value = NULL
-    )
+  #attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) 
+  #attrBurden1 <- attrBurden%>%
+  #  mutate(
+  #    lower = value * 0.0071 * pmax(0, pm_mean - 5),
+  #    mean = value * 0.0073 * pmax(0, pm_mean - 5),
+  #    upper = value * 0.0075 * pmax(0, pm_mean - 5),
+  #    attr = "attributable",
+  #    method = "DI",
+  #    pm_mean = NULL,
+  #    value = NULL
+  #  )
 
   # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
   ## get the epa beta
@@ -121,7 +120,7 @@ if (!file.exists(attrBurdenDir)) {
       value = NULL
     )
   
-  attrBurden <- rbind(attrBurden1, attrBurden2)
+  attrBurden <- rbind(attrBurden2)
   fwrite(attrBurden, attrBurdenDir)
   toc()
-}
+#}
