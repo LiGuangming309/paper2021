@@ -59,6 +59,7 @@ key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
 Sys.setenv(CENSUS_KEY = key)
 
 census_meta <- read.csv(file.path(censDir, "meta_down", paste0("cens_meta_", toString(year), ".csv")))
+census_metan_new <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")))
 cross_bridge <- read.csv(file.path(censDir, "cross_bridge", paste0("cross_meta_", year, ".csv")))
 # identify relevant variables
 relevant_variables <- census_meta$variable %>% unique()
@@ -148,8 +149,6 @@ apply(states, 1, function(state) {
       
       #Test, that has not changed
       join_variables <- c("Race","Hispanic.Origin", "Education", "Gender.Code", "Year") #TODO GEO_ID
-      
-      census_metan_new <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")))
       test_dem.state.data.old <- dem.state.data.old %>% 
         left_join(census_meta, by = "variable") %>%
         group_by_at(vars(one_of(join_variables))) %>%
