@@ -1,0 +1,105 @@
+---
+title: "EPA attributable burden calculation"
+author: "Daniel Fridljand"
+date: "5/5/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+# clear memory
+rm(list = ls(all = TRUE))
+
+# load packages, install if missing
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle")
+
+for (p in packages) {
+  suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
+}
+options(dplyr.summarise.inform = FALSE)
+options(dplyr.join.inform = FALSE)
+
+#----read some data-----
+
+total_burden <- fread("/Users/default/Desktop/paper2021/data/12_total_burden_parsed2/nation/nvss/total_burden_2010.csv") %>%
+  filter(Gender.Code == "A" & measure1 == "Deaths" & measure2 == "age-adjusted rate" &
+    source == "nvss" & attr == "overall" & Education == "666")
+
+total_burden <- total_burden %>%
+  dplyr::group_by_at(vars(one_of("Year", "Race", "Hispanic.Origin"))) %>%
+  summarise(value = sum(value)) %>%
+  as.data.frame()
+
+# read pm data
+meta <- read.csv(file.path("/Users/default/Desktop/paper2021/data/05_demog", "meta", paste0("cens_meta_", 2010, ".csv")))
+files <- list.files(file.path("/Users/default/Desktop/paper2021/data/06_dem.agr", "nation", 2010))
+pm_summ <- lapply(files, function(file) fread(file.path("/Users/default/Desktop/paper2021/data/06_dem.agr", "nation", 2010, file))) %>% rbindlist()
+pm_summ <- pm_summ %>%
+  left_join(meta, by = "variable") %>%
+  filter(Education == "666" & Gender.Code == "A")
+
+pm_summ <- pm_summ %>%
+  dplyr::group_by_at(vars(one_of("Year", "Race", "Hispanic.Origin", "pm"))) %>%
+  dplyr::summarise(pop_size = sum(pop_size)) %>%
+  as.data.frame()
+```
+
+## Input Data
+
+I have already calculated following data sets. I hope I won't need to make too many adjustments to switch from the GBD exposure-response function to the one from EPA. Firstly, I have all-cause burden data by Race and Hispanic Origin measured in age-adjusted Death rates per 100.000:
+```{r total_burden}
+print(total_burden)
+```
+
+Secondly, I have estimated for each Ethnicity, how many persons (pop_size) are exposed to a given level of particulate matter concentration (pm). 
+```{r pm_summary}
+head(pm_summ)
+```
+
+## Calculation
+
+Calculating $\beta$ as in your code.
+
+```{r beta}
+## get the epa beta
+## using the different parametric distributions in the EPA documentation
+set.seed(5)
+expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
+expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
+expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95)
+expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
+expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
+expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
+expj <- rweibull(1000, 2.21, 1.41)
+epa <- c(expa, expc, expd, expe, expg, expi, expj)
+beta <- mean(epa / 100)
+```
+
+
+
+Now the actual calculation of the population attributable fraction (paf) and the attributable burden.
+```{r attrBurden, attr.source='.numberLines'}
+paf <- pm_summ %>%
+  mutate(paf = (exp(beta * pm) - 1)) %>%
+  group_by(Year, Race, Hispanic.Origin) %>%
+  summarise(paf = weighted.mean(paf, pop_size))
+
+attr_burden <- inner_join(total_burden, paf, 
+                          by = c("Year", "Race", "Hispanic.Origin")) %>%
+  mutate(value = value * paf, paf = NULL)
+
+print(attr_burden)
+```
+Line 2 $PAF =(e^{\beta \times pm}-1)$ in the above code corresponds to line 85 in your code in https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R. 
+
+
+## My questions
+1. Does the above code correspond to how the EPA estimates are to be calculated? I am particularly uncertain, whether I understood the population scaling in line 127 in your code correctly.
+
+2. The exposure-response function used is $burden_{attributable} =(e^{\beta \times pm}-1)\times burden_{all cause}$. Can this formula be found in https://pubmed.ncbi.nlm.nih.gov/29962895/ or deduced from somewhere?
+    + Equation 1 on page 3 looks similar, but is different and would yield very different results far from 0: $PAF =(1-e^{-\beta \times pm})$ 
+
+3. $burden_{attributable} =(e^{\beta \times pm}-1)\times burden_{all cause}$ is not bounded in pm. In particular, it could theoretically exceed the all-cause burden. Am I misunderstanding something?
+
+4. Where exactly are the parametric distributions in the calculation of $\beta$ taken from? Could you please provide the position in the EPA Documentation you are referring to?

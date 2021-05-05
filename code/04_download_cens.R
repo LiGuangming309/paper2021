@@ -49,10 +49,9 @@ if (!year %in% c(2000, 2009:2016)) {
 #intense computation
 if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 
-## ----------download useful data to tmp-------------------------------------------------------------------------------
+## ----------read useful data to tmp-------------------------------------------------------------------------------
 
 states <- read.csv(file.path(tmpDir, "states.csv"))
-
 
 ### ------------------------download demographic data-----------------------------------------------------------------
 # Add key to .Renviron
@@ -148,9 +147,21 @@ apply(states, 1, function(state) {
       expect_true(all(dem.state.data$pop_size >= 0))
       
       #Test, that has not changed
-      test_dem.state.data <- dem.state.data.old %>%
-        inner_join(dem.state.data, by = c("state", "county", "tract", "GEO_ID", "variable"))
-      expect_equal(test_dem.state.data$pop_size.x, test_dem.state.data$pop_size.y)
+      join_variables <- c("Race","Hispanic.Origin", "Education", "Gender.Code", "Year") #TODO GEO_ID
+      
+      census_metan_new <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")))
+      test_dem.state.data.old <- dem.state.data.old %>% 
+        left_join(census_meta, by = "variable") %>%
+        group_by_at(vars(one_of(join_variables))) %>%
+        summarize(pop_size = sum(pop_size))
+      
+      test_dem.state.data <- dem.state.data.old %>% 
+        left_join(census_metan_new, by = "variable") %>%
+        group_by_at(vars(one_of(join_variables))) %>%
+        summarize(pop_size = sum(pop_size))
+      
+      test <- inner_join(census_metan_new, test_dem.state.data, by = join_variables)
+      expect_equal(test$pop_size.x, test$pop_size.y)
       
       #Test, that GEO_ID - variable is a primary key for the data.frame
       test_dem.state.data <- dem.state.data %>% select(GEO_ID,variable)
