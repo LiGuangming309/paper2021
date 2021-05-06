@@ -6,30 +6,111 @@
 #***************************************************************************
 #*
 
-  
+# clear memory
+rm(list = ls(all = TRUE))
 
-  ## ---calculations----
+# load packages, install if missing
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle")
 
-  # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
-  ## get the epa beta
-  ## using the different parametric distributions in the EPA documentation
-  set.seed(5)
-  expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
-  expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
-  expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95) 
-  expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
-  expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
-  expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
-  expj <- rweibull(1000, 2.21, 1.41)
-  epa <- c(expa, expc, expd, expe, expg, expi, expj)
-  beta <- mean(epa / 100)
-  
-  pm_summ <- pm_summ %>% 
-    mutate(paf = (exp(beta*pm)-1)) %>%
-    group_by(Year, Race, Hispanic.Origin) %>%
-    summarise(paf =  weighted.mean(paf, pop_size))
-  
-  attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", "Race", "Hispanic.Origin")) %>%
-    mutate(value = value * paf, value = NULL, paf = NULL)
-  
-  print(attrBurden)
+for (p in packages) {
+  suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
+}
+options(dplyr.summarise.inform = FALSE)
+options(dplyr.join.inform = FALSE)
+
+# Pass in arguments
+args <- commandArgs(trailingOnly = T)
+
+year <- args[1]
+tmpDir <- args[3]
+censDir <- args[8]
+dem_agrDir <- args[9]
+agr_by <- args[10]
+source <- args[14]
+totalBurdenParsed2Dir <- args[17]
+attrBurdenDir <- args[18]
+
+# TODO delete
+if (rlang::is_empty(args)) {
+  year <- 2001
+  agr_by <- "nation"
+  source <- "nvss"
+
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
+}
+
+if (agr_by != "nation" & source == "nvss" & year > 2004) {
+  print(paste("in", year, "no geopgraphic identifier for nvss available"))
+  quit()
+}
+
+dir.create(attrBurdenDir, recursive = T, showWarnings = F)
+attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_", toString(year), ".csv"))
+# http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
+# https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
+
+# if (!file.exists(attrBurdenDir)) {
+tic(paste("calculated attributable burden alternative way", year, agr_by, source))
+#----read some data-----
+total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
+  fread() %>%
+  dplyr::filter(label_cause == "all-cause")
+
+total_burden <- total_burden %>%
+  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
+  summarise(value = sum(value))
+
+meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+files <- list.files(file.path(dem_agrDir, agr_by, year))
+pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
+pm_summ <- pm_summ %>% left_join(meta, by = "variable")
+
+pm_summ <- pm_summ %>%
+  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
+  dplyr::summarise(pop_size = sum(pop_size))
+
+rm(meta)
+
+## ---calculations----
+#TODO age?
+attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))
+
+# 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
+## get the epa beta
+## using the different parametric distributions in the EPA documentation
+set.seed(5)
+expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
+expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
+expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95)
+expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
+expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
+expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
+expj <- rweibull(1000, 2.21, 1.41)
+epa <- c(expa, expc, expd, expe, expg, expi, expj)
+beta <- mean(epa / 100)
+
+paf <- pm_summ %>%
+  mutate(paf = (exp(beta * pm) - 1)) %>%
+  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
+  summarise(paf = weighted.mean(paf, pop_size))
+
+
+attr_burden <- inner_join(total_burden, paf,
+  by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) %>%
+  mutate(
+    mean = value * paf,
+    lower = mean, upper = mean,
+    attr = "attributable",
+    method = "EPA",
+    paf = NULL,
+    value = NULL
+  )
+
+attrBurden <- rbind(attr_burden)
+fwrite(attrBurden, attrBurdenDir)
+toc()
+# }
