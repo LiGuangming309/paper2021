@@ -127,7 +127,7 @@ server <- function(input, output) {
     
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
     pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I)
-
+#TODO All Origins?
     if (input$raceOrEduc == "race") {
       allBurden1 <- allBurden1 %>% filter(Education == 666)
       allBurden2 <- allBurden2 %>% filter(Education == 666)

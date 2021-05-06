@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2010
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -147,19 +147,40 @@ apply(states, 1, function(state) {
       expect_false(any(is.na(dem.state.data)))
       expect_true(all(dem.state.data$pop_size >= 0))
       
-      #Test, that has not changed
+      #Test, that sums have not changed
+      census_meta <- census_meta %>%
+        mutate(Education = as.character(Education)) %>%
+        rename(Race2 = Race, Hispanic.Origin2 = Hispanic.Origin)
+
+      replaces1 <- data.frame(
+        Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Black or African American", "All"),
+        Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN", "all")
+      )
+      replaces2 <- data.frame(
+        Hispanic.Origin = c("Not Hispanic or Latino", "All Origins", "Hispanic or Latino"),
+        Hispanic.Origin2 = c("NOT HISPANIC OR LATINO", "all", "HISPANIC OR LATINO")
+      )
+      #TODO age 18-24 in Education is cut off
+      
+      census_meta <- census_meta %>%
+        left_join(replaces1, by = "Race2") %>%
+        left_join(replaces2, by = "Hispanic.Origin2") 
+      
       join_variables <- c("Race","Hispanic.Origin", "Education", "Gender.Code", "Year") #TODO GEO_ID
       test_dem.state.data.old <- dem.state.data.old %>% 
         left_join(census_meta, by = "variable") %>%
-        group_by_at(vars(one_of(join_variables))) %>%
-        summarize(pop_size = sum(pop_size))
-      
-      test_dem.state.data <- dem.state.data.old %>% 
+        group_by_at(vars(all_of(join_variables))) %>%
+        summarize(pop_size = sum(pop_size)) %>%
+        filter(Education == "666") %>%
+        mutate(Education = 666)
+       
+      test_dem.state.data <- dem.state.data %>% 
         left_join(census_metan_new, by = "variable") %>%
-        group_by_at(vars(one_of(join_variables))) %>%
-        summarize(pop_size = sum(pop_size))
+        group_by_at(vars(all_of(join_variables))) %>%
+        summarize(pop_size = sum(pop_size)) 
       
-      test <- inner_join(census_metan_new, test_dem.state.data, by = join_variables)
+      test <- inner_join(test_dem.state.data.old, test_dem.state.data, by = join_variables) %>%
+        filter(pop_size.x != pop_size.y)
       expect_equal(test$pop_size.x, test$pop_size.y)
       
       #Test, that GEO_ID - variable is a primary key for the data.frame
