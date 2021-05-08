@@ -110,15 +110,15 @@ paf <- pm_summ_pop %*% outer(
   colnames(pm_summ_pop) %>% as.numeric(),
   betas,
   function(pm, beta) {
-    #1 - exp(-beta * pm) #probably the right one
-    (exp(beta * pm) - 1)
+    1 - exp(-beta * pm) #probably the right one
+    #(exp(beta * pm) - 1)
   }
 )
 
 paf <- cbind(pm_summ_var, 
-              lower = rowQuantiles(paf, probs=0.25),
+              lower = matrixStats::rowQuantiles(paf, probs=0.25),
               mean = rowMeans(paf),
-              upper = rowQuantiles(paf, probs=0.75))
+              upper = matrixStats::rowQuantiles(paf, probs=0.75))
 
 #paf <- pm_summ %>%
 #  mutate(paf = (exp(beta * pm) - 1)) %>%

@@ -41,10 +41,10 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   #cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  # cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
 }
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
@@ -58,7 +58,9 @@ cens_agrDir <- file.path(cens_agrDir, agr_by, year)
 dir.create(cens_agrDir, recursive = T, showWarnings = F)
 
 # load states, so we can loop over them
-states <- file.path(tmpDir, "states.csv") %>% fread() %>% as.data.frame()
+states <- file.path(tmpDir, "states.csv") %>%
+  fread() %>%
+  as.data.frame()
 
 
 ## ---- calculate county-------
@@ -84,7 +86,7 @@ apply(states, 1, function(state) {
 
     # tigris does not provide all tract boundaries
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID")
-    
+
     if (nrow(anti) > 0) {
       anti <- anti %>%
         group_by(GEO_ID) %>%
@@ -92,27 +94,28 @@ apply(states, 1, function(state) {
 
       print(paste(nrow(anti), "GEO_ID worth", sum(anti$pop_size), "persons missing in exposure-tract data in", year, "in", name))
       print(anti$GEO_ID)
-      
+
       test_that("06_aggregate county anti >0", {
-        anti2 <- anti_join(exp_tracData,trac_censData, by = "GEO_ID")
+        anti2 <- anti_join(exp_tracData, trac_censData, by = "GEO_ID")
         expect_equal(0, nrow(anti2))
       })
     }
 
-    
+
     cens_agr <- inner_join(trac_censData,
-                           exp_tracData,
-                           by = "GEO_ID") %>%
+      exp_tracData,
+      by = "GEO_ID"
+    ) %>%
       group_by(state, county, variable, pm) %>%
       # calculate number of persons of exposed to particulare level of exposure,
       # in particulare county by sex, age group, ethinicity, hispanic origin
       summarise(pop_size = sum(pop_size)) %>%
       filter(pop_size != 0)
-    
+
     cens_agr <- cens_agr %>%
       group_by(state, county, variable) %>%
-      mutate(prop = pop_size/sum(pop_size)) %>%
-      ungroup
+      mutate(prop = pop_size / sum(pop_size)) %>%
+      ungroup()
 
 
     # test, check
@@ -127,25 +130,24 @@ apply(states, 1, function(state) {
         })
 
       # test that population does not change
-      # TODO
-      if (nrow(anti) == 0) {
-        comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
-          fread() %>%
-          group_by(state, county, variable) %>%
-          summarise(pop_size = sum(pop_size))
+      comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
+        fread() %>%
+        filter(!GEO_ID %in% anti$GEO_ID) %>%
+        group_by(state, county, variable) %>%
+        summarise(pop_size = sum(pop_size))
 
-        comp2 <- cens_agr %>%
-          group_by(state, county, variable) %>%
-          summarise(pop_size = sum(pop_size)) %>%
-          full_join(comp1, by = c("state", "county", "variable"))
+      comp2 <- cens_agr %>%
+        group_by(state, county, variable) %>%
+        summarise(pop_size = sum(pop_size)) %>%
+        full_join(comp1, by = c("state", "county", "variable"))
 
-        comp2[is.na(comp2)] <- 0
+      comp2[is.na(comp2)] <- 0
 
-        expect_equal(comp2$pop_size.x, comp2$pop_size.y)
-      }
+      expect_equal(comp2$pop_size.x, comp2$pop_size.y)
+      if (any(comp2$pop_size.x != comp2$pop_size.y)) browser()
     })
 
-    write.csv(cens_agr, cens_agrDirCX)
+    fwrite(cens_agr, cens_agrDirCX)
     toc()
   }
 })
@@ -170,7 +172,7 @@ if (agr_by != "county") {
           file.path(cens_agrDirC, .) %>%
           fread()
       }) %>%
-        rbindlist %>%
+        rbindlist() %>%
         as.data.frame() %>%
         group_by(variable, pm) %>%
         summarise(pop_size = sum(pop_size))
@@ -178,8 +180,8 @@ if (agr_by != "county") {
       # add proportions
       cens_agr <- cens_agr %>%
         group_by(variable) %>%
-        mutate(prop = pop_size/sum(pop_size)) %>%
-        ungroup
+        mutate(prop = pop_size / sum(pop_size)) %>%
+        ungroup()
 
       # test, check
       test_that("06_aggregate agr_by", {
@@ -198,6 +200,6 @@ if (agr_by != "county") {
       write.csv(cens_agr, cens_agrDirX, row.names = FALSE)
       toc()
     }
-  }  
+  }
 }
 ""
