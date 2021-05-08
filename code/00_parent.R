@@ -102,8 +102,8 @@ if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wond
 
 total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
 dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
-sources <- c(#"wonder"
-             #,
+sources <- c("wonder"
+             ,
              "nvss"
              )
 

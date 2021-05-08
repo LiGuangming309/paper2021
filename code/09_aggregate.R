@@ -33,18 +33,18 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2000
   agr_by <- "nation"
 
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   #exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   #cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
 }
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
@@ -84,6 +84,7 @@ apply(states, 1, function(state) {
 
     # tigris does not provide all tract boundaries
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID")
+    
     if (nrow(anti) > 0) {
       anti <- anti %>%
         group_by(GEO_ID) %>%
@@ -91,40 +92,28 @@ apply(states, 1, function(state) {
 
       print(paste(nrow(anti), "GEO_ID worth", sum(anti$pop_size), "persons missing in exposure-tract data in", year, "in", name))
       print(anti$GEO_ID)
+      
+      test_that("06_aggregate county anti >0", {
+        anti2 <- anti_join(exp_tracData,trac_censData, by = "GEO_ID")
+        expect_equal(0, nrow(anti2))
+      })
     }
 
-    trac_censData <- trac_censData %>%
-      pivot_wider(
-        names_from = variable,
-        values_from = pop_size,
-        values_fill = 0
-      )
-
-    # join above datasets
+    
     cens_agr <- inner_join(trac_censData,
-      exp_tracData,
-      by = "GEO_ID"
-    ) %>%
-      # make long again
-      setDT() %>%
-      melt(
-        id.vars = c("state", "county", "tract", "GEO_ID", "pm"),
-        variable.name = "variable"
-      ) %>%
+                           exp_tracData,
+                           by = "GEO_ID") %>%
       group_by(state, county, variable, pm) %>%
       # calculate number of persons of exposed to particulare level of exposure,
       # in particulare county by sex, age group, ethinicity, hispanic origin
-      summarise(pop_size = sum(value)) %>%
+      summarise(pop_size = sum(pop_size)) %>%
       filter(pop_size != 0)
-
+    
     cens_agr <- cens_agr %>%
       group_by(state, county, variable) %>%
-      # calculate marginal sum regardless of exposure
-      summarise(totals = sum(pop_size)) %>%
-      filter(totals != 0) %>%
-      inner_join(cens_agr, by = c("state", "county", "variable")) %>%
-      # calculate proportion this way
-      mutate(prop = pop_size / totals)
+      mutate(prop = pop_size/sum(pop_size)) %>%
+      ungroup
+
 
     # test, check
     test_that("06_aggregate county", {
@@ -138,6 +127,7 @@ apply(states, 1, function(state) {
         })
 
       # test that population does not change
+      # TODO
       if (nrow(anti) == 0) {
         comp1 <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>%
           fread() %>%
@@ -188,9 +178,8 @@ if (agr_by != "county") {
       # add proportions
       cens_agr <- cens_agr %>%
         group_by(variable) %>%
-        summarise(totals = sum(pop_size)) %>%
-        inner_join(cens_agr, by = "variable") %>%
-        mutate(prop = pop_size / totals)
+        mutate(prop = pop_size/sum(pop_size)) %>%
+        ungroup
 
       # test, check
       test_that("06_aggregate agr_by", {
