@@ -48,6 +48,7 @@ attr_burd <- attr_burd %>%
 # http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/
 # https://rpubs.com/Koundy/71792
 # http://rstudio-pubs-static.s3.amazonaws.com/9575_8a5dc0315e7d48ea94e0fd2546727041.html
+#theme_classic() 
 
 # https://stackoverflow.com/questions/19437934/r-how-can-i-make-a-barplot-with-labels-parallel-horizontal-to-bars
 #### ----figure 1----

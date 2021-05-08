@@ -10,7 +10,8 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle")
+packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle",
+              "matrixStats")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -76,8 +77,7 @@ pm_summ <- pm_summ %>%
 rm(meta)
 
 ## ---calculations----
-#TODO age?
-attrBurden <- inner_join(total_burden, pm_summ, by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))
+# TODO age?
 
 # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
 ## get the epa beta
@@ -90,27 +90,54 @@ expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
 expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
 expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
 expj <- rweibull(1000, 2.21, 1.41)
-epa <- c(expa, expc, expd, expe, expg, expi, expj)
-beta <- mean(epa / 100)
 
-paf <- pm_summ %>%
-  mutate(paf = (exp(beta * pm) - 1)) %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
-  summarise(paf = weighted.mean(paf, pop_size))
+ betas <- c(expa, expc, expd, expe, expg, expi, expj)/100
+
+# beta = mean(c(expa, expc, expd, expe, expg, expi, expj))/100
+pm_summ <- pm_summ %>%
+  pivot_wider(
+    names_from = pm,
+    values_from = pop_size,
+    values_fill = 0
+  ) %>%
+  as.data.frame()
+
+pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")]
+pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")])
+pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
+
+paf <- pm_summ_pop %*% outer(
+  colnames(pm_summ_pop) %>% as.numeric(),
+  betas,
+  function(pm, beta) {
+    #1 - exp(-beta * pm) #probably the right one
+    (exp(beta * pm) - 1)
+  }
+)
+
+paf <- cbind(pm_summ_var, 
+              lower = rowQuantiles(paf, probs=0.25),
+              mean = rowMeans(paf),
+              upper = rowQuantiles(paf, probs=0.75))
+
+#paf <- pm_summ %>%
+#  mutate(paf = (exp(beta * pm) - 1)) %>%
+#  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
+#  summarise(paf = weighted.mean(paf, pop_size))
 
 
 attr_burden <- inner_join(total_burden, paf,
-  by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")) %>%
+  by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
+) %>%
   mutate(
-    mean = value * paf,
-    lower = mean, upper = mean,
+    mean = value * mean,
+    lower = value * lower,
+    upper = value * upper,
     attr = "attributable",
     method = "EPA",
-    paf = NULL,
     value = NULL
   )
 
-attrBurden <- rbind(attr_burden)
-fwrite(attrBurden, attrBurdenDir)
+fwrite(attr_burden, attrBurdenDir)
 toc()
 # }
