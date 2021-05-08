@@ -33,7 +33,7 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2011
   agr_by <- "nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -85,7 +85,7 @@ apply(states, 1, function(state) {
       fread()
 
     # tigris does not provide all tract boundaries
-    anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID")
+    anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID") %>% filter(pop_size > 0)
 
     if (nrow(anti) > 0) {
       anti <- anti %>%
