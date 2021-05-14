@@ -179,7 +179,7 @@ attr_burden <- rbind(attr_burden_epa, attr_burden_burnett) %>%
     lower = value * lower,
     upper = value * upper,
     attr = "attributable",
-    value = NULL
+    value = NULL, label_cause = NULL
   )
 fwrite(attr_burden, attrBurdenDir)
 toc()
