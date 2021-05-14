@@ -10,8 +10,10 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle",
-              "matrixStats")
+packages <- c(
+  "dplyr", "magrittr", "data.table", "DataCombine", "testthat", "tidyverse", "tictoc", "truncnorm", "triangle",
+  "matrixStats"
+)
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -58,11 +60,10 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
 tic(paste("calculated attributable burden alternative way", year, agr_by, source))
 #----read some data-----
 total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
-  fread() %>%
-  dplyr::filter(label_cause == "all-cause")
+  fread()
 
 total_burden <- total_burden %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
+  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2", "label_cause"))) %>%
   summarise(value = sum(value))
 
 meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
@@ -75,9 +76,66 @@ pm_summ <- pm_summ %>%
   dplyr::summarise(pop_size = sum(pop_size))
 
 rm(meta)
+## --- summarize pm exposure ----
+pm_summ <- pm_summ %>%
+  pivot_wider(
+    names_from = pm,
+    values_from = pop_size,
+    values_fill = 0
+  ) %>%
+  as.data.frame()
 
-## ---calculations----
+pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")]
+pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")])
+pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
+
+## ---paf calculations----
 # TODO age?
+# 29 https://www.pnas.org/content/115/38/9592
+
+# burnett mortality for ncd+lri
+burnett_form <- function(X, theta, alpha, mu, v) {
+  X <- pmax(0, X - 2.4)
+  one <- log(1 + (X / alpha))
+  two <- 1 / (1 + exp(-(X - mu) / v))
+  Y <- exp(theta * one * two)
+  return(Y)
+}
+
+paf_burnett <- pm_summ_pop %*% sapply(
+  colnames(pm_summ_pop) %>% as.numeric(),
+  function(pm) {
+    burnett_form(pm, 0.1430, 1.6, 15.5, 36.8) - 1
+  }
+)
+
+paf_burnett <- cbind(pm_summ_var,
+  lower = paf_burnett,
+  mean = paf_burnett,
+  upper = paf_burnett,
+  method = "burnett"
+)
+
+total_burden_burnett <- rbind(
+  #in usa ncd = 89% of all deaths (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6211719/)
+  #   all_cause*.89 + lower respiratory infections
+  total_burden %>% 
+    dplyr::filter(label_cause == "all-cause") %>%
+    mutate(value = value*0.89), 
+  # adding lower respiratory infection deaths to ncd deaths
+  total_burden %>% 
+    dplyr::filter(label_cause == "lri")
+)
+total_burden_burnett <- total_burden_burnett %>%
+  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
+  summarise(value = sum(value))
+
+attr_burden_burnett <- inner_join(
+  total_burden_burnett,
+  paf_burnett,
+  by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
+) 
+
 
 # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
 ## get the epa beta
@@ -91,53 +149,38 @@ expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
 expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
 expj <- rweibull(1000, 2.21, 1.41)
 
- betas <- c(expa, expc, expd, expe, expg, expi, expj)/100
+betas <- c(expa, expc, expd, expe, expg, expi, expj) / 100
 
-# beta = mean(c(expa, expc, expd, expe, expg, expi, expj))/100
-pm_summ <- pm_summ %>%
-  pivot_wider(
-    names_from = pm,
-    values_from = pop_size,
-    values_fill = 0
-  ) %>%
-  as.data.frame()
-
-pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")]
-pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")])
-pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
-
-paf <- pm_summ_pop %*% outer(
+paf_epa <- pm_summ_pop %*% outer(
   colnames(pm_summ_pop) %>% as.numeric(),
   betas,
   function(pm, beta) {
-    1 - exp(-beta * pm) #probably the right one
-    #(exp(beta * pm) - 1)
+    1 - exp(-beta * pm) # probably the right one
+    # (exp(beta * pm) - 1)
   }
 )
 
-paf <- cbind(pm_summ_var, 
-              lower = matrixStats::rowQuantiles(paf, probs=0.25),
-              mean = rowMeans(paf),
-              upper = matrixStats::rowQuantiles(paf, probs=0.75))
+paf_epa <- cbind(pm_summ_var,
+  lower = matrixStats::rowQuantiles(paf_epa, probs = 0.25),
+  mean = rowMeans(paf_epa),
+  upper = matrixStats::rowQuantiles(paf_epa, probs = 0.75),
+  method = "EPA"
+)
 
-#paf <- pm_summ %>%
-#  mutate(paf = (exp(beta * pm) - 1)) %>%
-#  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education"))) %>%
-#  summarise(paf = weighted.mean(paf, pop_size))
-
-
-attr_burden <- inner_join(total_burden, paf,
+attr_burden_epa <- inner_join(
+  total_burden %>% dplyr::filter(label_cause == "all-cause"),
+  paf_epa,
   by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
-) %>%
+) 
+
+attr_burden <- rbind(attr_burden_epa, attr_burden_burnett) %>%
   mutate(
     mean = value * mean,
     lower = value * lower,
     upper = value * upper,
     attr = "attributable",
-    method = "EPA",
     value = NULL
   )
-
 fwrite(attr_burden, attrBurdenDir)
 toc()
 # }
