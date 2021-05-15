@@ -30,7 +30,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
 
   year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -123,6 +123,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% select(all_of(selectcolumns))
 
   #---------find and replace stuff--------
+  print(1)
   for (replacecolumnX in findreplace$replacecolumns %>% unique()) {
     #if(replacecolumnX == "STATEFP") browser()
     if (replacecolumnX %in% colnames(total_burden)) {
@@ -150,7 +151,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   }
   rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
-
+  print(2)
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%
@@ -207,10 +208,30 @@ if (!file.exists(totalBurdenParsedDir)) {
       attr = "overall"
     )
 
-  total_burden_cause <- total_burden %>%
-    filter(label_cause != "oth") %>%
-    mutate(attr = "total")
+  #total_burden_cause <- total_burden %>%
+  #  filter(label_cause != "oth") %>%
+  #  mutate(attr = "total")
+  
+  ncd_lri <- c( # non-communicable diseases
+    sprintf("C%02d", 0:97), sprintf("D%02d", 0:48), sprintf("D%02d", 55:89),
+    sprintf("E%02d", 3:7), sprintf("E%02d", 10:16), sprintf("E%02d", 20:34),
+    sprintf("E%02d", 65:88), sprintf("F%02d", 1:99), sprintf("F%02d", 1:99),
+    sprintf("G%02d", 6:98), sprintf("H%02d", 0:61), sprintf("H%02d", 68:93),
+    sprintf("I%02d", 0:99), sprintf("J%02d", 30:98), sprintf("K%02d", 0:92),
+    sprintf("N%02d", 0:64), sprintf("N%02d", 75:98), sprintf("L%02d", 0:98),
+    sprintf("M%02d", 0:99), sprintf("Q%02d", 0:99),
+    # lower respitory infections
+    sprintf("J%02d", 9:22)
+  )
+  
 
+  total_burden_cause <- total_burden %>%
+    filter(substring(label_cause, 1, 3) %in% ncd_lri) %>%
+    group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+      mutate(label_cause = "ncd_lri",
+             attr = "total")
+    
   total_burden <- rbind(total_burden_all, total_burden_cause) %>% distinct()
   rm(total_burden_all, total_burden_cause)
 

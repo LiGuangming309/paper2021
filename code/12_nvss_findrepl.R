@@ -126,6 +126,7 @@ if (!file.exists(findreplaceDir)) {
 
   findreplaces3 <- merge(data.frame(Year = 2003:2016), findreplaces3)
 
-  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3)
+  findreplaces <- rbind(#findreplaces1, 
+                        findreplaces2, findreplaces3)
   write.csv(findreplaces, findreplaceDir, row.names = FALSE)
 }
