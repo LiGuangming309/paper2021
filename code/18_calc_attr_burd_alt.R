@@ -116,22 +116,8 @@ paf_burnett <- cbind(pm_summ_var,
   method = "burnett"
 )
 
-total_burden_burnett <- rbind(
-  #in usa ncd = 89% of all deaths (https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6211719/)
-  #   all_cause*.89 + lower respiratory infections
-  total_burden %>% 
-    dplyr::filter(label_cause == "all-cause") %>%
-    mutate(value = value*0.89), 
-  # adding lower respiratory infection deaths to ncd deaths
-  total_burden %>% 
-    dplyr::filter(label_cause == "lri")
-)
-total_burden_burnett <- total_burden_burnett %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2"))) %>%
-  summarise(value = sum(value))
-
 attr_burden_burnett <- inner_join(
-  total_burden_burnett,
+  total_burden %>% dplyr::filter(label_cause == "ncd_lri"),
   paf_burnett,
   by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
 ) 

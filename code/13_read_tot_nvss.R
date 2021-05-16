@@ -123,7 +123,6 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% select(all_of(selectcolumns))
 
   #---------find and replace stuff--------
-  print(1)
   for (replacecolumnX in findreplace$replacecolumns %>% unique()) {
     #if(replacecolumnX == "STATEFP") browser()
     if (replacecolumnX %in% colnames(total_burden)) {
@@ -151,7 +150,6 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   }
   rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
-  print(2)
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%

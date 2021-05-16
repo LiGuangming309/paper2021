@@ -199,9 +199,9 @@ for (agr_by in agr_bys) {
       }
       #runscript(script=pop.summary.script, args = args)
       #runscript(script=pop.summary.educ.script, args = args)
-      runscript(script = add.rate.tot.burd, args = args)
+      #runscript(script = add.rate.tot.burd, args = args)
       #runscript(script = calc.attr.burd.script, args = args)
-      #runscript(script = calc.attr.burd.alt.script, args = args)
+      runscript(script = calc.attr.burd.alt.script, args = args)
     } 
   }
 }
@@ -217,7 +217,7 @@ for (agr_by in agr_bys) {
     summary.dir # 7
   )
   
-  #runscript(script = summary.script, args = args)
+  runscript(script = summary.script, args = args)
   #runscript(script = summary.other.script, args = args)
   #runscript(script = ui.script, args = args)
 
