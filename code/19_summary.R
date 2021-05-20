@@ -46,8 +46,8 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(attrBurdenDir, agr_by))
   attrBurden <- lapply(sources, function(source) {
     files <- list.files(file.path(attrBurdenDir, agr_by, source))
-    attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file)))# %>% do.call(rbind, .)
-  })# %>% do.call(rbind, .)
+    attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% do.call(rbind, .)
+  }) %>% do.call(rbind, .)
 
   # make compatible
   attrBurden <- attrBurden %>% rename("Region" := !!agr_by)
