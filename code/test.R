@@ -1,26 +1,55 @@
-your_df <- total_burden
-ncd_lri <- c( # non-communicable diseases
-  sprintf("C%02d", 0:97), sprintf("D%02d", 0:48), sprintf("D%02d", 55:89),
-  sprintf("E%02d", 3:7), sprintf("E%02d", 10:16), sprintf("E%02d", 20:34),
-  sprintf("E%02d", 65:88), sprintf("F%02d", 1:99), sprintf("F%02d", 1:99),
-  sprintf("G%02d", 6:98), sprintf("H%02d", 0:61), sprintf("H%02d", 68:93),
-  sprintf("I%02d", 0:99), sprintf("J%02d", 30:98), sprintf("K%02d", 0:92),
-  sprintf("N%02d", 0:64), sprintf("N%02d", 75:98), sprintf("L%02d", 0:98),
-  sprintf("M%02d", 0:99), sprintf("Q%02d", 0:99),
-  # lower respitory infections
-  sprintf("J%02d", 9:22)
+burnett_form <- function(X, theta, alpha, mu, v) {
+  X <- pmax(0, X - 2.4)
+  one <- log(1 + (X / alpha))
+  two <- 1 / (1 + exp(-(X - mu) / v))
+  Y <- exp(theta * one * two)
+  return(Y)
+}
+pm <- seq(0,84, by = 0.1)
+
+thetas1 <- rnorm(1000, 0.1430, 0.01807)
+hr_epa1 <- outer(pm,
+              thetas1,
+              function(pm, theta){
+                burnett_form(pm, theta, 1.6, 15.5, 36.8)
+              })
+
+hr_epa1 <- data.frame(pm = pm,
+                 lower = matrixStats::rowQuantiles(hr_epa1, probs = 0.25),
+                 mean = rowMeans(hr_epa1),
+                 upper = matrixStats::rowQuantiles(hr_epa1, probs = 0.75)
 )
 
-tic("method 1")
-ncd_lri1 <- c(outer(ncd_lri, c("", 0:9), FUN = paste0))
-result1 <- filter(your_df, label_cause %in% ncd_lri1)
-toc()
+ggplot(hr_epa1, aes(x = pm)) +
+  geom_point(aes(y = mean)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.33)
 
-tic("method 2")
-ncd_lri2<-paste(ncd_lri[1:2],collapse="|")
-result2 <- filter(your_df, grepl(ncd_lri2, label_cause))
-toc()
+thetas2 <- c(0.1430- 2*0.01807, 0.1430, 0.1430+ 2*0.01807)
+hr_epa2 <- outer(pm,
+              thetas2,
+              function(pm, theta){
+                burnett_form(pm, theta, 1.6, 15.5, 36.8)
+              }) 
 
-tic("method 3")
-result3 <- filter(your_df, substring(label_cause, 1, 3) %in% ncd_lri)
-toc()
+hr_epa2 <- data.frame(pm = pm,
+                      lower = hr_epa2[,1],
+                      mean = hr_epa2[,2],
+                      upper = hr_epa2[,3]
+)
+
+g2 <- ggplot(hr_epa2, aes(x = pm)) +
+  geom_point(aes(y = mean)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.33) +
+  theme_classic() 
+
+g2 <- g2 +theme(
+  panel.grid.major = element_blank(), 
+  panel.grid.minor = element_blank(),
+  panel.background = element_rect(fill = "transparent",colour = NA),
+  plot.background = element_rect(fill = "transparent",colour = NA)
+)
+#returns white background
+ggsave("airquality.png", g2, bg = "transparent")
+png('tr_tst2.png',width=300,height=300,units="px",bg = "transparent")
+print(g2)
+dev.off()

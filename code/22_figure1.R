@@ -42,7 +42,7 @@ all_burden <- all_burden %>%
 
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & 
-           measure3 == "value" & method == "GBD" & attr == "attributable" &
+           measure3 == "value" & method == "burnett" & attr == "attributable" &
            source == "National Vital Statistics System")
 
 # http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/
@@ -87,7 +87,7 @@ g1 <- ggbarplot(all_burden1, x = "Region", y = "difference",
           x.text.angle = 90 ,          # Rotate vertically x axis texts
           rotate = TRUE#,
           #ggtheme = theme_minimal()
-)
+)+ ggtitle("difference in all-cause burden")
 
 attr_burd1 <- attr_burd %>%
   filter(Year == 2000 &
@@ -107,10 +107,11 @@ g2 <- ggbarplot(attr_burd1, x = "Region", y = "difference",
                 x.text.angle = 90 ,          # Rotate vertically x axis texts
                 rotate = TRUE#,
                 #ggtheme = theme_minimal()
-)
+) + ggtitle("difference in attributable burden")
 
 g1
 g2
-ggarrange(g1, g2,
+g3 <- ggarrange(g1, g2,
           common.legend = TRUE, legend = "top", 
           labels = "AUTO") 
+ggsave(file.path(figuresDir,"figure2.png"), g3)
