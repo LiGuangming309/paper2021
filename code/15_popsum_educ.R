@@ -77,6 +77,7 @@ if (!file.exists(pop.summary.dirX)) {
     select(-c(age_group_id, variable))
   
   pop.summary <- pop.summary %>% tibble::add_column(source2 = "Census")
+  pop.summary <- pop.summary %>% filter(min_age >= 25)
   write.csv(pop.summary, pop.summary.dirX, row.names = FALSE)
   toc()
 }

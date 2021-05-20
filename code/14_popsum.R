@@ -111,6 +111,7 @@ if (!file.exists(pop.summary.dir)) {
   cdc_pop$max_age <- as.numeric(cdc_pop$max_age)
   
   cdc_pop <- cdc_pop %>% tibble::add_column(source2 = "CDC")
+  cdc_pop <- cdc_pop %>% filter(min_age >= 25)
   
   write.csv(cdc_pop, pop.summary.dir, row.names = FALSE)
   

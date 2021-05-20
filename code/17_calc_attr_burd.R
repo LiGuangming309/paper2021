@@ -76,7 +76,8 @@ if (!file.exists(attrBurdenDir)) {
   }) %>%
     rbindlist %>%
     as.data.frame()
-
+  pafs <- pafs %>% filter(min_age >= 25)
+  
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
   } else if (agr_by == "Census_Region") {

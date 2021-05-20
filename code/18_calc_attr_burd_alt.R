@@ -35,7 +35,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2000
   agr_by <- "nation"
   source <- "nvss"
 
@@ -56,124 +56,129 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
 # http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
- if (!file.exists(attrBurdenDir)) {
-tic(paste("calculated attributable burden alternative way", year, agr_by, source))
-#----read some data-----
-total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
-  fread()
+if (!file.exists(attrBurdenDir)) {
+  tic(paste("calculated attributable burden alternative way", year, agr_by, source))
+  #----read some data-----
+  total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
+    fread()
 
-total_burden <- total_burden %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2", "label_cause"))) %>%
-  summarise(value = sum(value),
-            min_age = pmin(min_age),
-            max_age = pmax(max_age))
+  total_burden <- total_burden %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2", "label_cause"))) %>%
+    summarise(
+      value = sum(value),
+      min_age = min(min_age),
+      max_age = max(max_age)
+    )
 
-meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
-files <- list.files(file.path(dem_agrDir, agr_by, year))
-pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
-pm_summ <- pm_summ %>% left_join(meta, by = "variable")
+  meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
+  files <- list.files(file.path(dem_agrDir, agr_by, year))
+  pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
+  pm_summ <- pm_summ %>% left_join(meta, by = "variable")
+  pm_summ <- pm_summ %>% filter(min_age >= 25)
+  pm_summ <- pm_summ %>% mutate(min_age = min(min_age), max_age = max(max_age))
+    
+  pm_summ <- pm_summ %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm", "min_age", "max_age"))) %>%
+    dplyr::summarize(pop_size = sum(pop_size))
 
-pm_summ <- pm_summ %>%
-  dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
-  dplyr::summarise(pop_size = sum(pop_size),
-                   min_age = pmin(min_age),
-                   max_age = pmax(max_age))
+  rm(meta)
+  ## --- summarize pm exposure ----
+  pm_summ <- pm_summ %>%
+    pivot_wider(
+      names_from = pm,
+      values_from = pop_size,
+      values_fill = 0
+    ) %>%
+    as.data.frame()
 
-rm(meta)
-## --- summarize pm exposure ----
-pm_summ <- pm_summ %>%
-  pivot_wider(
-    names_from = pm,
-    values_from = pop_size,
-    values_fill = 0
-  ) %>%
-  as.data.frame()
+  pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")]
+  pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")])
+  pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
 
-pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")]
-pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")])
-pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
+  ## ---paf calculations----
+  # TODO age?
+  # 29 https://www.pnas.org/content/115/38/9592
 
-## ---paf calculations----
-# TODO age?
-# 29 https://www.pnas.org/content/115/38/9592
-
-# burnett mortality for ncd+lri
-burnett_form <- function(X, theta, alpha, mu, v) {
-  X <- pmax(0, X - 2.4)
-  one <- log(1 + (X / alpha))
-  two <- 1 / (1 + exp(-(X - mu) / v))
-  Y <- exp(theta * one * two)
-  return(Y)
-}
-
-paf_burnett <- pm_summ_pop %*% sapply(
-  colnames(pm_summ_pop) %>% as.numeric(),
-  function(pm) {
-    burnett_form(pm, 0.1430, 1.6, 15.5, 36.8) - 1
+  # burnett mortality for ncd+lri
+  burnett_gemm <- function(X, theta, alpha, mu, v) {
+    X <- pmax(0, X - 2.4)
+    one <- log(1 + (X / alpha))
+    two <- 1 / (1 + exp(-(X - mu) / v))
+    Y <- exp(theta * one * two)
+    return(Y)
   }
-)
 
-paf_burnett <- cbind(pm_summ_var,
-  lower = paf_burnett,
-  mean = paf_burnett,
-  upper = paf_burnett,
-  method = "burnett"
-)
-
-attr_burden_burnett <- inner_join(
-  total_burden %>% dplyr::filter(label_cause == "ncd_lri"),
-  paf_burnett,
-  by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
-) 
-
-
-# 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
-## get the epa beta
-## using the different parametric distributions in the EPA documentation
-set.seed(5)
-expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
-expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
-expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95)
-expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
-expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
-expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
-expj <- rweibull(1000, 2.21, 1.41)
-
-betas <- c(expa, expc, expd, expe, expg, expi, expj) / 100
-
-paf_epa <- pm_summ_pop %*% outer(
-  colnames(pm_summ_pop) %>% as.numeric(),
-  betas,
-  function(pm, beta) {
-    1 - exp(-beta * pm) # probably the right one
-    # (exp(beta * pm) - 1)
-  }
-)
-
-paf_epa <- cbind(pm_summ_var,
-  lower = matrixStats::rowQuantiles(paf_epa, probs = 0.25),
-  mean = rowMeans(paf_epa),
-  upper = matrixStats::rowQuantiles(paf_epa, probs = 0.75),
-  method = "EPA"
-)
-
-attr_burden_epa <- inner_join(
-  total_burden %>% dplyr::filter(label_cause == "all-cause"),
-  paf_epa,
-  by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
-) 
-
-attr_burden <- rbind(attr_burden_epa, attr_burden_burnett) %>%
-  mutate(
-    mean = value * mean,
-    lower = value * lower,
-    upper = value * upper,
-    attr = "attributable",
-    value = NULL, label_cause = NULL,
-    min_age = min(min_age.x, min_age.y),
-    max_age = max(max_age.x, max_age.y),
-    min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL, 
+  thetas <- c(0.1430 - 2 * 0.01807, 0.1430, 0.1430 + 2 * 0.01807)
+  paf_burnett <- pm_summ_pop %*% outer(
+    colnames(pm_summ_pop) %>% as.numeric(),
+    thetas,
+    function(pm, theta) {
+      # burnett_gemm(pm, 0.1430, 1.6, 15.5, 36.8) - 1 #TODO
+      1 - 1 / burnett_gemm(pm, theta, 1.6, 15.5, 36.8)
+    }
   )
-fwrite(attr_burden, attrBurdenDir)
-toc()
- }
+
+  paf_burnett <- cbind(pm_summ_var,
+    lower = paf_burnett[,1],
+    mean = paf_burnett[,2],
+    upper = paf_burnett[,3],
+    method = "burnett"
+  )
+
+  attr_burden_burnett <- inner_join(
+    total_burden %>% dplyr::filter(label_cause == "ncd_lri"),
+    paf_burnett,
+    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
+  )
+
+
+  # 32 https://pubmed.ncbi.nlm.nih.gov/29962895/
+  ## get the epa beta
+  ## using the different parametric distributions in the EPA documentation
+  set.seed(5)
+  expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
+  expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
+  expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95)
+  expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
+  expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
+  expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
+  expj <- rweibull(1000, 2.21, 1.41)
+
+  betas <- c(expa, expc, expd, expe, expg, expi, expj) / 100
+
+  paf_epa <- pm_summ_pop %*% outer(
+    colnames(pm_summ_pop) %>% as.numeric(),
+    betas,
+    function(pm, beta) {
+      1 - exp(-beta * pm) # probably the right one
+      # (exp(beta * pm) - 1)
+    }
+  )
+
+  paf_epa <- cbind(pm_summ_var,
+    lower = matrixStats::rowQuantiles(paf_epa, probs = 0.25),
+    mean = rowMeans(paf_epa),
+    upper = matrixStats::rowQuantiles(paf_epa, probs = 0.75),
+    method = "EPA"
+  )
+
+  attr_burden_epa <- inner_join(
+    total_burden %>% dplyr::filter(label_cause == "all-cause"),
+    paf_epa,
+    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
+  )
+
+  attr_burden <- rbind(attr_burden_epa, attr_burden_burnett) %>%
+    mutate(
+      mean = value * mean,
+      lower = value * lower,
+      upper = value * upper,
+      attr = "attributable",
+      value = NULL, label_cause = NULL,
+      min_age = min(min_age.x, min_age.y),
+      max_age = max(max_age.x, max_age.y),
+      min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL,
+    )
+  fwrite(attr_burden, attrBurdenDir)
+  toc()
+}

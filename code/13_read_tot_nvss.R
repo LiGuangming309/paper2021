@@ -308,6 +308,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   if(agr_by == "STATEFP") total_burden <- total_burden %>% filter(STATEFP != 0)
   
   total_burden <- total_burden %>% filter(!Education %in% c(0,9:10))
+  total_burden <- total_burden %>% filter(min_age >= 25)
     #write
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
