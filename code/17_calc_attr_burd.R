@@ -177,8 +177,8 @@ if (!file.exists(attrBurdenDir)) {
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
     dplyr::summarize(value = sum(value),
-                     min_age = pmin(min_age),
-                     max_age = pmax(max_age)
+                     min_age = min(min_age),
+                     max_age = max(max_age)
     )
   toc()
   
