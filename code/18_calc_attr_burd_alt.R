@@ -64,7 +64,9 @@ total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_b
 
 total_burden <- total_burden %>%
   dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2", "label_cause"))) %>%
-  summarise(value = sum(value))
+  summarise(value = sum(value),
+            min_age = pmin(min_age),
+            max_age = pmax(max_age))
 
 meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
 files <- list.files(file.path(dem_agrDir, agr_by, year))
@@ -73,7 +75,9 @@ pm_summ <- pm_summ %>% left_join(meta, by = "variable")
 
 pm_summ <- pm_summ %>%
   dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm"))) %>%
-  dplyr::summarise(pop_size = sum(pop_size))
+  dplyr::summarise(pop_size = sum(pop_size),
+                   min_age = pmin(min_age),
+                   max_age = pmax(max_age))
 
 rm(meta)
 ## --- summarize pm exposure ----
@@ -85,8 +89,8 @@ pm_summ <- pm_summ %>%
   ) %>%
   as.data.frame()
 
-pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")]
-pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")])
+pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")]
+pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")])
 pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
 
 ## ---paf calculations----
@@ -165,7 +169,10 @@ attr_burden <- rbind(attr_burden_epa, attr_burden_burnett) %>%
     lower = value * lower,
     upper = value * upper,
     attr = "attributable",
-    value = NULL, label_cause = NULL
+    value = NULL, label_cause = NULL,
+    min_age = min(min_age.x, min_age.y),
+    max_age = max(max_age.x, max_age.y),
+    min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL, 
   )
 fwrite(attr_burden, attrBurdenDir)
 toc()

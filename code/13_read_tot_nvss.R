@@ -39,6 +39,7 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
+causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv")) 
 
 totalBurdenDir <- file.path(totalBurdenDir, "nvss", paste0("mort", year, ".csv"))
 totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
@@ -137,7 +138,6 @@ if (!file.exists(totalBurdenParsedDir)) {
         ) %>%
         mutate(to = replace_na(to, "oth"))
 
-      if (replacecolumnX != "label_cause") {
         missing <- replacement %>% 
           filter(to == "oth") %>%
           distinct
@@ -145,7 +145,7 @@ if (!file.exists(totalBurdenParsedDir)) {
           print(paste("no value assigned in", replacecolumnX, "for"))
           print(missing[, 1] %>% unique() %>% sort())
         }
-      }
+      
       total_burden[, replacecolumnX] <- replacement %>% select(to)
     }
   }
@@ -206,29 +206,21 @@ if (!file.exists(totalBurdenParsedDir)) {
       attr = "overall"
     )
 
-  #total_burden_cause <- total_burden %>%
-  #  filter(label_cause != "oth") %>%
-  #  mutate(attr = "total")
+  causes <- causes %>%
+    group_by(to) %>%
+    summarise(from = list(from))
   
-  ncd_lri <- c( # non-communicable diseases
-    sprintf("C%02d", 0:97), sprintf("D%02d", 0:48), sprintf("D%02d", 55:89),
-    sprintf("E%02d", 3:7), sprintf("E%02d", 10:16), sprintf("E%02d", 20:34),
-    sprintf("E%02d", 65:88), sprintf("F%02d", 1:99), sprintf("F%02d", 1:99),
-    sprintf("G%02d", 6:98), sprintf("H%02d", 0:61), sprintf("H%02d", 68:93),
-    sprintf("I%02d", 0:99), sprintf("J%02d", 30:98), sprintf("K%02d", 0:92),
-    sprintf("N%02d", 0:64), sprintf("N%02d", 75:98), sprintf("L%02d", 0:98),
-    sprintf("M%02d", 0:99), sprintf("Q%02d", 0:99),
-    # lower respitory infections
-    sprintf("J%02d", 9:22)
-  )
-  
-
-  total_burden_cause <- total_burden %>%
-    filter(substring(label_cause, 1, 3) %in% ncd_lri) %>%
-    group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
-    summarise(Deaths = sum(Deaths)) %>%
-      mutate(label_cause = "ncd_lri",
+  total_burden_cause <- apply(causes, 1, function(cause){
+    label_cause1 <- cause[1]
+    icd10_cause <- cause[2] %>% unlist
+    total_burden_cause <- total_burden %>%
+      filter(substring(label_cause, 1, 3) %in% icd10_cause) %>%
+      group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
+      summarise(Deaths = sum(Deaths)) %>%
+      mutate(label_cause = label_cause1,
              attr = "total")
+  }) %>% rbindlist
+  
     
   total_burden <- rbind(total_burden_all, total_burden_cause) %>% distinct()
   rm(total_burden_all, total_burden_cause)

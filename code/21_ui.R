@@ -207,7 +207,8 @@ server <- function(input, output) {
     g7 <- g7+  scale_colour_manual(values=group.colors)
     g8 <- g8+  scale_colour_manual(values=group.colors)
 
-    g_comb <- ggarrange(g1, g2, g3, g4, g5, g6, g7,g8, ncol = 2, nrow = 4,
+    g_comb <- ggarrange(g1, #g2, 
+                        g3, g4, g5, g6, g7,g8, ncol = 2, nrow = 4,
               common.legend = TRUE, legend = "top", 
               labels = "AUTO") 
     g_comb

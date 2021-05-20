@@ -175,7 +175,9 @@ if (!file.exists(attrBurdenDir)) {
   columns <- c(group_variables, "draw", "measure1","measure2", "attr")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
-    dplyr::summarize(value = sum(value)
+    dplyr::summarize(value = sum(value),
+                     min_age = pmin(min_age),
+                     max_age = pmax(max_age)
     )
   toc()
   
