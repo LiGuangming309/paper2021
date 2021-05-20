@@ -210,11 +210,12 @@ if (!file.exists(totalBurdenParsedDir)) {
     group_by(to) %>%
     summarise(from = list(from))
   
+  total_burden_cause <- total_burden %>% mutate(label_cause = substring(label_cause, 1, 3))
   total_burden_cause <- apply(causes, 1, function(cause){
-    label_cause1 <- cause[1]
-    icd10_cause <- cause[2] %>% unlist
-    total_burden_cause <- total_burden %>%
-      filter(substring(label_cause, 1, 3) %in% icd10_cause) %>%
+    label_cause1 <- cause$to
+    icd10_cause <- cause$from %>% unlist
+    total_burden_cause <- total_burden_cause %>%
+      filter(label_cause %in% icd10_cause) %>%
       group_by_at(setdiff(inverse_selectcolumns, "label_cause")) %>%
       summarise(Deaths = sum(Deaths)) %>%
       mutate(label_cause = label_cause1,
