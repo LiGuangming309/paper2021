@@ -77,9 +77,10 @@ all_burden <- lapply(agr_bys, function(agr_by) {
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method","min_age", "max_age"))
 all_burden <- all_burden %>%
   group_by_at(vars(all_of(c(group_variables)))) %>%
-  summarise(overall_value = sum(value),
-            min_age = min(min_age),
-            max_age = max(max_age))
+  summarise(overall_value = sum(value)#,
+            #min_age = min(min_age), 
+            #max_age = max(max_age)
+            )
 ### ----- add proportion ---
 
 # add "prop. of overall burden", "prop. of total burden"
@@ -112,7 +113,7 @@ test_that(" basic checks", {
 attrBurden_disp1 <- inner_join(
   all_burden %>% filter(attr == "overall" & !(Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
   all_burden %>% filter(attr == "overall" & (Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
-  by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by","min_age", "max_age")
+  by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by")
 )
 
 attrBurden_disp2 <- inner_join(attrBurden %>% filter(!(Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
@@ -121,7 +122,7 @@ attrBurden_disp2 <- inner_join(attrBurden %>% filter(!(Race == "White" & Hispani
 )
 
 attrBurden_disp3 <- inner_join(attrBurden_disp1, attrBurden_disp2,
-                               by = c("Race.x", "Hispanic.Origin.x", "Race.y", "Hispanic.Origin.y", "Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "source", "agr_by", "min_age", "max_age"))
+                               by = c("Race.x", "Hispanic.Origin.x", "Race.y", "Hispanic.Origin.y", "Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "source", "agr_by"))
 attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
@@ -135,7 +136,7 @@ attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
 
 attrBurden_disp4 <- inner_join(all_burden %>% filter(attr == "overall" & Education != 7),
   all_burden %>% filter(attr == "overall" & Education == 7),
-  by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Region", "measure1", "measure2", "attr", "source", "agr_by","min_age", "max_age")
+  by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Region", "measure1", "measure2", "attr", "source", "agr_by")
 )
 
 attrBurden_disp5 <- inner_join(attrBurden %>% filter(Education != 7), 
@@ -146,7 +147,7 @@ attrBurden_disp5 <- inner_join(attrBurden %>% filter(Education != 7),
 attrBurden_disp6 <- inner_join(
   attrBurden_disp4, 
   attrBurden_disp5, 
-  by = c("Education.x", "Education.y", "Race", "Hispanic.Origin","Year", "Gender.Code", "Region", "measure1", "measure2", "source", "agr_by","min_age", "max_age"))
+  by = c("Education.x", "Education.y", "Race", "Hispanic.Origin","Year", "Gender.Code", "Region", "measure1", "measure2", "source", "agr_by"))
 attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
@@ -204,11 +205,13 @@ rindreplace6 <- setNames(c("crude rate per 100,000", "age-adjusted rate per 100,
 all_burden$measure2 <- sapply(all_burden$measure2, function(x) rindreplace6[[x]])
 attrBurden$measure2 <- sapply(attrBurden$measure2, function(x) rindreplace6[[x]])
 
-rindreplace7 <- setNames(c("Black or African", "age-adjusted rate per 100,000", "absolute number"), c("crude rate", "age-adjusted rate", "absolute number"))
-all_burden$measure2 <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
-attrBurden$measure2 <- sapply(attrBurden$measure2, function(x) rindreplace7[[x]])
+all_burden$Ethnicity %>% unique()
+rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"), 
+                         c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"))
+all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
+attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
 
-rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace5, rindreplace6)
+rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7)
 
 #--write---
 fwrite(attrBurden %>% filter(measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd.csv"))

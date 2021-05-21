@@ -186,9 +186,9 @@ server <- function(input, output) {
     group.colors <- c(hue_pal()(5),hue_pal()(7))
     names(group.colors) <- c("White, Not Hispanic or Latino",
                                "White, Hispanic or Latino",
-                               "Black or African American, All Origins",
-                               "Asian or Pacific Islander, All Origins",
-                               "American Indian or Alaska Native, All Origins",
+                               "Black or African American",
+                               "Asian or Pacific Islander",
+                               "American Indian or Alaska Native",
                                "Less than 9th grade", 
                                "9th to 12th grade, no diploma", 
                                "High school graduate, GED, or alternative",
