@@ -316,7 +316,8 @@ if (!file.exists(totalBurdenParsedDir)) {
   
   #counter, above effect
   total_burden_educ <- total_burden_educ %>% filter(Education %in% c(1:7))
-  prop <- 1-prop_education_unknown-prop_education_1989
+ # prop <- 1-prop_education_unknown-prop_education_1989
+  prop <- 1-prop_education_1989
   total_burden_educ$Deaths <- total_burden_educ$Deaths/prop
   
   total_burden <- rbind(total_burden_race, total_burden_educ)
