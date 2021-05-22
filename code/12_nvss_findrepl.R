@@ -57,6 +57,16 @@ if (!file.exists(findreplaceDir)) {
         replacecolumns = "STATEFP",
         from = c(1:51,52:62),
         to = c(states$STATEFP, rep(0, 11))
+      ),
+      data.frame(
+        replacecolumns = "min_age",
+        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
+        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+      ),
+      data.frame(
+        replacecolumns = "max_age",
+        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
+        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
       )
     )
   findreplaces2 <- merge(data.frame(Year = 2000:2002), findreplaces2)
@@ -92,6 +102,10 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "Education",
+        #7 = Master’s degree 
+        #8 = Doctorate or professional degree
+        #9 = unknown
+        #10 = 1989 revision, not comparable
         from = c(1:9,NA), #TODO whole thing with revision 89
         to = c(1:7,7,9,10) 
       )

@@ -171,7 +171,7 @@ server <- function(input, output) {
       subtitle = "(resp_copd, lri, neo_lung, t2_dm, cvd_ihd, cvd_stroke)"
     )
     g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM2.5 exposure")
-    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
+    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%")  + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
     g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(2000, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
     g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("Population size")
@@ -208,7 +208,8 @@ server <- function(input, output) {
     g8 <- g8+  scale_colour_manual(values=group.colors)
 
     g_comb <- ggarrange(g1, #g2, 
-                        g3, g4, g5, g6, g7,g8, ncol = 2, nrow = 4,
+                        g3, g4, g5, g6, g7,#g8,
+                        ncol = 2, nrow = 4,
               common.legend = TRUE, legend = "top", 
               labels = "AUTO") 
     g_comb

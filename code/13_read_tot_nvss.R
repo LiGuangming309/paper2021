@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2000
+  year <- 2016
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -67,7 +67,6 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age", # 64
       "Hispanic.Origin" = "hispanic" # 80 - 81
     )
-    prop <- 1
   } else if (2003 <= year & year <= 2005) {
     selectcolumns <- c(
       "Year" = "year",
@@ -79,7 +78,6 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
-    prop <- sum(!is.na(total_burden$educ2003))/nrow(total_burden)
   } else if (2005 <= year & year <= 2016) {
     selectcolumns <- c(
       "Year" = "year",
@@ -91,7 +89,6 @@ if (!file.exists(totalBurdenParsedDir)) {
       "max_age" = "age",
       "Hispanic.Origin" = "hspanicr" # 80 - 81
     )
-    prop <- sum(!is.na(total_burden$educ2003))/nrow(total_burden)
   }
 
   if (agr_by == "nation") {
@@ -184,18 +181,15 @@ if (!file.exists(totalBurdenParsedDir)) {
     mutate(Education = 666) # TODO
   
   total_burden_educ <- total_burden %>%
-    group_by_at(setdiff(inverse_selectcolumns, c("Hispanic.Origin", "Race"))) %>%
+    filter(Hispanic.Origin == "All Origins") %>%
+    group_by_at(setdiff(inverse_selectcolumns, c("Race"))) %>%
     summarise(Deaths = sum(Deaths)) %>%
     mutate(
-      Hispanic.Origin = "All Origins",
       Race = "All",
       Education = as.numeric(Education)) 
   
-  #counter, that only proportion  
-  if(prop > 0) total_burden_educ$Deaths <- total_burden_educ$Deaths / prop
-  
   total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
-  rm(total_burden_race, total_burden_educ, prop)
+  rm(total_burden_race, total_burden_educ)
   
   #--- add all-cause rows---
   total_burden_all <- total_burden %>%
@@ -235,16 +229,16 @@ if (!file.exists(totalBurdenParsedDir)) {
     total_burden_test <- total_burden_test[duplicated(total_burden_test), ]
     expect_equal(nrow(total_burden_test), 0)
     
-     #test1 <- total_burden %>%
-    #  filter(
-    #    Gender.Code == "A",
-    #    label_cause == "all-cause",
-    #    attr == "overall",
-    #    Race == "All",
-    #    Hispanic.Origin == "All Origins",
-    #    Education != 666
-    #  )
-    # expect_equal(sum(test1$Deaths), numberDeaths) 
+     test1 <- total_burden %>%
+      filter(
+        Gender.Code == "A",
+        label_cause == "all-cause",
+        attr == "overall",
+        Race == "All",
+        Hispanic.Origin == "All Origins",
+        Education != 666
+      )
+     expect_equal(sum(test1$Deaths), numberDeaths) 
 
     test2 <- total_burden %>%
       filter(
@@ -279,10 +273,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       )
     expect_equal(sum(test4$Deaths), numberDeaths)
   })
-
-  ## --write to csv----
-
-  total_burden <- total_burden %>% tibble::add_column(source = "nvss")
+  
   #------filter ------
   # total_burden$Race %>% unique()
   total_burden <- total_burden %>%
@@ -292,7 +283,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
   #Only considering Education groups for above 25
-  total_burden <- total_burden %>%  filter(Education == 666 | min_age >= 25)
+  #total_burden <- total_burden %>%  filter(Education == 666 | min_age >= 25)
   total_burden <- total_burden %>%
     mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
     filter(Ethnicity %in% c(
@@ -306,10 +297,31 @@ if (!file.exists(totalBurdenParsedDir)) {
     mutate(Ethnicity = NULL)
   
   if(agr_by == "STATEFP") total_burden <- total_burden %>% filter(STATEFP != 0)
-  
-  total_burden <- total_burden %>% filter(!Education %in% c(0,9:10))
+
+  #Only considering age above 25
   total_burden <- total_burden %>% filter(min_age >= 25)
-    #write
+  
+  #--deal with education ---
+  #Some studies using vital statistics data have also restricted analysis to ages 25–64 because of concerns about the accuracy
+  #of death certificate education information for persons who died at older ages (9).
+  # https://www.cdc.gov/nchs/data/series/sr_02/sr02_151.pdf
+  total_burden_race <- total_burden %>% filter(Education == 666)
+  total_burden_educ <- total_burden %>% filter(Education != 666 & max_age <= 64)
+  
+  nrow_education <- nrow(total_burden_educ)
+  prop_education_unknown <- nrow(total_burden_educ %>% filter(Education == 9))/nrow_education
+  print(paste(100*prop_education_unknown, "% of all education unknown"))
+  prop_education_1989 <- nrow(total_burden_educ %>% filter(Education == 10))/nrow_education
+  print(paste(100*prop_education_1989, "% of all education has 1989 education revision and thus not comparible"))
+  
+  #counter, above effect
+  total_burden_educ <- total_burden_educ %>% filter(Education %in% c(1:7))
+  prop <- 1-prop_education_unknown-prop_education_1989
+  total_burden_educ$Deaths <- total_burden_educ$Deaths/prop
+  
+  total_burden <- rbind(total_burden_race, total_burden_educ)
+  #---write csv---
+  total_burden <- total_burden %>% tibble::add_column(source = "nvss")
   fwrite(total_burden, totalBurdenParsedDir)
   toc()
 }

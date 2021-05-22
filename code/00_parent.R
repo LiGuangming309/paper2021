@@ -144,7 +144,7 @@ calc.attr.burd.script <- file.path(code.dir, "17_calc_attr_burd.R")
 calc.attr.burd.alt.script <- file.path(code.dir, "18_calc_attr_burd_alt.R")
 summary.script <- file.path(code.dir, "19_summary.R")
 summary.other.script <- file.path(code.dir, "20_summary_other.R")
-ui.script <- file.path(code.dir, "21_ui.R")
+figure.script <- file.path(code.dir, "22_figure1.R")
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
@@ -191,14 +191,14 @@ for (agr_by in agr_bys) {
       if (source == "wonder") {
        # runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
-      #   runscript(script = read.nvs.findrepl.script, args = args)
-      #  runscript(script = read.total.burden.nvs.script, args = args)
+         runscript(script = read.nvs.findrepl.script, args = args)
+        runscript(script = read.total.burden.nvs.script, args = args)
       }
       #runscript(script=pop.summary.script, args = args)
-      #runscript(script=pop.summary.educ.script, args = args)
+      runscript(script=pop.summary.educ.script, args = args)
       #runscript(script = add.rate.tot.burd, args = args)
-      runscript(script = calc.attr.burd.script, args = args)
-      runscript(script = calc.attr.burd.alt.script, args = args)
+      #runscript(script = calc.attr.burd.script, args = args)
+      #runscript(script = calc.attr.burd.alt.script, args = args)
     } 
   }
 }
@@ -214,9 +214,9 @@ for (agr_by in agr_bys) {
     summary.dir # 7
   )
   
- runscript(script = summary.script, args = args)
-  runscript(script = summary.other.script, args = args)
-  #runscript(script = ui.script, args = args)
+ #runscript(script = summary.script, args = args)
+  #runscript(script = summary.other.script, args = args)
+  #runscript(script = figure.script, args = args)
 
   
 
