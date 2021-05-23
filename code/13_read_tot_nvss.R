@@ -193,6 +193,21 @@ if (!file.exists(totalBurdenParsedDir)) {
       Race = "All",
       Education = as.numeric(Education)) 
   
+  #deal with unknown, 1989
+  prop_education_unknown <- total_burden_educ %>%
+    group_by_at(setdiff(inverse_selectcolumns, c("Education", "Deaths"))) %>%
+    mutate(propDeaths = Deaths/sum(Deaths), Deaths = NULL) %>%
+    filter(Education %in% 9:10) %>%
+    group_by_at(setdiff(inverse_selectcolumns, c("Education","propDeaths"))) %>%
+    summarise(propDeaths = sum(propDeaths))
+  
+  total_burden_educ <- total_burden_educ %>% filter(Education %in% c(1:7))
+  total_burden_educ <- left_join(total_burden_educ, prop_education_unknown,
+                                 by = setdiff(inverse_selectcolumns, "Education")) %>%
+    mutate(propDeaths = replace_na(propDeaths, 0),
+           Deaths = Deaths/(1-propDeaths),
+           propDeaths = NULL)
+  
   total_burden <- rbind(total_burden_race , total_burden_educ) %>% distinct()
   rm(total_burden_race, total_burden_educ)
   
@@ -310,30 +325,8 @@ if (!file.exists(totalBurdenParsedDir)) {
   #Some studies using vital statistics data have also restricted analysis to ages 25–64 because of concerns about the accuracy
   #of death certificate education information for persons who died at older ages (9).
   # https://www.cdc.gov/nchs/data/series/sr_02/sr02_151.pdf
-  total_burden_race <- total_burden %>% filter(Education == 666)
-  total_burden_educ <- total_burden %>% filter(Education != 666 & max_age <= 64)
+  total_burden <- total_burden %>% filter(Education == 666 | max_age <= 64)
   
-  prop_education_unknown <- total_burden_educ %>%
-    group_by_at(setdiff(inverse_selectcolumns, c("Education", "Deaths"))) %>%
-    mutate(propDeaths = Deaths/sum(Deaths), Deaths = NULL) %>%
-    filter(Education %in% 9:10) %>%
-    group_by_at(setdiff(inverse_selectcolumns, c("Education","propDeaths"))) %>%
-    summarise(propDeaths = sum(propDeaths))
-  
-  setdiff(inverse_selectcolumns, "Education")
-  colnames(total_burden_educ)
-  colnames(prop_education_unknown)
-  
-  total_burden_educ <- total_burden_educ %>% filter(Education %in% c(1:7))
-  total_burden_educ <- left_join(total_burden_educ, prop_education_unknown,
-                                  by = setdiff(inverse_selectcolumns, "Education")) %>%
-    mutate(propDeaths = replace_na(propDeaths, 0),
-           Deaths = Deaths/(1-propDeaths),
-           propDeaths = NULL)
-  
-  #counter, above effect
-  
-  total_burden <- rbind(total_burden_race, total_burden_educ)
   #---write csv---
   test_that("no na end read tot nvss", expect_false(any(is.na(total_burden))))
   
