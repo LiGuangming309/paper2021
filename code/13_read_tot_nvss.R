@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2016
+  year <- 2009
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -325,7 +325,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   colnames(prop_education_unknown)
   
   total_burden_educ <- total_burden_educ %>% filter(Education %in% c(1:7))
-  total_burden_educ <- full_join(total_burden_educ, prop_education_unknown,
+  total_burden_educ <- left_join(total_burden_educ, prop_education_unknown,
                                   by = setdiff(inverse_selectcolumns, "Education")) %>%
     mutate(propDeaths = replace_na(propDeaths, 0),
            Deaths = Deaths/(1-propDeaths),
