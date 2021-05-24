@@ -1,6 +1,6 @@
 Year,nation,Race,Hispanic.Origin,Gender.Code,Education,source,measure1,measure2,lower,mean,upper,method,attr,min_age,max_age
 2016,us,All,All Origins,A,1,nvss,Deaths,absolute number,2404.08495627194,3489.84315760442,4439.96364905043,EPA,attributable,25,150
-2016,us,All,All Origins,A,1,nvss,Deaths,age-adjusted rate,6.28326166313753,9.12097455846242,11.6041878258179,EPA,attributable,25,150
+2016,us,All,All Origins,A,1,nvss,Deaths,age-adjusted rate,6.28326166313752,9.12097455846241,11.6041878258179,EPA,attributable,25,150
 2016,us,All,All Origins,A,1,nvss,Deaths,crude rate,31.0979109290023,45.1426774200462,57.432909650702,EPA,attributable,25,150
 2016,us,All,All Origins,A,1,nvss,YLL,absolute number,91786.5704575735,133240.189385015,169515.239151363,EPA,attributable,25,150
 2016,us,All,All Origins,A,1,nvss,YLL,age-adjusted rate,272.170235364205,395.09062735548,502.655261087153,EPA,attributable,25,150
@@ -14,7 +14,7 @@ Year,nation,Race,Hispanic.Origin,Gender.Code,Education,source,measure1,measure2,
 2016,us,All,All Origins,A,3,nvss,Deaths,absolute number,18444.29266269,26834.8712149012,34149.4804518734,EPA,attributable,25,150
 2016,us,All,All Origins,A,3,nvss,Deaths,age-adjusted rate,9.28869066347144,13.5142519297326,17.1979465971808,EPA,attributable,25,150
 2016,us,All,All Origins,A,3,nvss,Deaths,crude rate,42.1212770315641,61.2828621417216,77.987253450334,EPA,attributable,25,150
-2016,us,All,All Origins,A,3,nvss,YLL,absolute number,726453.963477521,1056928.49869531,1345024.49503766,EPA,attributable,25,150
+2016,us,All,All Origins,A,3,nvss,YLL,absolute number,726453.96347752,1056928.49869531,1345024.49503766,EPA,attributable,25,150
 2016,us,All,All Origins,A,3,nvss,YLL,age-adjusted rate,416.960596647546,606.642071742825,771.999664330859,EPA,attributable,25,150
 2016,us,All,All Origins,A,3,nvss,YLL,crude rate,1659.00472335336,2413.71024144263,3071.63578489099,EPA,attributable,25,150
 2016,us,All,All Origins,A,4,nvss,Deaths,absolute number,6241.8015692324,9079.06954662207,11553.4905604555,EPA,attributable,25,150
@@ -29,7 +29,7 @@ Year,nation,Race,Hispanic.Origin,Gender.Code,Education,source,measure1,measure2,
 2016,us,All,All Origins,A,5,nvss,YLL,absolute number,125081.538963405,182014.658353498,231631.761197884,EPA,attributable,25,150
 2016,us,All,All Origins,A,5,nvss,YLL,age-adjusted rate,202.899270631244,295.252534707975,375.738224773771,EPA,attributable,25,150
 2016,us,All,All Origins,A,5,nvss,YLL,crude rate,835.967513981668,1216.4732118983,1548.08318775517,EPA,attributable,25,150
-2016,us,All,All Origins,A,6,nvss,Deaths,absolute number,4039.67823715552,5875.61884074572,7476.92065634972,EPA,attributable,25,150
+2016,us,All,All Origins,A,6,nvss,Deaths,absolute number,4039.67823715552,5875.61884074571,7476.92065634971,EPA,attributable,25,150
 2016,us,All,All Origins,A,6,nvss,Deaths,age-adjusted rate,2.67961927935084,3.89744444965139,4.95962786259899,EPA,attributable,25,150
 2016,us,All,All Origins,A,6,nvss,Deaths,crude rate,11.9356350847324,17.3601059943575,22.0913130384676,EPA,attributable,25,150
 2016,us,All,All Origins,A,6,nvss,YLL,absolute number,157002.182638788,228356.054169358,290590.684096297,EPA,attributable,25,150
@@ -54,7 +54,7 @@ Year,nation,Race,Hispanic.Origin,Gender.Code,Education,source,measure1,measure2,
 2016,us,All,All Origins,F,2,nvss,YLL,age-adjusted rate,366.81562486065,533.046392197096,678.252937860033,EPA,attributable,25,150
 2016,us,All,All Origins,F,2,nvss,YLL,crude rate,1475.18134921481,2143.69302380214,2727.65393884563,EPA,attributable,25,150
 2016,us,All,All Origins,F,3,nvss,Deaths,absolute number,6610.67416975196,9617.39894096556,12238.8202645265,EPA,attributable,25,150
-2016,us,All,All Origins,F,3,nvss,Deaths,age-adjusted rate,6.79666054509469,9.88797726979012,12.5831503224026,EPA,attributable,25,150
+2016,us,All,All Origins,F,3,nvss,Deaths,age-adjusted rate,6.79666054509468,9.88797726979011,12.5831503224025,EPA,attributable,25,150
 2016,us,All,All Origins,F,3,nvss,Deaths,crude rate,32.4632442557063,47.228461562015,60.1015571856447,EPA,attributable,25,150
 2016,us,All,All Origins,F,3,nvss,YLL,absolute number,255469.215375274,371663.963206896,472968.676085107,EPA,attributable,25,150
 2016,us,All,All Origins,F,3,nvss,YLL,age-adjusted rate,302.204256525417,439.655445425149,559.49264535121,EPA,attributable,25,150
@@ -116,7 +116,7 @@ Year,nation,Race,Hispanic.Origin,Gender.Code,Education,source,measure1,measure2,
 2016,us,All,All Origins,M,6,nvss,Deaths,absolute number,2308.40181431595,3357.46587740675,4272.47910095995,EPA,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,Deaths,age-adjusted rate,3.25777873689037,4.7382916082536,6.02962252177936,EPA,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,Deaths,crude rate,14.5249739144406,21.1259166344091,26.88338187337,EPA,attributable,25,150
-2016,us,All,All Origins,M,6,nvss,YLL,absolute number,90005.5128358794,130908.941524337,166585.674200065,EPA,attributable,25,150
+2016,us,All,All Origins,M,6,nvss,YLL,absolute number,90005.5128358793,130908.941524337,166585.674200065,EPA,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,YLL,age-adjusted rate,140.244311361069,203.978998359403,259.569579959044,EPA,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,YLL,crude rate,566.334560122671,823.707964972069,1048.19384444665,EPA,attributable,25,150
 2016,us,All,All Origins,M,7,nvss,Deaths,absolute number,962.537706431809,1400.14196038132,1781.74998816986,EPA,attributable,25,150
@@ -332,7 +332,7 @@ Year,nation,Race,Hispanic.Origin,Gender.Code,Education,source,measure1,measure2,
 2016,us,All,All Origins,M,6,nvss,Deaths,absolute number,1688.11314901332,2234.24746840255,2768.3273897615,burnett,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,Deaths,age-adjusted rate,2.14699233802913,2.84158215266849,3.52084082660458,burnett,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,Deaths,crude rate,10.62198067164,14.0583783965569,17.4189271874371,burnett,attributable,25,150
-2016,us,All,All Origins,M,6,nvss,YLL,absolute number,62061.9688660612,82140.1082647342,101775.078509911,burnett,attributable,25,150
+2016,us,All,All Origins,M,6,nvss,YLL,absolute number,62061.9688660613,82140.1082647342,101775.078509911,burnett,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,YLL,age-adjusted rate,85.5091469732601,113.172861227894,140.225975835551,burnett,attributable,25,150
 2016,us,All,All Origins,M,6,nvss,YLL,crude rate,390.507611485954,516.843697867278,640.391266082354,burnett,attributable,25,150
 2016,us,All,All Origins,M,7,nvss,Deaths,absolute number,729.563459783778,965.628292855618,1196.501115047,burnett,attributable,25,150
