@@ -214,6 +214,8 @@ server <- function(input, output) {
               common.legend = TRUE, legend = "top", 
               labels = "AUTO") 
     g_comb
+    #ggsave("/Users/default/Desktop/race_burden.png", g1)
+    #ggsave("/Users/default/Desktop/race_pop.png", g6)
   })
 }
 shinyApp(ui = ui, server = server)

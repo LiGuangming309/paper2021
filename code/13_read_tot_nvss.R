@@ -333,8 +333,13 @@ if (!file.exists(totalBurdenParsedDir)) {
   # Some studies using vital statistics data have also restricted analysis to ages 25–64 because of concerns about the accuracy
   # of death certificate education information for persons who died at older ages (9).
   # https://www.cdc.gov/nchs/data/series/sr_02/sr02_151.pdf
+<<<<<<< HEAD
   total_burden <- total_burden %>% filter(Education == 666 #| max_age <= 64
                                           ) #TODO
+=======
+  #https://www.jstor.org/stable/pdf/3702065.pdf?refreqid=excelsior%3Aee6b8a77d645e5a84cb2e35b6ceabfd8 
+  total_burden <- total_burden %>% filter(Education == 666 | max_age <= 64)
+>>>>>>> 134b7fde659bc0ff88a9185687e9be05c2790c29
 
   #---write csv---
   test_that("no na end read tot nvss", expect_false(any(is.na(total_burden))))
