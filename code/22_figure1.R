@@ -174,7 +174,8 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
     legend.text = element_text(size = 9),
     legend.background = element_rect(fill = "transparent")
   ) +
-  guides(col = guide_legend(nrow = 3, byrow = TRUE))
+  guides(col = guide_legend(nrow = 3, byrow = TRUE))  +
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
 ggsave(file.path(figuresDir, "figure4b.png"), g2)
 rm(attr_burd1, attr_burd2, g1, g2)
 ## ---figure 5, differences by state ---
