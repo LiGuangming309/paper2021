@@ -211,7 +211,8 @@ for (agr_by in agr_bys) {
     pop.summary.dir, # 4
     total.burden.parsed2.dir, # 5
     attr.burden.dir, # 6 
-    summary.dir # 7
+    summary.dir, # 7
+    figures.dir #8
   )   
   
  runscript(script = summary.script, args = args)

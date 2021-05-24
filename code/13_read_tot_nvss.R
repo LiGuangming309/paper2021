@@ -30,9 +30,9 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
 
-  year <- 2016
+  year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -216,29 +216,33 @@ if (!file.exists(totalBurdenParsedDir)) {
     summarise(Deaths = sum(Deaths)) %>%
     mutate(Education = as.factor(666)) # TODO
 
-  total_burden_educ <- total_burden %>%
-    filter(Hispanic.Origin == "All Origins") %>%
-    group_by_at(setdiff(colnames(total_burden), c("Race","Deaths"))) %>%
-    summarise(Deaths = sum(Deaths)) %>%
-    mutate(
-      Race = "All",
-      Education = Education %>% as.numeric() %>% as.factor()
-    )
-
-  # deal with unknown, 1989
-
-  total_burden_educ <- total_burden_educ %>%
-    group_by_at(setdiff(colnames(total_burden), c("Education","Deaths"))) %>%
-    mutate(DeathsAllEduc = sum(Deaths)) %>%
-    filter(Education %in% c(1:7)) %>%
-    mutate(
-      prop = DeathsAllEduc / sum(Deaths),
-      Deaths = Deaths * prop,
-      DeathsAllEduc = NULL, prop = NULL
-    ) 
-
-  total_burden <- rbind(total_burden_race, total_burden_educ) %>% distinct()
-  rm(total_burden_race, total_burden_educ)
+  if(year %in% 2009:2016){
+    
+    total_burden_educ <- total_burden %>%
+      filter(Hispanic.Origin == "All Origins") %>%
+      group_by_at(setdiff(colnames(total_burden), c("Race","Deaths"))) %>%
+      summarise(Deaths = sum(Deaths)) %>%
+      mutate(
+        Race = "All",
+        Education = Education %>% as.numeric() %>% as.factor()
+      )
+    
+    # deal with unknown, 1989
+    total_burden_educ <- total_burden_educ %>%
+      group_by_at(setdiff(colnames(total_burden), c("Education","Deaths"))) %>%
+      mutate(DeathsAllEduc = sum(Deaths)) %>%
+      filter(Education %in% c(1:7)) %>%
+      mutate(
+        prop = DeathsAllEduc / sum(Deaths),
+        Deaths = Deaths * prop,
+        DeathsAllEduc = NULL, prop = NULL
+      ) 
+    total_burden <- rbind(total_burden_race, total_burden_educ) %>% distinct()
+  }else{
+    total_burden <- total_burden_race%>% distinct()
+  }
+  
+  rm(total_burden_race)
   #----test----
   total_burden <- total_burden %>% 
     as.data.frame() %>%
@@ -250,19 +254,21 @@ if (!file.exists(totalBurdenParsedDir)) {
     total_burden_test <- total_burden_test[duplicated(total_burden_test), ]
     expect_equal(nrow(total_burden_test), 0)
 
-    test1 <- total_burden %>%
-      dplyr::filter(
-        Gender.Code == "A" &
-        label_cause == "all-cause" &
-        attr == "overall" &
-        Race == "All"&
-        Hispanic.Origin == "All Origins"&
-        Education != 666
-      )
-    #some difference is tolerable due to rounding
-    expect_equal(sum(test1$Deaths), numberDeaths, 
-                 tolerance = 0.005, scale = numberDeaths) 
-
+    if(year %in% 2009:2016){
+      test1 <- total_burden %>%
+        dplyr::filter(
+          Gender.Code == "A" &
+            label_cause == "all-cause" &
+            attr == "overall" &
+            Race == "All"&
+            Hispanic.Origin == "All Origins"&
+            Education != 666
+        )
+      #some difference is tolerable due to rounding
+      expect_equal(sum(test1$Deaths), numberDeaths, 
+                   tolerance = 0.005, scale = numberDeaths) 
+    }
+    
     test2 <- total_burden %>%
       filter(
         Gender.Code == "A",

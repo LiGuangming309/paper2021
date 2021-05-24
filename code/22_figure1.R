@@ -22,11 +22,17 @@ for (p in packages) {
 options(dplyr.summarise.inform = FALSE)
 options(scipen = 10000)
 
-# load calculated data
-summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
-# if not downloaded, load from github
-if (!file.exists(summaryDir)) summaryDir <- "https://raw.github.com/FridljDa/paper2021/master/data/14_summary"
+# Pass in arguments
+args <- commandArgs(trailingOnly = T)
+
+summaryDir <- args[7]
+figuresDir <- args[8]
+
+# TODO delete
+if (rlang::is_empty(args)) {
+  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
+}
 
 attr_burd <- rbind(
   fread(file.path(summaryDir, "attr_burd.csv")),
@@ -146,7 +152,7 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
 ggsave(file.path(figuresDir, "figure3b.png"), g2)
 rm(attr_burd1, attr_burd2, g1, g2)
-## -- figure 4, attributable burden----
+## -- figure 4, prop. of overall burden----
 attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "prop. of overall burden")
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
