@@ -70,8 +70,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
     legend.text = element_text(size = 9)
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-
-ggsave(file.path(figuresDir, "figure1a.png"), g1)
+#ggsave(file.path(figuresDir, "figure1a.png"), g1)
 
 pm_summ2 <- pm_summ %>% filter(Education != 666)
 g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
@@ -81,46 +80,61 @@ g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
   theme_classic() +
   theme(
     legend.title = element_blank(),
-    legend.position = c(0.4, 0.2), # plot.margin = unit(c(0,1,0,-1), "lines") plot.margin = unit(c(0,-.5,0,.5), "lines"),
-    legend.text = element_text(size = 9)
+    #legend.position = c(0.4, 0.2), # plot.margin = unit(c(0,1,0,-1), "lines") plot.margin = unit(c(0,-.5,0,.5), "lines"),
+    legend.position = c(0.37, 0.2),
+    legend.text = element_text(size = 9),
+    legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-ggsave(file.path(figuresDir, "figure1b.png"), g2)
+#ggsave(file.path(figuresDir, "figure1b.png"), g2)
+
+g3 <- ggarrange(g1, g2, ncol = 1, labels = "AUTO")
+ggsave(file.path(figuresDir, "figure1.png"), g3)
+
 
 # https://stackoverflow.com/questions/64757410/shared-x-and-y-axis-labels-ggplot2-with-ggarrange
-rm(g1, g2, pm_summ1, pm_summ2)
+rm(g1, g2,g3, pm_summ1, pm_summ2)
 ## -- figure 2, all-cause burden ----
 all_burden1 <- all_burden %>% filter(agr_by == "nation" & Education == 666)
 g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
-  ylab("age-adjusted death rate per 100,000") +
+  ylab("deaths per 100,000") +
   xlim(2000, 2016) +
   theme_classic() +
   theme(
     legend.title = element_blank(),
-    legend.position = c(0.72, 0.9),
-    legend.text = element_text(size = 9)
+    legend.position = c(0.733, 0.9),
+    legend.text = element_text(size = 9),
+    legend.background = element_rect(fill = "transparent"),
+    plot.margin = unit(c(20,20,20,20),"points")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-ggsave(file.path(figuresDir, "figure2a.png"), g1)
+#ggsave(file.path(figuresDir, "figure2a.png"), g1)
+g1$layout$clip[g1$layout$name == "panel"] <- "off"
 
 all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666)
 g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
-  ylab("age-adjusted death rate per 100,000") +
+  ylab("deaths per 100,000") +
   theme_classic() +
   theme(
     legend.title = element_blank(),
-    legend.position = c(0.4, 0.93),
+    legend.position = c(0.4, 1),
     legend.text = element_text(size = 9),
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-ggsave(file.path(figuresDir, "figure2b.png"), g2)
-rm(all_burden1, all_burden2, g1, g2)
+#ggsave(file.path(figuresDir, "figure2b.png"), g2)
 
+g3 <- ggarrange(g1,NULL, g2, 
+                ncol = 1, 
+                heights = c(1, 0.15, 1),
+                labels = c("A", "", "B"))
+ggsave(file.path(figuresDir, "figure2.png"), g3)
+
+rm(all_burden1, all_burden2, g1, g2, g3)
 ## -- figure 3, attributable burden----
 attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "value" )
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
