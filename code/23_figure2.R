@@ -39,21 +39,40 @@ attr_burd <- rbind(
   fread(file.path(summaryDir, "attr_burd_prop.csv"))
 )
 
+attr_burd <- attr_burd %>%
+  filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == "burnett" & attr == "attributable" &
+    source == "National Vital Statistics System")
+
+
 attr_burd1 <- attr_burd %>%
   filter(
-    measure3 == "value" &
-      Education == 666 &
-      Region %in% c(
-        "United States", "California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia",
-        "North Carolina", "Michigan"
-      )
+    measure3 == "value" & Education == 666 &
+      Region %in% c("California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina", "Michigan")
   )
 
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1) +
   xlab("Year") +
-  #ylab("age-adjusted death rate per 100,000") +
+  ylab("deaths per 100.000") +
+  # ylab("age-adjusted death rate per 100,000") +
   theme_classic() +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1) +
   facet_wrap(~Region)
+g1
+
+attr_burd2 <- attr_burd %>%
+  filter(
+    measure3 == "prop. of overall burden" & Education == 666 &
+      Region %in% c("California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina", "Michigan")
+  )
+g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Ethnicity)) +
+  geom_line(size = 1) +
+  xlab("Year") +
+  ylab("deaths per 100.000") +
+  # ylab("age-adjusted death rate per 100,000") +
+  theme_classic() +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1) +
+  facet_wrap(~Region)
+g1
