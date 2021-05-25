@@ -43,6 +43,11 @@ if (rlang::is_empty(args)) {
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
 }
 
+if (year > 2004 & agr_by == "STATEFP") {
+  print(paste("can not aggraget on state level in", year))
+  quit()
+}
+
 # load meta data
 census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>%
   fread()

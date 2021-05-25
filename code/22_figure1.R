@@ -39,6 +39,7 @@ attr_burd <- rbind(
   fread(file.path(summaryDir, "attr_burd_prop.csv"))
 )
 
+theme_set(theme_classic())
 ### ----- read stuff----
 all_burden <- fread(file.path(summaryDir, "all_burd.csv")) %>% as.data.frame()
 pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
@@ -63,21 +64,23 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
   xlab("Year") +
   ylab("μg/m^3") +
   xlim(2000, 2016) +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
+    #legend.position = position_dodge(3),
     legend.position = c(0.72, 0.85),
-    legend.text = element_text(size = 9)
+    legend.text = element_text(size = 9),
+    legend.text.align = 0
   ) +
+  #expand_limits(y = 10) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure1a.png"), g1)
+ggsave(file.path(figuresDir, "figure1a.png"), g1)
+#https://ggplot2.tidyverse.org/reference/position_dodge.html
 
 pm_summ2 <- pm_summ %>% filter(Education != 666)
 g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("μg/m^3") +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     #legend.position = c(0.4, 0.2), # plot.margin = unit(c(0,1,0,-1), "lines") plot.margin = unit(c(0,-.5,0,.5), "lines"),
@@ -101,7 +104,6 @@ g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
   xlab("Year") +
   ylab("deaths per 100,000") +
   xlim(2000, 2016) +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.733, 0.9),
@@ -118,7 +120,6 @@ g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("deaths per 100,000") +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.4, 1),
@@ -141,7 +142,6 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("age-adjusted death rate per 100,000") +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.72, 0.9),
@@ -156,7 +156,6 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("age-adjusted death rate per 100,000") +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.4, 0.93),
@@ -172,7 +171,6 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("%") +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.72, 0.9),
@@ -187,7 +185,6 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("%") +
-  theme_classic() +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.4, 0.93),
