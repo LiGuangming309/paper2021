@@ -11,8 +11,8 @@ rm(list = ls(all = TRUE))
 
 # load packages, install if missing
 packages <- c(
-  "data.table", "magrittr", "shiny", "ggplot2",  "ggpubr", "scales", "grid", "cowplot",
-  "dplyr"
+  "data.table", "magrittr", "shiny", "ggplot2",  "ggpubr", "scales", "grid", "MALDIquant",
+  "dplyr", "tidyr", "matrixStats"
 )
 
 for (p in packages) {
@@ -59,6 +59,7 @@ total_burden <- lapply(files, function(file) {
 }) %>% rbindlist()
 rm(files)
 
+total_burden <- total_burden %>% filter(Year == 2016)
 
 ## --- GBD estimate----
 gbd <- function(pms) {
@@ -66,7 +67,7 @@ gbd <- function(pms) {
   pm_levels <- example_exp_rr$exposure_spline
   causes_ages <- file.path(tmpDir, "causes_ages.csv") %>% read.csv()
 
-  pafs <- apply(causes_ages, 1, function(cause_age) {
+  attr_burd <- apply(causes_ages, 1, function(cause_age) {
     # subset rows of total burden
     label_causeX <- cause_age[["label_cause"]]
     age_group_idX <- cause_age[["age_group_id"]]
@@ -76,7 +77,7 @@ gbd <- function(pms) {
     }
     total_burden <- total_burden %>%
       group_by(Year, label_cause) %>%
-      dplyr::summarise(value = sum(value))
+      dplyr::summarise(overall_value = sum(value))
 
 
     exp_rr <- ifelse(age_group_idX == "all ages",
@@ -91,12 +92,110 @@ gbd <- function(pms) {
     exp_rr <- as.matrix(exp_rr[, -1])
     rownames(exp_rr) <- pm_levels
     exp_rr <- exp_rr[as.character(pm_matched), ]
-    exp_rr <- apply(exp_rr, 1:2, function(x) (x-1) /x)
-    exp_rr <- data.frame(pm = row.names(exp_rr) %>% as.numeric(), exp_rr)
-    exp_rr <- exp_rr %>%
-      pivot_longer(cols)
+    exp_paf <- apply(exp_rr, 1:2, function(x) (x-1) /x)
+    exp_paf <- data.frame(pm = row.names(exp_paf) %>% as.numeric(), exp_paf)
+    exp_paf <- exp_paf %>%
+      pivot_longer(cols = colnames(exp_paf) %>% grep('draw', ., value=TRUE),
+                   names_to = "draw", 
+                   values_to = "paf")
     
-    test <- merge(total_burden, exp_rr)
-  })
+    attr_burd <- merge(total_burden, exp_paf) %>%
+      mutate(attr = paf*overall_value)
+    return(attr_burd)
+  })  %>% rbindlist
+  
+  attr_burd <- attr_burd %>%
+    group_by(Year, pm, draw) %>%
+    summarise(attr = sum(attr)) %>%
+    group_by(Year, pm) %>%
+    summarize(mean = mean(attr),
+              lower = quantile(attr,p=.025),
+              upper = quantile(attr,p=.975) ,
+              method = "GBD"
+    )
+  return(attr_burd)
 }
-gbd(1:5)
+
+#gbd_curve <- gbd(X)
+
+##---burnett estimate----
+# 29 https://www.pnas.org/content/115/38/9592
+burnett <- function(pms){
+  total_burden <- total_burden %>% 
+    dplyr::filter(label_cause == "ncd_lri") %>%
+    group_by(Year) %>%
+    dplyr::summarise(overall_value = sum(value))
+  # burnett mortality for ncd+lri
+  burnett_gemm <- function(X, theta, alpha, mu, v) {
+    X <- pmax(0, X - 2.4)
+    one <- log(1 + (X / alpha))
+    two <- 1 / (1 + exp(-(X - mu) / v))
+    Y <- exp(theta * one * two)
+    return(Y)
+  }
+  
+  thetas <- c(0.1430 - 2 * 0.01807, 0.1430, 0.1430 + 2 * 0.01807)
+  paf_burnett <- outer(
+    pms,
+    thetas,
+    function(pm, theta) {
+      1 - 1 / burnett_gemm(pm, theta, 1.6, 15.5, 36.8)
+    }
+  )
+  paf_burnett <- data.frame(pm = pms,
+                            lower = paf_burnett[,1],
+                            mean = paf_burnett[,2],
+                            upper = paf_burnett[,3])
+  
+  attr_burd <- merge(total_burden, paf_burnett) %>%
+    mutate( mean = overall_value * mean,
+            lower = overall_value * lower,
+            upper = overall_value * upper,
+            overall_value =NULL,
+            method = "burnett")
+  return(attr_burd)
+}
+
+###----epa----
+epa <- function(pms){
+  total_burden <- total_burden %>% 
+    dplyr::filter(label_cause == "all-cause") %>%
+    group_by(Year) %>%
+    dplyr::summarise(overall_value = sum(value))
+  
+  expa <- rtruncnorm(1000, a = 0, mean = 1.42, sd = 0.89)
+  expc <- rtruncnorm(1000, a = 0, mean = 1.2, sd = 0.49)
+  expd <- triangle::rtriangle(1000, 0.1, 1.6, 0.95)
+  expe <- rtruncnorm(1000, a = 0, mean = 2, sd = 0.61)
+  expg <- rtruncnorm(1000, a = 0, mean = 1, sd = 0.19)
+  expi <- rtruncnorm(1000, a = 0, b = 2.273, mean = 1.25, sd = 0.53)
+  expj <- rweibull(1000, 2.21, 1.41)
+  
+  betas <- c(expa, expc, expd, expe, expg, expi, expj) / 100
+  
+  paf_epa <- outer(
+    pms,
+    betas,
+    function(pm, beta) {
+      1 - exp(-beta * pm) # probably the right one
+    }
+  )
+  paf_epa <- data.frame(pm = pms,
+                        lower = matrixStats::rowQuantiles(paf_epa, probs = 0.25),
+                        mean = rowMeans(paf_epa),
+                        upper = matrixStats::rowQuantiles(paf_epa, probs = 0.75))
+  
+  attr_burd <- merge(total_burden, paf_epa) %>%
+    mutate( mean = overall_value * mean,
+            lower = overall_value * lower,
+            upper = overall_value * upper,
+            overall_value =NULL,
+            method = "EPA")
+  return(attr_burd)
+}
+###---plot---
+pms <-seq(0,30,by = 0.5)
+data <- rbind(gbd(pms),
+              burnett(pms),
+              epa(pms))
+ggplot(data, aes(x = pm, y = mean, color = method))+ geom_line(size = 1) 

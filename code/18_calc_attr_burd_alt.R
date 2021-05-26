@@ -56,7 +56,7 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
 # http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
-if (!file.exists(attrBurdenDir)) {
+#if (!file.exists(attrBurdenDir)) {
   tic(paste("calculated attributable burden alternative way", year, agr_by, source))
   #----read some data-----
   total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
@@ -181,4 +181,4 @@ if (!file.exists(attrBurdenDir)) {
     )
   fwrite(attr_burden, attrBurdenDir)
   toc()
-}
+#}
