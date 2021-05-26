@@ -75,7 +75,7 @@ gbd <- function(pms) {
       total_burden <- total_burden %>% filter(age_group_id == as.numeric(cause_age[["age_group_id"]]))
     }
     total_burden <- total_burden %>%
-      group_by(Year) %>%
+      group_by(Year, label_cause) %>%
       dplyr::summarise(value = sum(value))
 
 
@@ -85,14 +85,18 @@ gbd <- function(pms) {
     ) %>%
       file.path(exp_rrDir, .) %>%
       fread()
-
+  
+    pm_matched <-sapply(pms, function(x) pm_levels[match.closest(x, pm_levels)])
+    
     exp_rr <- as.matrix(exp_rr[, -1])
     rownames(exp_rr) <- pm_levels
-    pm_levels[match.closest(29.33142, pm_levels)]
-    pm_matched <- sapply(pms, function(x){
-      pm_levels[match.closest(x, pm_levels)]
-    } )
-    test <- exp_rr[pm_matched, ]
+    exp_rr <- exp_rr[as.character(pm_matched), ]
+    exp_rr <- apply(exp_rr, 1:2, function(x) (x-1) /x)
+    exp_rr <- data.frame(pm = row.names(exp_rr) %>% as.numeric(), exp_rr)
+    exp_rr <- exp_rr %>%
+      pivot_longer(cols)
+    
+    test <- merge(total_burden, exp_rr)
   })
 }
 gbd(1:5)
