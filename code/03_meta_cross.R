@@ -60,8 +60,8 @@ if (!file.exists(aim_metaDir)) {
       merge(
         data.frame(Year = c(2000:2008, 2010)),
         data.frame(
-          min_age = c(seq(25, 85, 5)),
-          max_age = c(seq(29, 84, 5), 150)
+          min_age = c(0, seq(25, 85, 5)),
+          max_age = c(24, seq(29, 84, 5), 150)
         )
       )
     ),
@@ -70,8 +70,8 @@ if (!file.exists(aim_metaDir)) {
       merge(
         data.frame(Year = c(2009, 2011:2016)),
         data.frame(
-          min_age = c(25, 30, 35, 45, 55, 65, 75, 85),
-          max_age = c(29, 34, 44, 54, 64, 74, 84, 150)
+          min_age = c(0, 25, 30, 35, 45, 55, 65, 75, 85),
+          max_age = c(24, 29, 34, 44, 54, 64, 74, 84, 150)
         )
       )
     )
@@ -82,8 +82,8 @@ if (!file.exists(aim_metaDir)) {
   aim_meta2 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta2)
   # Ignoring 18-25 and 65+!
   aim_meta2 <- merge(aim_meta2, data.frame(
-    min_age = c(25,35,45),
-    max_age = c(34,44,64)
+    min_age = c(25,35,45, 65),
+    max_age = c(34,44,64, 150)
   ))
 
   aim_meta <- rbind(aim_meta1, aim_meta2)

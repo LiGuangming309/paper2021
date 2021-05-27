@@ -71,7 +71,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
     legend.text = element_text(size = 9),
     legend.background = element_rect(fill = "transparent")
   ) +
-  guides(col = guide_legend(nrow = 3, byrow = FALSE, reverse = TRUE))
+  guides(col = guide_legend(nrow = 3, byrow = FALSE))
 #ggsave(file.path(figuresDir, "figure1a.png"), g1)
 #https://ggplot2.tidyverse.org/reference/position_dodge.html
 
