@@ -60,7 +60,7 @@ total_burden <- lapply(files, function(file) {
 rm(files)
 
 total_burden <- total_burden %>% filter(Year == 2016)
-
+total_burden <- total_burden %>% mutate(value = value *100000/323100000) #Population in 2016
 ## --- GBD estimate----
 gbd <- function(pms) {
   example_exp_rr <- file.path(exp_rrDir, "cvd_ihd_25.csv") %>% read.csv()
@@ -189,9 +189,9 @@ epa <- function(pms) {
   )
   paf_epa <- data.frame(
     pm = pms,
-    lower = matrixStats::rowQuantiles(paf_epa, probs = 0.25),
+    lower = matrixStats::rowQuantiles(paf_epa, probs = .025),
     mean = rowMeans(paf_epa),
-    upper = matrixStats::rowQuantiles(paf_epa, probs = 0.75)
+    upper = matrixStats::rowQuantiles(paf_epa, probs =.975)
   )
 
   attr_burd <- merge(total_burden, paf_epa) %>%
@@ -229,11 +229,11 @@ g1
 g2 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
   geom_line(size = 1.5) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.2, show.legend = FALSE)+
-  annotate("text", x = 26, y = 400000, label = "Burnett", size = 8, colour = hue_pal()(3)[1])+
-  annotate("text", x = 26, y = 830000, label = "EPA", size = 8, colour = hue_pal()(3)[2])+
-  annotate("text", x = 26, y = 170000, label = "GBD", size = 8, colour = hue_pal()(3)[3])+
-  xlab("μg/m^3") +
-  ylab("deaths")+ 
+  annotate("text", x = 26, y = 123, label = "Burnett", size = 8, colour = hue_pal()(3)[1])+
+  annotate("text", x = 26, y = 255, label = "EPA", size = 8, colour = hue_pal()(3)[2])+
+  annotate("text", x = 26, y = 55, label = "GBD", size = 8, colour = hue_pal()(3)[3])+
+  xlab("Annual average PM2.5 in μg/m^3") +
+  ylab("Mortality from PM2.5 per 100k per year")+ 
   theme(legend.position = "none")
 g2
 ggsave(file.path(figuresDir, "app_figure2.png"), g2, height = 9, width = 8)

@@ -53,8 +53,8 @@ attr_burd1 <- attr_burd %>%
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1) +
   xlab("Year") +
-  ylab("deaths per 100.000") +
-  # ylab("age-adjusted death rate per 100,000") +
+  #ylab("Mortality per 100k") +
+   ylab("age-adjusted mortality per 100k") +
   
   theme(legend.position="bottom",
         legend.box.margin = margin(1, 36, 1, 6))+

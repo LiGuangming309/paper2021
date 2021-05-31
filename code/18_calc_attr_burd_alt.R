@@ -156,9 +156,9 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
   )
 
   paf_epa <- cbind(pm_summ_var,
-    lower = matrixStats::rowQuantiles(paf_epa, probs = 0.25),
+    lower = matrixStats::rowQuantiles(paf_epa, probs = .025),
     mean = rowMeans(paf_epa),
-    upper = matrixStats::rowQuantiles(paf_epa, probs = 0.75),
+    upper = matrixStats::rowQuantiles(paf_epa, probs = .975),
     method = "EPA"
   )
 

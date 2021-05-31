@@ -62,7 +62,7 @@ pm_summ1 <- pm_summ %>% filter(Education == 666)
 g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
-  ylab("μg/m^3") +
+  ylab("population-weighted annual average PM2.5 in μg/m^3") +
   xlim(2000, 2016) +
   theme(
     legend.title = element_blank(),
@@ -79,7 +79,7 @@ pm_summ2 <- pm_summ %>% filter(Education != 666)
 g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
-  ylab("μg/m^3") +
+  ylab("population-weighted annual average PM2.5 in μg/m^3") +
   theme(
     legend.title = element_blank(),
     #legend.position = c(0.4, 0.2), # plot.margin = unit(c(0,1,0,-1), "lines") plot.margin = unit(c(0,-.5,0,.5), "lines"),
@@ -100,7 +100,7 @@ all_burden1 <- all_burden %>% filter(agr_by == "nation" & Education == 666)
 g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
-  ylab("deaths per 100,000") +
+  ylab("all-cause age-adjusted mortality per 100k") +
   xlim(2000, 2016) +
   theme(
     legend.title = element_blank(),
@@ -117,7 +117,7 @@ all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666)
 g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
-  ylab("deaths per 100,000") +
+  ylab("all-cause age-adjusted mortality per 100k") +
   theme(
     legend.title = element_blank(),
     legend.position = c(0.5, 1.03),
