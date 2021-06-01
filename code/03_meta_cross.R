@@ -119,12 +119,12 @@ if (!file.exists(aim_metaDir)) {
   ## add corresponding age_group_id from causes ages
   aim_meta <- aim_meta %>%
     mutate(
-      age_group_id = seq(25, 95, 5)[
+      age_group_id = c(0,seq(25, 95, 5))[
         findInterval(
           max_age,
-          seq(25, 90, 5),
-          left.open =  TRUE
-        ) #+ 1
+          c(0,seq(25, 95, 5)),
+          left.open =  F
+        ) 
       ]
     )
   write.csv(aim_meta, aim_metaDir, row.names = FALSE)

@@ -45,12 +45,12 @@ total_burden <- lapply(files, function(file) {
     filter(Gender.Code == "A" & measure1 == "Deaths" & measure2 == "absolute number" & source == "nvss" &
       Education == 666) %>%
     mutate(
-      age_group_id = seq(25, 95, 5)[
+      age_group_id = c(0,seq(25, 95, 5))[
         findInterval(
           max_age,
-          seq(25, 90, 5),
-          left.open =  TRUE
-        )
+          c(0,seq(25, 95, 5)),
+          left.open =  F
+        ) 
       ]
     ) %>%
     group_by(Year, label_cause, age_group_id) %>%
