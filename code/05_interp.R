@@ -26,7 +26,7 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2003
   #dataDir <- "/Users/default/Desktop/paper2021/data"
   #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
@@ -355,8 +355,8 @@ apply(states, 1, function(state) {
       comp4 <- comp4 %>%
         mutate(
           inInterval =
-            dplyr::between(pop_sizeYear, pop_size00, pop_size10) ||
-              dplyr::between(pop_sizeYear, pop_size10, pop_size00)
+            (pop_size00 <= pop_sizeYear & pop_sizeYear <= pop_size10) |
+            (pop_size10 <= pop_sizeYear & pop_sizeYear <= pop_size00) 
         )
 
       expect_true(all(comp4$inInterval))

@@ -30,17 +30,20 @@ summaryDir <- args[7]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog/"
-  #pm_summDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/"
-  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog/"
+  pm_summDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
+
+#intense computation
+if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv() %>% select(NAME, STATEFP)
 
@@ -85,9 +88,10 @@ if(!file.exists(pm_summDir)){
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pm_summ$Region <- sapply(pm_summ$Region , function(x) rindreplace1[[x]])
   
+  print(pm_summ$Education %>% unique)
   rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
                            c(1:7, 666))
-  pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
+  #pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
   
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pm_summ$Gender.Code <- sapply(pm_summ$Gender.Code , function(x) rindreplace3[[x]])
@@ -138,9 +142,10 @@ if(!file.exists(pop_summaryDir)){
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pop_summary$Region <- sapply(pop_summary$Region , function(x) rindreplace1[[x]])
   
+  print(pop_summary$Education %>% unique)
   rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
                            c(1:7, 666))
-  pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
+  #pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
   
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pop_summary$Gender.Code <- sapply(pop_summary$Gender.Code , function(x) rindreplace3[[x]])

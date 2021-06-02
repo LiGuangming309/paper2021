@@ -33,18 +33,18 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2009
   agr_by <- "nation"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  # exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  # cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
 }
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
@@ -193,7 +193,7 @@ if (agr_by != "county") {
           })
         expect_false(any(is.na(cens_agr)))
       })
-
+    
       # add region
       cens_agr[, agr_by] <- region
 

@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_bys <- c("nation","STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_bys <- c("STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -149,8 +149,8 @@ figure.script <- file.path(code.dir, "22_figure1.R")
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
- years <- c(2000, 2010, 2001:2009, 2011:2016)
-# years <- c(2000:2004)
+# years <- c(2000, 2010, 2001:2009, 2011:2016)
+ years <- c(2000:2004)
 # years <- c(2016)
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -161,7 +161,7 @@ for (agr_by in agr_bys) {
         tmp.dir, # 3
         exp.dir, # 4
         trac.dir, # 5
-        exp.rr.dir, # 6
+        exp.rr.dir, # 6 
         trac.exp.dir, # 7
         dem.dir, # 8
         dem.agr.dir, # 9
@@ -175,26 +175,26 @@ for (agr_by in agr_bys) {
         total.burden.parsed2.dir, #17
         attr.burden.dir # 18
       )
-      # runscript(script = download.meta.script, args = args)
+       runscript(script = download.meta.script, args = args)
        runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
-       # runscript(script = download.cens.script, args = args)
+        runscript(script = download.cens.script, args = args)
        } else{
-       #  runscript(script = interp.script, args = args)
+         runscript(script = interp.script, args = args)
        }
        
       # runscript(script = download.other.script, args = args)
       # runscript(script=assignTract.script, args = args)
       # runscript(script = assignTractAKHI.script, args = args)
-      #  runscript(script = cens_agr.script, args = args)
-      #  runscript(script = paf.script, args = args)
+        runscript(script = cens_agr.script, args = args)
+        runscript(script = paf.script, args = args)
       if (source == "wonder") {
        # runscript(script = read.total.burden.script, args = args)
       } else if (source == "nvss") {
       #   runscript(script = read.nvs.findrepl.script, args = args)
       #  runscript(script = read.total.burden.nvs.script, args = args)
       }
-      #runscript(script=pop.summary.script, args = args)
+      #runscript(script=pop.summary.scr  ipt, args = args)
       #runscript(script=pop.summary.educ.script, args = args)
       #runscript(script = add.rate.tot.burd, args = args)
       #runscript(script = calc.attr.burd.script, args = args)
@@ -214,10 +214,10 @@ for (agr_by in agr_bys) {
     summary.dir, # 7
     figures.dir #8
   )   
-  
+    
 # runscript(script = summary.script, args = args)
- # runscript(script = summary.other.script, args = args)
-#runscript(script = figure.script, args = args)
+  runscript(script = summary.other.script, args = args)
+runscript(script = figure.script, args = args)
 
   
 
