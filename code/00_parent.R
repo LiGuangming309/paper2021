@@ -219,7 +219,7 @@ for (agr_by in agr_bys) {
   )   
     
 # runscript(script = summary.script, args = args)
-#  runscript(script = summary.other.script, args = args)
+  runscript(script = summary.other.script, args = args)
 runscript(script = figure1.script, args = args)
 runscript(script = figure2.script, args = args)
 runscript(script = figure3.script, args = args)
