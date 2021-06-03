@@ -25,8 +25,11 @@ options(scipen = 10000)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
 
+tmpDir <- args[1]
+totalBurdenDir <- args[5]
 summaryDir <- args[7]
 figuresDir <- args[8]
+exp_rrDir <- args[9]
 
 # TODO delete
 if (rlang::is_empty(args)) {
