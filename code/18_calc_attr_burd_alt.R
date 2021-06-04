@@ -108,6 +108,9 @@ attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_
     return(Y)
   }
 
+  #https://github.com/mszyszkowicz/DataGEMM
+  #GEMM Calculator (PNAS)_ab.xlsx, GEMM fit parameters, se theta
+  #compare with Fig S7 in Supporting information
   thetas <- c(0.1430 - 2 * 0.01807, 0.1430, 0.1430 + 2 * 0.01807)
   paf_burnett <- pm_summ_pop %*% outer(
     colnames(pm_summ_pop) %>% as.numeric(),

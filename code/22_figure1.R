@@ -72,7 +72,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = FALSE))
-#ggsave(file.path(figuresDir, "figure1a.png"), g1)
+#ggsave(file.path(figuresDir, "figure1a.svg"), g1)
 #https://ggplot2.tidyverse.org/reference/position_dodge.html
 
 pm_summ2 <- pm_summ %>% filter(Education != 666)
@@ -88,10 +88,10 @@ g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure1b.png"), g2)
+#ggsave(file.path(figuresDir, "figure1b.svg"), g2)
 
 g3 <- ggarrange(g1, g2, ncol = 1, labels = "AUTO", align = "v")
-ggsave(file.path(figuresDir, "figure1.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure1.svg"), g3, height = 9, width = 8)
 
 # https://stackoverflow.com/questions/64757410/shared-x-and-y-axis-labels-ggplot2-with-ggarrange
 rm(g1, g2,g3, pm_summ1, pm_summ2)
@@ -110,7 +110,7 @@ g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
     plot.margin = unit(c(20,20,20,20),"points")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure2a.png"), g1)
+#ggsave(file.path(figuresDir, "figure2a.svg"), g1)
 #g1$layout$clip[g1$layout$name == "panel"] <- "off"
 
 all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666)
@@ -125,7 +125,7 @@ g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure2b.png"), g2)
+#ggsave(file.path(figuresDir, "figure2b.svg"), g2)
 
 g3 <- ggarrange(g1,NULL, g2, 
                 ncol = 1, 
@@ -134,7 +134,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 align = "v"
                 )
 
-ggsave(file.path(figuresDir, "figure2.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure2.svg"), g3, height = 9, width = 8)
 
 rm(all_burden1, all_burden2, g1, g2, g3)
 ## -- figure 3, attributable burden----
@@ -172,7 +172,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure3.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure3.svg"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2, g3)
 ## -- figure 4, prop. of overall burden----
 attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "prop. of overall burden")
@@ -209,7 +209,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure4.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure4.svg"), g3, height = 9, width = 8)
 
 rm(attr_burd1, attr_burd2, g1, g2) #TODO
 ## ---figure 5, differences by state ---
@@ -266,6 +266,6 @@ g3 <- ggarrange(g1, g2,
   labels = "AUTO",
   align = "h"
 )
-ggsave(file.path(figuresDir, "figure5.png"), g3)
+ggsave(file.path(figuresDir, "figure5.svg"), g3)
 
 rm(all_burden1, attr_burd1, g1, g2, g3)

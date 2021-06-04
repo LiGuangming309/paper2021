@@ -65,4 +65,4 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   #scales='free_x', space='free_x', 
   facet_wrap(~Region) 
 
-ggsave(file.path(figuresDir, "app_figure1.png"), g1, height = 9)
+ggsave(file.path(figuresDir, "app_figure1.png"), g1, height = 9, width = 8)

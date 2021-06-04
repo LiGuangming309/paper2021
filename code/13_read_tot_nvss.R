@@ -335,7 +335,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   # https://www.cdc.gov/nchs/data/series/sr_02/sr02_151.pdf
 
   #https://www.jstor.org/stable/pdf/3702065.pdf?refreqid=excelsior%3Aee6b8a77d645e5a84cb2e35b6ceabfd8 
-  total_burden <- total_burden %>% filter(Education == 666 | max_age <= 64)
+  #total_burden <- total_burden %>% filter(Education == 666 | max_age <= 64)
 
   #---write csv---
   test_that("no na end read tot nvss", expect_false(any(is.na(total_burden))))

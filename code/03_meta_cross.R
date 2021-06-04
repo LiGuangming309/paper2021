@@ -80,7 +80,7 @@ if (!file.exists(aim_metaDir)) {
   aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = 1:7)
   aim_meta2 <- merge(data.frame(Year = 2009:2016), aim_meta2)
   aim_meta2 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta2)
-  # Ignoring 18-25 and 65+!
+  # Ignoring 18-25 
   aim_meta2 <- merge(aim_meta2, data.frame(
     min_age = c(25,35,45, 65),
     max_age = c(34,44,64, 150)
