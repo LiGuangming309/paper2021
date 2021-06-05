@@ -129,8 +129,8 @@ if(!file.exists(totalBurdenParsed2Dir)){
   standartpopulation <- read_excel(file.path(dataDir, "standartpopulation.xlsx"))
   full_stand_popsize <- sum(standartpopulation$standard_popsize)
 
+  #make ages of total burden and population compatible 
   total_burden_age_adj <- total_burden %>% left_join(pop_summary, by = setdiff(colnames(pop_summary), c("min_age","max_age","source2","Population")))
-  
   #group by new age
   #case 1 age group population inside age group total burden
   total_burden_age_adj1 <- total_burden_age_adj %>%
@@ -160,7 +160,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
   total_burden_age_adj <- rbind(total_burden_age_adj1, total_burden_age_adj2) %>% distinct
   rm(total_burden_age_adj1, total_burden_age_adj2)
   
-  #
+  #make ages compatible with standard population
   total_burden_age_adj <- crossing(total_burden_age_adj, standartpopulation)
   
   total_burden_age_adj1 <- total_burden_age_adj %>%
@@ -196,7 +196,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
     dplyr::mutate(
       value = value * (standard_popsize/ Population) * (100000 / full_stand_popsize), 
       measure2 = "age-adjusted rate",
-      Population = NULL
+      Population = NULL, standard_popsize = NULL
     )
   
   total_burden <- rbind(total_burden, total_burden_crude, total_burden_age_adj)
