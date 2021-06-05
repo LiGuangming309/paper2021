@@ -150,7 +150,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1, show.legend = FALSE)
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.1, show.legend = FALSE)
 
 attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & measure3 == "value")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
@@ -164,7 +164,7 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1, show.legend = FALSE)
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.1, show.legend = FALSE)
 
 g3 <- ggarrange(g1,NULL, g2, 
                 ncol = 1, 
@@ -187,7 +187,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.08, show.legend = FALSE)
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.08, show.legend = FALSE)
 
 attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & measure3 == "prop. of overall burden")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
@@ -201,7 +201,7 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))  +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.08, show.legend = FALSE)
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.08, show.legend = FALSE)
 
 g3 <- ggarrange(g1,NULL, g2, 
                 ncol = 1, 

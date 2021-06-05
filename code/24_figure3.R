@@ -217,7 +217,7 @@ data <- rbind(
 
 g1 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
   geom_line(size = 1.5) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.2, show.legend = FALSE)+
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.2, show.legend = FALSE)+
   #geom_dl(aes(label = method), method = list(dl.combine("last.points")), cex = 0.8) 
   #geom_text(aes(label = method), position = "dodge")
   #geom_text("a")
@@ -231,7 +231,7 @@ g1
 #
 g2 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
   geom_line(size = 1.5) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.2, show.legend = FALSE)+
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.2, show.legend = FALSE)+
   annotate("text", x = 26, y = 123, label = "Burnett", size = 8, colour = hue_pal()(3)[1])+
   annotate("text", x = 26, y = 255, label = "EPA", size = 8, colour = hue_pal()(3)[2])+
   annotate("text", x = 26, y = 55, label = "GBD", size = 8, colour = hue_pal()(3)[3])+

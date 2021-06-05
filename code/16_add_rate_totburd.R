@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <-args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2016
   agr_by <- "nation"
   source <- "nvss"
   
@@ -92,6 +92,7 @@ if(!file.exists(totalBurdenParsed2Dir)){
     read.csv() %>%
     filter(Year == year & Education != 666)
   pop_summary <- rbind(pop_summary1, pop_summary2)
+  pop_summary$source2 <- NULL
   rm(pop_summary1, pop_summary2)
   #------measure 2: absolute number, crude rate and age-standartised rates----- 
   # absolute number
@@ -126,13 +127,9 @@ if(!file.exists(totalBurdenParsed2Dir)){
   # age-standartised rates
   # see https://www.cdc.gov/nchs/data/nvsr/nvsr57/nvsr57_14.pdf, page 125 for more information
   standartpopulation <- read_excel(file.path(dataDir, "standartpopulation.xlsx"))
-  full_stand_popsize <- sum(standartpopulation$popsize)
-  
-  pop_summary_agr <- pop_summary %>% 
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("source2","Population"))))) %>% 
-    summarise(Population = sum(Population))
+  full_stand_popsize <- sum(standartpopulation$standard_popsize)
 
-  total_burden_age_adj <- total_burden %>% left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), c("min_age","max_age","source2","Population")))
+  total_burden_age_adj <- total_burden %>% left_join(pop_summary, by = setdiff(colnames(pop_summary), c("min_age","max_age","source2","Population")))
   
   #group by new age
   #case 1 age group population inside age group total burden
@@ -159,8 +156,36 @@ if(!file.exists(totalBurdenParsed2Dir)){
     summarise(value = sum(value)) %>%
     ungroup()
   
-  #test_that("population min_age and max_age compatible with total burden",expect_equal(0,nrow(total_burden_age_adj2)))
-  #TODO entcomment
+  #combine cases
+  total_burden_age_adj <- rbind(total_burden_age_adj1, total_burden_age_adj2) %>% distinct
+  rm(total_burden_age_adj1, total_burden_age_adj2)
+  
+  #
+  total_burden_age_adj <- crossing(total_burden_age_adj, standartpopulation)
+  
+  total_burden_age_adj1 <- total_burden_age_adj %>%
+    filter(min_age <= standard_min_age & standard_max_age <= max_age) %>% 
+    mutate(
+      min_age = pmin(min_age, standard_min_age), max_age = pmax(max_age, standard_max_age),
+      standard_min_age = NULL, standard_max_age = NULL
+    ) 
+  
+  total_burden_age_adj1 <- total_burden_age_adj1 %>%
+    group_by_at(vars(all_of(setdiff(colnames(total_burden_age_adj1),"standard_popsize")))) %>% 
+    summarise(standard_popsize = sum(standard_popsize)) %>%
+    ungroup()
+  
+  total_burden_age_adj2 <- total_burden_age_adj %>%
+    filter(standard_min_age < min_age & max_age < standard_max_age) %>% 
+    mutate(
+      min_age = pmin(min_age, standard_min_age), max_age = pmax(max_age, standard_max_age),
+      standard_min_age = NULL, standard_max_age = NULL
+    ) 
+  
+  total_burden_age_adj2 <- total_burden_age_adj2 %>%
+    group_by_at(vars(all_of(setdiff(colnames(total_burden_age_adj2),"value")))) %>% #Population
+    summarise(value = sum(value)) %>%
+    ungroup()
   
   #combine cases
   total_burden_age_adj <- rbind(total_burden_age_adj1, total_burden_age_adj2) %>% distinct
@@ -169,13 +194,13 @@ if(!file.exists(totalBurdenParsed2Dir)){
   #calculate age-adjusted rate
   total_burden_age_adj <- total_burden_age_adj %>%
     dplyr::mutate(
-      value = value * (standartpopulation$popsize[findInterval(max_age, standartpopulation$max_age)] / Population) * (100000 / full_stand_popsize), # TODO max_age?
+      value = value * (standard_popsize/ Population) * (100000 / full_stand_popsize), 
       measure2 = "age-adjusted rate",
       Population = NULL
     )
   
   total_burden <- rbind(total_burden, total_burden_crude, total_burden_age_adj)
-  rm(total_burden_crude, total_burden_age_adj, standartpopulation,  full_stand_popsize,pop_summary_agr,pop_summary)
+  rm(total_burden_crude, total_burden_age_adj, standartpopulation,  full_stand_popsize,pop_summary)
   ##---aggregate total burden by ages available in PAF file------
   pafDir <- file.path(pafDir, agr_by, year)
   paf <- file.path(pafDir, list.files(pafDir)[[1]]) %>% read.csv

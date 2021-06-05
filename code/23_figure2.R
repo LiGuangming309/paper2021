@@ -60,9 +60,9 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
         legend.box.margin = margin(1, 36, 1, 6))+
   #theme(legend.position=c(0.1, 0.1))+
   guides(col = guide_legend(nrow = 2, byrow = TRUE)) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.1, show.legend = FALSE) +
   #facet_grid(~Region,ncol = 3, labeller=label_wrap_gen(width = 10, multi_line = TRUE)) 
   #scales='free_x', space='free_x', 
   facet_wrap(~Region) 
 
-ggsave(file.path(figuresDir, "app_figure1.png"), g1, height = 9, width = 8)
+ggsave(file.path(figuresDir, "app_figure1.svg"), g1, height = 9, width = 8)
