@@ -132,8 +132,38 @@ if (!file.exists(attrBurdenDir)) {
   ## ----- join total_burden and pafs-----
   tic("calc_attr_burd: 2 joined PAFs and total burden data")
   
+  paf_age <- file.path(pafDir, agr_by, year, list.files(pafDir)[[1]]) %>% read.csv()
+  paf_age <- paf_age %>%
+    select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>%
+    distinct() %>%
+    arrange(min_age, max_age)
+  
+  total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
+  
+  test_that("paf min_age and max_age compatible with total burden", {
+    total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    total_burden_test2 <- total_burden %>% anti_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
+    if (year <= 2008) total_burden_test2 <- total_burden_test2 %>% filter(Education == 666)
+    expect_equal(0, nrow(total_burden_test))
+    expect_equal(0, nrow(total_burden_test2))
+  })
+  
+  # case 1: total_burden inside pad
+  # good
+  total_burden <- total_burden %>%
+    filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
+    mutate(
+      min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
+      min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL
+    )
+  
+  total_burden <- total_burden %>%
+    group_by_at(vars(all_of(setdiff(colnames(total_burden), "value")))) %>%
+    summarise(value = sum(value)) %>%
+    ungroup()
+  
   burden_paf <- inner_join(total_burden, pafs, by = join_variables)
-  rm(pafs)
+  rm(pafs, paf_age)
   toc()
   #tic("calc_attr_burd: 3 filtered wrong age combinations")
   #test_that("paf min_age and max_age compatible with total burden",{
