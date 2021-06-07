@@ -120,7 +120,7 @@ g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
   ylab("all-cause age-adjusted mortality per 100k") +
   theme(
     legend.title = element_blank(),
-    legend.position = c(0.5, 1.03),
+    legend.position = c(0.5, 1.09),
     legend.text = element_text(size = 9),
     legend.background = element_rect(fill = "transparent")
   ) +
