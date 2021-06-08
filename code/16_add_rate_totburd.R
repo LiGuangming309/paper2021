@@ -132,9 +132,13 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   total_burden_age_adj <- crossing(pop_summary, standartpopulation)
   total_burden_age_adj <- total_burden_age_adj %>%
     mutate(
-      largerInterval = 0,
-      largerInterval = ifelse(min_age <= standard_min_age & standard_max_age <= max_age, 1, largerInterval),
-      largerInterval = ifelse(standard_min_age <= min_age & max_age <= standard_max_age, 2, largerInterval),
+      #largerInterval = 0,
+      #largerInterval = ifelse(min_age <= standard_min_age & standard_max_age <= max_age, 1, largerInterval),
+      #largerInterval = ifelse(standard_min_age <= min_age & max_age <= standard_max_age, 2, largerInterval),
+      largerInterval = case_when(
+        min_age <= standard_min_age & standard_max_age <= max_age ~ 1,
+        standard_min_age <= min_age & max_age <= standard_max_age ~ 2
+      ),
       min_age = pmin(min_age, standard_min_age), max_age = pmax(max_age, standard_max_age),
       standard_min_age = NULL, standard_max_age = NULL
     )
