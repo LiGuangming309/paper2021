@@ -50,7 +50,8 @@ all_burden <- all_burden %>%
     source == "National Vital Statistics System" & attr == "overall")
 
 attr_burd <- attr_burd %>%
-  filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == "burnett" & attr == "attributable" &
+  filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & 
+           method == "burnett" & attr == "attributable" &
     source == "National Vital Statistics System")
 
 # http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/
@@ -211,8 +212,46 @@ g3 <- ggarrange(g1,NULL, g2,
 )
 ggsave(file.path(figuresDir, "figure4.svg"), g3, height = 9, width = 8)
 
-rm(attr_burd1, attr_burd2, g1, g2) #TODO
-## ---figure 5, differences by state ---
+rm(attr_burd1, attr_burd2, g1, g2) 
+##---figure 5, prop of difference----
+
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "proportion of disparity to White, Not Hispanic attributable" #&
+                                     #Ethnicity %in% c("Black or African American")
+                                     )
+g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
+  geom_line(size = 1.5) +
+  xlab("Year") +
+  ylab("%") +
+  theme(
+    legend.title = element_blank(),
+    legend.position = c(0.72, 0.9),
+    legend.text = element_text(size = 9),
+    legend.background = element_rect(fill = "transparent")
+  ) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE)) 
+
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & measure3 == "proportion of disparity to Graduate or professional degree attributable")
+g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
+  geom_line(size = 1.5) +
+  xlab("Year") +
+  ylab("%") +
+  theme(
+    legend.title = element_blank(),
+    legend.position = c(0.69, 1.03),
+    legend.text = element_text(size = 9),
+    legend.background = element_rect(fill = "transparent")
+  ) +
+  guides(col = guide_legend(nrow = 3, byrow = TRUE)) 
+
+g3 <- ggarrange(g1,NULL, g2, 
+                ncol = 1, 
+                heights = c(1, 0.1, 1),
+                labels = c("A", "", "B"),
+                align = "v"
+)
+ggsave(file.path(figuresDir, "figure5.svg"), g3, height = 9, width = 8)
+rm(attr_burd1, attr_burd2, g1, g2) 
+## ---figure 6, differences by state ---
 all_burden1 <- all_burden %>%
   filter(Year == 2000 &
     Ethnicity %in% c("White, Not Hispanic or Latino", "Black or African American") &
@@ -266,6 +305,6 @@ g3 <- ggarrange(g1, g2,
   labels = "AUTO",
   align = "h"
 )
-ggsave(file.path(figuresDir, "figure5.svg"), g3)
+ggsave(file.path(figuresDir, "figure6.svg"), g3)
 
 rm(all_burden1, attr_burd1, g1, g2, g3)
