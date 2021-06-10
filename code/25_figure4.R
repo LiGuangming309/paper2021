@@ -89,7 +89,10 @@ g1 <- ggplot(joined_all_attr, aes(x = overall_value, y = mean)) +
     segment.color = "grey50"
   ) +  
   scale_colour_manual(values=group.colors)
-g1
+
+#https://stackoverflow.com/questions/8545035/scatterplot-with-marginal-histograms-in-ggplot2
+#https://cran.r-project.org/web/packages/ggExtra/readme/README.html
+ggMarginal(g1, groupColour = TRUE, groupFill = TRUE)
 
 ggsave(file.path(figuresDir, "figure7.svg"), g1,
   height = 5, width = 8
