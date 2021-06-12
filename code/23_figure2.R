@@ -41,14 +41,14 @@ attr_burd <- rbind(
 
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == "burnett" & attr == "attributable" &
-    source == "National Vital Statistics System")
+    source == "National Vital Statistics System" )
 
 ##---plot---
 attr_burd1 <- attr_burd %>%
   filter(
     measure3 == "value" & Education == 666 &
       Region %in% c("California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina")
-  )
+       )
 
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1) +
@@ -60,7 +60,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
         legend.box.margin = margin(1, 36, 1, 6))+
   #theme(legend.position=c(0.1, 0.1))+
   guides(col = guide_legend(nrow = 2, byrow = TRUE)) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.1, show.legend = FALSE) +
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE) +
   #facet_grid(~Region,ncol = 3, labeller=label_wrap_gen(width = 10, multi_line = TRUE)) 
   #scales='free_x', space='free_x', 
   facet_wrap(~Region) 

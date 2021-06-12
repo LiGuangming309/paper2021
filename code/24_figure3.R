@@ -217,7 +217,7 @@ data <- rbind(
 
 g1 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
   geom_line(size = 1.5) +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.2, show.legend = FALSE)+
+  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE)+
   #geom_dl(aes(label = method), method = list(dl.combine("last.points")), cex = 0.8) 
   #geom_text(aes(label = method), position = "dodge")
   #geom_text("a")

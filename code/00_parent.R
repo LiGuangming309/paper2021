@@ -14,7 +14,7 @@ rm(list = ls(all = TRUE))
 packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
   "MALDIquant", "plyr", "RCurl", "readxl","triangle", "sf", "sp", "stringr", "testthat", "tictoc","truncnorm",
-  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr"
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr", "ggExtra"
 )
 
 
@@ -147,6 +147,7 @@ summary.other.script <- file.path(code.dir, "20_summary_other.R")
 figure1.script <- file.path(code.dir, "22_figure1.R")
 figure2.script <- file.path(code.dir, "23_figure2.R")
 figure3.script <- file.path(code.dir, "24_figure3.R")
+figure4.script <- file.path(code.dir, "25_figure4.R")
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
@@ -219,6 +220,7 @@ for (agr_by in agr_bys) {
 runscript(script = figure1.script, args = args)
 runscript(script = figure2.script, args = args)
 runscript(script = figure3.script, args = args)
+runscript(script = figure4.script, args = args)
 
   
 
