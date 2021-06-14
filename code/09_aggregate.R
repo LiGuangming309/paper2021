@@ -33,18 +33,18 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2000
   agr_by <- "nation"
 
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   #exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   #cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
 }
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
@@ -83,6 +83,11 @@ apply(states, 1, function(state) {
     # read pm exposure data by tract
     exp_tracData <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv")) %>%
       fread()
+    
+    #stylized scenarios
+    exp_tracData <- rbind(exp_tracData %>% mutate(scenario = "A"),
+                          exp_tracData %>% mutate(scenario = "B",
+                                                  pm = pmin(pm, 12)))
 
     # tigris does not provide all tract boundaries
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID") %>% filter(pop_size > 0)
@@ -106,24 +111,23 @@ apply(states, 1, function(state) {
       exp_tracData,
       by = "GEO_ID"
     ) %>%
-      group_by(state, county, variable, pm) %>%
+      group_by(state, county, variable,scenario, pm) %>%
       # calculate number of persons of exposed to particulare level of exposure,
       # in particulare county by sex, age group, ethinicity, hispanic origin
       summarise(pop_size = sum(pop_size)) %>%
       filter(pop_size != 0)
 
     cens_agr <- cens_agr %>%
-      group_by(state, county, variable) %>%
+      group_by(state, county, variable, scenario) %>%
       mutate(prop = pop_size / sum(pop_size)) %>%
       ungroup()
-
 
     # test, check
     test_that("06_aggregate county", {
       expect_false(any(is.na(cens_agr)))
       expect_false(any(is.na(trac_censData)))
       cens_agr %>%
-        group_by(state, county, variable) %>%
+        group_by(state, county, variable, scenario) %>%
         summarise(sum_prop = sum(prop)) %>%
         apply(1, function(row) {
           expect_equal(1, row[["sum_prop"]] %>% as.numeric())
@@ -137,11 +141,11 @@ apply(states, 1, function(state) {
         summarise(pop_size = sum(pop_size))
 
       comp2 <- cens_agr %>%
-        group_by(state, county, variable) %>%
+        group_by(state, county, variable, scenario) %>%
         summarise(pop_size = sum(pop_size)) %>%
         full_join(comp1, by = c("state", "county", "variable"))
 
-      comp2[is.na(comp2)] <- 0
+      comp2$pop_size.x[is.na(comp2$pop_size.x)] <- 0
 
       expect_equal(comp2$pop_size.x, comp2$pop_size.y)
       if (any(comp2$pop_size.x != comp2$pop_size.y)) browser()
@@ -174,19 +178,19 @@ if (agr_by != "county") {
       }) %>%
         rbindlist() %>%
         as.data.frame() %>%
-        group_by(variable, pm) %>%
+        group_by(variable, scenario, pm) %>%
         summarise(pop_size = sum(pop_size))
 
       # add proportions
       cens_agr <- cens_agr %>%
-        group_by(variable) %>%
+        group_by(variable, scenario) %>%
         mutate(prop = pop_size / sum(pop_size)) %>%
         ungroup()
 
       # test, check
       test_that("06_aggregate agr_by", {
         cens_agr %>%
-          group_by(variable) %>%
+          group_by(variable, scenario) %>%
           summarise(sum_prop = sum(prop)) %>%
           apply(1, function(row) {
             expect_equal(1, row[["sum_prop"]] %>% as.numeric())

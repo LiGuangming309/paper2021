@@ -32,7 +32,7 @@ pafDir <- args[11]
 
 # TODO löschen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2000
   agr_by <-"nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -43,8 +43,13 @@ if (rlang::is_empty(args)) {
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
 }
 
-if (year > 2004 & agr_by == "STATEFP") {
-  print(paste("can not aggraget on state level in", year))
+if (year > 2004 & agr_by != "nation") {
+  print(paste("can not aggregate subnational in", year))
+  quit()
+}
+
+if (agr_by == "county") {
+  print(paste("GBD PAF not updated for county"))
   quit()
 }
 
@@ -79,19 +84,19 @@ for (region in regions) {
     cens_agr <- paste0("cens_agr_", toString(year), "_", region, ".csv") %>%
       file.path(cens_agrDir, .) %>%
       fread() %>%
-      select(variable, pm, prop)
+      select(variable, scenario, pm, prop)
 
     # add column, if something from pm_levels missing
-    fill_values <- merge(
-      cens_agr$variable %>% unique(),
-      pm_levels
-    ) %>%
-      dplyr::rename(
-        variable = x,
-        pm = y
-      )
-    fill_values$prop <- 0
-    cens_agr <- rbind(cens_agr, fill_values)
+   # fill_values <- merge(
+    #  cens_agr$variable %>% unique(),
+    #  pm_levels
+   # ) %>%
+    #  dplyr::rename(
+    #    variable = x,
+    #    pm = y
+    #  )
+    #fill_values$prop <- 0
+    #cens_agr <- rbind(cens_agr, fill_values)
 
     # make wider
     cens_agr <- cens_agr %>%
@@ -105,13 +110,14 @@ for (region in regions) {
       )
     # as matrix
     matrix_cens_agr <- cens_agr %>%
-      subset(select = -variable) %>%
+      subset(select = -c(variable, scenario))%>%
       as.matrix()
-    rownames(matrix_cens_agr) <- cens_agr$variable
+    rownames(matrix_cens_agr) <- paste(cens_agr$variable,cens_agr$scenario, sep = "-")
 
     censMetaAll <- paste0("cens_meta_", toString(year), ".csv") %>%
       file.path(censDir, "meta", .) %>%
       fread()
+
 
     # loop over all exp_rr curves
     pafs <- apply(causes_ages, 1, function(cause_age) {
@@ -143,7 +149,7 @@ for (region in regions) {
         return() # TODO
       }
       # subset rows with right age
-      matrix_cens_agr_sub <- matrix_cens_agr %>% subset(rownames(.) %in% censMeta$variable)
+      matrix_cens_agr_sub <- matrix_cens_agr %>% subset(gsub("-.*","",rownames(.)) %in% censMeta$variable)
 
       # apply formular sum(prop * (rr-1))/(1+sum(prop * (rr-1)))
       result <- matrix_cens_agr_sub %*% (exp_rr - 1)
