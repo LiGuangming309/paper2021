@@ -85,7 +85,9 @@ apply(states, 1, function(state) {
       fread()
     
     #stylized scenarios
-    exp_tracData <- rbind(exp_tracData %>% mutate(scenario = "A"),
+    exp_tracData <- exp_tracData %>% mutate(scenario = "A")
+    if(agr_by == "nation")
+    exp_tracData <- rbind(exp_tracData,
                           exp_tracData %>% mutate(scenario = "B",
                                                   pm = pmin(pm, 12)))
 
