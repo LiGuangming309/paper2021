@@ -178,7 +178,7 @@ for (agr_by in agr_bys) {
         total.burden.parsed2.dir, #17
         attr.burden.dir # 18
       )
-      # runscript(script = download.meta.script, args = args)
+       runscript(script = download.meta.script, args = args)
        runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
         runscript(script = download.cens.script, args = args)
