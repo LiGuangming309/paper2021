@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "tidyverse", "tictoc", "testthat", "MALDIquant", "ggplot2")
+packages <- c("dplyr", "magrittr", "data.table", "tidyr","tidyverse", "tictoc", "testthat", "MALDIquant", "ggplot2")
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) {
@@ -87,16 +87,13 @@ for (region in regions) {
       select(variable, scenario, pm, prop)
 
     # add column, if something from pm_levels missing
-   # fill_values <- merge(
-    #  cens_agr$variable %>% unique(),
-    #  pm_levels
-   # ) %>%
-    #  dplyr::rename(
-    #    variable = x,
-    #    pm = y
-    #  )
-    #fill_values$prop <- 0
-    #cens_agr <- rbind(cens_agr, fill_values)
+    fill_values <- crossing(
+      variable = cens_agr$variable %>% unique(),
+      scenario = cens_agr$scenario %>% unique(),
+      pm = pm_levels
+    ) 
+    fill_values$prop <- 0
+    cens_agr <- rbind(cens_agr, fill_values)
 
     # make wider
     cens_agr <- cens_agr %>%
@@ -149,6 +146,7 @@ for (region in regions) {
         return() # TODO
       }
       # subset rows with right age
+
       matrix_cens_agr_sub <- matrix_cens_agr %>% subset(gsub("-.*","",rownames(.)) %in% censMeta$variable)
 
       # apply formular sum(prop * (rr-1))/(1+sum(prop * (rr-1)))
@@ -175,6 +173,10 @@ for (region in regions) {
       toc()
       return(result)
     }) %>% do.call(rbind, .)
+    pafs <- pafs %>% tidyr::separate(variable,
+                                            sep = "-",
+                                            into = c("variable","scenario"))
+    
     census_meta[, agr_by] <- region
 
     pafs <- right_join(census_meta, pafs, by = "variable")
@@ -182,7 +184,7 @@ for (region in regions) {
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))
 
-      pafs_dis <- pafs %>% distinct(label_cause, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
+      pafs_dis <- pafs %>% distinct(label_cause, scenario, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
       
       expect_equal(nrow(pafs_dis), nrow(pafs))
       # TODO löschen

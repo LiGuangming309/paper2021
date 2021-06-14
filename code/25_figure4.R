@@ -41,7 +41,7 @@ attr_burd <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 # filter
 all_burden <- all_burden %>% filter(attr == "overall")
-attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" & measure3 == "value")
+attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" & measure3 == "value" & scenario == "A")
 ###---- population ranking----
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
 pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &

@@ -26,8 +26,10 @@ if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/pape
 
 attrBurden <- rbind(fread(file.path(summaryDir, "attr_burd.csv")), 
                     fread(file.path(summaryDir, "attr_burd_prop.csv")))
+attrBurden <- attrBurden %>% filter(scenario == "A")
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
 pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
+pm_summ <- pm_summ %>% filter(scenario == "A")
 pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
 
 colnames(all_burden)

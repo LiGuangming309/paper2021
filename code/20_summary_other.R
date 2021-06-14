@@ -30,16 +30,16 @@ summaryDir <- args[7]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog/"
-  pm_summDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/"
-  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog/"
+  #pm_summDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/"
+  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -72,11 +72,11 @@ if(!file.exists(pm_summDir)){
   }) %>% rbindlist
   
   pm_summ <- pm_summ %>%
-    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, Education, pm) %>%
+    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, Education, scenario, pm) %>%
     summarise(pop_size = sum(pop_size))
   
   pm_summ <- pm_summ %>%
-    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, Education) %>%
+    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, scenario, Education) %>%
     summarise(mean = weighted.mean(pm, pop_size),
               median = matrixStats::weightedMedian(pm, pop_size))
   

@@ -30,7 +30,7 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "county"
 
   year <- 2000
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -324,7 +324,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     )) %>%
     mutate(Ethnicity = NULL)
 
-  if (agr_by == "STATEFP") total_burden <- total_burden %>% filter(STATEFP != 0)
+  if (agr_by != "nation") total_burden <- total_burden %>% filter(STATEFP != 0)
 
   # Only considering age above 25
   total_burden <- total_burden %>% filter(min_age >= 25)

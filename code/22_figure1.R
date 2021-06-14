@@ -52,13 +52,13 @@ all_burden <- all_burden %>%
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & 
            method == "burnett" & attr == "attributable" &
-    source == "National Vital Statistics System")
+    source == "National Vital Statistics System" & scenario == "A")
 
 # http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/
 # https://rpubs.com/Koundy/71792
 # http://rstudio-pubs-static.s3.amazonaws.com/9575_8a5dc0315e7d48ea94e0fd2546727041.html
 ## --- figure 1, population-weighted mean particular matter exposure---
-pm_summ <- pm_summ %>% filter(agr_by == "nation" & pm_metric == "mean" & Gender.Code == "All genders")
+pm_summ <- pm_summ %>% filter(agr_by == "nation" & pm_metric == "mean" & Gender.Code == "All genders" & scenario == "A")
 pm_summ1 <- pm_summ %>% filter(Education == 666)
 g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
   geom_line(size = 1.5) +

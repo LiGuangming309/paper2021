@@ -51,8 +51,9 @@ if (agr_by != "nation" & source == "nvss" & year > 2004) {
   quit()
 }
 
+attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
-attrBurdenDir <- file.path(attrBurdenDir, agr_by, source, paste0("attr_burd_alt_", toString(year), ".csv"))
+attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_alt_", toString(year), ".csv"))
 # http://web.stanford.edu/~mburke/papers/burke_et_al_wildfire_pnas_2021.pdf
 # https://github.com/burke-lab/wildfire-map-public/blob/main/work/14_figure3.R
 
@@ -78,10 +79,10 @@ if (!file.exists(attrBurdenDir)) {
   pm_summ <- pm_summ %>% mutate(min_age = min(min_age), max_age = max(max_age))
     
   pm_summ <- pm_summ %>%
-    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "pm", "min_age", "max_age"))) %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","scenario", "pm", "min_age", "max_age"))) %>%
     dplyr::summarize(pop_size = sum(pop_size))
 
-  rm(meta)
+  rm(meta, files)
   ## --- summarize pm exposure ----
   pm_summ <- pm_summ %>%
     pivot_wider(
@@ -91,8 +92,8 @@ if (!file.exists(attrBurdenDir)) {
     ) %>%
     as.data.frame()
 
-  pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")]
-  pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age")])
+  pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age", "scenario")]
+  pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age", "scenario")])
   pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
 
   ## ---paf calculations----
