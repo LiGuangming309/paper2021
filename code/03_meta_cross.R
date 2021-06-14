@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2011
+  year <- 2000
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
@@ -162,13 +162,28 @@ if (!file.exists(cross_bridgeDir)) {
     Gender.Code2 = c("M", "F", "M", "F")
   )
 
+  replaces5<- data.frame(
+    Race = c("All", "All", "All", "All", "All"),
+    Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN")
+  )
+  
   cross_bridge <- aim_meta %>%
-    left_join(replaces1, by = "Race") %>%
     left_join(replaces2, by = "Hispanic.Origin") %>%
     left_join(replaces3, by = "Education") %>%
-    left_join(replaces4, by = "Gender.Code") %>%
-    left_join(downloaded_meta, by = c("Year", "Gender.Code2", "Race2", "Hispanic.Origin2", "Education2"))
+    left_join(replaces4, by = "Gender.Code") 
+  
+  cross_bridge1 <- cross_bridge %>%
+    filter(!(Race == "All" & Hispanic.Origin == "All Origins" & Education == "666")) %>%
+    left_join(replaces1, by = "Race") 
+  
+  cross_bridge2 <- cross_bridge %>%
+    filter((Race == "All" & Hispanic.Origin == "All Origins" & Education == "666")) %>%
+    left_join(replaces5, by = "Race") 
 
+  cross_bridge <- rbind(cross_bridge1, cross_bridge2) %>%
+    left_join(downloaded_meta, by = c("Year", "Gender.Code2", "Race2", "Hispanic.Origin2", "Education2"))  
+  
+  rm(cross_bridge1, cross_bridge2)  
   test_that("basic checks", {
     new_DF <- cross_bridge[rowSums(is.na(cross_bridge)) > 0, c("Year", "Gender.Code2", "Race2", "Hispanic.Origin2", "Education2")] # TODO
     expect_equal(0, nrow(new_DF))
