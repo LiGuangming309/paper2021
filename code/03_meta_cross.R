@@ -48,11 +48,11 @@ dir.create(cross_bridgeDir, recursive = T, showWarnings = F)
 aim_metaDir <- file.path(metaDir, paste0("cens_meta_", year, ".csv"))
 if (!file.exists(aim_metaDir)) {
   aim_meta1 <- data.frame(
-    Race = c("White", "White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American"),
-    Hispanic.Origin = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins", "All Origins", "All Origins"),
+    Race = c("White", "White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American", "All"),
+    Hispanic.Origin = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins", "All Origins", "All Origins", "All Origins"),
     Education = 666
   )
-  aim_meta1 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta1)
+  aim_meta1 <- merge(data.frame(Gender.Code = c("A")), aim_meta1) #, "M", "F"
 
   aim_meta1 <- rbind(
     merge(
@@ -79,7 +79,7 @@ if (!file.exists(aim_metaDir)) {
 
   aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = 1:7)
   aim_meta2 <- merge(data.frame(Year = 2009:2016), aim_meta2)
-  aim_meta2 <- merge(data.frame(Gender.Code = c("A", "M", "F")), aim_meta2)
+  aim_meta2 <- merge(data.frame(Gender.Code = c("A")), aim_meta2) #, "M", "F"
   # Ignoring 18-25 
   aim_meta2 <- merge(aim_meta2, data.frame(
     min_age = c(25,35,45, 65),
