@@ -331,6 +331,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     )) %>%
     mutate(Ethnicity = NULL)
 
+  total_burden <- total_burden %>% filter(Gender.Code == "A")
   if (agr_by != "nation") total_burden <- total_burden %>% filter(STATEFP != 0)
 
   # Only considering age above 25

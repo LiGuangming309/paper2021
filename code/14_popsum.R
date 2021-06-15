@@ -59,15 +59,16 @@ if (!file.exists(pop.summary.dir)) {
     cdc_pop$Notes <-NULL
     cdc_pop <- cdc_pop[!apply(is.na(cdc_pop) | cdc_pop == "", 1, all), ]
 
-    if (!("Ethnicity" %in% colnames(cdc_pop))) cdc_pop$Ethnicity <- "All Origins"
+    if (!("Race" %in% colnames(cdc_pop))) cdc_pop$Race <- "All"
+    #if (!("Ethnicity" %in% colnames(cdc_pop))) cdc_pop$Ethnicity <- "All Origins"
     if (agr_by == "nation") cdc_pop$nation <- "us" 
 
-    if (!"Hispanic.Origin" %in% colnames(cdc_pop)) {
+    if (!"Ethnicity" %in% colnames(cdc_pop)) {
       if (rlang::is_empty(notes_hisp_or)) {
-        cdc_pop$Hispanic.Origin <- "All Origins"
+        cdc_pop$Ethnicity <- "All Origins"
       } else if (notes_hisp_or == "Hispanic Origin: Hispanic or Latino") {
-        cdc_pop$Hispanic.Origin <- "Hispanic or Latino"
-      } else if (notes_hisp_or == "Hispanic Origin: Not Hispanic or Latino") {
+        cdc_pop$Ethnicity <- "Hispanic or Latino"
+      } else if (Ethnicity == "Hispanic Origin: Not Hispanic or Latino") {
         cdc_pop$Hispanic.Origin <- "Not Hispanic or Latino"
       }
     }
