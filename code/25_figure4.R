@@ -46,7 +46,7 @@ attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" 
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
 pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &
                                 Gender.Code == "All genders" & source2 == "Official Bridged-Race Population Estimates" &
-                                Education == "666" & Ethnicity != "All, All Origins")
+                                Education == "666" & Ethnicity == "All, All Origins")
 pop_sum <- pop_sum %>% 
   group_by(Year, Region) %>%
   summarize(Population = sum(Population))

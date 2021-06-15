@@ -65,51 +65,6 @@ missing_statesDir <- file.path(censDir10_in00, "missing_states.csv")
 if (!file.exists(missing_statesDir)) write.csv(states, missing_statesDir)
 missing_states <- read.csv(missing_statesDir)
 
-## -----pair meta data from 2000 and 2010 -----
-meta_crosswalkDir <- file.path(censDir, "meta", "2000_2010_cross.csv")
-if (!file.exists(meta_crosswalkDir)) {
-  meta_crosswalk <- inner_join(meta00, meta10,
-    by = c("Gender.Code", "Race", "Hispanic.Origin", "Education")
-  )
-
-  meta_crosswalk <- meta_crosswalk %>% filter(
-    min_age.x <= min_age.y,
-    max_age.x >= max_age.y
-  )
-
-  meta_crosswalk <- meta_crosswalk %>%
-    rename(
-      variable00 = variable.x,
-      variable10 = variable.y
-    )
-
-  test_that("03 interp meta crosswalk", {
-    expect_false(any(is.na(meta_crosswalk)))
-    expect_false(any(meta_crosswalk== ""))
-    
-    missing_variables <- setdiff(meta00$variable, meta_crosswalk$variable00)
-    expect_true(rlang::is_empty(missing_variables))
-    missing_variables <- setdiff(meta10$variable, meta_crosswalk$variable10)
-    expect_true(rlang::is_empty(missing_variables))
-
-    test <- meta_crosswalk %>%
-      group_by(Gender.Code, Race, Hispanic.Origin, Education, min_age.x, max_age.x) %>%
-      summarize(min_age = min(min_age.y), max_age = max(max_age.y))
-    expect_equal(test$min_age.x, test$min_age)
-    expect_equal(test$max_age.x, test$max_age)
-  })
-  meta_crosswalk <- meta_crosswalk %>%
-    select(
-      variable00, variable10, 
-      Gender.Code, Race, Hispanic.Origin, Education,
-      Year.x, min_age.x, max_age.x,
-      Year.y, min_age.y, max_age.y
-    )
-
-  fwrite(meta_crosswalk, meta_crosswalkDir)
-}
-meta_crosswalk <- fread(meta_crosswalkDir)
-
 ## -----calculate 2010 data in 2000 boundaries and meta data -----
 apply(missing_states, 1, function(state) {
   STUSPS <- state["STUSPS"]
@@ -191,7 +146,6 @@ apply(missing_states, 1, function(state) {
       expect_equal(test3$pop_size.x, test3$pop_size.y)
     })
 
-
     # delete this state from missing_states
     STUSPS_copy <- STUSPS
     missing_statesDir %>%
@@ -222,35 +176,6 @@ apply(states, 1, function(state) {
     toc()
   }
 })
-## ----give overview over missing GEO_IDs in crosswalk
-# missing_GEOIDsDir <- file.path(censDir10_in00, paste0("missing_GEO_ID.csv"))
-# if (!file.exists(missing_GEOIDsDir)) {
-#  GEOIDs <- apply(states, 1, function(state) {
-#    STUSPS <- state["STUSPS"]
-#    censData00_GEO <- fread(file.path(censDir00, paste0("census_2000_", STUSPS, ".csv"))) %>%
-#      mutate(GEO_ID = GEO_ID %>%
-#        as.character() %>%
-#        str_pad(., 11, pad = "0")) %>%
-#      select(GEO_ID) %>%
-#      unlist() %>%
-#      unique()
-
-#    return(censData00_GEO)
-#  }) %>%
-#    unlist()
-
-# TODO comment
-#  missing_GEOIDs <- setdiff(GEOIDs, unique(crosswalk$trtid00))
-#  print(paste(length(missing_GEOIDs), "GEO_ID, which are present in the 2000 census data, are not present in the crosswalk files"))
-#  write.csv(missing_GEOIDs, missing_GEOIDsDir)
-
-#  missing_GEOIDs2 <- setdiff(unique(crosswalk$trtid00), GEOIDs)
-#  write.csv(missing_GEOIDs2, file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
-# } else {
-#  missing_GEOIDs <- fread(missing_GEOIDsDir)
-#  missing_GEOIDs2 <- fread(file.path(censDir10_in00, paste0("missing_GEO_ID2.csv")))
-# }
-
 ## ----- actual interpolation-----
 censDirYear <- file.path(censDir, year)
 dir.create(censDirYear, recursive = T, showWarnings = F)
@@ -271,35 +196,6 @@ apply(states, 1, function(state) {
       filter(!(pop_size00 == 0 & is.na(pop_size10) |
         is.na(pop_size00) & pop_size10 == 0 |
         is.na(pop_size00) & is.na(pop_size10)))
-
-    # give an overview, how much is missing
-    #  missing1 <- censData_joined %>% filter(is.na(pop_size00))
-
-    #  if (nrow(missing1) > 0){
-    #    missing1<-missing1%>%
-    #      group_by(GEO_ID) %>%
-    #      summarise(variables = n(),
-    #                pop_size10 = sum(pop_size10)) %>%
-    #      mutate(test = GEO_ID %in% missing_GEOIDs2$x) %>%
-    #      arrange(desc(pop_size10))
-
-    #    print(paste(nrow(missing1), "GEO_ID worth", sum(missing1$pop_size10), "persons missing in 2000 data in", name))
-    #  }
-
-    #  missing2 <- censData_joined %>% filter(is.na(pop_size10))
-
-    #  if (nrow(missing2) > 0){
-    #    missing2<-missing2%>%
-    #      group_by(GEO_ID) %>%
-    #      summarise(variables = n(),
-    #                pop_size00 = sum(pop_size00)) %>%
-    #      mutate(test = GEO_ID %in% missing_GEOIDs$x) %>%
-    #      arrange(desc(pop_size00))
-
-    #  print(paste(nrow(missing2), "GEO_ID worth", sum(missing2$pop_size00), "persons missing in 2010 data in 20000 boundaries in", name))
-    # }
-    # if (any(is.na(censData_joined))) browser()
-    # TODO delete above
 
     censData_joined <- censData_joined %>%
       mutate(
