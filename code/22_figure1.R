@@ -59,7 +59,7 @@ attr_burd <- attr_burd %>%
 # http://rstudio-pubs-static.s3.amazonaws.com/9575_8a5dc0315e7d48ea94e0fd2546727041.html
 ## --- figure 1, population-weighted mean particular matter exposure---
 pm_summ <- pm_summ %>% filter(agr_by == "nation" & pm_metric == "mean" & Gender.Code == "All genders" & scenario == "A")
-pm_summ1 <- pm_summ %>% filter(Education == 666)
+pm_summ1 <- pm_summ %>% filter(Education == 666 & Ethnicity != "All, All Origins")
 g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -76,7 +76,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
 #ggsave(file.path(figuresDir, "figure1a.svg"), g1)
 #https://ggplot2.tidyverse.org/reference/position_dodge.html
 
-pm_summ2 <- pm_summ %>% filter(Education != 666)
+pm_summ2 <- pm_summ %>% filter(Education != 666 & Ethnicity == "All, All Origins")
 g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -97,7 +97,7 @@ ggsave(file.path(figuresDir, "figure1.svg"), g3, height = 9, width = 8)
 # https://stackoverflow.com/questions/64757410/shared-x-and-y-axis-labels-ggplot2-with-ggarrange
 rm(g1, g2,g3, pm_summ1, pm_summ2)
 ## -- figure 2, all-cause burden ----
-all_burden1 <- all_burden %>% filter(agr_by == "nation" & Education == 666)
+all_burden1 <- all_burden %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins")
 g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -114,7 +114,7 @@ g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
 #ggsave(file.path(figuresDir, "figure2a.svg"), g1)
 #g1$layout$clip[g1$layout$name == "panel"] <- "off"
 
-all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666)
+all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins")
 g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -139,7 +139,7 @@ ggsave(file.path(figuresDir, "figure2.svg"), g3, height = 9, width = 8)
 
 rm(all_burden1, all_burden2, g1, g2, g3)
 ## -- figure 3, attributable burden----
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "value" )
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "value" )
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -153,7 +153,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE)
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & measure3 == "value")
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "value")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -176,7 +176,7 @@ g3 <- ggarrange(g1,NULL, g2,
 ggsave(file.path(figuresDir, "figure3.png"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2, g3)
 ## -- figure 4, prop. of overall burden----
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "prop. of overall burden")
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "prop. of overall burden")
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -190,7 +190,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE)
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & measure3 == "prop. of overall burden")
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "prop. of overall burden")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -215,7 +215,7 @@ ggsave(file.path(figuresDir, "figure4.svg"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2) 
 ##---figure 5, prop of difference----
 
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & measure3 == "proportion of disparity to White, Not Hispanic attributable" #&
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "proportion of disparity to White, Not Hispanic attributable" #&
                                      #Ethnicity %in% c("Black or African American")
                                      )
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
@@ -230,7 +230,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) 
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & measure3 == "proportion of disparity to Graduate or professional degree attributable")
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "proportion of disparity to Graduate or professional degree attributable")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +

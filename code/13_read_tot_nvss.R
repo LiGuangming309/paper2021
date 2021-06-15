@@ -214,8 +214,14 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden_race <- total_burden %>%
     group_by_at(setdiff(colnames(total_burden), c("Education","Deaths"))) %>%
     summarise(Deaths = sum(Deaths)) %>%
-    mutate(Education = as.factor(666)) # TODO
+    mutate(Education = as.factor(666)) 
 
+  total_burden_all <- total_burden %>%
+    filter(Hispanic.Origin == "All Origins") %>%
+    group_by_at(setdiff(colnames(total_burden), c("Race","Education","Deaths"))) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(Race = "All", Education = as.factor(666)) 
+  
   if(year %in% 2009:2016){
     
     total_burden_educ <- total_burden %>%
@@ -237,12 +243,13 @@ if (!file.exists(totalBurdenParsedDir)) {
         Deaths = Deaths * prop,
         DeathsAllEduc = NULL, prop = NULL
       ) 
-    total_burden <- rbind(total_burden_race, total_burden_educ) %>% distinct()
+    total_burden <- rbind(total_burden_race, total_burden_educ, total_burden_all) %>% distinct()
+    rm(total_burden_educ)
   }else{
-    total_burden <- total_burden_race%>% distinct()
+    total_burden <- rbind(total_burden_race, total_burden_all) %>% distinct()
   }
   
-  rm(total_burden_race)
+  rm(total_burden_race, total_burden_all)
   #----test----
   total_burden <- total_burden %>% 
     as.data.frame() %>%

@@ -46,7 +46,7 @@ attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" 
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
 pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &
                                 Gender.Code == "All genders" & source2 == "Official Bridged-Race Population Estimates" &
-                                Education == "666")
+                                Education == "666" & Ethnicity != "All, All Origins")
 pop_sum <- pop_sum %>% 
   group_by(Year, Region) %>%
   summarize(Population = sum(Population))
@@ -67,7 +67,7 @@ joined_all_attr <- joined_all_attr %>%
   filter(Ethnicity %in% c("Black or African American", "White, Not Hispanic or Latino") & 
            #Year == 2004 &
            Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & 
-           source == "National Vital Statistics System" & Education == 666
+           source == "National Vital Statistics System" & Education == 666 & Ethnicity != "All, All Origins"
     )
 joined_all_attr <- joined_all_attr %>% arrange(desc(Population)) 
 joined_all_attr <- joined_all_attr[1:51,]

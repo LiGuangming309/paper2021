@@ -46,7 +46,7 @@ total_burden <- lapply(files, function(file) {
   total_burden <- fread(file.path(totalBurdenDir, "nation", "nvss", file))
   total_burden <- total_burden %>%
     filter(Gender.Code == "A" & measure1 == "Deaths" & measure2 == "absolute number" & source == "nvss" &
-      Education == 666) %>%
+      Education == 666 & Ethnicity != "All, All Origins") %>%
     mutate(
       age_group_id = c(0,seq(25, 95, 5))[
         findInterval(

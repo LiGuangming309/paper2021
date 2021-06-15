@@ -46,7 +46,7 @@ attr_burd <- attr_burd %>%
 ##---plot---
 attr_burd1 <- attr_burd %>%
   filter(
-    measure3 == "value" & Education == 666 &
+    measure3 == "value" & Education == 666 & Ethnicity != "All, All Origins"& 
       Region %in% c("California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina")
        )
 
