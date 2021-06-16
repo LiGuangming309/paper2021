@@ -26,7 +26,7 @@ tracDir <- args[5]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2016
+  year <- 1990
   
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
@@ -83,7 +83,7 @@ filepathTr <- file.path(tracDir, toString(year))
 dir.create(filepathTr, recursive = T, showWarnings = F)
 
 
-if(year %in% c(2000:2016)){
+
     apply(states, 1, function(state) {
       STUSPS <- state["STUSPS"]
       name <- state["NAME"]
@@ -95,15 +95,14 @@ if(year %in% c(2000:2016)){
         tic(paste("Downloaded census tracts shape files for", year, name))
         
         #harmonize data
-        if(year == 2000){
+        if (year == 1990){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
-          
-          tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
-        }else if(year %in% 2001:2008){
-          tracts <- tracts(state = STUSPS, cb = TRUE, year = 2000)
-          tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
-        }else if(year == 2010){
+          #tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
+        }else if(year == 2000){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
+          tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
+        }else if(year %in% c(1991:1999,2001:2008, 2010)){
+          tracts <- tracts(state = STUSPS, cb = TRUE, year = 2010)
           tracts$GEO_ID<- tracts$GEO_ID %>% str_sub(.,-11,-1)
         }else if(year %in% c(2009, 2011:2012)){
           tracts <- tracts(state = STUSPS, cb = FALSE, year = year) %>%
@@ -124,7 +123,7 @@ if(year %in% c(2000:2016)){
         toc()
       }
     })
-}  
+
 
 rm(filepathTr)
 ""

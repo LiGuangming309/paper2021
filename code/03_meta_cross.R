@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1990
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
@@ -86,8 +86,21 @@ if (!file.exists(aim_metaDir)) {
     max_age = c(34,44,64, 150)
   ))
 
-  aim_meta <- rbind(aim_meta1, aim_meta2)
-  rm(aim_meta1, aim_meta2)
+  aim_meta3 <- data.frame(
+    Race = c("White",  "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American", "All"),
+    Hispanic.Origin = c("All Origins", "All Origins", "All Origins", "All Origins", "All Origins"),
+    Education = 666
+  )
+  aim_meta3 <- merge(data.frame(Year = 1990:2000), aim_meta3)
+  aim_meta3 <- merge(data.frame(Gender.Code = c("A")), aim_meta3)
+  aim_meta3 <- merge(aim_meta3,
+                     data.frame(
+                       min_age = c(0, seq(25, 85, 5)),
+                       max_age = c(24, seq(29, 84, 5), 150)
+                     ))
+  
+  aim_meta <- rbind(aim_meta1, aim_meta2, aim_meta3) %>% distinct
+  rm(aim_meta1, aim_meta2, aim_meta3)
 
   aim_meta$variable <- apply(aim_meta, 1, function(row) {
     Race <- switch(row[["Race"]],
@@ -141,8 +154,8 @@ if (!file.exists(cross_bridgeDir)) {
   downloaded_meta[downloaded_meta == "High school graduate (includes equivalency)"] <- "High school graduate, GED, or alternative"
 
   replaces1 <- data.frame(
-    Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Black or African American", "All"),
-    Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN", "all")
+    Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander","Black or African American", "All","Other race"),
+    Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "Asian or Pacific Islander","BLACK OR AFRICAN AMERICAN", "all", "Other race")
   )
   replaces2 <- data.frame(
     Hispanic.Origin = c("Not Hispanic or Latino", "All Origins", "Hispanic or Latino", "Hispanic or Latino"),

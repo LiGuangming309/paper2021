@@ -78,7 +78,6 @@ apply(missing_states, 1, function(state) {
     
     censDataFrom_old <- censDataFrom
     
-    
     test <- censDataFrom %>%
       anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom")) %>%
       filter(pop_size > 0)
@@ -100,10 +99,12 @@ apply(missing_states, 1, function(state) {
       mutate(state = str_sub(GEO_ID, 1, 2))
     
     test <- lapply(unique(censDataFrom$state), function(statefp) {
-      censDataFrom_sub <- censDataFrom %>% filter(state == statefp)
+      censDataFrom_sub <- censDataFrom %>% 
+        filter(state == statefp) %>%
+        mutate(state = NULL)
       STUSPS_corresponding <- states[states[, "STATEFP"] == as.numeric(statefp), "STUSPS"]
       
-      censDirToX <- file.path(censDirTo, paste0("census_2010_", STUSPS_corresponding, ".csv"))
+      censDirToX <- file.path(censDirTo, paste0("census_",year,"_", STUSPS_corresponding, ".csv"))
       
       suppressWarnings(
         write.table(censDataFrom_sub,
