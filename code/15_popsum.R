@@ -138,7 +138,7 @@ if (!file.exists(pop.summary.dir)) {
       ylab(paste("Population")) +
       xlab("Year") +
       ylim(0, NA) +
-      xlim(2000, 2016) +
+      xlim(1990, 2016) +
       theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
       guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
       ggtitle(paste("Population in", location))

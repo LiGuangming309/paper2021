@@ -61,7 +61,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- fread(totalBurdenDir)
   numberDeaths <- nrow(total_burden)
 
-  if (2000 <= year & year <= 2002) {
+  if (1990 <= year & year <= 2002) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
