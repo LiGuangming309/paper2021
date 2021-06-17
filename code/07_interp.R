@@ -26,7 +26,7 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 if (rlang::is_empty(args)) {
-  year <- 2003
+  year <- 1991
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
@@ -101,7 +101,10 @@ apply(states, 1, function(state) {
         pop_sizeLower = replace_na(pop_sizeLower, 0),
         pop_sizeUpper = replace_na(pop_sizeUpper, 0)
       )
-
+    censData_joined <- as.data.frame(censData_joined)
+    if(!"state" %in% colnames(censData_joined)) censData_joined$state <- NA
+    if(!"county" %in% colnames(censData_joined)) censData_joined$county <- NA
+    if(!"tract" %in% colnames(censData_joined)) censData_joined$tract <- NA
     # fill state/county/tract if NA
     suppressWarnings(
       censData_joined[is.na(censData_joined$state), ] <- censData_joined[is.na(censData_joined$state), ] %>%
@@ -122,8 +125,6 @@ apply(states, 1, function(state) {
       select(state, county, tract, GEO_ID, variable, pop_size)
 
     fwrite(censDataTo, censDirToX)
-
-
 
     # testthat
     test_that("02_interp actual interpolation", {

@@ -51,12 +51,20 @@ possible_states <- states$STATEFP %>%
   str_pad(., 2, pad = "0")
 
 crosswalk <- read.csv(file.path(dataDir, paste0("crosswalk_", year,"_2010.csv"))) 
-crosswalk <- crosswalk[,1:3]
-colnames(crosswalk) <- c("trtidFrom", "trtidTo", "weight")
+if(year == 1990){
+  crosswalk <- crosswalk %>% select(trtidFrom = trtid90, trtidTo = trtid10, weight)
+}else if(year == 2000){
+  crosswalk <- crosswalk %>% select(trtidFrom = trtid00, trtidTo = trtid10, weight)
+}
+
 crosswalk <- crosswalk %>%
-  mutate(trtidFrom = str_pad(trtidFrom, 11, pad = "0"),
-         trtidTo = str_pad(trtidTo, 11, pad = "0"),
-         state = str_sub(trtidFrom, 1, 2)) %>%
+  mutate(#trtidFrom = str_pad(trtidFrom, 11, pad = "0"),
+         #trtidTo = str_pad(trtidTo, 11, pad = "0"),
+        trtidFrom = as.numeric(trtidFrom),
+        trtidTo = as.numeric(trtidTo),
+        state = str_pad(trtidFrom, 11, pad = "0")%>% str_sub( 1, 2) 
+         #state = str_sub(str_pad(trtidFrom, 11, pad = "0"), 1, 2) 
+         ) %>%
   filter(state %in% possible_states)
 
 # states, for which 2000 and 2010 still needs to be calculated
@@ -66,6 +74,7 @@ missing_states <- read.csv(missing_statesDir)
 
 ## -----calculate 2010 data in 2000 boundaries and meta data -----
 apply(missing_states, 1, function(state) {
+  STATEFP <- state["STATEFP"] %>% as.numeric()
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
   if (!is.na(STUSPS)) {
@@ -74,18 +83,25 @@ apply(missing_states, 1, function(state) {
     censDataFrom <- file.path(censDirFrom, paste0("census_",year,"_", STUSPS, ".csv")) %>%
       fread(colClasses = c(pop_size = "numeric")) %>%
       select(GEO_ID, variable, pop_size) %>%
-      mutate(GEO_ID = str_pad(GEO_ID, 11, pad = "0"))
-    
+      mutate(GEO_ID = as.numeric(GEO_ID))
+    if(year == 1990){
+      censDataFrom$GEO_ID <- substring(censDataFrom$GEO_ID, 1, 11) %>% as.numeric()
+    }
     censDataFrom_old <- censDataFrom
     
-    test <- censDataFrom %>%
+    test1 <- censDataFrom %>%
       anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom")) %>%
       filter(pop_size > 0)
-    if (nrow(test) > 0){
-
+    
+    test2 <- anti_join(crosswalk %>% filter(as.numeric(state) == STATEFP),
+                       censDataFrom, 
+                       by = c("trtidFrom"="GEO_ID")) 
+    
+    if (nrow(test1) > 0 &nrow(test2) > 0  ){
       warning("03_interp missing GEO_IDs")
     } 
     
+
     # translate tracts
     censDataFrom <- censDataFrom %>%
       inner_join(crosswalk, by = c("GEO_ID" = "trtidFrom")) %>%
@@ -95,15 +111,14 @@ apply(missing_states, 1, function(state) {
       rename(GEO_ID = trtidTo) %>%
       as.data.frame()
     
-    censDataFrom <- censDataFrom %>%
-      mutate(state = str_sub(GEO_ID, 1, 2))
+    censDataFrom <- censDataFrom %>% mutate(state = str_pad(GEO_ID, 11, pad = "0") %>% str_sub(1, 2))
     
     test <- lapply(unique(censDataFrom$state), function(statefp) {
       censDataFrom_sub <- censDataFrom %>% 
         filter(state == statefp) %>%
         mutate(state = NULL)
       STUSPS_corresponding <- states[states[, "STATEFP"] == as.numeric(statefp), "STUSPS"]
-      
+      if(STUSPS_corresponding == "") browser()
       censDirToX <- file.path(censDirTo, paste0("census_",year,"_", STUSPS_corresponding, ".csv"))
       
       suppressWarnings(
@@ -132,7 +147,7 @@ apply(missing_states, 1, function(state) {
         summarise(pop_size = sum(pop_size))
       
       test3 <- full_join(test1, test2, by = c("variable"))
-      expect_equal(test3$pop_size.x, test3$pop_size.y)
+      expect_equal(test3$pop_size.x, test3$pop_size.y, tolerance = 0.05, scale = test3$pop_size.y)
     })
     
     # delete this state from missing_states
