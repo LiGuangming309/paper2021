@@ -37,34 +37,6 @@ if (rlang::is_empty(args)) {
 }
 
 if (year == 1990) {
-
-  ## ---- create meta file-----
-  metaDir <- file.path(censDir, "meta_down")
-  dir.create(metaDir, recursive = T, showWarnings = F)
-  filepathCensMeta <- file.path(metaDir, "cens_meta_1990.csv")
-  if (!file.exists(filepathCensMeta)) {
-    # meta1990 <- data.frame(Race = c("White", "Black or African American", "American Indian or Alaska Native","Asian or Pacific Islander","Other race"))
-    meta1990 <- data.frame(Race = c("WHITE", "BLACK OR AFRICAN AMERICAN", "AMERICAN INDIAN AND ALASKA NATIVE", "Asian or Pacific Islander", "Other race"))
-    meta1990 <- merge(
-      data.frame(Gender.Code = c("M", "F")),
-      meta1990
-    )
-    meta1990 <- merge(
-      data.frame(
-        min_age = c(0, 1, 3, 5, 6, 7, 10, 12, 14, 15, 16, 17, 18, 19, 20, 21, 22, 25, 30, 35, 40, 45, 50, 55, 60, 62, 65, 70, 75, 80, 85),
-        max_age = c(0, 2, 4, 5, 6, 9, 11, 13, 14, 15, 16, 17, 18, 19, 20, 21, 24, 29, 34, 39, 44, 49, 54, 59, 61, 64, 69, 74, 79, 84, 150)
-      ),
-      meta1990
-    )
-    meta1990$variable <- sprintf("ET4%03d", seq.int(nrow(meta1990)))
-    meta1990$Education <- 666
-    meta1990$Year <- 1990
-    meta1990$group <- "NP12"
-    # meta1990$Hispanic.Origin <- "All Origins"
-    meta1990$Hispanic.Origin <- "all"
-    write.csv(meta1990, filepathCensMeta, row.names = F)
-  }
-
   ## ---- read census data ----
   states <- read.csv(file.path(tmpDir, "states.csv"))
 

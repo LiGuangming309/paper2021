@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1991
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
@@ -144,7 +144,7 @@ if (!file.exists(aim_metaDir)) {
 }
 ## ----- cross-bridge-----
 cross_bridgeDir <- file.path(cross_bridgeDir, paste0("cross_meta_", year, ".csv"))
-if (!file.exists(cross_bridgeDir)) {
+if (!file.exists(cross_bridgeDir) & year %in%c(1990,2000,2009:2016)) {
   tic(paste("crossed census meta data for", year))
   aim_meta <- read.csv(aim_metaDir)
   downloaded_meta <- file.path(censDir, "meta_down", paste0("cens_meta_", toString(year), ".csv")) %>% read.csv()
@@ -153,10 +153,18 @@ if (!file.exists(cross_bridgeDir)) {
     rename(Race2 = Race, Hispanic.Origin2 = Hispanic.Origin, Education2 = Education, Gender.Code2 = Gender.Code)
   downloaded_meta[downloaded_meta == "High school graduate (includes equivalency)"] <- "High school graduate, GED, or alternative"
 
-  replaces1 <- data.frame(
-    Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Asian or Pacific Islander","Black or African American", "All","Other race"),
-    Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "Asian or Pacific Islander","BLACK OR AFRICAN AMERICAN", "all", "Other race")
-  )
+  if(year == 1990){
+    replaces1 <- data.frame(
+      Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American", "All","Other race"),
+      Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "Asian or Pacific Islander", "BLACK OR AFRICAN AMERICAN", "all", "Other race")
+    )
+  }else{
+    replaces1 <- data.frame(
+      Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Asian or Pacific Islander", "Black or African American", "All","Other race"),
+      Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN", "all", "Other race")
+    )
+  }
+  
   replaces2 <- data.frame(
     Hispanic.Origin = c("Not Hispanic or Latino", "All Origins", "Hispanic or Latino", "Hispanic or Latino"),
     Hispanic.Origin2 = c("NOT HISPANIC OR LATINO", "all", "all", "NOT HISPANIC OR LATINO"),
@@ -175,10 +183,17 @@ if (!file.exists(cross_bridgeDir)) {
     Gender.Code2 = c("M", "F", "M", "F")
   )
 
-  replaces5<- data.frame(
-    Race = c("All", "All", "All", "All", "All"),
-    Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN")
-  )
+  if(year == 1990){
+    replaces5<- data.frame(
+      Race = c("All", "All", "All",  "All", "All"),
+      Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "Asian or Pacific Islander", "BLACK OR AFRICAN AMERICAN","Other race")
+    )
+  }else{
+    replaces5<- data.frame(
+      Race = c("All", "All", "All", "All", "All"),
+      Race2 = c("WHITE", "AMERICAN INDIAN AND ALASKA NATIVE", "ASIAN", "NATIVE HAWAIIAN AND OTHER PACIFIC ISLANDER", "BLACK OR AFRICAN AMERICAN")
+    )
+  }
   
   cross_bridge <- aim_meta %>%
     left_join(replaces2, by = "Hispanic.Origin") %>%

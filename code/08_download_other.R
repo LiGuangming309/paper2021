@@ -97,7 +97,12 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
         #harmonize data
         if (year == 1990){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
-          #tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
+          tracts <- tracts %>% mutate(
+                 GEO_ID = paste0(sprintf("%02d", STATEFP),
+                                 sprintf("%03d", COUNTYFP),
+                                 sprintf("%04d", TRACTBASE),
+                                 sprintf("%02d", TRACTSUF))
+          )
         }else if(year == 2000){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
           tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)

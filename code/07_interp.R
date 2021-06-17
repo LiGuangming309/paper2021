@@ -158,8 +158,9 @@ apply(states, 1, function(state) {
         )
 
       expect_true(all(comp4$inInterval))
-      if (!all(comp4$inInterval)) browser()
+      #if (!all(comp4$inInterval)) browser()
+      toc()
     })
-    toc()
+    
   }
 })

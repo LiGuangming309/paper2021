@@ -158,7 +158,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 
 # years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
 # years <- c(2000:2004)
- years <- c(2000,1990,1991)
+ years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
   for (source in sources) {
     for (year in years) {
