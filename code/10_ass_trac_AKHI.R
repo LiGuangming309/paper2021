@@ -31,7 +31,7 @@ tracDir <- args[5]
 exp_tracDir <- args[7]
 
 if (rlang::is_empty(args)) {
-  year <- 2006
+  year <- 1991
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
@@ -78,6 +78,10 @@ apply(states, 1, function(state) {
       Event.Type %in% c("No Events", "Events Excluded")
     )
 
+  if(nrow(exposure_locations) == 0){
+    print(paste("no exposure data for PM2.5 in Alaska and Hawaii for year",year,"available"))
+    quit()
+  }
 
   # load shape files
   tracts <- file.path(tracDir, toString(year), paste0("tracts_", toString(year), "_", STUSPS, ".rds")) %>%
@@ -102,6 +106,7 @@ apply(states, 1, function(state) {
     # if there are points inside of the tract, the tract is assigned the mean of pm of those points
     # if there are none, the pm of the closest point
     if (nrow(points_in_tract) > 0) {
+      print("test")
       df <- data.frame(
         GEO_ID = row$GEO_ID,
         Location.State.Code = points_in_tract$State.Code,

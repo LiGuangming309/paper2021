@@ -28,7 +28,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   cdcPopDir <- "/Users/default/Desktop/paper2021/data/10_cdc_population"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
@@ -137,6 +137,7 @@ if (!file.exists(pop.summary.dir)) {
       mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
       filter(Ethnicity %in% c(
         "White, Not Hispanic or Latino",
+        "White, All Origins",
         "White, Hispanic or Latino",
         "Black or African American, All Origins",
         "Asian or Pacific Islander, All Origins",

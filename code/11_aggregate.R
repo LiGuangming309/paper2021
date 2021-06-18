@@ -81,8 +81,10 @@ apply(states, 1, function(state) {
     trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
 
     # read pm exposure data by tract
-    exp_tracData <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv")) %>%
-      fread()
+    exp_tracDataDir <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
+    if(!file.exists(exp_tracDataDir) & year < 2000 & STUSPS %in% c("AK","HI")) return()
+    
+    exp_tracData <-fread(exp_tracDataDir)
     
     #stylized scenarios
     exp_tracData <- exp_tracData %>% mutate(scenario = "A")
@@ -174,9 +176,9 @@ if (agr_by != "county") {
 
       # rbind all states from this region
       cens_agr <- lapply(statesX, function(STUSPS) {
-        paste0("cens_agr_", toString(year), "_", STUSPS, ".csv") %>%
-          file.path(cens_agrDirC, .) %>%
-          fread()
+        cens_agrDir <- file.path(cens_agrDirC, paste0("cens_agr_", toString(year), "_", STUSPS, ".csv"))
+        if(!file.exists(cens_agrDir) & year < 2000 & STUSPS %in% c("AK","HI")) return(NA)  
+        fread(cens_agrDir)
       }) %>%
         rbindlist() %>%
         as.data.frame() %>%
