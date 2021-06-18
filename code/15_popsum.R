@@ -21,13 +21,15 @@ options(scipen = 10000)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
 
+censDir <- args[8]
 agr_by <- args[10]
 cdcPopDir <- args[15]
 pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   cdcPopDir <- "/Users/default/Desktop/paper2021/data/10_cdc_population"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
 }
@@ -114,8 +116,20 @@ if (!file.exists(pop.summary.dir)) {
   cdc_pop <- cdc_pop %>% tibble::add_column(source2 = "CDC")
   cdc_pop <- cdc_pop %>% filter(min_age >= 25)
   
-  write.csv(cdc_pop, pop.summary.dir, row.names = FALSE)
+  test_that("15_popsum check all aim_meta downloaded",{
+    metaDir <- file.path(censDir, "meta")
+    aim_meta <- lapply(list.files(metaDir), 
+                       function(file){
+                         aim_meta <- file.path(metaDir, file) %>% fread
+                       }) %>% 
+      rbindlist %>%
+      filter(Education == 666)
+    
+    missing_aim_meta <- anti_join(aim_meta, cdc_pop, by= c("Gender.Code", "Race", "Hispanic.Origin", "Education", "Year"))
+    expect_equal(0,nrow(missing_aim_meta))
+  })
   
+  write.csv(cdc_pop, pop.summary.dir, row.names = FALSE)
   ##---plot---
   for(location in cdc_pop[,agr_by] %>% unique){
     cdc_pop_sub <- cdc_pop %>% filter(get(agr_by) == location)
