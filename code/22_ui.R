@@ -169,26 +169,27 @@ server <- function(input, output) {
       g8 <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Education))
     }
 
-    g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("all-cause burden")
-    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("total burden from causes associated with PM2.5 exposure ",
+    g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(1990, 2016) + ggtitle("all-cause burden")
+    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(1990, 2016) + ggtitle("total burden from causes associated with PM2.5 exposure ",
       subtitle = "(resp_copd, lri, neo_lung, t2_dm, cvd_ihd, cvd_stroke)"
     )
-    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(2000, 2016) + ggtitle("directly attributable to PM2.5 exposure")
-    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%")  + xlim(2000, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
+    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(1990, 2016) + ggtitle("directly attributable to PM2.5 exposure")
+    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%")  + xlim(1990, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
-    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(2000, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
-    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("Population size")
-    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%") + xlim(2000, 2016) + ggtitle(paste(unique(attrBurden3$measure3)))
-    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(2000, 2016) + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
+    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(1990, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
+    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(1990, 2016) + ggtitle("Population size")
+    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%") + xlim(1990, 2016) + ggtitle(paste(unique(attrBurden3$measure3)))
+    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(1990, 2016) + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
     
     if (input$conf) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
     #https://stackoverflow.com/questions/17180115/manually-setting-group-colors-for-ggplot2
-    group.colors <- c(hue_pal()(5),hue_pal()(7))
+    group.colors <- c(hue_pal()(6),hue_pal()(7))
     names(group.colors) <- c("White, Not Hispanic or Latino",
                                "White, Hispanic or Latino",
+                             "White, All Origins",
                                "Black or African American",
                                "Asian or Pacific Islander",
                                "American Indian or Alaska Native",

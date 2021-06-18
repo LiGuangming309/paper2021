@@ -154,8 +154,8 @@ if(!file.exists(pop_summaryDir)){
   pop_summary <- pop_summary%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
   pop_summary$Hispanic.Origin <- NULL 
   pop_summary$Race <- NULL
-  rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"), 
-                           c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"))
+  rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
+                           c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pop_summary$Ethnicity <- sapply(pop_summary$Ethnicity, function(x) rindreplace7[[x]])
   
   fwrite(pop_summary, pop_summaryDir)
