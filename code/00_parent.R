@@ -194,10 +194,10 @@ for (agr_by in agr_bys) {
          runscript(script = cross.walk.script, args = args)
        }
        
-    #    runscript(script = download.other.script, args = args)
-    #   runscript(script=assignTract.script, args = args)
-    #   runscript(script = assignTractAKHI.script, args = args)
-     #   runscript(script = cens_agr.script, args = args)
+        runscript(script = download.other.script, args = args)
+       runscript(script=assignTract.script, args = args)
+       runscript(script = assignTractAKHI.script, args = args)
+        runscript(script = cens_agr.script, args = args)
     #    runscript(script = paf.script, args = args)
     #     runscript(script = read.nvs.findrepl.script, args = args)
     #    runscript(script = read.total.burden.nvs.script, args = args)
