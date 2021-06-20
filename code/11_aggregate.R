@@ -33,18 +33,18 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1990
   agr_by <- "nation"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   #cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
 }
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
@@ -78,13 +78,14 @@ apply(states, 1, function(state) {
     tic(paste("Aggregated Census data in", name, "in year", year, "by pm and county"))
 
     # read demographic census data by tract
-    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
+    trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% 
+      fread(colClasses=c(GEO_ID="character"))
 
     # read pm exposure data by tract
     exp_tracDataDir <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
     if(!file.exists(exp_tracDataDir) & year < 2000 & STUSPS %in% c("AK","HI")) return()
     
-    exp_tracData <-fread(exp_tracDataDir)
+    exp_tracData <-fread(exp_tracDataDir,colClasses=c(GEO_ID="character")) 
     
     #stylized scenarios
     exp_tracData <- exp_tracData %>% mutate(scenario = "A")
@@ -152,9 +153,12 @@ apply(states, 1, function(state) {
       comp2$pop_size.x[is.na(comp2$pop_size.x)] <- 0
 
       expect_equal(comp2$pop_size.x, comp2$pop_size.y)
-      if (any(comp2$pop_size.x != comp2$pop_size.y)) browser()
+      if (any(comp2$pop_size.x != comp2$pop_size.y)){
+        comp2 <- comp2 %>% filter(pop_size.x != pop_size.y)
+        #browser()
+      }
     })
-
+    
     fwrite(cens_agr, cens_agrDirCX)
     toc()
   }
@@ -177,35 +181,44 @@ if (agr_by != "county") {
       # rbind all states from this region
       cens_agr <- lapply(statesX, function(STUSPS) {
         cens_agrDir <- file.path(cens_agrDirC, paste0("cens_agr_", toString(year), "_", STUSPS, ".csv"))
-        if(!file.exists(cens_agrDir) & year < 2000 & STUSPS %in% c("AK","HI")) return(NA)  
-        fread(cens_agrDir)
+        if(!file.exists(cens_agrDir) & year < 2000 & STUSPS %in% c("AK","HI")){#
+          return(NULL)
+        }  else{
+          return(fread(cens_agrDir))
+        } 
+        
       }) %>%
         rbindlist() %>%
-        as.data.frame() %>%
-        group_by(variable, scenario, pm) %>%
-        summarise(pop_size = sum(pop_size))
-
-      # add proportions
-      cens_agr <- cens_agr %>%
-        group_by(variable, scenario) %>%
-        mutate(prop = pop_size / sum(pop_size)) %>%
-        ungroup()
-
-      # test, check
-      test_that("06_aggregate agr_by", {
-        cens_agr %>%
+        as.data.frame() 
+       
+      if(nrow(cens_agr) > 0){
+        cens_agr<- cens_agr %>%
+          group_by(variable, scenario, pm) %>%
+          summarise(pop_size = sum(pop_size))
+        
+        # add proportions
+        cens_agr <- cens_agr %>%
           group_by(variable, scenario) %>%
-          summarise(sum_prop = sum(prop)) %>%
-          apply(1, function(row) {
-            expect_equal(1, row[["sum_prop"]] %>% as.numeric())
-          })
-        expect_false(any(is.na(cens_agr)))
-      })
+          mutate(prop = pop_size / sum(pop_size)) %>%
+          ungroup()
+        
+        # test, check
+        test_that("06_aggregate agr_by", {
+          cens_agr %>%
+            group_by(variable, scenario) %>%
+            summarise(sum_prop = sum(prop)) %>%
+            apply(1, function(row) {
+              expect_equal(1, row[["sum_prop"]] %>% as.numeric())
+            })
+          expect_false(any(is.na(cens_agr)))
+        })
+        
+        # add region
+        cens_agr[, agr_by] <- region
+        
+        write.csv(cens_agr, cens_agrDirX, row.names = FALSE)
+      }
     
-      # add region
-      cens_agr[, agr_by] <- region
-
-      write.csv(cens_agr, cens_agrDirX, row.names = FALSE)
       toc()
     }
   }

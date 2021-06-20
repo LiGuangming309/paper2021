@@ -26,18 +26,64 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "nation"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 if (!file.exists(findreplaceDir)) {
-  # causes
+  #### ----- 1990-1991------
+  findreplaces1 <-
+    rbind(
+      data.frame(
+        replacecolumns = "Year",
+        from = c(90:99),
+        to = c(1990:1999)
+      ),
+      data.frame(
+        replacecolumns = "Hispanic.Origin",
+        from = c(0, 1, 2, 3, 4, 5, 99),
+        to = c("Not Hispanic or Latino", rep("Hispanic or Latino", 5), "Unknown")
+      ),
+      data.frame(
+        replacecolumns = "Gender.Code",
+        from = c(1, 2),
+        to = c("M", "F")
+      ),
+      data.frame(
+        replacecolumns = "Race",
+        from = c(1, 2, 3, 4:8, 9),
+        to = c("White", "Black or African American", "American Indian or Alaska Native", rep("Asian or Pacific Islander", 5), "unkown")
+      ),
+      data.frame(
+        replacecolumns = "STATEFP",
+        from = c(1:51,52:62),
+        to = c(states$STATEFP, rep(0, 11))
+      ),
+      data.frame(
+        replacecolumns = "min_age",
+        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
+        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+      ),
+      data.frame(
+        replacecolumns = "max_age",
+        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
+        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+      )
+    )
+  findreplaces1 <- merge(data.frame(Year = 1990:1991), findreplaces1)
   
-  #### ----- 2000-2002------
+  #### ----- 1992-2002------
   findreplaces2 <-
     rbind(
+      data.frame(
+        replacecolumns = "Year",
+        from = c(90:99,0:16,1990:2016),
+        to = c(1990:2016, 1990:2016)
+      ),
       data.frame(
         replacecolumns = "Hispanic.Origin",
         from = c(0, 1, 2, 3, 4, 5, 99),
@@ -69,7 +115,7 @@ if (!file.exists(findreplaceDir)) {
         to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
       )
     )
-  findreplaces2 <- merge(data.frame(Year = 2000:2002), findreplaces2)
+  findreplaces2 <- merge(data.frame(Year = 1992:2002), findreplaces2)
   #### ----- 2003-2016 -------
   findreplaces3 <-
     rbind(
@@ -113,14 +159,31 @@ if (!file.exists(findreplaceDir)) {
 
   findreplaces3 <- merge(data.frame(Year = 2003:2016), findreplaces3)
 
-  findreplaces <- rbind(findreplaces2, findreplaces3)
+  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3)
   write.csv(findreplaces, findreplaceDir, row.names = FALSE)
 }
 
 causesDir <- file.path(totalBurdenParsedDir, "causes.csv")
 if (!file.exists(causesDir)) {
-  causes <-
-      data.frame(
+  #https://www150.statcan.gc.ca/n1/pub/82-003-x/2013007/article/11852/tbl/appb-eng.htm
+  causes1 <- data.frame(
+    replacecolumns = "label_cause",
+    from = c(
+      414,
+      434,432,430,
+      161,162,
+      490:496,
+      519,
+      250,
+      140:242,244:259,270:279,282:285,296:319,324:380, 383:459,470:478,490:611,617:629,680:759, 
+      #lower respitory infections
+      519
+    ),
+    to = c("cvd_ihd",rep("cvd_stroke", 3),rep("neo_lung", 2), rep("resp_copd", 7),"lri","t2_dm",rep("ncd_lri", 516))
+    
+  )
+  causes1 <- merge(data.frame(Year = 1990:1999), causes1)
+  causes2<-data.frame(
         replacecolumns = "label_cause",
         from = c(
           "I20", "I21", "I22", "I23", "I24", "I25",
@@ -141,8 +204,8 @@ if (!file.exists(causesDir)) {
         ),
         to = c(rep("cvd_ihd", 6), rep("cvd_stroke", 10), rep("neo_lung", 5), rep("resp_copd", 4), rep("lri", 15), "t2_dm",
                rep("ncd_lri", 1276))
-        
-      ) 
-  
+  )
+  causes2 <- merge(data.frame(Year = 2000:2016), causes2)
+  causes <- rbind(causes1,causes2)
   write.csv(causes, causesDir, row.names = FALSE)
 }

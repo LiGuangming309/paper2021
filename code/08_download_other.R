@@ -31,6 +31,10 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
+  tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
 }
 #-- load data---
 states <- file.path(tmpDir,"states.csv") %>% read.csv

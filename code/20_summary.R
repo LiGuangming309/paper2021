@@ -208,8 +208,8 @@ rindreplace6 <- setNames(c("crude rate per 100,000", "age-adjusted rate per 100,
 all_burden$measure2 <- sapply(all_burden$measure2, function(x) rindreplace6[[x]])
 attrBurden$measure2 <- sapply(attrBurden$measure2, function(x) rindreplace6[[x]])
 
-rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"), 
-                         c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"))
+rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
+                         c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
 all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
 attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
 

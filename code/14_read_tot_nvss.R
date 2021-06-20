@@ -30,21 +30,21 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "county"
+  agr_by <- "nation"
 
-  year <- 2000
+  year <- 1997
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 
-  # dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  # totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
-  # totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
+   totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
-causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv"))
+causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv")) %>% filter(Year == year)
 
 totalBurdenDir <- file.path(totalBurdenDir, "nvss", paste0("mort", year, ".csv"))
 totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
@@ -61,7 +61,18 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- fread(totalBurdenDir)
   numberDeaths <- nrow(total_burden)
 
-  if (1990 <= year & year <= 2002) {
+  if (year %in% 1990:1995) {
+    selectcolumns <- c( #TODO year
+      "Year" = "datayear",
+      "label_cause" = "ucod", # record_1/enum_1
+      "Education" = "educ", # 52-53
+      "Gender.Code" = "sex", # 59
+      "Race" = "race", # 60
+      "min_age" = "age", # 64, Single Year
+      "max_age" = "age", # 64
+      "Hispanic.Origin" = "hispanic" # 80 - 81
+    )
+  }else if (year %in% 1996:2002) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
@@ -324,6 +335,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     filter(Ethnicity %in% c(
       "White, Not Hispanic or Latino",
       "White, Hispanic or Latino",
+      "White, All Origins",
       "Black or African American, All Origins",
       "Asian or Pacific Islander, All Origins",
       "American Indian or Alaska Native, All Origins",

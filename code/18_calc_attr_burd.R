@@ -71,8 +71,9 @@ if (!file.exists(attrBurdenDir)) {
 
   tic("calc_attr_burd: 1 read all PAFs")
   pafs <- lapply(regions, function(region) {
-    file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv")) %>%
-      fread()
+    pafDirX <- file.path(pafDir, agr_by, year, paste0("paf_", toString(year), "_", region, ".csv"))
+    if(!file.exists(pafDirX) & year < 2000 & region %in% c("AK","HI")) return(NULL)
+    fread(pafDirX)
   }) %>%
     rbindlist %>%
     as.data.frame()

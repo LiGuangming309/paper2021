@@ -92,7 +92,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_bys <- c("nation","STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_bys <- c("nation") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -156,7 +156,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
  years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
-# years <- c(2000:2004)
+# years <- c(1990)
 # years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -184,33 +184,34 @@ for (agr_by in agr_bys) {
        runscript(script = download.meta.script, args = args)
        runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
-        runscript(script = download.cens.script, args = args)
+      #  runscript(script = download.cens.script, args = args)
        } else if (year == 1990){
-         runscript(script = read1990.script, args = args)
+      #   runscript(script = read1990.script, args = args)
        }else{
-         runscript(script = interp.script, args = args)
+      #   runscript(script = interp.script, args = args)
        }
        if(year %in% c(1990,2000)){
-         runscript(script = cross.walk.script, args = args)
+      #   runscript(script = cross.walk.script, args = args)
        }
        
-        runscript(script = download.other.script, args = args)
-       runscript(script=assignTract.script, args = args)
-       runscript(script = assignTractAKHI.script, args = args)
-        runscript(script = cens_agr.script, args = args)
+    #    runscript(script = download.other.script, args = args)
+    
+    #   runscript(script=assignTract.script, args = args)
+    #   runscript(script = assignTractAKHI.script, args = args)
+    #    runscript(script = cens_agr.script, args = args)
     #    runscript(script = paf.script, args = args)
-    #     runscript(script = read.nvs.findrepl.script, args = args)
+         runscript(script = read.nvs.findrepl.script, args = args)
     #    runscript(script = read.total.burden.nvs.script, args = args)
-      runscript(script=pop.summary.script, args = args)
-      runscript(script=pop.summary.educ.script, args = args)
+    #  runscript(script=pop.summary.script, args = args)
+    #  runscript(script=pop.summary.educ.script, args = args)
     #   runscript(script = add.rate.tot.burd, args = args)
     #  runscript(script = calc.attr.burd.script, args = args)
-    #   runscript(script = calc.attr.burd.alt.script, args = args)
-    } 
+     #  runscript(script = calc.attr.burd.alt.script, args = args) 
+    }  
   }
 }
 
- 
+   
   args <- paste(
     tmp.dir, # 1
     dem.dir, # 2
@@ -218,13 +219,13 @@ for (agr_by in agr_bys) {
     pop.summary.dir, # 4
     total.burden.parsed2.dir, # 5
     attr.burden.dir, # 6 
-    summary.dir, # 7
+    summary.dir, # 7 
     figures.dir, #8
     exp.rr.dir #9
   )   
     
  runscript(script = summary.script, args = args)
-  runscript(script = summary.other.script, args = args)
+#  runscript(script = summary.other.script, args = args)
 #runscript(script = figure1.script, args = args)
 #runscript(script = figure2.script, args = args) 
 #runscript(script = figure3.script, args = args)

@@ -31,12 +31,16 @@ tracDir <- args[5]
 exp_tracDir <- args[7]
 
 if (rlang::is_empty(args)) {
-  year <- 1991
+  year <- 1992
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  # openaq.script <- "/Users/default/Desktop/paper2021/code/07_openaq.R"
+
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
+  tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
+  exp_tracDir <-"C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
 }
 
 expDir <- file.path(expDir, "epa")
@@ -70,14 +74,26 @@ apply(states, 1, function(state) {
   tic(paste("assigned measurement location to all tracts in", name, "in", toString(year)))
   # read exposure
   exposure_locations <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year), ".csv")) %>%
-    read.csv() %>%
-    filter(
-      Parameter.Name == "PM2.5 - Local Conditions",
-      Pollutant.Standard == "PM25 Annual 2012",
-      Units.of.Measure == "Micrograms/cubic meter (LC)",
-      Event.Type %in% c("No Events", "Events Excluded")
-    )
+    read.csv() 
 
+  if(year %in% 1990:1996){
+    exposure_locations <- exposure_locations %>%
+      filter(
+        grepl('PM2.5',Parameter.Name) & 
+        #Parameter.Name %in% c("OC PM2.5 LC TOR" , "OC3 PM2.5 LC", "EC1 PM2.5 LC", "EC PM2.5 LC TOR", "OC2 PM2.5 LC", "Acceptable PM2.5 AQI & Speciation Mass")
+          State.Code %in% c("02","15") #&
+         #   Parameter.Name == "Acceptable PM2.5 AQI & Speciation Mass"
+         ) 
+  }else if(year >= 1997){
+    exposure_locations <- exposure_locations %>%
+      filter(
+        Parameter.Name == "PM2.5 - Local Conditions",
+        Pollutant.Standard == "PM25 Annual 2012",
+        Units.of.Measure == "Micrograms/cubic meter (LC)",
+        Event.Type %in% c("No Events", "Events Excluded")
+      )
+  }
+  
   if(nrow(exposure_locations) == 0){
     print(paste("no exposure data for PM2.5 in Alaska and Hawaii for year",year,"available"))
     quit()
@@ -106,7 +122,6 @@ apply(states, 1, function(state) {
     # if there are points inside of the tract, the tract is assigned the mean of pm of those points
     # if there are none, the pm of the closest point
     if (nrow(points_in_tract) > 0) {
-      print("test")
       df <- data.frame(
         GEO_ID = row$GEO_ID,
         Location.State.Code = points_in_tract$State.Code,
@@ -171,16 +186,25 @@ apply(states, 1, function(state) {
     read.csv() %>%
     mutate(Location.State.Code = Location.State.Code %>% as.character() %>% str_pad(width = 2, pad = "0"))
 
-  exposure <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year), ".csv")) %>%
-    read.csv() %>%
-    filter(
-      Parameter.Name == "PM2.5 - Local Conditions",
-      Pollutant.Standard == "PM25 Annual 2012",
-      Units.of.Measure == "Micrograms/cubic meter (LC)",
-      Event.Type %in% c("No Events", "Events Excluded")
-    )%>%
+  exposureDir <- file.path(expDir, paste0("annual_conc_by_monitor_", toString(year), ".csv")) 
+  
+  if(!file.exists(exposureDir)) return()
+  
+  exposure<-  read.csv(exposureDir) %>%
     mutate(State.Code = State.Code %>% as.character() %>% str_pad(width = 2, pad = "0"))
 
+  if(year %in% 1990:1996){
+    exposure <- exposure %>% filter(Parameter.Name == "Acceptable PM2.5 AQI & Speciation Mass") 
+  }else if(year >= 1997){
+    exposure <- exposure %>%
+      filter(
+        Parameter.Name == "PM2.5 - Local Conditions",
+        Pollutant.Standard == "PM25 Annual 2012",
+        Units.of.Measure == "Micrograms/cubic meter (LC)",
+        Event.Type %in% c("No Events", "Events Excluded")
+      )
+  }
+  
   tract_exposure <- left_join(tracts_locations, exposure,
     by = c(
       "Location.State.Code" = "State.Code",
