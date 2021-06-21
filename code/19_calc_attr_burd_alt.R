@@ -35,7 +35,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1990
   agr_by <- "nation"
   source <- "nvss"
 
@@ -44,6 +44,13 @@ if (rlang::is_empty(args)) {
   dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  
 }
 
 if (agr_by != "nation" & source == "nvss" & year > 2004) {

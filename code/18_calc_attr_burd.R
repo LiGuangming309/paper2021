@@ -31,8 +31,8 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
-  agr_by <- "STATEFP"
+  year <- 1995
+  agr_by <- "nation"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -40,6 +40,12 @@ if (rlang::is_empty(args)) {
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
+  
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
@@ -133,7 +139,8 @@ if (!file.exists(attrBurdenDir)) {
   ## ----- join total_burden and pafs-----
   tic("calc_attr_burd: 2 joined PAFs and total burden data")
   
-  paf_age <- file.path(pafDir, agr_by, year, list.files(pafDir)[[1]]) %>% read.csv()
+  paf_ageDir <- file.path(pafDir, agr_by, year)
+  paf_age <- file.path(paf_ageDir, list.files(paf_ageDir)[[1]]) %>% read.csv()
   paf_age <- paf_age %>%
     select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>%
     distinct() %>%
@@ -181,8 +188,8 @@ if (!file.exists(attrBurdenDir)) {
   ## ----- calculate attributable burden------
   tic("calc_attr_burd: 3 pivot_longer")
   test_that("09_calc distinct rows", {
-    burden_paf_sub1 <- burden_paf %>% select(c(join_variables,"measure1","measure2"))
-    burden_paf_sub1 <- burden_paf_sub1[duplicated(burden_paf_sub1), ]
+    burden_paf_sub1 <- burden_paf %>% select(c(join_variables,"measure1","measure2", "scenario"))
+    burden_paf_sub1 <- burden_paf_sub1[duplicated(burden_paf_sub1), ] #"attr"
     expect_equal(nrow(burden_paf_sub1), 0)
   })
 

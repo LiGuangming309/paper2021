@@ -195,7 +195,8 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   # total_burden <- total_burden %>%
   #  filter((measure1 == "Deaths" & measure2 == "age-adjusted rate") |
   #         (measure1 == "YLL" & measure2 == "crude rate"))
-
+  total_burden <- total_burden %>% distinct()
+  
   fwrite(total_burden, totalBurdenParsed2Dir)
   toc()
 }
