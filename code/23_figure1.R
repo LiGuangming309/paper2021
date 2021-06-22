@@ -64,7 +64,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("population-weighted annual average PM2.5 in μg/m^3") +
-  xlim(2000, 2016) +
+  xlim(1990, 2016) +
   theme(
     legend.title = element_blank(),
     #legend.position = position_dodge(3),
@@ -73,7 +73,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = FALSE))
-#ggsave(file.path(figuresDir, "figure1a.svg"), g1)
+#ggsave(file.path(figuresDir, "figure1a.png"), g1)
 #https://ggplot2.tidyverse.org/reference/position_dodge.html
 
 pm_summ2 <- pm_summ %>% filter(Education != 666 & Ethnicity == "All, All Origins")
@@ -89,10 +89,10 @@ g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure1b.svg"), g2)
+#ggsave(file.path(figuresDir, "figure1b.png"), g2)
 
 g3 <- ggarrange(g1, g2, ncol = 1, labels = "AUTO", align = "v")
-ggsave(file.path(figuresDir, "figure1.svg"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure1.png"), g3, height = 9, width = 8)
 
 # https://stackoverflow.com/questions/64757410/shared-x-and-y-axis-labels-ggplot2-with-ggarrange
 rm(g1, g2,g3, pm_summ1, pm_summ2)
@@ -102,16 +102,16 @@ g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
   ylab("all-cause age-adjusted mortality per 100k") +
-  xlim(2000, 2016) +
+  xlim(1990, 2016) +
   theme(
     legend.title = element_blank(),
-    legend.position = c(0.733, 0.9),
+    legend.position = c(0.7, 1.0),
     legend.text = element_text(size = 9),
     legend.background = element_rect(fill = "transparent"),
     plot.margin = unit(c(20,20,20,20),"points")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure2a.svg"), g1)
+#ggsave(file.path(figuresDir, "figure2a.png"), g1)
 #g1$layout$clip[g1$layout$name == "panel"] <- "off"
 
 all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins")
@@ -126,16 +126,16 @@ g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
     legend.background = element_rect(fill = "transparent")
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE))
-#ggsave(file.path(figuresDir, "figure2b.svg"), g2)
+#ggsave(file.path(figuresDir, "figure2b.png"), g2)
 
-g3 <- ggarrange(g1,NULL, g2, 
+g3 <- ggarrange(NULL, g1,NULL, g2, 
                 ncol = 1, 
-                heights = c(1, 0.1, 1),
-                labels = c("A", "", "B"),
+                heights = c(0.1,1, 0.1, 1),
+                labels = c("","A", "", "B"),
                 align = "v"
                 )
 
-ggsave(file.path(figuresDir, "figure2.svg"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure2.png"), g3, height = 9, width = 8)
 
 rm(all_burden1, all_burden2, g1, g2, g3)
 ## -- figure 3, attributable burden----
@@ -210,12 +210,12 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure4.svg"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure4.png"), g3, height = 9, width = 8)
 
 rm(attr_burd1, attr_burd2, g1, g2) 
 ##---figure 5, prop of difference----
 
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "proportion of disparity to White, Not Hispanic attributable" #&
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "proportion of disparity to Black or African American attributable" #&
                                      #Ethnicity %in% c("Black or African American")
                                      )
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
@@ -237,7 +237,7 @@ g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   ylab("%") +
   theme(
     legend.title = element_blank(),
-    legend.position = c(0.69, 1.03),
+    legend.position = c(0.685, 1.03),
     legend.text = element_text(size = 9),
     legend.background = element_rect(fill = "transparent")
   ) +
@@ -249,7 +249,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure5.svg"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figure5.png"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2) 
 ## ---figure 6, differences by state ---
 all_burden1 <- all_burden %>%
@@ -305,6 +305,6 @@ g3 <- ggarrange(g1, g2,
   labels = "AUTO",
   align = "h"
 )
-#ggsave(file.path(figuresDir, "figure6.svg"), g3)
+#ggsave(file.path(figuresDir, "figure6.png"), g3)
 
 rm(all_burden1, attr_burd1, g1, g2, g3)

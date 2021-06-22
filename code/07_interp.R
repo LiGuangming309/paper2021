@@ -68,8 +68,16 @@ apply(states, 1, function(state) {
   name <- state["NAME"]
 
   censDirToX <- file.path(censDirTo, paste0("census_", toString(year), "_", STUSPS, ".csv"))
-  
-  if (!file.exists(censDirToX)) {
+  bool <- !file.exists(censDirToX) 
+  if(file.exists(censDirToX)){
+    test <- setdiff(fread(censDirToX)$variable %>% unique,
+            metaUpper$variable %>% unique)
+    if(length(test) > 0){
+      bool <- TRUE
+    } 
+  }
+    
+  if (bool) {
     tic(paste("interpolated data in", year, "in", name))
     censDataLower <- fread(file.path(censDirLower, paste0("census_", year_lower, "_", STUSPS, ".csv"))) %>%
       rename(pop_sizeLower = pop_size)
@@ -125,7 +133,16 @@ apply(states, 1, function(state) {
       mutate(pop_size = (1 - t) * pop_sizeLower + t * pop_sizeUpper) %>%
       select(state, county, tract, GEO_ID, variable, pop_size)
 
-    fwrite(censDataTo, censDirToX)
+    #fwrite(censDataTo, censDirToX)
+    suppressWarnings(
+      write.table(censDataTo,
+                  censDirToX,
+                  sep = ",",
+                  col.names = !file.exists(censDirToX),
+                  append = T,
+                  row.names = F
+      )
+    )
 
     # testthat
     test_that("02_interp actual interpolation", {
