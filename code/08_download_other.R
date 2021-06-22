@@ -105,7 +105,7 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
                  #GEO_ID = paste0(sprintf("%02d", STATEFP), sprintf("%03d", COUNTYFP), sprintf("%04d", TRACTBASE), sprintf("%02d", TRACTSUF))
                  GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF)
           )
-        }else if(year %in% c(2000,2009)){
+        }else if(year %in% c(2000)){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = 2000) 
           tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
         }else if(year %in% c(1991:1999,2001:2008,2009, 2010)){

@@ -40,7 +40,7 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 censDirTo <- file.path(censDir, year)
 dir.create(censDirTo, recursive = T, showWarnings = F)
 
-if (year %in% 2001:2008) {
+if (year %in% 2001:2009) {
   year_lower <- 2000
   censDirLower <- file.path(censDir, "2000_in_2010")
   year_upper <- 2010
@@ -68,6 +68,7 @@ apply(states, 1, function(state) {
   name <- state["NAME"]
 
   censDirToX <- file.path(censDirTo, paste0("census_", toString(year), "_", STUSPS, ".csv"))
+  
   if (!file.exists(censDirToX)) {
     tic(paste("interpolated data in", year, "in", name))
     censDataLower <- fread(file.path(censDirLower, paste0("census_", year_lower, "_", STUSPS, ".csv"))) %>%
