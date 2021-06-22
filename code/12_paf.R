@@ -81,10 +81,10 @@ for (region in regions) {
     tic(paste("Calculated PAF in", agr_by, region, "in year", year, "by pm"))
 
     # read census data aggregated by pm exposure
-    cens_agrDir <- file.path(cens_agrDir,  paste0("cens_agr_", toString(year), "_", region, ".csv")) 
-    if(!file.exists(cens_agrDir) & year < 2000 & region %in% c("AK","HI")) break
+    cens_agrDirX <- file.path(cens_agrDir,  paste0("cens_agr_", toString(year), "_", region, ".csv")) 
+    if(!file.exists(cens_agrDirX) & year < 2000 & region %in% c("AK","HI")) break
     
-    cens_agr<-fread(cens_agrDir) %>%
+    cens_agr<-fread(cens_agrDirX) %>%
       select(variable, scenario, pm, prop)
 
     # add column, if something from pm_levels missing
