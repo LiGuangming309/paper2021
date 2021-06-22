@@ -155,8 +155,8 @@ figure4.script <- file.path(code.dir, "25_figure4.R")
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
- years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
-# years <- c(1995)
+# years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
+ years <- c(2009:2016)
 # years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -194,18 +194,18 @@ for (agr_by in agr_bys) {
       #   runscript(script = cross.walk.script, args = args)
        }
        
-    #    runscript(script = download.other.script, args = args)
+        runscript(script = download.other.script, args = args)
     
-    #   runscript(script=assignTract.script, args = args)
-    #   runscript(script = assignTractAKHI.script, args = args)
-    #    runscript(script = cens_agr.script, args = args)
+       runscript(script=assignTract.script, args = args)
+       runscript(script = assignTractAKHI.script, args = args)
+        runscript(script = cens_agr.script, args = args)
         runscript(script = paf.script, args = args)
     #     runscript(script = read.nvs.findrepl.script, args = args)
     #    runscript(script = read.total.burden.nvs.script, args = args)
     #  runscript(script=pop.summary.script, args = args)
     #  runscript(script=pop.summary.educ.script, args = args)
     #   runscript(script = add.rate.tot.burd, args = args)
-    #  runscript(script = calc.attr.burd.script, args = args)
+      runscript(script = calc.attr.burd.script, args = args)
        runscript(script = calc.attr.burd.alt.script, args = args)  
     }  
   }
@@ -224,7 +224,7 @@ for (agr_by in agr_bys) {
     exp.rr.dir #9
   )   
     
- runscript(script = summary.script, args = args)
+# runscript(script = summary.script, args = args)
   runscript(script = summary.other.script, args = args)
 #runscript(script = figure1.script, args = args)
 #runscript(script = figure2.script, args = args) 

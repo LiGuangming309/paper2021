@@ -26,7 +26,7 @@ tracDir <- args[5]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1990
+  year <- 2009
   
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
@@ -105,16 +105,17 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
                  #GEO_ID = paste0(sprintf("%02d", STATEFP), sprintf("%03d", COUNTYFP), sprintf("%04d", TRACTBASE), sprintf("%02d", TRACTSUF))
                  GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF)
           )
-        }else if(year == 2000){
-          tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
+        }else if(year %in% c(2000,2009)){
+          tracts <- tracts(state = STUSPS, cb = TRUE, year = 2000) 
           tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
-        }else if(year %in% c(1991:1999,2001:2008, 2010)){
+        }else if(year %in% c(1991:1999,2001:2008,2009, 2010)){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = 2010)
           tracts$GEO_ID<- tracts$GEO_ID %>% str_sub(.,-11,-1)
-        }else if(year %in% c(2009, 2011:2012)){
-          tracts <- tracts(state = STUSPS, cb = FALSE, year = year) %>%
-            rename(GEO_ID = GEOID)
-          #TODO Geometry corrupted?
+        }else if(year %in% c(2011:2012)){
+            tracts <- tracts(state = STUSPS, cb = FALSE, year = year) %>%
+              rename(GEO_ID = GEOID)
+            #TODO Geometry corrupted?
+          
         }else if(year %in% 2013:2016){
           tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
           tracts$GEO_ID<- tracts$AFFGEOID %>% str_sub(.,-11,-1)
