@@ -211,7 +211,7 @@ if (!file.exists(attrBurdenDir)) {
 
   # group "out" ages
   tic("calc_attr_burd: 5 grouped by group_variables and draw")
-  columns <- c(group_variables, "draw", "measure1","measure2", "attr")
+  columns <- c(group_variables, "draw", "measure1","measure2", "attr", "scenario")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
     dplyr::summarize(value = sum(value),
@@ -222,7 +222,7 @@ if (!file.exists(attrBurdenDir)) {
   
   #group "out" draw, mean and confidence interval
   tic("calc_attr_burd: 6 grouped out draws, calculate mean, lower, upper")
-  columns <- c(group_variables, "measure1","measure2", "attr", "min_age", "max_age")
+  columns <- c(group_variables, "measure1","measure2", "attr", "min_age", "max_age", "scenario")
   attrBurden <- attrBurden %>%
     dplyr::group_by_at(vars(one_of(columns))) %>%
     dplyr::summarize(mean = mean(value),
