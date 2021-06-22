@@ -114,14 +114,14 @@ test_that(" basic checks", {
 
 # add proportion of disparity
 attrBurden_disp1 <- inner_join(
-  all_burden %>% filter(attr == "overall" & !(Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
-  all_burden %>% filter(attr == "overall" & (Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
+  all_burden %>% filter(attr == "overall" & !(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
+  all_burden %>% filter(attr == "overall" & (Race == "Black or African American" & Hispanic.Origin == "All Origins")),
   by = setdiff(colnames(all_burden), c("Race", "Hispanic.Origin", "overall_value"))
   #by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by")
 )
 
-attrBurden_disp2 <- inner_join(attrBurden %>% filter(!(Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
-  attrBurden %>% filter((Race == "White" & Hispanic.Origin == "Not Hispanic or Latino")),
+attrBurden_disp2 <- inner_join(attrBurden %>% filter(!(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
+  attrBurden %>% filter((Race == "Black or African American"& Hispanic.Origin == "All Origins")),
   by = setdiff(colnames(attrBurden), c("Race", "Hispanic.Origin", "lower", "mean", "upper"))
   #by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by", "method","min_age", "max_age")
 )
@@ -131,7 +131,7 @@ attrBurden_disp3 <- inner_join(attrBurden_disp1, attrBurden_disp2,
 attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
-  attr = "attributable", measure3 = "proportion of disparity to White, Not Hispanic attributable",#"prop. of disp.",#
+  attr = "attributable", measure3 = "proportion of disparity to Black or African American attributable",#"prop. of disp.",#
   Race = Race.x, Hispanic.Origin = Hispanic.Origin.x,
   Race.x = NULL, Race.y = NULL, Hispanic.Origin.x = NULL, Hispanic.Origin.y = NULL,
   overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,

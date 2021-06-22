@@ -60,8 +60,13 @@ if(!file.exists(pm_summDir)){
       meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
       files <- list.files(file.path(dem_agrDir, agr_by, year))
       pm_summ<-lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist
-      pm_summ<- pm_summ %>% left_join(meta, by = "variable")
-      return(pm_summ)
+      if(nrow(pm_summ) >0){
+        pm_summ<- pm_summ %>% left_join(meta, by = "variable")
+        return(pm_summ)
+      }else{
+        return(NULL)
+      }
+      
     }) %>% rbindlist
     #make compatible
     pm_summ <- pm_summ %>% rename("Region":=!!agr_by)
@@ -98,8 +103,8 @@ if(!file.exists(pm_summDir)){
   pm_summ <- pm_summ%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
   pm_summ$Hispanic.Origin <- NULL 
   pm_summ$Race <- NULL
-  rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"), 
-                           c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino", "All, All Origins"))
+  rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
+                           c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pm_summ$Ethnicity <- sapply(pm_summ$Ethnicity, function(x) rindreplace7[[x]])
   
   fwrite(pm_summ, pm_summDir)

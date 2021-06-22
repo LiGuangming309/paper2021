@@ -125,21 +125,22 @@ server <- function(input, output) {
     attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
     attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
     attrBurden3 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method 
-                                         & measure3 %in% c("proportion of disparity to White, Not Hispanic attributable", "proportion of disparity to Graduate or professional degree attributable"))
+                                         & measure3 %in% c("proportion of disparity to Black or African American attributable", "proportion of disparity to Graduate or professional degree attributable")
+                                         & !(Ethnicity == "All, All Origins" & Education == 666))
     attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden")
     
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
     pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I)
 #TODO All Origins?
     if (input$raceOrEduc == "race") {
-      allBurden1 <- allBurden1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      allBurden2 <- allBurden2 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      attrBurden1 <- attrBurden1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      attrBurden2 <- attrBurden2 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      attrBurden3 <- attrBurden3 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      attrBurden4 <- attrBurden4 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      pm_summ1 <- pm_summ1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
-      pop_summary1 <- pop_summary1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      allBurden1 <- allBurden1 %>% filter(Education == 666 ) #& Ethnicity != "All, All Origins"
+      allBurden2 <- allBurden2 %>% filter(Education == 666)
+      attrBurden1 <- attrBurden1 %>% filter(Education == 666 )
+      attrBurden2 <- attrBurden2 %>% filter(Education == 666 )
+      attrBurden3 <- attrBurden3 %>% filter(Education == 666 )
+      attrBurden4 <- attrBurden4 %>% filter(Education == 666 )
+      pm_summ1 <- pm_summ1 %>% filter(Education == 666 )
+      pop_summary1 <- pop_summary1 %>% filter(Education == 666 )
 
       g1 <- ggplot(allBurden1, aes(x = Year, y = overall_value, color = Ethnicity))
       g2 <- ggplot(allBurden2, aes(x = Year, y = overall_value, color = Ethnicity))
@@ -186,20 +187,22 @@ server <- function(input, output) {
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
     #https://stackoverflow.com/questions/17180115/manually-setting-group-colors-for-ggplot2
-    group.colors <- c(hue_pal()(6),hue_pal()(7))
+    group.colors <- c(hue_pal()(7),hue_pal()(8))
     names(group.colors) <- c("White, Not Hispanic or Latino",
                                "White, Hispanic or Latino",
                              "White, All Origins",
                                "Black or African American",
                                "Asian or Pacific Islander",
                                "American Indian or Alaska Native",
+                             "All, All Origins",
                                "Less than 9th grade", 
                                "9th to 12th grade, no diploma", 
                                "High school graduate, GED, or alternative",
                                "Some college, no degree", 
                                "Associate's degree",
                                "Bachelor's degree", 
-                               "Graduate or professional degree"
+                               "Graduate or professional degree",
+                             "All Education"
                              )
 
     g1 <- g1+  scale_colour_manual(values=group.colors)

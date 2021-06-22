@@ -32,16 +32,16 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 1995
+  year <- 2016
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 
-   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
-   totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   #totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
+   #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
 causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv")) %>% filter(Year == year)
@@ -333,27 +333,19 @@ if (!file.exists(totalBurdenParsedDir)) {
   
   total_burden <- total_burden %>% unite("Ethnicity", c("Race", "Hispanic.Origin"), sep=", ", remove = F)
   
-  if(year %in% 1990:1999){
-    total_burden <- total_burden %>%
-      filter(Ethnicity %in% c(
-        "White, All Origins",
-        "Black or African American, All Origins",
-        "Asian or Pacific Islander, All Origins",
-        "American Indian or Alaska Native, All Origins",
-        "All, All Origins"
-      ))
-  }else{
-    total_burden <- total_burden %>%
-      filter(Ethnicity %in% c(
-        "White, Not Hispanic or Latino",
-        "White, Hispanic or Latino",
-        "Black or African American, All Origins",
-        "Asian or Pacific Islander, All Origins",
-        "American Indian or Alaska Native, All Origins",
-        "All, All Origins"
-      ))
-  }
-  total_burden <- total_burden %>% mutate(Ethnicity = NULL)
+  interested_ethnicities <-c(
+    "Black or African American, All Origins",
+    "Asian or Pacific Islander, All Origins",
+    "American Indian or Alaska Native, All Origins",
+    "All, All Origins"
+  )
+  
+  if(year %in% 1990:2000)interested_ethnicities <- c(interested_ethnicities, "White, All Origins")
+  if(year %in% 2000:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
+
+  total_burden <- total_burden %>%
+    filter(Ethnicity %in% interested_ethnicities)%>% 
+    mutate(Ethnicity = NULL)
 
   total_burden <- total_burden %>% filter(Gender.Code == "A")
   if (agr_by != "nation") total_burden <- total_burden %>% filter(STATEFP != 0)

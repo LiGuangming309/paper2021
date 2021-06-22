@@ -29,8 +29,8 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
