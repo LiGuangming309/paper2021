@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "RCurl", "magrittr", "tigris", "stringr", "data.table", "tidyverse", "tictoc","rhdf5") #
+packages <- c("dplyr", "RCurl", "magrittr","tidycensus", "stringr", "data.table", "tidyverse", "tictoc","rhdf5") # "tigris", 
 
 options(tigris_use_cache = FALSE)
 for (p in packages) {
@@ -32,9 +32,9 @@ if (rlang::is_empty(args)) {
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
-  tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
+  #tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
 }
 #-- load data---
 states <- file.path(tmpDir,"states.csv") %>% read.csv
@@ -86,8 +86,6 @@ rm(filenameExp, filepathExp, filepathM)
 filepathTr <- file.path(tracDir, toString(year))
 dir.create(filepathTr, recursive = T, showWarnings = F)
 
-
-
     apply(states, 1, function(state) {
       STUSPS <- state["STUSPS"]
       name <- state["NAME"]
@@ -99,31 +97,45 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
         tic(paste("Downloaded census tracts shape files for", year, name))
         
         #harmonize data
-        if (year == 1990){
-          tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
-          tracts <- tracts %>% mutate(
-                 #GEO_ID = paste0(sprintf("%02d", STATEFP), sprintf("%03d", COUNTYFP), sprintf("%04d", TRACTBASE), sprintf("%02d", TRACTSUF))
-                 GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF)
-          )
-        }else if(year %in% c(2000)){
-          tracts <- tracts(state = STUSPS, cb = TRUE, year = 2000) 
-          tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
-        }else if(year %in% c(1991:1999,2001:2008,2009, 2010)){
-          tracts <- tracts(state = STUSPS, cb = TRUE, year = 2010)
-          tracts$GEO_ID<- tracts$GEO_ID %>% str_sub(.,-11,-1)
-        }else if(year %in% c(2011:2012)){
-            tracts <- tracts(state = STUSPS, cb = FALSE, year = year) %>%
-              rename(GEO_ID = GEOID)
-            #TODO Geometry corrupted?
-          
-        }else if(year %in% 2013:2016){
-          tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
-          tracts$GEO_ID<- tracts$AFFGEOID %>% str_sub(.,-11,-1)
+        #if (year == 1990){
+        #  tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
+        #  tracts <- tracts %>% mutate(
+        #         #GEO_ID = paste0(sprintf("%02d", STATEFP), sprintf("%03d", COUNTYFP), sprintf("%04d", TRACTBASE), sprintf("%02d", TRACTSUF))
+        #         GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF)
+        #  )
+        #}else if(year %in% c(2000)){
+        #  tracts <- tracts(state = STUSPS, cb = TRUE, year = 2000) 
+        #  tracts$GEO_ID <-paste0(tracts$STATE,tracts$COUNTY,tracts$TRACT)
+        #}else if(year %in% c(1991:1999,2001:2008,2009, 2010)){
+        #  tracts <- tracts(state = STUSPS, cb = TRUE, year = 2010)
+        #  tracts$GEO_ID<- tracts$GEO_ID %>% str_sub(.,-11,-1)
+        #}else if(year %in% c(2011:2012)){
+        #    tracts <- tracts(state = STUSPS, cb = FALSE, year = year) %>%
+        #      rename(GEO_ID = GEOID)
+        #    #TODO Geometry corrupted?
+        #  
+        #}else if(year %in% 2013:2016){
+        #  tracts <- tracts(state = STUSPS, cb = TRUE, year = year)
+        #  tracts$GEO_ID<- tracts$AFFGEOID %>% str_sub(.,-11,-1)
+        #}
+        if(year == 1990){
+          #tracts<-get_decennial(geography = "tract", variables = "TODO", year = 1990, state = STUSPS, geometry = TRUE)
+          tracts <- tigris::tracts(state = STUSPS, cb = TRUE, year = year)
+          tracts <- tracts %>% mutate(GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF))
+        }else if(year %in% c(1991:1999,2001:2008, 2010)){
+          tracts<-get_decennial(geography = "tract", variables = "PCT012A009", year = 2010, state = STUSPS, geometry = TRUE)%>% 
+            rename(GEO_ID = GEOID)
+        }else if(year == 2000){
+          tracts<-get_decennial(geography = "tract", variables = "P012A005", year = 2000, state = STUSPS, geometry = TRUE)%>% 
+            rename(GEO_ID = GEOID)
+        }else if(year %in% c(2009,2011:2016)){
+          tracts<-get_acs(geography = "tract", variables = "B01001A_003E", state = STUSPS, geometry = TRUE, year = year)%>% 
+            rename(GEO_ID = GEOID)
         }
-        
         #save only relevant data
-        tracts<- tracts %>% 
-                  select("GEO_ID","geometry")
+        tracts<- tracts  %>%
+                  select("GEO_ID","geometry") %>%
+                  distinct
                   #filter(!is.na(AFFGEOID)) #some are entirely in water, e.g. tract 01003990000 => ignore those
         #TODO
         

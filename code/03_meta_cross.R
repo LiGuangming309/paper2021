@@ -153,6 +153,10 @@ if (!file.exists(cross_bridgeDir) & year %in%c(1990,2000,2009:2016)) {
     rename(Race2 = Race, Hispanic.Origin2 = Hispanic.Origin, Education2 = Education, Gender.Code2 = Gender.Code)
   downloaded_meta[downloaded_meta == "High school graduate (includes equivalency)"] <- "High school graduate, GED, or alternative"
 
+  #if(year == 2009){
+  #  aim_meta <- aim_meta %>% filter(Race == "All" & Hispanic.Origin == "All Origins" & Education != 666)
+  #  downloaded_meta <- downloaded_meta %>% filter(Race2 == "all" & Hispanic.Origin2 == "all" & Education2 != "666")
+  #}
   if(year == 1990){
     replaces1 <- data.frame(
       Race = c("White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American", "All","Other race"),

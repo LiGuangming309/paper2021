@@ -40,7 +40,7 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 censDirTo <- file.path(censDir, year)
 dir.create(censDirTo, recursive = T, showWarnings = F)
 
-if (year %in% 2001:2009) {
+if (year %in% 2001:2008) {
   year_lower <- 2000
   censDirLower <- file.path(censDir, "2000_in_2010")
   year_upper <- 2010
@@ -68,16 +68,16 @@ apply(states, 1, function(state) {
   name <- state["NAME"]
 
   censDirToX <- file.path(censDirTo, paste0("census_", toString(year), "_", STUSPS, ".csv"))
-  bool <- !file.exists(censDirToX) 
-  if(file.exists(censDirToX)){
-    test <- setdiff(fread(censDirToX)$variable %>% unique,
-            metaUpper$variable %>% unique)
-    if(length(test) > 0){
-      bool <- TRUE
-    } 
-  }
+  #bool <- !file.exists(censDirToX) 
+  #if(file.exists(censDirToX)){
+  #  test <- setdiff(fread(censDirToX)$variable %>% unique,
+  #          metaUpper$variable %>% unique)
+  #  if(length(test) > 0){
+  #    bool <- TRUE
+  #  } 
+  #}
     
-  if (bool) {
+  if (!file.exists(censDirToX) ) {
     tic(paste("interpolated data in", year, "in", name))
     censDataLower <- fread(file.path(censDirLower, paste0("census_", year_lower, "_", STUSPS, ".csv"))) %>%
       rename(pop_sizeLower = pop_size)
@@ -133,16 +133,16 @@ apply(states, 1, function(state) {
       mutate(pop_size = (1 - t) * pop_sizeLower + t * pop_sizeUpper) %>%
       select(state, county, tract, GEO_ID, variable, pop_size)
 
-    #fwrite(censDataTo, censDirToX)
-    suppressWarnings(
-      write.table(censDataTo,
-                  censDirToX,
-                  sep = ",",
-                  col.names = !file.exists(censDirToX),
-                  append = T,
-                  row.names = F
-      )
-    )
+    fwrite(censDataTo, censDirToX)
+    #suppressWarnings(
+    #  write.table(censDataTo,
+    #              censDirToX,
+    #              sep = ",",
+    #              col.names = !file.exists(censDirToX),
+    #              append = T,
+    #              row.names = F
+    #  )
+    #)
 
     # testthat
     test_that("02_interp actual interpolation", {

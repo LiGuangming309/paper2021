@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2009
 
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -62,13 +62,14 @@ census_meta <- read.csv(file.path(censDir, "meta_down", paste0("cens_meta_", toS
 census_metan_new <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")))
 cross_bridge <- read.csv(file.path(censDir, "cross_bridge", paste0("cross_meta_", year, ".csv")))
 # identify relevant variables
+if(year %in% 2001:2009){
+  census_meta <- census_meta %>% filter(tablename != "dec/sf1")
+} 
+  
 relevant_variables <- census_meta$variable %>% unique()
 table_groups <- census_meta %>%
   select(group, tablename) %>%
   distinct
-
-if(year %in% 2001:2009) table_groups <- table_groups %>% filter(tablename != "dec/sf1")
-
 ## ---------------- download sex by age for each race----------------------
 censDir <- file.path(censDir, year)
 dir.create(censDir, recursive = T, showWarnings = F)
