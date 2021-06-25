@@ -32,9 +32,9 @@ if (rlang::is_empty(args)) {
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
-  #tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
+  tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
 }
 #-- load data---
 states <- file.path(tmpDir,"states.csv") %>% read.csv
@@ -83,6 +83,10 @@ rm(filenameExp, filepathExp, filepathM)
 
 
 ### ------------------download tract shape files--------------------
+# Add key to .Renviron
+key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
+Sys.setenv(CENSUS_KEY = key)
+
 filepathTr <- file.path(tracDir, toString(year))
 dir.create(filepathTr, recursive = T, showWarnings = F)
 
@@ -123,13 +127,13 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
           tracts <- tigris::tracts(state = STUSPS, cb = TRUE, year = year)
           tracts <- tracts %>% mutate(GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF))
         }else if(year %in% c(1991:1999,2001:2008, 2010)){
-          tracts<-get_decennial(geography = "tract", variables = "PCT012A009", year = 2010, state = STUSPS, geometry = TRUE)%>% 
+          tracts<-get_decennial(geography = "tract", variables = "PCT012A009", year = 2010, state = STUSPS, geometry = TRUE, key = key)%>% 
             rename(GEO_ID = GEOID)
         }else if(year == 2000){
-          tracts<-get_decennial(geography = "tract", variables = "P012A005", year = 2000, state = STUSPS, geometry = TRUE)%>% 
+          tracts<-get_decennial(geography = "tract", variables = "P012A005", year = 2000, state = STUSPS, geometry = TRUE, key = key)%>% 
             rename(GEO_ID = GEOID)
         }else if(year %in% c(2009,2011:2016)){
-          tracts<-get_acs(geography = "tract", variables = "B01001A_003E", state = STUSPS, geometry = TRUE, year = year)%>% 
+          tracts<-get_acs(geography = "tract", variables = "B01001A_003E", state = STUSPS, geometry = TRUE, year = year, key = key)%>% 
             rename(GEO_ID = GEOID)
         }
         #save only relevant data

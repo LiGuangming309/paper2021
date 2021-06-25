@@ -34,11 +34,16 @@ exp_tracDir <- args[7]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2009
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
   exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  expDir <- "C:/Users/Daniel/Desktop/paper2021/data/01_exposure"
+  tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
+  exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
 }
 
 
@@ -84,10 +89,13 @@ apply(states, 1, function(state) {
   tracts <- paste0("tracts_", toString(year), "_", STUSPS, ".rds") %>%
     file.path(tracDir, toString(year), .) %>%
     readRDS(.)
-
+  
+  tracts <- tracts %>% filter(sapply(tracts$geometry, length) >0)
+  
   tic(paste("Assigned pm exposure to each tract for year", toString(year), "in", name))
   # estimate pm exposure for each tract
   tracts$pm <- sapply(tracts$geometry, function(geometry) {
+    if(length(geometry) == 0) return(NA)
     # get enclosing box, make sure in range of exposure data
     bbox <- st_bbox(geometry)
     long_min <- bbox$xmin %>%
@@ -109,6 +117,8 @@ apply(states, 1, function(state) {
     lat_row_max <- 1 + ((lat_max - lat_vec[1]) / m_min_lat) %>%
       ceiling()
     
+    if(is.na(long_row_min)) browser()
+    if(is.na(long_row_max)) browser()
     long_subset <- long_vec[long_row_min:long_row_max]
     lat_subset <- lat_vec[lat_row_min:lat_row_max]
     pm_subset <- exp_data[long_row_min:long_row_max, lat_row_min:lat_row_max]
@@ -177,6 +187,7 @@ apply(states, 1, function(state) {
     as.data.frame() %>%
     dplyr::select(c("GEO_ID", "pm"))  
 
+  
   write.csv(tracts, exp_tracDirX, row.names = FALSE)
 })
 toc()
