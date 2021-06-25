@@ -180,8 +180,8 @@ for (agr_by in agr_bys) {
         total.burden.parsed2.dir, #17   
         attr.burden.dir # 18
       )
-      # runscript(script = download.meta.script, args = args)
-      # runscript(script = meta.cross.script, args = args)
+       runscript(script = download.meta.script, args = args)
+       runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
       #  runscript(script = download.cens.script, args = args)
        } else if (year == 1990){
@@ -198,14 +198,14 @@ for (agr_by in agr_bys) {
      runscript(script=assignTract.script, args = args)
        runscript(script = assignTractAKHI.script, args = args)
         runscript(script = cens_agr.script, args = args)
-      #  runscript(script = paf.script, args = args)
-      #   runscript(script = read.nvs.findrepl.script, args = args)
-      #  runscript(script = read.total.burden.nvs.script, args = args)
-      #runscript(script=pop.summary.script, args = args)
-      #runscript(script=pop.summary.educ.script, args = args)
-      # runscript(script = add.rate.tot.burd, args = args)
-      #runscript(script = calc.attr.burd.script, args = args)
-      # runscript(script = calc.attr.burd.alt.script, args = args)  
+        runscript(script = paf.script, args = args)
+         runscript(script = read.nvs.findrepl.script, args = args)
+        runscript(script = read.total.burden.nvs.script, args = args)
+      runscript(script=pop.summary.script, args = args)
+      runscript(script=pop.summary.educ.script, args = args)
+       runscript(script = add.rate.tot.burd, args = args)
+      runscript(script = calc.attr.burd.script, args = args)
+       runscript(script = calc.attr.burd.alt.script, args = args)  
     }  
   }
 }
@@ -223,8 +223,8 @@ for (agr_by in agr_bys) {
     exp.rr.dir #9
   )   
     
-# runscript(script = summary.script, args = args)
-#  runscript(script = summary.other.script, args = args)
+ runscript(script = summary.script, args = args)
+  runscript(script = summary.other.script, args = args)
 #runscript(script = figure1.script, args = args)
 #runscript(script = figure2.script, args = args) 
 #runscript(script = figure3.script, args = args)
