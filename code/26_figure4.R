@@ -27,11 +27,13 @@ args <- commandArgs(trailingOnly = T)
 
 summaryDir <- args[7]
 figuresDir <- args[8]
+scenarioI <- args[10]
 
 # TODO delete
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
+  scenarioI <- "A"
 }
 
 theme_set(theme_classic())
@@ -41,7 +43,7 @@ attr_burd <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 # filter
 all_burden <- all_burden %>% filter(attr == "overall")
-attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" & measure3 == "value" & scenario == "A")
+attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" & measure3 == "value" & scenario == scenarioI)
 ###---- population ranking----
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
 pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &

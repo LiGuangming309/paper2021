@@ -27,11 +27,13 @@ args <- commandArgs(trailingOnly = T)
 
 summaryDir <- args[7]
 figuresDir <- args[8]
+scenarioI <- args[10]
 
 # TODO delete
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
+  scenarioI <- "A"
 }
 
 attr_burd <- rbind(
@@ -52,7 +54,7 @@ all_burden <- all_burden %>%
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & 
            method == "burnett" & attr == "attributable" &
-    source == "National Vital Statistics System" & scenario == "A")
+    source == "National Vital Statistics System" & scenario == scenarioI)
 
 # http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/
 # https://rpubs.com/Koundy/71792
