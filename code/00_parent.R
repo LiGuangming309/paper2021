@@ -210,7 +210,7 @@ for (agr_by in agr_bys) {
   }
 }
 
-   
+ scenario = "A"
   args <- paste(
     tmp.dir, # 1
     dem.dir, # 2
@@ -220,7 +220,8 @@ for (agr_by in agr_bys) {
     attr.burden.dir, # 6 
     summary.dir, # 7 
     figures.dir, #8
-    exp.rr.dir #9
+    exp.rr.dir, #9
+    scenario  #10
   )   
     
 # runscript(script = summary.script, args = args)
