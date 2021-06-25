@@ -218,6 +218,8 @@ attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x
 rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7)
 
 #--write---
+attrBurden<- attrBurden %>% filter(measure1 == "Deaths")
+
 fwrite(attrBurden %>% filter(measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd.csv"))
 fwrite(attrBurden %>% filter(!measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd_prop.csv"))
 fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
