@@ -145,10 +145,10 @@ calc.attr.burd.script <- file.path(code.dir, "18_calc_attr_burd.R")
 calc.attr.burd.alt.script <- file.path(code.dir, "19_calc_attr_burd_alt.R")
 summary.script <- file.path(code.dir, "20_summary.R")
 summary.other.script <- file.path(code.dir, "21_summary_other.R")
-figure1.script <- file.path(code.dir, "22_figure1.R")
-figure2.script <- file.path(code.dir, "23_figure2.R")
-figure3.script <- file.path(code.dir, "24_figure3.R")
-figure4.script <- file.path(code.dir, "25_figure4.R")
+figure1.script <- file.path(code.dir, "23_figure1.R")
+figure2.script <- file.path(code.dir, "24_figure2.R")
+figure3.script <- file.path(code.dir, "25_figure3.R")
+figure4.script <- file.path(code.dir, "26_figure4.R")
 #--------parameters of code-------------------
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
@@ -224,12 +224,12 @@ for (agr_by in agr_bys) {
     scenario  #10
   )   
     
- runscript(script = summary.script, args = args)
-  runscript(script = summary.other.script, args = args)
-#runscript(script = figure1.script, args = args)
-#runscript(script = figure2.script, args = args) 
-#runscript(script = figure3.script, args = args)
-#runscript(script = figure4.script, args = args)
+# runscript(script = summary.script, args = args)
+#  runscript(script = summary.other.script, args = args)
+runscript(script = figure1.script, args = args)
+runscript(script = figure2.script, args = args) 
+runscript(script = figure3.script, args = args)
+runscript(script = figure4.script, args = args)
 
   
 
