@@ -211,6 +211,7 @@ for (agr_by in agr_bys) {
 }
 
  scenario = "A"
+ method <- "burnett"
   args <- paste(
     tmp.dir, # 1
     dem.dir, # 2
@@ -221,7 +222,8 @@ for (agr_by in agr_bys) {
     summary.dir, # 7 
     figures.dir, #8
     exp.rr.dir, #9
-    scenario  #10
+    scenario,  #10
+    method #11
   )   
     
 # runscript(script = summary.script, args = args)

@@ -28,12 +28,18 @@ args <- commandArgs(trailingOnly = T)
 summaryDir <- args[7]
 figuresDir <- args[8]
 scenarioI <- args[10]
+methodI <- args[11]
 
 # TODO delete
 if (rlang::is_empty(args)) {
+  scenarioI <- "A"
+  methodI <- "burnett"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
-  scenarioI <- "A"
+  
+   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+   figuresDir <-  "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
+  
 }
 
 theme_set(theme_classic())
@@ -43,7 +49,7 @@ attr_burd <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 # filter
 all_burden <- all_burden %>% filter(attr == "overall")
-attr_burd <- attr_burd %>% filter( method == "burnett" & attr == "attributable" & measure3 == "value" & scenario == scenarioI)
+attr_burd <- attr_burd %>% filter( method == methodI & attr == "attributable" & measure3 == "value" & scenario == scenarioI)
 ###---- population ranking----
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
 pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &
@@ -115,8 +121,10 @@ g1 <- ggplot(joined_all_attr, aes(x = overall_value, y = mean)) +
     segment.color = "grey50"
   ) +  
   scale_colour_manual(values=group.colors) +
-  guides(size = FALSE) #, alpha =
+  guides(size = FALSE) + #, alpha =
+ geom_abline(intercept = 0, slope = 50)
 
+g1 + geom_abline(intercept = 0, slope = 0.5) 
 g1
 #https://stackoverflow.com/questions/8545035/scatterplot-with-marginal-histograms-in-ggplot2
 #https://cran.r-project.org/web/packages/ggExtra/readme/README.html
