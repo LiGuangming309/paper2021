@@ -149,7 +149,7 @@ if (!file.exists(findreplaceDir)) {
       data.frame(
         replacecolumns = "Education1989",
         from = c(0:17,99,NA), 
-        to = c(rep("lower",13),rep("middle",3), rep("higher",2),99, NA)
+        to = c(rep("lower",13),rep("middle",3), rep("higher",2),"Unknown", 101)
       ),
       data.frame(
         replacecolumns = "Education2003",
@@ -159,7 +159,7 @@ if (!file.exists(findreplaceDir)) {
         #10 = 1989 revision, not comparable
         from = c(1:9,NA), 
         #to = c(1:7,7,9,10) 
-        to = c(rep("lower",3),rep("middle",2), rep("higher",3),99, NA)
+        to = c(rep("lower",3),rep("middle",2), rep("higher",3),"Unknown", 101)
       )
     )
 

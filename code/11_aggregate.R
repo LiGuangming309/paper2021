@@ -33,7 +33,7 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 1991
+  year <- 2009
   agr_by <- "nation"
 
   #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -149,9 +149,9 @@ apply(states, 1, function(state) {
       comp2 <- cens_agr %>%
         group_by(state, county, variable, scenario) %>%
         summarise(pop_size = sum(pop_size)) %>%
-        full_join(comp1, by = c("state", "county", "variable"))
+        inner_join(comp1, by = c("state", "county", "variable"))
 
-      comp2$pop_size.x[is.na(comp2$pop_size.x)] <- 0
+     # comp2$pop_size.x[is.na(comp2$pop_size.x)] <- 0
 
       expect_equal(comp2$pop_size.x, comp2$pop_size.y)
       if (any(comp2$pop_size.x != comp2$pop_size.y)){

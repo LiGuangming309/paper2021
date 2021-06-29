@@ -167,8 +167,12 @@ if (!file.exists(totalBurdenParsedDir)) {
   #TODO Education
   if("Education2003" %in% colnames(total_burden)){
     total_burden <- total_burden %>%
+      mutate(Education1989 = na_if(Education1989, "101"),
+             Education2003 = na_if(Education2003, "101")) %>% 
       unite("Education", c("Education1989","Education2003"), na.rm = TRUE)
   }
+  #test <- total_burden %>% filter(!Education %in% c("lower","middle", "higher"))
+  #nrow(test)/nrow(total_burden)
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%
@@ -176,8 +180,8 @@ if (!file.exists(totalBurdenParsedDir)) {
 
 
   ## --- seperate stuff----
-  inverse_selectcolumns <- c(names(selectcolumns))
-  # setdiff(colnames(total_burden),"Deaths")
+  #inverse_selectcolumns <- c(names(selectcolumns)) #Education1989
+  inverse_selectcolumns<- setdiff(colnames(total_burden),"Deaths")
 
   # add Hispanic Origin All Origins
   total_burden_all_his <- total_burden %>%
@@ -333,7 +337,8 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>%
     filter(Hispanic.Origin != "Unknown" & # TODO
       # Race != "Guama" &
-      min_age != "Unknown") %>%
+      min_age != "Unknown" &
+      Education != "Unknown") %>% #TODO imputation
     mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
   

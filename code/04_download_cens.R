@@ -33,11 +33,11 @@ censDir <- args[8]
 if (rlang::is_empty(args)) {
   year <- 2009
 
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
 # quits, if not downloadable year
@@ -167,13 +167,12 @@ apply(states, 1, function(state) {
         left_join(replaces1, by = "Race2") %>%
         left_join(replaces2, by = "Hispanic.Origin2") 
       
-      join_variables <- c("Race","Hispanic.Origin", "Education", "Gender.Code", "Year") #TODO GEO_ID
+      join_variables <- c("Race","Hispanic.Origin",  "Gender.Code", "Year") #TODO "Education",
       test_dem.state.data.old <- dem.state.data.old %>% 
         left_join(census_meta, by = "variable") %>%
         group_by_at(vars(all_of(join_variables))) %>%
         summarize(pop_size = sum(pop_size)) %>%
-        filter(Education == "666") %>%
-        mutate(Education = 666)
+        filter(Education == "666") 
        
       test_dem.state.data <- dem.state.data %>% 
         left_join(census_metan_new, by = "variable") %>%
