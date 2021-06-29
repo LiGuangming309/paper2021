@@ -77,7 +77,7 @@ if (!file.exists(aim_metaDir)) {
     )
   )
 
-  aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = 1:7)
+  aim_meta2 <- data.frame(Race = "All", Hispanic.Origin = "All Origins", Education = c("lower", "middle", "higher"))
   aim_meta2 <- merge(data.frame(Year = 2009:2016), aim_meta2)
   aim_meta2 <- merge(data.frame(Gender.Code = c("A")), aim_meta2) #, "M", "F"
   # Ignoring 18-25 
@@ -175,7 +175,8 @@ if (!file.exists(cross_bridgeDir) & year %in%c(1990,2000,2009:2016)) {
     coeff = c(1, 1, 1, -1)
   )
   replaces3 <- data.frame(
-    Education = c(1:7, 666),
+   # Education = c(1:7, 666),
+    Education = c(rep("lower",3),rep("middle",2), rep("higher",2), "666"),
     Education2 = c(
       "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
       "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"

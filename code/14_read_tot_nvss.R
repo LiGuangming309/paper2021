@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 
-   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
-   #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
+   totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
 causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv")) %>% filter(Year == year)
@@ -65,7 +65,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     selectcolumns <- c( #TODO year
       "Year" = "datayear",
       "label_cause" = "ucod", # record_1/enum_1
-      "Education" = "educ", # 52-53
+      #"Education" = "educ", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
       "min_age" = "age", # 64, Single Year
@@ -76,7 +76,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
-      "Education" = "educ", # 52-53
+      #"Education" = "educ", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
       "min_age" = "age", # 64, Single Year
@@ -87,7 +87,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
-      "Education" = "educ", # 52-53
+     # "Education" = "educ", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
       "min_age" = "age", # 64, Single Year
@@ -98,7 +98,8 @@ if (!file.exists(totalBurdenParsedDir)) {
     selectcolumns <- c(
       "Year" = "year",
       "label_cause" = "ucod", # record_1/enum_1
-      "Education" = "educ2003", # 52-53
+      "Education1989" = "educ1989", 
+      "Education2003" = "educ2003", # 52-53
       "Gender.Code" = "sex", # 59
       "Race" = "race", # 60
       "min_age" = "age", # 64, Single Year
@@ -163,6 +164,11 @@ if (!file.exists(totalBurdenParsedDir)) {
     }
   }
   rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
+  #TODO Education
+  if("Education2003" %in% colnames(total_burden)){
+    total_burden <- total_burden %>%
+      unite("Education", c("Education1989","Education2003"), na.rm = TRUE)
+  }
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%
@@ -241,19 +247,19 @@ if (!file.exists(totalBurdenParsedDir)) {
       summarise(Deaths = sum(Deaths)) %>%
       mutate(
         Race = "All",
-        Education = Education %>% as.numeric() %>% as.factor()
+        Education = Education %>% as.factor()
       )
     
     # deal with unknown, 1989
-    total_burden_educ <- total_burden_educ %>%
-      group_by_at(setdiff(colnames(total_burden), c("Education","Deaths"))) %>%
-      mutate(DeathsAllEduc = sum(Deaths)) %>%
-      filter(Education %in% c(1:7)) %>%
-      mutate(
-        prop = DeathsAllEduc / sum(Deaths),
-        Deaths = Deaths * prop,
-        DeathsAllEduc = NULL, prop = NULL
-      ) 
+    #total_burden_educ <- total_burden_educ %>%
+    #  group_by_at(setdiff(colnames(total_burden), c("Education","Deaths"))) %>%
+    #  mutate(DeathsAllEduc = sum(Deaths)) %>%
+    #  filter(Education %in% c(1:7)) %>%
+    #  mutate(
+    #    prop = DeathsAllEduc / sum(Deaths),
+    #    Deaths = Deaths * prop,
+    #    DeathsAllEduc = NULL, prop = NULL
+    #  ) 
     total_burden <- rbind(total_burden_race, total_burden_educ, total_burden_all) %>% distinct()
     rm(total_burden_educ)
   }else{

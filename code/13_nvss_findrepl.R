@@ -29,8 +29,8 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
@@ -147,13 +147,19 @@ if (!file.exists(findreplaceDir)) {
         to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown","Unknown")
       ),
       data.frame(
-        replacecolumns = "Education",
+        replacecolumns = "Education1989",
+        from = c(0:17,99,NA), 
+        to = c(rep("lower",13),rep("middle",3), rep("higher",2),99, NA)
+      ),
+      data.frame(
+        replacecolumns = "Education2003",
         #7 = Master’s degree 
         #8 = Doctorate or professional degree
         #9 = unknown
         #10 = 1989 revision, not comparable
-        from = c(1:9,NA), #TODO whole thing with revision 89
-        to = c(1:7,7,9,10) 
+        from = c(1:9,NA), 
+        #to = c(1:7,7,9,10) 
+        to = c(rep("lower",3),rep("middle",2), rep("higher",3),99, NA)
       )
     )
 
