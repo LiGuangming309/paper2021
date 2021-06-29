@@ -31,13 +31,13 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 1991
+  year <- 2011
 
-  # censDir <- "C:/Users/Daniel/Desktop/paper2020/data/06_demog"
-  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2020/data/tmp"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
 
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 metaDir <- file.path(censDir, "meta")
 dir.create(metaDir, recursive = T, showWarnings = F)
@@ -50,7 +50,7 @@ if (!file.exists(aim_metaDir)) {
   aim_meta1 <- data.frame(
     Race = c("White", "White", "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American", "All"),
     Hispanic.Origin = c("Not Hispanic or Latino", "Hispanic or Latino", "All Origins", "All Origins", "All Origins", "All Origins"),
-    Education = 666
+    Education = "666"
   )
   aim_meta1 <- merge(data.frame(Gender.Code = c("A")), aim_meta1) #, "M", "F"
 
@@ -89,7 +89,7 @@ if (!file.exists(aim_metaDir)) {
   aim_meta3 <- data.frame(
     Race = c("White",  "American Indian or Alaska Native", "Asian or Pacific Islander", "Black or African American", "All"),
     Hispanic.Origin = c("All Origins", "All Origins", "All Origins", "All Origins", "All Origins"),
-    Education = 666
+    Education = "666"
   )
   aim_meta3 <- merge(data.frame(Year = 1990:2000), aim_meta3)
   aim_meta3 <- merge(data.frame(Gender.Code = c("A")), aim_meta3)
@@ -111,7 +111,12 @@ if (!file.exists(aim_metaDir)) {
       "All" = "U",
     )
     Hispanic.Origin <- substring(row[["Hispanic.Origin"]], 1, 1)
-    Education <- min(row[["Education"]] %>% as.numeric(), 66)
+    Education <- switch(row[["Education"]],
+                   "lower" = "L",
+                   "middle" = "M",
+                   "higher" = "H",
+                   "666" = "A"
+    )
     Gender.Code <- row[["Gender.Code"]]
     min_age <- sprintf("%02d", as.numeric(row[["min_age"]]))
     max_age <- sprintf("%03d", as.numeric(row[["max_age"]]))
@@ -202,6 +207,7 @@ if (!file.exists(cross_bridgeDir) & year %in%c(1990,2000,2009:2016)) {
   
   cross_bridge <- aim_meta %>%
     left_join(replaces2, by = "Hispanic.Origin") %>%
+    mutate(Education = as.character(Education)) %>%
     left_join(replaces3, by = "Education") %>%
     left_join(replaces4, by = "Gender.Code") 
   

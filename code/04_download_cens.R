@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2000
 
    censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
    tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -167,20 +167,20 @@ apply(states, 1, function(state) {
         left_join(replaces1, by = "Race2") %>%
         left_join(replaces2, by = "Hispanic.Origin2") 
       
-      join_variables <- c("Race","Hispanic.Origin",  "Gender.Code", "Year") #TODO "Education",
+      join_variables <- c("Race","Hispanic.Origin",  "Gender.Code","Year") #TODO 
       test_dem.state.data.old <- dem.state.data.old %>% 
         left_join(census_meta, by = "variable") %>%
+        filter(Education == "666") %>%
         group_by_at(vars(all_of(join_variables))) %>%
-        summarize(pop_size = sum(pop_size)) %>%
-        filter(Education == "666") 
+        summarize(pop_size = sum(pop_size)) 
        
       test_dem.state.data <- dem.state.data %>% 
         left_join(census_metan_new, by = "variable") %>%
         group_by_at(vars(all_of(join_variables))) %>%
         summarize(pop_size = sum(pop_size)) 
       
-      test <- inner_join(test_dem.state.data.old, test_dem.state.data, by = join_variables) %>%
-        filter(pop_size.x != pop_size.y)
+      test <- inner_join(test_dem.state.data.old, test_dem.state.data, by = join_variables) #%>%
+        #filter(pop_size.x != pop_size.y)
       expect_equal(test$pop_size.x, test$pop_size.y)
       
       #Test, that GEO_ID - variable is a primary key for the data.frame

@@ -26,14 +26,14 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 if (rlang::is_empty(args)) {
-  year <- 1991
+  year <- 2007
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 
-  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  # dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
@@ -165,8 +165,8 @@ apply(states, 1, function(state) {
         summarise(pop_sizeYear = sum(pop_size))
 
       comp4 <- censDataLower_agr %>%
-        full_join(censDataUpper_agr, by = "variable") %>%
-        full_join(censDataTo_agr, by = "variable")
+        inner_join(censDataUpper_agr, by = "variable") %>%
+        inner_join(censDataTo_agr, by = "variable")
 
       comp4 <- comp4 %>%
         mutate(

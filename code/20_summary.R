@@ -187,12 +187,12 @@ rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP, "us"
 all_burden$Region <- sapply(all_burden$Region, function(x) rindreplace1[[x]])
 attrBurden$Region <- sapply(attrBurden$Region, function(x) rindreplace1[[x]])
 
-rindreplace2 <- setNames(
-  c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"),
-  c(1:7, 666)
-)
-all_burden$Education <- sapply(all_burden$Education %>% as.character(), function(x) rindreplace2[[x]])
-attrBurden$Education <- sapply(attrBurden$Education %>% as.character(), function(x) rindreplace2[[x]])
+#rindreplace2 <- setNames(
+#  c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"),
+#  c(1:7, 666)
+#)
+#all_burden$Education <- sapply(all_burden$Education %>% as.character(), function(x) rindreplace2[[x]])
+#attrBurden$Education <- sapply(attrBurden$Education %>% as.character(), function(x) rindreplace2[[x]])
 
 rindreplace3 <- setNames(c("All genders", "Male", "Female"), c("A", "M", "F"))
 all_burden$Gender.Code <- sapply(all_burden$Gender.Code, function(x) rindreplace3[[x]])

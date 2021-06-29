@@ -93,9 +93,9 @@ if(!file.exists(pm_summDir)){
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pm_summ$Region <- sapply(pm_summ$Region , function(x) rindreplace1[[x]])
   
-  rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
-                           c(1:7, 666))
-  pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
+  #rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
+  #                         c(1:7, 666))
+  #pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
   
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pm_summ$Gender.Code <- sapply(pm_summ$Gender.Code , function(x) rindreplace3[[x]])
@@ -146,9 +146,9 @@ if(!file.exists(pop_summaryDir)){
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pop_summary$Region <- sapply(pop_summary$Region , function(x) rindreplace1[[x]])
   
-  rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
-                           c(1:7, 666))
-  pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
+  #rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
+  #                         c(1:7, 666))
+  #pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
   
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pop_summary$Gender.Code <- sapply(pop_summary$Gender.Code , function(x) rindreplace3[[x]])
