@@ -90,6 +90,7 @@ if(!file.exists(pm_summDir)){
     pivot_longer(c(mean,median),
                  names_to = "pm_metric")
   
+  pm_summ <- pm_summ %>% filter(!is.na(Gender.Code)) #TODO
   ##--- find and replcase---
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pm_summ$Region <- sapply(pm_summ$Region , function(x) rindreplace1[[x]])
@@ -97,7 +98,8 @@ if(!file.exists(pm_summDir)){
   rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
                            c(1:7, 666))
   #pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
-  
+  unique(pm_summ$Gender.Code)
+
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pm_summ$Gender.Code <- sapply(pm_summ$Gender.Code , function(x) rindreplace3[[x]])
   
