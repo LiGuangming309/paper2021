@@ -86,7 +86,7 @@ apply(states, 1, function(state) {
     
     censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
 
-    censData_joined <- full_join(censDataLower, censDataUpper, by = c("GEO_ID", "variable")) %>%
+    censData_joined <- inner_join(censDataLower, censDataUpper, by = c("GEO_ID", "variable")) %>%
       filter(!(pop_sizeLower == 0 & is.na(pop_sizeUpper) |
         is.na(pop_sizeLower) & pop_sizeUpper == 0 |
         is.na(pop_sizeLower) & is.na(pop_sizeUpper)))
