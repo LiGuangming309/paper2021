@@ -139,13 +139,13 @@ attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
   attr.x = NULL, attr.y = NULL
 )
 
-attrBurden_disp4 <- inner_join(all_burden %>% filter(attr == "overall" & Education != 7),
-  all_burden %>% filter(attr == "overall" & Education == 7),
+attrBurden_disp4 <- inner_join(all_burden %>% filter(attr == "overall" & Education != "lower"),
+  all_burden %>% filter(attr == "overall" & Education == "lower"),
   by = setdiff(colnames(all_burden), c("Education", "overall_value"))
 )
 
-attrBurden_disp5 <- inner_join(attrBurden %>% filter(Education != 7), 
-  attrBurden %>% filter(Education == 7), 
+attrBurden_disp5 <- inner_join(attrBurden %>% filter(Education != "lower"), 
+  attrBurden %>% filter(Education == "lower"), 
   by = setdiff(colnames(attrBurden), c("Education", "lower", "mean", "upper")))
 
 attrBurden_disp6 <- inner_join(
@@ -155,7 +155,7 @@ attrBurden_disp6 <- inner_join(
 attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
-  attr = "attributable", measure3 = "proportion of disparity to Graduate or professional degree attributable",#"prop. of disp.",#
+  attr = "attributable", measure3 = "proportion of disparity to lower educational attainment",
   Education = Education.x, 
   Education.x = NULL, Education.y = NULL,
   overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,
@@ -188,11 +188,14 @@ all_burden$Region <- sapply(all_burden$Region, function(x) rindreplace1[[x]])
 attrBurden$Region <- sapply(attrBurden$Region, function(x) rindreplace1[[x]])
 
 rindreplace2 <- setNames(
-  c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"),
-  c(1:7, 666)
+  #c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"),
+  #c(1:7, 666)
+  c("high school graduate or lower", "some college education but no 4-year college degree", "4-year college graduate or higher", "666"),
+ c("lower","middle","higher", "666")
 )
-#all_burden$Education <- sapply(all_burden$Education %>% as.character(), function(x) rindreplace2[[x]])
-#attrBurden$Education <- sapply(attrBurden$Education %>% as.character(), function(x) rindreplace2[[x]])
+
+all_burden$Education <- sapply(all_burden$Education %>% as.character(), function(x) rindreplace2[[x]])
+attrBurden$Education <- sapply(attrBurden$Education %>% as.character(), function(x) rindreplace2[[x]])
 
 rindreplace3 <- setNames(c("All genders", "Male", "Female"), c("A", "M", "F"))
 all_burden$Gender.Code <- sapply(all_burden$Gender.Code, function(x) rindreplace3[[x]])

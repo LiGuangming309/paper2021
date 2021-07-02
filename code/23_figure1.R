@@ -234,7 +234,8 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) 
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "proportion of disparity to Graduate or professional degree attributable")
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"
+                                   & measure3 == "proportion of disparity to lower educational attainment")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +

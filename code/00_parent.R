@@ -1,0 +1,239 @@
+
+#-------------------Header------------------------------------------------
+# Author: Daniel Fridljand
+# Date: 11/15/2020
+# Purpose: parent file for project
+#
+#***************************************************************************
+
+#------------------SET-UP--------------------------------------------------
+# clear memory
+rm(list = ls(all = TRUE))
+
+# install packages if missing
+packages <- c(
+  "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
+  "MALDIquant", "plyr", "RCurl", "readxl","triangle", "sf", "sp", "stringr", "testthat", "tictoc","truncnorm",
+  "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr", "ggExtra"
+)
+
+
+for (p in packages) {
+  if (p %in% rownames(installed.packages()) == FALSE) {
+    install.packages(p)
+  } 
+}
+
+# download rhdf5
+if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
+  if (!requireNamespace("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+  }
+  BiocManager::install("rhdf5")
+}
+
+# download DataCombine
+if ("DataCombine" %in% rownames(installed.packages()) == FALSE) {
+  devtools::install_github("christophergandrud/DataCombine")
+}
+# runtime configuration
+# run cripts from command line depending on OS
+if (Sys.info()["sysname"] == "Darwin") {
+  runscript <- function(script, args = "") {
+    system(paste("Rscript", script, args))
+  }
+} else if (Sys.info()["sysname"] == "Windows") {
+  memory.limit(size = 500000)
+
+  exec <- paste0("C:/Program Files/R/R-", R.Version()$major, ".", R.Version()$minor, "/bin/Rscript.exe")
+  exec <- shQuote(exec)
+  runscript <- function(script, args = "") {
+    system(paste(exec, "--vanilla", script, args))
+  }
+} else {
+  print(paste("no handler for", Sys.info()["sysname"], "implemented yet."))
+}
+
+## ----------------directories--------------------------------------------------------------------------------
+# create data directory, setwd
+code.dir <- dirname(rstudioapi::getSourceEditorContext()$path)
+h_root <- dirname(code.dir)
+setwd(h_root)
+
+# create directory, where all downloaded and calculated data is stored
+data.dir <- file.path(h_root, "data")
+dir.create(data.dir, recursive = T, showWarnings = F)
+
+
+# directory contains variables used in calculations, which several scripts might need
+tmp.dir <- file.path(data.dir, "tmp")
+dir.create(tmp.dir, recursive = T, showWarnings = F)
+
+# directory for downloaded PM exposure data
+exp.dir <- file.path(data.dir, "01_exposure")
+dir.create(exp.dir, recursive = T, showWarnings = F)
+
+
+# directory for downloaded TIGER/Line tract shape files
+trac.dir <- file.path(data.dir, "02_tracts")
+dir.create(trac.dir, recursive = T, showWarnings = F)
+
+# this directory contains calculated year - census tract - pm level tuples
+trac.exp.dir <- file.path(data.dir, "03_exp_tracts")
+dir.create(trac.exp.dir, recursive = T, showWarnings = F)
+
+exp.rr.dir <- file.path(data.dir, "04_exp_rr")
+if (!file.exists(exp.rr.dir)) warning("The mrbrt_summary files from Cohen (2019) need to be downloaded")
+
+# directory for downloaded demographic census data
+dem.dir <- file.path(data.dir, "05_demog")
+dir.create(dem.dir, recursive = T, showWarnings = F)
+
+# directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
+dem.agr.dir <- file.path(data.dir, "06_dem.agr")
+dir.create(dem.agr.dir, recursive = T, showWarnings = F)
+agr_bys <- c("nation","STATEFP") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+
+paf.dir <- file.path(data.dir, "07_paf")
+dir.create(paf.dir, recursive = T, showWarnings = F)
+
+total.burden.dir <- file.path(data.dir, "08_total_burden")
+if (!file.exists(total.burden.dir)) warning("The total burden data from CDC wonder need to be downloaded")
+
+total.burden.parsed.dir <- file.path(data.dir, "09_total_burden_parsed")
+dir.create(total.burden.parsed.dir, recursive = T, showWarnings = F)
+sources <- "nvss"
+
+cdc.pop.dir <- file.path(data.dir, "10_cdc_population")
+if (!file.exists(cdc.pop.dir)) warning("The population data from CDC wonder need to be downloaded")
+
+pop.summary.dir <- file.path(data.dir, "11_population_summary")
+dir.create(pop.summary.dir, recursive = T, showWarnings = F)
+
+total.burden.parsed2.dir <- file.path(data.dir, "12_total_burden_parsed2")
+dir.create(total.burden.parsed2.dir, recursive = T, showWarnings = F)
+
+attr.burden.dir <- file.path(data.dir, "13_attr_burd")
+dir.create(attr.burden.dir, recursive = T, showWarnings = F)
+
+summary.dir <- file.path(data.dir, "14_summary")
+dir.create(summary.dir, recursive = T, showWarnings = F)
+
+figures.dir <- file.path(data.dir, "15_figures")
+dir.create(figures.dir, recursive = T, showWarnings = F)
+
+
+# paths of scripts
+mrbrtRR.script <- file.path(code.dir, "01_mrbrt_rr.R")
+download.meta.script <- file.path(code.dir, "02_download_meta.R")
+meta.cross.script <- file.path(code.dir, "03_meta_cross.R")
+download.cens.script <- file.path(code.dir, "04_download_cens.R")
+read1990.script <- file.path(code.dir, "05_read1990.R")
+cross.walk.script <- file.path(code.dir, "06_cross_walk.R")
+interp.script <- file.path(code.dir, "07_interp.R")
+download.other.script <- file.path(code.dir, "08_download_other.R")
+assignTract.script <- file.path(code.dir, "09_ass_trac.R")
+assignTractAKHI.script <- file.path(code.dir, "10_ass_trac_AKHI.R")
+cens_agr.script <- file.path(code.dir, "11_aggregate.R")
+paf.script <- file.path(code.dir, "12_paf.R")
+read.nvs.findrepl.script <- file.path(code.dir, "13_nvss_findrepl.R")
+read.total.burden.nvs.script <- file.path(code.dir, "14_read_tot_nvss.R")
+pop.summary.script <- file.path(code.dir, "15_popsum.R")
+pop.summary.educ.script <- file.path(code.dir, "16_popsum_educ.R")
+add.rate.tot.burd <- file.path(code.dir, "17_add_rate_totburd.R")
+calc.attr.burd.script <- file.path(code.dir, "18_calc_attr_burd.R")
+calc.attr.burd.alt.script <- file.path(code.dir, "19_calc_attr_burd_alt.R")
+summary.script <- file.path(code.dir, "20_summary.R")
+summary.other.script <- file.path(code.dir, "21_summary_other.R")
+figure1.script <- file.path(code.dir, "23_figure1.R")
+figure2.script <- file.path(code.dir, "24_figure2.R")
+figure3.script <- file.path(code.dir, "25_figure3.R")
+figure4.script <- file.path(code.dir, "26_figure4.R")
+#--------parameters of code-------------------
+args <- paste(tmp.dir, exp.rr.dir)
+# runscript(script=mrbrtRR.script, args = args)
+
+#TODO 2009
+ years <- c(1990, 2000, 2010, 1991:1999, 2001:2008, 2011:2016)
+# years <- c(2009)
+# years <- c(2000,1990,1991) #,1990,1991
+for (agr_by in agr_bys) {
+  for (source in sources) {
+    for (year in years) {
+      args <- paste(
+        year, # 1
+        data.dir, # 2
+        tmp.dir, # 3
+        exp.dir, # 4
+        trac.dir, # 5
+        exp.rr.dir, # 6 
+        trac.exp.dir, # 7
+        dem.dir, # 8
+        dem.agr.dir, # 9
+        agr_by, # 10
+        paf.dir, # 11
+        total.burden.dir, # 12
+        total.burden.parsed.dir,  #13
+        source, # 14
+        cdc.pop.dir, # 15
+        pop.summary.dir,# 16
+        total.burden.parsed2.dir, #17   
+        attr.burden.dir # 18
+      )
+       runscript(script = download.meta.script, args = args)
+       runscript(script = meta.cross.script, args = args)
+       if(year %in% c(2000, 2009:2016)){
+ #      runscript(script = download.cens.script, args = args)
+       } else if (year == 1990){
+#         runscript(script = read1990.script, args = args)
+       }else{
+ #        runscript(script = interp.script, args = args)
+       }
+       if(year %in% c(1990,2000)){
+#         runscript(script = cross.walk.script, args = args)
+       }
+  
+  #          runscript(script = download.other.script, args = args)
+    
+    # runscript(script=assignTract.script, args  = args)
+
+    #  runscript(script = assignTractAKHI.script, args = args)
+    #    runscript(script = cens_agr.script, args = args)
+    #    runscript(script = paf.script, args = args)
+    #     runscript(script = read.nvs.findrepl.script, args = args)
+    #    runscript(script = read.total.burden.nvs.script, args = args)
+    #  runscript(script=pop.summary.script, args = args)
+    #  runscript(script=pop.summary.educ.script, args = args)
+    #   runscript(script = add.rate.tot.burd, args = args)
+    #  runscript(script = calc.attr.burd.script, args = args)
+
+    #   runscript(script = calc.attr.burd.alt.script, args = args)  
+
+    }  
+  }
+}
+
+ scenario = "A"
+ method <- "burnett"
+  args <- paste(
+    tmp.dir, # 1
+    dem.dir, # 2
+    dem.agr.dir, # 3
+    pop.summary.dir, # 4
+    total.burden.parsed2.dir, # 5
+    attr.burden.dir, # 6 
+    summary.dir, # 7 
+    figures.dir, #8
+    exp.rr.dir, #9
+    scenario,  #10
+    method #11
+  )   
+    
+# runscript(script = summary.script, args = args)
+# runscript(script = summary.other.script, args = args)
+runscript(script = figure1.script, args = args)
+runscript(script = figure2.script, args = args) 
+runscript(script = figure3.script, args = args)
+runscript(script = figure4.script, args = args)
+  
+
