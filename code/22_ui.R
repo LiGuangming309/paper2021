@@ -125,7 +125,7 @@ server <- function(input, output) {
     attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
     attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
     attrBurden3 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method 
-                                         & measure3 %in% c("proportion of disparity to Black or African American attributable", "proportion of disparity to Graduate or professional degree attributable")
+                                         & measure3 %in% c("proportion of disparity to Black or African American attributable", "proportion of disparity to lower educational attainment")
                                          & !(Ethnicity == "All, All Origins" & Education == 666))
     attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden")
     
@@ -187,7 +187,7 @@ server <- function(input, output) {
       g4 <- g4 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
     }
     #https://stackoverflow.com/questions/17180115/manually-setting-group-colors-for-ggplot2
-    group.colors <- c(hue_pal()(7),hue_pal()(8))
+    group.colors <- c(hue_pal()(7),hue_pal()(4))
     names(group.colors) <- c("White, Not Hispanic or Latino",
                                "White, Hispanic or Latino",
                              "White, All Origins",
@@ -195,13 +195,10 @@ server <- function(input, output) {
                                "Asian or Pacific Islander",
                                "American Indian or Alaska Native",
                              "All, All Origins",
-                               "Less than 9th grade", 
-                               "9th to 12th grade, no diploma", 
-                               "High school graduate, GED, or alternative",
-                               "Some college, no degree", 
-                               "Associate's degree",
-                               "Bachelor's degree", 
-                               "Graduate or professional degree",
+                              #TODO
+                             "high school graduate or lower",
+                             "some college education but no 4-year college degree",
+                             "4-year college graduate or higher",
                              "All Education"
                              )
 
