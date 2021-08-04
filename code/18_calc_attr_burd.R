@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2007
   agr_by <- "nation"
   source <- "nvss"
 
@@ -41,11 +41,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
@@ -158,6 +158,7 @@ if (!file.exists(attrBurdenDir)) {
   
   # case 1: total_burden inside pad
   # good
+  
   total_burden <- total_burden %>%
     filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
     mutate(
@@ -170,20 +171,23 @@ if (!file.exists(attrBurdenDir)) {
     summarise(value = sum(value)) %>%
     ungroup()
   
-  burden_paf <- inner_join(total_burden, pafs, by = join_variables)
+  #burden_paf <- inner_join(total_burden, pafs, by = join_variables)
+  burden_paf <- inner_join(total_burden, pafs, by = setdiff(join_variables,c("min_age","max_age"))) 
+  
   rm(pafs, paf_age)
   toc()
-  #tic("calc_attr_burd: 3 filtered wrong age combinations")
-  #test_that("paf min_age and max_age compatible with total burden",{
-  #  burden_paf_test <- burden_paf %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
-  #  expect_equal(0,nrow(burden_paf_test))
-  #})
   
-  #burden_paf <- burden_paf %>% 
-  #   filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
-  #   mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
-  #           min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
-  #toc()
+  tic("calc_attr_burd: 3 filtered wrong age combinations")
+  test_that("paf min_age and max_age compatible with total burden",{
+    burden_paf_test <- burden_paf %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    expect_equal(0,nrow(burden_paf_test))
+  })
+  
+  burden_paf <- burden_paf %>% 
+     filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
+     mutate(min_age = pmin(min_age.x, min_age.y), max_age = pmax(max_age.x, max_age.y),
+             min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
+  toc()
   
   ## ----- calculate attributable burden------
   tic("calc_attr_burd: 3 pivot_longer")
