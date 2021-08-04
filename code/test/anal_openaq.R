@@ -23,10 +23,12 @@ for (p in packages) {
   exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 #}
-
+  options(dplyr.summarise.inform = FALSE)
+  options(dplyr.join.inform = FALSE)
+  
 tracts_locationsDir <- file.path(exp_tracDir, "epa_tmp")
 
-years <- 2000:2016
+years <- 1990:2016
 
 states <- file.path(tmpDir, "states.csv") %>%
   read.csv() %>%
@@ -37,7 +39,12 @@ apply(states, 1, function(state) {
   name <- state["NAME"]
   
   tracts_locations<-lapply(years, function(year){
-    tracts_locations <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
+    tracts_locationsDir <- file.path(tracts_locationsDir, paste0("trac_loc_", toString(year), "_", STUSPS, ".csv"))
+    if(!file.exists(tracts_locationsDir)){
+      print(paste("no available in", state, year))
+      return(NULL)
+    } 
+    tracts_locations <- tracts_locationsDir %>% read.csv
     tracts_locations <- tracts_locations %>% filter(distance > 0)
     
     censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% read.csv
@@ -45,8 +52,8 @@ apply(states, 1, function(state) {
     meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
     censData<- censData %>%
       left_join(meta, by = "variable" )%>%
-      filter(hispanic_origin == "All Origins") %>% 
-      group_by(year, GEO_ID) %>%
+      filter(Hispanic.Origin == "All Origins" & Race == "All" & Gender.Code == "A" & Education == "666") %>% 
+      group_by(Year, GEO_ID) %>%
       summarize(pop_size = sum(pop_size))
     
     tracts_locations <- tracts_locations %>%

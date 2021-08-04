@@ -166,6 +166,15 @@ attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
 attrBurden$measure3 <- "value"
 attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6)
 rm(attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4, attrBurden_disp5, attrBurden_disp6)
+
+#TODO
+#paf_epa <- cbind(pm_summ_var,
+#                 lower = matrixStats::rowQuantiles(paf_epa, probs = .025),
+#                 mean = rowMeans(paf_epa),
+#                 upper = matrixStats::rowQuantiles(paf_epa, probs = .975),
+#                 method = "EPA"
+#)
+
 ## --- sort ----
 all_burden <- rbind(
   all_burden %>% filter(Region == "us"),
