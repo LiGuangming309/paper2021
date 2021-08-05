@@ -48,7 +48,6 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
     files <- list.files(file.path(attrBurdenDir, agr_by, source))
     attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% do.call(rbind, .)
     
-    #setdiff(colnames(attrBurden[[27]]),colnames(attrBurden[[26]]))
   }) %>% do.call(rbind, .)
 
   # make compatible

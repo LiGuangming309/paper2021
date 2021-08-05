@@ -154,8 +154,8 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 #TODO 2009
- years <- c(1990, 2000, 2010, 1991:1999, 2001:2008, 2011:2016)
-# years <- c(2008)
+ years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
+# years <- c(2009)
 # years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -198,8 +198,8 @@ for (agr_by in agr_bys) {
     # runscript(script=assignTract.script, args  = args)
 
     #  runscript(script = assignTractAKHI.script, args = args)
-    #    runscript(script = cens_agr.script, args = args)
-    #    runscript(script = paf.script, args = args)
+        runscript(script = cens_agr.script, args = args)
+         runscript(script = paf.script, args = args)
          runscript(script = read.nvs.findrepl.script, args = args)
         runscript(script = read.total.burden.nvs.script, args = args)
       runscript(script=pop.summary.script, args = args)
@@ -219,7 +219,7 @@ for (agr_by in agr_bys) {
     tmp.dir, # 1
     dem.dir, # 2
     dem.agr.dir, # 3
-    pop.summary.dir, # 4
+    pop.summary.dir, # 4 
     total.burden.parsed2.dir, # 5
     attr.burden.dir, # 6 
     summary.dir, # 7 

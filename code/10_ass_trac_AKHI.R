@@ -31,7 +31,7 @@ tracDir <- args[5]
 exp_tracDir <- args[7]
 
 if (rlang::is_empty(args)) {
-  year <- 1992
+  year <- 2009
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   expDir <- "/Users/default/Desktop/paper2021/data/01_exposure"
   tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
