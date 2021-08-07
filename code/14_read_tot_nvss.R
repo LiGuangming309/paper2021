@@ -171,8 +171,12 @@ if (!file.exists(totalBurdenParsedDir)) {
              Education2003 = na_if(Education2003, "101")) %>% 
       unite("Education", c("Education1989","Education2003"), na.rm = TRUE)
   }
-  #test <- total_burden %>% filter(!Education %in% c("lower","middle", "higher"))
-  #nrow(test)/nrow(total_burden)
+  total_burden$Education %>% unique
+  test <- total_burden %>% filter(#Education == "Unknown" |
+                                    min_age == "Unknown" |
+                                    Hispanic.Origin == "Unknown" |
+                                    Race == "Unknown")
+  100*nrow(test)/nrow(total_burden)
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%
@@ -334,11 +338,14 @@ if (!file.exists(totalBurdenParsedDir)) {
   #------filter ------
   total_burden <- total_burden %>% distinct()
   # total_burden$Race %>% unique()
+  
+  100*sum(total_burden$Education == "Unknown")/nrow(total_burden)
+  
   total_burden <- total_burden %>%
     filter(Hispanic.Origin != "Unknown" & # TODO
       # Race != "Guama" &
       min_age != "Unknown" &
-      Education != "Unknown") %>% #TODO imputation
+      Education != "Unknown") %>% 
     mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
   

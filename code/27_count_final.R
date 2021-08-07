@@ -20,6 +20,9 @@ options(scipen = 10000)
 
 #load calculated data
 #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/nation"
 summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
@@ -50,3 +53,32 @@ attrBurden2 <- attrBurden %>% filter(Ethnicity %in% c("White, Not Hispanic or La
 attrBurden2 <- attrBurden2 %>%
   group_by(scenario) %>%
   summarise(n = sum(mean >= 10))
+
+## count tracts not sufficing national quality standard
+files <- list.files(file.path(exp_tracDir,"2016"))
+exp_tracts1990 <- lapply(files, function(file){
+   file.path(exp_tracDir,"2016",file)  %>% 
+          fread %>%
+          mutate(GEO_ID = as.numeric(GEO_ID)) 
+}
+
+  ) 
+
+exp_tracts1990 <- rbindlist(exp_tracts1990)
+100*sum(exp_tracts1990$pm > 12)/nrow(exp_tracts1990)
+
+##what part of population affected 
+year <- 2016
+cens_meta <- fread(file.path(censDir, "meta", paste0("cens_meta_",year,".csv")))
+cens_agr <- fread(file.path(cens_agrDir, year, paste0("cens_agr_",year,"_us.csv"))) %>% filter(scenario == "A")
+
+cens_agr <- left_join(cens_agr, cens_meta, by= "variable") %>%
+  group_by(Year, Race,Hispanic.Origin, pm) %>%
+  summarize(pop_size = sum(pop_size)) %>%
+  group_by(Year, Race, Hispanic.Origin)  %>%
+  mutate(prop = pop_size/sum(pop_size)) %>%
+  ungroup %>%
+  mutate(above = pm > 8) %>%
+  group_by(Year, Race, Hispanic.Origin, above) %>%
+  summarise(prop = sum(prop),
+            pop_size = sum(pop_size))

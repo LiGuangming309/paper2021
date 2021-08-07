@@ -56,7 +56,7 @@ if (!file.exists(findreplaceDir)) {
       data.frame(
         replacecolumns = "Race",
         from = c(1, 2, 3, 4:8, 9),
-        to = c("White", "Black or African American", "American Indian or Alaska Native", rep("Asian or Pacific Islander", 5), "unkown")
+        to = c("White", "Black or African American", "American Indian or Alaska Native", rep("Asian or Pacific Islander", 5), "Unknown")
       ),
       data.frame(
         replacecolumns = "STATEFP",
