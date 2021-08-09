@@ -33,7 +33,7 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 1990
   agr_by <- "nation"
 
   #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -92,8 +92,8 @@ apply(states, 1, function(state) {
     exp_tracData <- exp_tracData %>% mutate(scenario = "A")
     if(agr_by == "nation")
     exp_tracData <- rbind(exp_tracData,
-                          exp_tracData %>% mutate(scenario = "B",
-                                                  pm = pmin(pm, 12)))
+                          exp_tracData %>% mutate(scenario = "C",
+                                                  pm = pmin(pm, 8)))
 
     # tigris does not provide all tract boundaries
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID") %>% filter(pop_size > 0)

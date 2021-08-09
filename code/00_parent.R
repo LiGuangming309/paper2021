@@ -207,7 +207,7 @@ for (agr_by in agr_bys) {
        runscript(script = add.rate.tot.burd, args = args)
       runscript(script = calc.attr.burd.script, args = args)
 
-    #   runscript(script = calc.attr.burd.alt.script, args = args)  
+       runscript(script = calc.attr.burd.alt.script, args = args)  
 
     }  
   }

@@ -82,3 +82,17 @@ cens_agr <- left_join(cens_agr, cens_meta, by= "variable") %>%
   group_by(Year, Race, Hispanic.Origin, above) %>%
   summarise(prop = sum(prop),
             pop_size = sum(pop_size))
+
+##study population
+pop_summary1 <- pop_summary %>%
+  filter(Region == "United States"  & Gender.Code == "All genders")
+
+pop_summary2 <- pop_summary1 %>% filter(Education != 666 & Year %in% c(2009,2016)) %>%
+          group_by(Year) %>%
+        mutate(prop = 100*Population/sum(Population))
+
+pop_summary2 <- pop_summary1 %>% filter(Education == 666 & Ethnicity != "All, All Origins"
+                                        & Year %in% c(1990,2016) 
+                                        & source2 == "Official Bridged-Race Population Estimates") %>%
+  group_by(Year) %>%
+  mutate(prop = 100*Population/sum(Population))
