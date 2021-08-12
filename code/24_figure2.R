@@ -34,8 +34,8 @@ methodI <- args[11]
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
-  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
-  figuresDir <-  "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
+  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  #figuresDir <-  "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
   methodI <- "burnett"
 }
@@ -52,7 +52,7 @@ attr_burd <- attr_burd %>%
 ##---plot---
 attr_burd1 <- attr_burd %>%
   filter(
-    measure3 == "value" & Education == 666 & #Ethnicity != "All, All Origins"& 
+    measure3 == "value" & Education == 666 & Ethnicity != "All, All Origins"& 
       Region %in% c("California", "Texas", "Florida", "New York", "Pennsylvania", "Illinois", "Ohio", "Georgia", "North Carolina")
        )
 
