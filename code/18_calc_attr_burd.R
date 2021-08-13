@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2007
+  year <- 2009
   agr_by <- "nation"
   source <- "nvss"
 
@@ -41,11 +41,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
@@ -149,7 +149,10 @@ if (!file.exists(attrBurdenDir)) {
   total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
   
   test_that("paf min_age and max_age compatible with total burden", {
-    total_burden_test <- total_burden %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    total_burden_test <- total_burden %>% 
+      filter(min_age.x <= min_age.y & min_age.y <= min_age.x 
+             & !(min_age.y <= min_age.x & max_age.x <= max_age.y))
+    
     total_burden_test2 <- total_burden %>% anti_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
     if (year <= 2008) total_burden_test2 <- total_burden_test2 %>% filter(Education == 666)
     expect_equal(0, nrow(total_burden_test))

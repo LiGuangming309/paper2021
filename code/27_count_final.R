@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("data.table","dplyr", "magrittr","shiny", "ggplot2", "ggpubr", "scales") 
+packages <- c("data.table","dplyr", "magrittr","shiny", "ggplot2", "ggpubr", "scales", "tidyr") 
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) install.packages(p)
@@ -112,5 +112,26 @@ years <- 1990:2016
 attrBurden3 <- attrBurden %>% 
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" 
          & Region == "United States"
-         & Year %in% c(1990,2016) & method == "burnett" & measure3 == "value" & scenario == "A"
-         & Education == 666 & Ethnicity == "All, All Origins")
+         & Year %in% c(2016) & method == "burnett" & measure3 == "value" & scenario == "C"
+         #& Education == 666 & Ethnicity == "All, All Origins"
+         )
+
+attrBurden4 <- attrBurden %>% filter(Ethnicity %in% c("White, All Origins") &
+                                       Gender.Code == "All genders" & measure1 == "Deaths" &
+                                       scenario == "A" 
+                                     & measure2 == "age-adjusted rate per 100,000" & Region != "United States"
+                                     & Year %in% c(1990,2000) & method == "burnett" 
+                                     & measure3 == "proportion of disparity to Black or African American attributable")  %>% 
+                              select(Region, Year, mean)
+attrBurden4 <- attrBurden4 %>%
+  group_by(Year) %>%
+  mutate(my_ranks = order(order(mean, decreasing=TRUE)))
+
+attrBurden4 <- attrBurden4 %>%
+  tidyr::pivot_longer(cols = c("mean","my_ranks")) %>%
+  tidyr::pivot_wider(names_from = "Year",
+                     values_from = "value")
+attrBurden4 <- attrBurden4 %>% 
+  filter(name == "my_ranks")
+
+plot(attrBurden4$`1990`, attrBurden4$`2000`)

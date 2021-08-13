@@ -41,6 +41,15 @@ if (rlang::is_empty(args)) {
   cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
   exp_rrDir <- "/Users/default/Desktop/paper2021/data/04_exp_rr"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
+  
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 if (year > 2004 & agr_by != "nation") {
@@ -71,6 +80,51 @@ pm_levels <- example_exp_rr$exposure_spline
 
 #calc_conf <- (agr_by == "nation")
 calc_conf <- TRUE
+##--find largest age intervals---
+csv_files <- list.files(totalBurdenParsed2Dir, pattern = paste0(year, ".csv$"), recursive = TRUE)
+short_meta <- read.csv(file.path(totalBurdenParsed2Dir, csv_files[1])) %>%
+  select(Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age) %>%
+  distinct %>%
+  mutate(min_age = as.numeric(min_age),
+         max_age = as.numeric(max_age))
+
+short_meta <- short_meta %>%
+  group_by(Year, Gender.Code, Race, Hispanic.Origin, Education, min_age) %>%
+  summarise(max_age = max(max_age)) %>%
+  group_by(Year, Gender.Code, Race, Hispanic.Origin, Education) %>%
+  mutate(cummax = cummax(max_age)) %>%
+  filter(max_age >= cummax) %>%
+  arrange(desc(row_number())) %>%
+  mutate(cummin = cummin(min_age)) %>%
+  filter(min_age <= cummin) %>%
+  mutate(cummin = NULL, cummax = NULL)
+ 
+short_meta <- short_meta %>% 
+  ungroup() %>%
+  mutate(short_variable_id = row_number())
+
+## add corresponding age_group_id from causes ages
+short_meta <- short_meta %>%
+  mutate(
+    age_group_id = c(0,seq(25, 95, 5))[
+      findInterval(
+        max_age,
+        c(0,seq(25, 95, 5)),
+        left.open =  F
+      ) 
+    ]
+  )
+
+
+meta_cross <- inner_join(short_meta, census_meta, 
+                         by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Education"))
+
+meta_cross<- meta_cross%>%
+  filter(min_age.x <= min_age.y & max_age.y <= max_age.x) %>%
+  mutate(min_age.y = NULL, max_age.y = NULL) %>%
+  rename(min_age = min_age.x, max_age = max_age.x)
+
+rm(csv_files)
 ### -----calculation-------
 regions <- states[, agr_by] %>% unique()
 for (region in regions) {
@@ -84,8 +138,10 @@ for (region in regions) {
     cens_agrDirX <- file.path(cens_agrDir,  paste0("cens_agr_", toString(year), "_", region, ".csv")) 
     if(!file.exists(cens_agrDirX) & year < 2000 & region %in% c("AK","HI")) break
     
-    cens_agr<-fread(cens_agrDirX) %>%
-      select(variable, scenario, pm, prop)
+    cens_agr<-fread(cens_agrDirX) #%>%
+      #select(variable, scenario, pm, prop)
+    cens_agr <- cens_agr %>%
+      left_join(meta_cross, by = "variable")
 
     # add column, if something from pm_levels missing
     fill_values <- crossing(
