@@ -92,6 +92,8 @@ apply(states, 1, function(state) {
     exp_tracData <- exp_tracData %>% mutate(scenario = "A")
     if(agr_by == "nation")
     exp_tracData <- rbind(exp_tracData,
+                          exp_tracData %>% mutate(scenario = "B",
+                                                  pm = pmin(pm, 12)),
                           exp_tracData %>% mutate(scenario = "C",
                                                   pm = pmin(pm, 8)))
 

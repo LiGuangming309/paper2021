@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2016
+  year <- 2009
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -171,12 +171,22 @@ if (!file.exists(totalBurdenParsedDir)) {
              Education2003 = na_if(Education2003, "101")) %>% 
       unite("Education", c("Education1989","Education2003"), na.rm = TRUE)
   }
-  total_burden$Education %>% unique
-  test <- total_burden %>% filter(#Education == "Unknown" |
+  #total_burden$Race %>% unique
+  test1 <- total_burden %>% filter(
                                     min_age == "Unknown" |
                                     Hispanic.Origin == "Unknown" |
                                     Race == "Unknown")
-  100*nrow(test)/nrow(total_burden)
+  100*nrow(test1)/nrow(total_burden)
+  test2 <- total_burden %>% filter(Education == "Unknown" |
+                                     min_age == "Unknown")
+  100*nrow(test2)/nrow(total_burden)
+  
+  test3 <- total_burden %>% filter(
+    Education == "Unknown" |
+    min_age == "Unknown" |
+      Hispanic.Origin == "Unknown" |
+      Race == "Unknown")
+  nrow(total_burden)-nrow(test3)
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%

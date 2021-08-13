@@ -20,6 +20,7 @@ options(scipen = 10000)
 
 #load calculated data
 #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
 exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
 censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/nation"
@@ -46,7 +47,7 @@ attrBurden1 <- attrBurden1 %>%
   group_by(scenario, Ethnicity) %>%
   summarise(n = n())
 
-## count states, where disparity explained by PM2.5
+## count states, where more than 10% of disparity explained by PM2.5
 attrBurden2 <- attrBurden %>% filter(Ethnicity %in% c("White, Not Hispanic or Latino") &
                                        Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & Region != "United States"
                                      & Year == 2004 & method == "burnett" & measure3 == "proportion of disparity to Black or African American attributable")
@@ -55,9 +56,10 @@ attrBurden2 <- attrBurden2 %>%
   summarise(n = sum(mean >= 10))
 
 ## count tracts not sufficing national quality standard
+year <- 2016
 files <- list.files(file.path(exp_tracDir,"2016"))
 exp_tracts1990 <- lapply(files, function(file){
-   file.path(exp_tracDir,"2016",file)  %>% 
+   file.path(exp_tracDir,toString(year),file)  %>% 
           fread %>%
           mutate(GEO_ID = as.numeric(GEO_ID)) 
 }
@@ -68,7 +70,7 @@ exp_tracts1990 <- rbindlist(exp_tracts1990)
 100*sum(exp_tracts1990$pm > 12)/nrow(exp_tracts1990)
 
 ##what part of population affected 
-year <- 2016
+
 cens_meta <- fread(file.path(censDir, "meta", paste0("cens_meta_",year,".csv")))
 cens_agr <- fread(file.path(cens_agrDir, year, paste0("cens_agr_",year,"_us.csv"))) %>% filter(scenario == "A")
 
@@ -80,7 +82,7 @@ cens_agr <- left_join(cens_agr, cens_meta, by= "variable") %>%
   ungroup %>%
   mutate(above = pm > 8) %>%
   group_by(Year, Race, Hispanic.Origin, above) %>%
-  summarise(prop = sum(prop),
+  summarise(prop = 100*sum(prop),
             pop_size = sum(pop_size))
 
 ##study population
@@ -96,3 +98,19 @@ pop_summary2 <- pop_summary1 %>% filter(Education == 666 & Ethnicity != "All, Al
                                         & source2 == "Official Bridged-Race Population Estimates") %>%
   group_by(Year) %>%
   mutate(prop = 100*Population/sum(Population))
+
+## count tract year combinations
+years <- 1990:2016
+#tract_years <- sapply(years, function(year){
+#  files <- list.files( file.path(tracDir, toString(year)))
+#  sapply(files, function(file){
+#    readRDS(file.path(tracDir, toString(year), file)) %>% nrow
+#  }) %>% sum
+#}) %>% sum
+
+##read results
+attrBurden3 <- attrBurden %>% 
+  filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" 
+         & Region == "United States"
+         & Year %in% c(1990,2016) & method == "burnett" & measure3 == "value" & scenario == "A"
+         & Education == 666 & Ethnicity == "All, All Origins")
