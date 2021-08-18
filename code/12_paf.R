@@ -41,15 +41,16 @@ if (rlang::is_empty(args)) {
   cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
   exp_rrDir <- "/Users/default/Desktop/paper2021/data/04_exp_rr"
   pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
+  totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   
   
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  #cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  #exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 if (year > 2004 & agr_by != "nation") {
@@ -90,10 +91,14 @@ short_meta <- read.csv(file.path(totalBurdenParsed2Dir, csv_files[1])) %>%
 
 short_meta <- short_meta %>%
   group_by(Year, Gender.Code, Race, Hispanic.Origin, Education, min_age) %>%
-  summarise(max_age = max(max_age)) %>%
+  summarise(max_age = max(max_age)) 
+
+short_meta <- short_meta %>%
   group_by(Year, Gender.Code, Race, Hispanic.Origin, Education) %>%
   mutate(cummax = cummax(max_age)) %>%
-  filter(max_age >= cummax) %>%
+  filter(max_age >= cummax) 
+  
+short_meta <- short_meta %>%  
   arrange(desc(row_number())) %>%
   mutate(cummin = cummin(min_age)) %>%
   filter(min_age <= cummin) %>%
@@ -116,15 +121,23 @@ short_meta <- short_meta %>%
   )
 
 
-meta_cross <- inner_join(short_meta, census_meta, 
-                         by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Education"))
+meta_cross <- inner_join(short_meta, census_meta, by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Education"))
 
-meta_cross<- meta_cross%>%
+meta_cross1<- meta_cross%>%
   filter(min_age.x <= min_age.y & max_age.y <= max_age.x) %>%
   mutate(min_age.y = NULL, max_age.y = NULL) %>%
   rename(min_age = min_age.x, max_age = max_age.x)
 
-rm(csv_files)
+meta_cross2<- meta_cross%>%
+  filter(min_age.y <= min_age.x & max_age.x <= max_age.y 
+         &!(min_age.x <= min_age.y & max_age.y <= max_age.x)) %>%
+  mutate(min_age.x = NULL, max_age.x = NULL) %>%
+  rename(min_age = min_age.y, max_age = max_age.y)
+
+meta_cross <- rbind(meta_cross1, meta_cross2) %>%
+  unite_("variable_id", c("variable","short_variable_id"), remove = F)
+
+rm(csv_files, meta_cross1, meta_cross2)
 ### -----calculation-------
 regions <- states[, agr_by] %>% unique()
 for (region in regions) {

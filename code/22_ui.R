@@ -19,17 +19,17 @@ for (p in packages) {
 options(scipen = 10000)
 
 #load calculated data
-#summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+#summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
 attrBurden <- rbind(fread(file.path(summaryDir, "attr_burd.csv")), 
                     fread(file.path(summaryDir, "attr_burd_prop.csv")))
-attrBurden <- attrBurden %>% filter(scenario == "A")
+#attrBurden <- attrBurden %>% filter(scenario == "A")
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
 pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
-pm_summ <- pm_summ %>% filter(scenario == "A")
+#pm_summ <- pm_summ %>% filter(scenario == "A")
 pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
 
 colnames(all_burden)
@@ -96,6 +96,11 @@ ui <- fluidPage(
         label = "source population data",
         choices = unique(pop_summary$source2)
       ),
+      selectInput(
+        inputId = "scenario",
+        label = "scenario",
+        choices = unique(attrBurden$scenario)
+      ),
     ),
 
     # Main panel for displaying outputs ----
@@ -118,18 +123,19 @@ server <- function(input, output) {
     methodI <- input$method
     pm_metricI <- input$pm_metric
     source2I <- input$source2
+    scenarioI <- input$scenario
 
     # filter data accordingly
     allBurden1 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "overall")
     allBurden2 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "total")
-    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value")
-    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden")
+    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value" & scenarioI == scenario)
+    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden" & scenarioI == scenario)
     attrBurden3 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method 
                                          & measure3 %in% c("proportion of disparity to Black or African American attributable", "proportion of disparity to lower educational attainment")
-                                         & !(Ethnicity == "All, All Origins" & Education == 666))
-    attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden")
+                                         & !(Ethnicity == "All, All Origins" & Education == 666)  & scenarioI == scenario)
+    attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden" & scenarioI == scenario)
     
-    pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI)
+    pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI & scenarioI == scenario)
     pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I)
 #TODO All Origins?
     if (input$raceOrEduc == "race") {
