@@ -89,27 +89,48 @@ short_meta <- read.csv(file.path(totalBurdenParsed2Dir, csv_files[1])) %>%
   mutate(min_age = as.numeric(min_age),
          max_age = as.numeric(max_age))
 
-short_meta <- short_meta %>%
-  group_by(Year, Gender.Code, Race, Hispanic.Origin, Education, min_age) %>%
-  summarise(max_age = max(max_age)) 
+short_meta <- short_meta %>% arrange(Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
 
 short_meta <- short_meta %>%
   group_by(Year, Gender.Code, Race, Hispanic.Origin, Education) %>%
   mutate(cummax = cummax(max_age)) %>%
-  filter(max_age >= cummax) 
+  filter(max_age >= cummax) %>%
+  group_by(Year, Gender.Code, Race, Hispanic.Origin, Education, max_age) %>%
+  slice(1)
   
 short_meta <- short_meta %>%  
   arrange(desc(row_number())) %>%
   mutate(cummin = cummin(min_age)) %>%
   filter(min_age <= cummin) %>%
-  mutate(cummin = NULL, cummax = NULL)
- 
+  group_by(Year, Gender.Code, Race, Hispanic.Origin, Education, min_age) %>%
+  slice(1)
+
 short_meta <- short_meta %>% 
+  mutate(cummin = NULL, cummax = NULL)%>%
   ungroup() %>%
   mutate(short_variable_id = row_number())
 
-## add corresponding age_group_id from causes ages
-short_meta <- short_meta %>%
+meta_cross <- inner_join(short_meta, census_meta, by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Education"))
+
+meta_cross1<- meta_cross%>%
+  filter(min_age.y <= min_age.x & max_age.x <= max_age.y) %>%
+  mutate(min_age.x = NULL, max_age.x = NULL) %>%
+  rename(min_age = min_age.y, max_age = max_age.y) %>% 
+  mutate(variable_id = variable)
+
+meta_cross2<- meta_cross %>%
+  filter(min_age.x <= min_age.y & max_age.y <= max_age.x &
+           !(min_age.y <= min_age.x & max_age.x <= max_age.y)) %>%
+  mutate(min_age.y = NULL, max_age.y = NULL) %>%
+  rename(min_age = min_age.x, max_age = max_age.x) %>% 
+  mutate(variable_id = short_variable_id)
+
+meta_cross <- rbind(meta_cross1, meta_cross2) %>%
+  mutate(short_variable_id = NULL) %>%
+  distinct
+
+# add corresponding age_group_id from causes ages
+meta_cross <- meta_cross %>%
   mutate(
     age_group_id = c(0,seq(25, 95, 5))[
       findInterval(
@@ -120,24 +141,7 @@ short_meta <- short_meta %>%
     ]
   )
 
-
-meta_cross <- inner_join(short_meta, census_meta, by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Education"))
-
-meta_cross1<- meta_cross%>%
-  filter(min_age.x <= min_age.y & max_age.y <= max_age.x) %>%
-  mutate(min_age.y = NULL, max_age.y = NULL) %>%
-  rename(min_age = min_age.x, max_age = max_age.x)
-
-meta_cross2<- meta_cross%>%
-  filter(min_age.y <= min_age.x & max_age.x <= max_age.y 
-         &!(min_age.x <= min_age.y & max_age.y <= max_age.x)) %>%
-  mutate(min_age.x = NULL, max_age.x = NULL) %>%
-  rename(min_age = min_age.y, max_age = max_age.y)
-
-meta_cross <- rbind(meta_cross1, meta_cross2) %>%
-  unite_("variable_id", c("variable","short_variable_id"), remove = F)
-
-rm(csv_files, meta_cross1, meta_cross2)
+rm(csv_files, meta_cross1, meta_cross2, short_meta)
 ### -----calculation-------
 regions <- states[, agr_by] %>% unique()
 for (region in regions) {
@@ -153,12 +157,21 @@ for (region in regions) {
     
     cens_agr<-fread(cens_agrDirX) #%>%
       #select(variable, scenario, pm, prop)
+    
+    #some missing, e.g. AAAA00024, because age < 25
+
+    cens_agr <- cens_agr %>% inner_join(meta_cross, by = "variable") 
+    
     cens_agr <- cens_agr %>%
-      left_join(meta_cross, by = "variable")
+      group_by(variable_id, scenario, pm) %>%
+      summarise(pop_size = sum(pop_size)) %>%
+      group_by(variable_id, scenario) %>%
+      mutate(prop = pop_size/sum(pop_size)) %>%
+      select(variable_id, scenario, pm, prop )
 
     # add column, if something from pm_levels missing
     fill_values <- crossing(
-      variable = cens_agr$variable %>% unique(),
+      variable_id = cens_agr$variable_id %>% unique(),
       scenario = cens_agr$scenario %>% unique(),
       pm = pm_levels
     ) 
@@ -177,14 +190,13 @@ for (region in regions) {
       )
     # as matrix
     matrix_cens_agr <- cens_agr %>%
-      subset(select = -c(variable, scenario))%>%
+      subset(select = -c(variable_id, scenario))%>%
       as.matrix()
-    rownames(matrix_cens_agr) <- paste(cens_agr$variable,cens_agr$scenario, sep = "-")
+    rownames(matrix_cens_agr) <- paste(cens_agr$variable_id,cens_agr$scenario, sep = "-")
 
-    censMetaAll <- paste0("cens_meta_", toString(year), ".csv") %>%
-      file.path(censDir, "meta", .) %>%
-      fread()
-
+    #censMetaAll <- paste0("cens_meta_", toString(year), ".csv") %>%
+    #  file.path(censDir, "meta", .) %>%
+    #  fread()
 
     # loop over all exp_rr curves
     pafs <- apply(causes_ages, 1, function(cause_age) {
@@ -208,8 +220,8 @@ for (region in regions) {
       rownames(exp_rr) <- pm_levels
 
       ifelse(age_group_idX == "all ages",
-        censMeta <- censMetaAll,
-        censMeta <- censMetaAll %>% filter(age_group_id == as.numeric(age_group_idX))
+        censMeta <- meta_cross,
+        censMeta <- meta_cross %>% filter(age_group_id == as.numeric(age_group_idX))
       )
 
       if (nrow(censMeta) == 0) {
@@ -217,7 +229,7 @@ for (region in regions) {
       }
       # subset rows with right age
 
-      matrix_cens_agr_sub <- matrix_cens_agr %>% subset(gsub("-.*","",rownames(.)) %in% censMeta$variable)
+      matrix_cens_agr_sub <- matrix_cens_agr %>% subset(gsub("-.*","",rownames(.)) %in% censMeta$variable_id)
 
       # apply formular sum(prop * (rr-1))/(1+sum(prop * (rr-1)))
       result <- matrix_cens_agr_sub %*% (exp_rr - 1)
@@ -242,21 +254,26 @@ for (region in regions) {
 
       toc()
       return(result)
-    }) %>% do.call(rbind, .)
+    }) %>% rbindlist
     pafs <- pafs %>% tidyr::separate(variable,
                                             sep = "-",
-                                            into = c("variable","scenario"))
+                                            into = c("variable_id","scenario"))
     
-    census_meta[, agr_by] <- region
+    meta_cross[, agr_by] <- region
 
-    pafs <- right_join(census_meta, pafs, by = "variable")
+    pafs <- right_join(meta_cross %>% 
+                         select(setdiff(colnames(meta_cross), c("variable", "age_group_id"))) %>%
+                         distinct,
+                       pafs, by = "variable_id")
 
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))
 
       pafs_dis <- pafs %>% distinct(label_cause, scenario, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
       
-      expect_equal(nrow(pafs_dis), nrow(pafs))
+      pafs_dis <- pafs %>% select(label_cause, scenario, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
+      pafs_dis <- pafs_dis[duplicated(pafs_dis), ] #"attr"
+      expect_equal(nrow(pafs_dis), 0)
       # TODO löschen
       
       # missing causes
