@@ -183,6 +183,10 @@ if (!file.exists(attrBurdenDir)) {
   tic("calc_attr_burd: 3 filtered wrong age combinations")
   test_that("paf min_age and max_age compatible with total burden",{
     burden_paf_test <- burden_paf %>% filter(min_age.x < min_age.y & max_age.y < max_age.x)
+    
+    burden_paf_test <- burden_paf %>% 
+      filter(!(min_age.y <= min_age.x & max_age.x <= max_age.y) &
+               (min_age.x <= min_age.y & max_age.y <= max_age.x))
     expect_equal(0,nrow(burden_paf_test))
   })
   
