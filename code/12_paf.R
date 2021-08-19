@@ -18,6 +18,8 @@ for (p in packages) {
   }
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
 }
+options(dplyr.summarise.inform = FALSE)
+options(dplyr.join.inform = FALSE)
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
@@ -29,6 +31,7 @@ censDir <- args[8]
 cens_agrDir <- args[9]
 agr_by <- args[10]
 pafDir <- args[11]
+totalBurdenParsed2Dir  <- args[17]
 
 # TODO löschen
 if (rlang::is_empty(args)) {
@@ -36,7 +39,6 @@ if (rlang::is_empty(args)) {
   agr_by <-"nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
   exp_rrDir <- "/Users/default/Desktop/paper2021/data/04_exp_rr"
@@ -44,13 +46,12 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  #cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  #exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
-  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 if (year > 2004 & agr_by != "nation") {

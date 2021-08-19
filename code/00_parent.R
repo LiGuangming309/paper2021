@@ -181,7 +181,7 @@ for (agr_by in agr_bys) {
         attr.burden.dir # 18
       )
     #   runscript(script = download.meta.script, args = args)
-       runscript(script = meta.cross.script, args = args)
+    #   runscript(script = meta.cross.script, args = args)
        if(year %in% c(2000, 2009:2016)){
     #   runscript(script = download.cens.script, args = args)
        } else if (year == 1990){
@@ -215,7 +215,7 @@ for (agr_by in agr_bys) {
 
  scenario = "A"
  method <- "burnett"
-  args <- paste(
+  args <- paste( 
     tmp.dir, # 1
     dem.dir, # 2
     dem.agr.dir, # 3
@@ -233,7 +233,7 @@ for (agr_by in agr_bys) {
 # runscript(script = summary.other.script, args = args)
 
 # runscript(script = figure1.script, args = args)
-#runscript(script = figure2.script, args = args) 
+#runscript(script = figure2.script, args = args)  
 #runscript(script = figure3.script, args = args)
 #runscript(script = figure4.script, args = args)
   
