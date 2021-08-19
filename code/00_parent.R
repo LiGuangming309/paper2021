@@ -235,6 +235,6 @@ for (agr_by in agr_bys) {
  runscript(script = figure1.script, args = args)
 runscript(script = figure2.script, args = args)  
 runscript(script = figure3.script, args = args)
-runscript(script = figure4.script, args = args)
+ runscript(script = figure4.script, args = args)
   
 
