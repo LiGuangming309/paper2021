@@ -70,8 +70,8 @@ if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
-  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause","min_age","max_age", agr_by)
-  group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
+  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","rural_urban_class","Gender.Code", "label_cause","min_age","max_age", agr_by)
+  group_variables <- c("Year","Race","Hispanic.Origin","Education","rural_urban_class", "Gender.Code", agr_by)
 
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
@@ -147,14 +147,14 @@ if (!file.exists(attrBurdenDir)) {
     distinct() %>%
     arrange(min_age, max_age)
   
-  total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
+  total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education","rural_urban_class", "Year"))
   
   test_that("paf min_age and max_age compatible with total burden", {
     total_burden_test <- total_burden %>% 
       filter(min_age.x <= min_age.y & min_age.y <= min_age.x 
              & !(min_age.y <= min_age.x & max_age.x <= max_age.y))
     
-    total_burden_test2 <- total_burden %>% anti_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
+    total_burden_test2 <- total_burden %>% anti_join(paf_age, by = c("Hispanic.Origin", "Race", "Education","rural_urban_class", "Year"))
     if (year <= 2008) total_burden_test2 <- total_burden_test2 %>% filter(Education == 666)
     expect_equal(0, nrow(total_burden_test))
     expect_equal(0, nrow(total_burden_test2))

@@ -154,10 +154,12 @@ for (region in regions) {
 
     # read census data aggregated by pm exposure
     cens_agrDirX <- file.path(cens_agrDir,  paste0("cens_agr_", toString(year), "_", region, ".csv")) 
+    
     if(!file.exists(cens_agrDirX) & year < 2000 & region %in% c("AK","HI")) break
     
-    cens_agr<-fread(cens_agrDirX) #%>%
-      #select(variable, scenario, pm, prop)
+    cens_agr<-fread(cens_agrDirX) 
+    
+    cens_agr <- cens_agr %>% filter(rural_urban_class == 666) #TODO delete
     
     #some missing, e.g. AAAA00024, because age < 25
 
