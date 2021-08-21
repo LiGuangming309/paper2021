@@ -46,12 +46,12 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  #cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  #exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
-  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  cens_agrDir <-"C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  exp_rrDir <-"C:/Users/Daniel/Desktop/paper2021/data/04_exp_rr"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 if (year > 2004 & agr_by != "nation") {

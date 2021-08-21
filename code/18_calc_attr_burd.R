@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2013
   agr_by <- "nation"
   source <- "nvss"
 
@@ -85,6 +85,9 @@ if (!file.exists(attrBurdenDir)) {
     rbindlist %>%
     as.data.frame()
   pafs <- pafs %>% filter(min_age >= 25)
+  
+  total_burden <- total_burden %>% mutate_at(c( "rural_urban_class"), as.factor)
+  pafs <- pafs %>% mutate_at(c("rural_urban_class"), as.factor)
   
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
@@ -143,9 +146,10 @@ if (!file.exists(attrBurdenDir)) {
   paf_ageDir <- file.path(pafDir, agr_by, year)
   paf_age <- file.path(paf_ageDir, list.files(paf_ageDir)[[1]]) %>% read.csv()
   paf_age <- paf_age %>%
-    select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>%
+    select(Hispanic.Origin, Race, Education, min_age, max_age, Year, rural_urban_class) %>%
     distinct() %>%
-    arrange(min_age, max_age)
+    arrange(min_age, max_age)%>%
+    mutate_at(c( "rural_urban_class"), as.factor)
   
   total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education","rural_urban_class", "Year"))
   
