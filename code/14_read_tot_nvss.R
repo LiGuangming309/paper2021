@@ -71,7 +71,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       "Race" = "race", # 60
       "min_age" = "age", # 64, Single Year
       "max_age" = "age", # 64
-      "Hispanic.Origin" = "hispanic", # 80 - 81
+      "Hispanic.Origin" = "hispanic" # 80 - 81
     )
   }else if (year %in% 1996:2002) {
     selectcolumns <- c(
