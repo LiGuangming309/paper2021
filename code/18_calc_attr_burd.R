@@ -60,8 +60,9 @@ if(agr_by != "nation" & source == "nvss" & year >2004){
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 total_burden <- file.path(totalBurdenParsed2Dir,agr_by,source, paste0("total_burden_",year,".csv")) %>% 
-  fread%>% 
-  filter(label_cause %in% c("cvd_ihd","cvd_stroke", "neo_lung", "resp_copd", "lri", "t2_dm"))
+  fread %>% 
+  filter(label_cause %in% c("cvd_ihd","cvd_stroke", "neo_lung", "resp_copd", "lri", "t2_dm")) %>%
+  filter(rural_urban_class == 666) #TODO delete
 
 #intense computation
 if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)

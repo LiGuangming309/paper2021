@@ -111,22 +111,23 @@ test_that(" basic checks", {
   # TODO
 })
 
-# add proportion of disparity
+# add proportion of disparity#"rural_urban_class", TODO
 attrBurden_disp1 <- inner_join(
   all_burden %>% filter(attr == "overall" & !(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
   all_burden %>% filter(attr == "overall" & (Race == "Black or African American" & Hispanic.Origin == "All Origins")),
-  by = setdiff(colnames(all_burden), c("Race", "Hispanic.Origin", "overall_value"))
-  #by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by")
-)
+  by = setdiff(colnames(all_burden), c("Race", "Hispanic.Origin", "overall_value")))
 
-attrBurden_disp2 <- inner_join(attrBurden %>% filter(!(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
+attrBurden_disp2 <- inner_join(
+  attrBurden %>% filter(!(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
   attrBurden %>% filter((Race == "Black or African American"& Hispanic.Origin == "All Origins")),
   by = setdiff(colnames(attrBurden), c("Race", "Hispanic.Origin", "lower", "mean", "upper"))
-  #by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by", "method","min_age", "max_age")
 )
 
-attrBurden_disp3 <- inner_join(attrBurden_disp1, attrBurden_disp2,
-                               by = c("Race.x", "Hispanic.Origin.x", "Race.y", "Hispanic.Origin.y", "Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "source", "agr_by"))
+attrBurden_disp3 <- inner_join(
+  attrBurden_disp1, 
+  attrBurden_disp2,
+  by = setdiff(colnames(attrBurden_disp1), c("attr","overall_value.x","overall_value.y" )))
+
 attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
@@ -150,7 +151,10 @@ attrBurden_disp5 <- inner_join(attrBurden %>% filter(Education != "lower"),
 attrBurden_disp6 <- inner_join(
   attrBurden_disp4, 
   attrBurden_disp5, 
-  by = c("Education.x", "Education.y", "Race", "Hispanic.Origin","Year", "Gender.Code", "Region", "measure1", "measure2", "source", "agr_by"))
+  by = setdiff(colnames(attrBurden_disp4), c("attr","overall_value.x","overall_value.y" ))
+  #by = c("Education.x", "Education.y", "Race", "Hispanic.Origin","Year", "Gender.Code", "Region", "measure1", "measure2", "source", "agr_by")
+  )
+
 attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
@@ -226,7 +230,13 @@ rindreplace7 <- setNames(c("Black or African American", "American Indian or Alas
 all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
 attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
 
-rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7)
+rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All"), 
+                         c(1:6,666))
+
+all_burden$rural_urban_class <- sapply(all_burden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+
+rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7, rindreplace8)
 
 #--write---
 attrBurden<- attrBurden %>% filter(measure1 == "Deaths")

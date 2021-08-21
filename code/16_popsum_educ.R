@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "readxl")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -22,6 +22,7 @@ options(dplyr.join.inform = FALSE)
 args <- commandArgs(trailingOnly = T)
 
 year <- args[1]
+dataDir <- args[2]
 agr_by <- args[10]
 tmpDir <- args[3]
 censDir <- args[8]
@@ -30,15 +31,17 @@ pop.summary.dir <- args[16]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2000
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
 
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  dataDir <- "/Users/default/Desktop/paper2021/data"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   
-  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them
@@ -46,13 +49,19 @@ states <- file.path(tmpDir, "states.csv") %>% read.csv()
 plotDir <- file.path(pop.summary.dir, "plot", agr_by)
 dir.create(plotDir, recursive = T, showWarnings = F)
 # load meta data
-census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% fread()
 
 pop.summary.dir <- file.path(pop.summary.dir, agr_by)
 dir.create(pop.summary.dir, recursive = T, showWarnings = F)
 pop.summary.dirX <- file.path(pop.summary.dir, paste0("pop_sum_", year, ".csv"))
 
 if (!file.exists(pop.summary.dirX)) {
+  census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% fread()
+  suppressMessages(
+    rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
+      rename(rural_urban_class= ..2013.code) %>%
+      select(FIPS.code, rural_urban_class)
+  )
+  
   # loop over all states
   tic(paste("summarized population data in", year, "by", agr_by))
   pop.summary <- apply(states, 1, function(state) {
@@ -61,20 +70,36 @@ if (!file.exists(pop.summary.dirX)) {
 
     # read demographic census data by tract
     pop.summary <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
-
-    pop.summary <- pop.summary %>%
+    
+    pop.summary <- pop.summary %>% 
+      mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.double) %>%
+      left_join(rural_urban_class, by = "FIPS.code") %>%
+      mutate(FIPS.code = NULL)
+    
+    pop.summary1 <- pop.summary %>%
       group_by(state, variable) %>%
-      summarize(Population = sum(pop_size))
+      summarize(Population = sum(pop_size)) %>%
+      mutate(rural_urban_class = as.factor(666))
+    
+    pop.summary2 <- pop.summary %>%
+      group_by(state, variable, rural_urban_class) %>%
+      summarize(Population = sum(pop_size)) %>%
+      mutate(rural_urban_class = as.factor(rural_urban_class))
+    
+    pop.summary <- rbind(pop.summary1, pop.summary2)
+    rm(pop.summary1, pop.summary2)
+    return(pop.summary)
   }) %>% rbindlist()
 
   pop.summary <- states %>%
     right_join(pop.summary, by = c("STATEFP" = "state")) %>%
-    dplyr::group_by_at(vars(one_of(c(agr_by, "variable")))) %>%
-    summarize(Population = sum(Population))
-
+    dplyr::group_by_at(vars(all_of(c(agr_by, "variable", "rural_urban_class")))) %>%
+    summarize(Population = sum(Population)) %>%
+    as.data.frame()
+  
   pop.summary <- pop.summary %>%
     left_join(census_meta, by = "variable") %>%
-    select(-c(age_group_id, variable))
+    select(-c(variable))
   
   pop.summary <- pop.summary %>% tibble::add_column(source2 = "Census")
   pop.summary <- pop.summary %>% filter(min_age >= 25)

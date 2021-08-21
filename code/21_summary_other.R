@@ -110,6 +110,10 @@ if(!file.exists(pm_summDir)){
                            c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pm_summ$Ethnicity <- sapply(pm_summ$Ethnicity, function(x) rindreplace7[[x]])
   
+  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All"), 
+                           c(1:6,666))
+  pm_summ$rural_urban_class <- sapply(pm_summ$rural_urban_class, function(x) rindreplace8[[x]])
+  
   fwrite(pm_summ, pm_summDir)
   rm(rindreplace1, rindreplace2, rindreplace3)
   toc()
@@ -165,6 +169,10 @@ if(!file.exists(pop_summaryDir)){
   rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
                            c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pop_summary$Ethnicity <- sapply(pop_summary$Ethnicity, function(x) rindreplace7[[x]])
+  
+  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All"), 
+                           c(1:6,666))
+  pop_summary$rural_urban_class <- sapply(pop_summary$rural_urban_class, function(x) rindreplace8[[x]])
   
   fwrite(pop_summary, pop_summaryDir)
   rm(rindreplace1, rindreplace2, rindreplace3)

@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2016
+  year <- 2000
   agr_by <- "nation"
   source <- "nvss"
 
@@ -84,13 +84,15 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   total_burden <- rbind(total_burden, total_burden_yll)
   rm(lifeExpectancy, total_burden_yll)
   #---read population data----
+  #TODO
   pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>%
     read.csv() %>%
-    filter(Year == year)
+    filter(Year == year & Education == 666 & rural_urban_class == 666)
 
   pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_", year, ".csv")) %>%
     read.csv() %>%
-    filter(Year == year & Education != 666)
+    filter(Year == year & (Education != 666 | rural_urban_class != 666))
+  
   pop_summary <- rbind(pop_summary1, pop_summary2)
   pop_summary$source2 <- NULL
   rm(pop_summary1, pop_summary2)
