@@ -45,11 +45,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  #dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  #totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   
 }
 
@@ -84,6 +84,9 @@ if (!file.exists(attrBurdenDir)) {
   pm_summ <- pm_summ %>% left_join(meta, by = "variable")
   pm_summ <- pm_summ %>% filter(min_age >= 25)
   pm_summ <- pm_summ %>% mutate(min_age = min(min_age), max_age = max(max_age))
+  
+  pm_summ <- pm_summ %>% mutate_at(c("rural_urban_class"), as.factor)
+  total_burden <- total_burden %>% mutate_at(c("rural_urban_class"), as.factor)
     
   pm_summ <- pm_summ %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class","scenario", "pm", "min_age", "max_age"))) %>%
