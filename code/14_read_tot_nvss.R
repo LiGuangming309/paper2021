@@ -72,7 +72,6 @@ if (!file.exists(totalBurdenParsedDir)) {
       "min_age" = "age", # 64, Single Year
       "max_age" = "age", # 64
       "Hispanic.Origin" = "hispanic", # 80 - 81
-      "rural_urban_class"="countyrs" #TODO where not available, countyoc
     )
   }else if (year %in% 1996:2002) {
     selectcolumns <- c(
@@ -83,8 +82,7 @@ if (!file.exists(totalBurdenParsedDir)) {
       "Race" = "race", # 60
       "min_age" = "age", # 64, Single Year
       "max_age" = "age", # 64
-      "Hispanic.Origin" = "hispanic", # 80 - 81
-      "rural_urban_class"="countyrs"
+      "Hispanic.Origin" = "hispanic" # 80 - 81
     )
   } else if (2003 <= year & year <= 2005) {
     selectcolumns <- c(
@@ -111,6 +109,11 @@ if (!file.exists(totalBurdenParsedDir)) {
     )
   }
 
+  if(!"countyrs" %in% colnames(total_burden)){
+    total_burden$countyrs <- NA
+  }
+  selectcolumns <- c(selectcolumns, "rural_urban_class"="countyrs")
+  
   if (agr_by == "nation") {
     total_burden <- total_burden %>% tibble::add_column(nation = "us")
     selectcolumns <- c(selectcolumns, "nation" = "nation")
