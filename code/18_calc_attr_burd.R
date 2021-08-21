@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2013
+  year <- 2001
   agr_by <- "nation"
   source <- "nvss"
 
