@@ -36,11 +36,11 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary/"
   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -104,13 +104,13 @@ if(!file.exists(pm_summDir)){
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pm_summ$Gender.Code <- sapply(pm_summ$Gender.Code , function(x) rindreplace3[[x]])
   
-  pm_summ <- pm_summ %>% unite("Ethnicity", Ethnicity, Race, sep = ", ")
+  pm_summ <- pm_summ %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
   rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
                            c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pm_summ$Ethnicity <- sapply(pm_summ$Ethnicity, function(x) rindreplace7[[x]])
   
-  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All"), 
-                           c(1:6,666))
+  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
+                           c(1:6,666, NA))
   pm_summ$rural_urban_class <- sapply(pm_summ$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
   
   fwrite(pm_summ, pm_summDir)
@@ -169,11 +169,15 @@ if(!file.exists(pop_summaryDir)){
                            c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pop_summary$Ethnicity <- sapply(pop_summary$Ethnicity, function(x) rindreplace7[[x]])
   
-  pop_summary <- pop_summary %>% filter(!is.na(rural_urban_class)) 
-  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All"), 
-                           c(1:6,666))
-  pop_summary$rural_urban_class <- sapply(pop_summary$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
-  pop_summary$rural_urban_class %>% as.character %>% unique
+  #pop_summary <- pop_summary %>% filter(!is.na(rural_urban_class)) 
+  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
+                           c(1:6,666, "Unknown"))
+
+  pop_summary$rural_urban_class <- sapply(pop_summary$rural_urban_class %>% as.character, function(x){
+    x <- replace_na(x,"Unknown")
+    rindreplace8[[x]]
+  } )
+
   
   fwrite(pop_summary, pop_summaryDir)
   rm(rindreplace1, rindreplace2, rindreplace3)

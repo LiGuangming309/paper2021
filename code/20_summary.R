@@ -33,6 +33,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -65,14 +70,14 @@ all_burden <- lapply(agr_bys, function(agr_by) {
   all_burden <- lapply(sources, function(source) {
     files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
     all_burden <- lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% do.call(rbind, .)
-  }) %>% do.call(rbind, .)
+  }) %>% rbindlist
 
   # make compatible
   all_burden <- all_burden %>% rename("Region" := !!agr_by)
   all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
   return(all_burden)
 }) %>%
-  do.call(rbind, .) %>%
+  rbindlist %>%
   as.data.frame()
 
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method","min_age", "max_age", "scenario"))
@@ -82,6 +87,9 @@ all_burden <- all_burden %>%
             #min_age = min(min_age), 
             #max_age = max(max_age)
             )
+
+attrBurden <- attrBurden %>% mutate_at(c("Education", "rural_urban_class"), as.factor)
+all_burden <- all_burden %>% mutate_at(c("Education", "rural_urban_class"), as.factor)
 ### ----- add proportion ---
 
 # add "prop. of overall burden", "prop. of total burden"
@@ -230,9 +238,8 @@ rindreplace7 <- setNames(c("Black or African American", "American Indian or Alas
 all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
 attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
 
-rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All"), 
-                         c(1:6,666))
-
+rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
+                         c(1:6,666, "Unknown"))
 all_burden$rural_urban_class <- sapply(all_burden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
 attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
 
