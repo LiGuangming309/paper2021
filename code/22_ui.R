@@ -57,7 +57,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "rural_urban_class",
         label = "Rural Urban class",
-        choices = unique(all_burden$rural_urban_class)
+        choices = c("All",setdiff(unique(all_burden$rural_urban_class),"All"))
       ),
       selectInput(
         inputId = "Region",
@@ -87,7 +87,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "method",
         label = "which method used to calculate attributable burden",
-        choices = unique(attrBurden$method)
+        choices = c("burnett",setdiff(unique(attrBurden$method),"burnett"))
       ),
       selectInput(
         inputId = "pm_metric",
