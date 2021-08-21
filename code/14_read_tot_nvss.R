@@ -32,16 +32,16 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2000
+  year <- 1991
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 
-   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
-   #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
+   totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
 causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv")) %>% filter(Year == year)

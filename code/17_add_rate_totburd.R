@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1993
   agr_by <- "nation"
   source <- "nvss"
 
@@ -42,6 +42,12 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
+  
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -64,7 +70,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     total_burden <- file.path(totalBurdenParsedDir, agr_by, "nvss", paste0("total_burden_nvss_", year, ".csv")) %>%
       read.csv()
   }
-
+  total_burden <- total_burden %>% mutate(rural_urban_class = as.factor(rural_urban_class))
   ## --- measure 1: Deaths and YLL-----
   tic(paste("added YLL and age-adjusted rate to total burden in", year, agr_by))
   # Deaths
@@ -81,7 +87,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       Life.Expectancy = NULL
     )
 
-  total_burden <- rbind(total_burden, total_burden_yll)
+  total_burden <- rbind(total_burden, total_burden_yll) 
   rm(lifeExpectancy, total_burden_yll)
   #---read population data----
   #TODO
@@ -94,6 +100,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     filter(Year == year & (Education != 666 | rural_urban_class != 666))
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
+  pop_summary <- pop_summary %>% mutate(rural_urban_class = as.factor(rural_urban_class))
   pop_summary$source2 <- NULL
   rm(pop_summary1, pop_summary2)
   #------measure 2: absolute number, crude rate and age-standartised rates----- 
@@ -107,7 +114,9 @@ if (!file.exists(totalBurdenParsed2Dir)) {
 
   test_that("add_rate anti join total burden with population", {
     # expect_false(any(is.na(total_burden_crude)))
-    test_anti_join <- total_burden %>% anti_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population"))
+    test_anti_join <-  anti_join(total_burden ,
+                                     pop_summary_agr , 
+                                 by = setdiff(colnames(pop_summary_agr), "Population"))
     if (year <= 2008) test_anti_join <- test_anti_join %>% filter(Education == 666)
 
     test_anti_join <- test_anti_join %>%
@@ -117,6 +126,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   })
 
   total_burden_crude <- total_burden %>%
+    
     left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
     mutate(
       value = value * (100000 / Population),
