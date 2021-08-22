@@ -47,7 +47,7 @@ attr_burd <- rbind(
 
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == methodI & attr == "attributable" &
-    source == "National Vital Statistics System" & scenario == scenarioI)
+    source == "National Vital Statistics System" & scenario == scenarioI & rural_urban_class == "All")
 
 ##---plot---
 attr_burd1 <- attr_burd %>%

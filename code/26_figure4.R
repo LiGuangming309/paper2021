@@ -47,8 +47,8 @@ all_burden <- fread(file.path(summaryDir, "all_burd.csv")) %>% as.data.frame()
 attr_burd <- fread(file.path(summaryDir, "attr_burd.csv"))
 
 # filter
-all_burden <- all_burden %>% filter(attr == "overall")
-attr_burd <- attr_burd %>% filter(method == methodI & attr == "attributable" & measure3 == "value" & scenario == scenarioI)
+all_burden <- all_burden %>% filter(attr == "overall" & rural_urban_class == 666)
+attr_burd <- attr_burd %>% filter(method == methodI & attr == "attributable" & measure3 == "value" & scenario == scenarioI & rural_urban_class == 666)
 ### ---- population ranking----
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
 pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &
