@@ -38,15 +38,23 @@ if (rlang::is_empty(args)) {
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 
-   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
-   totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   #totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
+   #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplace <- read.csv(file.path(totalBurdenParsedDir, "findreplace.csv")) %>% filter(Year == year)
 causes <- read.csv(file.path(totalBurdenParsedDir, "causes.csv")) %>% filter(Year == year)
 
-totalBurdenDir <- file.path(totalBurdenDir, "nvss", paste0("mort", year, ".csv"))
+totalBurdenDir <- file.path(totalBurdenDir, "nvss")
+file_list <- list.files(totalBurdenDir)
+totalBurdenDir <- file.path(
+  totalBurdenDir,
+  file_list[grepl(year, file_list)]
+)
+rm(file_list)
+
+
 totalBurdenParsedDir <- file.path(totalBurdenParsedDir, agr_by, "nvss")
 dir.create(totalBurdenParsedDir, recursive = T, showWarnings = F)
 totalBurdenParsedDir <- file.path(
@@ -58,8 +66,12 @@ if (!file.exists(totalBurdenParsedDir)) {
 
   ## ----- read total burden ---------
   tic(paste("read", year, "total burden data"))
-  total_burden <- fread(totalBurdenDir)
-  colnames(total_burden)
+  if(substr(totalBurdenDir, nchar(totalBurdenDir)-3+1, nchar(totalBurdenDir)) == "csv"){
+    total_burden <- fread(totalBurdenDir)
+  }else{
+    total_burden <- narcan:::.import_restricted_data(totalBurdenDir, year, fix_states = FALSE)
+  }
+
   numberDeaths <- nrow(total_burden)
 
   if (year %in% 1990:1995) {

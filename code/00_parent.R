@@ -36,6 +36,10 @@ if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
 if ("DataCombine" %in% rownames(installed.packages()) == FALSE) {
   devtools::install_github("christophergandrud/DataCombine")
 }
+if ("narcan" %in% rownames(installed.packages()) == FALSE) {
+  devtools::install_github("mkiang/narcan")
+}
+
 # runtime configuration
 # run cripts from command line depending on OS
 if (Sys.info()["sysname"] == "Darwin") {
