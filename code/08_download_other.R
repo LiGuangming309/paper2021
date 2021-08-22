@@ -137,7 +137,7 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
             rename(GEO_ID = GEOID)
         }
         #save only relevant data
-        tracts<- tracts  %>%
+        tracts <- tracts  %>%
                   select("GEO_ID","geometry") %>%
                   distinct
                   #filter(!is.na(AFFGEOID)) #some are entirely in water, e.g. tract 01003990000 => ignore those

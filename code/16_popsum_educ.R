@@ -30,7 +30,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1990
+  year <- 2000
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -76,7 +76,11 @@ if (!file.exists(pop.summary.dirX)) {
     
     #TODO delete
     anti_joined <- anti_join(pop.summary, rural_urban_class, by = "FIPS.code")
-    anti_joined$FIPS.code %>% unique()
+    missing_FIPS <- anti_joined$FIPS.code %>% unique()
+    if(length(missing_FIPS) > 0){
+      print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in ",year,"in",name,":"))
+      #print(missing_FIPS)
+    }
       
     pop.summary <- pop.summary%>%
       left_join(rural_urban_class, by = "FIPS.code") %>%
