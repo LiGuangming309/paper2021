@@ -32,7 +32,7 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   agr_by <- "nation"
 
-  year <- 2009
+  year <- 1991
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
@@ -59,6 +59,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   ## ----- read total burden ---------
   tic(paste("read", year, "total burden data"))
   total_burden <- fread(totalBurdenDir)
+  colnames(total_burden)
   numberDeaths <- nrow(total_burden)
 
   if (year %in% 1990:1995) {
@@ -108,6 +109,11 @@ if (!file.exists(totalBurdenParsedDir)) {
     )
   }
 
+  if(!"countyrs" %in% colnames(total_burden)){
+    total_burden$countyrs <- NA
+  }
+  selectcolumns <- c(selectcolumns, "rural_urban_class"="countyrs")
+  
   if (agr_by == "nation") {
     total_burden <- total_burden %>% tibble::add_column(nation = "us")
     selectcolumns <- c(selectcolumns, "nation" = "nation")
@@ -157,7 +163,7 @@ if (!file.exists(totalBurdenParsedDir)) {
         distinct()
       if (nrow(missing) > 0) {
         print(paste("no value assigned in", replacecolumnX, "for"))
-        print(missing[, 1] %>% unique() %>% sort())
+        print(missing[, 1] %>% unique())
       }
 
       total_burden[, replacecolumnX] <- replacement %>% select(to)
@@ -165,6 +171,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   }
   rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
   #TODO Education
+  total_burden$rural_urban_class %>% unique
   if("Education2003" %in% colnames(total_burden)){
     total_burden <- total_burden %>%
       mutate(Education1989 = na_if(Education1989, "101"),
@@ -172,21 +179,21 @@ if (!file.exists(totalBurdenParsedDir)) {
       unite("Education", c("Education1989","Education2003"), na.rm = TRUE)
   }
   #total_burden$Race %>% unique
-  test1 <- total_burden %>% filter(
-                                    min_age == "Unknown" |
-                                    Hispanic.Origin == "Unknown" |
-                                    Race == "Unknown")
-  100*nrow(test1)/nrow(total_burden)
-  test2 <- total_burden %>% filter(Education == "Unknown" |
-                                     min_age == "Unknown")
-  100*nrow(test2)/nrow(total_burden)
+  #test1 <- total_burden %>% filter(
+  #                                  min_age == "Unknown" |
+  #                                  Hispanic.Origin == "Unknown" |
+  #                                  Race == "Unknown")
+  #100*nrow(test1)/nrow(total_burden)
+  #test2 <- total_burden %>% filter(Education == "Unknown" |
+  #                                   min_age == "Unknown")
+  #100*nrow(test2)/nrow(total_burden)
   
-  test3 <- total_burden %>% filter(
-    Education == "Unknown" |
-    min_age == "Unknown" |
-      Hispanic.Origin == "Unknown" |
-      Race == "Unknown")
-  nrow(total_burden)-nrow(test3)
+  #test3 <- total_burden %>% filter(
+  #  Education == "Unknown" |
+  #  min_age == "Unknown" |
+  #    Hispanic.Origin == "Unknown" |
+  #    Race == "Unknown")
+  #nrow(total_burden)-nrow(test3)
   # Deaths
   total_burden <- total_burden %>%
     group_by_at(colnames(total_burden)) %>%
@@ -197,6 +204,14 @@ if (!file.exists(totalBurdenParsedDir)) {
   #inverse_selectcolumns <- c(names(selectcolumns)) #Education1989
   inverse_selectcolumns<- setdiff(colnames(total_burden),"Deaths")
 
+  #add all rural_urban_class
+  total_burden_all_urb <- total_burden %>%
+    group_by_at(setdiff(inverse_selectcolumns, "rural_urban_class")) %>%
+    summarise(Deaths = sum(Deaths)) %>%
+    mutate(rural_urban_class = as.factor(666))
+  total_burden <- rbind(total_burden, total_burden_all_urb) %>% distinct()
+  rm(total_burden_all_urb)
+  
   # add Hispanic Origin All Origins
   total_burden_all_his <- total_burden %>%
     group_by_at(setdiff(inverse_selectcolumns, "Hispanic.Origin")) %>%
@@ -304,7 +319,8 @@ if (!file.exists(totalBurdenParsedDir)) {
             attr == "overall" &
             Race == "All"&
             Hispanic.Origin == "All Origins"&
-            Education != 666
+            Education != 666 &
+          rural_urban_class == 666
         )
       #some difference is tolerable due to rounding
       expect_equal(sum(test1$Deaths), numberDeaths, 
@@ -318,7 +334,8 @@ if (!file.exists(totalBurdenParsedDir)) {
         attr == "overall",
         Race != "All",
         Hispanic.Origin == "All Origins",
-        Education == 666
+        Education == 666,
+        rural_urban_class == 666
       )
     expect_equal(sum(test2$Deaths), numberDeaths)
 
@@ -329,7 +346,8 @@ if (!file.exists(totalBurdenParsedDir)) {
         attr == "overall",
         Race != "All",
         Hispanic.Origin != "All Origins",
-        Education == 666
+        Education == 666,
+        rural_urban_class == 666
       )
     expect_equal(sum(test3$Deaths), numberDeaths)
 
@@ -340,22 +358,37 @@ if (!file.exists(totalBurdenParsedDir)) {
         attr == "overall",
         Race != "All",
         Hispanic.Origin != "All Origins",
-        Education == 666
+        Education == 666,
+        rural_urban_class == 666
       )
     expect_equal(sum(test4$Deaths), numberDeaths)
+    
+    total_burden$rural_urban_class %>% unique
+    test5 <- total_burden %>%
+      filter(
+        Gender.Code != "A",
+        label_cause == "all-cause",
+        attr == "overall",
+        Race == "All",
+        Hispanic.Origin == "All Origins",
+        Education == 666,
+        rural_urban_class != 666
+      )
+    expect_equal(sum(test5$Deaths), numberDeaths)
   })
 
   #------filter ------
   total_burden <- total_burden %>% distinct()
   # total_burden$Race %>% unique()
   
-  100*sum(total_burden$Education == "Unknown")/nrow(total_burden)
+  #100*sum(total_burden$Education == "Unknown")/nrow(total_burden)
   
   total_burden <- total_burden %>%
     filter(Hispanic.Origin != "Unknown" & # TODO
       # Race != "Guama" &
       min_age != "Unknown" &
-      Education != "Unknown") %>% 
+      Education != "Unknown" &
+      rural_urban_class != "oth") %>% 
     mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
   

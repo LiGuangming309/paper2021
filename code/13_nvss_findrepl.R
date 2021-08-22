@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "readxl","tictoc")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -21,6 +21,7 @@ options(dplyr.join.inform = FALSE)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
 
+dataDir <- args[2]
 tmpDir <- args[3]
 totalBurdenParsedDir <- args[13]
 
@@ -28,12 +29,20 @@ totalBurdenParsedDir <- args[13]
 if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
+  dataDir <- "/Users/default/Desktop/paper2021/data"
   
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data/data"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
+suppressMessages(
+  rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
+    rename(rural_urban_class= ..2013.code) %>%
+    select(FIPS.code, rural_urban_class)
+)
+
 if (!file.exists(findreplaceDir)) {
   #### ----- 1990-1991------
   findreplaces1 <-
@@ -165,8 +174,16 @@ if (!file.exists(findreplaceDir)) {
 
   findreplaces3 <- merge(data.frame(Year = 2003:2016), findreplaces3)
 
-  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3)
+  findreplaces4 <- merge(data.frame(Year = 1990:2016), 
+                         data.frame(
+                           replacecolumns = "rural_urban_class",
+                           from = c(str_pad(rural_urban_class$FIPS.code, 5, pad = "0"),NA),
+                           to = c(rural_urban_class$rural_urban_class,"Unknown")
+                         ))
+  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces4)
+
   write.csv(findreplaces, findreplaceDir, row.names = FALSE)
+  rm(findreplaces1, findreplaces2, findreplaces3, findreplaces4)
 }
 
 causesDir <- file.path(totalBurdenParsedDir, "causes.csv")

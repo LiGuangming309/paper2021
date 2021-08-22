@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "dplyr", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis",
-  "hrbrthemes"
+  "hrbrthemes", "readxl", "stringr"
 )
 
 for (p in packages) {
@@ -25,6 +25,7 @@ options(dplyr.join.inform = FALSE)
 args <- commandArgs(trailingOnly = T)
 
 year <- args[1]
+dataDir <- args[2]
 tmpDir <- args[3]
 exp_tracDir <- args[7]
 censDir <- args[8]
@@ -36,15 +37,17 @@ if (rlang::is_empty(args)) {
   year <- 1990
   agr_by <- "nation"
 
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  dataDir <- "/Users/default/Desktop/paper2021/data"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
 
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data/data"
+  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  # cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
 }
 if (!agr_by %in% c("county", "Census_Region", "Census_division", "hhs_region_number", "STATEFP", "nation")) {
   print(paste(agr_by, "is an invalid agr_by argument"))
@@ -113,7 +116,6 @@ apply(states, 1, function(state) {
         expect_equal(0, nrow(anti2))
       })
     }
-
 
     cens_agr <- inner_join(trac_censData,
       exp_tracData,
@@ -195,20 +197,42 @@ if (agr_by != "county") {
         as.data.frame() 
        
       if(nrow(cens_agr) > 0){
-        cens_agr<- cens_agr %>%
+        #add rural classification
+        suppressMessages(
+          rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
+            rename(rural_urban_class= ..2013.code) %>%
+            select(FIPS.code, rural_urban_class)
+        )
+        
+        
+        cens_agr <- cens_agr %>% 
+          mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.double) %>%
+          left_join(rural_urban_class, by = "FIPS.code") %>%
+          mutate(FIPS.code = NULL)
+        
+        cens_agr1<- cens_agr %>%
           group_by(variable, scenario, pm) %>%
-          summarise(pop_size = sum(pop_size))
+          summarise(pop_size = sum(pop_size)) %>%
+          mutate(rural_urban_class = 666)
+        
+        cens_agr2<- cens_agr %>%
+          filter(!is.na(rural_urban_class)) %>%
+          group_by(variable, rural_urban_class, scenario, pm) %>%
+          summarise(pop_size = sum(pop_size)) 
+        
+        cens_agr <- rbind(cens_agr1, cens_agr2)
+        rm(rural_urban_class, cens_agr1, cens_agr2)
         
         # add proportions
         cens_agr <- cens_agr %>%
-          group_by(variable, scenario) %>%
+          group_by(variable,rural_urban_class, scenario) %>%
           mutate(prop = pop_size / sum(pop_size)) %>%
           ungroup()
         
         # test, check
         test_that("06_aggregate agr_by", {
           cens_agr %>%
-            group_by(variable, scenario) %>%
+            group_by(variable,rural_urban_class, scenario) %>%
             summarise(sum_prop = sum(prop)) %>%
             apply(1, function(row) {
               expect_equal(1, row[["sum_prop"]] %>% as.numeric())

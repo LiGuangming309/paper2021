@@ -78,11 +78,12 @@ if(!file.exists(pm_summDir)){
   }) %>% rbindlist
   
   pm_summ <- pm_summ %>%
-    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, Education, scenario, pm) %>%
+    group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age"))))) %>%
     summarise(pop_size = sum(pop_size))
   
   pm_summ <- pm_summ %>%
-    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, scenario, Education) %>%
+    group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age","pm"))))) %>%
+    #group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, scenario, Education) %>%
     summarise(mean = weighted.mean(pm, pop_size),
               median = matrixStats::weightedMedian(pm, pop_size))
   
@@ -95,20 +96,24 @@ if(!file.exists(pm_summDir)){
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pm_summ$Region <- sapply(pm_summ$Region , function(x) rindreplace1[[x]])
   
-  rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
-                           c(1:7, 666))
-  #pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
+  rindreplace2 <- setNames(
+    c("high school graduate or lower", "some college education but no 4-year college degree", "4-year college graduate or higher", "666"),
+    c("lower","middle","higher", "666")
+  )
+  pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
   unique(pm_summ$Gender.Code)
 
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pm_summ$Gender.Code <- sapply(pm_summ$Gender.Code , function(x) rindreplace3[[x]])
   
-  pm_summ <- pm_summ%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
-  pm_summ$Hispanic.Origin <- NULL 
-  pm_summ$Race <- NULL
+  pm_summ <- pm_summ %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
   rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
                            c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pm_summ$Ethnicity <- sapply(pm_summ$Ethnicity, function(x) rindreplace7[[x]])
+  
+  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
+                           c(1:6,666, NA))
+  pm_summ$rural_urban_class <- sapply(pm_summ$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
   
   fwrite(pm_summ, pm_summDir)
   rm(rindreplace1, rindreplace2, rindreplace3)
@@ -143,15 +148,17 @@ if(!file.exists(pop_summaryDir)){
   rm(pop_summary1, pop_summary2)
   
   pop_summary <- pop_summary %>%
-    group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, Education, source2) %>%
+    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population","min_age", "max_age"))))) %>%
     summarise(Population = sum(Population))
   ###---find and replace----
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
   pop_summary$Region <- sapply(pop_summary$Region , function(x) rindreplace1[[x]])
   
-  rindreplace2 <- setNames(c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"), 
-                           c(1:7, 666))
-  #pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
+  rindreplace2 <- setNames(
+    c("high school graduate or lower", "some college education but no 4-year college degree", "4-year college graduate or higher", "666"),
+    c("lower","middle","higher", "666")
+  )
+  pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
   
   rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
   pop_summary$Gender.Code <- sapply(pop_summary$Gender.Code , function(x) rindreplace3[[x]])
@@ -159,12 +166,20 @@ if(!file.exists(pop_summaryDir)){
   rindreplace4 <- setNames(c("Official Bridged-Race Population Estimates", "Own Interpolation"), c("CDC","Census"))
   pop_summary$source2 <- sapply(pop_summary$source2 , function(x) rindreplace4[[x]])
   
-  pop_summary <- pop_summary%>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) 
-  pop_summary$Hispanic.Origin <- NULL 
-  pop_summary$Race <- NULL
+  pop_summary <- pop_summary %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
   rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
                            c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
   pop_summary$Ethnicity <- sapply(pop_summary$Ethnicity, function(x) rindreplace7[[x]])
+  
+  #pop_summary <- pop_summary %>% filter(!is.na(rural_urban_class)) 
+  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
+                           c(1:6,666, "Unknown"))
+
+  pop_summary$rural_urban_class <- sapply(pop_summary$rural_urban_class %>% as.character, function(x){
+    x <- replace_na(x,"Unknown")
+    rindreplace8[[x]]
+  } )
+
   
   fwrite(pop_summary, pop_summaryDir)
   rm(rindreplace1, rindreplace2, rindreplace3)

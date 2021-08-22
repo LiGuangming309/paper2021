@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2009
+  year <- 2001
   agr_by <- "nation"
   source <- "nvss"
 
@@ -60,8 +60,9 @@ if(agr_by != "nation" & source == "nvss" & year >2004){
 #read some data
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 total_burden <- file.path(totalBurdenParsed2Dir,agr_by,source, paste0("total_burden_",year,".csv")) %>% 
-  fread%>% 
-  filter(label_cause %in% c("cvd_ihd","cvd_stroke", "neo_lung", "resp_copd", "lri", "t2_dm"))
+  fread %>% 
+  filter(label_cause %in% c("cvd_ihd","cvd_stroke", "neo_lung", "resp_copd", "lri", "t2_dm")) %>%
+  filter(rural_urban_class == 666) #TODO delete
 
 #intense computation
 if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
@@ -69,8 +70,8 @@ if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
 ## ----calculations-----
 if (!file.exists(attrBurdenDir)) {
   ## ----determine join variables
-  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","Gender.Code", "label_cause","min_age","max_age", agr_by)
-  group_variables <- c("Year","Race","Hispanic.Origin","Education", "Gender.Code", agr_by)
+  join_variables <- c("Year", "Race", "Hispanic.Origin","Education","rural_urban_class","Gender.Code", "label_cause","min_age","max_age", agr_by)
+  group_variables <- c("Year","Race","Hispanic.Origin","Education","rural_urban_class", "Gender.Code", agr_by)
 
   ## ----- read paf------
   regions <- states[, agr_by] %>% unique()
@@ -84,6 +85,9 @@ if (!file.exists(attrBurdenDir)) {
     rbindlist %>%
     as.data.frame()
   pafs <- pafs %>% filter(min_age >= 25)
+  
+  total_burden <- total_burden %>% mutate_at(c( "rural_urban_class"), as.factor)
+  pafs <- pafs %>% mutate_at(c("rural_urban_class"), as.factor)
   
   if (agr_by == "STATEFP") {
     possible_regions <- c(1, 4:6, 8:13, 16:42, 44:51, 53:56)
@@ -142,18 +146,19 @@ if (!file.exists(attrBurdenDir)) {
   paf_ageDir <- file.path(pafDir, agr_by, year)
   paf_age <- file.path(paf_ageDir, list.files(paf_ageDir)[[1]]) %>% read.csv()
   paf_age <- paf_age %>%
-    select(Hispanic.Origin, Race, Education, min_age, max_age, Year) %>%
+    select(Hispanic.Origin, Race, Education, min_age, max_age, Year, rural_urban_class) %>%
     distinct() %>%
-    arrange(min_age, max_age)
+    arrange(min_age, max_age)%>%
+    mutate_at(c( "rural_urban_class"), as.factor)
   
-  total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
+  total_burden <- total_burden %>% inner_join(paf_age, by = c("Hispanic.Origin", "Race", "Education","rural_urban_class", "Year"))
   
   test_that("paf min_age and max_age compatible with total burden", {
     total_burden_test <- total_burden %>% 
       filter(min_age.x <= min_age.y & min_age.y <= min_age.x 
              & !(min_age.y <= min_age.x & max_age.x <= max_age.y))
     
-    total_burden_test2 <- total_burden %>% anti_join(paf_age, by = c("Hispanic.Origin", "Race", "Education", "Year"))
+    total_burden_test2 <- total_burden %>% anti_join(paf_age, by = c("Hispanic.Origin", "Race", "Education","rural_urban_class", "Year"))
     if (year <= 2008) total_burden_test2 <- total_burden_test2 %>% filter(Education == 666)
     expect_equal(0, nrow(total_burden_test))
     expect_equal(0, nrow(total_burden_test2))

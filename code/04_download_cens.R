@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "dplyr", "magrittr", "censusapi", "stringr", "data.table", "tidyverse",
-  "tictoc", "cdcfluview", "testthat", "rlang" #"tigris", 
+  "tictoc", "cdcfluview", "testthat", "rlang"
 )
 
 options(dplyr.summarise.inform = FALSE)
@@ -31,13 +31,13 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2000
-
+  year <- 1990
+  
    censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
    tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+   
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
 
 # quits, if not downloadable year

@@ -35,7 +35,7 @@ totalBurdenParsed2Dir  <- args[17]
 
 # TODO löschen
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2013
   agr_by <-"nation"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -154,25 +154,28 @@ for (region in regions) {
 
     # read census data aggregated by pm exposure
     cens_agrDirX <- file.path(cens_agrDir,  paste0("cens_agr_", toString(year), "_", region, ".csv")) 
+    
     if(!file.exists(cens_agrDirX) & year < 2000 & region %in% c("AK","HI")) break
     
-    cens_agr<-fread(cens_agrDirX) #%>%
-      #select(variable, scenario, pm, prop)
+    cens_agr<-fread(cens_agrDirX) 
+    
+    cens_agr <- cens_agr %>% filter(rural_urban_class == 666) #TODO delete
     
     #some missing, e.g. AAAA00024, because age < 25
 
     cens_agr <- cens_agr %>% inner_join(meta_cross, by = "variable") 
     
     cens_agr <- cens_agr %>%
-      group_by(variable_id, scenario, pm) %>%
+      group_by(variable_id, rural_urban_class, scenario, pm) %>%
       summarise(pop_size = sum(pop_size)) %>%
-      group_by(variable_id, scenario) %>%
+      group_by(variable_id, rural_urban_class, scenario) %>%
       mutate(prop = pop_size/sum(pop_size)) %>%
-      select(variable_id, scenario, pm, prop )
+      select(variable_id, rural_urban_class, scenario, pm, prop )
 
     # add column, if something from pm_levels missing
     fill_values <- crossing(
       variable_id = cens_agr$variable_id %>% unique(),
+      rural_urban_class = cens_agr$rural_urban_class %>% unique(),
       scenario = cens_agr$scenario %>% unique(),
       pm = pm_levels
     ) 
@@ -191,9 +194,9 @@ for (region in regions) {
       )
     # as matrix
     matrix_cens_agr <- cens_agr %>%
-      subset(select = -c(variable_id, scenario))%>%
+      subset(select = -c(variable_id, rural_urban_class, scenario))%>%
       as.matrix()
-    rownames(matrix_cens_agr) <- paste(cens_agr$variable_id,cens_agr$scenario, sep = "-")
+    rownames(matrix_cens_agr) <- paste(cens_agr$variable_id,cens_agr$rural_urban_class,cens_agr$scenario, sep = "-")
 
     #censMetaAll <- paste0("cens_meta_", toString(year), ".csv") %>%
     #  file.path(censDir, "meta", .) %>%
@@ -258,7 +261,7 @@ for (region in regions) {
     }) %>% rbindlist
     pafs <- pafs %>% tidyr::separate(variable,
                                             sep = "-",
-                                            into = c("variable_id","scenario"))
+                                            into = c("variable_id","rural_urban_class","scenario"))
     
     meta_cross[, agr_by] <- region
 
@@ -270,9 +273,7 @@ for (region in regions) {
     test_that("07_paf distinct rows", {
       expect_false(any(is.na(pafs)))
 
-      pafs_dis <- pafs %>% distinct(label_cause, scenario, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
-      
-      pafs_dis <- pafs %>% select(label_cause, scenario, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
+      pafs_dis <- pafs %>% select(label_cause, scenario,rural_urban_class, Year, Gender.Code, Race, Hispanic.Origin, Education, min_age, max_age)
       pafs_dis <- pafs_dis[duplicated(pafs_dis), ] #"attr"
       expect_equal(nrow(pafs_dis), 0)
       # TODO löschen

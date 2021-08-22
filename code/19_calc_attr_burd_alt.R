@@ -35,15 +35,15 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2008
+  year <- 2001
   agr_by <- "nation"
   source <- "nvss"
 
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  #totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
-  #attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   
   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
   censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
@@ -71,7 +71,7 @@ if (!file.exists(attrBurdenDir)) {
     fread()
 
   total_burden <- total_burden %>%
-    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "source", "measure1", "measure2", "label_cause"))) %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class", "source", "measure1", "measure2", "label_cause"))) %>%
     summarise(
       value = sum(value),
       min_age = min(min_age),
@@ -84,9 +84,12 @@ if (!file.exists(attrBurdenDir)) {
   pm_summ <- pm_summ %>% left_join(meta, by = "variable")
   pm_summ <- pm_summ %>% filter(min_age >= 25)
   pm_summ <- pm_summ %>% mutate(min_age = min(min_age), max_age = max(max_age))
+  
+  pm_summ <- pm_summ %>% mutate_at(c("rural_urban_class"), as.factor)
+  total_burden <- total_burden %>% mutate_at(c("rural_urban_class"), as.factor)
     
   pm_summ <- pm_summ %>%
-    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","scenario", "pm", "min_age", "max_age"))) %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class","scenario", "pm", "min_age", "max_age"))) %>%
     dplyr::summarize(pop_size = sum(pop_size))
 
   rm(meta, files)
@@ -99,8 +102,8 @@ if (!file.exists(attrBurdenDir)) {
     ) %>%
     as.data.frame()
 
-  pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age", "scenario")]
-  pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "min_age", "max_age", "scenario")])
+  pm_summ_var <- pm_summ[, c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class", "min_age", "max_age", "scenario")]
+  pm_summ_pop <- data.matrix(pm_summ[, !names(pm_summ) %in% c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "rural_urban_class","min_age", "max_age", "scenario")])
   pm_summ_pop <- t(scale(t(pm_summ_pop), center = FALSE, scale = rowSums(pm_summ_pop)))
 
   ## ---paf calculations----
@@ -139,7 +142,7 @@ if (!file.exists(attrBurdenDir)) {
   attr_burden_burnett <- inner_join(
     total_burden %>% dplyr::filter(label_cause == "ncd_lri"),
     paf_burnett,
-    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
+    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class")
   )
 
 
@@ -176,7 +179,7 @@ if (!file.exists(attrBurdenDir)) {
   attr_burden_epa <- inner_join(
     total_burden %>% dplyr::filter(label_cause == "all-cause"),
     paf_epa,
-    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education")
+    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "rural_urban_class","Education")
   )
 
   attr_burden <- rbind(attr_burden_epa, attr_burden_burnett) %>%

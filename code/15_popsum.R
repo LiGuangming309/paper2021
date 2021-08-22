@@ -28,7 +28,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   cdcPopDir <- "/Users/default/Desktop/paper2021/data/10_cdc_population"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
@@ -38,7 +38,6 @@ cdcPopDir <- file.path(cdcPopDir, agr_by)
 plotDir <- file.path(pop.summary.dir, "plot", agr_by)
 dir.create(plotDir, recursive = T, showWarnings = F)
 pop.summary.dir <- file.path(pop.summary.dir, paste0("pop_",agr_by,".csv"))
-
 
 agr_by_replace <- c(
   "county" = "County", "Census_Region" = "Census.Region.Code", "Census_division" = "Census.Division.Code",
@@ -108,6 +107,7 @@ if (!file.exists(pop.summary.dir)) {
     distinct
 
   cdc_pop <- cdc_pop %>% tibble::add_column(Education = 666)
+  cdc_pop <- cdc_pop %>% tibble::add_column(rural_urban_class = 666)
   cdc_pop$min_age[cdc_pop$min_age == "85+"] <- 85
   cdc_pop$max_age[cdc_pop$max_age == "85+"] <- 150
   cdc_pop$min_age <- as.numeric(cdc_pop$min_age)
@@ -125,7 +125,9 @@ if (!file.exists(pop.summary.dir)) {
       rbindlist %>%
       filter(Education == 666)
     
-    missing_aim_meta <- anti_join(aim_meta, cdc_pop, by= c("Gender.Code", "Race", "Hispanic.Origin", "Education", "Year"))
+    missing_aim_meta <- anti_join(aim_meta %>% mutate(Education = as.factor(Education)), 
+                                  cdc_pop %>% mutate(Education = as.factor(Education)), 
+                                  by= c("Gender.Code", "Race", "Hispanic.Origin", "Education", "Year"))
     expect_equal(0,nrow(missing_aim_meta))
   })
   

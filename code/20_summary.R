@@ -33,6 +33,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -65,14 +70,14 @@ all_burden <- lapply(agr_bys, function(agr_by) {
   all_burden <- lapply(sources, function(source) {
     files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
     all_burden <- lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% do.call(rbind, .)
-  }) %>% do.call(rbind, .)
+  }) %>% rbindlist
 
   # make compatible
   all_burden <- all_burden %>% rename("Region" := !!agr_by)
   all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
   return(all_burden)
 }) %>%
-  do.call(rbind, .) %>%
+  rbindlist %>%
   as.data.frame()
 
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method","min_age", "max_age", "scenario"))
@@ -82,6 +87,9 @@ all_burden <- all_burden %>%
             #min_age = min(min_age), 
             #max_age = max(max_age)
             )
+
+attrBurden <- attrBurden %>% mutate_at(c("Education", "rural_urban_class"), as.factor)
+all_burden <- all_burden %>% mutate_at(c("Education", "rural_urban_class"), as.factor)
 ### ----- add proportion ---
 
 # add "prop. of overall burden", "prop. of total burden"
@@ -111,22 +119,23 @@ test_that(" basic checks", {
   # TODO
 })
 
-# add proportion of disparity
+# add proportion of disparity#"rural_urban_class", TODO
 attrBurden_disp1 <- inner_join(
   all_burden %>% filter(attr == "overall" & !(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
   all_burden %>% filter(attr == "overall" & (Race == "Black or African American" & Hispanic.Origin == "All Origins")),
-  by = setdiff(colnames(all_burden), c("Race", "Hispanic.Origin", "overall_value"))
-  #by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by")
-)
+  by = setdiff(colnames(all_burden), c("Race", "Hispanic.Origin", "overall_value")))
 
-attrBurden_disp2 <- inner_join(attrBurden %>% filter(!(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
+attrBurden_disp2 <- inner_join(
+  attrBurden %>% filter(!(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
   attrBurden %>% filter((Race == "Black or African American"& Hispanic.Origin == "All Origins")),
   by = setdiff(colnames(attrBurden), c("Race", "Hispanic.Origin", "lower", "mean", "upper"))
-  #by = c("Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "attr", "source", "agr_by", "method","min_age", "max_age")
 )
 
-attrBurden_disp3 <- inner_join(attrBurden_disp1, attrBurden_disp2,
-                               by = c("Race.x", "Hispanic.Origin.x", "Race.y", "Hispanic.Origin.y", "Year", "Gender.Code", "Education", "Region", "measure1", "measure2", "source", "agr_by"))
+attrBurden_disp3 <- inner_join(
+  attrBurden_disp1, 
+  attrBurden_disp2,
+  by = setdiff(colnames(attrBurden_disp1), c("attr","overall_value.x","overall_value.y" )))
+
 attrBurden_disp3 <- attrBurden_disp3 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
@@ -150,7 +159,10 @@ attrBurden_disp5 <- inner_join(attrBurden %>% filter(Education != "lower"),
 attrBurden_disp6 <- inner_join(
   attrBurden_disp4, 
   attrBurden_disp5, 
-  by = c("Education.x", "Education.y", "Race", "Hispanic.Origin","Year", "Gender.Code", "Region", "measure1", "measure2", "source", "agr_by"))
+  by = setdiff(colnames(attrBurden_disp4), c("attr","overall_value.x","overall_value.y" ))
+  #by = c("Education.x", "Education.y", "Race", "Hispanic.Origin","Year", "Gender.Code", "Region", "measure1", "measure2", "source", "agr_by")
+  )
+
 attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
@@ -186,9 +198,7 @@ all_burden <- all_burden %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Orig
 all_burden$Hispanic.Origin <- NULL
 all_burden$Race <- NULL
 
-#attrBurden <- attrBurden %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
-#attrBurden$Hispanic.Origin <- NULL
-#attrBurden$Race <- NULL
+
 attrBurden <- attrBurden %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
 
 rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP, "us"))
@@ -226,7 +236,12 @@ rindreplace7 <- setNames(c("Black or African American", "American Indian or Alas
 all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
 attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
 
-rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7)
+rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
+                         c(1:6,666, "Unknown"))
+all_burden$rural_urban_class <- sapply(all_burden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+
+rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7, rindreplace8)
 
 #--write---
 attrBurden<- attrBurden %>% filter(measure1 == "Deaths")

@@ -20,7 +20,7 @@ options(scipen = 10000)
 
 #load calculated data
 summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-#summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
@@ -29,10 +29,8 @@ attrBurden <- rbind(fread(file.path(summaryDir, "attr_burd.csv")),
 #attrBurden <- attrBurden %>% filter(scenario == "A")
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
 pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
-#pm_summ <- pm_summ %>% filter(scenario == "A")
 pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
 
-colnames(all_burden)
 # Define UI for dataset viewer app ----
 ui <- fluidPage(
 
@@ -55,6 +53,11 @@ ui <- fluidPage(
         inputId = "Gender.Code",
         label = "Gender",
         choices = unique(all_burden$Gender.Code)
+      ),
+      selectInput(
+        inputId = "rural_urban_class",
+        label = "Rural Urban class",
+        choices = c("All",setdiff(unique(all_burden$rural_urban_class),"All"))
       ),
       selectInput(
         inputId = "Region",
@@ -84,7 +87,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "method",
         label = "which method used to calculate attributable burden",
-        choices = unique(attrBurden$method)
+        choices = c("burnett",setdiff(unique(attrBurden$method),"burnett"))
       ),
       selectInput(
         inputId = "pm_metric",
@@ -116,6 +119,7 @@ server <- function(input, output) {
   output$plot1 <- renderPlot({
     # get Input
     Gender.CodeI <- input$Gender.Code
+    rural_urban_classI <- input$rural_urban_class
     RegionI <- input$Region
     measure1I <- input$measure1
     measure2I <- input$measure2
@@ -126,17 +130,17 @@ server <- function(input, output) {
     scenarioI <- input$scenario
 
     # filter data accordingly
-    allBurden1 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "overall")
-    allBurden2 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "total")
-    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value" & scenarioI == scenario)
-    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden" & scenarioI == scenario)
+    allBurden1 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "overall" & rural_urban_classI == rural_urban_class)
+    allBurden2 <- all_burden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & attr == "total" & rural_urban_classI == rural_urban_class)
+    attrBurden1 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "value" & scenarioI == scenario & rural_urban_classI == rural_urban_class)
+    attrBurden2 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of overall burden" & scenarioI == scenario & rural_urban_classI == rural_urban_class)
     attrBurden3 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method 
                                          & measure3 %in% c("proportion of disparity to Black or African American attributable", "proportion of disparity to lower educational attainment")
-                                         & !(Ethnicity == "All, All Origins" & Education == 666)  & scenarioI == scenario)
-    attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden" & scenarioI == scenario)
+                                         & !(Ethnicity == "All, All Origins" & Education == 666)  & scenarioI == scenario & rural_urban_classI == rural_urban_class)
+    attrBurden4 <- attrBurden %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & measure1 == measure1I & measure2 == measure2I & source == sourceI & methodI == method & measure3 == "prop. of total burden" & scenarioI == scenario & rural_urban_classI == rural_urban_class)
     
-    pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI & scenarioI == scenario)
-    pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I)
+    pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI & scenarioI == scenario & rural_urban_classI == rural_urban_class)
+    pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I & rural_urban_classI == rural_urban_class)
 #TODO All Origins?
     if (input$raceOrEduc == "race") {
       allBurden1 <- allBurden1 %>% filter(Education == 666 ) #& Ethnicity != "All, All Origins"
