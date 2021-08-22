@@ -198,9 +198,7 @@ all_burden <- all_burden %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Orig
 all_burden$Hispanic.Origin <- NULL
 all_burden$Race <- NULL
 
-#attrBurden <- attrBurden %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
-#attrBurden$Hispanic.Origin <- NULL
-#attrBurden$Race <- NULL
+
 attrBurden <- attrBurden %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
 
 rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP, "us"))

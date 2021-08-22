@@ -30,7 +30,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 2015
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
