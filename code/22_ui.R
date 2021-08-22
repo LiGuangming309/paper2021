@@ -20,7 +20,7 @@ options(scipen = 10000)
 
 #load calculated data
 summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+#summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
@@ -47,7 +47,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "raceOrEduc",
         label = "Aggregate by race or education?",
-        choices = c("race", "education")
+        choices = c("race", "education","nothing")
       ),
       selectInput(
         inputId = "Gender.Code",
@@ -141,16 +141,16 @@ server <- function(input, output) {
     
     pm_summ1 <- pm_summ %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & pm_metric == pm_metricI & scenarioI == scenario & rural_urban_classI == rural_urban_class)
     pop_summary1 <- pop_summary %>% filter(Gender.Code == Gender.CodeI & Region == RegionI & source2 == source2I & rural_urban_classI == rural_urban_class)
-#TODO All Origins?
+
     if (input$raceOrEduc == "race") {
-      allBurden1 <- allBurden1 %>% filter(Education == 666 ) #& Ethnicity != "All, All Origins"
-      allBurden2 <- allBurden2 %>% filter(Education == 666)
-      attrBurden1 <- attrBurden1 %>% filter(Education == 666 )
-      attrBurden2 <- attrBurden2 %>% filter(Education == 666 )
-      attrBurden3 <- attrBurden3 %>% filter(Education == 666 )
-      attrBurden4 <- attrBurden4 %>% filter(Education == 666 )
-      pm_summ1 <- pm_summ1 %>% filter(Education == 666 )
-      pop_summary1 <- pop_summary1 %>% filter(Education == 666 )
+      allBurden1 <- allBurden1 %>% filter(Education == 666 & Ethnicity != "All, All Origins") 
+      allBurden2 <- allBurden2 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      attrBurden1 <- attrBurden1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      attrBurden2 <- attrBurden2 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      attrBurden3 <- attrBurden3 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      attrBurden4 <- attrBurden4 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      pm_summ1 <- pm_summ1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+      pop_summary1 <- pop_summary1 %>% filter(Education == 666 & Ethnicity != "All, All Origins")
 
       g1 <- ggplot(allBurden1, aes(x = Year, y = overall_value, color = Ethnicity))
       g2 <- ggplot(allBurden2, aes(x = Year, y = overall_value, color = Ethnicity))
@@ -160,7 +160,7 @@ server <- function(input, output) {
       g6 <- ggplot(pop_summary1, aes(x = Year, y = Population, color = Ethnicity))
       g7 <- ggplot(attrBurden3, aes(x = Year, y = mean, color = Ethnicity))
       g8 <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Ethnicity))
-    } else {
+    } else if(input$raceOrEduc == "education"){
       allBurden1 <- allBurden1 %>% filter(Education != 666 & Ethnicity == "All, All Origins")
       allBurden2 <- allBurden2 %>% filter(Education != 666 & Ethnicity == "All, All Origins")
       attrBurden1 <- attrBurden1 %>% filter(Education != 666 & Ethnicity == "All, All Origins")
@@ -178,19 +178,37 @@ server <- function(input, output) {
       g6 <- ggplot(pop_summary1, aes(x = Year, y = Population, color = Education))
       g7 <- ggplot(attrBurden3, aes(x = Year, y = mean, color = Education))
       g8 <- ggplot(attrBurden4, aes(x = Year, y = mean, color = Education))
+    }else if(input$raceOrEduc == "nothing"){
+      allBurden1 <- allBurden1 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      allBurden2 <- allBurden2 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      attrBurden1 <- attrBurden1 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      attrBurden2 <- attrBurden2 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      attrBurden3 <- attrBurden3 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      attrBurden4 <- attrBurden4 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      pm_summ1 <- pm_summ1 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      pop_summary1 <- pop_summary1 %>% filter(Education == 666 & Ethnicity == "All, All Origins")
+      
+      g1 <- ggplot(allBurden1, aes(x = Year, y = overall_value))
+      g2 <- ggplot(allBurden2, aes(x = Year, y = overall_value))
+      g3 <- ggplot(attrBurden1, aes(x = Year, y = mean))
+      g4 <- ggplot(attrBurden2, aes(x = Year, y = mean))
+      g5 <- ggplot(pm_summ1, aes(x = Year, y = value))
+      g6 <- ggplot(pop_summary1, aes(x = Year, y = Population))
+      g7 <- ggplot(attrBurden3, aes(x = Year, y = mean))
+      g8 <- ggplot(attrBurden4, aes(x = Year, y = mean))
     }
 
-    g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(1990, 2016) + ggtitle("all-cause burden")
-    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(1990, 2016) + ggtitle("total burden from causes associated with PM2.5 exposure ",
+    g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA)  + ggtitle("all-cause burden")
+    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA)  + ggtitle("total burden from causes associated with PM2.5 exposure ",
       subtitle = "(resp_copd, lri, neo_lung, t2_dm, cvd_ihd, cvd_stroke)"
     )
-    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA) + xlim(1990, 2016) + ggtitle("directly attributable to PM2.5 exposure")
-    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%")  + xlim(1990, 2016) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
+    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA)  + ggtitle("directly attributable to PM2.5 exposure")
+    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%")  + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
-    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") + xlim(1990, 2016) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
-    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + xlim(1990, 2016) + ggtitle("Population size")
-    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%") + xlim(1990, 2016) + ggtitle(paste(unique(attrBurden3$measure3)))
-    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA) + xlim(1990, 2016) + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
+    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3")  +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
+    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + ggtitle("Population size")
+    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%")  + ggtitle(paste(unique(attrBurden3$measure3)))
+    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA)  + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
     
     if (input$conf) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
