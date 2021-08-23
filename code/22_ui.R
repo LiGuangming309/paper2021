@@ -197,18 +197,19 @@ server <- function(input, output) {
       g7 <- ggplot(attrBurden3, aes(x = Year, y = mean))
       g8 <- ggplot(attrBurden4, aes(x = Year, y = mean))
     }
+    
 
-    g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA)  + ggtitle("all-cause burden")
-    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA)  + ggtitle("total burden from causes associated with PM2.5 exposure ",
+    g1 <- g1 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) +scale_x_continuous(breaks= pretty_breaks())+ ylim(0, NA)   + ggtitle("all-cause burden")
+    g2 <- g2 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) +scale_x_continuous(breaks= pretty_breaks())+ ylim(0, NA)  + ggtitle("total burden from causes associated with PM2.5 exposure ",
       subtitle = "(resp_copd, lri, neo_lung, t2_dm, cvd_ihd, cvd_stroke)"
     )
-    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) + ylim(0, NA)  + ggtitle("directly attributable to PM2.5 exposure")
-    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%")  + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
+    g3 <- g3 + geom_line(size = 1) + xlab("Year") + ylab(paste0(measure1I, ", ", measure2I)) +scale_x_continuous(breaks= pretty_breaks())+ ylim(0, NA)  + ggtitle("directly attributable to PM2.5 exposure")
+    g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") +scale_x_continuous(breaks= pretty_breaks()) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
-    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3")  +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
-    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population") + ylim(0, NA) + ggtitle("Population size")
-    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%")  + ggtitle(paste(unique(attrBurden3$measure3)))
-    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") + ylim(0, NA)  + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
+    g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") +scale_x_continuous(breaks= pretty_breaks()) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
+    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population")+scale_x_continuous(breaks= pretty_breaks()) + ylim(0, NA) + ggtitle("Population size")
+    g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%")  +scale_x_continuous(breaks= pretty_breaks())+ ggtitle(paste(unique(attrBurden3$measure3)))
+    g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") +scale_x_continuous(breaks= pretty_breaks())+ ylim(0, NA)  + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
     
     if (input$conf) {
       g3 <- g3 + geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 0, alpha = 0.1)
