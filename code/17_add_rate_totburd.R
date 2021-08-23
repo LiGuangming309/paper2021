@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -70,7 +70,9 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     total_burden <- file.path(totalBurdenParsedDir, agr_by, "nvss", paste0("total_burden_nvss_", year, ".csv")) %>%
       read.csv()
   }
-  total_burden <- total_burden %>% mutate(rural_urban_class = as.factor(rural_urban_class))
+  total_burden <- total_burden %>%
+    filter(rural_urban_class != "Unknown") %>% 
+    mutate(rural_urban_class = as.factor(rural_urban_class)) 
   ## --- measure 1: Deaths and YLL-----
   tic(paste("added YLL and age-adjusted rate to total burden in", year, agr_by))
   # Deaths
@@ -100,7 +102,9 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     filter(Year == year & (Education != 666 | rural_urban_class != 666))
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
-  pop_summary <- pop_summary %>% mutate(rural_urban_class = as.factor(rural_urban_class))
+  pop_summary <- pop_summary %>%
+    filter(rural_urban_class != "Unknown") %>% 
+    mutate(rural_urban_class = as.factor(rural_urban_class))
   pop_summary$source2 <- NULL
   rm(pop_summary1, pop_summary2)
   #------measure 2: absolute number, crude rate and age-standartised rates----- 
@@ -120,7 +124,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     if (year <= 2008) test_anti_join <- test_anti_join %>% filter(Education == 666)
 
     test_anti_join <- test_anti_join %>%
-      select(all_of(c("Year", "Education", "Gender.Code", "Race", "Hispanic.Origin", agr_by))) %>%
+      select(all_of(c("Year", "Education", "Gender.Code", "Race", "Hispanic.Origin", "rural_urban_class", agr_by))) %>%
       distinct()
     expect_equal(0, nrow(test_anti_join)) # TODO
   })
