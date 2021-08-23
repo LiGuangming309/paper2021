@@ -159,7 +159,7 @@ for (region in regions) {
     
     cens_agr<-fread(cens_agrDirX) 
     
-    cens_agr <- cens_agr %>% filter(rural_urban_class == 666) #TODO delete
+    #cens_agr <- cens_agr %>% filter(rural_urban_class == 666) #TODO delete
     
     #some missing, e.g. AAAA00024, because age < 25
 
