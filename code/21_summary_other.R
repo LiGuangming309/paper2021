@@ -73,13 +73,12 @@ if(!file.exists(pm_summDir)){
     pm_summ <- pm_summ %>% rename("Region":=!!agr_by)
     pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
     
+    pm_summ <- pm_summ %>%
+      group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age"))))) %>%
+      summarise(pop_size = sum(pop_size))
     toc()
     return(pm_summ)
   }) %>% rbindlist
-  
-  pm_summ <- pm_summ %>%
-    group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age"))))) %>%
-    summarise(pop_size = sum(pop_size))
   
   pm_summ <- pm_summ %>%
     group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age","pm"))))) %>%
@@ -90,7 +89,7 @@ if(!file.exists(pm_summDir)){
   pm_summ <- pm_summ %>%
     pivot_longer(c(mean,median),
                  names_to = "pm_metric")
-  
+
   pm_summ <- pm_summ %>% filter(!is.na(Gender.Code)) #TODO
   ##--- find and replcase---
   rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
