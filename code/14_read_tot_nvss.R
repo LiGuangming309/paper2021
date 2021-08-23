@@ -69,6 +69,9 @@ if (!file.exists(totalBurdenParsedDir)) {
   if(substr(totalBurdenDir, nchar(totalBurdenDir)-3+1, nchar(totalBurdenDir)) == "csv"){
     total_burden <- fread(totalBurdenDir)
   }else{
+    #if ("narcan" %in% rownames(installed.packages()) == FALSE) {
+    #  devtools::install_github("mkiang/narcan")
+    #}
     total_burden <- narcan:::.import_restricted_data(totalBurdenDir, year, fix_states = FALSE)
   }
 
