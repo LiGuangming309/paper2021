@@ -12,15 +12,18 @@ rm(list = ls(all = TRUE))
 
 # install packages if missing 
 packages <- c(
+  "vctrs",
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
   "MALDIquant", "plyr", "RCurl", "readxl","triangle", "sf", "sp", "stringr", "testthat", "tictoc","truncnorm",
   "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr", "ggExtra"
+ 
 )
 
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) {
-    install.packages(p)
+  #  remove.packages(p)
+    install.packages(p, dependencies = TRUE)
   } 
 }
 
@@ -36,9 +39,9 @@ if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
 if ("DataCombine" %in% rownames(installed.packages()) == FALSE) {
   devtools::install_github("christophergandrud/DataCombine")
 }
-if ("narcan" %in% rownames(installed.packages()) == FALSE) {
-  devtools::install_github("mkiang/narcan")
-}
+#if ("narcan" %in% rownames(installed.packages()) == FALSE) {
+#  devtools::install_github("mkiang/narcan")
+#}
 
 # runtime configuration
 # run cripts from command line depending on OS
@@ -203,14 +206,14 @@ for (agr_by in agr_bys) {
 
     #  runscript(script = assignTractAKHI.script, args = args)
          runscript(script = cens_agr.script, args = args)
-         runscript(script = paf.script, args = args)
+  #       runscript(script = paf.script, args = args)
     #     runscript(script = read.nvs.findrepl.script, args = args)
-        runscript(script = read.total.burden.nvs.script, args = args)
+   #     runscript(script = read.total.burden.nvs.script, args = args)
       runscript(script=pop.summary.script, args = args)
     runscript(script=pop.summary.educ.script, args = args)
-      runscript(script = add.rate.tot.burd, args = args)
-      runscript(script = calc.attr.burd.script, args = args)
-     runscript(script = calc.attr.burd.alt.script, args = args)  
+  #    runscript(script = add.rate.tot.burd, args = args)
+  #    runscript(script = calc.attr.burd.script, args = args)
+  #   runscript(script = calc.attr.burd.alt.script, args = args)  
 
     }  
   }
