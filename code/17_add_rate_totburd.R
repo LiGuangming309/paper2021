@@ -33,8 +33,8 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2016
-  agr_by <- "nation"
+  year <- 1990
+  agr_by <- "STATEFP"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -118,6 +118,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
 
   test_that("add_rate anti join total burden with population", {
     # expect_false(any(is.na(total_burden_crude)))
+    expect_false(any(is.infinite(total_burden$value)))
     test_anti_join <-  anti_join(total_burden ,
                                      pop_summary_agr , 
                                  by = setdiff(colnames(pop_summary_agr), "Population"))
@@ -167,7 +168,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   total_burden_age_adj2 <- total_burden_age_adj %>%
     filter(largerInterval == 2) %>%
     group_by_at(vars(all_of(setdiff(colnames(total_burden_age_adj), "Population")))) %>%
-    summarise(Population = sum(Population))
+    summarise(Population = sum(Population)) 
 
   total_burden_age_adj <- rbind(total_burden_age_adj1, total_burden_age_adj2) %>% 
     distinct() %>%
@@ -190,6 +191,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     ungroup
 
   total_burden_age_adj <- total_burden_age_adj %>%
+    filter(Population > 0)%>%
     dplyr::mutate(
       value = value * (standard_popsize / Population) * (100000 / full_stand_popsize),
       measure2 = "age-adjusted rate",
@@ -202,6 +204,8 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   ## ----finish------
   test_that("basic check", {
     expect_false(any(is.na(total_burden)))
+    expect_false(any(is.infinite(total_burden$value)))
+    #test <- total_burden %>% filter(is.infinite(value))
 
     total_burden_test <- total_burden %>% select(setdiff(colnames(total_burden), c("value", "attr")))
     total_burden_test <- total_burden_test[duplicated(total_burden_test), ]
