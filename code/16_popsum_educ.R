@@ -30,7 +30,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2015
+  year <- 1990
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them
@@ -56,11 +56,13 @@ pop.summary.dirX <- file.path(pop.summary.dir, paste0("pop_sum_", year, ".csv"))
 
 if (!file.exists(pop.summary.dirX)) {
   census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% fread()
-  suppressMessages(
-    rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
-      rename(rural_urban_class= ..2013.code) %>%
-      select(FIPS.code, rural_urban_class)
-  )
+  #suppressMessages(
+  #  rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
+  #    rename(rural_urban_class= ..2013.code) %>%
+  #    select(FIPS.code, rural_urban_class)
+  #)
+  rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv")) %>%
+    filter(fromYear == 2010)
   
   # loop over all states
   tic(paste("summarized population data in", year, "by", agr_by))
@@ -73,12 +75,13 @@ if (!file.exists(pop.summary.dirX)) {
     
     pop.summary <- pop.summary %>% 
       mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.double)
+      #mutate(FIPS.code = as.double(substr(GEO_ID, 1, 5)))
     
     #TODO delete
     anti_joined <- anti_join(pop.summary, rural_urban_class, by = "FIPS.code")
     missing_FIPS <- anti_joined$FIPS.code %>% unique()
     if(length(missing_FIPS) > 0){
-      print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in ",year,"in",name,":"))
+      print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in",year,"in",name,":"))
       #print(missing_FIPS)
     }
       

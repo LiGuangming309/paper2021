@@ -122,8 +122,8 @@ apply(states, 1, function(state) {
             as.character() %>%
             str_pad(., 11, pad = "0"),
           state = str_sub(GEO_ID, 1, 2),
-          county = str_sub(GEO_ID, 3, 6),
-          tract = str_sub(GEO_ID, 7, 11)
+          county = str_sub(GEO_ID, 3, 5),
+          tract = str_sub(GEO_ID, 6, 11)
         )
     )
 

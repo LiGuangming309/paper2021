@@ -22,8 +22,7 @@ options(dplyr.join.inform = FALSE)
 args <- commandArgs(trailingOnly = T)
 
 year <- args[1]
-dataDir <- args[2]
-tmpDir <- args[3]
+
 agr_by <- args[10]
 totalBurdenDir <- args[12]
 totalBurdenParsedDir <- args[13]
@@ -31,15 +30,11 @@ totalBurdenParsedDir <- args[13]
 # TODO delete
 if (rlang::is_empty(args)) {
   agr_by <- "STATEFP"
-
   year <- 1991
-  dataDir <- "/Users/default/Desktop/paper2021/data"
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
 
-   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
    #totalBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/08_total_burden"
    #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
