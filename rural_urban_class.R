@@ -92,4 +92,5 @@ rural_urban_class <- rural_urban_class%>%
   mutate(FIPS.code = countyFrom, countyFrom = NULL)
 
 write.csv(rural_urban_class,
-          file = file.path(dataDir, "rural_urban_class.csv"))
+          file = file.path(dataDir, "rural_urban_class.csv"),
+          row.names = F)
