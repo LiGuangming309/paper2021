@@ -198,11 +198,10 @@ if (agr_by != "county") {
        
       if(nrow(cens_agr) > 0){
         #add rural classification
-        suppressMessages(
-          rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
-            rename(rural_urban_class= ..2013.code) %>%
-            select(FIPS.code, rural_urban_class)
-        )
+        corresponding_year <- setNames(c(1990, rep(2010,9),2000,rep(2010,8),2000,rep(2010,7)), 1990:2016)
+        rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv")) %>%
+          filter(fromYear == corresponding_year[[as.character(year)]])
+        rm(corresponding_year)
         
         
         cens_agr <- cens_agr %>% 

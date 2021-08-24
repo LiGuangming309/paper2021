@@ -30,7 +30,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1990
+  year <- 1991
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -46,6 +46,12 @@ if (rlang::is_empty(args)) {
 
 # load states, so we can loop over them
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
+
+corresponding_year <- setNames(c(1990, rep(2010,9),2000,rep(2010,8),2000,rep(2010,7)), 1990:2016)
+rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv")) %>%
+  filter(fromYear == corresponding_year[[as.character(year)]])
+rm(corresponding_year)
+
 plotDir <- file.path(pop.summary.dir, "plot", agr_by)
 dir.create(plotDir, recursive = T, showWarnings = F)
 # load meta data
@@ -56,13 +62,7 @@ pop.summary.dirX <- file.path(pop.summary.dir, paste0("pop_sum_", year, ".csv"))
 
 if (!file.exists(pop.summary.dirX)) {
   census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% fread()
-  #suppressMessages(
-  #  rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
-  #    rename(rural_urban_class= ..2013.code) %>%
-  #    select(FIPS.code, rural_urban_class)
-  #)
-  rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv")) %>%
-    filter(fromYear == 2010)
+
   
   # loop over all states
   tic(paste("summarized population data in", year, "by", agr_by))
@@ -82,7 +82,7 @@ if (!file.exists(pop.summary.dirX)) {
     missing_FIPS <- anti_joined$FIPS.code %>% unique()
     if(length(missing_FIPS) > 0){
       print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in",year,"in",name,":"))
-      #print(missing_FIPS)
+      print(missing_FIPS)
     }
       
     pop.summary <- pop.summary%>%
