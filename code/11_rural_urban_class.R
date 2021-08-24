@@ -21,24 +21,16 @@ options(dplyr.join.inform = FALSE)
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
 
-year <- args[1]
 dataDir <- args[2]
-agr_by <- args[10]
-tmpDir <- args[3]
 censDir <- args[8]
-pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
   dataDir <- "/Users/default/Desktop/paper2021/data"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
 
   # dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  # tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
   # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  # pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 suppressMessages(
   rural_urban_class_or <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%

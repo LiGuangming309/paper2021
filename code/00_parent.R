@@ -140,6 +140,8 @@ download.other.script <- file.path(code.dir, "08_download_other.R")
 assignTract.script <- file.path(code.dir, "09_ass_trac.R")
 assignTractAKHI.script <- file.path(code.dir, "10_ass_trac_AKHI.R")
 cens_agr.script <- file.path(code.dir, "11_aggregate.R")
+rural.urban.script <- file.path(code.dir, "11_rural_urban_class.R")
+
 paf.script <- file.path(code.dir, "12_paf.R")
 read.nvs.findrepl.script <- file.path(code.dir, "13_nvss_findrepl.R")
 read.total.burden.nvs.script <- file.path(code.dir, "14_read_tot_nvss.R")
@@ -204,6 +206,7 @@ for (agr_by in agr_bys) {
 
     #  runscript(script = assignTractAKHI.script, args = args)
      #    runscript(script = cens_agr.script, args = args)
+     #  runscript(script = rural.urban.script, args = args)
      #   runscript(script = paf.script, args = args)
    #      runscript(script = read.nvs.findrepl.script, args = args)
   #      runscript(script = read.total.burden.nvs.script, args = args)
