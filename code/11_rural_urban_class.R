@@ -39,15 +39,14 @@ suppressMessages(
 )
 
 ## ---
-years <- c(1990, 2000)
-pop.sum <- lapply(years, function(year) {
-  meta <- file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")) %>%
+
+  meta <- file.path(censDir, "meta", paste0("cens_meta_", 2010, ".csv")) %>%
     fread() %>%
     filter(Gender.Code == "A" & Race == "All" & Hispanic.Origin == "All Origins" &
       Education == 666)
 
-  pop.sum <- lapply(list.files(file.path(censDir, year)), function(file) {
-    fread(file.path(censDir, year, file))
+  pop.sum <- lapply(list.files(file.path(censDir, 2010)), function(file) {
+    fread(file.path(censDir, 2010, file))
   }) %>%
     rbindlist() %>%
     filter(variable %in% meta$variable)
@@ -56,9 +55,7 @@ pop.sum <- lapply(years, function(year) {
     mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0"))
     %>% as.integer()) %>%
     group_by(FIPS.code) %>%
-    summarise(pop_size = sum(pop_size)) %>%
-    mutate(fromYear = year)
-}) %>% rbindlist()
+    summarise(pop_size = sum(pop_size)) 
 
 
 ### ----
@@ -71,7 +68,7 @@ crosswalk00 <- read.csv(file.path(dataDir, paste0("crosswalk_", 2000, "_2010.csv
 
 crosswalk <- rbind(crosswalk00, crosswalk90)
 rm(crosswalk00, crosswalk90)
-nrow(crosswalk)
+
 crosswalk <- crosswalk %>%
   transmute(
     countyFrom = trtidFrom %>%
@@ -87,14 +84,17 @@ crosswalk <- crosswalk %>%
   distinct()
 
 crosswalk <- crosswalk %>%
-  left_join(pop.sum, by = c("countyFrom" = "FIPS.code", "fromYear" = "fromYear")) %>%
-  group_by(fromYear, countyTo) %>%
+  filter(countyTo %in% rural_urban_class_or$FIPS.code)
+
+crosswalk <- crosswalk %>%
+  left_join(pop.sum, by = c("countyTo" = "FIPS.code")) %>%
+  group_by(fromYear, countyFrom) %>%
   filter(pop_size == max(pop_size)) %>%
   mutate(pop_size = NULL)
 
 filler <- merge(
-  data.frame(countyFrom = setdiff(rural_urban_class_or$FIPS.code, crosswalk$countyTo),
-             countyTo = setdiff(rural_urban_class_or$FIPS.code, crosswalk$countyTo)),
+  data.frame(countyFrom = setdiff(rural_urban_class_or$FIPS.code, crosswalk$countyFrom),
+             countyTo = setdiff(rural_urban_class_or$FIPS.code, crosswalk$countyFrom)),
   data.frame(fromYear = c(1990, 2000, 2010))
 )
 
@@ -106,18 +106,18 @@ crosswalk <- rbind(
     countyTo = crosswalk$countyTo %>% unique()
   ),
   filler
-)
+) %>% distinct
 
 test_that("rural urban class", {
   expect_false(any(is.na(crosswalk)))
+  
   test <- crosswalk %>%
-    group_by(countyTo) %>%
-    summarise(n = n(), Years = list(fromYear)) %>%
-    filter(n != 3)
+    group_by(countyFrom, fromYear) %>%
+    summarise(n = n(), countyTo = list(countyTo)) %>%
+    filter(n != 1)
   expect_equal(nrow(test), 0)
 })
 ### ----
-
 test_that("rural urban class", {
   expect_false(any(is.na(rural_urban_class_or)))
   test <- rural_urban_class_or %>%
@@ -126,21 +126,22 @@ test_that("rural urban class", {
     filter(n != 1)
   expect_equal(nrow(test), 0)
   
-  anti_test <- rural_urban_class_or %>%
-    anti_join(crosswalk, by = c("FIPS.code" = "countyTo"))
+  anti_test <-  
+    anti_join(crosswalk, rural_urban_class_or, by = c("countyTo" = "FIPS.code"))
   expect_equal(nrow(anti_test), 0)
 })
 
 rural_urban_class <- rural_urban_class_or %>%
-  left_join(crosswalk, by = c("FIPS.code" = "countyTo")) %>% 
+  right_join(crosswalk, by = c("FIPS.code" = "countyTo")) %>% 
   distinct
 
 test_that("rural urban class", {
   expect_false(any(is.na(rural_urban_class)))
+  
   test <- rural_urban_class %>%
-    group_by(FIPS.code) %>%
-    summarise(n = n(), Years = list(fromYear)) %>%
-    filter(n != 3)
+    group_by(countyFrom, fromYear) %>%
+    summarise(n = n()) %>%
+    filter(n != 1)
   expect_equal(nrow(test), 0)
 })
 
