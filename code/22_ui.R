@@ -207,7 +207,7 @@ server <- function(input, output) {
     g4 <- g4 + geom_line(size = 1) + xlab("Year") + ylab("%") +scale_x_continuous(breaks= pretty_breaks()) + ggtitle("proportion of all-cause burden directly attributable to PM2.5 exposure")
 
     g5 <- g5 + geom_line(size = 1) + xlab("Year") + ylab("μg/m3") +scale_x_continuous(breaks= pretty_breaks()) +ggtitle(paste("population-weighted", pm_metricI, "of PM2.5  exposure"))
-    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population")+scale_x_continuous(breaks= pretty_breaks()) + ylim(0, NA) + ggtitle("Population size")
+    g6 <- g6 + geom_line(size = 1) + xlab("Year") + ylab("Population")+scale_x_continuous(breaks= pretty_breaks()) + expand_limits(y = c(0, NA)) + ggtitle("Population size") + scale_y_continuous(labels = unit_format(unit = "M", scale = 1e-6))
     g7 <- g7 + geom_line(size = 1) + xlab("Year") + ylab("%")  +scale_x_continuous(breaks= pretty_breaks())+ ggtitle(paste(unique(attrBurden3$measure3)))
     g8 <- g8 + geom_line(size = 1) + xlab("Year") + ylab("%") +scale_x_continuous(breaks= pretty_breaks())+ ylim(0, NA)  + ggtitle("proportion of total burden directly attributable to PM2.5 exposure")
     
