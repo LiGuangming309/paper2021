@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "readxl","tictoc")
+packages <- c("dplyr", "magrittr", "data.table", "testthat", "tidyverse", "readxl", "tictoc")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
@@ -30,16 +30,16 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   dataDir <- "/Users/default/Desktop/paper2021/data"
-  
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data/data"
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+
+  # dataDir <- "C:/Users/Daniel/Desktop/paper2021/data/data"
+  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # totalBurdenParsedDir<- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
 }
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 suppressMessages(
   rural_urban_class <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
-    rename(rural_urban_class= ..2013.code) %>%
+    rename(rural_urban_class = ..2013.code) %>%
     select(FIPS.code, rural_urban_class)
 )
 
@@ -69,28 +69,28 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(1:51,52:62),
+        from = c(1:51, 52:62),
         to = c(states$STATEFP, rep(0, 11))
       ),
       data.frame(
         replacecolumns = "min_age",
-        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
-        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+        from = c(1:199, sprintf("2%02d", c(0:11, 99)), sprintf("3%02d", c(0:3, 99)), sprintf("4%02d", c(0:27, 99)), sprintf("5%02d", c(0:23, 99)), sprintf("6%02d", c(0:59, 99)), 999),
+        to = c(1:199, rep("0", 13 + 5 + 29 + 25 + 61), "Unknown")
       ),
       data.frame(
         replacecolumns = "max_age",
-        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
-        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+        from = c(1:199, sprintf("2%02d", c(0:11, 99)), sprintf("3%02d", c(0:3, 99)), sprintf("4%02d", c(0:27, 99)), sprintf("5%02d", c(0:23, 99)), sprintf("6%02d", c(0:59, 99)), 999),
+        to = c(1:199, rep("0", 13 + 5 + 29 + 25 + 61), "Unknown")
       )
     )
   findreplaces1 <- merge(data.frame(Year = 1990:1991), findreplaces1)
-  
+
   #### ----- 1992-2002------
   findreplaces2 <-
     rbind(
       data.frame(
         replacecolumns = "Year",
-        from = c(90:99,0:16,1990:2016),
+        from = c(90:99, 0:16, 1990:2016),
         to = c(1990:2016, 1990:2016)
       ),
       data.frame(
@@ -110,18 +110,18 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(1:51,52:62),
+        from = c(1:51, 52:62),
         to = c(states$STATEFP, rep(0, 11))
       ),
       data.frame(
         replacecolumns = "min_age",
-        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
-        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+        from = c(1:199, sprintf("2%02d", c(0:11, 99)), sprintf("3%02d", c(0:3, 99)), sprintf("4%02d", c(0:27, 99)), sprintf("5%02d", c(0:23, 99)), sprintf("6%02d", c(0:59, 99)), 999),
+        to = c(1:199, rep("0", 13 + 5 + 29 + 25 + 61), "Unknown")
       ),
       data.frame(
         replacecolumns = "max_age",
-        from = c(1:199, sprintf("2%02d",c(0:11,99)), sprintf("3%02d",c(0:3,99)), sprintf("4%02d",c(0:27,99)),sprintf("5%02d",c(0:23,99)),sprintf("6%02d",c(0:59,99)),999),
-        to = c(1:199, rep("0", 13 +5+29+25+61), "Unknown")
+        from = c(1:199, sprintf("2%02d", c(0:11, 99)), sprintf("3%02d", c(0:3, 99)), sprintf("4%02d", c(0:27, 99)), sprintf("5%02d", c(0:23, 99)), sprintf("6%02d", c(0:59, 99)), 999),
+        to = c(1:199, rep("0", 13 + 5 + 29 + 25 + 61), "Unknown")
       )
     )
   findreplaces2 <- merge(data.frame(Year = 1992:2002), findreplaces2)
@@ -143,43 +143,91 @@ if (!file.exists(findreplaceDir)) {
         from = c(1, 2, 3, 4, 5, 6, 7, 18, 28, 38, 48, 58, 68, 78),
         to = c("White", "Black or African American", "American Indian or Alaska Native", rep("Asian or Pacific Islander", 8), "Asian or Pacific Islander", rep("Asian or Pacific Islander", 2))
       ),
-      #data.frame(replacecolumns = "min_age", from = c(1:52), to = c(rep(0, 22), 1, 2, 3, 4, seq(5, 120, 5), 125, "unknown") ),
-      #data.frame(replacecolumns = "max_age", from = c(1:52), to = c(rep(0, 22), 1, 2, 3, 4, seq(9, 124, 5), 150, "unknown")),
+      # data.frame(replacecolumns = "min_age", from = c(1:52), to = c(rep(0, 22), 1, 2, 3, 4, seq(5, 120, 5), 125, "unknown") ),
+      # data.frame(replacecolumns = "max_age", from = c(1:52), to = c(rep(0, 22), 1, 2, 3, 4, seq(9, 124, 5), 150, "unknown")),
       data.frame(
         replacecolumns = "min_age",
-        from = c(sprintf("1%03d",1:135),sprintf("2%03d",c(0:11,999)),sprintf("4%03d",c(0:27,999)),sprintf("5%03d",c(0:23,999)),sprintf("6%03d",c(0:59,999)),"1999","9999"),
-        to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown","Unknown")
+        from = c(sprintf("1%03d", 1:135), sprintf("2%03d", c(0:11, 999)), sprintf("4%03d", c(0:27, 999)), sprintf("5%03d", c(0:23, 999)), sprintf("6%03d", c(0:59, 999)), "1999", "9999"),
+        to = c(sprintf("%03d", 1:135), rep("0", 13 + 29 + 25 + 61), "Unknown", "Unknown")
       ),
       data.frame(
         replacecolumns = "max_age",
-        from = c(sprintf("1%03d",1:135),sprintf("2%03d",c(0:11,999)),sprintf("4%03d",c(0:27,999)),sprintf("5%03d",c(0:23,999)),sprintf("6%03d",c(0:59,999)),"1999","9999"),
-        to = c(sprintf("%03d",1:135),rep("0", 13+29+25+61),"Unknown","Unknown")
+        from = c(sprintf("1%03d", 1:135), sprintf("2%03d", c(0:11, 999)), sprintf("4%03d", c(0:27, 999)), sprintf("5%03d", c(0:23, 999)), sprintf("6%03d", c(0:59, 999)), "1999", "9999"),
+        to = c(sprintf("%03d", 1:135), rep("0", 13 + 29 + 25 + 61), "Unknown", "Unknown")
       ),
       data.frame(
         replacecolumns = "Education1989",
-        from = c(0:17,99,NA), 
-        to = c(rep("lower",13),rep("middle",3), rep("higher",2),"Unknown", 101)
+        from = c(0:17, 99, NA),
+        to = c(rep("lower", 13), rep("middle", 3), rep("higher", 2), "Unknown", 101)
       ),
       data.frame(
         replacecolumns = "Education2003",
-        #7 = Master’s degree 
-        #8 = Doctorate or professional degree
-        #9 = unknown
-        #10 = 1989 revision, not comparable
-        from = c(1:9,NA), 
-        #to = c(1:7,7,9,10) 
-        to = c(rep("lower",3),rep("middle",2), rep("higher",3),"Unknown", 101)
+        # 7 = Master’s degree
+        # 8 = Doctorate or professional degree
+        # 9 = unknown
+        # 10 = 1989 revision, not comparable
+        from = c(1:9, NA),
+        # to = c(1:7,7,9,10)
+        to = c(rep("lower", 3), rep("middle", 2), rep("higher", 3), "Unknown", 101)
       )
     )
 
   findreplaces3 <- merge(data.frame(Year = 2003:2016), findreplaces3)
 
-  findreplaces4 <- merge(data.frame(Year = 1990:2016), 
-                         data.frame(
-                           replacecolumns = "rural_urban_class",
-                           from = c(str_pad(rural_urban_class$FIPS.code, 5, pad = "0"),NA),
-                           to = c(rural_urban_class$rural_urban_class,"Unknown")
-                         ))
+  rural_urban_class <- left_join(
+    rural_urban_class %>%
+      mutate(
+        STATEFP = str_sub(FIPS.code, 1, -4) %>%
+          as.integer(),
+        county = str_sub(FIPS.code, -3, -1)
+      ),
+    states, #%>% mutate(statenumber = row_number())
+    by = "STATEFP"
+  ) %>%
+    select(STUSPS,STATEFP, county, rural_urban_class) # (STATEFP,
+
+  findreplaces4 <- rbind(
+    merge(
+      data.frame(Year = 1990:2002),
+      data.frame(
+        replacecolumns = "rural_urban_class",
+        from = paste0(rural_urban_class$STATEFP, rural_urban_class$county) #%>%
+          #str_pad(., 5, pad = "0")
+        ,
+        to = rural_urban_class$rural_urban_class
+      )
+    ),
+    merge(
+      data.frame(Year = 1990:2002),
+      data.frame(
+        replacecolumns = "rural_urban_class",
+        from = c(paste0(1:62, "000"), paste0(1:62, "999"), NA),
+        to = "Unknown"
+      )
+    ),
+    merge(
+      data.frame(Year = 2003:2016),
+      data.frame(
+        replacecolumns = "rural_urban_class",
+        from = paste0(rural_urban_class$STUSPS, rural_urban_class$county),
+        to = rural_urban_class$rural_urban_class
+      )
+    ),
+    merge(
+      data.frame(Year = 2003:2016),
+      data.frame(
+        replacecolumns = "rural_urban_class",
+        from = c(
+          "GU", "PR", "VI",
+          paste0(c(rural_urban_class$STUSPS, "YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS"), "000"),
+          paste0(rural_urban_class$STUSPS, "999"),
+          NA
+        ),
+        to = "Unknown"
+      )
+    )
+  )
+
   findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces4)
 
   write.csv(findreplaces, findreplaceDir, row.names = FALSE)
@@ -188,47 +236,48 @@ if (!file.exists(findreplaceDir)) {
 
 causesDir <- file.path(totalBurdenParsedDir, "causes.csv")
 if (!file.exists(causesDir)) {
-  #https://www150.statcan.gc.ca/n1/pub/82-003-x/2013007/article/11852/tbl/appb-eng.htm
+  # https://www150.statcan.gc.ca/n1/pub/82-003-x/2013007/article/11852/tbl/appb-eng.htm
   causes1 <- data.frame(
     replacecolumns = "label_cause",
     from = c(
       414,
-      434,432,430,
-      161,162,
+      434, 432, 430,
+      161, 162,
       490:496,
       519,
       250,
-      140:242,244:259,270:279,282:285,296:319,324:380, 383:459,470:478,490:611,617:629,680:759, 
-      #lower respitory infections
+      140:242, 244:259, 270:279, 282:285, 296:319, 324:380, 383:459, 470:478, 490:611, 617:629, 680:759,
+      # lower respitory infections
       519
     ),
-    to = c("cvd_ihd",rep("cvd_stroke", 3),rep("neo_lung", 2), rep("resp_copd", 7),"lri","t2_dm",rep("ncd_lri", 516))
-    
+    to = c("cvd_ihd", rep("cvd_stroke", 3), rep("neo_lung", 2), rep("resp_copd", 7), "lri", "t2_dm", rep("ncd_lri", 516))
   )
   causes1 <- merge(data.frame(Year = 1990:1999), causes1)
-  causes2<-data.frame(
-        replacecolumns = "label_cause",
-        from = c(
-          "I20", "I21", "I22", "I23", "I24", "I25",
-          "G45", "G46", "I61", "I62", "I63", "I65", "I66", "I67", "I68", "I69",
-          "C33", "C34", "D02", "D14", "D38",
-          "J41", "J42", "J43", "J44",
-          "A48", "A70", "B97", "J09", "J10", "J11", "J12", "J13", "J14", "J15", "J16", "J20", "J21", "P23", "U04",
-          "E11",
-          sprintf("C%02d", 0:97), sprintf("D%02d", 0:48), sprintf("D%02d", 55:89),
-          sprintf("E%02d", 3:7), sprintf("E%02d", 10:16), sprintf("E%02d", 20:34),
-          sprintf("E%02d", 65:88), sprintf("F%02d", 1:99),sprintf("F%02d", 1:99),
-          sprintf("G%02d", 6:98), sprintf("H%02d", 0:61), sprintf("H%02d", 68:93),
-          sprintf("I%02d", 0:99), sprintf("J%02d", 30:98), sprintf("K%02d", 0:92),
-          sprintf("N%02d", 0:64), sprintf("N%02d", 75:98), sprintf("L%02d", 0:98),
-          sprintf("M%02d", 0:99), sprintf("Q%02d", 0:99),
-          #lower respitory infections
-          sprintf("J%02d", 9:22)
-        ),
-        to = c(rep("cvd_ihd", 6), rep("cvd_stroke", 10), rep("neo_lung", 5), rep("resp_copd", 4), rep("lri", 15), "t2_dm",
-               rep("ncd_lri", 1276))
+  causes2 <- data.frame(
+    replacecolumns = "label_cause",
+    from = c(
+      "I20", "I21", "I22", "I23", "I24", "I25",
+      "G45", "G46", "I61", "I62", "I63", "I65", "I66", "I67", "I68", "I69",
+      "C33", "C34", "D02", "D14", "D38",
+      "J41", "J42", "J43", "J44",
+      "A48", "A70", "B97", "J09", "J10", "J11", "J12", "J13", "J14", "J15", "J16", "J20", "J21", "P23", "U04",
+      "E11",
+      sprintf("C%02d", 0:97), sprintf("D%02d", 0:48), sprintf("D%02d", 55:89),
+      sprintf("E%02d", 3:7), sprintf("E%02d", 10:16), sprintf("E%02d", 20:34),
+      sprintf("E%02d", 65:88), sprintf("F%02d", 1:99), sprintf("F%02d", 1:99),
+      sprintf("G%02d", 6:98), sprintf("H%02d", 0:61), sprintf("H%02d", 68:93),
+      sprintf("I%02d", 0:99), sprintf("J%02d", 30:98), sprintf("K%02d", 0:92),
+      sprintf("N%02d", 0:64), sprintf("N%02d", 75:98), sprintf("L%02d", 0:98),
+      sprintf("M%02d", 0:99), sprintf("Q%02d", 0:99),
+      # lower respitory infections
+      sprintf("J%02d", 9:22)
+    ),
+    to = c(
+      rep("cvd_ihd", 6), rep("cvd_stroke", 10), rep("neo_lung", 5), rep("resp_copd", 4), rep("lri", 15), "t2_dm",
+      rep("ncd_lri", 1276)
+    )
   )
   causes2 <- merge(data.frame(Year = 2000:2016), causes2)
-  causes <- rbind(causes1,causes2)
+  causes <- rbind(causes1, causes2)
   write.csv(causes, causesDir, row.names = FALSE)
 }
