@@ -29,8 +29,8 @@ totalBurdenParsedDir <- args[13]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  agr_by <- "STATEFP"
-  year <- 1991
+  agr_by <- "nation"
+  year <- 2000
   
   totalBurdenDir <- "/Users/default/Desktop/paper2021/data/08_total_burden"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
@@ -119,10 +119,10 @@ if (!file.exists(totalBurdenParsedDir)) {
     )
   }
 
-  if(!"countyrs" %in% colnames(total_burden)){
-    total_burden$countyrs <- NA
+  if(!"fipsctyr" %in% colnames(total_burden)){
+    total_burden$fipsctyr <- NA
   }
-  selectcolumns <- c(selectcolumns, "rural_urban_class"="countyrs")
+  selectcolumns <- c(selectcolumns, "rural_urban_class"="fipsctyr")
   
   if (agr_by == "nation") {
     total_burden <- total_burden %>% tibble::add_column(nation = "us")
