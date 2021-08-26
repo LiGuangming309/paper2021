@@ -224,9 +224,10 @@ if (!file.exists(findreplaceDir)) {
         replacecolumns = "rural_urban_class",
         from = c(
           "GU", "PR", "VI",
-          paste0(c(states$STUSPS, "YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS"), "000", 0),
+          paste0(c(states$STUSPS, "YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS"), "000"),
           paste0(states$STUSPS, "999"),
-          NA
+          NA, 
+          0
         ),
         to = "Unknown"
       )

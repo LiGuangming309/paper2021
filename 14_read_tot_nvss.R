@@ -104,10 +104,15 @@ for (agr_by in agr_bys) {
         )
       }
 
-      if (!"fipsctyr" %in% colnames(total_burden)) {
-        total_burden$fipsctyr <- NA
+      if("fipsctyr" %in% colnames(total_burden)){
+        selectcolumns <- c(selectcolumns, "rural_urban_class"="fipsctyr")
+      }else if(!("fipsctyr" %in% colnames(total_burden)) & "countyrs" %in% colnames(total_burden)){
+        selectcolumns <- c(selectcolumns, "rural_urban_class"="countyrs")
+        total_burden$countyrs %>% unique %>% sort
+      }else{
+        selectcolumns <- c(selectcolumns, "rural_urban_class"="rural_urban_class")
+        total_burden$rural_urban_class <- NA
       }
-      selectcolumns <- c(selectcolumns, "rural_urban_class" = "fipsctyr")
 
       if (agr_by == "nation") {
         total_burden <- total_burden %>% tibble::add_column(nation = "us")
