@@ -1,7 +1,7 @@
 #-------------------Header------------------------------------------------
 # Author: Daniel Fridljand
-# Date: 03/27/2021
-# Purpose: calculate attributable burden
+# Date: 08/25/2021
+# Purpose: read
 #
 #***************************************************************************
 #*
@@ -28,11 +28,15 @@ totalBurdenParsedDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job
 file_list <- list.files(totalBurdenDir)
 agr_bys <- c("nation", "STATEFP")
 years <- 1999:2016
+
+findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv") 
+causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv") 
+
 for (agr_by in agr_bys) {
   for (year in years) {
-    findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv") %>% filter(Year == year)
-    causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv") %>% filter(Year == year)
-
+    
+    findreplaceX <- findreplace %>% filter(Year == year)
+    causesX <- causes %>% filter(Year == year)
     totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
 
     totalBurdenParsedDirX <- file.path(totalBurdenParsedDir, agr_by, "nvss")
@@ -46,14 +50,14 @@ for (agr_by in agr_bys) {
 
       ## ----- read total burden ---------
       tic(paste("read", year, "total burden data"))
-      if (substr(totalBurdenDirX, nchar(totalBurdenDirX) - 3 + 1, nchar(totalBurdenDirX)) == "csv") {
+      #if (substr(totalBurdenDirX, nchar(totalBurdenDirX) - 3 + 1, nchar(totalBurdenDirX)) == "csv") {
         total_burden <- fread(totalBurdenDirX)
-      } else {
+      #} else {
         # if ("narcan" %in% rownames(installed.packages()) == FALSE) {
         #  devtools::install_github("mkiang/narcan")
         # }
-        total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year, fix_states = FALSE)
-      }
+      #  total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year, fix_states = FALSE)
+      #}
 
       numberDeaths <- nrow(total_burden)
 
@@ -144,10 +148,10 @@ for (agr_by in agr_bys) {
       total_burden <- total_burden %>% select(all_of(selectcolumns))
 
       #---------find and replace stuff--------
-      for (replacecolumnX in findreplace$replacecolumns %>% unique()) {
+      for (replacecolumnX in findreplaceX$replacecolumns %>% unique()) {
         # if(replacecolumnX == "STATEFP") browser()
         if (replacecolumnX %in% colnames(total_burden)) {
-          findreplace_sub <- findreplace %>% filter(replacecolumns == replacecolumnX)
+          findreplace_sub <- findreplaceX %>% filter(replacecolumns == replacecolumnX)
 
           replacement <- total_burden %>%
             select(all_of(replacecolumnX)) %>%
@@ -169,7 +173,7 @@ for (agr_by in agr_bys) {
           total_burden[, replacecolumnX] <- replacement %>% select(to)
         }
       }
-      rm(findreplace, findreplace_sub, missing, replacement, replacecolumnX)
+      rm(findreplaceX, findreplace_sub, missing, replacement, replacecolumnX)
       # TODO Education
       total_burden$rural_urban_class %>% unique()
       if ("Education2003" %in% colnames(total_burden)) {
@@ -224,12 +228,12 @@ for (agr_by in agr_bys) {
           attr = "overall"
         )
 
-      causes <- causes %>%
+      causesX <- causesX %>%
         group_by(to) %>%
         summarise(from = list(from))
 
       total_burden_cause <- total_burden %>% mutate(label_cause = substring(label_cause, 1, 3))
-      total_burden_cause <- apply(causes, 1, function(cause) {
+      total_burden_cause <- apply(causesX, 1, function(cause) {
         label_cause1 <- cause$to
         icd10_cause <- cause$from %>% unlist()
         total_burden_cause <- total_burden_cause %>%
