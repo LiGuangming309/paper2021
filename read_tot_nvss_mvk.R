@@ -29,6 +29,10 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
+totalBurdenDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake/raw_restricted_fake"
+# Where the parsed files should be stored
+totalBurdenParsedDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake"
+
 #### ----- Change paths here!---
 file_list <- list.files(totalBurdenDir)
 agr_bys <- c("nation", "STATEFP")
