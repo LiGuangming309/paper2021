@@ -32,7 +32,7 @@ totalBurdenParsedDir <- "./Transfer_for_daniel"
 #### ----- Change paths here!---
 file_list <- list.files(totalBurdenDir)
 agr_bys <- c("nation", "STATEFP")
-years <- 1999:2016
+years <- 2009:2016
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
@@ -44,13 +44,6 @@ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
 
   ## ----- read total burden ---------
-  # if (substr(totalBurdenDirX, -3, -1) %in% c("csv")) {
-  #   total_burden <- fread(totalBurdenDirX)
-  # } else {
-  #   #if ("narcan" %in% rownames(installed.packages()) == FALSE) devtools::install_github("mkiang/narcan")
-  #   #total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year, fix_states = FALSE)
-  #   total_burden <- read.csv(totalBurdenDirX)
-  # }
   total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
 
   numberDeaths <- nrow(total_burden)
@@ -102,6 +95,8 @@ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
         selectcolumns <- c(
           "Year" = "year",
           "label_cause" = "ucod", # record_1/enum_1
+          "Education1989" = "educ89",
+          "Education2003" = "educ", # 52-53
           # "Education1989" = "educ1989",
           # "Education2003" = "educ2003", # 52-53
           "Gender.Code" = "sex", # 59
@@ -374,8 +369,9 @@ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
       )
 
       if (year %in% 1990:1999) interested_ethnicities <- c(interested_ethnicities, "White, All Origins")
-      if (year %in% 2000:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
-
+      if (year == 2000) interested_ethnicities <- c(interested_ethnicities, "White, All Origins", "White, Not Hispanic or Latino", "White, Hispanic or Latino")
+      if (year %in% 2001:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
+      
       total_burdenX <- total_burdenX %>%
         filter(Ethnicity %in% interested_ethnicities) %>%
         mutate(Ethnicity = NULL)

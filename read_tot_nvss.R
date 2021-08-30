@@ -378,8 +378,9 @@ for (year in years) {
         "All, All Origins"
       )
 
-      if (year %in% 1990:2000) interested_ethnicities <- c(interested_ethnicities, "White, All Origins")
-      if (year %in% 2000:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
+      if (year %in% 1990:1999) interested_ethnicities <- c(interested_ethnicities, "White, All Origins")
+      if (year == 2000) interested_ethnicities <- c(interested_ethnicities, "White, All Origins", "White, Not Hispanic or Latino", "White, Hispanic or Latino")
+      if (year %in% 2001:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
 
       total_burdenX <- total_burdenX %>%
         filter(Ethnicity %in% interested_ethnicities) %>%
