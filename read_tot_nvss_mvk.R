@@ -41,8 +41,9 @@ years <- 2009:2016
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 
-doParallel::registerDoParallel(cores = NCORES)
-foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+#doParallel::registerDoParallel(cores = NCORES)
+#foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+for(year in years){
   findreplaceX <- findreplace %>% filter(Year == year)
   causesX <- causes %>% filter(Year == year)
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
@@ -395,5 +396,5 @@ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
     }
   }
 }
-doParallel::stopImplicitCluster()
-closeAllConnections()
+#doParallel::stopImplicitCluster()
+#closeAllConnections()
