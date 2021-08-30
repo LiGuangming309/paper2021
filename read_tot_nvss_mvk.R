@@ -29,9 +29,9 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-totalBurdenDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake/raw_restricted_fake"
+#totalBurdenDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake/raw_restricted_fake"
 # Where the parsed files should be stored
-totalBurdenParsedDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake"
+#totalBurdenParsedDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake"
 
 #### ----- Change paths here!---
 file_list <- list.files(totalBurdenDir)
@@ -96,14 +96,22 @@ for(year in years){
           "max_age" = "age",
           "Hispanic.Origin" = "hspanicr" # 80 - 81
         )
-      } else if (year %in% 2006:2016) {
+      } else if (year %in% 2006:2008) {
+        selectcolumns <- c(
+          "Year" = "year",
+          "label_cause" = "ucod", # record_1/enum_1
+          "Gender.Code" = "sex", # 59
+          "Race" = "race", # 60
+          "min_age" = "age", # 64, Single Year
+          "max_age" = "age",
+          "Hispanic.Origin" = "hspanicr" # 80 - 81
+        )
+      }else if (year %in% 2009:2016) {
         selectcolumns <- c(
           "Year" = "year",
           "label_cause" = "ucod", # record_1/enum_1
           "Education1989" = "educ89",
           "Education2003" = "educ", # 52-53
-          # "Education1989" = "educ1989",
-          # "Education2003" = "educ2003", # 52-53
           "Gender.Code" = "sex", # 59
           "Race" = "race", # 60
           "min_age" = "age", # 64, Single Year
