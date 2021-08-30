@@ -33,8 +33,8 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1990   
-  agr_by <- "STATEFP"
+  year <- 2010   
+  agr_by <- "nation"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+#  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+#  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+#  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -72,7 +72,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   }
   total_burden <- total_burden %>%
     filter(rural_urban_class != "Unknown") %>% 
-    mutate(rural_urban_class = as.factor(rural_urban_class)) 
+    mutate_at(c("rural_urban_class","Education"), as.factor)
   ## --- measure 1: Deaths and YLL-----
   tic(paste("added YLL and age-adjusted rate to total burden in", year, agr_by))
   # Deaths
@@ -103,8 +103,8 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
   pop_summary <- pop_summary %>%
-    filter(rural_urban_class != "Unknown") %>% 
-    mutate(rural_urban_class = as.factor(rural_urban_class))
+    #filter(rural_urban_class != "Unknown") %>% 
+    mutate_at(c("rural_urban_class","Education"), as.factor)
   pop_summary$source2 <- NULL
   rm(pop_summary1, pop_summary2)
   #------measure 2: absolute number, crude rate and age-standartised rates----- 

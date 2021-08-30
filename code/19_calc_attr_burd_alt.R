@@ -35,7 +35,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2010
   agr_by <- "nation"
   source <- "nvss"
 
@@ -45,11 +45,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+#  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+#  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+#  totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+#  attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   
 }
 
@@ -68,7 +68,7 @@ if (!file.exists(attrBurdenDir)) {
   tic(paste("calculated attributable burden alternative way", year, agr_by, source))
   #----read some data-----
   total_burden <- file.path(totalBurdenParsed2Dir, agr_by, source, paste0("total_burden_", year, ".csv")) %>%
-    fread()
+    fread() 
 
   total_burden <- total_burden %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class", "source", "measure1", "measure2", "label_cause"))) %>%
@@ -85,8 +85,8 @@ if (!file.exists(attrBurdenDir)) {
   pm_summ <- pm_summ %>% filter(min_age >= 25)
   pm_summ <- pm_summ %>% mutate(min_age = min(min_age), max_age = max(max_age))
   
-  pm_summ <- pm_summ %>% mutate_at(c("rural_urban_class"), as.factor)
-  total_burden <- total_burden %>% mutate_at(c("rural_urban_class"), as.factor)
+  pm_summ <- pm_summ %>% mutate_at(c("rural_urban_class","Education"), as.factor)
+  total_burden <- total_burden %>% mutate_at(c("rural_urban_class","Education"), as.factor)
     
   pm_summ <- pm_summ %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class","scenario", "pm", "min_age", "max_age"))) %>%
