@@ -112,6 +112,7 @@ for(year in years){
           "Hispanic.Origin" = "hspanicr" # 80 - 81
         )
       }else if (year %in% 2009:2016) {
+        #For the years 2009:2016 we have population estimates by Education
         selectcolumns <- c(
           "Year" = "year",
           "label_cause" = "ucod", # record_1/enum_1
@@ -270,16 +271,16 @@ for(year in years){
         summarise(Deaths = sum(Deaths)) %>%
         mutate(Race = "All", Education = as.factor(666))
 
-      if (year %in% 2009:2016) {
+      #For the years 2009:2016 we have population estimates by Education
+      if ("Education" %in% colnames(total_burdenX)) {
         total_burdenX_educ <- total_burdenX %>%
           filter(Hispanic.Origin == "All Origins") %>%
           group_by_at(setdiff(colnames(total_burdenX), c("Race", "Deaths"))) %>%
           summarise(Deaths = sum(Deaths)) %>%
           mutate(
             Race = "All",
-            # Education = Education %>% as.factor()
-          ) %>%
-          mutate(Education = as.factor(666))
+            Education = Education %>% as.factor()
+          ) 
 
         total_burdenX <- rbind(total_burdenX_race, total_burdenX_educ, total_burdenX_all) %>% distinct()
         rm(total_burdenX_educ)
