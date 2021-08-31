@@ -29,35 +29,38 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+#totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
-totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+#totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 
-#### ----- Change paths here!---
+#### ----- ---
 file_list <- list.files(totalBurdenDir)
-#agr_bys <- c("nation", "STATEFP")
-agr_bys <- c("nation")
-years <- 2000
+ agr_bys <- c("nation", "STATEFP")
+years <- 1999:2016
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
-causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
+causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/causes.csv")
 
-#doParallel::registerDoParallel(cores = NCORES)
-#foreach::foreach(year = years, .inorder = FALSE) %dopar% {
-for(year in years){
+#### ----- loop over everything---
+ doParallel::registerDoParallel(cores = NCORES)
+ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+#for (year in years) {
   findreplaceX <- findreplace %>% filter(Year == year)
-  causesX <- causes %>% filter(Year == year)
+
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
 
   for (agr_by in agr_bys) {
-    
+    causesX <- causes %>% filter(Year == year)
     ## ----- read total burden ---------
-    # total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
-    total_burden <- data.table::fread(cmd = paste('unzip -p', totalBurdenDirX))
+    total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
+    #total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
+    
+    ## Open log -- assume file import went fine. 
+    sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
     
     numberDeaths <- nrow(total_burden)
     total_burdenX <- total_burden
-    
+
     totalBurdenParsedDirX <- file.path(totalBurdenParsedDir, agr_by, "nvss")
     dir.create(totalBurdenParsedDirX, recursive = T, showWarnings = F)
     totalBurdenParsedDirX <- file.path(
@@ -111,8 +114,8 @@ for(year in years){
           "max_age" = "age",
           "Hispanic.Origin" = "hspanicr" # 80 - 81
         )
-      }else if (year %in% 2009:2016) {
-        #For the years 2009:2016 we have population estimates by Education
+      } else if (year %in% 2009:2016) {
+        # For the years 2009:2016 we have population estimates by Education
         selectcolumns <- c(
           "Year" = "year",
           "label_cause" = "ucod", # record_1/enum_1
@@ -126,35 +129,34 @@ for(year in years){
         )
       }
 
-      if ("fipsctyr" %in% colnames(total_burdenX )) {
+      if ("fipsctyr" %in% colnames(total_burdenX)) {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "fipsctyr")
-      } else if (!("fipsctyr" %in% colnames(total_burdenX )) & "countyrs" %in% colnames(total_burdenX )) {
+      } else if (!("fipsctyr" %in% colnames(total_burdenX)) & "countyrs" %in% colnames(total_burdenX)) {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "countyrs")
-        total_burdenX $countyrs %>%
+        total_burdenX$countyrs %>%
           unique() %>%
           sort()
       } else {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "rural_urban_class")
-        total_burdenX $rural_urban_class <- NA
+        total_burdenX$rural_urban_class <- NA
       }
 
       if (agr_by == "nation") {
-        print("test")
-        total_burdenX  <- total_burdenX  %>% tibble::add_column(nation = "us")
+        total_burdenX <- total_burdenX %>% tibble::add_column(nation = "us")
         selectcolumns <- c(selectcolumns, "nation" = "nation")
-      } else if(agr_by == "STATEFP"){
-        #total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
+      } else if (agr_by == "STATEFP") {
+        # total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
         #  ifelse(row["staters"] != 0, row["staters"], row["stateoc"])
-      #  })
-        if(!"staters" %in% colnames(total_burdenX )){
-          names(total_burdenX )
-          total_burdenX  <- total_burdenX  %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
+        #  })
+        if (!"staters" %in% colnames(total_burdenX)) {
+          names(total_burdenX)
+          total_burdenX <- total_burdenX %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
         }
         selectcolumns <- c(selectcolumns, "STATEFP" = "staters") # residence, not occurance
       }
 
       # https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
-      total_burdenX <- total_burdenX  %>% select(all_of(selectcolumns))
+      total_burdenX <- total_burdenX %>% select(all_of(selectcolumns))
 
       #---------find and replace stuff--------
       for (replacecolumnX in findreplaceX$replacecolumns %>% unique()) {
@@ -189,9 +191,15 @@ for(year in years){
         total_burdenX <- total_burdenX %>%
           mutate(
             Education1989 = na_if(Education1989, "101"),
-            Education2003 = na_if(Education2003, "101")
-          ) %>%
-          unite("Education", c("Education1989", "Education2003"), na.rm = TRUE)
+            Education2003 = na_if(Education2003, "101"),
+            Education = case_when(
+              is.na(Education1989) & is.na(Education2003) ~ "Unknown",
+              !is.na(Education1989) & is.na(Education2003) ~ Education1989,
+              is.na(Education1989) & !is.na(Education2003) ~ Education2003,
+              !is.na(Education1989) & !is.na(Education2003) ~ Education2003,
+            ),
+            Education1989 = NULL, Education2003 = NULL
+          )
       }
 
       total_burdenX <- total_burdenX %>%
@@ -237,12 +245,12 @@ for(year in years){
           attr = "overall"
         )
 
-      causesX <- causesX %>%
+      causesX2 <- causesX %>%
         group_by(to) %>%
         summarise(from = list(from))
 
       total_burdenX_cause <- total_burdenX %>% mutate(label_cause = substring(label_cause, 1, 3))
-      total_burdenX_cause <- apply(causesX, 1, function(cause) {
+      total_burdenX_cause <- apply(causesX2, 1, function(cause) {
         label_cause1 <- cause$to
         icd10_cause <- cause$from %>% unlist()
         total_burdenX_cause <- total_burdenX_cause %>%
@@ -271,7 +279,7 @@ for(year in years){
         summarise(Deaths = sum(Deaths)) %>%
         mutate(Race = "All", Education = as.factor(666))
 
-      #For the years 2009:2016 we have population estimates by Education
+      # For the years 2009:2016 we have population estimates by Education
       if ("Education" %in% colnames(total_burdenX)) {
         total_burdenX_educ <- total_burdenX %>%
           filter(Hispanic.Origin == "All Origins") %>%
@@ -280,7 +288,7 @@ for(year in years){
           mutate(
             Race = "All",
             Education = Education %>% as.factor()
-          ) 
+          )
 
         total_burdenX <- rbind(total_burdenX_race, total_burdenX_educ, total_burdenX_all) %>% distinct()
         rm(total_burdenX_educ)
@@ -391,7 +399,7 @@ for(year in years){
       if (year %in% 1990:1999) interested_ethnicities <- c(interested_ethnicities, "White, All Origins")
       if (year == 2000) interested_ethnicities <- c(interested_ethnicities, "White, All Origins", "White, Not Hispanic or Latino", "White, Hispanic or Latino")
       if (year %in% 2001:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
-      
+
       total_burdenX <- total_burdenX %>%
         filter(Ethnicity %in% interested_ethnicities) %>%
         mutate(Ethnicity = NULL)
@@ -408,8 +416,10 @@ for(year in years){
       total_burdenX <- total_burdenX %>% tibble::add_column(source = "nvss")
       fwrite(total_burdenX, totalBurdenParsedDirX)
       toc()
+      ## Close log
+      sink()
     }
   }
 }
-#doParallel::stopImplicitCluster()
-#closeAllConnections()
+ doParallel::stopImplicitCluster()
+ closeAllConnections()
