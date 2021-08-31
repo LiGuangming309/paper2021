@@ -29,14 +29,15 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-#totalBurdenDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake/raw_restricted_fake"
+totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
-#totalBurdenParsedDir <- "~/Google Drive/currentDocumants/mixed Data/2020/2020job/HIGH/Progress/R code/Transfer restricted fake"
+totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 
 #### ----- Change paths here!---
 file_list <- list.files(totalBurdenDir)
-agr_bys <- c("nation", "STATEFP")
-years <- 2009:2016
+#agr_bys <- c("nation", "STATEFP")
+agr_bys <- c("nation")
+years <- 1999
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
@@ -48,11 +49,15 @@ for(year in years){
   causesX <- causes %>% filter(Year == year)
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
 
-  ## ----- read total burden ---------
-  total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
-
-  numberDeaths <- nrow(total_burden)
   for (agr_by in agr_bys) {
+    
+    ## ----- read total burden ---------
+    # total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
+    total_burden <- data.table::fread(cmd = paste('unzip -p', totalBurdenDirX))
+    
+    numberDeaths <- nrow(total_burden)
+    total_burdenX <- total_burden
+    
     totalBurdenParsedDirX <- file.path(totalBurdenParsedDir, agr_by, "nvss")
     dir.create(totalBurdenParsedDirX, recursive = T, showWarnings = F)
     totalBurdenParsedDirX <- file.path(
@@ -120,34 +125,35 @@ for(year in years){
         )
       }
 
-      if ("fipsctyr" %in% colnames(total_burden)) {
+      if ("fipsctyr" %in% colnames(total_burdenX )) {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "fipsctyr")
-      } else if (!("fipsctyr" %in% colnames(total_burden)) & "countyrs" %in% colnames(total_burden)) {
+      } else if (!("fipsctyr" %in% colnames(total_burdenX )) & "countyrs" %in% colnames(total_burdenX )) {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "countyrs")
-        total_burden$countyrs %>%
+        total_burdenX $countyrs %>%
           unique() %>%
           sort()
       } else {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "rural_urban_class")
-        total_burden$rural_urban_class <- NA
+        total_burdenX $rural_urban_class <- NA
       }
 
       if (agr_by == "nation") {
-        total_burden <- total_burden %>% tibble::add_column(nation = "us")
+        print("test")
+        total_burdenX  <- total_burdenX  %>% tibble::add_column(nation = "us")
         selectcolumns <- c(selectcolumns, "nation" = "nation")
       } else if(agr_by == "STATEFP"){
         #total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
         #  ifelse(row["staters"] != 0, row["staters"], row["stateoc"])
       #  })
-        if(!"staters" %in% colnames(total_burden)){
-          names(total_burden)
-          total_burden <- total_burden %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
+        if(!"staters" %in% colnames(total_burdenX )){
+          names(total_burdenX )
+          total_burdenX  <- total_burdenX  %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
         }
         selectcolumns <- c(selectcolumns, "STATEFP" = "staters") # residence, not occurance
       }
 
       # https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
-      total_burdenX <- total_burden %>% select(all_of(selectcolumns))
+      total_burdenX <- total_burdenX  %>% select(all_of(selectcolumns))
 
       #---------find and replace stuff--------
       for (replacecolumnX in findreplaceX$replacecolumns %>% unique()) {

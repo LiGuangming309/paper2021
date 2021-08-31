@@ -275,7 +275,7 @@ if (!file.exists(causesDir)) {
     ),
     to = c("cvd_ihd", rep("cvd_stroke", 3), rep("neo_lung", 2), rep("resp_copd", 7), "lri", "t2_dm", rep("ncd_lri", 516))
   )
-  causes1 <- merge(data.frame(Year = 1990:1999), causes1)
+  causes1 <- merge(data.frame(Year = 1990:1998), causes1)
   causes2 <- data.frame(
     replacecolumns = "label_cause",
     from = c(
@@ -300,7 +300,7 @@ if (!file.exists(causesDir)) {
       rep("ncd_lri", 1276)
     )
   )
-  causes2 <- merge(data.frame(Year = 2000:2016), causes2)
+  causes2 <- merge(data.frame(Year = 1999:2016), causes2)
   causes <- rbind(causes1, causes2)
   write.csv(causes, causesDir, row.names = FALSE)
 }

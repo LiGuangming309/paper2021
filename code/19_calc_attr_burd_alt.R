@@ -36,7 +36,7 @@ attrBurdenDir <- args[18]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2000
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
   source <- "nvss"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -143,6 +143,7 @@ if (!file.exists(attrBurdenDir)) {
     total_burden %>% dplyr::filter(label_cause == "ncd_lri"),
     paf_burnett,
     by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class")
+    #by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "rural_urban_class","Education")
   )
 
 
