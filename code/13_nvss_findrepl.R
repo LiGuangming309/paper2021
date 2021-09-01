@@ -234,7 +234,9 @@ if (!file.exists(findreplaceDir)) {
     )
   )
 
-
+  findreplaces4 <- rbind(findreplaces4,
+                         findreplaces4 %>% mutate(from = str_pad(from, 5, pad = "0"))) %>%
+    distinct
   findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces4)
 
   test_that("rural urban class findrepl", {
