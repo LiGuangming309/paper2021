@@ -38,7 +38,7 @@ if (rlang::is_empty(args)) {
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv"))
-not_interested_states <- c("ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS")
+not_interested_states <- c("ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS", "MP", "XX", "ON", "QC")
 
 if (!file.exists(findreplaceDir)) {
   #### ----- 1990-1991------
@@ -234,12 +234,20 @@ if (!file.exists(findreplaceDir)) {
       )
     ),
     merge(
+      data.frame(Year = 1990:1999),
+      data.frame(
+        replacecolumns = "rural_urban_class",
+        from = c("02232", "02282"), #corrected manually, somehow missing
+        to = c(5,6)
+      ) 
+    ),
+    merge(
       data.frame(Year = 2003:2016),
       data.frame(
         replacecolumns = "rural_urban_class",
         from = c(
           not_interested_states,
-          sprintf('%s%03d', rep(not_interested_states, 101), rep(0:100, length(not_interested_states))),
+          sprintf('%s%03d', rep(not_interested_states, 1000), rep(0:999, length(not_interested_states))),
           paste0(states$STUSPS, "999"),
           NA, 
           0

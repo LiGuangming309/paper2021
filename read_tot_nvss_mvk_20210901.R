@@ -29,35 +29,35 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+#totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
-totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+#totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 
 #### ----- ---
 file_list <- list.files(totalBurdenDir)
- agr_bys <- c("nation", "STATEFP")
+agr_bys <- c("nation", "STATEFP")
 years <- 1999:2016
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/causes.csv")
 
 #### ----- loop over everything---
-# doParallel::registerDoParallel(cores = NCORES)
-# foreach::foreach(year = years, .inorder = FALSE) %dopar% {
-for (year in years) {
+ doParallel::registerDoParallel(cores = NCORES)
+ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+#for (year in years) {
   findreplaceX <- findreplace %>% filter(Year == year)
 
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
   ## ----- read total burden ---------
-  #total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
-  total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
-  
-  ## Open log -- assume file import went fine. 
-  #sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
-  
+   total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
+  #total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
+
+  ## Open log -- assume file import went fine.
+  sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
+
   causesX <- causes %>% filter(Year == year)
   numberDeaths <- nrow(total_burden)
-  
+
   for (agr_by in agr_bys) {
     total_burdenX <- total_burden
 
@@ -133,37 +133,49 @@ for (year in years) {
           "interested_state" = "staters"
         )
       }
-
+  
+      #initialize staters column if missing
+      if (!"staters" %in% colnames(total_burdenX)) total_burdenX$staters <- NA
+      
       if ("fipsctyr" %in% colnames(total_burdenX)) {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "fipsctyr")
+
+        # replace missing information from other columns as good as possible
+        total_burdenX <- total_burdenX %>%
+          mutate(
+            #use place of occurrence if place of place of residence not available
+            fipsctyr = na_if(fipsctyr, 0),
+            fipsctyr = coalesce(fipsctyr, fipsctyo),
+            countyrs = na_if(countyrs, 0),
+            countyrs = coalesce(countyrs, as.character(countyoc)),
+            staters = coalesce(
+              staters,
+              str_sub(countyrs, 1, -4)  %>% as.integer()
+            )
+          )
       } else if (!("fipsctyr" %in% colnames(total_burdenX)) & "countyrs" %in% colnames(total_burdenX)) {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "countyrs")
-        total_burdenX$countyrs %>%
-          unique() %>%
-          sort()
+
+        # replace missing information from other columns as good as possible
+        total_burdenX <- total_burdenX %>% 
+          mutate(
+            #use place of occurrence if place of place of residence not available
+            countyrs = na_if(countyrs, 0),
+            countyrs = coalesce(countyrs, countyoc),
+            staters = coalesce(
+              staters,
+              str_sub(countyrs, 1, -4) 
+            )
+          )
       } else {
         selectcolumns <- c(selectcolumns, "rural_urban_class" = "rural_urban_class")
         total_burdenX$rural_urban_class <- NA
       }
-
-      if (!"staters" %in% colnames(total_burdenX) & "fipsctyr" %in% colnames(total_burdenX)) {
-        total_burdenX <- total_burdenX %>% mutate(staters = str_sub(fipsctyr, 1, -4) %>% as.integer())
-      }else if(!"staters" %in% colnames(total_burdenX) & !"fipsctyr" %in% colnames(total_burdenX)){
-        total_burdenX <- total_burdenX %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
-      }
-      
-      print(year)
-      test1 <- total_burdenX %>% filter(is.na(fipsctyr) & !is.na(fipsctyo))
-      print(nrow(test1)/nrow(total_burdenX))
       
       if (agr_by == "nation") {
         total_burdenX <- total_burdenX %>% tibble::add_column(nation = "us")
         selectcolumns <- c(selectcolumns, "nation" = "nation")
       } else if (agr_by == "STATEFP") {
-        # total_burden$staters <- apply(total_burden[, c("staters", "stateoc")], 1, function(row) {
-        #  ifelse(row["staters"] != 0, row["staters"], row["stateoc"])
-        #  }) #TODO
-        
         selectcolumns <- c(selectcolumns, "STATEFP" = "staters") # residence, not occurance
       }
 
@@ -204,12 +216,8 @@ for (year in years) {
           mutate(
             Education1989 = na_if(Education1989, "101"),
             Education2003 = na_if(Education2003, "101"),
-            Education = case_when(
-              is.na(Education1989) & is.na(Education2003) ~ "Unknown",
-              !is.na(Education1989) & is.na(Education2003) ~ Education1989,
-              is.na(Education1989) & !is.na(Education2003) ~ Education2003,
-              !is.na(Education1989) & !is.na(Education2003) ~ Education2003,
-            ),
+            Education = coalesce(Education2003, Education1989),
+            Education = replace_na(Education, "Unknown"), # TODO
             Education1989 = NULL, Education2003 = NULL
           )
       }
@@ -218,7 +226,7 @@ for (year in years) {
         group_by_at(colnames(total_burdenX)) %>%
         summarise(Deaths = n())
 
-
+      #print(1 - sum(as.integer(total_burdenX$interested_state)) / nrow(total_burdenX))
       ## --- seperate stuff----
       # inverse_selectcolumns <- c(names(selectcolumns)) #Education1989
       inverse_selectcolumns <- setdiff(colnames(total_burdenX), "Deaths")
@@ -333,7 +341,7 @@ for (year in years) {
             )
           # some difference is tolerable due to rounding
           expect_equal(sum(test1$Deaths), numberDeaths,
-            tolerance = 0.005, scale = numberDeaths
+            #tolerance = 0.005, scale = numberDeaths
           )
         }
 
@@ -398,7 +406,6 @@ for (year in years) {
           rural_urban_class != "oth") %>%
         mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
-
       total_burdenX <- total_burdenX %>% unite("Ethnicity", c("Race", "Hispanic.Origin"), sep = ", ", remove = F)
 
       interested_ethnicities <- c(
@@ -417,7 +424,9 @@ for (year in years) {
         mutate(Ethnicity = NULL)
 
       total_burdenX <- total_burdenX %>% filter(Gender.Code == "A")
-      total_burdenX <- total_burdenX %>% filter(interested_state == 1)
+      total_burdenX <- total_burdenX %>%
+        filter(interested_state == 1) %>%
+        mutate(interested_state = NULL)
 
       # Only considering age above 25
       total_burdenX <- total_burdenX %>% filter(min_age >= 25)
@@ -429,9 +438,9 @@ for (year in years) {
       fwrite(total_burdenX, totalBurdenParsedDirX)
       toc()
       ## Close log
-      #sink()
+       sink()
     }
   }
 }
-# doParallel::stopImplicitCluster()
-# closeAllConnections()
+ doParallel::stopImplicitCluster()
+ closeAllConnections()
