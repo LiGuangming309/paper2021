@@ -206,13 +206,13 @@ for (agr_by in agr_bys) {
 
     #  runscript(script = assignTractAKHI.script, args = args)
 
-         runscript(script = cens_agr.script, args = args)
+    #     runscript(script = cens_agr.script, args = args)
    #    runscript(script = rural.urban.script, args = args)
-        runscript(script = paf.script, args = args)
+    #    runscript(script = paf.script, args = args)
     #     runscript(script = read.nvs.findrepl.script, args = args)
     #    runscript(script = read.total.burden.nvs.script, args = args)
-      runscript(script=pop.summary.script, args = args)
-    runscript(script=pop.summary.educ.script, args = args)
+    #  runscript(script=pop.summary.script, args = args)
+    #runscript(script=pop.summary.educ.script, args = args)
          
       runscript(script = add.rate.tot.burd, args = args)
       runscript(script = calc.attr.burd.script, args = args)

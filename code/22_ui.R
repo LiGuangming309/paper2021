@@ -20,7 +20,7 @@ options(scipen = 10000)
 
 #load calculated data
 summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-#summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
