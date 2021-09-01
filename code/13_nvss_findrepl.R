@@ -225,6 +225,7 @@ if (!file.exists(findreplaceDir)) {
         from = c(
           "GU", "PR", "VI",
           paste0(c(states$STUSPS, "ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS"), "000"),
+          sprintf("PR%03d", 0:100),
           paste0(states$STUSPS, "999"),
           NA, 
           0
@@ -233,7 +234,7 @@ if (!file.exists(findreplaceDir)) {
       )
     )
   )
-
+  
   findreplaces4 <- rbind(findreplaces4,
                          findreplaces4 %>% mutate(from = str_pad(from, 5, pad = "0"))) %>%
     distinct

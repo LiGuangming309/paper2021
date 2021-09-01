@@ -29,9 +29,9 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-#totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
-#totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 
 #### ----- ---
 file_list <- list.files(totalBurdenDir)
@@ -42,9 +42,9 @@ findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/0
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/causes.csv")
 
 #### ----- loop over everything---
- doParallel::registerDoParallel(cores = NCORES)
- foreach::foreach(year = years, .inorder = FALSE) %dopar% {
-#for (year in years) {
+# doParallel::registerDoParallel(cores = NCORES)
+# foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+for (year in years) {
   findreplaceX <- findreplace %>% filter(Year == year)
 
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
@@ -52,11 +52,11 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
   for (agr_by in agr_bys) {
     causesX <- causes %>% filter(Year == year)
     ## ----- read total burden ---------
-    total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
-    #total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
+    #total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
+    total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
     
     ## Open log -- assume file import went fine. 
-    sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
+    #sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
     
     numberDeaths <- nrow(total_burden)
     total_burdenX <- total_burden
@@ -417,9 +417,9 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
       fwrite(total_burdenX, totalBurdenParsedDirX)
       toc()
       ## Close log
-      sink()
+      #sink()
     }
   }
 }
- doParallel::stopImplicitCluster()
- closeAllConnections()
+# doParallel::stopImplicitCluster()
+# closeAllConnections()
