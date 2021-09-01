@@ -70,8 +70,8 @@ if (!file.exists(findreplaceDir)) {
         to = c(states$STATEFP, rep(0, 11))
       ), data.frame(
         replacecolumns = "interested_state",
-        from = c(1:51, 52:62),
-        to = c(rep(1, 51), rep(0, 11))
+        from = c(1:51, 52:62, NA),
+        to = c(rep(1, 51), rep(0, 12))
       ),
       data.frame(
         replacecolumns = "min_age",
@@ -116,8 +116,8 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "interested_state",
-        from = c(1:51, 52:62),
-        to = c(rep(1, 51), rep(0, 11))
+        from = c(1:51, 52:62, NA),
+        to = c(rep(1, 51), rep(0, 12))
       ),
       data.frame(
         replacecolumns = "min_age",
@@ -141,13 +141,13 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(states$STUSPS, not_interested_states), 
-        to = c(states$STATEFP, rep(0, length(not_interested_states)))
+        from = c(states$STUSPS, not_interested_states, NA), 
+        to = c(states$STATEFP, rep(0, length(not_interested_states)+1))
       ),
       data.frame(
         replacecolumns = "interested_state",
-        from = c(states$STUSPS, not_interested_states),
-        to = c(rep(1, nrow(states)), rep(0, length(not_interested_states)))
+        from = c(states$STUSPS, not_interested_states, NA),
+        to = c(rep(1, nrow(states)), rep(0, length(not_interested_states)+1))
       ),
       data.frame(
         replacecolumns = "Race",

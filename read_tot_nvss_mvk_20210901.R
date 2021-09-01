@@ -413,7 +413,7 @@ for (year in years) {
         mutate(Ethnicity = NULL)
 
       total_burdenX <- total_burdenX %>% filter(Gender.Code == "A")
-      if (agr_by != "nation") total_burdenX <- total_burdenX %>% filter(STATEFP != 0)
+      total_burdenX <- total_burdenX %>% filter(interested_state == 1)
 
       # Only considering age above 25
       total_burdenX <- total_burdenX %>% filter(min_age >= 25)
