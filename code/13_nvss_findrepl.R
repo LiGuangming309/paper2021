@@ -208,6 +208,7 @@ if (!file.exists(findreplaceDir)) {
     transmute(Year, from = FIPS.code, to =rural_urban_class,
               replacecolumns = "rural_urban_class")
   
+  a <- c("ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS")
   findreplaces4 <- rbind(
     findreplaces4,
     merge(
@@ -223,9 +224,8 @@ if (!file.exists(findreplaceDir)) {
       data.frame(
         replacecolumns = "rural_urban_class",
         from = c(
-          "GU", "PR", "VI",
-          paste0(c(states$STUSPS, "ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS"), "000"),
-          sprintf("PR%03d", 0:100),
+          a,
+          sprintf('%s%03d', rep(a, 101), rep(0:100, length(a))),
           paste0(states$STUSPS, "999"),
           NA, 
           0
@@ -234,6 +234,9 @@ if (!file.exists(findreplaceDir)) {
       )
     )
   )
+  rm(a)
+  
+  
   
   findreplaces4 <- rbind(findreplaces4,
                          findreplaces4 %>% mutate(from = str_pad(from, 5, pad = "0"))) %>%
