@@ -55,11 +55,10 @@ for (year in years) {
   ## Open log -- assume file import went fine. 
   #sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
   
+  causesX <- causes %>% filter(Year == year)
   numberDeaths <- nrow(total_burden)
   
   for (agr_by in agr_bys) {
-    causesX <- causes %>% filter(Year == year)
-
     total_burdenX <- total_burden
 
     totalBurdenParsedDirX <- file.path(totalBurdenParsedDir, agr_by, "nvss")
@@ -147,7 +146,9 @@ for (year in years) {
         total_burdenX$rural_urban_class <- NA
       }
 
-      if (!"staters" %in% colnames(total_burdenX)) {
+      if (!"staters" %in% colnames(total_burdenX) & "fipsctyr" %in% colnames(total_burdenX)) {
+        total_burdenX <- total_burdenX %>% mutate(staters = str_sub(fipsctyr, 1, -4) %>% as.integer())
+      }else if(!"staters" %in% colnames(total_burdenX) & !"fipsctyr" %in% colnames(total_burdenX)){
         total_burdenX <- total_burdenX %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
       }
       

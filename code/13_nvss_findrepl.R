@@ -38,6 +38,7 @@ if (rlang::is_empty(args)) {
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv"))
+not_interested_states <- c("ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS")
 
 if (!file.exists(findreplaceDir)) {
   #### ----- 1990-1991------
@@ -67,6 +68,10 @@ if (!file.exists(findreplaceDir)) {
         replacecolumns = "STATEFP",
         from = c(1:51, 52:62),
         to = c(states$STATEFP, rep(0, 11))
+      ), data.frame(
+        replacecolumns = "interested_state",
+        from = c(1:51, 52:62),
+        to = c(rep(1, 51), rep(0, 11))
       ),
       data.frame(
         replacecolumns = "min_age",
@@ -110,6 +115,11 @@ if (!file.exists(findreplaceDir)) {
         to = c(states$STATEFP, rep(0, 11))
       ),
       data.frame(
+        replacecolumns = "interested_state",
+        from = c(1:51, 52:62),
+        to = c(rep(1, 51), rep(0, 11))
+      ),
+      data.frame(
         replacecolumns = "min_age",
         from = c(1:199, sprintf("2%02d", c(0:11, 99)), sprintf("3%02d", c(0:3, 99)), sprintf("4%02d", c(0:27, 99)), sprintf("5%02d", c(0:23, 99)), sprintf("6%02d", c(0:59, 99)), 999),
         to = c(1:199, rep("0", 13 + 5 + 29 + 25 + 61), "Unknown")
@@ -131,8 +141,13 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(states$STUSPS, "ZZ", "VI", "PR", "GU", "AS"),
-        to = c(states$STATEFP, rep(0, 5))
+        from = c(states$STUSPS, not_interested_states), 
+        to = c(states$STATEFP, rep(0, length(not_interested_states)))
+      ),
+      data.frame(
+        replacecolumns = "interested_state",
+        from = c(states$STUSPS, not_interested_states),
+        to = c(rep(1, nrow(states)), rep(0, length(not_interested_states)))
       ),
       data.frame(
         replacecolumns = "Race",
@@ -208,7 +223,6 @@ if (!file.exists(findreplaceDir)) {
     transmute(Year, from = FIPS.code, to =rural_urban_class,
               replacecolumns = "rural_urban_class")
   
-  a <- c("ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS")
   findreplaces4 <- rbind(
     findreplaces4,
     merge(
@@ -224,8 +238,8 @@ if (!file.exists(findreplaceDir)) {
       data.frame(
         replacecolumns = "rural_urban_class",
         from = c(
-          a,
-          sprintf('%s%03d', rep(a, 101), rep(0:100, length(a))),
+          not_interested_states,
+          sprintf('%s%03d', rep(not_interested_states, 101), rep(0:100, length(not_interested_states))),
           paste0(states$STUSPS, "999"),
           NA, 
           0
@@ -234,9 +248,6 @@ if (!file.exists(findreplaceDir)) {
       )
     )
   )
-  rm(a)
-  
-  
   
   findreplaces4 <- rbind(findreplaces4,
                          findreplaces4 %>% mutate(from = str_pad(from, 5, pad = "0"))) %>%
