@@ -152,6 +152,10 @@ for (year in years) {
         total_burdenX <- total_burdenX %>% mutate(staters = str_sub(countyrs, 1, -4) %>% as.integer())
       }
       
+      print(year)
+      test1 <- total_burdenX %>% filter(is.na(fipsctyr) & !is.na(fipsctyo))
+      print(nrow(test1)/nrow(total_burdenX))
+      
       if (agr_by == "nation") {
         total_burdenX <- total_burdenX %>% tibble::add_column(nation = "us")
         selectcolumns <- c(selectcolumns, "nation" = "nation")

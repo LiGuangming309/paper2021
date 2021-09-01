@@ -66,8 +66,8 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(1:51, 52:62),
-        to = c(states$STATEFP, rep(0, 11))
+        from = c(1:51, 52:62, NA),
+        to = c(states$STATEFP, rep(0, 12))
       ), data.frame(
         replacecolumns = "interested_state",
         from = c(1:51, 52:62, NA),
@@ -111,8 +111,8 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(1:51, 52:62),
-        to = c(states$STATEFP, rep(0, 11))
+        from = c(1:51, 52:62, NA),
+        to = c(states$STATEFP, rep(0, 12))
       ),
       data.frame(
         replacecolumns = "interested_state",
