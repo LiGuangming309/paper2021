@@ -34,7 +34,7 @@ totalBurdenParsed2Dir <- args[17]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2010   
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -43,21 +43,21 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-#  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-#  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-#  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
 dir.create(totalBurdenParsed2Dir, recursive = T, showWarnings = F)
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, paste0("total_burden_", year, ".csv"))
 
-if (agr_by != "nation" & source == "nvss" & year > 2004) {
-  print(paste("in", year, "no geopgraphic identifier for nvss available"))
-  quit()
-}
+#if (agr_by != "nation" & source == "nvss" & year > 2004) {
+#  print(paste("in", year, "no geopgraphic identifier for nvss available"))
+#  quit()
+#}
 
 
 ## ----calculations----
