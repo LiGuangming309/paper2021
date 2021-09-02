@@ -54,10 +54,10 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
-if (year > 2004 & agr_by != "nation") {
-  print(paste("can not aggregate subnational in", year))
-  quit()
-}
+#if (year > 2004 & agr_by != "nation") {
+#  print(paste("can not aggregate subnational in", year))
+#  quit()
+#}
 
 if (agr_by == "county") {
   print(paste("GBD PAF not updated for county"))
