@@ -61,7 +61,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   tic(paste("read", year, "total burden data"), quiet = FALSE)
   
   total_burden <- fread(totalBurdenDir)
-  print(paste("read", year, "total burden data"))
+  #print(paste("read", year, "total burden data"))
   
   findreplaceX <- findreplace %>% filter(Year == year)
   causesX <- causes %>% filter(Year == year)
@@ -179,7 +179,7 @@ if (!file.exists(totalBurdenParsedDir)) {
   total_burden <- total_burden %>% select(all_of(selectcolumns))
   
   ## Test print
-  print(total_burden, n = 5)
+  #print(total_burden, n = 5)
   
   #---------find and replace stuff--------
   for (replacecolumnX in findreplaceX$replacecolumns %>% unique()) {
@@ -225,7 +225,7 @@ if (!file.exists(totalBurdenParsedDir)) {
     group_by_at(colnames(total_burden)) %>%
     summarise(Deaths = n())
   
-  print(1 - sum(as.integer(total_burden$interested_state)) / nrow(total_burden))
+  #print(1 - sum(as.integer(total_burden$interested_state)) / nrow(total_burden))
   ## --- seperate stuff----
   # inverse_selectcolumns <- c(names(selectcolumns)) #Education1989
   inverse_selectcolumns <- setdiff(colnames(total_burden), "Deaths")
