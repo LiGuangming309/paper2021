@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2010   
+  year <- 1995
   agr_by <- "STATEFP"
   source <- "nvss"
 
