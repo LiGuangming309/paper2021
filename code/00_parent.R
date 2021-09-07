@@ -16,16 +16,16 @@ packages <- c(
   "bit64", "cdcfluview", "censusapi", "data.table", "dplyr", "ggplot2", "magrittr", "matrixStats",
   "MALDIquant", "plyr", "RCurl", "readxl","triangle", "sf", "sp", "stringr", "testthat", "tictoc","truncnorm",
   "tidyverse", "tigris", "tmap", "viridis", "hrbrthemes", "rlang", "stats", "xlsx", "ggpubr", "ggExtra"
- 
 )
 
 
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) {
-  #  remove.packages(p)
+    #remove.packages(p)
     install.packages(p, dependencies = TRUE)
   } 
 }
+
 
 # download rhdf5
 if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
@@ -34,7 +34,7 @@ if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
   }
   BiocManager::install("rhdf5")
 }
-
+ 
 # download DataCombine
 if ("DataCombine" %in% rownames(installed.packages()) == FALSE) {
   devtools::install_github("christophergandrud/DataCombine")
@@ -206,14 +206,14 @@ for (agr_by in agr_bys) {
       #runscript(script = assignTractAKHI.script, args = args)
 
        #  runscript(script = cens_agr.script, args = args)
-       #runscript(script = rural.urban.script, args = args)
+      # runscript(script = rural.urban.script, args = args)
       #  runscript(script = paf.script, args = args)
-     #    runscript(script = read.nvs.findrepl.script, args = args)
-    #    runscript(script = read.total.burden.nvs.script, args = args)
+      #   runscript(script = read.nvs.findrepl.script, args = args)
+        runscript(script = read.total.burden.nvs.script, args = args)
     #  runscript(script=pop.summary.script, args = args)
     #runscript(script=pop.summary.educ.script, args = args)
          
-      runscript(script = add.rate.tot.burd, args = args)
+      #runscript(script = add.rate.tot.burd, args = args)
     #  runscript(script = calc.attr.burd.script, args = args)
      # runscript(script = calc.attr.burd.alt.script, args = args)  
 
