@@ -31,7 +31,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 2000
   agr_by <- "nation"
   source <- "nvss"
 
@@ -61,8 +61,7 @@ attrBurdenDir <- file.path(attrBurdenDir, paste0("attr_burd_", toString(year), "
 states <- file.path(tmpDir, "states.csv") %>% read.csv
 total_burden <- file.path(totalBurdenParsed2Dir,agr_by,source, paste0("total_burden_",year,".csv")) %>% 
   fread %>% 
-  filter(label_cause %in% c("cvd_ihd","cvd_stroke", "neo_lung", "resp_copd", "lri", "t2_dm")) %>%
-  filter(rural_urban_class == 666) #TODO delete
+  filter(label_cause %in% c("cvd_ihd","cvd_stroke", "neo_lung", "resp_copd", "lri", "t2_dm")) 
 
 #intense computation
 if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
