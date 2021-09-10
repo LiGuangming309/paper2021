@@ -427,6 +427,8 @@ if (!file.exists(totalBurdenParsedDir)) {
     filter(interested_state == 1) %>%
     mutate(interested_state = NULL)
   
+  if("STATEFP" %in% colnames(total_burden)) total_burden <- total_burden %>% filter(STATEFP != "oth") #TODO
+  
   # Only considering age above 25
   total_burden <- total_burden %>% filter(min_age >= 25)
   
