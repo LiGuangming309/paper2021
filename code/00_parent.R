@@ -25,7 +25,8 @@ for (p in packages) {
     install.packages(p, dependencies = TRUE)
   } 
 }
-
+# Sys.setenv(LANG = "en")
+#memory.limit(size=1800)
 
 # download rhdf5
 if ("rhdf5" %in% rownames(installed.packages()) == FALSE) {
@@ -208,13 +209,13 @@ for (agr_by in agr_bys) {
          runscript(script = cens_agr.script, args = args)
       # runscript(script = rural.urban.script, args = args)
         runscript(script = paf.script, args = args)
-      #   runscript(script = read.nvs.findrepl.script, args = args)
-      #  runscript(script = read.total.burden.nvs.script, args = args)
+           runscript(script = read.nvs.findrepl.script, args = args)
+        runscript(script = read.total.burden.nvs.script, args = args)
     #  runscript(script=pop.summary.script, args = args)
     #runscript(script=pop.summary.educ.script, args = args)
          
       runscript(script = add.rate.tot.burd, args = args)
-      runscript(script = calc.attr.burd.script, args = args)
+    #  runscript(script = calc.attr.burd.script, args = args)
       runscript(script = calc.attr.burd.alt.script, args = args)  
 
     }  
