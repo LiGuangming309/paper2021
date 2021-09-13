@@ -202,11 +202,11 @@ if (!file.exists(attrBurdenDir)) {
   
   ## ----- calculate attributable burden------
   tic("calc_attr_burd: 3 pivot_longer")
-  #test_that("09_calc distinct rows", {
-    #burden_paf_sub1 <- burden_paf %>% select(c(join_variables,"measure1","measure2", "scenario"))
-    #burden_paf_sub1 <- burden_paf_sub1[duplicated(burden_paf_sub1), ] #"attr"
-    #expect_equal(nrow(burden_paf_sub1), 0)
-  #})
+  test_that("09_calc distinct rows", {
+    burden_paf_sub1 <- burden_paf %>% select(c(join_variables,"measure1","measure2", "scenario"))
+    burden_paf_sub1 <- burden_paf_sub1[duplicated(burden_paf_sub1), ] #"attr"
+    expect_equal(nrow(burden_paf_sub1), 0)
+  })
 
   burden_paf <- pivot_longer(burden_paf,
                              cols = colnames(burden_paf) %>% grep('draw', ., value=TRUE),

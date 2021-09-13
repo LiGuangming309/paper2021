@@ -53,16 +53,21 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
     files <- list.files(file.path(attrBurdenDir, agr_by, source))
     attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% do.call(rbind, .)
     
-  }) %>% do.call(rbind, .)
+  }) %>% rbindlist(use.names=TRUE) 
 
   # make compatible
   attrBurden <- attrBurden %>% rename("Region" := !!agr_by)
   attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
   return(attrBurden)
 }) %>%
-  do.call(rbind, .) %>%
+  rbindlist(use.names=TRUE)  %>%
   as.data.frame()
 
+test_that("basic check attr burden",{
+  attrBurden_dupl <- attrBurden %>% select(setdiff(colnames(attrBurden), c("lower", "mean", "upper")))
+  attrBurden_dupl <- attrBurden_dupl[duplicated(attrBurden_dupl), ] 
+  expect_equal(nrow(attrBurden_dupl), 0)
+})
 ## --- read all burden----
 agr_bys <- list.files(totalBurdenParsed2Dir)
 all_burden <- lapply(agr_bys, function(agr_by) {
@@ -80,21 +85,36 @@ all_burden <- lapply(agr_bys, function(agr_by) {
   rbindlist %>%
   as.data.frame()
 
+all_burden <- all_burden %>% filter(label_cause == "all-cause")
+test_that("basic check attr burden",{
+  all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value","label_cause")))
+  all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ] 
+  expect_equal(nrow(all_burden_dupl), 0)
+})
+
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method","min_age", "max_age", "scenario"))
+#group_variables <- setdiff(colnames(all_burden), c("min_age", "max_age", "value"))
+#setdiff(group_variables2, group_variables)
+
 all_burden <- all_burden %>%
   group_by_at(vars(all_of(c(group_variables)))) %>%
   summarise(overall_value = sum(value)#,
-            #min_age = min(min_age), 
-            #max_age = max(max_age)
-            )
+            #min_age = min(min_age), max_age = max(max_age)
+            ) %>%
+  mutate(label_cause = NULL)
 
-attrBurden <- attrBurden %>% mutate_at(c("Education", "rural_urban_class"), as.factor)
-all_burden <- all_burden %>% mutate_at(c("Education", "rural_urban_class"), as.factor)
+attrBurden <- attrBurden %>% mutate_at(setdiff(colnames(attrBurden), c("mean", "lower","upper" )),
+                                       as.factor)
+
+all_burden <- all_burden %>% mutate_at(setdiff(colnames(all_burden), c("overall_value")), 
+                                       as.factor)
+nrow(attrBurden)/nrow(all_burden)
 ### ----- add proportion ---
 
 # add "prop. of overall burden", "prop. of total burden"
 # join everything
-attrBurden_prop <- attrBurden %>% left_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
+#attrBurden_prop <- attrBurden %>% left_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
+attrBurden_prop <- attrBurden %>% inner_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
 
 # calculations
 attrBurden_prop <- attrBurden_prop %>%

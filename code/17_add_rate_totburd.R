@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1991
+  year <- 2011
   agr_by <- "STATEFP"
   source <- "nvss"
 
@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
- dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+#  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+ # totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -161,20 +161,18 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       distinct()
     expect_equal(0, nrow(test_anti_join)) 
     
-    #test <- total_burden %>%
-    #  left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
-    #  filter(Population == 0 & value != 0)
-    #expect_equal(0, nrow(test)) 
+    test <- total_burden %>%
+      left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
+      filter(Population == 0 & value != 0)
+    expect_equal(0, nrow(test)) 
   })
 
   total_burden_crude <- total_burden %>%
     left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
     filter(Population > 0) %>% # TODO
     mutate(
-      value = case_when(Population > 0 ~ 100000* (value / Population),
-                        Population == 0 & value == 0~0,
-                        Population == 0 & value > 0~0, #TODO
-                        ), 
+      value =  100000* (value / Population), #0/0 = NaN
+      value = ifelse(is.nan(value), 0, value), #
       measure2 = "crude rate",
       Population = NULL
     )
@@ -233,10 +231,8 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   total_burden_age_adj <- total_burden_age_adj %>%
     filter(Population > 0 & full_stand_popsize > 0) %>%
     dplyr::mutate(
-      value = case_when(Population > 0 ~ (value * standard_popsize / Population) * (100000 / full_stand_popsize),
-                        Population == 0 & value == 0~0,
-                        Population == 0 & value > 0~0, #TODO
-      ), 
+      value = (value * standard_popsize / Population) * (100000 / full_stand_popsize), #0/0 = NaN
+      value = ifelse(is.nan(value), 0, value),
       measure2 = "age-adjusted rate",
       Population = NULL, standard_popsize = NULL
     )
