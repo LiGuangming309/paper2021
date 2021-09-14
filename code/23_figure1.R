@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   methodI <- "burnett"
 }
 
-attr_burd <- rbind(
-  fread(file.path(summaryDir, "attr_burd.csv")),
-  fread(file.path(summaryDir, "attr_burd_prop.csv"))
-)
+file_list <- list.files(summaryDir)
+file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
+attr_burd <- lapply(file_list, fread) %>% rbindlist
+rm(file_list)
 
 theme_set(theme_classic())
 ### ----- read stuff----

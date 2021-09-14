@@ -44,7 +44,10 @@ if (rlang::is_empty(args)) {
 theme_set(theme_classic())
 ### ----- read stuff----
 all_burden <- fread(file.path(summaryDir, "all_burd.csv")) %>% as.data.frame()
-attr_burd <- fread(file.path(summaryDir, "attr_burd.csv"))
+file_list <- list.files(summaryDir)
+file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
+attr_burd <- lapply(file_list, fread) %>% rbindlist
+rm(file_list)
 
 # filter
 all_burden <- all_burden %>% filter(attr == "overall")

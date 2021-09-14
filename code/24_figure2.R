@@ -40,10 +40,10 @@ if (rlang::is_empty(args)) {
   methodI <- "burnett"
 }
 theme_set(theme_classic())
-attr_burd <- rbind(
-  fread(file.path(summaryDir, "attr_burd.csv")),
-  fread(file.path(summaryDir, "attr_burd_prop.csv"))
-)
+file_list <- list.files(summaryDir)
+file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
+attr_burd <- lapply(file_list, fread) %>% rbindlist
+rm(file_list)
 
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == methodI & attr == "attributable" &

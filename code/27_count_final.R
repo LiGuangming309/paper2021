@@ -28,8 +28,10 @@ summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
-attrBurden <- rbind(fread(file.path(summaryDir, "attr_burd.csv")), 
-                    fread(file.path(summaryDir, "attr_burd_prop.csv")))
+file_list <- list.files(summaryDir)
+file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
+attr_burd <- lapply(file_list, fread) %>% rbindlist
+rm(file_list)
 
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
 pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))

@@ -34,10 +34,10 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -113,17 +113,16 @@ nrow(attrBurden)/nrow(all_burden)
 
 # add "prop. of overall burden", "prop. of total burden"
 # join everything
-#attrBurden_prop <- attrBurden %>% left_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
-attrBurden_prop <- attrBurden %>% inner_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
+attrBurden_prop <- attrBurden %>% left_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
+#attrBurden_prop <- attrBurden %>% inner_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
 
 # calculations
 attrBurden_prop <- attrBurden_prop %>%
   mutate(
-    mean = 100 * mean / overall_value,
-    lower = 100 * lower / overall_value,
-    upper = 100 * upper / overall_value,
+    mean = coalesce(100 * mean / overall_value, 0),
+    lower = coalesce(100 * lower / overall_value, 0),
+    upper = coalesce(100 * upper / overall_value, 0),
     measure3 = case_when(attr.y == "overall" ~ "prop. of overall burden", TRUE ~ "prop. of total burden"),
-    #measure3 = sapply(attr.y, function(att) ifelse(att == "overall", "prop. of overall burden", "prop. of total burden")),
     overall_value = NULL, attr.x = NULL, attr.y = NULL,
     attr = "attributable"
   )
@@ -208,19 +207,10 @@ rm(attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBu
 #                 method = "EPA"
 #)
 
-## --- sort ----
-all_burden <- rbind(
-  all_burden %>% filter(Region == "us"),
-  all_burden %>%
-    filter(Region != "us") %>%
-    arrange(Region)
-)
+
 ## --Find replace----
-all_burden <- all_burden %>% mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin))
-all_burden$Hispanic.Origin <- NULL
-all_burden$Race <- NULL
 
-
+all_burden <- all_burden %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
 attrBurden <- attrBurden %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
 
 rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP, "us"))
@@ -242,16 +232,20 @@ all_burden$Gender.Code <- sapply(all_burden$Gender.Code, function(x) rindreplace
 attrBurden$Gender.Code <- sapply(attrBurden$Gender.Code, function(x) rindreplace3[[x]])
 
 rindreplace4 <- setNames(c("National Vital Statistics System", "Mortality Data from CDC WONDER"), c("nvss", "wonder"))
-all_burden$source <- sapply(all_burden$source, function(x) rindreplace4[[x]])
-attrBurden$source <- sapply(attrBurden$source, function(x) rindreplace4[[x]])
+#all_burden$source <- sapply(all_burden$source, function(x) rindreplace4[[x]])
+#attrBurden$source <- sapply(attrBurden$source, function(x) rindreplace4[[x]])
 
 # rindreplace5 <- setNames(c("Years of Life Lost (YLL)", "Deaths"), c("YLL","Deaths"))
 # all_burden$measure1 <- sapply(all_burden$measure1 , function(x) rindreplace5[[x]])
 # attrBurden$measure1 <- sapply(attrBurden$measure1 , function(x) rindreplace5[[x]])
 
-rindreplace6 <- setNames(c("crude rate per 100,000", "age-adjusted rate per 100,000", "absolute number"), c("crude rate", "age-adjusted rate", "absolute number"))
-all_burden$measure2 <- sapply(all_burden$measure2, function(x) rindreplace6[[x]])
-attrBurden$measure2 <- sapply(attrBurden$measure2, function(x) rindreplace6[[x]])
+rindreplace6 <- setNames(c("crude rate per 100,000", "age-adjusted rate per 100,000", "absolute number"), 
+                         c("crude rate", "age-adjusted rate", "absolute number"))
+#all_burden$measure2 <- sapply(all_burden$measure2, function(x) rindreplace6[[x]])
+#attrBurden$measure2 <- sapply(attrBurden$measure2, function(x) rindreplace6[[x]])
+#TODO
+#with(all_burden, replace(measure2, measure2 %in% unname(rindreplace6), names(rindreplace6)))
+
 
 rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
                          c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
@@ -266,9 +260,16 @@ attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.chara
 rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7, rindreplace8)
 
 #--write---
-attrBurden<- attrBurden %>% filter(measure1 == "Deaths")
+#attrBurden<- attrBurden %>% ungroup %>% select(Year, Ethnicity, Education, rural_urban_class,measure1, measure2, measure3, Region, scenario, mean, lower, upper, method)
+#all_burden<- all_burden %>% select(Year, Ethnicity, Education, rural_urban_class,measure1, measure2, Region, overall_value)
 
-fwrite(attrBurden %>% filter(measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd.csv"))
-fwrite(attrBurden %>% filter(!measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd_prop.csv"))
+measure3_all <- attrBurden$measure3 %>% unique
+for(i in seq_along(measure3_all)){
+  fwrite(attrBurden %>% filter(measure3 == measure3_all[[i]]),
+         file.path(summaryDir, paste0("attr_burd_",i,".csv")))
+  
+}
+#fwrite(attrBurden %>% filter(measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd.csv"))
+#fwrite(attrBurden %>% filter(!measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd_prop.csv"))
 fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
 toc()

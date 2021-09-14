@@ -62,7 +62,7 @@ ui <- fluidPage(
       selectInput(
         inputId = "Region",
         label = "Region",
-        choices = unique(all_burden$Region)
+        choices = c("United States",setdiff(unique(all_burden$Region),"United States"))
       ),
       selectInput(
         inputId = "measure1",
