@@ -258,6 +258,16 @@ all_burden$rural_urban_class <- sapply(all_burden$rural_urban_class %>% as.chara
 attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
 
 rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7, rindreplace8)
+##--- test final---
+test_that("basic check attr burden",{
+  all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("overall_value")))
+  all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ] 
+  expect_equal(nrow(all_burden_dupl), 0)
+  
+  attrBurden_dupl <- attrBurden %>% select(setdiff(colnames(attrBurden), c("lower","mean","upper")))
+  attrBurden_dupl <- attrBurden_dupl[duplicated(attrBurden_dupl), ] 
+  expect_equal(nrow(attrBurden_dupl), 0)
+})
 
 #--write---
 #attrBurden<- attrBurden %>% ungroup %>% select(Year, Ethnicity, Education, rural_urban_class,measure1, measure2, measure3, Region, scenario, mean, lower, upper, method)
