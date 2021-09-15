@@ -251,8 +251,11 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     expect_equal(nrow(total_burden_test), 0) # TODO
   })
 
-   total_burden <- total_burden %>%
-    filter((measure1 == "Deaths" & measure2 == "age-adjusted rate"))
+  if(agr_by != "nation"){
+    total_burden <- total_burden %>%
+      filter(measure1 == "Deaths" & measure2 == "age-adjusted rate" & rural_urban_class == 666)
+  }
+
   total_burden <- total_burden %>% distinct()
 
   fwrite(total_burden, totalBurdenParsed2Dir)
