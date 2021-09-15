@@ -108,7 +108,9 @@ if(!file.exists(pm_summDir)){
   rindreplace3 <- list("All genders" = "A", "Male" = "M", "Female" = "F")
   levels(pm_summ$Gender.Code) <- rindreplace3
   
-  pm_summ <- pm_summ %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
+  pm_summ <- pm_summ %>% 
+    unite("Ethnicity", Race, Hispanic.Origin, sep = ", ") %>%
+    mutate(Ethnicity = as.factor(Ethnicity))
   rindreplace7 <- list("Black or African American" = "Black or African American, All Origins",
                        "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
                        "White, Hispanic or Latino" = "White, Hispanic or Latino",
@@ -181,7 +183,9 @@ if(!file.exists(pop_summaryDir)){
   rindreplace4 <- list("Official Bridged-Race Population Estimates" = "CDC", "Own Interpolation" = "Census")
   levels(pop_summary$source2) <- rindreplace4
   
-  pop_summary <- pop_summary %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
+  pop_summary <- pop_summary %>% 
+    unite("Ethnicity", Race, Hispanic.Origin, sep = ", ") %>%
+    mutate(Ethnicity = as.factor(Ethnicity))
   rindreplace7 <- list("Black or African American" = "Black or African American, All Origins",
                        "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
                        "White, Hispanic or Latino" = "White, Hispanic or Latino",
