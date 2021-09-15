@@ -256,9 +256,10 @@ all_burden <- all_burden %>%
 attrBurden <- attrBurden %>%
   unite("Ethnicity", Race, Hispanic.Origin, sep = ", ") %>%
   mutate(Ethnicity = as.factor(Ethnicity))
-rindreplace7 <- c(
+rindreplace7 <- list(
   "Black or African American" = "Black or African American, All Origins",
   "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
+  "Asian or Pacific Islander" = "Asian or Pacific Islander, All Origins" ,
   "White, Hispanic or Latino" = "White, Hispanic or Latino",
   "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
   "White, All Origins" = "White, All Origins",

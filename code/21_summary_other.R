@@ -111,12 +111,15 @@ if(!file.exists(pm_summDir)){
   pm_summ <- pm_summ %>% 
     unite("Ethnicity", Race, Hispanic.Origin, sep = ", ") %>%
     mutate(Ethnicity = as.factor(Ethnicity))
-  rindreplace7 <- list("Black or African American" = "Black or African American, All Origins",
-                       "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
-                       "White, Hispanic or Latino" = "White, Hispanic or Latino",
-                       "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
-                       "White, All Origins" = "White, All Origins", 
-                       "All, All Origins" = "All, All Origins")
+  rindreplace7 <- list(
+    "Black or African American" = "Black or African American, All Origins",
+    "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
+    "Asian or Pacific Islander" = "Asian or Pacific Islander, All Origins" ,
+    "White, Hispanic or Latino" = "White, Hispanic or Latino",
+    "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
+    "White, All Origins" = "White, All Origins",
+    "All, All Origins" = "All, All Origins"
+  )
   levels(pm_summ$Ethnicity) <- rindreplace7
   
   rindreplace8 <- list("large central metro" = 1,
@@ -186,12 +189,15 @@ if(!file.exists(pop_summaryDir)){
   pop_summary <- pop_summary %>% 
     unite("Ethnicity", Race, Hispanic.Origin, sep = ", ") %>%
     mutate(Ethnicity = as.factor(Ethnicity))
-  rindreplace7 <- list("Black or African American" = "Black or African American, All Origins",
-                       "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
-                       "White, Hispanic or Latino" = "White, Hispanic or Latino",
-                       "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
-                       "White, All Origins" = "White, All Origins", 
-                       "All, All Origins" = "All, All Origins")
+  rindreplace7 <- list(
+    "Black or African American" = "Black or African American, All Origins",
+    "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
+    "Asian or Pacific Islander" = "Asian or Pacific Islander, All Origins" ,
+    "White, Hispanic or Latino" = "White, Hispanic or Latino",
+    "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
+    "White, All Origins" = "White, All Origins",
+    "All, All Origins" = "All, All Origins"
+  )
   levels(pop_summary$Ethnicity) <- rindreplace7
   
   #pop_summary <- pop_summary %>% filter(!is.na(rural_urban_class)) 
