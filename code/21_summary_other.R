@@ -36,11 +36,11 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary/"
   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -92,30 +92,43 @@ if(!file.exists(pm_summDir)){
 
   pm_summ <- pm_summ %>% filter(!is.na(Gender.Code)) #TODO
   ##--- find and replcase---
-  rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
-  #pm_summ$Region <- sapply(pm_summ$Region , function(x) rindreplace1[[x]])
+  pm_summ <- pm_summ %>% mutate_at(setdiff(colnames(pm_summ), c("value")),
+                                         as.factor)
   
-  rindreplace2 <- setNames(
-    c("high school graduate or lower", "some college education but no 4-year college degree", "4-year college graduate or higher", "666"),
-    c("lower","middle","higher", "666")
-  )
-  #pm_summ$Education <- sapply(pm_summ$Education %>% as.character, function(x) rindreplace2[[x]])
-  unique(pm_summ$Gender.Code)
+  rindreplace1 <- c(states$STATEFP, "us") %>% as.list
+  names(rindreplace1) <- c(states$NAME, "United States")
+  levels(pm_summ$Region) <- rindreplace1
+  
+  rindreplace2 <- list("high school graduate or lower" = "lower", 
+                       "some college education but no 4-year college degree" = "middle", 
+                       "4-year college graduate or higher" ="higher",
+                       "666" = "666")
+  levels(pm_summ$Education) <- rindreplace2
 
-  rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
-  #pm_summ$Gender.Code <- sapply(pm_summ$Gender.Code , function(x) rindreplace3[[x]])
+  rindreplace3 <- list("All genders" = "A", "Male" = "M", "Female" = "F")
+  levels(pm_summ$Gender.Code) <- rindreplace3
   
   pm_summ <- pm_summ %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
-  rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
-                           c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
-  #pm_summ$Ethnicity <- sapply(pm_summ$Ethnicity, function(x) rindreplace7[[x]])
+  rindreplace7 <- list("Black or African American" = "Black or African American, All Origins",
+                       "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
+                       "White, Hispanic or Latino" = "White, Hispanic or Latino",
+                       "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
+                       "White, All Origins" = "White, All Origins", 
+                       "All, All Origins" = "All, All Origins")
+  levels(pm_summ$Ethnicity) <- rindreplace7
   
-  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
-                           c(1:6,666, NA))
-  #pm_summ$rural_urban_class <- sapply(pm_summ$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+  rindreplace8 <- list("large central metro" = 1,
+                       "large fringe metro" = 2,
+                       "medium metro" = 3,
+                       "small metro" = 4,
+                       "micropolitan" = 5,
+                       "non-core" = 6,
+                       "All" = 666,
+                       "Unknown" = "Unknown")
+  levels(pm_summ$rural_urban_class) <- rindreplace8
   
   fwrite(pm_summ, pm_summDir)
-  rm(rindreplace1, rindreplace2, rindreplace3)
+  rm(rindreplace1, rindreplace2, rindreplace3,rindreplace7,rindreplace8)
   toc()
 }
 
@@ -150,25 +163,32 @@ if(!file.exists(pop_summaryDir)){
     group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population","min_age", "max_age"))))) %>%
     summarise(Population = sum(Population))
   ###---find and replace----
-  rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP,"us"))
-  #pop_summary$Region <- sapply(pop_summary$Region , function(x) rindreplace1[[x]])
+  pop_summary <- pop_summary %>% mutate_at(setdiff(colnames(pop_summary), c("Population")),
+                                   as.factor)
+  rindreplace1 <- c(states$STATEFP, "us") %>% as.list
+  names(rindreplace1) <- c(states$NAME, "United States")
+  levels(pop_summary$Region) <- rindreplace1
   
-  rindreplace2 <- setNames(
-    c("high school graduate or lower", "some college education but no 4-year college degree", "4-year college graduate or higher", "666"),
-    c("lower","middle","higher", "666")
-  )
-  #pop_summary$Education <- sapply(pop_summary$Education %>% as.character, function(x) rindreplace2[[x]])
+  rindreplace2 <- list("high school graduate or lower" = "lower", 
+                       "some college education but no 4-year college degree" = "middle", 
+                       "4-year college graduate or higher" ="higher",
+                       "666" = "666")
+  levels(pop_summary$Education) <- rindreplace2
   
-  rindreplace3 <- setNames(c("All genders", "Male","Female"), c("A","M","F"))
-  #pop_summary$Gender.Code <- sapply(pop_summary$Gender.Code , function(x) rindreplace3[[x]])
-  
-  rindreplace4 <- setNames(c("Official Bridged-Race Population Estimates", "Own Interpolation"), c("CDC","Census"))
-  #pop_summary$source2 <- sapply(pop_summary$source2 , function(x) rindreplace4[[x]])
+  rindreplace3 <- list("All genders" = "A", "Male" = "M", "Female" = "F")
+  levels(pop_summary$Gender.Code) <- rindreplace3
+
+  rindreplace4 <- list("Official Bridged-Race Population Estimates" = "CDC", "Own Interpolation" = "Census")
+  levels(pop_summary$source2) <- rindreplace4
   
   pop_summary <- pop_summary %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
-  rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
-                           c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
-  #pop_summary$Ethnicity <- sapply(pop_summary$Ethnicity, function(x) rindreplace7[[x]])
+  rindreplace7 <- list("Black or African American" = "Black or African American, All Origins",
+                       "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
+                       "White, Hispanic or Latino" = "White, Hispanic or Latino",
+                       "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
+                       "White, All Origins" = "White, All Origins", 
+                       "All, All Origins" = "All, All Origins")
+  levels(pop_summary$Ethnicity) <- rindreplace7
   
   #pop_summary <- pop_summary %>% filter(!is.na(rural_urban_class)) 
   rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
