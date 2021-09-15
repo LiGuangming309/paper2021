@@ -214,8 +214,8 @@ all_burden <- all_burden %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", 
 attrBurden <- attrBurden %>% unite("Ethnicity", Race, Hispanic.Origin, sep = ", ")
 
 rindreplace1 <- setNames(c(states$NAME, "United States"), c(states$STATEFP, "us"))
-all_burden$Region <- sapply(all_burden$Region, function(x) rindreplace1[[x]])
-attrBurden$Region <- sapply(attrBurden$Region, function(x) rindreplace1[[x]])
+#all_burden$Region <- sapply(all_burden$Region, function(x) rindreplace1[[x]])
+#attrBurden$Region <- sapply(attrBurden$Region, function(x) rindreplace1[[x]])
 
 rindreplace2 <- setNames(
   #c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"),
@@ -224,12 +224,12 @@ rindreplace2 <- setNames(
  c("lower","middle","higher", "666")
 )
 
-all_burden$Education <- sapply(all_burden$Education %>% as.character(), function(x) rindreplace2[[x]])
-attrBurden$Education <- sapply(attrBurden$Education %>% as.character(), function(x) rindreplace2[[x]])
+#all_burden$Education <- sapply(all_burden$Education %>% as.character(), function(x) rindreplace2[[x]])
+#attrBurden$Education <- sapply(attrBurden$Education %>% as.character(), function(x) rindreplace2[[x]])
 
 rindreplace3 <- setNames(c("All genders", "Male", "Female"), c("A", "M", "F"))
-all_burden$Gender.Code <- sapply(all_burden$Gender.Code, function(x) rindreplace3[[x]])
-attrBurden$Gender.Code <- sapply(attrBurden$Gender.Code, function(x) rindreplace3[[x]])
+#all_burden$Gender.Code <- sapply(all_burden$Gender.Code, function(x) rindreplace3[[x]])
+#attrBurden$Gender.Code <- sapply(attrBurden$Gender.Code, function(x) rindreplace3[[x]])
 
 rindreplace4 <- setNames(c("National Vital Statistics System", "Mortality Data from CDC WONDER"), c("nvss", "wonder"))
 #all_burden$source <- sapply(all_burden$source, function(x) rindreplace4[[x]])
@@ -249,13 +249,13 @@ rindreplace6 <- setNames(c("crude rate per 100,000", "age-adjusted rate per 100,
 
 rindreplace7 <- setNames(c("Black or African American", "American Indian or Alaska Native", "Asian or Pacific Islander", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"), 
                          c("Black or African American, All Origins", "American Indian or Alaska Native, All Origins", "Asian or Pacific Islander, All Origins", "White, Hispanic or Latino", "White, Not Hispanic or Latino","White, All Origins", "All, All Origins"))
-all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
-attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
+#all_burden$Ethnicity <- sapply(all_burden$Ethnicity, function(x) rindreplace7[[x]])
+#attrBurden$Ethnicity <- sapply(attrBurden$Ethnicity, function(x) rindreplace7[[x]])
 
 rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
                          c(1:6,666, "Unknown"))
-all_burden$rural_urban_class <- sapply(all_burden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
-attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+#all_burden$rural_urban_class <- sapply(all_burden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
+#attrBurden$rural_urban_class <- sapply(attrBurden$rural_urban_class %>% as.character, function(x) rindreplace8[[x]])
 
 rm(rindreplace1, rindreplace2, rindreplace3, rindreplace4, rindreplace6, rindreplace7, rindreplace8)
 ##--- test final---
