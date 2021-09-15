@@ -1,91 +1,541 @@
 Year,Race,Hispanic.Origin,Education,rural_urban_class,Gender.Code,nation,measure1,measure2,attr,min_age,max_age,scenario,mean,lower,upper,source,method
+1998,All,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,A,19497.1872730577,15855.7990148392,24228.4436608385,nvss,GBD
+1998,All,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,B,14643.6048349465,11083.3708182433,19300.9448306577,nvss,GBD
+1998,All,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,C,7986.70341513694,4590.05137295926,12631.6336387669,nvss,GBD
 1998,All,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,A,26.720808948763,21.7407442513031,33.1892990780167,nvss,GBD
 1998,All,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,B,20.0680699008773,15.1982519618015,26.4394236934536,nvss,GBD
 1998,All,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,C,10.9443657911101,6.29096496324561,17.3130580544512,nvss,GBD
+1998,All,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,A,39.1088875893316,31.8047240674182,48.5991885047726,nvss,GBD
+1998,All,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,B,29.3732161143006,22.2318377195122,38.7152501116487,nvss,GBD
+1998,All,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,C,16.0203152227781,9.20706154484037,25.3374567895135,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,A,422813.368696862,343947.895103767,526977.483358767,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,B,318646.520246428,241000.570669863,421758.678390402,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,C,174527.526870321,100968.587111705,273403.141027787,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,A,576.634582316381,468.980292681115,718.61536982406,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,B,434.558507043263,328.655863741408,575.230584651624,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,C,237.997631850201,137.637169916339,372.833165582151,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,A,848.110051775634,689.91590314098,1057.05006933314,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,B,639.164550584677,483.416612626827,845.994476638603,nvss,GBD
+1998,All,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,C,350.0801081727,202.530194130204,548.412063713485,nvss,GBD
+1998,All,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,A,8646.17830694829,6941.78218905917,10894.7655001495,nvss,GBD
+1998,All,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,B,6750.91162541566,5080.67439564334,8947.33209528276,nvss,GBD
+1998,All,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,C,3707.76416888376,2127.89209267581,5861.02449403426,nvss,GBD
 1998,All,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,A,14.6369849298319,11.7568612908446,18.4296162894889,nvss,GBD
 1998,All,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,B,11.4286375874006,8.59906524005349,15.1227534631634,nvss,GBD
 1998,All,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,C,6.27487529429742,3.604698058199,9.91994085759162,nvss,GBD
+1998,All,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,A,21.1828715111053,17.0071533281645,26.6918411279844,nvss,GBD
+1998,All,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,B,16.5395263048282,12.4474963494781,21.9206890504735,nvss,GBD
+1998,All,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,C,9.08390842689735,5.2132703245809,14.3593301425204,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,A,184498.171221954,147926.39208864,233044.542027918,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,B,144090.789537785,108478.612134231,192605.224907033,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,C,79439.9524123577,45699.9814018252,125664.225658886,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,A,305.585505270483,244.802293012175,385.568805336335,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,B,238.650816048803,179.702048126779,318.692808032973,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,C,131.524874592914,75.4830127082612,208.1440052085,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,A,452.014857464577,362.415120932317,570.951976108868,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,B,353.018012392799,265.769270649415,471.876890197196,nvss,GBD
+1998,All,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,C,194.625445492718,111.963551956453,307.873496378802,nvss,GBD
+1998,All,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,A,7824.9144698447,6181.8904030643,9929.1483405154,nvss,GBD
+1998,All,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,B,6374.84072637585,4757.56033388451,8496.84111056317,nvss,GBD
+1998,All,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,C,3583.66936442066,2048.69956251894,5681.74283300657,nvss,GBD
 1998,All,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,A,14.4021916928962,11.3879663249756,18.2564136332941,nvss,GBD
 1998,All,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,B,11.7333263612405,8.77140917320637,15.6355036204402,nvss,GBD
 1998,All,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,C,6.59637008539204,3.77416815606482,10.4608998730593,nvss,GBD
+1998,All,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,A,22.8432905083455,18.046806634393,28.9861852058495,nvss,GBD
+1998,All,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,B,18.6100869496055,13.8887566422259,24.8048474701986,nvss,GBD
+1998,All,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,C,10.4618140802431,5.98077326612228,16.5867247020088,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,A,168611.177109214,133169.448612204,215424.734060241,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,B,137651.831033167,102881.061872505,184280.086480102,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,C,77674.6284706146,44619.4971667361,122699.920267556,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,A,310.800398468588,245.654068856973,396.933863104957,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,B,253.757066257494,189.625087941347,339.881470188026,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,C,143.22239420746,82.3980444930901,226.131602065608,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,A,492.226990659532,388.761872504548,628.889913338416,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,B,401.84730164325,300.340916596287,537.969273222172,nvss,GBD
+1998,All,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,C,226.75571856024,130.257798988604,358.198154730531,nvss,GBD
+1998,All,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,A,2025.06464798181,1579.37932177257,2603.33209257151,nvss,GBD
+1998,All,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,B,1658.5023658208,1221.88276159661,2235.38295136605,nvss,GBD
+1998,All,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,C,955.856154140826,537.800328934824,1529.33943697826,nvss,GBD
 1998,All,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,A,7.87965483382192,6.15518362170914,10.1232473317754,nvss,GBD
 1998,All,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,B,6.45378911944009,4.76268656848972,8.69608680397824,nvss,GBD
 1998,All,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,C,3.72018511225493,2.09394959178894,5.94426400979278,nvss,GBD
+1998,All,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,A,12.9410077172244,10.0928925957267,16.6363778726971,nvss,GBD
+1998,All,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,B,10.5985218479378,7.80834047106785,14.2850293956836,nvss,GBD
+1998,All,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,C,6.10831949469888,3.4367684083604,9.7731168611902,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,A,43915.2735425421,34267.3682280177,56791.6030743188,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,B,36018.6553656412,26556.0147093008,48915.1891421501,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,C,20816.1912199621,11791.1722985868,33237.3959409351,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,A,172.419261630673,134.793813731195,223.060175031635,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,B,141.437789481395,104.455050622378,192.111855539427,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,C,81.7691860819663,46.2677828944083,130.544271668604,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,A,280.636914176757,218.982775255938,362.922030361227,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,B,230.174230494489,169.704010009893,312.588460229611,nvss,GBD
+1998,All,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,C,133.024143939906,75.3505088655836,212.400822759287,nvss,GBD
+1998,All,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,A,207.112911972223,158.544222415361,271.518087043528,nvss,GBD
+1998,All,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,B,172.055448438803,124.263979787459,236.281393564778,nvss,GBD
+1998,All,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,C,101.853043090661,55.7683105289203,166.294999365281,nvss,GBD
 1998,All,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,A,0.755920536842252,0.579268893593063,0.991216323234927,nvss,GBD
 1998,All,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,B,0.628011540324313,0.454290770634953,0.861630784912161,nvss,GBD
 1998,All,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,C,0.371852838802508,0.203551550004932,0.606806719403664,nvss,GBD
+1998,All,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,A,1.29549211092219,0.99169475922843,1.69834674423751,nvss,GBD
+1998,All,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,B,1.07620753322971,0.777271701476718,1.47794108250443,nvss,GBD
+1998,All,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,C,0.637091200837665,0.348831010301109,1.04017590073006,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,A,4460.58497501555,3421.20159238279,5862.96744542113,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,B,3706.27408720083,2684.40817234875,5109.4059199717,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,C,2197.02840481058,1213.20873151441,3575.00030006875,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,A,16.6005187694095,12.7365858785169,21.8485899448936,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,B,13.7949765159441,9.99608376921785,19.0339261042289,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,C,8.18070746234042,4.53117103518317,13.3215781031532,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,A,27.900977250543,21.3996299438867,36.6728853349103,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,B,23.1827595641549,16.7909840900661,31.95935491318,nvss,GBD
+1998,All,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,C,13.7424216520397,7.58862557439022,22.3616414890863,nvss,GBD
+1998,All,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,A,51719.4757218429,41057.6438827835,65473.5766000483,nvss,GBD
+1998,All,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,B,40972.5276207999,30535.7766859185,54785.4431594464,nvss,GBD
+1998,All,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,C,22998.0901788537,13051.3639817136,36633.2830885897,nvss,GBD
 1998,All,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,A,19.189435960761,15.2492059742793,24.2839698542559,nvss,GBD
 1998,All,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,B,15.2019194668902,11.3442224292352,20.3265828342023,nvss,GBD
 1998,All,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,C,8.53278911813391,4.84457667399827,13.5926190740759,nvss,GBD
+1998,All,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,A,28.9961276388183,23.0186533401293,36.7072588723701,nvss,GBD
+1998,All,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,B,22.9709335602559,17.1196491452716,30.7150387823754,nvss,GBD
+1998,All,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,C,12.8937029807024,7.31714717894204,20.5381693731496,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,A,1120358.94428216,889344.681315535,1426743.46967844,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,B,888543.151257147,662429.426198922,1192824.47225511,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,C,500070.112476794,285471.941258108,793396.022642135,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,A,414.402091163156,329.08284336855,527.576157702937,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,B,328.662126284236,245.048491335592,441.232191217369,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,C,184.97338331626,105.652710835348,293.273236612148,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,A,628.120654672009,498.604278841103,799.892790428547,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,B,498.154907157515,371.385980342815,668.747897488985,nvss,GBD
+1998,All,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,C,280.360475572482,160.047655752346,444.811398792779,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,A,43.2833037398228,34.5920528704815,54.4580291646503,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,B,33.832881338789,25.2127238574642,44.8661586068597,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,C,19.0949620651243,10.9959444451779,30.398623975058,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,A,18.1250914419979,14.4704353482219,22.7619834884875,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,B,14.1129914508393,10.4870229132797,18.7783437965714,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,C,7.93769874763527,4.54069360741352,12.6108581843579,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,A,15.3258693394775,12.2484477077827,19.2826463635906,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,B,11.9796381970552,8.92738950461189,15.8863308749781,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,C,6.76119585074841,3.8934737709474,10.7636270544896,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,A,1175.78281358145,941.925585106631,1476.19841110416,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,B,922.749772769933,690.585582468574,1225.27923883989,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,C,522.688065553461,298.51877216439,828.540021850407,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,A,416.339650917869,332.773200780047,524.146182286458,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,B,325.500863536958,242.78307633389,431.897300127433,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,C,183.749650211623,105.807760492255,292.261380584233,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,A,416.324361025457,333.519560605384,522.696328905952,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,B,326.729737071646,244.524412190437,433.850189248778,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,C,185.074804967034,105.700334823643,293.371693476445,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,A,9.90830858738253,7.74841959857257,12.7612243220791,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,B,8.10741482887081,5.97096524755969,10.9436747948031,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,C,4.78212730859663,2.70164410876196,7.63980495996908,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,A,7.9734135268283,6.27686053390362,10.2082107903373,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,B,6.51392329761931,4.82096877697322,8.76979370707864,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,C,3.82183022273066,2.16400940694673,6.11771833486628,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,A,6.56831644714116,5.13650452444172,8.45954270208216,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,B,5.37448603811964,3.9582123321025,7.254671018059,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,C,3.17011982180057,1.79094678747697,5.06450279873365,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,A,263.872335798679,204.995660530978,341.014140307111,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,B,216.062867147826,158.20070375757,292.375637157778,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,C,127.913326309909,72.1782121252942,204.546655898587,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,A,176.24211702492,137.818757402401,226.270320445926,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,B,144.257638229618,106.290222297656,194.790896360859,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,C,85.127599664786,48.141553427943,135.829551461,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,A,174.923599511133,135.893665077491,226.061670035109,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,B,143.230226570733,104.872822164964,193.818721868666,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,C,84.7950179993192,47.8476556969098,135.596015434692,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,A,22.5826749562223,17.3896434949811,29.4898102575701,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,B,19.4851997600782,14.3097887940768,26.3776148356772,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,C,11.4674866510049,6.39077471795252,18.3975619899428,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,A,9.45262972171516,7.27454257926972,12.2928762806904,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,B,8.15168111612705,5.99700868812045,11.0006676940933,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,C,4.78333225804741,2.67396530397033,7.65490193063928,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,A,9.17703613785111,7.06671760928029,11.9839237360818,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,B,7.9182994352144,5.81514143664705,10.7192051006619,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,C,4.66010070156018,2.59705152951138,7.47631055919447,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,A,637.596420845575,488.392928227951,830.225393277862,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,B,550.335333173247,401.938120361731,743.663599507493,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,C,324.924351665615,182.108467327212,522.252729448396,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,A,226.216382953059,174.202508827565,294.98723601541,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,B,195.199963513152,143.400526563032,264.171664978891,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,C,114.938262482208,64.0983592795241,184.460399221401,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,A,259.103290766365,198.47071086607,337.382903107911,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,B,223.642560071284,163.337632184411,302.206348021862,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,C,132.041156465461,74.0043413329133,212.230489989794,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,A,5.94050051122038,4.13291830015081,8.43543558298427,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,B,5.27312850488019,3.48138535304723,7.75293039489567,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,C,3.48724292414294,1.74100286953258,5.97660738486487,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,A,4.15588796504469,2.89410581204997,5.90472369161316,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,B,3.68713703024618,2.43607963947254,5.44083397831257,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,C,2.4375871220056,1.21490663549414,4.17344321398055,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,A,4.12939710675889,2.87289948698407,5.86369165777083,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,B,3.66548938940278,2.4200019135143,5.38926447041217,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,C,2.42407366421773,1.21021658002178,4.15449593795671,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,A,161.150092425344,112.076213765524,228.142302938026,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,B,143.161694845893,94.5611191243576,210.2416653845,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,C,94.7303610068053,47.1346248947045,163.126646530065,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,A,99.4408153320411,68.9946378176452,140.993827623165,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,B,88.2999158060375,58.2180301511443,129.564587553125,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,C,58.4203968321138,29.1869094480929,100.240034969027,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,A,112.019639449276,77.9071042895627,158.587675213929,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,B,99.5154343272476,65.7319044054401,146.144474378738,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,C,65.8495488595398,32.7645092026721,113.393593846884,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,A,5.71845243577469,4.04776588829468,8.33208376861474,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,B,5.0656810231571,3.40144744067296,7.68637377647775,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,C,3.14456112463829,1.51081610759326,5.79867531475798,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,A,2.37788927682738,1.67063101043084,3.48094748437207,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,B,2.10862916579618,1.40363701192112,3.21643125599517,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,C,1.30834220476573,0.626857241563298,2.42819521065176,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,A,2.44775891299365,1.73262873864277,3.56651253770086,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,B,2.16834292390784,1.45597491340483,3.29011915921012,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,C,1.34601583325821,0.646698321755784,2.48209797050314,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,A,143.841821244988,101.460846738128,209.120555617725,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,B,127.290783113998,85.3478249357974,192.573334478963,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,C,79.2109904945238,38.3012157135661,145.866201173819,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,A,52.2465246334992,37.0026729131288,75.824038915373,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,B,46.2528540185685,31.1399228969987,69.790654133312,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,C,28.7225254077083,13.8773843930238,52.6518862316804,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,A,61.5708714845609,43.4298780504748,89.5131523174284,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,B,54.4862709638014,36.5327685309178,82.4301856437371,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,C,33.9059230041072,16.3946702703794,62.4373985860336,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,A,171.694805032017,128.601079680149,230.387390103654,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,B,145.886863928449,103.497209945886,205.009122182608,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,C,87.8429790388274,46.7739984253742,148.835337480684,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,A,13.2365503993817,9.89565994726657,17.8201109698581,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,B,11.2468616911042,7.93143734399408,15.862251479018,nvss,GBD
 1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,C,6.75765238576625,3.59878629981106,11.4436033445639,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,A,11.8713051454723,8.89172307010431,15.9294220292771,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,B,10.0868950466362,7.15599380390987,14.1747203509234,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,C,6.07363052634461,3.23404315044892,10.2907581119479,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,A,4533.32752751281,3407.76056410062,6085.50665857389,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,B,3851.35184161127,2722.814048659,5393.01106397064,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,C,2324.85998308913,1230.31190675128,3935.79465961171,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,A,296.792293938282,222.515524365777,397.955656138054,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,B,252.190725895372,179.039227393718,354.368799209311,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,C,151.917988453441,80.8592699155665,257.058791372974,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,A,313.442881358224,235.619042239521,420.763496573251,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,B,266.289786262422,188.260538342918,372.883034995526,nvss,GBD
+1998,American Indian or Alaska Native,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,C,160.745237892329,85.0661035808785,272.128323192179,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,A,487.073604836329,399.531553128111,602.337618528841,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,B,359.224510961103,272.542701958991,474.667313165587,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,C,194.330064457924,112.357612132891,306.387258020439,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,A,14.4951660356043,11.8835879550609,17.8721825600092,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,B,10.6752512970065,8.09476383464685,14.0864387916339,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,C,5.76354647920844,3.30907372869816,9.12887951206693,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,A,13.7223775323511,11.2560458084211,16.9697230999973,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,B,10.1204711348275,7.67837512202093,13.3728537306259,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,C,5.4748819970933,3.16546320106813,8.63188147317306,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,A,11184.7445560303,9154.46076802981,13852.7577609175,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,B,8267.62597943563,6291.99953650452,10913.6692596747,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,C,4485.65391611433,2585.93413963412,7056.84541821549,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,A,287.578505609913,236.234502207242,356.235430442281,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,B,212.286894318836,161.625129697168,280.545616842701,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,C,114.982772801435,66.4756946516087,180.296148629444,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,A,315.109022284897,257.909616773863,390.275247872226,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,B,232.924724024437,177.265185828138,307.471988540201,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,C,126.374814617749,72.8538031737092,198.813271864187,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,A,62.2453548489815,50.5226172310497,77.8246833090797,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,B,47.5153878800677,35.9350428797627,63.0269390531965,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,C,26.2326514674512,15.0714459725445,41.2857266590011,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,A,6.03284988711279,4.88302433652271,7.56770938166808,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,B,4.6087638482464,3.47805355629342,6.09682528480503,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,C,2.54371526546216,1.45331657206367,4.02022754121745,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,A,4.51555144972596,3.66513257150062,5.64574436748559,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,B,3.44697494530617,2.60688585301449,4.57225100096138,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,C,1.90303176279416,1.09334889126917,2.99504795691743,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,A,1579.53368859573,1276.64873998,1966.0510930889,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,B,1204.91509953213,907.83628170966,1595.29026346918,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,C,665.126949348416,382.616878344706,1050.89027431762,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,A,120.123677317326,97.4544860438449,150.358330765448,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,B,91.6946946146813,69.2375983301143,121.712523645959,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,C,50.6269129433636,29.0458779466976,79.5281830499296,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,A,114.586311777547,92.6137072010253,142.625982053955,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,B,87.4098338372321,65.8584314915342,115.729362928676,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,C,48.2512304358916,27.7567089767716,76.2361964713821,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,A,154.806357919287,126.314551785921,191.868557412749,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,B,112.189362610564,84.4681304978221,148.62876340499,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,C,61.0876660477034,35.1708397605531,96.3390688260891,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,A,13.1550625585733,10.7553993007503,16.3151097001998,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,B,9.48870598727697,7.13586514763687,12.6270829800313,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,C,5.15282115853669,2.96573940509398,8.11868558796838,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,A,15.3060110793587,12.4889698014054,18.9704241157282,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,B,11.0923843838428,8.35153128482265,14.6952200798771,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,C,6.03985847807236,3.47741055523086,9.52523445836783,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,A,3413.40562560137,2778.78429631116,4268.55905049532,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,B,2504.14136865435,1883.06759468611,3337.75757359216,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,C,1372.49007189792,784.825691031811,2168.95756343475,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,A,266.439849769768,217.830217215276,331.50685088581,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,B,194.620677864511,147.310254335549,258.603113486519,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,C,106.426411938001,61.0416183452093,167.679405123169,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,A,337.490171760514,274.743904566645,422.040883836581,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,B,247.58941459554,186.182621016601,330.010699097069,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,C,135.700810542499,77.5972698005164,214.449128206349,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,A,16.3232164188641,13.2668707603017,20.4063335812167,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,B,12.2660546001228,9.21123976028804,16.3183719500366,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,C,6.87157057725188,3.94375212337595,10.9064372921344,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,A,9.1541323254515,7.43910530636086,11.4051605514681,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,B,6.80580721585865,5.12370209920108,9.04611902419457,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,C,3.79329313721184,2.15500603113042,6.0364485030302,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,A,7.56423792741676,6.14791621994518,9.45636928860242,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,B,5.68413436697362,4.26852204647475,7.56199298292158,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,C,3.18431082744823,1.82754909464385,5.05408275557842,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,A,361.105860294237,290.529781635053,451.253819740723,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,B,275.897516390523,205.668860683369,366.696394067367,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,C,155.836524624459,88.8633020160627,246.622171806496,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,A,173.542443410462,140.428727309997,216.488266476582,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,B,131.129960533325,98.6727235009058,174.471733208133,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,C,73.6754067958286,42.1838219602515,116.87120502975,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,A,167.337770581382,134.632558736908,209.112663251205,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,B,127.851913741061,95.3076989576537,169.928444289067,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,C,72.2152129698453,41.1795777386481,114.285612458381,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,A,18.9568747722544,15.5526806328707,23.5157886539333,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,B,13.3703674824628,10.0321721908287,17.8343770303252,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,C,7.35376502548892,4.16069883567498,11.786789905536,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,A,9.73552136366542,7.98938210926294,12.0486086154272,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,B,6.82962289982832,5.11803005975287,9.09786966413461,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,C,3.74128340971409,2.12232533467584,5.99587599855481,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,A,12.2162861310503,10.0225379446022,15.154164715706,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,B,8.61620055021505,6.46498367855989,11.492920399008,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,C,4.7389508434886,2.68125880939649,7.59570339428259,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,A,445.125693475397,360.800524115642,552.566946000485,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,B,320.130122243259,236.604622866191,428.880168936898,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,C,178.592371028033,100.422148333073,288.70363447633,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,A,212.026460748275,172.750147048238,263.407133681479,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,B,151.705951278165,112.892416280048,202.803889583437,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,C,84.3247840265671,47.1173566992139,135.724748989198,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,A,286.850174467389,232.508917834952,356.088015561637,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,B,206.299889590222,152.473960375215,276.381150511934,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,C,115.089408539764,64.714554095548,186.047871719816,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,A,758.272494564269,619.102565723808,942.705771629199,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,B,564.061426017643,426.382545723666,748.51823550863,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,C,307.664907904482,177.621573859161,484.1296947958,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,A,12.3476095475673,10.0779962207952,15.334162747829,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,B,9.15210889899616,6.90442334258043,12.1153424784881,nvss,GBD
 1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,C,4.97809097999363,2.8534949972952,7.88617576633259,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,A,11.2241003269994,9.16407935168452,13.9541183881234,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,B,8.34934945101816,6.31139927294065,11.0797158437946,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,C,4.55411717841788,2.62918987504666,7.16618406261745,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,A,17482.505232175,14236.1746701812,21788.1638314715,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,B,13070.7061117508,9871.76585390739,17310.9050306277,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,C,7156.02076167785,4111.72622498426,11290.7649433474,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,A,242.975413825818,198.600214440894,302.664131507511,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,B,181.055811723084,137.457778266141,240.246147987966,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,C,98.8888989503003,57.0642634761143,155.373179720993,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,A,258.779520686665,210.726689832816,322.512735907774,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,B,193.475192354587,146.123842211333,256.239460362563,nvss,GBD
+1998,Asian or Pacific Islander,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,C,105.924843043815,60.8625896326325,167.128149050852,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,A,3306.76380642713,2748.45152338781,4053.09154949837,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,B,2339.44435257815,1796.33847830695,3084.79269542364,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,C,1246.06520096858,719.416734481953,1951.6922165454,nvss,GBD
 1998,Black or African American,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,A,29.5976903619343,24.5875001846297,36.3159514998249,nvss,GBD
 1998,Black or African American,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,B,20.9061892220228,16.0183823502565,27.6050361509096,nvss,GBD
 1998,Black or African American,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,C,11.1249499492403,6.4503506157737,17.4108123265633,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,A,36.5306166279707,30.362806296082,44.7754790544806,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,B,25.8444055182889,19.8445840484765,34.0784482744908,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,C,13.7655825497924,7.94757002965459,21.5608142316787,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,A,85958.5566296991,71228.540477861,105189.215925263,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,B,61105.6141391905,46865.7030103362,80034.0042619392,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,C,32636.3929780998,18855.2291031179,51449.7087461476,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,A,713.692401172081,592.376504127951,874.296075384431,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,B,506.549038085877,387.994313491502,664.72382918692,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,C,270.304370835035,156.058473071449,425.309873436327,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,A,949.604889236421,786.878851192594,1162.05061664639,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,B,675.048444523569,517.736714773326,884.154931541131,nvss,GBD
+1998,Black or African American,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,C,360.542097892056,208.298259603481,568.377330782813,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,A,995.702306228653,819.679916886096,1235.69167748442,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,B,739.648662124462,567.154084251502,975.710898823649,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,C,396.620014495311,228.622394642651,621.322363146868,nvss,GBD
 1998,Black or African American,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,A,26.9529825568354,22.0845886688998,33.4579188365217,nvss,GBD
 1998,Black or African American,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,B,20.0026452277039,15.2489707211163,26.4215499761349,nvss,GBD
 1998,Black or African American,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,C,10.7111674901579,6.18574612317319,16.8763621645079,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,A,27.0633020768088,22.2789934885294,33.5862405182375,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,B,20.103734869913,15.4153125991349,26.5199333468603,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,C,10.780177162239,6.21398272257952,16.8876125883543,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,A,25739.801996519,21105.6444668901,31854.4476275331,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,B,19150.4926297074,14586.6812034982,25188.6705680032,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,C,10294.9226537371,5928.13767588677,16224.7002465519,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,A,612.044879026357,502.993602497239,759.467337147931,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,B,454.970654316023,348.889834877158,600.555861278238,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,C,244.206572457409,140.926937193295,383.653665731384,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,A,699.61074958992,573.653820183085,865.807514194752,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,B,520.512570590004,396.467656285337,684.630934598388,nvss,GBD
+1998,Black or African American,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,C,279.817170144716,161.127457144397,440.989200417975,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,A,845.360602693171,696.028809095638,1048.39830914129,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,B,631.313205828572,484.97915844868,829.591032285905,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,C,338.367748681006,195.187890148052,532.216549959201,nvss,GBD
 1998,Black or African American,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,A,21.7962486323491,17.9544045069165,27.0412711111487,nvss,GBD
 1998,Black or African American,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,B,16.2580134678153,12.4171950174638,21.3833796066448,nvss,GBD
 1998,Black or African American,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,C,8.70693070481416,5.02548692029644,13.7238574659618,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,A,26.1362654736205,21.5193299449446,32.4136427017252,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,B,19.5184983685913,14.9942450523548,25.6487129696877,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,C,10.4614164405861,6.03468212014249,16.4546975514032,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,A,21880.9251381996,17956.4225071753,27018.140417382,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,B,16396.9144607705,12550.9456978742,21477.59729143,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,C,8810.38352607904,5083.24593643725,13826.4857972832,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,A,524.085326777428,430.776637952686,647.840334941124,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,B,392.252692443633,299.789966263437,515.376174225533,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,C,210.547746415482,121.443640976938,330.426380729888,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,A,676.499077906485,555.164061477286,835.327892384117,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,B,506.948286837175,388.041325393653,664.029270770348,nvss,GBD
+1998,Black or African American,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,C,272.393250913768,157.16022823771,427.477578460326,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,A,221.002001964717,181.425773515859,274.950146381552,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,B,166.652455279777,127.808903395883,219.303188162766,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,C,89.3784831643093,51.5822601324802,140.389576110695,nvss,GBD
 1998,Black or African American,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,A,14.2360654695972,11.7026928642141,17.7284548172783,nvss,GBD
 1998,Black or African American,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,B,10.7289898676557,8.20307394393285,14.148113313627,nvss,GBD
 1998,Black or African American,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,C,5.75054854498753,3.31624898250507,9.0749583733457,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,A,17.6776446881731,14.5119968732335,21.9928821978284,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,B,13.330299565874,10.2232575367266,17.5417589201019,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,C,7.14926133745506,4.12599369566109,11.2295681593161,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,A,5687.33606735925,4659.8417921094,7034.39640347901,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,B,4298.84048747108,3282.88816213417,5632.88632299795,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,C,2311.37280886082,1335.67875913535,3619.77200503829,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,A,347.761551249596,284.97445549624,430.294137421553,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,B,262.663917447858,200.27410869198,345.342326338712,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,C,141.095267314407,81.306250771148,221.619017146214,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,A,454.92215150639,372.734304538838,562.671646007611,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,B,343.858309124181,262.593686777926,450.566791710443,nvss,GBD
+1998,Black or African American,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,C,184.883516410269,106.839097888825,289.540559761439,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,A,10.0138361219968,8.06177111196997,12.5143212955234,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,B,7.78963109760913,5.89542109439949,10.2976677996686,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,C,4.19342358661971,2.41100373579837,6.63152186103508,nvss,GBD
 1998,Black or African American,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,A,0.66378340201129,0.533809157828343,0.828950659193113,nvss,GBD
 1998,Black or African American,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,B,0.516219618364238,0.389862698902558,0.682616644954821,nvss,GBD
 1998,Black or African American,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,C,0.277787585593121,0.159314840835283,0.439633254972267,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,A,0.894378896083318,0.720031550322829,1.11770801211099,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,B,0.695725551836445,0.526545486277034,0.919729127448898,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,C,0.374532747742114,0.215337142869692,0.5922898207208,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,A,262.639921905176,211.12981485196,329.585155014591,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,B,204.717592982938,154.397205187664,270.805919149654,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,C,110.567933953899,63.1486234831806,175.581524124657,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,A,17.0294674487726,13.7006978670282,21.3708616254872,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,B,13.2727642931783,10.0098118807821,17.5275265970833,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,C,7.16733905680921,4.09063460525878,11.3699542315229,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,A,23.4575042530375,18.8569144169216,29.4366717725575,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,B,18.2842112243798,13.7898803467294,24.1868446888065,nvss,GBD
+1998,Black or African American,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,C,9.87529908689805,5.64007593813171,15.6819432439368,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,A,6691.6248379904,5534.06212966909,8248.5112683253,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,B,4897.45155969769,3762.33407127425,6449.44665892046,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,C,2615.01158389951,1511.32702252954,4095.59699219681,nvss,GBD
 1998,Black or African American,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,A,27.982001353645,23.1308194830234,34.5232414985275,nvss,GBD
 1998,Black or African American,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,B,20.4624136240312,15.6656716830873,26.9806783762534,nvss,GBD
 1998,Black or African American,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,C,10.9165108326708,6.31611317794884,17.1294429750968,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,A,33.2263042650945,27.4785925084142,40.9568007428437,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,B,24.3175939455305,18.6813307119937,32.0238032195396,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,C,12.9844653050641,7.50427776666966,20.3360999913445,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,A,172845.896499906,142450.456570611,212638.580178186,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,B,126827.130860791,96960.4999376337,166018.090209725,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,C,67900.3319668724,39247.5786619989,107013.656647068,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,A,670.975573445216,553.473996715179,828.092913870449,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,B,491.851557262457,376.729650852945,646.038737913166,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,C,263.057351764326,151.69474352886,414.695270636021,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,A,858.241531335404,707.317329842742,1055.82640009745,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,B,629.741944755398,481.443468607692,824.339037583405,nvss,GBD
+1998,Black or African American,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,C,337.149368689019,194.878227913839,531.36097769397,nvss,GBD
+1998,White,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,A,15632.584040092,12602.9666580832,19450.9760132343,nvss,GBD
+1998,White,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,B,11906.852291685,8951.89003266122,15706.0837753481,nvss,GBD
+1998,White,All Origins,666,1,A,us,Deaths,absolute number,attributable,25,150,C,6527.02368396107,3741.62903879238,10325.9702356138,nvss,GBD
 1998,White,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,A,26.8869351132758,21.7080303984498,33.4643437760238,nvss,GBD
 1998,White,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,B,20.4870346190919,15.4209635672073,27.0070396642988,nvss,GBD
 1998,White,All Origins,666,1,A,us,Deaths,age-adjusted rate,attributable,25,150,C,11.2350710057483,6.44029691566621,17.7577275671656,nvss,GBD
+1998,White,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,A,42.9313549607721,34.6111963172124,53.4177045468621,nvss,GBD
+1998,White,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,B,32.6994757161594,24.584340476043,43.1332053532415,nvss,GBD
+1998,White,All Origins,666,1,A,us,Deaths,crude rate,attributable,25,150,C,17.9249937115227,10.2755375556569,28.3579408473082,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,A,324805.480111748,262264.95024764,406488.074733486,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,B,248515.575520788,187509.642514316,329497.114337797,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,absolute number,attributable,25,150,C,136908.976101815,79106.302822239,215558.946223855,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,A,569.926877001453,461.103616628535,714.250611126803,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,B,436.277984169838,329.485322365486,578.930064556357,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,age-adjusted rate,attributable,25,150,C,240.466997942715,138.967453026316,377.915079274284,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,A,892.004759041707,720.251344497771,1116.32752326476,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,B,682.491797811614,514.952806311746,904.889270891317,nvss,GBD
+1998,White,All Origins,666,1,A,us,YLL,crude rate,attributable,25,150,C,375.98952516543,217.247561720186,591.983872376602,nvss,GBD
+1998,White,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,A,7618.50120063901,6099.81048372424,9604.88051954302,nvss,GBD
+1998,White,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,B,5971.3766164432,4479.66841819831,7901.73512645184,nvss,GBD
+1998,White,All Origins,666,2,A,us,Deaths,absolute number,attributable,25,150,C,3282.62685050021,1880.83145124316,5188.04179426227,nvss,GBD
 1998,White,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,A,14.0439416236454,11.2423752454984,17.6816580267654,nvss,GBD
 1998,White,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,B,11.0078228238955,8.26321820750283,14.5437837022164,nvss,GBD
 1998,White,All Origins,666,2,A,us,Deaths,age-adjusted rate,attributable,25,150,C,6.05052943632248,3.4697311978056,9.55612311182756,nvss,GBD
+1998,White,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,A,21.459977770966,17.1820931624777,27.0552589037972,nvss,GBD
+1998,White,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,B,16.8203175501487,12.6184379504687,22.2577979185059,nvss,GBD
+1998,White,All Origins,666,2,A,us,Deaths,crude rate,attributable,25,150,C,9.24658241652598,5.29797135573419,14.6138011463951,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,A,158093.979893085,126206.090261982,199641.386909442,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,B,123983.245923029,93117.7762958352,165897.060420929,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,absolute number,attributable,25,150,C,68427.933535514,39207.1374314197,108707.78912282,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,A,288.759777781222,230.503374226727,364.484882302261,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,B,226.457395988811,170.082241716248,303.067937620826,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,age-adjusted rate,attributable,25,150,C,124.973186932927,71.6012578959727,198.413728126508,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,A,445.322932277624,355.500356337214,562.354669561789,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,B,349.238994837627,262.296396202287,467.302837545413,nvss,GBD
+1998,White,All Origins,666,2,A,us,YLL,crude rate,attributable,25,150,C,192.749452144485,110.439609522002,306.21072001812,nvss,GBD
+1998,White,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,A,6820.80763941538,5373.65592344068,8670.48709250701,nvss,GBD
+1998,White,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,B,5621.80827217237,4176.37948741444,7495.36528780901,nvss,GBD
+1998,White,All Origins,666,3,A,us,Deaths,absolute number,attributable,25,150,C,3174.01443543319,1810.00579006945,5043.02455711336,nvss,GBD
 1998,White,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,A,13.8959708065755,10.9523769095865,17.6544594529296,nvss,GBD
 1998,White,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,B,11.4544977630791,8.53292527366659,15.2631915328392,nvss,GBD
 1998,White,All Origins,666,3,A,us,Deaths,age-adjusted rate,attributable,25,150,C,6.46853358950287,3.69179887241029,10.2627182982979,nvss,GBD
+1998,White,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,A,23.0465495205087,18.1568274451976,29.2963561953671,nvss,GBD
+1998,White,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,B,18.9952993236049,14.111398790508,25.325784923411,nvss,GBD
+1998,White,All Origins,666,3,A,us,Deaths,crude rate,attributable,25,150,C,10.7245482840343,6.1157549484592,17.0396705687798,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,A,143509.696168209,112717.460493241,183958.412473176,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,B,118572.178333586,88293.2089867415,158773.300045594,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,absolute number,attributable,25,150,C,67213.9018500983,38481.4450034872,106300.924010757,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,A,295.401444110988,232.06380291044,378.39153679593,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,B,244.129897308118,181.863518694457,327.166339662461,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,age-adjusted rate,attributable,25,150,C,138.453537179635,79.6523875177634,218.808330387886,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,A,484.899075631646,380.856442875159,621.569598045519,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,B,400.638710865889,298.3303328302,536.472645979648,nvss,GBD
+1998,White,All Origins,666,3,A,us,YLL,crude rate,attributable,25,150,C,227.106319272724,130.023389425129,359.175868724504,nvss,GBD
+1998,White,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,A,1794.29950844114,1395.30314578296,2310.39651279062,nvss,GBD
+1998,White,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,B,1480.87916713201,1086.12833521229,2000.87282270423,nvss,GBD
+1998,White,All Origins,666,4,A,us,Deaths,absolute number,attributable,25,150,C,857.653231112497,481.200363604141,1376.13099394698,nvss,GBD
 1998,White,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,A,7.52484428543413,5.85851847551659,9.68604864194396,nvss,GBD
 1998,White,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,B,6.21134737813658,4.56334523168037,8.37961400363675,nvss,GBD
 1998,White,All Origins,666,4,A,us,Deaths,age-adjusted rate,attributable,25,150,C,3.5983111626905,2.02090213773295,5.77416475667375,nvss,GBD
+1998,White,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,A,12.8193108302644,9.96869510585624,16.5065480424465,nvss,GBD
+1998,White,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,B,10.5800900330297,7.75980635626454,14.2951667352115,nvss,GBD
+1998,White,All Origins,666,4,A,us,Deaths,crude rate,attributable,25,150,C,6.12747387071602,3.43791936834278,9.83172032961954,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,A,38116.8886739789,29567.6764498534,49380.2805135457,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,B,31510.8597061866,23133.2488256848,42800.6645334584,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,absolute number,attributable,25,150,C,18302.3323825123,10348.0350235822,29221.9606982277,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,A,162.230232730261,126.232728109025,210.475889878952,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,B,134.152551322511,98.7279599643878,182.475296003986,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,age-adjusted rate,attributable,25,150,C,77.9611244056697,44.1188276693292,124.514769034496,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,A,272.324793879499,211.245242589773,352.795707634535,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,B,225.128248211695,165.274696791252,305.787868644604,nvss,GBD
+1998,White,All Origins,666,4,A,us,YLL,crude rate,attributable,25,150,C,130.760381210869,73.9311786163341,208.775288349604,nvss,GBD
+1998,White,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,A,173.00196360041,131.964079947131,227.410992385289,nvss,GBD
+1998,White,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,B,144.750002981013,103.748211103647,199.303922537563,nvss,GBD
+1998,White,All Origins,666,5,A,us,Deaths,absolute number,attributable,25,150,C,86.2975293178825,47.1147325513142,141.224641649144,nvss,GBD
 1998,White,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,A,0.678218392479254,0.517599552816791,0.891136409672731,nvss,GBD
 1998,White,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,B,0.567503139929686,0.407467896104065,0.780771604771561,nvss,GBD
 1998,White,All Origins,666,5,A,us,Deaths,age-adjusted rate,attributable,25,150,C,0.338419528180456,0.184759327585828,0.552848126606344,nvss,GBD
+1998,White,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,A,1.19803548584297,0.913848879764435,1.57481703142759,nvss,GBD
+1998,White,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,B,1.00239116677124,0.718454495591648,1.38017607834327,nvss,GBD
+1998,White,All Origins,666,5,A,us,Deaths,crude rate,attributable,25,150,C,0.59760883814126,0.326268675382489,0.977978102964904,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,A,3621.72139438936,2750.61131168284,4779.03764908845,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,B,3030.21246343145,2176.63969369289,4186.61527003543,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,absolute number,attributable,25,150,C,1808.51895369903,989.972772048281,2950.64713686597,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,A,14.5103425316629,11.0289792983762,19.1556442928834,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,B,12.1422252772877,8.72280282426509,16.8003836075971,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,age-adjusted rate,attributable,25,150,C,7.25020436534823,3.98868920054483,11.8133163852894,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,A,25.080355505889,19.0479338533318,33.094749751002,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,B,20.9841667995144,15.073190723786,28.9922354330007,nvss,GBD
+1998,White,All Origins,666,5,A,us,YLL,crude rate,attributable,25,150,C,12.5239612213621,6.8555436380571,20.4331783443296,nvss,GBD
+1998,White,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,A,44202.8393148594,34966.5788108492,56082.418824073,nvss,GBD
+1998,White,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,B,35424.7971959462,26241.2479766229,47411.0213549663,nvss,GBD
+1998,White,All Origins,666,666,A,us,Deaths,absolute number,attributable,25,150,C,20000.7436832453,11313.9248848544,31904.4676025213,nvss,GBD
 1998,White,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,A,18.5178851370105,14.6503990357194,23.4992393450553,nvss,GBD
 1998,White,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,B,14.8416755276843,11.0122217825157,19.8586980801381,nvss,GBD
 1998,White,All Origins,666,666,A,us,Deaths,age-adjusted rate,attributable,25,150,C,8.38074174641203,4.74225949028532,13.3516498354265,nvss,GBD
+1998,White,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,A,29.4636012120037,23.3071302613049,37.3819883258399,nvss,GBD
+1998,White,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,B,23.6125577853229,17.4912217783396,31.602029369795,nvss,GBD
+1998,White,All Origins,666,666,A,us,Deaths,crude rate,attributable,25,150,C,13.3315855940626,7.54134748167306,21.2660662729413,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,A,930715.477451303,734103.594045523,1191490.78682414,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,B,747278.780763193,554959.81154909,1003872.40959742,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,absolute number,attributable,25,150,C,423205.621881406,240482.624265289,673612.730900896,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,A,393.392287584938,310.208395811127,503.474245750783,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,B,315.900774466491,234.552519952416,424.554599790345,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,age-adjusted rate,attributable,25,150,C,178.946246134566,102.044969508198,284.727765050982,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,A,620.372584533193,489.320049990202,794.193539032723,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,B,498.102029911855,369.91095661754,669.135666454094,nvss,GBD
+1998,White,All Origins,666,666,A,us,YLL,crude rate,attributable,25,150,C,282.089609334214,160.294774036986,448.999593289041,nvss,GBD

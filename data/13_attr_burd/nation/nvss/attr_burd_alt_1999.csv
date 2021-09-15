@@ -1,211 +1,1261 @@
 Year,nation,Race,Hispanic.Origin,Gender.Code,Education,rural_urban_class,source,measure1,measure2,scenario,lower,mean,upper,method,attr,min_age,max_age
+1999,us,All,All Origins,A,666,1,nvss,Deaths,absolute number,A,32224.9943905217,132179.421777296,259590.600341171,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,absolute number,B,25440.1777711071,106885.754249715,214429.153919961,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,absolute number,C,17719.8776380459,76165.0148897281,155976.345383621,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,43.7600127114046,179.4933804197,352.511712896745,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,34.5465538070498,145.145780568742,291.184612401148,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,24.0627526971268,103.428474784131,211.808473073723,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,crude rate,A,64.5859642381585,264.916583210947,520.276560083074,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,crude rate,B,50.9877020248727,214.222519882615,429.763105583864,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,crude rate,C,35.5145254508406,152.651413007341,312.610843088563,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,absolute number,A,681875.611288998,2796894.94843574,5492894.65026494,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,absolute number,B,538310.001198221,2261685.08003051,4537285.82960939,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,absolute number,C,374949.712945883,1611639.25918462,3300433.96024184,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,917.200236398547,3762.14175344646,7388.56792694413,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,724.088165320009,3042.22361926339,6103.16539648418,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,504.350001170191,2167.83807052283,4439.45898406478,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,crude rate,A,1366.62844101338,5605.59157678825,11008.9669263163,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,crude rate,B,1078.89143641426,4532.91348717168,9093.71703151167,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,crude rate,C,751.481550561677,3230.07893491289,6614.79431596984,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,absolute number,A,16377.8397693396,68029.8917248589,135103.312448061,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,absolute number,B,14277.447798268,60070.4277300396,120665.846654379,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,absolute number,C,10157.0174236385,43663.7534172102,89429.1682956759,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,27.3698716720191,113.688339402152,225.778269676968,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,23.8597958916473,100.3868594033,201.651059275142,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,16.9739274147666,72.9688008051573,149.449798902675,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,crude rate,A,39.5880605329913,164.43996947011,326.567983734593,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,crude rate,B,34.5110512530828,145.200573623353,291.670141416386,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,crude rate,C,24.5512611104182,105.542815030716,216.165707917842,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,absolute number,A,335313.817124279,1392818.77183328,2766055.11112044,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,absolute number,B,292311.170914754,1229859.65805794,2470467.79111604,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,absolute number,C,207951.007634957,893955.493184581,1830939.62364988,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,545.206486600578,2264.6660837752,4497.49193698929,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,475.285951098955,1999.70126173785,4016.87910210705,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,338.119792467972,1453.53489395818,2977.03258383161,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,crude rate,A,810.511268690937,3366.68294643145,6686.03177945496,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,crude rate,B,706.566463686282,2972.78269148952,5971.54629895676,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,crude rate,C,502.653414253127,2160.84445057544,4425.69653105271,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,absolute number,A,16015.6728807981,66733.9338335905,132913.609161355,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,absolute number,B,14222.0940268747,59944.2179720367,120610.411303652,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,absolute number,C,10365.9093588693,44583.0399103935,91352.0208769612,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,29.2450609108233,121.858005861378,242.703920386735,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,25.9699363986186,109.459797218119,220.237941378269,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,18.928436716491,81.4098619192173,166.811312565995,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,crude rate,A,46.3322601008545,193.056764017589,384.51009560707,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,crude rate,B,41.1435575973834,173.414574541705,348.917775043452,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,crude rate,C,29.9878757621755,128.97572375443,264.275227367103,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,absolute number,A,328340.351314113,1368125.05116563,2724887.14344242,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,absolute number,B,291569.850605845,1228927.79683244,2472656.94762412,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,absolute number,C,212513.476387375,914005.368102914,1872825.12893713,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,601.559937215344,2506.57348872295,4992.32863815744,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,534.191854039112,2251.54698576014,4530.21187379084,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,389.350845856603,1674.57033425804,3431.24615195694,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,crude rate,A,949.866463427252,3957.89338311848,7882.91449351564,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,crude rate,B,843.491888001407,3555.20512636578,7153.22957019567,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,crude rate,C,614.787136088535,2644.15580685931,5417.95662556062,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,absolute number,A,7582.96877293814,31646.6291396949,63122.1040979008,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,absolute number,B,6785.81838278211,28628.710725044,57653.1941733956,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,absolute number,C,5005.15574962134,21533.9968190574,44137.3127775407,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,29.2434746351659,122.04420514534,243.428359706938,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,26.1692898517426,110.405700062106,222.337684873879,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,19.3022218067758,83.0451645824002,170.214123956399,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,crude rate,A,47.9770423570723,200.226548751223,399.370214048647,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,crude rate,B,42.9335140004793,181.132338561855,364.76871021134,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,crude rate,C,31.6673557011476,136.244458923793,279.254443485586,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,absolute number,A,154027.270942364,642814.716355956,1282152.90362753,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,absolute number,B,137835.341000023,581513.957872775,1171066.95616756,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,absolute number,C,101666.049780784,437404.249158712,896528.79201031,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,602.521228419808,2514.55154775838,5015.50366885843,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,539.181915454915,2274.75629540873,4580.95957082789,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,397.695504359281,1711.03041628107,3507.02590373044,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,crude rate,A,974.522396626299,4067.05471139762,8112.11360715475,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,crude rate,B,872.076912285283,3679.20805472087,7409.27869300051,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,crude rate,C,643.235719764011,2767.43354976521,5672.29024892153,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,absolute number,A,7122.8246863519,29836.2156463519,59711.5223478475,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,absolute number,B,6484.95432147572,27412.7416667118,55304.5758147348,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,absolute number,C,4889.39023323066,21056.9557279995,43199.0357963453,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,25.7465678811319,107.847684771296,215.836670297437,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,23.4408853223409,99.0876576651235,199.907070305917,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,17.6734684735995,76.1136717375248,156.149695732537,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,crude rate,A,44.1858579363664,185.086513280971,370.415524711934,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,crude rate,B,40.2288815168509,170.052691490854,343.07739384113,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,crude rate,C,30.3309307408544,130.625095427734,267.981670578354,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,absolute number,A,142393.521191608,596460.532442521,1193702.54038586,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,absolute number,B,129641.753273954,548012.478661496,1105602.57131664,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,absolute number,C,97744.577811047,420952.951071622,863598.795420361,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,530.874606030118,2223.73705996674,4450.38763380088,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,483.333189027284,2043.11197780926,4121.93142329709,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,364.413449451786,1569.40589843728,3219.68771086117,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,crude rate,A,883.326513775788,3700.09392504829,7405.03566918247,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,crude rate,B,804.221968815332,3399.55040250959,6858.51474680883,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,crude rate,C,606.350460581258,2611.34705864442,5357.26419907227,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,absolute number,A,5069.14802761905,21252.8102392948,42567.0718969199,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,absolute number,B,4655.23006642452,19677.773549937,39698.6735846907,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,absolute number,C,3507.81234045884,15107.5234061158,30994.6653592678,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,22.2972767711722,93.4831236903801,187.236549071503,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,20.4766072442559,86.5551293220924,174.619543075768,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,15.4295479615893,66.4523168149314,136.333882573569,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,crude rate,A,41.548083622366,174.193677561088,348.891027268577,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,crude rate,B,38.1555020739855,161.284258518443,325.380872842345,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,crude rate,C,28.7509616327787,123.825274461155,254.040509603932,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,absolute number,A,99575.7042525737,417479.137597425,836165.394857606,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,absolute number,B,91444.9153578382,386539.937023299,779820.072041836,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,absolute number,C,68905.6390312435,296764.323014415,608843.066804575,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,465.212995600899,1950.44284808619,3906.52530232505,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,427.226333224663,1805.89636168547,3643.28261062652,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,321.923896879599,1386.46892566105,2844.48610316179,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,crude rate,A,816.148919798881,3421.76989604269,6853.43366545762,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,crude rate,B,749.506814444355,3168.18399054947,6391.61243409413,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,crude rate,C,564.768919140709,2432.35921333492,4990.23948692533,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,absolute number,A,83947.88056855,348022.318433929,690055.759108423,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,absolute number,B,71794.1870497932,302334.387719218,607817.920820087,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,absolute number,C,51631.2915074283,222052.777190353,454974.752928772,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,30.7573513491356,127.510601255409,252.82695989044,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,26.304404839773,110.771170457513,222.696144564349,EPA,attributable,25,150
 1999,us,All,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,18.9169966263395,81.3570901354438,166.696505451252,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,crude rate,A,46.5320400077393,192.907650976727,382.49568628697,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,crude rate,B,39.7952868077013,167.582978030973,336.911517211277,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,crude rate,C,28.6190587040857,123.083139706115,252.191041184241,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,absolute number,A,1728378.97727909,7165332.28392761,14207361.2712527,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,absolute number,B,1478150.04675881,6224676.5052721,12514189.8669029,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,absolute number,C,1063021.93940843,4571781.31649014,9367345.46279229,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,628.923354675126,2607.32447953286,5169.78129753939,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,537.869933817548,2265.03821264138,4553.66929105107,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,386.81292298434,1663.58193440567,3408.59407011223,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,crude rate,A,958.034904211938,3971.72062291917,7875.09462539078,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,crude rate,B,819.333813401725,3450.3181523688,6936.57516553583,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,crude rate,C,589.229639612712,2534.12366917162,5192.28944064925,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,absolute number,A,75.8151812190642,310.463900835954,608.938248357747,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,absolute number,B,59.2980268396817,249.322313859587,500.519383139335,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,absolute number,C,41.7652746662814,179.53954793298,367.712996284846,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,29.5880536975135,121.163366246282,237.647622826604,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,23.1419772936969,97.3019109345714,195.335474331743,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,16.299548054191,70.0681011329235,143.505716195713,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,crude rate,A,26.1474221057441,107.073946579347,210.012891351353,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,crude rate,B,20.4509243779928,85.9872083142652,172.620989261185,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,crude rate,C,14.4041635000009,61.9202680649617,126.81822786714,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,absolute number,A,2319.38899898928,9497.92039804741,18629.0483198056,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,absolute number,B,1814.08510673249,7627.43586007639,15312.2254984779,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,absolute number,C,1277.71136391322,5492.59456567191,11249.3232180523,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,695.332721989885,2847.3942260205,5584.82724628606,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,543.846994072701,2286.63917122195,4590.47250815591,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,383.046794209312,1646.63225176966,3372.44961373918,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,crude rate,A,799.919517553593,3275.67816605118,6424.85557660019,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,crude rate,B,625.648428965974,2630.57849115523,5280.93736701854,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,crude rate,C,440.661854583079,1894.30647338776,3879.70849448285,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,absolute number,A,24.0093409402114,100.237185248988,199.998993016052,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,absolute number,B,21.4722904213686,90.6273535145829,182.575584257725,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,absolute number,C,15.9976698980666,68.8100142587822,141.003367155742,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,19.3526630874929,80.7959068844477,161.208637059882,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,17.3076805096963,73.0499285026771,147.164546454677,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,12.8948777266805,55.464122331051,113.65537544585,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,crude rate,A,15.4688500440607,64.581280732218,128.856283045528,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,crude rate,B,13.8342673152838,58.3898135687359,117.630648072452,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,crude rate,C,10.3070532974571,44.3332365827701,90.8463063468247,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,absolute number,A,665.270786711259,2777.45529351999,5541.73843241186,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,absolute number,B,594.972080936711,2511.1780835778,5058.95613194349,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,absolute number,C,443.27674237859,1906.64510256856,3907.03856595786,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,408.490307466191,1705.41618463702,3402.74438825711,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,365.325418055853,1541.9163563968,3106.30586382938,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,272.181277765067,1170.72034385778,2399.00416036618,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,crude rate,A,428.623762058174,1789.47183708763,3570.45705702042,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,crude rate,B,383.331384369591,1617.91351564083,3259.4078271199,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,crude rate,C,285.596404872151,1228.42219002685,2517.24501075089,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,absolute number,A,59.8790287453105,250.688246897415,501.481461999608,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,absolute number,B,54.4368542335499,230.117360540814,464.258644599356,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,absolute number,C,41.2369536164892,177.521700533506,364.054933626695,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,25.4521659893133,106.557487743197,213.159593247029,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,23.1389165609484,97.8136315874387,197.337671166583,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,17.5281698840631,75.4573326147651,154.74510515705,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,crude rate,A,23.681475732049,99.1443542022377,198.330222137182,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,crude rate,B,21.5291575276572,91.0088023028802,183.609020651235,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,crude rate,C,16.3087467648513,70.2078161784736,143.979591126693,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,absolute number,A,1753.7665115383,7342.28095306845,14687.636266663,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,absolute number,B,1594.37342169262,6739.79069294222,13597.4360414835,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,absolute number,C,1207.76822546776,5199.34307537305,10662.6203586309,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,583.069099821426,2441.06448479652,4883.15109232869,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,530.076192953479,2240.75648979732,4520.69573710415,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,401.542809366748,1728.60883514158,3544.9670257367,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,crude rate,A,693.594735133827,2903.78871954554,5808.79331375899,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,crude rate,B,630.556578568332,2665.51066505902,5377.63150775385,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,crude rate,C,477.658614721514,2056.28112950457,4216.94524032749,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,absolute number,A,33.1946446021694,140.448592593448,283.670545168736,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,absolute number,B,31.3151248208296,133.32283733115,270.739628845125,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,absolute number,C,25.6374300748468,110.668974253053,227.523417207027,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,22.8698407093277,96.763709295791,195.438157560908,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,21.5749234561253,91.8543364214758,186.529250714913,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,17.6632089011718,76.2466910842174,156.754933560173,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,crude rate,A,22.4665925265449,95.0575413154896,191.99213085331,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,crude rate,B,21.1945076592714,90.2347320388544,183.240308638638,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,crude rate,C,17.3517656785435,74.9022855846911,153.990981554394,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,absolute number,A,985.492781142398,4169.68085609228,8421.69807319605,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,absolute number,B,929.693021912451,3958.12925024307,8037.80106682043,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,absolute number,C,761.131880416437,3285.57442111278,6754.78493249845,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,544.672405114725,2304.54260437697,4654.59172553282,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,513.832413542827,2187.62006149421,4442.41553329673,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,420.670287848624,1815.90546006479,3733.30482538057,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,crude rate,A,666.995083608479,2822.09741608253,5699.92121499377,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,crude rate,B,629.229038250168,2678.91637637229,5440.09443516923,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,crude rate,C,515.14453675342,2223.72200755405,4571.73144950525,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,absolute number,A,56.6010963261381,240.385506618734,487.185231294334,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,absolute number,B,54.1649498926779,231.072835375386,470.148569182453,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,absolute number,C,44.2408222779266,191.526606395911,394.80066633888,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,22.6373564253338,96.1411129116199,194.847563771933,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,21.6630305076735,92.4165515180929,188.033826626235,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,17.6939198612799,76.6002133410384,157.898768415645,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,crude rate,A,23.6929628153529,100.624285382213,203.933533420187,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,crude rate,B,22.6732029413012,96.7260433374138,196.80206374708,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,crude rate,C,18.5190080261307,80.1721708240745,165.261772548458,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,absolute number,A,1557.31742253044,6613.9449918797,13404.3701966922,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,absolute number,B,1490.28951086593,6357.71700127685,12935.6250229994,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,absolute number,C,1217.23796520654,5269.64564961516,10862.5096689557,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,514.934753501776,2186.93381631471,4432.22169303465,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,492.771641042261,2102.21075647316,4277.22876931945,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,402.485789023132,1742.43455082982,3591.74286363897,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,crude rate,A,651.886026572878,2768.5674470413,5611.00871268444,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,crude rate,B,623.828446035791,2661.31156954689,5414.79410393931,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,crude rate,C,509.530304517376,2205.84982501057,4546.99739710037,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,absolute number,A,42.5028317776228,182.04744783227,371.7948678168,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,absolute number,B,41.2466583132657,177.265192646831,363.081499487423,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,absolute number,C,36.3317138946985,157.669458069071,325.726430715074,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,16.2872973234857,69.761490842288,142.473649453787,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,15.8059253807666,67.9289067808412,139.134643210341,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,13.9224941427624,60.419723463128,124.819994369582,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,crude rate,A,18.450018023411,79.0248214800061,161.392117309304,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,crude rate,B,17.9047267548391,76.9488964022245,157.609738677152,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,crude rate,C,15.771202720933,68.4426006797826,141.394308709531,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,absolute number,A,1222.5922522219,5236.58753894334,10694.6644681685,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,absolute number,B,1186.45847287739,5099.02616024612,10444.0247774771,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,absolute number,C,1045.0802937085,4535.35564067429,9369.50772173742,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,397.014640236902,1700.48674369097,3472.89814618722,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,385.280851329937,1655.8161831057,3391.50745648827,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,339.370854077726,1472.77441416494,3042.57754830537,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,crude rate,A,530.714028815668,2273.14582191065,4642.43778448493,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,crude rate,B,515.028747334935,2213.43192026833,4533.63781475978,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,crude rate,C,453.658014028731,1968.74866481425,4067.20162178834,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,absolute number,A,308.091044239204,1287.72685175735,2572.98732360325,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,absolute number,B,272.498224793103,1154.70478373015,2334.88153963271,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,absolute number,C,210.106621388849,906.147618412819,1861.42023774861,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,22.6018233214836,94.4687466058007,188.756557465352,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,19.9907035512846,84.7101335736253,171.28891287862,EPA,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,15.4136019988222,66.4757666848907,136.555385582593,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,crude rate,A,20.4561056869231,85.5002995639987,170.836840625191,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,crude rate,B,18.0928741360582,76.668126305029,155.02749733968,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,crude rate,C,13.9503024609689,60.1648499584903,123.591418261414,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,absolute number,A,8916.00497738492,37266.1887921238,74461.0017491568,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,absolute number,B,7885.96609350809,33416.5948399161,67570.3361659755,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,absolute number,C,6080.38343571601,26223.4713636837,53868.5963616849,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,509.059851707386,2127.71533756839,4251.35546744915,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,450.249718378707,1907.9225344671,3857.93249282803,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,347.159865652912,1497.23070786857,3075.63081729093,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,crude rate,A,591.989749565431,2474.33708552931,4943.93507963286,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,crude rate,B,523.598977862682,2218.73828702298,4486.4203739689,EPA,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,crude rate,C,403.714968363226,1741.14149607357,3576.67553466849,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,A,876.401729620614,3559.54670237511,6929.55676245364,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,B,639.501354578107,2684.42432422807,5380.92959016292,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,C,438.997455767444,1886.87062716361,3863.95369719262,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,25.6574150658361,104.208793869681,202.868739377671,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,18.7219526559786,78.5888329195352,157.53134580715,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,12.8520284189161,55.2397618813787,113.120570685043,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,A,23.7274376200279,96.3701000142284,187.608741811517,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,B,17.313667905749,72.6772991723552,145.681674137752,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,C,11.8852854747127,51.0845695414912,104.611523708998,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,A,20333.0764077032,82583.7428544468,160770.11530258,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,B,14836.8373383919,62280.3482129761,124840.981941714,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,C,10185.0196196792,43776.5962079705,89646.1783511717,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,490.607113908974,1992.62378821689,3879.14552081896,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,357.990979828692,1502.73285150486,3012.22857869076,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,245.749486232395,1056.2646346135,2163.02992975402,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,A,550.491613356225,2235.84748954747,4352.64189135954,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,B,401.688084958012,1686.15947142951,3379.90730886317,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,C,275.746166988183,1185.19443839004,2427.05375036413,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,A,122.116003469737,506.352822756051,1003.95324327209,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,B,105.270232488352,442.452777476279,887.933072294845,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,C,73.7232344725948,316.910925063929,649.045267764079,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,11.5890936896194,48.054064464838,95.2775055331785,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,9.99039071351414,41.9898010556467,84.2669205718538,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,6.99650698621508,30.0755863070806,61.5959104720136,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,A,8.41373414122137,34.8874669271516,69.1718975326738,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,B,7.2530685903183,30.4847844177355,61.1781633300677,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,C,5.07949553914985,21.8350109254698,44.7189080335249,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,A,3183.99194207739,13202.3916742653,26176.5775653882,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,B,2744.76368747679,11536.2936732805,23151.5253280577,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,C,1922.22295059628,8262.97784966325,16922.8835196561,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,223.034807411821,924.8116634755,1833.63778621493,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,192.26739626355,808.10350166514,1621.73651402656,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,134.649406590239,578.811663746036,1185.4276440777,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,A,219.375519565452,909.638461948766,1803.55365475759,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,B,189.112903229192,794.845107800225,1595.12900471151,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,C,132.440240483952,569.315215585945,1165.97856785027,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,A,183.302416748291,768.921522566673,1541.34839063841,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,B,163.386133585622,693.813658522308,1405.75192724668,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,C,126.582332633179,547.224419656249,1126.5794144305,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,15.3563855365714,64.4173467942634,129.128358221921,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,13.6878744054745,58.1250930555827,117.76859763514,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,10.6045906896191,45.8443991756383,94.380576821941,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,A,17.646664445206,74.0246655452647,148.386793394572,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,B,15.7293085684968,66.7939737873536,135.33281771941,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,C,12.1861783837609,52.6817151743115,108.456665493021,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,A,4107.97191556888,17232.2224442783,34543.0028320066,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,B,3661.63010870055,15548.9877024456,31504.1642103173,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,C,2836.82384929137,12263.7911018285,25247.6572717182,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,304.670254248583,1278.03833650098,2561.90297101376,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,271.567040649443,1153.20020048291,2336.52564260954,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,210.394779026223,909.551581617414,1872.50797187844,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,A,395.477611426801,1658.95928986523,3325.48141328259,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,B,352.507942868157,1496.91298846582,3032.93008520206,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,C,273.103210784967,1180.64458853944,2430.61135693254,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,A,30.6150608260075,128.185316104225,256.461558485863,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,B,27.5653924532868,116.642876990558,235.55076485803,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,C,20.9049355949652,90.1058827598103,184.99676496884,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,16.1533621934154,67.6341572756241,135.316289797821,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,14.5442718808294,61.5440436332523,124.283170342601,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,11.0300285932678,47.5423834121599,97.6094663386474,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,A,13.7546515079238,57.5907512144766,115.222353540301,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,B,12.3845047713256,52.4049954695443,105.827608883756,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,C,9.39211277542433,40.482526662896,83.1148449026786,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,A,736.833161357393,3085.12180463925,6172.43199285931,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,B,663.43475130901,2807.32219645837,5669.15792579624,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,C,503.13307786492,2168.63859353854,4452.44097170254,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,310.981472346863,1302.07999787725,2605.08360612347,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,280.003570127159,1184.83428242883,2392.6760781005,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,212.348023333535,915.276969299881,1879.15897591633,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,A,331.042404637105,1386.07515835022,2773.1335077413,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,B,298.066166007731,1261.26610370611,2547.02389963798,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,C,226.046264858705,974.320066528073,2000.38060591881,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,A,31.4629720738431,133.605384822819,270.773800138841,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,B,29.5877758458101,126.485723952667,257.835733660967,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,C,24.6988800904247,107.004232367294,220.717456745986,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,15.92237378497,67.6132843343888,137.029701036148,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,14.9733987424079,64.0102584876658,130.482171768029,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,12.499289639482,54.1513173112554,111.697834487137,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,A,19.8513647550976,84.297478990166,170.843029706935,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,B,18.6682214645433,79.8053736501406,162.679837867487,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,C,15.5836033724563,67.513648808414,139.260294017953,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,A,715.536912881569,3038.47914863552,6157.98941644268,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,B,672.890842545151,2876.56246295702,5863.74944049548,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,C,561.706642654623,2433.51066497016,5019.59850609253,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,329.96491870217,1401.17373011572,2839.71440268888,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,310.298977115935,1326.50696580964,2704.02766452836,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,259.02714918172,1122.19668094278,2314.75327570486,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,A,451.463524170923,1917.10934805386,3885.34477216356,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,B,424.556253756899,1814.94903148248,3699.69590611397,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,C,354.405280674941,1535.40828032277,3167.08417230002,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,absolute number,A,3.07137264004119,12.9394266973154,26.0321382266169,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,absolute number,B,2.85679535028967,12.1226531272857,24.5441878820128,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,absolute number,C,2.24717400228483,9.69402426705484,19.918032507134,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,8.54603435762653,36.0037019544997,72.4339159588815,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,7.94897724164002,33.731045455293,68.2937231989242,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,6.25271775255307,26.9734331060542,55.4215362613918,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,crude rate,A,7.7527674723413,32.6617373293872,65.7103966635913,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,crude rate,B,7.21113087292611,30.6000351824574,61.9545082110747,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,crude rate,C,5.67232294853393,24.4696833702022,50.2771537784729,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,absolute number,A,80.6940580974072,339.957071977535,683.941390592771,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,absolute number,B,75.056477017255,318.498010627194,644.848527034563,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,absolute number,C,59.0399182213604,254.690735733359,523.30572049869,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,177.490854597338,747.753585014463,1504.36531230425,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,165.09069642745,700.553243034745,1418.37848842649,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,129.861427068357,560.205762471019,1151.03864816005,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,crude rate,A,203.68816882487,858.120598998524,1726.40678530769,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,crude rate,B,189.457770777076,803.953575871798,1627.72846896029,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,crude rate,C,149.028727933877,642.891072792058,1320.92977422563,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,A,1263.25969432168,5179.24539148428,10169.3200765673,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,B,989.223160006708,4161.65261592729,8359.29216825333,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,C,697.314630614179,3000.17804267268,6149.50772277228,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,20.0111822075379,82.0439563554626,161.091276713481,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,15.6701943296307,65.9243615197551,132.41878883406,EPA,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,11.0460977991506,47.5255481805069,97.413793917596,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,A,17.8100270045122,73.019427992485,143.371838740128,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,B,13.9465315583179,58.6729283030461,117.85321729523,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,C,9.83106835253586,42.2979156214087,86.6986409044263,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,A,29494.2469210292,120923.625702366,237430.544729212,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,B,23096.1157649418,97165.1437985721,195170.500890458,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,C,16280.7140839116,70047.3484552615,143577.049147929,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,379.021071732231,1553.9505834536,3051.14349134543,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,296.800748075329,1248.63798137166,2508.07327327537,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,209.218215239478,900.155923784061,1845.06243505403,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,A,415.823711072601,1704.83792756412,3347.40705520089,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,B,325.619860525851,1369.87971889588,2751.6051584387,EPA,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,C,229.533134628272,987.560335527499,2024.21650437114,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,A,5410.6056200884,22148.6012335856,43411.6745124115,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,B,4186.97624728183,17566.7517805912,35196.077186157,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,C,2852.87022176708,12260.2791330267,25103.4598661973,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,48.0363064486683,196.639169618222,385.41646661247,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,37.1727100864614,155.960705897167,312.476951420754,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,25.3282826089336,108.848910257603,222.872923241224,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,A,59.1450791102517,242.11352002411,474.547047711662,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,B,45.7691908755646,192.027842486928,384.73969749652,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,C,31.1856466365291,134.02107456222,274.414034949199,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,A,144679.543271879,592253.388176863,1160827.7671919,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,B,111959.705378978,469734.776999857,941142.772141614,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,C,76285.7228341955,327839.748431539,671266.280155533,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,1154.83773944576,4727.38957086685,9265.77236997904,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,893.666721257911,3749.44125300547,7512.23819827325,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,608.91560560346,2616.82961818372,5358.07354661214,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,A,1581.53885780914,6474.11324288368,12689.3835819473,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,B,1223.86773251678,5134.82269772955,10287.9358838665,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,C,833.903897053489,3583.72227029026,7337.82870746265,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,A,1870.96589312487,7719.76620709547,15238.0472335013,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,B,1546.06006868448,6492.4725963262,13018.8563467635,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,C,1068.40504649585,4591.67430357833,9401.98576498538,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,49.1579191209868,202.829802636064,400.365766270139,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,40.6213154883558,170.583784535149,342.05855365597,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,28.0713662697388,120.642046375429,247.028584278406,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,A,49.3286736461187,203.534350494294,401.756473352964,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,B,40.7624173405187,171.176322902198,343.246725306463,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,C,28.1688747262175,121.061107550274,247.886660644467,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,A,50016.8549077892,206373.8455742,407361.352955034,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,B,41331.0912926176,173564.393149293,348035.339048245,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,C,28561.8569476329,122750.023541222,251344.91204805,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,1095.69759031083,4520.94250459589,8923.88882990482,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,905.422326488294,3802.20003213009,7624.25952293908,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,625.692236947315,2689.03163249012,5506.1041917901,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,A,1318.71196670015,5441.11900427077,10740.2253081153,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,B,1089.70875487541,4576.08625454333,9176.07409109583,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,C,753.043401418581,3236.34753234604,6626.79698469689,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,A,1739.72199508164,7171.86873530227,14145.116755421,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,B,1431.59213065752,6008.88418081806,12043.8767487508,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,C,980.596339310209,4214.71475789511,8630.89878481341,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,44.2701011133599,182.500051721584,359.945871117981,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,36.4292275182306,152.905987862045,306.4763467792,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,24.9528943218405,107.250381971075,219.627482427119,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,A,52.7524631423987,217.467930043272,428.913212797691,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,B,43.4092408562756,182.203502727269,365.198673165165,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,C,29.7339876102478,127.800065499058,261.709153139883,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,A,44926.1523416496,185204.571930117,365280.011427714,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,B,36969.0826090916,155171.945215358,311018.106989582,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,C,25322.678364739,108839.755906466,222882.204598264,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,1026.02378270065,4229.70331445517,8342.2674663939,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,844.300168264982,3543.81797462056,7103.03371174761,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,578.319506338286,2485.68310978725,5090.1853539451,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,A,1362.26661629432,5615.83826735994,11076.1491743922,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,B,1120.98954502951,4705.17838128692,9430.80059456087,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,C,767.843173150219,3300.27741680306,6758.312716863,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,A,760.835204708141,3138.24187147027,6192.69811755905,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,B,629.629625440154,2642.96507258077,5297.75463633688,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,C,432.039725753991,1856.82824567031,3802.17551180964,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,48.3306045656124,199.350826542601,393.379331111223,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,39.9960205069847,167.889312972349,336.529754183308,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,27.4444991672825,117.951471136482,241.52594413769,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,A,59.7383986021416,246.404927989284,486.231270950962,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,B,49.4365472358624,207.517344124388,415.963110281206,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,C,33.9224068357253,145.792341349556,298.534919091863,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,A,18907.838444777,77989.7800985123,153897.368075913,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,B,15647.1929324494,65681.4462557832,131656.747958122,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,C,10736.8025108878,46144.8264638342,94489.4766581702,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,1111.56938806303,4584.92663730269,9047.44367032123,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,919.879907141449,3861.33429449752,7739.94400203926,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,631.203880424419,2712.79959708182,5554.9242211942,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,A,1484.58428675402,6123.51339894359,12083.5395905031,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,B,1228.56860804942,5157.10155486071,10337.275719518,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,C,843.020123331354,3623.14732502504,7419.01792317672,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,A,671.471451973458,2773.49857593482,5479.73509828949,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,B,562.193621309789,2359.97266635363,4730.69611778364,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,C,385.371514098962,1656.61974686149,3392.89606877593,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,43.4164983299081,179.330924548132,354.312769431974,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,36.3507314405472,152.592860092913,305.880852407669,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,24.917636705325,107.114946229684,219.380386270517,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,A,59.0435783557296,243.878246806217,481.842031695618,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,B,49.4346007314813,207.516240092868,415.977814226636,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,C,33.8863448652879,145.669272374861,298.342877125828,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,A,16327.487027514,67440.3385077855,133245.134202774,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,B,13670.2893800011,57385.050372476,115031.516629952,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,C,9370.68639140436,40282.3341884587,82501.5961376,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,1018.88580231345,4208.48617383699,8314.90940631462,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,853.068432351415,3581.00502490249,7178.3232113636,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,584.759877992532,2513.74252017491,5148.35533668756,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,A,1435.70252588979,5930.13880086559,11716.4616584953,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,B,1202.05080913179,5045.96093870675,10114.9086019334,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,C,823.97971584907,3542.09125051821,7254.49971358677,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,absolute number,A,549.200451830975,2271.96247845283,4494.78800922031,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,absolute number,B,469.226604662959,1968.2773003991,3942.85053809281,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,absolute number,C,318.315793919493,1368.1094318617,2801.52637217868,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,37.1046690609206,153.496625140734,303.673496671561,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,31.701535973894,132.979274885789,266.383911165521,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,21.5058129520294,92.4311834396952,189.274623789136,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,crude rate,A,55.5055636069348,229.618452497457,454.270823910845,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,crude rate,B,47.4229164676681,198.92616717477,398.488640359134,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,crude rate,C,32.1709450303366,138.269524065901,283.139425193566,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,absolute number,A,13032.7735095478,53914.6905381273,106663.339227602,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,absolute number,B,11134.9581793654,46708.1047995578,93565.6150202464,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,absolute number,C,7553.77682744775,32465.8515889517,66481.4796999966,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,883.659038030976,3655.56905763432,7232.07716807047,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,754.981771614824,3166.94208835823,6344.01428836279,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,512.167510618754,2201.27689343577,4507.63303417624,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,crude rate,A,1317.17196625981,5448.94905864578,10780.0507816185,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,crude rate,B,1125.36711764312,4720.60733611547,9456.31449976776,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,crude rate,C,763.43098184036,3281.19793859614,6719.02579079994,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,A,11032.7579902658,45338.4632886892,89171.6060135445,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,B,8835.03776580934,37076.2934264557,74299.9532805657,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,C,6037.88975061685,25949.4226734825,53135.2928152169,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,45.291334262047,186.122046504357,366.064497943882,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,36.269321689294,152.204444279203,305.013852624488,EPA,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,24.7865568313791,106.526761236745,218.129348085859,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,A,53.8087353312298,221.123800012492,434.905882217028,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,B,43.0900604546299,180.827718853924,362.374170150756,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,C,29.4478689586718,126.559978734927,259.150333068487,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,A,288394.867634393,1185141.56935416,2330934.25376612,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,B,230946.745071679,969169.517225944,1942191.17382036,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,C,157829.657548597,678314.554140565,1388949.68526269,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,1060.27586603391,4357.14065970401,8569.61621700246,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,849.069410101334,3563.12529983407,7140.41288500453,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,580.256431800721,2493.80495996393,5106.4356397853,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,A,1406.55338557374,5780.14754712118,11368.3835398239,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,B,1126.36860992829,4726.81319480752,9472.41396276041,EPA,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,C,769.763487782849,3308.2614834182,6774.15620542354,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,A,25589.5707378407,105150.375482363,206844.68213783,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,B,20502.7113626113,86179.7468153278,172960.849265391,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,C,14380.8138703848,61815.6451318758,126596.013501914,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,43.4344591308088,178.47699491591,351.087831241158,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,34.8002781239798,146.277197429442,293.575105874618,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,24.4092751191536,104.922788257432,214.877749646698,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,A,70.137632834592,288.203288111264,566.933948138403,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,B,56.1952232961057,236.207301085098,474.062838521802,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,C,39.4159110145653,169.428517035717,346.982948806962,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,absolute number,A,510995.8096441,2099738.28027274,4130462.63661223,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,absolute number,B,409416.777638409,1720915.5225766,3453839.4611053,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,absolute number,C,287169.163653523,1234390.99297297,2527984.27452577,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,889.866564676059,3656.56010268752,7192.93686483439,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,712.973168393651,2996.86446595233,6014.64082129558,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,500.086756717708,2149.61307246135,4402.32314917442,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,crude rate,A,1400.57200818278,5755.10523639734,11321.0524245064,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,crude rate,B,1122.15730074211,4716.80210263708,9466.51768700477,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,crude rate,C,787.092740557913,3383.30264022128,6928.87093241144,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,A,14372.8918882393,59749.3681970024,118744.181539311,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,B,12606.971858851,53054.3054886553,106594.741667722,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,C,8999.63777026069,38689.4074353819,79243.0820947512,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,26.1487607312176,108.702684537915,216.032599106684,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,22.9360029453803,96.5222831126242,193.92898915186,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,16.3731402526401,70.3880656535242,144.167813228694,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,A,40.0163986637448,166.351667866822,330.602535970181,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,B,35.0997986883344,147.711556990095,296.776578520344,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,C,25.0564114476314,107.717414424103,220.625242929861,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,absolute number,A,282824.785943807,1175727.36245392,2336606.85595279,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,absolute number,B,248075.623549126,1043984.2385167,2097534.38830062,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,absolute number,C,177091.753402008,761316.752487247,1559317.90938428,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,510.117040984347,2120.60113875058,4214.42191258017,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,447.441700001393,1882.98259931237,3783.21875839912,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,319.411613542635,1373.14927238297,2812.46438580192,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,crude rate,A,787.428826037188,3273.41047450075,6505.48213924544,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,crude rate,B,690.681675468653,2906.61683201932,5839.86667024421,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,crude rate,C,493.051381677404,2119.6259537613,4341.38707718914,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,A,14073.3212712665,58710.5619071783,117058.053242562,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,B,12616.7501999563,53192.0657331839,107050.322402559,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,C,9243.6659614014,39752.749692792,81447.7639517058,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,28.4174787115174,118.550988141289,236.368847972218,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,25.4763053656576,107.407794255403,216.160790995856,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,18.6652230565374,80.2705272156082,164.462961768938,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,A,47.0774275975527,196.395873733087,391.577220473788,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,B,42.2049729844189,177.935653926337,358.099819158579,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,C,30.9214865948039,132.979071492314,272.455317157264,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,absolute number,A,279681.168933974,1166763.57104809,2326311.787599,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,absolute number,B,250734.519311813,1057093.69064455,2127426.69105655,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,absolute number,C,183700.723623661,790012.200255779,1618623.30788824,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,574.288883393284,2395.79715343423,4776.77851539678,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,514.850705439259,2170.60432619138,4368.39385205932,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,377.205529605306,1622.1872429998,3323.63231913169,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,crude rate,A,935.576593975042,3903.00388094071,7781.87128958858,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,crude rate,B,838.745591860332,3536.14123673524,7116.57000411123,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,crude rate,C,614.507218965282,2642.71250842962,5414.54430805888,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,A,6768.53490674348,28280.7016318333,56467.8185585746,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,B,6105.78946663342,25770.1596834469,51915.7559289958,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,C,4530.27375188547,19491.7290658848,39952.9525112278,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,28.1300796366609,117.534798895921,234.68065908601,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,25.3757048323653,107.10096854529,215.762254136433,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,18.8278502175482,81.0077658509647,166.04475729908,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,A,47.8659904611125,199.996574324265,399.331332662801,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,B,43.1791612799779,182.242425367455,367.139877730845,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,C,32.0373674926216,137.84237362929,282.540855612697,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,absolute number,A,134129.106927997,560426.341215396,1118998.15510855,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,absolute number,B,120995.769325793,510676.025366858,1028791.9134923,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,absolute number,C,89774.4609212771,386259.101579703,791730.250830002,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,570.776347421734,2384.85223203318,4761.81266223879,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,514.888414983127,2173.14349696831,4377.9467715041,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,382.028480394707,1643.69661595089,3369.14865879657,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,crude rate,A,948.53947585859,3963.24496694939,7913.37501488905,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,crude rate,B,855.662624213287,3611.4187332587,7275.45097959534,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,crude rate,C,634.870551650421,2731.56225482589,5598.98902142714,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,A,6389.67988867064,26793.9719810105,53674.6922975295,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,B,5858.41173851955,24774.0160841035,49998.8672641398,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,C,4443.84007167076,19138.271217271,39263.0518647096,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,24.845007893483,104.183066595605,208.703436955718,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,22.7792766496592,96.3288671556412,194.410717514239,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,17.2789941877677,74.4153866461754,152.66662031545,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,A,43.8659838971237,183.94410423329,368.483747078031,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,B,40.2187589147105,170.076844152901,343.248729904602,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,C,30.5075403497025,131.386722286999,269.545960182304,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,absolute number,A,124790.201489944,523285.238147017,1048264.66793675,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,absolute number,B,114414.555032272,483835.577480484,976475.946975658,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,absolute number,C,86788.0250020247,373769.697854037,766805.88678545,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,503.575934179847,2111.65499771744,4230.14670319699,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,461.706253746138,1952.46060996875,3940.45190512848,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,350.222695726156,1508.30291575523,3094.35345213145,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,crude rate,A,856.700971637497,3592.42125272338,7196.47335153184,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,crude rate,B,785.470808567593,3321.59419883396,6703.63444057826,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,crude rate,C,595.811084989115,2565.97761280168,5264.22219391467,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,absolute number,A,4487.60207665349,18838.9613086382,37776.4195378572,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,absolute number,B,4152.59623333152,17563.5765832182,35452.6258842025,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,absolute number,C,3155.73652035217,13592.1215554582,27887.3870323087,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,21.3404733343801,89.5873441065472,179.64308333175,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,19.7473768110793,83.5223425179484,168.592447456877,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,15.006881161158,64.6363698601846,132.616490758985,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,crude rate,A,41.0511675392173,172.332872597842,345.56676394017,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,crude rate,B,37.9866398101717,160.666055632818,324.30943297069,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,crude rate,C,28.8676817582742,124.336438404229,255.105015493711,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,absolute number,A,85808.444237912,360223.997881282,722331.377437876,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,absolute number,B,79402.72248829,335837.080943517,677897.598608105,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,absolute number,C,60341.5446848432,259898.000010777,533240.972400883,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,435.712320494859,1829.1210778699,3667.80546395981,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,403.185779397881,1705.29083874788,3442.18262399087,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,306.398218617989,1319.69250441947,2707.65498117575,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,crude rate,A,784.948567301882,3295.21544826867,6607.65947772009,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,crude rate,B,726.351046340434,3072.13162847426,6201.19329199675,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,crude rate,C,551.985407378162,2377.46488198127,4877.92012814286,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,A,71069.7754522707,295221.416138997,586411.109139963,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,B,61688.095975317,259911.686814716,522779.938123254,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,C,44712.6212114623,192308.129760124,394049.58676841,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,29.3929608112208,122.097353762349,242.527271832892,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,25.5128959671334,107.493994124884,216.210760993171,EPA,attributable,25,150
 1999,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,18.4921974872158,79.5345881670137,162.970601607431,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,A,46.9708792399206,195.115425625847,387.566236379336,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,B,40.7704131349505,171.778795932976,345.511621309843,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,C,29.5511153378325,127.098782602516,260.432165950346,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,absolute number,A,1404913.04119145,5835960.71513172,11592222.0027776,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,absolute number,B,1219455.24620654,5137955.14394572,10334355.8927644,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,absolute number,C,883882.694803558,3801562.58701819,7789603.94631938,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,587.617925930756,2440.94476362096,4848.55450158271,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,510.048480960481,2148.99745157908,4322.44032014006,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,369.692145106778,1590.0388544939,3258.07418719411,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,crude rate,A,928.524121266021,3857.057437637,7661.44055401571,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,crude rate,B,805.952808258451,3395.73706361967,6830.10153855622,EPA,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,crude rate,C,584.168826419825,2512.4989640322,5148.24401738962,EPA,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,absolute number,A,72968.8916616668,95846.9435679543,117872.671935071,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,absolute number,B,62494.9811381748,82348.6768882163,101587.533927554,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,absolute number,C,47442.0089106362,62756.8027988751,77716.6689928512,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,99.3621377438968,130.515305800289,160.507860244867,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,85.0997566599425,112.134642443707,138.33229900181,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,64.6020422796446,85.4562806432786,105.827212029879,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,crude rate,A,146.245680301643,192.098319540358,236.242715266192,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,crude rate,B,125.253663908836,165.044829367801,203.60372305348,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,Deaths,crude rate,C,95.0842024596281,125.778412003742,155.761268518869,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,absolute number,A,1436085.17359909,1886343.22734325,2319826.88353469,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,absolute number,B,1229950.3773885,1620686.72350132,1999322.56025338,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,absolute number,C,933696.045682331,1235103.23357826,1529525.16532156,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,1946.00520012037,2556.13928554252,3143.54277986424,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,1666.67679208017,2196.15441317832,2709.23491899874,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,1265.22952373079,1673.65930615739,2072.62353246859,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,crude rate,A,2878.23000187399,3780.64600246812,4649.44242729671,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,crude rate,B,2465.09061029001,3248.21203990969,4007.08139192256,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,1,nvss,YLL,crude rate,C,1871.33188248083,2475.41806548095,3065.50426143371,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,absolute number,A,38916.1814638296,51201.8875158521,63070.2478436064,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,absolute number,B,35528.9021165835,46827.3779027559,57781.5801995799,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,absolute number,C,27406.0913089575,36254.1556524167,44897.6964384888,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,65.236423627224,85.8313405595087,105.726647678002,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,59.5582203161907,78.4982119855619,96.861087135533,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,45.9416961106337,60.7739857155974,75.2634260242123,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,crude rate,A,94.0671156392122,123.763783925619,152.451655690128,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,crude rate,B,85.8794778475687,113.189840487144,139.668034786562,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,Deaths,crude rate,C,66.2452446105133,87.632540600819,108.525467914651,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,absolute number,A,752141.263923881,989589.701323992,1218972.0097069,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,absolute number,B,686674.600092312,905042.629497342,1116756.81241297,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,absolute number,C,529683.318891178,700691.728458666,867747.268007333,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,1229.93799698191,1618.22523701284,1993.32235034461,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,1122.88372241383,1479.96975076195,1826.17508552772,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,866.163939567713,1145.80521284824,1418.98256071146,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,crude rate,A,1818.05502465114,2392.00880888937,2946.46536954393,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,crude rate,B,1659.81081862899,2187.64396929517,2699.39362657581,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,2,nvss,YLL,crude rate,C,1280.33584324321,1693.69263296355,2097.49465479092,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,absolute number,A,38480.2397383159,50655.6872242096,62430.9572959626,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,absolute number,B,35594.4993200239,46929.4145451825,57926.6214168705,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,absolute number,C,27973.0279126247,37008.0542815441,45836.184673204,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,70.1519674848884,92.3485962468941,113.815675683431,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,64.8910759371605,85.5553599885803,105.603979855131,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,50.9966402996794,67.468078117319,83.5623311781027,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,crude rate,A,111.320734980574,146.543482345567,180.608543475554,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,crude rate,B,102.97248282539,135.763627121477,167.577803956522,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,Deaths,crude rate,C,80.9240807240818,107.061801871268,132.600986927991,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,absolute number,A,743889.057847792,979261.348164845,1206897.52244932,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,absolute number,B,688102.744260483,907226.103807329,1119820.98144764,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,absolute number,C,540766.62517132,715429.187018953,886092.094637749,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,1357.5945094854,1787.14798341863,2202.58307701036,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,1255.78471374828,1655.68395501614,2043.66874331809,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,986.896894772913,1305.65536080417,1617.11447411123,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,crude rate,A,2152.02080929777,2832.93695042216,3491.47303028658,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,crude rate,B,1990.63477135653,2624.54385305798,3239.56647747421,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,3,nvss,YLL,crude rate,C,1564.40132848482,2069.68832489373,2563.40459171649,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,absolute number,A,18338.9671384019,24148.1039319871,29769.5154626708,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,absolute number,B,17054.4960504675,22489.4977188476,27764.578057325,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,absolute number,C,13525.8658679746,17895.8950590451,22166.4983778765,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,70.4823479152863,92.8086652854501,114.41349615136,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,65.5457264892442,86.4341263440416,106.707898846698,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,51.9841044900395,68.77948426909,85.1927395333818,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,crude rate,A,116.029675121971,152.783776365075,188.350149798741,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,crude rate,B,107.902894485317,142.289862579556,175.665016877867,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,Deaths,crude rate,C,85.5774379527689,113.226381510319,140.246262832926,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,absolute number,A,353032.816336212,464861.138359173,573075.670261924,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,absolute number,B,328306.208656853,432932.272453129,534479.783511853,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,absolute number,C,260378.596281897,344503.492801534,426714.399540374,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,1370.27166208747,1804.32530695011,2224.35228356745,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,1274.29710041865,1680.39569437841,2074.54510576561,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,1010.64092455192,1337.16570197408,1656.2614647642,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,crude rate,A,2233.61995677008,2941.15183551961,3625.81945531483,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,crude rate,B,2077.17601779291,2739.13958967542,3381.62532121457,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,4,nvss,YLL,crude rate,C,1647.40160704253,2179.65537788894,2699.79943662471,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,absolute number,A,17419.7031946202,22951.752976962,28311.9381503297,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,absolute number,B,16380.8952531057,21609.7135746188,26688.8831108822,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,absolute number,C,13219.1339101655,17493.8594353944,21673.2096757933,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,62.6159133456873,82.5011172395241,101.768546000083,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,58.8818710763121,77.6770957286655,95.9344010338984,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,47.5167765016564,62.882471317111,77.9053353447203,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,crude rate,A,108.061698068463,142.379314539894,175.630783024982,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,crude rate,B,101.617538321716,134.054083330628,165.562294391064,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,Deaths,crude rate,C,82.0038115097191,108.521720217573,134.44797617926,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,absolute number,A,330584.44376695,435569.562041029,537293.099705715,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,absolute number,B,310870.345214898,410100.853166932,506491.383888617,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,absolute number,C,250867.651529362,331991.752452656,411305.857813315,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,1216.9602315656,1603.43550665698,1977.90412514818,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,1144.38793002099,1509.67911117775,1864.51565838832,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,923.503694906806,1222.14087069225,1514.11502085574,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,crude rate,A,2050.75344564468,2702.02000431481,3333.05361555178,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,crude rate,B,1928.4586544176,2544.0269605874,3141.97770125917,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,5,nvss,YLL,crude rate,C,1556.23687222654,2059.48356949265,2551.50210794288,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,absolute number,A,12390.3406073044,16327.0098990129,20142.2459360278,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,absolute number,B,11715.3034102676,15454.7483081698,19087.1222727055,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,absolute number,C,9448.48483913075,12503.9403016403,15491.2560660101,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,53.9324035456842,71.0678515204688,87.6747274806842,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,50.9941164014651,67.2710903493502,83.0820082807496,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,41.1271581137059,54.4268778100946,67.4300005190376,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,crude rate,A,101.5545225464,133.820509657913,165.09119756075,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,crude rate,B,96.0217383866394,126.67122198285,156.443123770678,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,Deaths,crude rate,C,77.4422913006247,102.485615813756,126.97044926273,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,absolute number,A,231025.323691776,304426.881099188,375564.242722021,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,absolute number,B,218438.850737394,288163.041164907,355890.829893469,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,absolute number,C,176172.660424701,233143.458050389,288843.750181683,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,1054.03338662487,1388.92174821805,1713.4799091533,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,996.608674468768,1314.71936204014,1623.7216366887,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,803.772776641156,1063.6971944519,1317.82503902304,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,crude rate,A,1893.54491431936,2495.16357460683,3078.22428486354,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,crude rate,B,1790.3828389627,2361.86082275808,2916.9757679758,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,6,nvss,YLL,crude rate,C,1443.95791707392,1910.90570610835,2367.44009465889,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,absolute number,A,197866.974628278,260296.940101138,320590.608725804,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,absolute number,B,178647.642420405,235501.225268423,290643.372628394,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,absolute number,C,138985.2876104,183874.215618343,227734.216426112,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,72.5750091787896,95.4735010859724,117.58842734933,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,65.5256103894415,86.3787583429771,106.604174223047,burnett,attributable,25,150
 1999,us,All,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,50.9779792357523,67.4426488367446,83.5299214459585,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,crude rate,A,109.677027189448,144.281756116377,177.702342576155,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,crude rate,B,99.0238132052247,130.537571191134,161.102685994379,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,Deaths,crude rate,C,77.0390975897628,101.920885906795,126.232343188435,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,absolute number,A,3829965.76274286,5038376.77109566,6205437.04973213,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,absolute number,B,3457951.2591744,4558424.32299034,5625770.38652402,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,absolute number,C,2690236.17545485,3559118.19944918,4408084.03502233,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,1397.45332056239,1838.37057174361,2264.20003412214,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,1261.71505669425,1663.24860359408,2052.69498329387,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,981.596105390265,1298.62820040781,1608.39340444872,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,crude rate,A,2122.9376953084,2792.75602789333,3439.65378408636,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,crude rate,B,1916.73125333193,2526.71993066498,3118.34641836286,burnett,attributable,25,150
+1999,us,All,All Origins,A,666,666,nvss,YLL,crude rate,C,1491.18925336432,1972.80776271423,2443.38679292376,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,absolute number,A,153.493404195089,201.600841535071,247.908962156719,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,absolute number,B,130.957183926267,172.583330055829,212.931693052533,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,absolute number,C,100.270502725397,132.642177394548,164.265238760758,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,64.6086601751878,84.8581105492743,104.35018999259,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,55.122682555388,72.6440186922124,89.627508550616,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,42.2060014249634,55.8319323825089,69.1427559727643,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,crude rate,A,52.9373769923453,69.5288491794203,85.4997663143314,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,crude rate,B,45.1650013999918,59.5211817320038,73.4366754574913,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,Deaths,crude rate,C,34.581664481425,45.7461282238301,56.6524074217783,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,absolute number,A,4180.58267368789,5490.84821945321,6752.1071493539,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,absolute number,B,3566.78084630445,4700.52041116854,5799.45797229852,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,absolute number,C,2730.99113655061,3612.67372708138,4473.96690856897,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,1396.66086688464,1834.39808100923,2255.76302649592,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,1191.6002188261,1570.36313468723,1937.49929884922,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,912.377232062799,1206.93224205176,1494.67550068157,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,crude rate,A,1441.81492491626,1893.70418699882,2328.69186485535,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,crude rate,B,1230.12466431399,1621.13298855486,2000.13866811257,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,1,nvss,YLL,crude rate,C,941.874395948533,1245.95237198451,1542.99837268038,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,absolute number,A,55.364433957806,72.9061023959156,89.8828881083054,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,absolute number,B,51.4706169031849,67.8777182083807,83.8040574442075,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,absolute number,C,41.1413700194916,54.4304714820617,67.4156604833678,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,46.5427139361567,61.2893084141217,75.5610280811081,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,43.2693342528915,57.0621425231114,70.4507929275966,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,34.5859404472208,45.7575682166357,56.6737086680185,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,crude rate,A,35.6704554614927,46.9722833320482,57.910165928204,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,crude rate,B,33.1617288676668,43.7325725397111,53.9936685857601,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,Deaths,crude rate,C,26.5067535599387,35.0687177661497,43.4348758358439,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,absolute number,A,1435.47567007862,1890.29181205676,2330.46181117291,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,absolute number,B,1334.51772205904,1759.91708147583,2172.85135808871,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,absolute number,C,1066.70350394426,1411.26011661123,1747.93696039425,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,938.777940443758,1236.22036315192,1524.08444460498,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,872.753070438081,1150.95739171196,1421.00974983798,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,697.606890433806,922.941358964406,1143.12258571025,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,crude rate,A,924.854952813556,1217.88601582348,1501.48079367174,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,crude rate,B,859.809295685357,1133.88757696949,1399.93479662803,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,2,nvss,YLL,crude rate,C,687.260703451971,909.253243201707,1126.16896874187,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,absolute number,A,130.012119157968,171.291749095946,211.284663879449,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,absolute number,B,122.253327437896,161.274779836414,199.178173926432,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,absolute number,C,99.0419841131559,131.057818337457,162.353437828084,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,59.152387900679,77.9336268982596,96.1294414413501,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,55.6223242386239,73.3761467566655,90.6212796295545,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,45.0617211738235,59.6281558821036,73.8669102050937,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,crude rate,A,51.418316382642,67.7439411479024,83.5606846847389,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,crude rate,B,48.3498023856892,63.7823435836322,78.7727054200431,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,Deaths,crude rate,C,39.1699797470975,51.8318785305421,64.2089405673869,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,absolute number,A,3366.81114590923,4435.79393823897,5471.4557836312,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,absolute number,B,3165.88844261732,4176.39316875958,5157.94450810056,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,absolute number,C,2564.80440581066,3393.89071107263,4204.32623971096,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,1237.56890760915,1630.50448053663,2011.19197475853,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,1163.71395119766,1535.15421792757,1895.95182912309,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,942.768111774513,1247.52278575242,1545.42182683265,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,crude rate,A,1331.53556623922,1754.30611855078,2163.89861482496,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,crude rate,B,1252.07291927039,1651.71606062867,2039.90846637446,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,3,nvss,YLL,crude rate,C,1014.35101013415,1342.24522667775,1662.76327291179,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,absolute number,A,72.3812877880078,95.5369154938098,118.0562421246,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,absolute number,B,69.7521473927337,92.1413027642065,113.950790889209,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,absolute number,C,59.947656590994,79.3746244087576,98.3886592037808,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,53.2405616212529,70.2728452600885,86.8370932003458,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,51.3066790460287,67.775178607599,83.8172998786103,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,44.0949173787886,58.3845592023083,72.370465257724,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,crude rate,A,48.9886521988392,64.6606998618717,79.9020901960541,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,crude rate,B,47.2092137784669,62.3625024120047,77.1234642716456,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,Deaths,crude rate,C,40.5733994050078,53.7218387155907,66.5907992706742,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,absolute number,A,1900.7367342231,2508.80483482554,3100.16363300655,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,absolute number,B,1831.6953579027,2419.63585141016,2992.35425005494,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,absolute number,C,1574.22887178822,2084.38215165168,2583.69178685113,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,1152.60652079133,1521.33894186806,1879.93884402092,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,1110.7398387209,1467.26688134206,1814.56324751923,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,954.61219335181,1263.96907923009,1566.75038032388,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,crude rate,A,1286.4447931229,1697.99365615041,2098.23343322734,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,crude rate,B,1239.71663899285,1637.6428603998,2025.26655840941,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,4,nvss,YLL,crude rate,C,1065.45977611331,1410.73854026745,1748.67817640594,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,absolute number,A,130.186860986241,171.958481983917,212.643536787798,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,absolute number,B,126.492645979903,167.181804003277,206.861685626172,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,absolute number,C,108.469706576612,143.718903902,178.267608188444,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,54.348241783586,71.7863621935555,88.7708810513644,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,52.806042449152,69.7922742506745,86.3571701552857,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,45.2821259730915,59.9973736133278,74.4201910900291,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,crude rate,A,54.4956309436379,71.9810424864162,89.0116223369303,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,crude rate,B,52.9492492574466,69.9815466970746,86.5913656022025,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,Deaths,crude rate,C,45.404928372829,60.1600828788346,74.6220141683053,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,absolute number,A,3234.75992067083,4272.6616290392,5283.56536888587,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,absolute number,B,3142.96956217907,4153.97525494067,5139.90340282242,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,absolute number,C,2695.15261972582,3570.99131711968,4429.42482638684,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,1139.02429540703,1504.49044778561,1860.45007021237,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,1106.70305643713,1462.69857854421,1809.86379064752,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,949.017667147604,1257.41816043131,1559.6899354705,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,crude rate,A,1354.05586625811,1788.51682511779,2211.6765565138,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,crude rate,B,1315.63283752344,1738.83524594833,2151.54030755655,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,5,nvss,YLL,crude rate,C,1128.1786916798,1494.8008074429,1854.13719021058,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,absolute number,A,94.4687878000181,124.970921245951,154.77326796751,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,absolute number,B,92.6745605008972,122.652313980316,151.968386634169,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,absolute number,C,84.1396846340016,111.540302822236,138.425026361073,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,37.9201941918802,50.1638870609464,62.1266824071468,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,37.1999833244446,49.2331877282346,61.0007904874724,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,33.7740459559944,44.772776720646,55.5644250642857,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,crude rate,A,41.0078755853103,54.2485206974846,67.185395986867,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,crude rate,B,40.2290209861609,53.2420384455728,65.9678274393304,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,Deaths,crude rate,C,36.5241239949278,48.4184349921467,60.0888017206789,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,absolute number,A,2418.1258292279,3198.89160859098,3961.7448859249,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,absolute number,B,2372.19883602148,3139.54201548796,3889.94809295208,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,absolute number,C,2153.73087148399,2855.10689335106,3543.2775147264,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,836.832634619027,1107.0296095934,1371.02766551878,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,820.938835272229,1086.49069645677,1346.1811919836,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,745.334365011002,988.057194875085,1226.21007641344,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,crude rate,A,1049.68218036756,1388.6041321255,1719.75046114349,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,crude rate,B,1029.74577102775,1362.84111783596,1688.58425247057,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,6,nvss,YLL,crude rate,C,934.911198490477,1239.37091807671,1538.09831661775,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,absolute number,A,665.635588104377,877.016297314135,1081.83940412931,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,absolute number,B,615.772760488926,812.732372347541,1004.25540297601,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,absolute number,C,505.447308412202,669.112724155903,829.234317678788,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,52.0380917443463,68.5634232251468,84.5760941434255,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,48.1399131546545,63.5378313774738,78.5107282854991,burnett,attributable,25,150
 1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,39.5148845361355,52.3099274575962,64.8279212711845,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,crude rate,A,44.1957408170183,58.2306379963545,71.8301346337258,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,crude rate,B,40.8850335094778,53.9624231693571,66.6788439458533,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,Deaths,crude rate,C,33.5598315932325,44.4266097886674,55.0580912974891,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,absolute number,A,17220.6469271924,22689.2736436322,27988.2487405613,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,absolute number,B,15930.6465658798,21026.1853191386,25981.0743722785,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,absolute number,C,13076.4186801583,17310.6038545731,21453.1068648608,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,1079.65873601259,1422.51755155878,1754.73995757528,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,998.78139351559,1318.24923655925,1628.89896271724,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,819.833872878375,1085.29863925909,1345.01533764591,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,crude rate,A,1143.38725557479,1506.48384070945,1858.31618586192,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,crude rate,B,1057.7360033862,1396.06092784439,1725.04723248788,burnett,attributable,25,150
+1999,us,American Indian or Alaska Native,All Origins,A,666,666,nvss,YLL,crude rate,C,868.225829765084,1149.36006279584,1424.40693926736,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,A,1924.65689824611,2524.84027266095,3101.11370143602,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,B,1565.72322606647,2062.80729815354,2544.33997288442,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,C,1175.48559802574,1554.93397894717,1925.58298254399,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,57.6600211441864,75.6406732233622,92.9050168673038,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,46.9068717667059,61.7988133554107,76.2248568917422,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,35.2158997786127,46.5836410560294,57.6877653308234,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,A,52.1075837137607,68.3567684149031,83.9586224177007,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,B,42.3899211070738,55.8478262135152,68.8846974513529,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,C,31.8247445865615,42.0978162659514,52.1326562423355,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,A,42074.0109404167,55194.3348196483,67791.9747257784,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,B,34227.5322958686,45094.0512615902,55620.6085109667,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,C,25696.7327302369,33991.6736855626,42094.2556296993,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,1055.44469387486,1384.57367185287,1700.59089714429,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,858.612396076619,1131.20370664844,1395.26693107832,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,644.613613103284,852.695781207057,1055.95254062883,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,A,1139.09915541274,1494.31486971056,1835.37959485855,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,B,926.665945523949,1220.86282144479,1505.85567580207,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,C,695.705636225942,920.280380235751,1139.64725405958,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,A,276.903687385979,364.212760446584,448.502982558642,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,B,250.725662646782,330.400300282206,407.618811871185,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,C,191.150734656861,252.860881799983,313.143138505681,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,27.2050654191314,35.782954239321,44.0642488237274,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,24.6331427325953,32.4609681746448,40.0474856355622,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,18.7800613648247,24.8429224480457,30.76549701819,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,A,19.0785314143274,25.0940847240985,30.9016406496502,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,B,17.2748780499876,22.7644224161258,28.0847408742343,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,C,13.1701940499595,17.4219936267984,21.5754122365082,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,A,6795.25579103724,8937.8328362399,11006.3268506818,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,B,6152.84334833479,8108.07026460272,10003.0234990783,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,C,4690.86615963868,6205.24192941867,7684.57706519531,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,503.496789507348,662.25176455252,815.517532231249,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,455.897021023742,600.770224531065,741.177429081551,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,347.571323878924,459.779511714566,569.391351853296,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,A,468.189868836896,615.812400881897,758.330647595847,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,B,423.927959272761,558.642157181435,689.203527287823,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,C,323.198431309887,427.538196408685,529.463678610342,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,A,433.270937392464,571.214844576899,705.054608048881,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,B,402.116672127477,531.006357492086,656.474578117664,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,C,330.796819078172,438.166830029995,543.340412062028,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,36.7589972592008,48.4622509706838,59.8173063737704,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,34.1158484747931,45.0509359273939,55.6957440141055,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,28.0650242525553,37.174368078041,46.0973653991234,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,A,41.7113259151612,54.9912918071933,67.8761486318529,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,B,38.7120808701649,51.1203898735356,63.1993118386345,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,C,31.8460638401181,42.1826572596514,52.307798780116,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,A,9179.24361071741,12101.7122541961,14937.2308354881,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,B,8519.21182529167,11249.8584456044,13908.0181861507,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,C,7008.23509244163,9282.96760264329,11511.1667444872,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,696.604623148006,918.388165930924,1133.57314592686,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,646.515398735728,853.741739005465,1055.46711452208,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,531.848720062609,704.476144525059,873.572193102594,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,A,883.692832493118,1165.04113339372,1438.01868502588,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,B,820.151065574833,1083.03251297694,1338.93559279061,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,C,674.688175002405,893.67842086071,1108.18886360741,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,A,71.5854087329452,94.3245919688819,116.360489896352,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,B,66.8777596978811,88.2459629176928,109.012884809243,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,C,54.2249592857241,71.7744919239338,88.9396914693376,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,39.419403145792,51.9410195903859,64.0753631592409,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,36.8270771611157,48.5937462649454,60.0293122640739,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,29.8596539222438,39.5235241763987,48.9757565926793,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,A,32.1616983147556,42.377896896319,52.278125361619,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,B,30.0466585221868,39.6469069198424,48.9770132728532,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,C,24.3620426640765,32.2466490980592,39.9585834023162,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,A,1556.01402910483,2050.28358419671,2529.26619987165,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,B,1453.68636104627,1918.15565130106,2369.55520850865,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,C,1178.65915512184,1560.1240300541,1933.23486056809,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,709.580827908803,934.979952564497,1153.40785528725,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,662.916883972033,874.726351851197,1080.57569866287,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,537.497685412771,711.455089851008,881.602843705236,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,A,699.08176349583,921.145848878603,1136.34185957429,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,B,653.108266276173,861.783769483412,1064.58733846888,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,C,529.544788999823,700.928293577077,868.558515732058,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,A,77.4475259151943,102.310753358409,126.534350111323,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,B,74.4606104231068,98.4523173666227,121.868425725905,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,C,64.9488232714433,86.0695025323177,106.777530793974,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,39.7913464475433,52.5656899182486,65.0114009879121,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,38.2567152537033,50.5832849094304,62.6141208743866,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,33.3697054568819,44.2211852910753,54.8606513949682,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,A,48.8650303828276,64.5523276860137,79.8360540197464,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,B,46.9804548002374,62.1178717141688,76.8921183140773,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,C,40.9790523968865,54.3050124142369,67.3706128736023,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,A,1627.90934935327,2150.52230479135,2659.69053402842,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,B,1565.12583757754,2069.41985573715,2561.61507144081,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,C,1365.19269510109,1809.13910690924,2244.41179529357,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,772.308223684726,1020.24480777607,1261.80298227455,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,742.522644730061,981.768409572191,1215.27429421941,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,647.670919612174,858.286740972849,1064.78759860238,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,A,1027.11918652821,1356.85855062235,1678.11504910475,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,B,987.506323829134,1305.68746942481,1616.2349515481,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,C,861.359762448413,1141.46496458369,1416.09753536466,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,absolute number,A,7.11603003765426,9.38529641204076,11.5886803677764,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,absolute number,B,6.78822127282505,8.96169351263982,11.0762500780129,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,absolute number,C,5.65988171977622,7.49284070789517,9.28624148199649,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,21.1259894319608,27.862961759216,34.4043431076803,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,20.1527944812874,26.6053742660859,32.8830458634475,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,16.8029927874723,22.2446606847853,27.5688886040683,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,crude rate,A,17.9623030722152,23.6903916486589,29.2521796383041,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,crude rate,B,17.1348472643513,22.6211320163854,27.9587016569843,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,Deaths,crude rate,C,14.2866893851707,18.9134496277942,23.4403569151294,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,absolute number,A,170.799435564834,225.266520981922,278.152292118481,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,absolute number,B,162.931347359787,215.099175462234,265.852905551137,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,absolute number,C,135.848864884804,179.843670826828,222.888997833207,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,404.363204389297,533.312607062461,658.518289462156,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,385.735710987522,509.241681998347,629.399812882028,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,321.618640809947,425.775195240999,527.683883081349,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,crude rate,A,431.132416522257,568.618387006505,702.1127995281,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,crude rate,B,411.271766104798,542.953944796707,671.066653298259,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,6,nvss,YLL,crude rate,C,342.910087529879,453.961900654941,562.617036375261,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,A,2832.26964738714,3720.60971860449,4576.04887890835,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,B,2415.38711862177,3183.61242899335,3928.49421636153,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,C,1850.50907884596,2448.41791993096,3032.74122133419,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,45.9896221267768,60.4142459379488,74.3046337303384,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,39.2203973155512,51.6946303974218,63.7898177189341,burnett,attributable,25,150
 1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,30.0480617573991,39.7567424591556,49.2448248725644,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,A,39.9306644000155,52.4548989091097,64.5152809621521,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,B,34.0532592010732,44.8840595383026,55.3857519518488,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,C,26.0893439523839,34.5189429127768,42.7570065699454,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,A,62182.0483582014,81685.4192035322,100466.455565161,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,B,53029.4559885831,69895.7255697965,86249.4916619488,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,C,40627.6447351138,53754.6421961226,66583.3712043933,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,834.145582957049,1095.7749610967,1347.71453108582,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,711.367470956874,937.621263548067,1157.00004103542,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,545.002477347203,721.095533762973,893.187446457105,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,A,876.671649885985,1151.63930934327,1416.42315883744,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,B,747.634114692776,985.422685053276,1215.98574111841,burnett,attributable,25,150
+1999,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,C,572.787569424225,757.858129594569,938.723561380195,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,A,11452.7816776111,15037.1755220881,18484.8467970822,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,B,9654.67468180173,12718.5925047373,15686.0443933973,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,C,7205.68669282556,9531.39404766029,11803.0208646874,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,104.244530849849,136.870094247172,168.251193154247,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,87.8779549844935,115.766086008487,142.776173047655,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,65.5869857549999,86.755840529621,107.4324480537,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,A,125.194058838774,164.376226673515,202.063835903169,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,B,105.538369996662,139.031046186554,171.469222064506,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,C,78.7676906090769,104.190749532146,129.022636613918,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,A,278825.189340256,366089.516949864,450025.24742069,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,B,235049.141068885,309642.151845738,381886.63864419,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,C,175426.984728197,232047.79631928,287351.983127117,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,2311.29785435368,3034.66812675604,3730.44627434688,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,1948.42000002097,2566.75246189883,3165.61703264024,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,1454.18717138652,1923.54060624614,2381.97999118184,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,A,3047.9282800122,4001.84285490018,4919.37145843433,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,B,2569.39814495087,3384.79845930547,4174.52629884891,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,C,1917.64908004006,2536.58947525344,3141.13741933816,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,A,4082.262446757,5365.57183908199,6602.65404901683,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,B,3593.52207738271,4734.66146043574,5840.23052133689,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,C,2710.65923623405,3585.58041270852,4440.17091123119,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,111.415435931223,146.440248090007,180.203401610953,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,98.0764549075303,129.2210820547,159.394903674187,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,73.9808585079903,97.859706463932,121.18367795705,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,A,107.630284824461,141.465188193687,174.081295644675,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,B,94.7444731337508,124.831014218334,153.979731252055,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,C,71.4674838923439,94.5350883521471,117.066667339026,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,A,99821.6684365221,131201.837235788,161451.634204853,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,B,87870.7270799758,115774.478644373,142808.445634571,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,C,66282.4918909135,87676.533240584,108573.437960735,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,2326.28539588697,3057.58181220184,3762.53557644823,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,2047.77572178235,2698.05627480671,3328.06700882062,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,1544.67457120175,2043.25014833097,2530.24024808714,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,A,2631.83338788294,3459.18257225195,4256.72910585343,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,B,2316.74261679659,3052.43483838145,3765.19488383162,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,C,1747.5612051257,2311.62262793808,2862.57686870872,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,A,3852.93148781861,5063.47435202156,6230.0862266315,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,B,3381.79494596668,4455.35640164764,5495.28793976202,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,C,2534.10040406961,3352.10747638548,4151.14309975882,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,100.166095949091,131.637029981944,161.965873704438,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,87.9177836690869,115.827560969038,142.863048767505,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,65.8799527116369,87.1459874573042,107.918814373796,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,A,116.829945747626,153.536452883074,188.910869077632,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,B,102.543977570328,135.096886185622,166.630056594508,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,C,76.8398850751708,101.643783660438,125.872423288282,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,A,92147.7877331001,121099.469652455,149000.485730302,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,B,80879.9543472389,106555.550565155,131426.844262977,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,C,60606.2544498489,80169.9405164842,99279.9001009143,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,2182.53523481161,2868.26049692068,3529.10056888557,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,1915.65478125304,2523.78542441844,3112.86603249628,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,1435.46892487403,1898.83798900064,2351.46046811701,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,A,2794.13767819601,3672.0207754259,4518.04521291831,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,B,2452.47046523741,3231.01493784505,3985.17106612721,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,C,1837.72419564912,2430.94117576278,3010.40010166035,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,A,1703.18263553327,2238.47874394079,2754.43393082774,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,B,1500.83968542786,1977.30256457163,2438.8476346211,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,C,1126.06806373785,1489.5400460111,1844.57109519666,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,109.842514280527,144.365101116116,177.640343477894,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,96.7929106016134,127.521195117092,157.2873927581,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,72.6229499945805,96.0641685524016,118.961010192632,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,A,133.728569004325,175.758343778602,216.269529938709,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,B,117.841233963925,155.251607744319,191.490681852417,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,C,88.4153393907665,116.954021648614,144.829948263392,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,A,39717.0534740099,52199.7923879105,64231.5142480653,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,B,34998.5543525642,46109.3426230238,56872.2577945261,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,C,26259.1366127026,34735.0544943637,43014.1355930397,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,2401.90002703817,3156.79718864226,3884.41896653,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,2116.54745991492,2788.47551884546,3439.3658538588,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,1588.0287036228,2100.61223156394,2601.29199945694,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,A,3118.45871096768,4098.56429529209,5043.25743239232,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,B,2747.97693045003,3620.36124492103,4465.43165262237,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,C,2061.78520684971,2727.28774642781,3377.33527797163,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,A,1510.8195025846,1986.02724209522,2444.24282105356,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,B,1341.01173933801,1766.77203031622,2179.22139855789,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,C,1005.63736955353,1330.30122255779,1647.45733992737,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,98.6576510033756,129.68907417374,159.610896466771,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,87.5690762163896,115.371543768977,142.304798045174,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,65.6688773686315,86.869671406774,107.580204655455,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,A,132.848819439824,174.63460991622,214.926252041181,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,B,117.91734626223,155.355142057195,191.622486737264,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,C,88.427331723748,116.975553078195,144.863607010903,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,A,34384.6697480333,45199.9002615586,55628.4069951115,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,B,30520.0228792989,40209.8812456148,49596.7969496504,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,C,22887.2534271796,30276.2627334387,37494.4038387563,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,2190.03530980064,2878.88114958389,3543.09570049667,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,1943.88744319439,2561.05585355589,3158.92917886639,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,1457.73955420194,1928.36182289709,2388.10111972931,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,A,3023.50001111312,3974.50084425926,4891.49642559951,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,B,2683.67531783582,3535.72034525436,4361.12713099476,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,C,2012.51346889508,2662.24109121337,3296.94399434048,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,absolute number,A,1244.4712721723,1636.15055525729,2013.93864832411,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,absolute number,B,1118.82921618428,1473.84657910348,1817.66537594447,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,absolute number,C,832.293159821611,1100.94859844244,1363.36904261945,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,84.3600895277705,110.911204146548,136.520664217098,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,75.8430788674111,99.9089590443782,123.215711985494,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,56.4194023967643,74.6309894064144,92.4199192593686,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,crude rate,A,125.773893892974,165.359402769219,203.540982845771,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,crude rate,B,113.07573767861,148.955968208978,183.704403017606,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,Deaths,crude rate,C,84.1166476977207,111.268612862722,137.790431276138,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,absolute number,A,27740.8612387338,36471.8949597301,44893.2762336576,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,absolute number,B,24940.1386195376,32853.9311049933,40518.0931854771,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,absolute number,C,18552.8823146365,24541.5567103118,30391.2450807102,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,1898.16544813154,2495.58549190892,3071.81760028309,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,1706.52630398933,2248.02670407787,2772.44617054135,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,1269.47897795336,1679.25337969791,2079.51767760383,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,crude rate,A,2803.66145523781,3686.07323392331,4537.1896385072,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,crude rate,B,2520.60326224669,3320.41963295269,4095.00682499505,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,6,nvss,YLL,crude rate,C,1875.06799379685,2480.32013166778,3071.52549000537,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,A,23900.649640442,31396.9513317011,38615.011608942,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,B,20608.076360626,27149.160698686,33484.8412775599,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,C,15415.5020925165,20391.2577009805,25251.4331804318,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,100.555954108064,132.094752433067,162.462920198655,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,86.7032826282738,114.223244905867,140.879022682492,burnett,attributable,25,150
 1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,64.8568362905467,85.7910728131817,106.239035099608,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,A,116.567745969021,153.128550984766,188.332322825461,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,B,100.509276787642,132.411315809659,163.311563935524,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,C,75.1841627294008,99.4518133789432,123.155759053077,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,A,573697.939750641,753635.008437994,926893.324523349,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,B,494664.836654055,651673.397715527,803751.560849125,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,C,370025.163489024,489460.441785739,606121.398761144,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,2196.67791173722,2885.65334096754,3549.055960358,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,1894.06174417039,2495.24437729488,3077.54861558157,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,1416.81893397872,1874.13422053983,2320.82668637191,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,A,2798.02753104442,3675.61281967467,4520.62463652019,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,B,2412.56894211479,3178.32779537233,3920.04021550657,burnett,attributable,25,150
+1999,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,C,1804.67894842278,2387.18617687372,2956.16254370022,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,A,58975.7129956365,77487.2577534478,95319.2193703519,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,B,51026.7460111268,67242.5207437745,82958.7448936552,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,C,38944.0878553617,51516.1806996631,63797.16633763,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,A,99.8553435848133,131.198358669915,161.390730471828,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,B,86.3964672259759,113.852375347719,140.462464189856,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,C,65.938588545458,87.2251586737542,108.01883759935,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,A,161.644638224801,212.382336903917,261.257387971401,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,B,139.857569833326,184.302866160437,227.378960334242,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,C,106.740600030399,141.199045656924,174.859604888146,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,absolute number,A,1105008.22247437,1451852.84933962,1785964.35403621,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,absolute number,B,956071.084932505,1259900.63616987,1554370.27510672,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,absolute number,C,729682.357551536,965241.459103932,1195346.18223033,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,A,1918.87233748452,2521.17605465194,3101.3684106527,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,B,1660.23955318428,2187.84659657281,2699.19993575403,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,C,1267.1102916509,1676.16412004636,2075.74629414374,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,crude rate,A,3028.6815586361,3979.33686031932,4895.09235627102,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,crude rate,B,2620.46454025138,3453.22120222512,4260.32358109177,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,1,nvss,YLL,crude rate,C,1999.96294600398,2645.59932438593,3276.28597206304,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,A,34503.3454113935,45401.3369988745,55931.7370764129,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,B,31630.9981740751,41691.6091442948,51446.4980787379,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,C,24463.6603280794,32361.9587514873,40077.7858933811,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,A,62.7909785076809,82.6237091425614,101.787477671733,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,B,57.5637319466707,75.8725538789522,93.6250069852868,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,C,44.5202385903253,58.8939719381555,72.9356345786614,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,A,96.0627573039062,126.40448528668,155.722780509948,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,B,88.0656894178472,116.076017646544,143.235167493113,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,C,68.110690045884,90.1007989908302,111.582879099094,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,absolute number,A,645620.767856544,849542.14454949,1046585.21103579,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,absolute number,B,591873.891813164,780126.343923339,962658.176970773,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,absolute number,C,457759.877405419,605551.502596547,749928.756007831,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,A,1164.26092723837,1531.99645083449,1887.32817917227,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,B,1067.3381037267,1406.817540202,1735.98086916347,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,C,825.487601785106,1092.00321458727,1352.36162202639,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,crude rate,A,1797.51007890629,2365.25936480203,2913.85834987437,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,crude rate,B,1647.87029622326,2171.99482395538,2680.19224566054,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,2,nvss,YLL,crude rate,C,1274.47572061061,1685.95092259486,2087.91997485009,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,A,34154.433848538,44968.6279989572,55430.9617795916,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,B,31793.6721644345,41919.9076976452,51745.2480812377,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,C,25085.262394718,33186.8546541072,41102.5687777036,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,A,68.7054361372331,90.4593884607343,111.505534580429,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,B,63.9565018746517,84.3265490498697,104.09131222074,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,C,50.4617907323271,66.7590431492689,82.682381056468,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,A,114.251842592608,150.426987913967,185.425106095556,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,B,106.354731092328,140.228548861542,173.095826003455,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,C,83.9140670059235,111.015141135098,137.49442426618,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,absolute number,A,642755.614053309,846268.986064362,1043160.66353804,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,absolute number,B,598328.21020207,788894.822052843,973798.858803817,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,absolute number,C,472081.993972081,624546.647041308,773513.24138585,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,A,1308.17998544282,1722.38425564116,2123.11160230259,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,B,1217.75830844358,1605.61245092977,1981.94173505664,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,C,960.813414149335,1271.11985608747,1574.30681075629,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,crude rate,A,2150.11654322818,2830.90012311741,3489.53311473059,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,crude rate,B,2001.50003346199,2638.97470621266,3257.50719295492,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,3,nvss,YLL,crude rate,C,1579.18699239137,2089.20474354633,2587.52094940369,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,A,16507.716278725,21740.5715885312,26806.1588016821,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,B,15433.5750358935,20353.4495543527,25129.2617256992,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,C,12295.1114163356,16267.649893785,20149.8803278573,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,A,68.2606519875809,89.8989034072762,110.845488630289,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,B,63.8189969261283,84.1630491654998,103.911392732955,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,C,50.841213125323,67.2679593776757,83.3212750587394,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,A,116.739915036113,153.745826329267,189.568844540053,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,B,109.143760891731,143.936322356666,177.710098068451,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,C,86.9490508479608,115.042204165165,142.496713521393,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,absolute number,A,311012.911215873,409602.294289519,505040.27005667,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,absolute number,B,290775.599806506,383468.281881179,473446.763565226,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,absolute number,C,231645.512362381,306489.950922361,379632.94471538,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,A,1307.94724119467,1722.55932626259,2123.91834580248,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,B,1222.84037047473,1612.6542123649,1991.05363773102,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,C,974.172125668454,1288.92618700497,1596.52491842193,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,crude rate,A,2199.43329637112,2896.64156001891,3571.5635779503,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,crude rate,B,2056.31828430045,2711.82602668956,3348.13938036717,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,4,nvss,YLL,crude rate,C,1638.15981417934,2167.44764848009,2684.70313898598,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,A,15752.2308511832,20758.0364884628,25609.9187788589,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,B,14881.8199623811,19633.4370782961,24249.698638902,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,C,12064.9078634502,15966.3916444254,19780.829233076,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,A,60.8446986037881,80.1801653162092,98.9210864218717,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,B,57.4826422264441,75.836278230752,93.6670887352987,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,C,46.6020139984782,61.6719178745488,76.4055964002781,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,A,108.141114563023,142.506621646778,175.815424924799,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,B,102.165630548594,134.786100356728,166.477336664433,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,C,82.8271624368482,109.611356276448,135.797966678795,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,absolute number,A,293049.431802449,386175.8284111,476438.684625281,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,absolute number,B,276856.587829562,365254.143015029,451133.587023142,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,absolute number,C,224451.661960465,297033.610257355,367996.17921412,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,A,1164.2566871003,1534.23873869583,1892.84422480023,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,B,1099.92410415465,1451.11893198621,1792.30955076995,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,C,891.724466964358,1180.08543783424,1462.01277321098,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,crude rate,A,2011.82248257853,2651.14731343201,3270.81356685733,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,crude rate,B,1900.65650159993,2507.51722073957,3097.09077897577,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,5,nvss,YLL,crude rate,C,1540.8898662823,2039.17438611536,2526.34165605565,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,absolute number,A,11072.4785046493,14593.3787470787,18007.0973545325,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,absolute number,B,10522.7793816901,13883.0271590842,17147.7689779189,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,absolute number,C,8541.65702415473,11304.0238345443,14004.8667556663,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,A,52.0595495489846,68.61379081943,84.6640954478299,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,B,49.4750253418064,65.2739257949127,80.6237852153579,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,6,nvss,Deaths,age-adjusted rate,C,40.1603685112324,53.1482078443646,65.8467798774588,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,crude rate,A,101.287538958378,133.495623202921,164.723243676533,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,crude rate,B,96.2590648630134,126.997551058286,156.862378885715,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,Deaths,crude rate,C,78.136382765602,103.405642562058,128.112101236035,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,absolute number,A,201767.460351037,265926.817243537,328133.064335352,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,absolute number,B,191750.606766711,252982.485420649,312474.013465749,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,absolute number,C,155649.744023403,205986.778830584,255202.698895188,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,age-adjusted rate,A,997.413309960038,1314.57741764975,1622.08656062103,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,age-adjusted rate,B,947.896192226857,1250.58866135463,1544.67791538403,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,age-adjusted rate,C,769.435894721154,1018.27100625625,1261.56402114062,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,crude rate,A,1845.70505079395,2432.61459937107,3001.65771588027,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,crude rate,B,1754.07403545834,2314.20393700218,2858.41366041968,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,6,nvss,YLL,crude rate,C,1423.83473627989,1884.3020446554,2334.51374918233,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,A,169949.721349889,223635.83157051,275515.930066838,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,B,154959.859558921,204293.699403382,252151.644642496,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,C,121280.683706295,160453.325019066,198728.991025729,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,A,70.171971024808,92.3388809844902,113.760091560961,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,B,63.9826808105798,84.3525452187763,104.113015079812,burnett,attributable,25,150
 1999,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,C,50.076602393397,66.2509240064686,82.0548859349798,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,A,112.321838469081,147.803641865623,182.091830141422,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,B,102.414856442952,135.02019139764,166.650089651741,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,C,80.1558793770094,106.045554599729,131.342407929931,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,absolute number,A,3179378.49411197,4183725.32629393,5154285.72569611,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,absolute number,B,2898951.76655179,3821877.37176959,4717192.29583685,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,absolute number,C,2268889.84850484,3001722.19655546,3717774.14640748,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,A,1325.56973332269,1744.30935962528,2148.96249928503,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,B,1208.65217124038,1593.44506414411,1966.72630993902,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,C,945.962148574312,1251.49997050232,1550.04158609428,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,crude rate,A,2101.28992746328,2765.07496785781,3406.53014377834,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,crude rate,B,1915.95249151316,2525.92525242654,3117.64977825263,burnett,attributable,25,150
+1999,us,White,All Origins,A,666,666,nvss,YLL,crude rate,C,1499.53690446615,1983.87471902011,2457.12216425224,burnett,attributable,25,150
