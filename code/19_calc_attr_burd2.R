@@ -192,7 +192,7 @@ if (!file.exists(attrBurdenDir)) {
       value = NULL, label_cause = NULL,
       min_age = min(min_age.x, min_age.y),
       max_age = max(max_age.x, max_age.y),
-      min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL,
+      min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL
     )
   fwrite(attr_burden, attrBurdenDir)
   toc()

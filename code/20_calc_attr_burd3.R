@@ -74,7 +74,12 @@ if (!file.exists(attrBurdenDir)) {
       min_age = min(min_age),
       max_age = max(max_age)
     )
-
+  test_that("basic check pm summ", {
+    total_burden_dupl <- total_burden %>% select(setdiff(colnames(total_burden), c("value")))
+    total_burden_dupl <- total_burden_dupl[duplicated(total_burden_dupl), ]
+    expect_equal(nrow(total_burden_dupl), 0)
+  })
+  
   meta <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", year, ".csv")))
   files <- list.files(file.path(dem_agrDir, agr_by, year))
   pm_summ <- lapply(files, function(file) fread(file.path(dem_agrDir, agr_by, year, file))) %>% rbindlist()
@@ -86,11 +91,15 @@ if (!file.exists(attrBurdenDir)) {
   total_burden <- total_burden %>% mutate_at(c("rural_urban_class", "Education"), as.factor)
 
   pm_summ <- pm_summ %>%
-    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "rural_urban_class", "scenario"))) %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "rural_urban_class", "scenario", "min_age", "max_age"))) %>%
     summarise(pop_weight_pm_exp = weighted.mean(pm, pop_size))
 
   rm(meta, files)
-
+  test_that("basic check pm summ", {
+    pm_summ_dupl <- pm_summ %>% select(setdiff(colnames(pm_summ), c("pop_weight_pm_exp")))
+    pm_summ_dupl <- pm_summ_dupl[duplicated(pm_summ_dupl), ]
+    expect_equal(nrow(pm_summ_dupl), 0)
+  })
   ## ---paf calculations----
 
   # DI 2017, SI, Table S3
@@ -99,7 +108,7 @@ if (!file.exists(attrBurdenDir)) {
   # Increases of 10 μg per cubic meter in PM2.5 were associated with increases in all-cause mortality of 7.3%
   
   hr <- data.frame(
-    method = c(rep("di_gee", 2), rep("di_coxme", 2)),
+    method = c(rep("di_gee", 4), rep("di_coxme", 4)),
     Race = c("White", "Black or African American", "Asian or Pacific Islander", "White"), # TODO
     Hispanic.Origin = rep(c("All Origins", "All Origins", "All Origins", "Hispanic or Latino"), 2), # TODO
     hr_mean = c(1.063, 1.208, 1.096, 1.116, 1.068, 1.216, 1.140, 1.127),
@@ -131,12 +140,27 @@ if (!file.exists(attrBurdenDir)) {
     total_burden %>% dplyr::filter(label_cause == "all-cause"),
     paf_di,
     by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class")
-  ) %>%
+  ) 
+  attr_burden_di <- attr_burden_di%>%
     mutate(mean = value * paf_mean,
            lower = value * paf_lower,
            upper = value * paf_upper,
-           paf_mean = NULL, paf_lower = NULL, paf_upper = NULL)
+           paf_mean = NULL, paf_lower = NULL, paf_upper = NULL,
+           value = NULL, label_cause = NULL,
+           attr = "attributable",
+           min_age = min(min_age.x, min_age.y),
+           max_age = max(max_age.x, max_age.y),
+           min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
  
+  test_that("basic check attr burden", {
+    attr_burden_dupl <- attr_burden_di %>%
+      dplyr::group_by_at(vars(one_of(setdiff(colnames(attr_burden_di), c("lower", "mean", "upper"))))) %>%
+      summarise(n = n())
+    
+    attr_burden_dupl <- attr_burden_dupl %>% filter(n != 1)
+    test_that(nrow(attr_burden_dupl),0)
+  })
+  
   fwrite(attr_burden_di, attrBurdenDir)
   toc()
 }

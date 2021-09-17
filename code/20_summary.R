@@ -34,10 +34,11 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  # totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
-  #  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+    attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  #
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -51,7 +52,10 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(attrBurdenDir, agr_by))
   attrBurden <- lapply(sources, function(source) {
     files <- list.files(file.path(attrBurdenDir, agr_by, source))
-    attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% do.call(rbind, .)
+    attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% rbindlist(use.names = TRUE)
+    #print("TEST")#54
+    #names(attrBurden[[54]] )
+    #setdiff(names(attrBurden[[55]] ), names(attrBurden[[54]] ))
   }) %>% rbindlist(use.names = TRUE)
 
   # make compatible
