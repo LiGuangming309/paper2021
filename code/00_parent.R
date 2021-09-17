@@ -142,15 +142,17 @@ assignTract.script <- file.path(code.dir, "09_ass_trac.R")
 assignTractAKHI.script <- file.path(code.dir, "10_ass_trac_AKHI.R")
 cens_agr.script <- file.path(code.dir, "11_aggregate.R")
 rural.urban.script <- file.path(code.dir, "11_rural_urban_class.R")
-
 paf.script <- file.path(code.dir, "12_paf.R")
 read.nvs.findrepl.script <- file.path(code.dir, "13_nvss_findrepl.R")
 read.total.burden.nvs.script <- file.path(code.dir, "14_read_tot_nvss.R")
 pop.summary.script <- file.path(code.dir, "15_popsum.R")
 pop.summary.educ.script <- file.path(code.dir, "16_popsum_educ.R")
 add.rate.tot.burd <- file.path(code.dir, "17_add_rate_totburd.R")
-calc.attr.burd.script <- file.path(code.dir, "18_calc_attr_burd.R")
-calc.attr.burd.alt.script <- file.path(code.dir, "19_calc_attr_burd_alt.R")
+
+calc.attr.burd1.script <- file.path(code.dir, "18_calc_attr_burd1.R")
+calc.attr.burd2.script <- file.path(code.dir, "19_calc_attr_burd2.R")
+calc.attr.burd3.script <- file.path(code.dir, "20_calc_attr_burd3.R")
+
 summary.script <- file.path(code.dir, "20_summary.R")
 summary.other.script <- file.path(code.dir, "21_summary_other.R")
 figure1.script <- file.path(code.dir, "23_figure1.R")
@@ -215,8 +217,9 @@ for (agr_by in agr_bys) {
     #runscript(script=pop.summary.educ.script, args = args)
          
       #runscript(script = add.rate.tot.burd, args = args)
-      #runscript(script = calc.attr.burd.script, args = args)
-      #runscript(script = calc.attr.burd.alt.script, args = args)  
+      #runscript(script = calc.attr.burd1.script, args = args)
+      #runscript(script = calc.attr.burd2.script, args = args)
+      runscript(script = calc.attr.burd3.script, args = args) 
 
     }  
   }
@@ -239,7 +242,7 @@ for (agr_by in agr_bys) {
   )   
     
  runscript(script = summary.script, args = args)
-  runscript(script = summary.other.script, args = args)
+#  runscript(script = summary.other.script, args = args)
 
 # runscript(script = figure1.script, args = args)
 #runscript(script = figure2.script, args = args)  

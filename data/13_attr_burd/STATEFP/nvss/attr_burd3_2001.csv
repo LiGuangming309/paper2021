@@ -1,0 +1,919 @@
+Year,STATEFP,Race,Hispanic.Origin,Gender.Code,Education,rural_urban_class,source,measure1,measure2,label_cause,value,min_age,max_age,scenario,method,mean,lower,upper
+2001,1,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,308.839516857698,25,150,A,di_coxme,26.8271697407039,20.9587263599249,32.6956131214829
+2001,1,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,308.839516857698,25,150,A,di_coxme,39.1229558718599,32.4161634366839,45.8297483070359
+2001,1,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,308.839516857698,25,150,B,di_coxme,20.3477662572567,15.8966923884817,24.7988401260315
+2001,1,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,308.839516857698,25,150,B,di_coxme,29.6738257918326,24.5868842275185,34.7607673561468
+2001,1,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,308.839516857698,25,150,C,di_coxme,8.89456461449374,6.94887860507323,10.8402506239142
+2001,1,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,308.839516857698,25,150,C,di_coxme,12.9712400628034,10.7475989091799,15.1948812164268
+2001,1,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1136.10544595289,25,150,A,di_gee,216.842378775486,207.4597758477,226.224981703271
+2001,1,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1136.10544595289,25,150,A,di_gee,225.182470266851,214.757355902645,234.565073194636
+2001,1,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1136.10544595289,25,150,B,di_gee,163.860675496824,156.77055011475,170.950800878898
+2001,1,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1136.10544595289,25,150,B,di_gee,170.163009169779,162.285092078585,177.253134551853
+2001,1,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1136.10544595289,25,150,C,di_gee,70.8929764725341,67.8254919136265,73.9604610314419
+2001,1,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1136.10544595289,25,150,C,di_gee,73.6196294137855,70.2113132372213,76.6871139726932
+2001,1,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,288.512983872751,25,150,A,di_coxme,29.6994876055422,25.6030065565019,34.0519987201475
+2001,1,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,288.512983872751,25,150,A,di_coxme,32.5158183267574,27.907277146587,36.8683294413627
+2001,1,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,288.512983872751,25,150,B,di_coxme,23.0216914665851,19.8462857470561,26.3955600435846
+2001,1,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,288.512983872751,25,150,B,di_coxme,25.2047828987612,21.6324514642911,28.5786514757608
+2001,1,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,288.512983872751,25,150,C,di_coxme,10.0401963385585,8.65534167117112,11.5116044226576
+2001,1,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,288.512983872751,25,150,C,di_coxme,10.9922839223873,9.43432242157651,12.4636920064864
+2001,2,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,407.845522422458,25,150,A,di_coxme,6.41238855903622,5.00967856174704,7.81509855632539
+2001,2,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,407.845522422458,25,150,A,di_coxme,9.35139998192781,7.74830284216877,10.9544971216869
+2001,2,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,407.845522422458,25,150,B,di_coxme,5.98823859740534,4.67831140422292,7.29816579058775
+2001,2,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,407.845522422458,25,150,B,di_coxme,8.73284795454944,7.23578830519812,10.2299076039008
+2001,2,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,407.845522422458,25,150,C,di_coxme,4.55529953784156,3.55882776393872,5.5517713117444
+2001,2,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,407.845522422458,25,150,C,di_coxme,6.64314515935227,5.50432027489189,7.78197004381266
+2001,2,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,769.706905109549,25,150,A,di_gee,40.2191711236618,38.4789185269649,41.9594237203587
+2001,2,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,769.706905109549,25,150,A,di_gee,41.7660623207257,39.8324483243958,43.5063149174226
+2001,2,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,769.706905109549,25,150,B,di_gee,36.3339987750762,34.7618545973085,37.9061429528439
+2001,2,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,769.706905109549,25,150,B,di_gee,37.7314602664252,35.9846334022389,39.303604444193
+2001,2,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,769.706905109549,25,150,C,di_gee,23.2084165163408,22.2042061863069,24.2126268463748
+2001,2,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,769.706905109549,25,150,C,di_gee,24.1010479208155,22.9852586652222,25.1052582508495
+2001,2,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,675.531160508856,25,150,A,di_coxme,15.682966196449,13.5197984452146,17.9813319321355
+2001,2,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,675.531160508856,25,150,A,di_coxme,17.1701440254226,14.7365803052839,19.4685097611091
+2001,2,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,675.531160508856,25,150,B,di_coxme,14.3278800776424,12.3516207565883,16.4276556062624
+2001,2,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,675.531160508856,25,150,B,di_coxme,15.6865583608671,13.4632666246812,17.7863338894871
+2001,2,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,675.531160508856,25,150,C,di_coxme,9.7498864330255,8.40507451122888,11.1787490999344
+2001,2,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,675.531160508856,25,150,C,di_coxme,10.6744446292607,9.16153121723947,12.1033072961696
+2001,4,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,447.445769281035,25,150,A,di_coxme,18.9939805849749,14.8390473320117,23.1489138379382
+2001,4,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,447.445769281035,25,150,A,di_coxme,27.6995550197551,22.9510598735114,32.4480501659988
+2001,4,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,447.445769281035,25,150,B,di_coxme,18.9906021618058,14.8364079389108,23.1447963847008
+2001,4,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,447.445769281035,25,150,B,di_coxme,27.6946281526334,22.946977612182,32.4422786930848
+2001,4,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,447.445769281035,25,150,C,di_coxme,10.885378414721,8.50420188650078,13.2665549429412
+2001,4,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,447.445769281035,25,150,C,di_coxme,15.8745101881348,13.1531655844546,18.595854791815
+2001,4,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,939.396960969819,25,150,A,di_gee,84.8088328430892,81.1392198835325,88.478445802646
+2001,4,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,939.396960969819,25,150,A,di_gee,88.0707110293619,83.993363296521,91.7403239889186
+2001,4,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,939.396960969819,25,150,B,di_gee,84.7785529284195,81.1102501574783,88.4468556993608
+2001,4,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,939.396960969819,25,150,B,di_gee,88.0392665025895,83.963374534877,91.7075692735308
+2001,4,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,939.396960969819,25,150,C,di_gee,48.9437053206098,46.8259488403911,51.0614618008285
+2001,4,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,939.396960969819,25,150,C,di_gee,50.8261555252487,48.4730927694501,52.9439120054674
+2001,4,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,760.594042470845,25,150,A,di_coxme,34.5305134362761,29.7676839967898,39.5910197157304
+2001,4,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,760.594042470845,25,150,A,di_coxme,37.804958675923,32.4467755565008,42.8654649553772
+2001,4,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,760.594042470845,25,150,B,di_coxme,34.51583707578,29.7550319618793,39.5741925092995
+2001,4,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,760.594042470845,25,150,B,di_coxme,37.7888905915867,32.4329848384484,42.8472460251061
+2001,4,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,760.594042470845,25,150,C,di_coxme,20.1314485674325,17.3546970408901,23.0817470643838
+2001,4,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,760.594042470845,25,150,C,di_coxme,22.0404652419304,18.9166197745702,24.9907637388817
+2001,5,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,449.32250351917,25,150,A,di_coxme,30.6468593113322,23.9428588369783,37.3508597856861
+2001,5,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,449.32250351917,25,150,A,di_coxme,44.6933364956928,37.0316216678598,52.3550513235259
+2001,5,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,449.32250351917,25,150,B,di_coxme,28.5845584285572,22.3316862723103,34.8374305848041
+2001,5,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,449.32250351917,25,150,B,di_coxme,41.6858143749792,34.53967476784,48.8319539821185
+2001,5,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,449.32250351917,25,150,C,di_coxme,12.9404881013521,10.1097563291813,15.7712198735229
+2001,5,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,449.32250351917,25,150,C,di_coxme,18.8715451478051,15.6364231224671,22.1066671731432
+2001,5,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1121.71968778495,25,150,A,di_gee,178.137034103858,170.429181666672,185.844886541044
+2001,5,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1121.71968778495,25,150,A,di_gee,184.988458492468,176.424178006706,192.696310929654
+2001,5,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1121.71968778495,25,150,B,di_gee,159.612841769614,152.706516885352,166.519166653876
+2001,5,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1121.71968778495,25,150,B,di_gee,165.751797222292,158.078102906445,172.658122106554
+2001,5,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1121.71968778495,25,150,C,di_gee,69.9953085177808,66.9666653607614,73.0239516748002
+2001,5,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1121.71968778495,25,150,C,di_gee,72.6874357684647,69.3222767051098,75.7160789254841
+2001,5,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,199.24088032313,25,150,A,di_coxme,15.6454107746095,13.4874230815599,17.9382726984746
+2001,5,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,199.24088032313,25,150,A,di_coxme,17.129027313581,14.7012911589002,19.4218892374462
+2001,5,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,199.24088032313,25,150,B,di_coxme,14.9166102532961,12.8591467700828,17.1026652042102
+2001,5,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,199.24088032313,25,150,B,di_coxme,16.3311163980052,14.0164699793903,18.5171713489193
+2001,5,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,199.24088032313,25,150,C,di_coxme,6.93358263524494,5.97722640969391,7.9497111248929
+2001,5,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,199.24088032313,25,150,C,di_coxme,7.59107754031126,6.51517678656636,8.60720602995922
+2001,6,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,497.582759724288,25,150,A,di_coxme,55.8595922863183,43.6403064736861,68.0788780989503
+2001,6,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,497.582759724288,25,150,A,di_coxme,81.4619054175473,67.4970073459679,95.4268034891269
+2001,6,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,497.582759724288,25,150,B,di_coxme,31.4586192065663,24.5770462551299,38.3401921580026
+2001,6,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,497.582759724288,25,150,B,di_coxme,45.8771530095757,38.0124982079342,53.7418078112173
+2001,6,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,497.582759724288,25,150,C,di_coxme,14.2086108995753,11.1004772652932,17.3167445338573
+2001,6,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,497.582759724288,25,150,C,di_coxme,20.7208908952139,17.1687381703201,24.2730436201077
+2001,6,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1023.92726130112,25,150,A,di_gee,262.833712665758,251.46110009849,274.206325233027
+2001,6,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1023.92726130112,25,150,A,di_gee,272.942701614441,260.306465428588,284.31531418171
+2001,6,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1023.92726130112,25,150,B,di_gee,139.836182363818,133.78557831923,145.886786408406
+2001,6,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1023.92726130112,25,150,B,di_gee,145.214497070118,138.491603687243,151.265101114707
+2001,6,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1023.92726130112,25,150,C,di_gee,63.0621696563282,60.3335180846602,65.7908212279963
+2001,6,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1023.92726130112,25,150,C,di_gee,65.4876377200331,62.455802640402,68.2162892917012
+2001,6,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,640.041474194705,25,150,A,di_coxme,94.1802717980802,81.1898894811037,107.982553009868
+2001,6,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,640.041474194705,25,150,A,di_coxme,103.111159641002,88.4969795344029,116.913440852789
+2001,6,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,640.041474194705,25,150,B,di_coxme,48.2663865836567,41.6089539514282,55.3399087553994
+2001,6,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,640.041474194705,25,150,B,di_coxme,52.8433715183137,45.3537598070566,59.9168936900565
+2001,6,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,640.041474194705,25,150,C,di_coxme,21.8357762266852,18.8239450230045,25.0358468805959
+2001,6,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,640.041474194705,25,150,C,di_coxme,23.9064101792157,20.5181000750749,27.1064808331264
+2001,8,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.015607067432,25,150,A,di_coxme,17.6315747131269,13.7746677446304,21.4884816816234
+2001,8,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.015607067432,25,150,A,di_coxme,25.71271312331,21.3048194450283,30.1206068015917
+2001,8,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.015607067432,25,150,B,di_coxme,17.6310305215672,13.7742425949744,21.48781844816
+2001,8,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.015607067432,25,150,B,di_coxme,25.7119195106188,21.304161880227,30.1196771410106
+2001,8,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.015607067432,25,150,C,di_coxme,12.9368447696081,10.1069099762563,15.7667795629599
+2001,8,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.015607067432,25,150,C,di_coxme,18.8662319556785,15.6320207632765,22.1004431480805
+2001,8,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,883.632330517994,25,150,A,di_gee,69.4689837584364,66.4631142688887,72.4748532479842
+2001,8,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,883.632330517994,25,150,A,di_gee,72.1408677491455,68.8010127607591,75.1467372386933
+2001,8,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,883.632330517994,25,150,B,di_gee,69.4683949541824,66.4625509417419,72.4742389666231
+2001,8,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,883.632330517994,25,150,B,di_gee,72.1402562985741,68.8004296180845,75.1461003110147
+2001,8,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,883.632330517994,25,150,C,di_gee,50.3983381020479,48.2176407803247,52.5790354237711
+2001,8,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,883.632330517994,25,150,C,di_gee,52.3367357213574,49.9137386972205,54.5174330430807
+2001,8,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.113167095604,25,150,A,di_coxme,30.4363938250524,26.2382705388383,34.8968998166549
+2001,8,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.113167095604,25,150,A,di_coxme,33.3226035843246,28.5997148873337,37.7831095759271
+2001,8,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.113167095604,25,150,B,di_coxme,30.4337441809916,26.2359863629238,34.8938618626886
+2001,8,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.113167095604,25,150,B,di_coxme,33.3197026809132,28.5972251355869,37.7798203626102
+2001,8,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.113167095604,25,150,C,di_coxme,21.6628456280019,18.6748669206913,24.8375730045195
+2001,8,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.113167095604,25,150,C,di_coxme,23.717080989278,20.3556049435535,26.8918083657955
+2001,9,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,334.61044589548,25,150,A,di_coxme,21.9033333923388,17.1119792127646,26.6946875719128
+2001,9,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,334.61044589548,25,150,A,di_coxme,31.9423611971606,26.466527849076,37.4181945452453
+2001,9,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,334.61044589548,25,150,B,di_coxme,20.0744739232119,15.6831827525093,24.4657650939145
+2001,9,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,334.61044589548,25,150,B,di_coxme,29.2752744713507,24.2566559905478,34.2938929521537
+2001,9,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,334.61044589548,25,150,C,di_coxme,9.63665375828007,7.5286357486563,11.7446717679038
+2001,9,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,334.61044589548,25,150,C,di_coxme,14.0534533974918,11.6442899579218,16.4626168370618
+2001,9,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,885.570955118241,25,150,A,di_gee,135.444124431957,129.583561355574,141.304687508339
+2001,9,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,885.570955118241,25,150,A,di_gee,140.653513833186,134.141777081649,146.514076909569
+2001,9,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,885.570955118241,25,150,B,di_gee,121.854430046939,116.581882592985,127.126977500893
+2001,9,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,885.570955118241,25,150,B,di_gee,126.541138894898,120.682752834949,131.813686348852
+2001,9,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,885.570955118241,25,150,C,di_gee,55.2595034556059,52.8684672483922,57.6505396628197
+2001,9,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,885.570955118241,25,150,C,di_gee,57.3848689731292,54.7281620762251,59.775905180343
+2001,9,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,621.907708721824,25,150,A,di_coxme,53.277064915677,45.9285042376526,61.0849106360779
+2001,9,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,621.907708721824,25,150,A,di_coxme,58.3292003818187,50.0620696190413,66.1370461022196
+2001,9,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,621.907708721824,25,150,B,di_coxme,47.38679249569,40.8506831859396,54.3314086372997
+2001,9,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,621.907708721824,25,150,B,di_coxme,51.8803676461433,44.5272446726742,58.824983787753
+2001,9,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,621.907708721824,25,150,C,di_coxme,21.642170296588,18.6570433591276,24.8138676676396
+2001,9,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,621.907708721824,25,150,C,di_coxme,23.694445066092,20.336177261449,26.8661424371436
+2001,10,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,399.835021562124,25,150,A,di_coxme,37.4331202681604,29.2446252095003,45.6216153268205
+2001,10,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,399.835021562124,25,150,A,di_coxme,54.5899670577339,45.2316869906939,63.948247124774
+2001,10,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,399.835021562124,25,150,B,di_coxme,26.8362022855939,20.9657830356202,32.7066215355675
+2001,10,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,399.835021562124,25,150,B,di_coxme,39.1361283331577,32.4270777617593,45.8451789045561
+2001,10,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,399.835021562124,25,150,C,di_coxme,11.5152486209892,8.99628798514778,14.0342092568305
+2001,10,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,399.835021562124,25,150,C,di_coxme,16.7930709056092,13.9142587503619,19.6718830608565
+2001,10,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1042.8414104406,25,150,A,di_gee,212.895736689608,203.683901929,222.107571450216
+2001,10,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1042.8414104406,25,150,A,di_gee,221.084034254593,210.848662298362,230.295869015201
+2001,10,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1042.8414104406,25,150,B,di_gee,151.7748091092,145.207629868898,158.341988349502
+2001,10,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1042.8414104406,25,150,B,di_gee,157.612301767246,150.315435944688,164.179481007548
+2001,10,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1042.8414104406,25,150,C,di_gee,65.0733040114934,62.2576322033038,67.888975819683
+2001,10,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1042.8414104406,25,150,C,di_gee,67.5761233965508,64.447599165229,70.3917952047405
+2001,10,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.325247460369,25,150,A,di_coxme,72.721070487792,62.6905780067173,83.3784687489339
+2001,10,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.325247460369,25,150,A,di_coxme,79.6170340685309,68.3327300273218,90.2744323296728
+2001,10,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.325247460369,25,150,B,di_coxme,51.6168283291939,44.4972658010292,59.1813635153688
+2001,10,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.325247460369,25,150,B,di_coxme,56.5115275673071,48.5020197231218,64.076062753482
+2001,10,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.325247460369,25,150,C,di_coxme,22.1789186116208,19.1197574238111,25.4292773736687
+2001,10,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.325247460369,25,150,C,di_coxme,24.28209192824,20.840535591954,27.5324506902879
+2001,11,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,379.135881068761,25,150,A,di_coxme,39.3604870312894,30.7503804931948,47.9705935693839
+2001,11,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,379.135881068761,25,150,A,di_coxme,57.4007102539636,47.5605884961413,67.2408320117859
+2001,11,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,379.135881068761,25,150,B,di_coxme,25.4779312078208,19.9046337561099,31.0512286595315
+2001,11,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,379.135881068761,25,150,B,di_coxme,37.1553163447386,30.7858335427834,43.5247991466938
+2001,11,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,379.135881068761,25,150,C,di_coxme,10.9191133747803,8.53055732404712,13.3076694255135
+2001,11,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,379.135881068761,25,150,C,di_coxme,15.923707004888,13.1939286611929,18.653485348583
+2001,11,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1212.46543401495,25,150,A,di_gee,272.692161480504,260.892981416444,284.491341544565
+2001,11,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1212.46543401495,25,150,A,di_gee,283.180321537447,270.070121466269,294.979501601507
+2001,11,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1212.46543401495,25,150,B,di_gee,176.534967192577,168.896434958283,184.173499426871
+2001,11,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1212.46543401495,25,150,B,di_gee,183.324773623061,174.837515584956,190.963305857355
+2001,11,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1212.46543401495,25,150,C,di_gee,75.6578430825331,72.3841864106927,78.9314997543735
+2001,11,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1212.46543401495,25,150,C,di_gee,78.567760124169,74.9303638221241,81.8414167960094
+2001,11,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,222.684982895219,25,150,A,di_coxme,27.890840548718,24.0438280592397,31.9782913187888
+2001,11,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,222.684982895219,25,150,A,di_coxme,30.5356616352344,26.2077725845712,34.6231124053051
+2001,11,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,222.684982895219,25,150,B,di_coxme,18.0820206110918,15.5879488026653,20.7319719075449
+2001,11,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,222.684982895219,25,150,B,di_coxme,19.796694979385,16.9908641949052,22.446646275838
+2001,11,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,222.684982895219,25,150,C,di_coxme,7.74943740475362,6.68054948685657,8.88513081751923
+2001,11,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,222.684982895219,25,150,C,di_coxme,8.48429784830784,7.28179894067365,9.61999126107345
+2001,12,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,332.218709380097,25,150,A,di_coxme,16.2397577061775,12.6873107079511,19.7922047044038
+2001,12,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,332.218709380097,25,150,A,di_coxme,23.6829799881754,19.6230405616311,27.7429194147198
+2001,12,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,332.218709380097,25,150,B,di_coxme,16.0636230607926,12.5497055162442,19.577540605341
+2001,12,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,332.218709380097,25,150,B,di_coxme,23.4261169636559,19.4102111984578,27.4420227288541
+2001,12,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,332.218709380097,25,150,C,di_coxme,9.41344540342373,7.35425422142478,11.4726365854227
+2001,12,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,332.218709380097,25,150,C,di_coxme,13.7279412133263,11.3745798624703,16.0813025641822
+2001,12,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.84749647935,25,150,A,di_gee,109.767699748181,105.018135816769,114.517263679592
+2001,12,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.84749647935,25,150,A,di_gee,113.98953435388,108.712241096756,118.739098285292
+2001,12,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.84749647935,25,150,B,di_gee,108.098357445576,103.421024671489,112.775690219664
+2001,12,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.84749647935,25,150,B,di_gee,112.255986578099,107.058950162446,116.933319352186
+2001,12,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.84749647935,25,150,C,di_gee,63.5494299899941,60.7996950385041,66.2991649414843
+2001,12,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.84749647935,25,150,C,di_gee,65.9936388357632,62.9383777785519,68.7433737872533
+2001,12,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,628.929728542112,25,150,A,di_coxme,29.6484359029629,25.5589964680714,33.993465302535
+2001,12,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,628.929728542112,25,150,A,di_coxme,32.4599255144507,27.8593061501979,36.8049549140228
+2001,12,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,628.929728542112,25,150,B,di_coxme,29.576871570858,25.4973030783259,33.9114130941734
+2001,12,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,628.929728542112,25,150,B,di_coxme,32.3815749094738,27.7920603553752,36.7161164327892
+2001,12,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,628.929728542112,25,150,C,di_coxme,20.9965151069987,18.1004440577575,24.0735905968175
+2001,12,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,628.929728542112,25,150,C,di_coxme,22.987563953352,19.7294840229557,26.0646394431708
+2001,13,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.25182221111,25,150,A,di_coxme,44.8054176110204,35.0042325086097,54.6066027134311
+2001,13,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.25182221111,25,150,A,di_coxme,65.3412340160714,54.1398796133164,76.5425884188265
+2001,13,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.25182221111,25,150,B,di_coxme,29.8797756689849,23.3435747413944,36.4159765965753
+2001,13,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.25182221111,25,150,B,di_coxme,43.5746728506028,36.1047289333567,51.0446167678491
+2001,13,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.25182221111,25,150,C,di_coxme,12.85205247968,10.04066599975,15.66343895961
+2001,13,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.25182221111,25,150,C,di_coxme,18.7425765328666,15.5295634129467,21.9555896527866
+2001,13,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1093.5820869096,25,150,A,di_gee,215.692736484318,206.359877694131,225.025595274505
+2001,13,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1093.5820869096,25,150,A,di_gee,223.988610964484,213.618767864276,233.321469754671
+2001,13,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1093.5820869096,25,150,B,di_gee,158.305942898465,151.456166523051,165.15571927388
+2001,13,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1093.5820869096,25,150,B,di_gee,164.394633009945,156.783770370596,171.244409385359
+2001,13,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1093.5820869096,25,150,C,di_gee,68.2395222231589,65.286850588503,71.1921938578148
+2001,13,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1093.5820869096,25,150,C,di_gee,70.8641192317419,67.5833729710131,73.8167908663978
+2001,13,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,420.569422607748,25,150,A,di_coxme,49.7983792817591,42.9296373118613,57.0964176247755
+2001,13,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,420.569422607748,25,150,A,di_coxme,54.5206393860638,46.7933046699288,61.8186777290802
+2001,13,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,420.569422607748,25,150,B,di_coxme,34.0025787301181,29.3125678707915,38.9857152681527
+2001,13,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,420.569422607748,25,150,B,di_coxme,37.2269611959052,31.9506989791627,42.2100977339397
+2001,13,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,420.569422607748,25,150,C,di_coxme,14.6358159067497,12.6170826782325,16.7807199620492
+2001,13,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,420.569422607748,25,150,C,di_coxme,16.0236950013552,13.7526201192734,18.1685990566547
+2001,15,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,623.26005038159,25,150,A,di_coxme,0,0,0
+2001,15,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,623.26005038159,25,150,A,di_coxme,0,0,0
+2001,15,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,623.26005038159,25,150,B,di_coxme,0,0,0
+2001,15,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,623.26005038159,25,150,B,di_coxme,0,0,0
+2001,15,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,623.26005038159,25,150,C,di_coxme,0,0,0
+2001,15,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,623.26005038159,25,150,C,di_coxme,0,0,0
+2001,15,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,496.669195167135,25,150,A,di_gee,0,0,0
+2001,15,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,496.669195167135,25,150,A,di_gee,0,0,0
+2001,15,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,496.669195167135,25,150,B,di_gee,0,0,0
+2001,15,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,496.669195167135,25,150,B,di_gee,0,0,0
+2001,15,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,496.669195167135,25,150,C,di_gee,0,0,0
+2001,15,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,496.669195167135,25,150,C,di_gee,0,0,0
+2001,15,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,861.79717891904,25,150,A,di_coxme,0,0,0
+2001,15,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,861.79717891904,25,150,A,di_coxme,0,0,0
+2001,15,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,861.79717891904,25,150,B,di_coxme,0,0,0
+2001,15,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,861.79717891904,25,150,B,di_coxme,0,0,0
+2001,15,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,861.79717891904,25,150,C,di_coxme,0,0,0
+2001,15,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,861.79717891904,25,150,C,di_coxme,0,0,0
+2001,16,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,524.809086328426,25,150,A,di_coxme,12.4662480115729,9.73925625904131,15.1932397641045
+2001,16,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,524.809086328426,25,150,A,di_coxme,18.1799450168771,15.0633830139839,21.2965070197703
+2001,16,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,524.809086328426,25,150,B,di_coxme,12.4662480115729,9.73925625904131,15.1932397641045
+2001,16,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,524.809086328426,25,150,B,di_coxme,18.1799450168771,15.0633830139839,21.2965070197703
+2001,16,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,524.809086328426,25,150,C,di_coxme,8.59463125399663,6.71455566718486,10.4747068408084
+2001,16,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,524.809086328426,25,150,C,di_coxme,12.5338372454117,10.3851794319126,14.6824950589109
+2001,16,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,892.844981297023,25,150,A,di_gee,48.5687856550824,46.4672516603914,50.6703196497735
+2001,16,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,892.844981297023,25,150,A,di_gee,50.4368158725856,48.1017781007066,52.5383498672767
+2001,16,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,892.844981297023,25,150,B,di_gee,48.5687856550824,46.4672516603914,50.6703196497735
+2001,16,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,892.844981297023,25,150,B,di_gee,50.4368158725856,48.1017781007066,52.5383498672767
+2001,16,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,892.844981297023,25,150,C,di_gee,33.5824853972829,32.1293970868235,35.0355737077422
+2001,16,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,892.844981297023,25,150,C,di_gee,34.8741194510245,33.2595768838474,36.3272077614839
+2001,16,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,583.017467130274,25,150,A,di_coxme,11.1874550752795,9.64435782351682,12.8269959052774
+2001,16,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,583.017467130274,25,150,A,di_coxme,12.2483344358664,10.5123500276333,13.8878752658642
+2001,16,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,583.017467130274,25,150,B,di_coxme,11.1874550752795,9.64435782351682,12.8269959052774
+2001,16,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,583.017467130274,25,150,B,di_coxme,12.2483344358664,10.5123500276333,13.8878752658642
+2001,16,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,583.017467130274,25,150,C,di_coxme,8.35242140614651,7.20036328116079,9.57648316394384
+2001,16,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,583.017467130274,25,150,C,di_coxme,9.14446136707419,7.84839597646525,10.3685231248715
+2001,17,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,428.479334256597,25,150,A,di_coxme,41.8683492523469,32.7096478533959,51.0270506512977
+2001,17,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,428.479334256597,25,150,A,di_coxme,61.0580093263391,50.5909220132525,71.5250966394258
+2001,17,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,428.479334256597,25,150,B,di_coxme,28.6702998824924,22.3986717831972,34.9419279817876
+2001,17,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,428.479334256597,25,150,B,di_coxme,41.8108539953014,34.6432790246783,48.9784289659245
+2001,17,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,428.479334256597,25,150,C,di_coxme,12.34020482659,9.64078502077343,15.0396246324066
+2001,17,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,428.479334256597,25,150,C,di_coxme,17.9961320387771,14.9110808321296,21.0811832454246
+2001,17,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1126.0767959369,25,150,A,di_gee,253.999926524468,243.009545088313,264.990307960623
+2001,17,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1126.0767959369,25,150,A,di_gee,263.769154467716,251.557619538655,274.759535903871
+2001,17,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1126.0767959369,25,150,B,di_gee,163.592374490039,156.513858286143,170.670890693935
+2001,17,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1126.0767959369,25,150,B,di_gee,169.884388893502,162.019370889173,176.962905097398
+2001,17,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1126.0767959369,25,150,C,di_gee,70.2671920664627,67.2267847174331,73.3075994154924
+2001,17,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1126.0767959369,25,150,C,di_gee,72.9697763767113,69.5915459889006,76.010183725741
+2001,17,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,564.704055616743,25,150,A,di_coxme,69.8271299055062,60.1958016426778,80.0604161847613
+2001,17,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,564.704055616743,25,150,A,di_coxme,76.4486680862007,65.6134237905187,86.6819543654558
+2001,17,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,564.704055616743,25,150,B,di_coxme,45.6360264561546,39.3414021173746,52.3240648161082
+2001,17,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,564.704055616743,25,150,B,di_coxme,49.9635806890658,42.8821283079383,56.6516190490194
+2001,17,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,564.704055616743,25,150,C,di_coxme,19.6517011354627,16.9411216685023,22.531691819108
+2001,17,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,564.704055616743,25,150,C,di_coxme,21.5152245189979,18.4658226186675,24.3952152026433
+2001,18,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,286.852119431713,25,150,A,di_coxme,26.4751166610716,20.6836848914622,32.266548430681
+2001,18,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,286.852119431713,25,150,A,di_coxme,38.6095451307294,31.9907659654616,45.2283242959973
+2001,18,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,286.852119431713,25,150,B,di_coxme,19.211132201738,15.0086970326078,23.4135673708682
+2001,18,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,286.852119431713,25,150,B,di_coxme,28.0162344608679,23.2134514104334,32.8190175113024
+2001,18,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,286.852119431713,25,150,C,di_coxme,8.26134103963334,6.45417268721353,10.0685093920531
+2001,18,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,286.852119431713,25,150,C,di_coxme,12.0477890161319,9.98245375622361,14.1131242760403
+2001,18,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1118.12122083886,25,150,A,di_gee,247.783413533349,237.062015832387,258.504811234312
+2001,18,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1118.12122083886,25,150,A,di_gee,257.313544823093,245.400880710913,268.034942524056
+2001,18,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1118.12122083886,25,150,B,di_gee,162.684533756056,155.645299122381,169.723768389732
+2001,18,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1118.12122083886,25,150,B,di_gee,168.941631208212,161.120259393017,175.980865841888
+2001,18,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1118.12122083886,25,150,C,di_gee,69.7707641803448,66.7518368840799,72.7896914766097
+2001,18,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1118.12122083886,25,150,C,di_gee,72.454255110358,69.0998914478414,75.473182406623
+2001,18,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,480.582987422137,25,150,A,di_coxme,54.7587953645828,47.2058580729162,62.7837912369784
+2001,18,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,480.582987422137,25,150,A,di_coxme,59.9514397526035,51.4543852994786,67.9764356249992
+2001,18,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,480.582987422137,25,150,B,di_coxme,38.8421949540448,33.4846508224525,44.5345855938617
+2001,18,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,480.582987422137,25,150,B,di_coxme,42.5255065445146,36.4982693964731,48.2178971843315
+2001,18,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,480.582987422137,25,150,C,di_coxme,16.7242879622904,14.4174896226641,19.1752611981433
+2001,18,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,480.582987422137,25,150,C,di_coxme,18.3102118207834,15.7150636887039,20.7611850566363
+2001,19,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,528.009715399297,25,150,A,di_coxme,29.8089968870537,23.2882788180107,36.3297149560966
+2001,19,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,528.009715399297,25,150,A,di_coxme,43.4714537936199,36.0192045718565,50.9237030153833
+2001,19,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,528.009715399297,25,150,B,di_coxme,29.1847091700648,22.8005540391131,35.5688643010164
+2001,19,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,528.009715399297,25,150,B,di_coxme,42.5610342063444,35.2648569138283,49.8572114988606
+2001,19,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,528.009715399297,25,150,C,di_coxme,15.1941658829389,11.870442096046,18.5178896698318
+2001,19,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,528.009715399297,25,150,C,di_coxme,22.1581585792859,18.3596171085512,25.9567000500206
+2001,19,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.36903931654,25,150,A,di_gee,150.658251898301,144.139385229625,157.177118566978
+2001,19,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.36903931654,25,150,A,di_gee,156.452800048236,149.209614860817,162.971666716912
+2001,19,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.36903931654,25,150,B,di_gee,144.65976986699,138.400452901591,150.919086832388
+2001,19,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.36903931654,25,150,B,di_gee,150.223607169566,143.268810541346,156.482924134965
+2001,19,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.36903931654,25,150,C,di_gee,69.4622762766743,66.4566970147029,72.4678555386458
+2001,19,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.36903931654,25,150,C,di_gee,72.1339022873156,68.794369774014,75.1394815492872
+2001,19,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,654.062895353144,25,150,A,di_coxme,43.0160568993263,37.082807671833,49.3201342035379
+2001,19,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,654.062895353144,25,150,A,di_coxme,47.0951657432279,40.420260362298,53.3992430474395
+2001,19,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,654.062895353144,25,150,B,di_coxme,42.0247092220945,36.2281976052539,48.1835028149876
+2001,19,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,654.062895353144,25,150,B,di_coxme,46.0098109586724,39.4887353897267,52.1686045515655
+2001,19,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,654.062895353144,25,150,C,di_coxme,22.7093051245356,19.5769871763238,26.0373929445106
+2001,19,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,654.062895353144,25,150,C,di_coxme,24.8627737139312,21.3389160221929,28.1908615339062
+2001,20,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,275.388777107794,25,150,A,di_coxme,15.3011567646716,11.9540287223997,18.6482848069435
+2001,20,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,275.388777107794,25,150,A,di_coxme,22.3141869484793,18.4888977573115,26.1394761396473
+2001,20,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,275.388777107794,25,150,B,di_coxme,14.601569352238,11.4074760564359,17.7956626480401
+2001,20,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,275.388777107794,25,150,B,di_coxme,21.2939553053471,17.6435629672876,24.9443476434066
+2001,20,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,275.388777107794,25,150,C,di_coxme,7.59358944801177,5.93249175625919,9.25468713976434
+2001,20,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,275.388777107794,25,150,C,di_coxme,11.0739846116838,9.17558724968089,12.9723819736868
+2001,20,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.06267967259,25,150,A,di_gee,147.712807712622,141.321388148133,154.10422727711
+2001,20,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.06267967259,25,150,A,di_gee,153.394069547723,146.292492253847,159.785489112211
+2001,20,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.06267967259,25,150,B,di_gee,138.437162533538,132.447093000837,144.427232066239
+2001,20,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.06267967259,25,150,B,di_gee,143.761668784828,137.106035970716,149.751738317529
+2001,20,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.06267967259,25,150,C,di_gee,68.3569508274159,65.3991981473835,71.3147035074484
+2001,20,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.06267967259,25,150,C,di_gee,70.9860643207781,67.6996724540754,73.9438170008105
+2001,20,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,598.727631191685,25,150,A,di_coxme,33.7334705149731,29.0805780301492,38.6771687800984
+2001,20,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,598.727631191685,25,150,A,di_coxme,36.9323340982895,31.6978300528626,41.8760323634148
+2001,20,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,598.727631191685,25,150,B,di_coxme,31.7775675847264,27.3944548144193,36.4346249031776
+2001,20,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,598.727631191685,25,150,B,di_coxme,34.7909576143125,29.859955747717,39.4480149327637
+2001,20,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,598.727631191685,25,150,C,di_coxme,17.1403160745109,14.7761345469922,19.6522589474996
+2001,20,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,598.727631191685,25,150,C,di_coxme,18.7656908746801,16.1059866562215,21.2776337476687
+2001,21,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,466.244492648342,25,150,A,di_coxme,45.0022008888994,35.1579694444526,54.8464323333461
+2001,21,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,466.244492648342,25,150,A,di_coxme,65.6282096296448,54.3776594074201,76.8787598518697
+2001,21,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,466.244492648342,25,150,B,di_coxme,31.2877585884413,24.4435613972197,38.1319557796628
+2001,21,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,466.244492648342,25,150,B,di_coxme,45.6279812748102,37.8060416276999,53.4499209219205
+2001,21,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,466.244492648342,25,150,C,di_coxme,13.4278413882723,10.4905010845877,16.3651816919568
+2001,21,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,466.244492648342,25,150,C,di_coxme,19.5822686912303,16.2253083441623,22.9392290382984
+2001,21,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1129.99248826851,25,150,A,di_gee,246.129724316701,235.479880476074,256.779568157327
+2001,21,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1129.99248826851,25,150,A,di_gee,255.596252175035,243.763092352117,266.246096015662
+2001,21,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1129.99248826851,25,150,B,di_gee,164.320410307611,157.210392553917,171.430428061306
+2001,21,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1129.99248826851,25,150,B,di_gee,170.640426088673,162.740406362346,177.750443842368
+2001,21,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1129.99248826851,25,150,C,di_gee,70.5115312679547,67.4605515496298,73.5625109862797
+2001,21,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1129.99248826851,25,150,C,di_gee,73.2235132397991,69.8335357749936,76.2744929581241
+2001,21,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,687.743830236749,25,150,A,di_coxme,76.6966817960229,66.1178291345025,87.9367127488882
+2001,21,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,687.743830236749,25,150,A,di_coxme,83.9696430008181,72.0684337566076,95.2096739536834
+2001,21,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,687.743830236749,25,150,B,di_coxme,55.6729392076653,47.9939131100563,63.8319044363748
+2001,21,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,687.743830236749,25,150,B,di_coxme,60.9522696497714,52.3133652899613,69.1112348784809
+2001,21,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,687.743830236749,25,150,C,di_coxme,23.9334852922389,20.6323149071025,27.4409788264463
+2001,21,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,687.743830236749,25,150,C,di_coxme,26.2030399320201,22.4892232487417,29.7105334662276
+2001,22,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,485.522106616066,25,150,A,di_coxme,33.907036299552,26.489872109025,41.324200490079
+2001,22,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,485.522106616066,25,150,A,di_coxme,49.44776127018,40.9710021952921,57.924520345068
+2001,22,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,485.522106616066,25,150,B,di_coxme,30.4269245264323,23.7710347862752,37.0828142665893
+2001,22,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,485.522106616066,25,150,B,di_coxme,44.3725982677137,36.7658671361057,51.9793293993217
+2001,22,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,485.522106616066,25,150,C,di_coxme,13.9604243978783,10.9065815608424,17.0142672349142
+2001,22,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,485.522106616066,25,150,C,di_coxme,20.3589522469059,16.8688461474363,23.8490583463754
+2001,22,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.53413224537,25,150,A,di_gee,172.30663275621,164.851057300413,179.762208212008
+2001,22,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.53413224537,25,150,A,di_gee,178.933810939141,170.649838210477,186.389386394939
+2001,22,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.53413224537,25,150,B,di_gee,159.774016232507,152.860717453216,166.687315011799
+2001,22,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.53413224537,25,150,B,di_gee,165.919170702988,158.237727614887,172.83246948228
+2001,22,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.53413224537,25,150,C,di_gee,73.7768594667542,70.5845915090581,76.9691274244503
+2001,22,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.53413224537,25,150,C,di_gee,76.6144309847063,73.0674665872662,79.8066989424024
+2001,22,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,574.492423006604,25,150,A,di_coxme,48.0249343444878,41.400805469386,55.0630712742833
+2001,22,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,574.492423006604,25,150,A,di_coxme,52.5790229461202,45.1268779616307,59.6171598759158
+2001,22,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,574.492423006604,25,150,B,di_coxme,42.8786055639018,36.9643151412947,49.1625391379219
+2001,22,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,574.492423006604,25,150,B,di_coxme,46.9446802294442,40.2911035040112,53.2286138034643
+2001,22,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,574.492423006604,25,150,C,di_coxme,19.9895528377116,17.2323731359583,22.9190562708245
+2001,22,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,574.492423006604,25,150,C,di_coxme,21.885113882667,18.7832867181945,24.8146173157799
+2001,23,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,518.987912851833,25,150,A,di_coxme,15.6011311987062,12.1883837489892,19.0138786484232
+2001,23,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,518.987912851833,25,150,A,di_coxme,22.7516496647799,18.8513668651033,26.6519324644564
+2001,23,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,518.987912851833,25,150,B,di_coxme,15.6011311987062,12.1883837489892,19.0138786484232
+2001,23,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,518.987912851833,25,150,B,di_coxme,22.7516496647799,18.8513668651033,26.6519324644564
+2001,23,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,518.987912851833,25,150,C,di_coxme,11.359234762713,8.87440215836952,13.8440673670565
+2001,23,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,518.987912851833,25,150,C,di_coxme,16.5655506956231,13.7257420049449,19.4053593863013
+2001,23,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,794.887723054639,25,150,A,di_gee,56.8806373528635,54.4194559289415,59.3418187767855
+2001,23,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,794.887723054639,25,150,A,di_gee,59.0683541741274,56.3337081475475,61.5295355980495
+2001,23,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,794.887723054639,25,150,B,di_gee,56.8806373528635,54.4194559289415,59.3418187767855
+2001,23,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,794.887723054639,25,150,B,di_gee,59.0683541741274,56.3337081475475,61.5295355980495
+2001,23,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,794.887723054639,25,150,C,di_gee,39.9856415930742,38.2554936395277,41.7157895466207
+2001,23,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,794.887723054639,25,150,C,di_gee,41.5235508851155,39.6011642700638,43.253698838662
+2001,23,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,240.13183023552,25,150,A,di_coxme,7.04280761899179,6.07138587844119,8.07494321832678
+2001,23,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,240.13183023552,25,150,A,di_coxme,7.71066006562031,6.61781060750089,8.74279566495531
+2001,23,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,240.13183023552,25,150,B,di_coxme,7.04280761899179,6.07138587844119,8.07494321832678
+2001,23,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,240.13183023552,25,150,B,di_coxme,7.71066006562031,6.61781060750089,8.74279566495531
+2001,23,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,240.13183023552,25,150,C,di_coxme,5.62244861021458,4.84693845708153,6.44642814791843
+2001,23,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,240.13183023552,25,150,C,di_coxme,6.15561184049354,5.28316291821886,6.97959137819739
+2001,24,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,408.298656067438,25,150,A,di_coxme,38.2108749947128,29.8522460896193,46.5695038998061
+2001,24,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,408.298656067438,25,150,A,di_coxme,55.7241927006227,46.1714739519446,65.2769114493009
+2001,24,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,408.298656067438,25,150,B,di_coxme,27.4276680501247,21.4278656641598,33.4274704360894
+2001,24,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,408.298656067438,25,150,B,di_coxme,39.9986825730984,33.1417655605673,46.8555995856295
+2001,24,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,408.298656067438,25,150,C,di_coxme,11.7590012947422,9.18671976151734,14.3312828279671
+2001,24,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,408.298656067438,25,150,C,di_coxme,17.1485435548324,14.2087932311468,20.0882938785179
+2001,24,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1052.36493342146,25,150,A,di_gee,219.806262462769,210.295414567746,229.317110357793
+2001,24,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1052.36493342146,25,150,A,di_gee,228.260349480568,217.692740708319,237.771197375592
+2001,24,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1052.36493342146,25,150,B,di_gee,153.139150883729,146.512937624337,159.765364143122
+2001,24,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1052.36493342146,25,150,B,di_gee,159.029118225411,151.666659048309,165.655331484803
+2001,24,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1052.36493342146,25,150,C,di_gee,65.6675718454993,62.8261865252613,68.5089571657372
+2001,24,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1052.36493342146,25,150,C,di_gee,68.1932476857108,65.0361528854464,71.0346330059488
+2001,24,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,273.760874886742,25,150,A,di_coxme,31.808628225965,27.4212312292802,36.4702375349426
+2001,24,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,273.760874886742,25,150,A,di_coxme,34.8249636611858,29.8891420399154,39.4865729701634
+2001,24,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,273.760874886742,25,150,B,di_coxme,22.209499724475,19.1461204521336,25.4643402013377
+2001,24,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,273.760874886742,25,150,B,di_coxme,24.3155729742097,20.8692712928256,27.5704134510724
+2001,24,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,273.760874886742,25,150,C,di_coxme,9.52687844605863,8.21282624660226,10.923058907981
+2001,24,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,273.760874886742,25,150,C,di_coxme,10.4302893331849,8.95198060879646,11.8264697951072
+2001,25,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,384.667229783286,25,150,A,di_coxme,24.6488176416274,19.2568887825214,30.0407465007334
+2001,25,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,384.667229783286,25,150,A,di_coxme,35.9461923940399,29.7839879836331,42.1083968044467
+2001,25,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,384.667229783286,25,150,B,di_coxme,23.4281636794264,18.3032528745519,28.5530744843009
+2001,25,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,384.667229783286,25,150,B,di_coxme,34.1660720324968,28.3090311126402,40.0231129523534
+2001,25,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,384.667229783286,25,150,C,di_coxme,11.0705229051368,8.64884601963808,13.4921997906354
+2001,25,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,384.667229783286,25,150,C,di_coxme,16.1445125699911,13.3768818437069,18.9121432962753
+2001,25,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,859.091262150544,25,150,A,di_gee,122.84659821333,117.531120406023,128.162076020638
+2001,25,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,859.091262150544,25,150,A,di_gee,127.571467375381,121.665380922817,132.886945182689
+2001,25,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,859.091262150544,25,150,B,di_gee,116.278555278478,111.247271636621,121.309838920335
+2001,25,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,859.091262150544,25,150,B,di_gee,120.750807404573,115.160492246954,125.782091046431
+2001,25,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,859.091262150544,25,150,C,di_gee,53.5744059183537,51.256282585348,55.8925292513594
+2001,25,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,859.091262150544,25,150,C,di_gee,55.6349599921365,53.059267399908,57.9530833251422
+2001,25,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.805034163685,25,150,A,di_coxme,50.0274111820275,43.1270786051961,57.3590145449108
+2001,25,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.805034163685,25,150,A,di_coxme,54.771389828599,47.0085156796637,62.1029931914823
+2001,25,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.805034163685,25,150,B,di_coxme,47.008533824018,40.5245981241535,53.8977155051241
+2001,25,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.805034163685,25,150,B,di_coxme,51.4662396176749,44.1718119553273,58.3554212987809
+2001,25,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.805034163685,25,150,C,di_coxme,22.1694339931058,19.1115810285394,25.4184027679574
+2001,25,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,637.805034163685,25,150,C,di_coxme,24.2717079062451,20.831623321108,27.5206766810968
+2001,26,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.444146830682,25,150,A,di_coxme,31.3252869375503,24.4728804199612,38.1776934551394
+2001,26,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.444146830682,25,150,A,di_coxme,45.6827101172608,37.8513883828733,53.5140318516484
+2001,26,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.444146830682,25,150,B,di_coxme,25.3505660377765,19.8051297170128,30.89600235854
+2001,26,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.444146830682,25,150,B,di_coxme,36.9695754717573,30.6319339623132,43.3072169812014
+2001,26,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.444146830682,25,150,C,di_coxme,11.3851591965671,8.89465562231807,13.8756627708162
+2001,26,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.444146830682,25,150,C,di_coxme,16.6033571616604,13.7570673625186,19.4496469608022
+2001,26,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1116.09864343773,25,150,A,di_gee,217.56667682993,208.152734082482,226.980619577379
+2001,26,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1116.09864343773,25,150,A,di_gee,225.934625938774,215.47468955272,235.348568686223
+2001,26,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1116.09864343773,25,150,B,di_gee,159.421296972002,152.52326008379,166.319333860213
+2001,26,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1116.09864343773,25,150,B,di_gee,165.552885317079,157.888399885732,172.45092220529
+2001,26,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1116.09864343773,25,150,C,di_gee,69.3616083958311,66.3603849556269,72.3628318360354
+2001,26,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1116.09864343773,25,150,C,di_gee,72.0293625649015,68.6946698535635,75.0305860051058
+2001,26,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,653.070253886004,25,150,A,di_coxme,58.3536950443822,50.3049095210191,66.9055296629554
+2001,26,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,653.070253886004,25,150,A,di_coxme,63.8872350916942,54.8323513779108,72.4390697102674
+2001,26,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,653.070253886004,25,150,B,di_coxme,47.8395090779967,41.2409561017213,54.8504716152893
+2001,26,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,653.070253886004,25,150,B,di_coxme,52.376014249186,44.9526421508762,59.3869767864786
+2001,26,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,653.070253886004,25,150,C,di_coxme,22.4725255445256,19.372866848729,25.7659129088095
+2001,26,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,653.070253886004,25,150,C,di_coxme,24.6035408978858,21.1164248651146,27.8969282621697
+2001,27,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,560.039468339647,25,150,A,di_coxme,30.2292916660768,23.6166341141225,36.8419492180311
+2001,27,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,560.039468339647,25,150,A,di_coxme,44.0843836796953,36.5270607631762,51.6417065962145
+2001,27,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,560.039468339647,25,150,B,di_coxme,29.9198169554967,23.3748569964817,36.4647769145115
+2001,27,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,560.039468339647,25,150,B,di_coxme,43.6330663934326,36.1531121545585,51.1130206323067
+2001,27,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,560.039468339647,25,150,C,di_coxme,15.8242374391872,12.362685499365,19.2857893790094
+2001,27,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,560.039468339647,25,150,C,di_coxme,23.077012932148,19.1209535723512,27.0330722919448
+2001,27,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,940.590586653202,25,150,A,di_gee,118.336998817677,113.216647907297,123.457349728057
+2001,27,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,940.590586653202,25,150,A,di_gee,122.888421849126,117.199143059815,128.008772759506
+2001,27,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,940.590586653202,25,150,B,di_gee,117.094968705468,112.028359482635,122.1615779283
+2001,27,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,940.590586653202,25,150,B,di_gee,121.598621347986,115.969055544838,126.665230570818
+2001,27,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,940.590586653202,25,150,C,di_gee,57.9574568036961,55.4496822304592,60.4652313769329
+2001,27,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,940.590586653202,25,150,C,di_gee,60.1865897576844,57.400173565199,62.6943643309213
+2001,27,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,553.966991765971,25,150,A,di_coxme,32.6153813719314,28.1167080792512,37.395221745404
+2001,27,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,553.966991765971,25,150,A,di_coxme,35.708219260649,30.6472118063838,40.4880596341216
+2001,27,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,553.966991765971,25,150,B,di_coxme,32.3725746846707,27.9073919695438,37.1168313194932
+2001,27,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,553.966991765971,25,150,B,di_coxme,35.4423878013205,30.4190572468027,40.1866444361429
+2001,27,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,553.966991765971,25,150,C,di_coxme,18.3866051987889,15.8505217230939,21.0811938917148
+2001,27,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,553.966991765971,25,150,C,di_coxme,20.1301625883292,17.2770686781723,22.8247512812551
+2001,28,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,522.543812597637,25,150,A,di_coxme,32.1341037413953,25.104768547965,39.1634389348254
+2001,28,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,522.543812597637,25,150,A,di_coxme,46.862234622868,38.8287086875193,54.8957605582168
+2001,28,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,522.543812597637,25,150,B,di_coxme,30.6785575309566,23.9676230710598,37.3894919908533
+2001,28,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,522.543812597637,25,150,B,di_coxme,44.7395630659782,37.0699236832392,52.4092024487174
+2001,28,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,522.543812597637,25,150,C,di_coxme,15.049261802812,11.7572357834468,18.3412878221771
+2001,28,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,522.543812597637,25,150,C,di_coxme,21.9468401291007,18.1845246783978,25.7091555798037
+2001,28,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1157.80526211787,25,150,A,di_gee,162.792669684215,155.748756092109,169.83658327632
+2001,28,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1157.80526211787,25,150,A,di_gee,169.053926210531,161.227355552636,176.097839802636
+2001,28,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1157.80526211787,25,150,B,di_gee,155.169774099191,148.455697335284,161.883850863099
+2001,28,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1157.80526211787,25,150,B,di_gee,161.137842333775,153.677757040545,167.851919097683
+2001,28,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1157.80526211787,25,150,C,di_gee,72.2470483561548,69.1209741484366,75.3731225638731
+2001,28,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1157.80526211787,25,150,C,di_gee,75.0257809852377,71.5523651988841,78.151855192956
+2001,28,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,228.033387028664,25,150,A,di_coxme,16.9292402549454,14.5941726335737,19.4102496026529
+2001,28,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,228.033387028664,25,150,A,di_coxme,18.5345992446385,15.9076481705953,21.015608592346
+2001,28,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,228.033387028664,25,150,B,di_coxme,16.3549867050599,14.0991264698792,18.7518382049393
+2001,28,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,228.033387028664,25,150,B,di_coxme,17.9058906167466,15.3680478521683,20.302742116626
+2001,28,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,228.033387028664,25,150,C,di_coxme,7.93556186859751,6.84100161085993,9.09853214244369
+2001,28,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,228.033387028664,25,150,C,di_coxme,8.6880720457921,7.45669175583731,9.85104231963828
+2001,29,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,395.691164506557,25,150,A,di_coxme,31.3143610996057,24.464344609067,38.1643775901445
+2001,29,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,395.691164506557,25,150,A,di_coxme,45.6667766035916,37.8381863286903,53.4953668784931
+2001,29,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,395.691164506557,25,150,B,di_coxme,25.5714998922446,19.9777342908161,31.1652654936731
+2001,29,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,395.691164506557,25,150,B,di_coxme,37.29177067619,30.8988957031289,43.6846456492511
+2001,29,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,395.691164506557,25,150,C,di_coxme,11.3959055377888,8.90305120139752,13.8887598741801
+2001,29,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,395.691164506557,25,150,C,di_coxme,16.6190289092754,13.7700525248282,19.4680052937226
+2001,29,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.59985631854,25,150,A,di_gee,210.819382140729,201.697389644255,219.941374637203
+2001,29,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.59985631854,25,150,A,di_gee,218.927819915372,208.792272697068,228.049812411846
+2001,29,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.59985631854,25,150,B,di_gee,158.954406505138,152.076571608281,165.832241401995
+2001,29,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.59985631854,25,150,B,di_gee,165.068037524567,157.425998750281,171.945872421424
+2001,29,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.59985631854,25,150,C,di_gee,69.3638310342771,66.3625114222171,72.3651506463372
+2001,29,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1111.59985631854,25,150,C,di_gee,72.0316706894416,68.696871120486,75.0329903015017
+2001,29,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,663.248375923979,25,150,A,di_coxme,58.2308815737453,50.1990358394356,66.7647176664493
+2001,29,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,663.248375923979,25,150,A,di_coxme,63.7527755160831,54.7169490649847,72.2866116087871
+2001,29,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,663.248375923979,25,150,B,di_coxme,50.4241022330835,43.4690536492099,57.8138413534491
+2001,29,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,663.248375923979,25,150,B,di_coxme,55.2056981344965,47.3812684776387,62.5954372548621
+2001,29,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,663.248375923979,25,150,C,di_coxme,23.0810434821545,19.8974512777194,26.4636101993668
+2001,29,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,663.248375923979,25,150,C,di_coxme,25.2697631227036,21.6882218927141,28.6523298399159
+2001,30,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,264.829741574956,25,150,A,di_coxme,2.73430144083821,2.13617300065485,3.33242988102157
+2001,30,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,264.829741574956,25,150,A,di_coxme,3.98752293455572,3.30394757434617,4.67109829476528
+2001,30,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,264.829741574956,25,150,B,di_coxme,2.73430144083821,2.13617300065485,3.33242988102157
+2001,30,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,264.829741574956,25,150,B,di_coxme,3.98752293455572,3.30394757434617,4.67109829476528
+2001,30,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,264.829741574956,25,150,C,di_coxme,1.89896000004224,1.483562500033,2.31435750005148
+2001,30,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,264.829741574956,25,150,C,di_coxme,2.76931666672826,2.29457666671771,3.24405666673882
+2001,30,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,847.129697769512,25,150,A,di_gee,19.4543468662149,18.612572242196,20.2961214902338
+2001,30,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,847.129697769512,25,150,A,di_gee,20.2025909764539,19.2672858386551,21.0443656004728
+2001,30,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,847.129697769512,25,150,B,di_gee,19.4543468662149,18.612572242196,20.2961214902338
+2001,30,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,847.129697769512,25,150,B,di_gee,20.2025909764539,19.2672858386551,21.0443656004728
+2001,30,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,847.129697769512,25,150,C,di_gee,14.895307540364,14.2507990410213,15.5398160397067
+2001,30,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,847.129697769512,25,150,C,di_gee,15.4682039842242,14.752083429399,16.1127124835668
+2001,30,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,778.878862571145,25,150,A,di_coxme,7.12066517303954,6.13850445951684,8.1642109311574
+2001,30,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,778.878862571145,25,150,A,di_coxme,7.79590066358639,6.69096986087335,8.83944642170424
+2001,30,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,778.878862571145,25,150,B,di_coxme,7.12066517303954,6.13850445951684,8.1642109311574
+2001,30,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,778.878862571145,25,150,B,di_coxme,7.79590066358639,6.69096986087335,8.83944642170424
+2001,30,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,778.878862571145,25,150,C,di_coxme,5.15394982062123,4.44306019019071,5.90927005295364
+2001,30,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,778.878862571145,25,150,C,di_coxme,5.6426864415422,4.84293560730787,6.39800667387462
+2001,31,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,515.626955328504,25,150,A,di_coxme,22.4174174464546,17.5136073800427,27.3212275128666
+2001,31,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,515.626955328504,25,150,A,di_coxme,32.692067109413,27.0877127477994,38.2964214710266
+2001,31,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,515.626955328504,25,150,B,di_coxme,22.4174174464546,17.5136073800427,27.3212275128666
+2001,31,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,515.626955328504,25,150,B,di_coxme,32.692067109413,27.0877127477994,38.2964214710266
+2001,31,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,515.626955328504,25,150,C,di_coxme,14.0579001568715,10.9827344975559,17.1330658161872
+2001,31,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,515.626955328504,25,150,C,di_coxme,20.5011043954376,16.9866293562198,24.0155794346555
+2001,31,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1068.88228677622,25,150,A,di_gee,118.06069017685,112.952294928813,123.169085424887
+2001,31,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1068.88228677622,25,150,A,di_gee,122.601485952883,116.925491232842,127.70988120092
+2001,31,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1068.88228677622,25,150,B,di_gee,118.06069017685,112.952294928813,123.169085424887
+2001,31,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1068.88228677622,25,150,B,di_gee,122.601485952883,116.925491232842,127.70988120092
+2001,31,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1068.88228677622,25,150,C,di_gee,66.0095140898412,63.1533331917231,68.8656949879594
+2001,31,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1068.88228677622,25,150,C,di_gee,68.5483415548351,65.3748072235928,71.4045224529533
+2001,31,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.770863691398,25,150,A,di_coxme,25.8967697258725,22.3248014878211,29.6919859788021
+2001,31,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.770863691398,25,150,A,di_coxme,28.3524978895328,24.334033621725,32.1477141424624
+2001,31,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.770863691398,25,150,B,di_coxme,25.8967697258725,22.3248014878211,29.6919859788021
+2001,31,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.770863691398,25,150,B,di_coxme,28.3524978895328,24.334033621725,32.1477141424624
+2001,31,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.770863691398,25,150,C,di_coxme,17.0670008660021,14.7129317810363,19.5681992687782
+2001,31,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.770863691398,25,150,C,di_coxme,18.685423361916,16.0370956413295,21.1866217646922
+2001,32,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,479.594571836234,25,150,A,di_coxme,23.2680659904373,18.1781765550291,28.3579554258454
+2001,32,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,479.594571836234,25,150,A,di_coxme,33.9325962360543,28.1155797384451,39.7496127336637
+2001,32,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,479.594571836234,25,150,B,di_coxme,22.8016743501592,17.8138080860618,27.7895406142565
+2001,32,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,479.594571836234,25,150,B,di_coxme,33.2524417606488,27.552023173109,38.9528603481886
+2001,32,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,479.594571836234,25,150,C,di_coxme,12.6841374545756,9.90948238638716,15.458792522764
+2001,32,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,479.594571836234,25,150,C,di_coxme,18.4977004545894,15.3266660909455,21.6687348182333
+2001,32,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1029.59295513971,25,150,A,di_gee,101.808458462452,97.403284778981,106.213632145924
+2001,32,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1029.59295513971,25,150,A,di_gee,105.724168403316,100.829530977237,110.129342086788
+2001,32,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1029.59295513971,25,150,B,di_gee,99.8999936416609,95.5773977629352,104.222589520387
+2001,32,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1029.59295513971,25,150,B,di_gee,103.742301089417,98.9394167797218,108.064896968143
+2001,32,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1029.59295513971,25,150,C,di_gee,59.0892964995854,56.5325480933533,61.6460449058175
+2001,32,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1029.59295513971,25,150,C,di_gee,61.3619617495694,58.5211301870893,63.9187101558015
+2001,32,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,526.185169953712,25,150,A,di_coxme,29.1207710957186,25.1041130135505,33.3884703080221
+2001,32,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,526.185169953712,25,150,A,di_coxme,31.8822235272091,27.36348318477,36.1499227395127
+2001,32,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,526.185169953712,25,150,B,di_coxme,28.4830921789605,24.5543898094487,32.6573384465667
+2001,32,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,526.185169953712,25,150,B,di_coxme,31.1840750579998,26.764284892299,35.358321325606
+2001,32,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,526.185169953712,25,150,C,di_coxme,16.5165612113576,14.2384148373772,18.9370917337117
+2001,32,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,526.185169953712,25,150,C,di_coxme,18.082786843469,15.5198721727411,20.5033173658231
+2001,33,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,442.67911745993,25,150,A,di_coxme,21.4303857568268,16.7424888725209,26.1182826411326
+2001,33,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,442.67911745993,25,150,A,di_coxme,31.2526458953723,25.8950494561657,36.610242334579
+2001,33,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,442.67911745993,25,150,B,di_coxme,20.9496502763915,16.3669142784308,25.5323862743521
+2001,33,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,442.67911745993,25,150,B,di_coxme,30.5515733197375,25.3141607506397,35.7889858888354
+2001,33,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,442.67911745993,25,150,C,di_coxme,12.2485889945611,9.56921015200087,14.9279678371214
+2001,33,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,442.67911745993,25,150,C,di_coxme,17.8625256170683,14.800378368428,20.9246728657086
+2001,33,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,721.777062068464,25,150,A,di_gee,81.6670800072023,78.1334082761214,85.2007517382832
+2001,33,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,721.777062068464,25,150,A,di_gee,84.8081215459408,80.8818196225176,88.3417932770217
+2001,33,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,721.777062068464,25,150,B,di_gee,78.1229745697831,74.7426535547444,81.5032955848218
+2001,33,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,721.777062068464,25,150,B,di_gee,81.1277043609286,77.3717921219967,84.5080253759674
+2001,33,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,721.777062068464,25,150,C,di_gee,43.9197652775084,42.0193908183855,45.8201397366314
+2001,33,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,721.777062068464,25,150,C,di_gee,45.6089870189511,43.4974598421478,47.509361478074
+2001,33,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,390.920163942139,25,150,A,di_coxme,24.0588147736859,20.7403575635223,27.5846755594846
+2001,33,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,390.920163942139,25,150,A,di_coxme,26.3402541056733,22.6069897442393,29.8661148914721
+2001,33,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,390.920163942139,25,150,B,di_coxme,22.8355139674907,19.6857879030093,26.1820979110023
+2001,33,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,390.920163942139,25,150,B,di_coxme,25.0009506368217,21.4575088142801,28.3475345803333
+2001,33,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,390.920163942139,25,150,C,di_coxme,13.0228810101777,11.226621560498,14.9314066754623
+2001,33,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,390.920163942139,25,150,C,di_coxme,14.2578093818325,12.2370175009428,16.1663350471171
+2001,34,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,376.085520542049,25,150,A,di_coxme,33.1286901161946,25.881789153277,40.3755910791122
+2001,34,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,376.085520542049,25,150,A,di_coxme,48.3126730861171,40.0305005570685,56.5948456151658
+2001,34,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,376.085520542049,25,150,B,di_coxme,25.1708201352786,19.6647032306864,30.6769370398707
+2001,34,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,376.085520542049,25,150,B,di_coxme,36.7074460306145,30.4147409967949,43.0001510644342
+2001,34,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,376.085520542049,25,150,C,di_coxme,10.831262991611,8.4619242121961,13.2006017710259
+2001,34,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,376.085520542049,25,150,C,di_coxme,15.7955918627661,13.0877761148633,18.5034076106688
+2001,34,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1069.00238754045,25,150,A,di_gee,212.390801119087,203.200814532204,221.580787705971
+2001,34,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1069.00238754045,25,150,A,di_gee,220.559678085206,210.348581877558,229.74966467209
+2001,34,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1069.00238754045,25,150,B,di_gee,155.235145019501,148.518239706157,161.952050332845
+2001,34,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1069.00238754045,25,150,B,di_gee,161.205727520251,153.742499394314,167.922632833595
+2001,34,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1069.00238754045,25,150,C,di_gee,66.7057489825244,63.8194425361652,69.5920554288836
+2001,34,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1069.00238754045,25,150,C,di_gee,69.2713547126215,66.0643475500001,72.1576611589807
+2001,34,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,589.000189018224,25,150,A,di_coxme,64.006447466104,55.1779719535379,73.3867026982053
+2001,34,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,589.000189018224,25,150,A,di_coxme,70.0760243809931,60.1439894293562,79.4562796130944
+2001,34,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,589.000189018224,25,150,B,di_coxme,47.6310248453938,41.0612283149947,54.6114336589429
+2001,34,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,589.000189018224,25,150,B,di_coxme,52.1477599600432,44.7567388633441,59.1281687735922
+2001,34,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,589.000189018224,25,150,C,di_coxme,20.4972065778342,17.6700056705467,23.5011075418271
+2001,34,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,589.000189018224,25,150,C,di_coxme,22.4409072015943,19.2603061808959,25.4448081655872
+2001,35,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,601.836580808623,25,150,A,di_coxme,8.82755652587141,6.89652853583703,10.7585845159058
+2001,35,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,601.836580808623,25,150,A,di_coxme,12.8735199335624,10.6666308020946,15.0804090650303
+2001,35,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,601.836580808623,25,150,B,di_coxme,8.82755652587141,6.89652853583703,10.7585845159058
+2001,35,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,601.836580808623,25,150,B,di_coxme,12.8735199335624,10.6666308020946,15.0804090650303
+2001,35,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,601.836580808623,25,150,C,di_coxme,8.66810073266316,6.77195369739308,10.5642477679332
+2001,35,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,601.836580808623,25,150,C,di_coxme,12.6409802351338,10.473955051968,14.8080054182995
+2001,35,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,947.467123942232,25,150,A,di_gee,29.9694137765373,28.6726602958217,31.2661672572528
+2001,35,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,947.467123942232,25,150,A,di_gee,31.1220835371733,29.6812463363783,32.4188370178889
+2001,35,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,947.467123942232,25,150,B,di_gee,29.9694137765373,28.6726602958217,31.2661672572528
+2001,35,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,947.467123942232,25,150,B,di_gee,31.1220835371733,29.6812463363783,32.4188370178889
+2001,35,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,947.467123942232,25,150,C,di_gee,29.2068292890808,27.943072252534,30.4705863256275
+2001,35,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,947.467123942232,25,150,C,di_gee,30.3301688771223,28.9259943920704,31.5939259136691
+2001,35,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,804.883999596865,25,150,A,di_coxme,11.2819273150365,9.72579940951422,12.9353132146539
+2001,35,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,804.883999596865,25,150,A,di_coxme,12.3517652500831,10.6011213563705,14.0051511497005
+2001,35,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,804.883999596865,25,150,B,di_coxme,11.2819273150365,9.72579940951422,12.9353132146539
+2001,35,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,804.883999596865,25,150,B,di_coxme,12.3517652500831,10.6011213563705,14.0051511497005
+2001,35,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,804.883999596865,25,150,C,di_coxme,10.9531739263175,9.44239131579092,12.5583804500019
+2001,35,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,804.883999596865,25,150,C,di_coxme,11.9918369710545,10.2922065342121,13.5970434947389
+2001,36,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,410.919818790208,25,150,A,di_coxme,35.4938272324987,27.7295525253895,43.2581019396077
+2001,36,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,410.919818790208,25,150,A,di_coxme,51.7618313807272,42.8883745726026,60.6352881888518
+2001,36,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,410.919818790208,25,150,B,di_coxme,26.9440068251681,21.0500053321625,32.8380083181736
+2001,36,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,410.919818790208,25,150,B,di_coxme,39.2933432867034,32.5573415804115,46.0293449929954
+2001,36,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,410.919818790208,25,150,C,di_coxme,11.8027178787835,9.22087334279956,14.3845624147673
+2001,36,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,410.919818790208,25,150,C,di_coxme,17.2122969065592,14.2616174368633,20.1629763762551
+2001,36,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,856.996928387618,25,150,A,di_gee,161.620912180561,154.627699634286,168.614124726835
+2001,36,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,856.996928387618,25,150,A,di_gee,167.837101110582,160.066864948055,174.830313656857
+2001,36,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,856.996928387618,25,150,B,di_gee,121.671953411826,116.407301581507,126.936605242146
+2001,36,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,856.996928387618,25,150,B,di_gee,126.351643927666,120.502030782866,131.616295757985
+2001,36,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,856.996928387618,25,150,C,di_gee,53.1289713139331,50.8301215936187,55.4278210342476
+2001,36,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,856.996928387618,25,150,C,di_gee,55.1723932875459,52.6181158205299,57.4712430078604
+2001,36,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,724.531938452787,25,150,A,di_coxme,75.1790892151043,64.8095596681934,86.1967143586971
+2001,36,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,724.531938452787,25,150,A,di_coxme,82.3081407786055,70.6424200383307,93.3257659221984
+2001,36,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,724.531938452787,25,150,B,di_coxme,57.2092711821802,49.3183372260174,65.5933885106031
+2001,36,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,724.531938452787,25,150,B,di_coxme,62.6342882770421,53.7569875763589,71.018405605465
+2001,36,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,724.531938452787,25,150,C,di_coxme,25.0853492085074,21.6253010418167,28.7616503856162
+2001,36,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,724.531938452787,25,150,C,di_coxme,27.4641323231072,23.5715781355802,31.1404335002161
+2001,37,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,380.605566628407,25,150,A,di_coxme,30.0809958700798,23.5007780234998,36.6612137166597
+2001,37,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,380.605566628407,25,150,A,di_coxme,43.8681189771996,36.3478700096798,51.3883679447196
+2001,37,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,380.605566628407,25,150,B,di_coxme,24.9277055389768,19.4747699523256,30.3806411256279
+2001,37,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,380.605566628407,25,150,B,di_coxme,36.3529039110078,30.1209775262636,42.584830295752
+2001,37,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,380.605566628407,25,150,C,di_coxme,10.9592665932417,8.56192702597005,13.3566061605133
+2001,37,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,380.605566628407,25,150,C,di_coxme,15.9822637818108,13.2424471335004,18.7220804301212
+2001,37,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1105.66246192867,25,150,A,di_gee,179.28222945888,171.524825299602,187.039633618159
+2001,37,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1105.66246192867,25,150,A,di_gee,186.177699822683,177.55836186793,193.935103981962
+2001,37,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1105.66246192867,25,150,B,di_gee,154.20986033097,147.537318297419,160.882402364522
+2001,37,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1105.66246192867,25,150,B,di_gee,160.141008805238,152.727073212403,166.81355083879
+2001,37,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1105.66246192867,25,150,C,di_gee,68.9911965020347,66.0060004995429,71.9763925045267
+2001,37,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1105.66246192867,25,150,C,di_gee,71.6447040598053,68.3278196125921,74.6299000622972
+2001,37,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,309.449604866967,25,150,A,di_coxme,28.7240186028659,24.7620850024706,32.9335730532859
+2001,37,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,309.449604866967,25,150,A,di_coxme,31.4478479531376,26.9906726526929,35.6574024035576
+2001,37,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,309.449604866967,25,150,B,di_coxme,24.1540880930454,20.822489735384,27.6939113480607
+2001,37,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,309.449604866967,25,150,B,di_coxme,26.4445619639377,22.6965138115685,29.9843852189529
+2001,37,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,309.449604866967,25,150,C,di_coxme,10.760409575506,9.27621515129829,12.3373661512267
+2001,37,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,309.449604866967,25,150,C,di_coxme,11.7807932421488,10.1110745149151,13.3577498178695
+2001,38,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,587.582928330946,25,150,A,di_coxme,13.3379461049931,10.4202703945258,16.2556218154603
+2001,38,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,587.582928330946,25,150,A,di_coxme,19.4511714031149,16.1166848768666,22.7856579293631
+2001,38,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,587.582928330946,25,150,B,di_coxme,13.3379461049931,10.4202703945258,16.2556218154603
+2001,38,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,587.582928330946,25,150,B,di_coxme,19.4511714031149,16.1166848768666,22.7856579293631
+2001,38,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,587.582928330946,25,150,C,di_coxme,11.1226954404438,8.68960581284672,13.5557850680409
+2001,38,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,587.582928330946,25,150,C,di_coxme,16.2205975173139,13.4399236572029,19.0012713774248
+2001,38,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.568780601838,25,150,A,di_gee,22.428492417511,21.4580288032918,23.3989560317303
+2001,38,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.568780601838,25,150,A,di_gee,23.2911267412615,22.2128338365734,24.2615903554807
+2001,38,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.568780601838,25,150,B,di_gee,22.428492417511,21.4580288032918,23.3989560317303
+2001,38,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.568780601838,25,150,B,di_gee,23.2911267412615,22.2128338365734,24.2615903554807
+2001,38,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.568780601838,25,150,C,di_gee,18.7240899838994,17.9139130134422,19.5342669543566
+2001,38,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.568780601838,25,150,C,di_gee,19.4442472909724,18.5440506571311,20.2544242614296
+2001,38,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,673.53163948009,25,150,A,di_coxme,14.5716839495345,12.5617965082194,16.7071893559318
+2001,38,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,673.53163948009,25,150,A,di_coxme,15.9534815654386,13.6923581939591,18.0889869718359
+2001,38,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,673.53163948009,25,150,B,di_coxme,14.5716839495345,12.5617965082194,16.7071893559318
+2001,38,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,673.53163948009,25,150,B,di_coxme,15.9534815654386,13.6923581939591,18.0889869718359
+2001,38,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,673.53163948009,25,150,C,di_coxme,12.2996507146483,10.6031471678002,14.1021857331743
+2001,38,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,673.53163948009,25,150,C,di_coxme,13.4659969031063,11.5574304129022,15.2685319216323
+2001,39,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,405.269722845266,25,150,A,di_coxme,39.4482108154818,30.8189146995951,48.0775069313684
+2001,39,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,405.269722845266,25,150,A,di_coxme,57.5286407725775,47.6665880687071,67.3906934764479
+2001,39,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,405.269722845266,25,150,B,di_coxme,27.1881708484847,21.2407584753787,33.1355832215907
+2001,39,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,405.269722845266,25,150,B,di_coxme,39.6494158207068,32.8523731085857,46.446458532828
+2001,39,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,405.269722845266,25,150,C,di_coxme,11.6717680179437,9.11856876401847,14.2249672718688
+2001,39,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,405.269722845266,25,150,C,di_coxme,17.0213283595012,14.1033863550153,19.9392703639871
+2001,39,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1080.09506169594,25,150,A,di_gee,243.972831630996,233.416314877732,254.52934838426
+2001,39,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1080.09506169594,25,150,A,di_gee,253.356402078342,241.626939019159,263.912918831606
+2001,39,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1080.09506169594,25,150,B,di_gee,157.199890628517,150.397972284014,164.00180897302
+2001,39,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1080.09506169594,25,150,B,di_gee,163.246040268075,155.688353218627,170.047958612578
+2001,39,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1080.09506169594,25,150,C,di_gee,67.3979318498267,64.4816751832477,70.3141885164057
+2001,39,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1080.09506169594,25,150,C,di_gee,69.9901599978969,66.7498748128091,72.906416664476
+2001,39,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,514.901194590801,25,150,A,di_coxme,59.7084045460672,51.4727625397131,68.4587741778184
+2001,39,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,514.901194590801,25,150,A,di_coxme,65.3704084254357,56.1053111682873,74.1207780571868
+2001,39,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,514.901194590801,25,150,B,di_coxme,41.7285338532241,35.9728740114001,47.8439224351621
+2001,39,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,514.901194590801,25,150,B,di_coxme,45.6855499944781,39.2104326724261,51.8009385764161
+2001,39,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,514.901194590801,25,150,C,di_coxme,17.9185615717599,15.447035837724,20.5445576641729
+2001,39,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,514.901194590801,25,150,C,di_coxme,19.6177355139095,16.8372690631192,22.2437316063226
+2001,40,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,474.117903610612,25,150,A,di_coxme,25.2116833166704,19.6966275911487,30.726739042192
+2001,40,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,474.117903610612,25,150,A,di_coxme,36.7670381701442,30.4641173409767,43.0699589993118
+2001,40,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,474.117903610612,25,150,B,di_coxme,24.3225716047898,19.002009066242,29.6431341433375
+2001,40,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,474.117903610612,25,150,B,di_coxme,35.4704169236517,29.3897740224543,41.5510598248492
+2001,40,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,474.117903610612,25,150,C,di_coxme,13.5097266573447,10.5544739510506,16.4649793636389
+2001,40,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,474.117903610612,25,150,C,di_coxme,19.7016847086277,16.3242530442916,23.0791163729639
+2001,40,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1117.86533748939,25,150,A,di_gee,131.616678433297,125.921726001087,137.311630865507
+2001,40,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1117.86533748939,25,150,A,di_gee,136.678858373039,130.351133448361,142.373810805249
+2001,40,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1117.86533748939,25,150,B,di_gee,127.04976351561,121.552417978877,132.547109052343
+2001,40,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1117.86533748939,25,150,B,di_gee,131.936292881595,125.828131174114,137.433638418329
+2001,40,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1117.86533748939,25,150,C,di_gee,68.9583773980153,65.9746014529089,71.9421533431217
+2001,40,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1117.86533748939,25,150,C,di_gee,71.6106226825543,68.2953160768805,74.5943986276608
+2001,40,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,695.747061308396,25,150,A,di_coxme,42.8772429475267,36.9631404720058,49.1609768277676
+2001,40,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,695.747061308396,25,150,A,di_coxme,46.9431883994473,40.2898231144862,53.2269222796882
+2001,40,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,695.747061308396,25,150,B,di_coxme,41.1432460048775,35.4683155214461,47.1728596435233
+2001,40,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,695.747061308396,25,150,B,di_coxme,45.0447607122366,38.6604639183763,51.0743743508824
+2001,40,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,695.747061308396,25,150,C,di_coxme,23.0055061844906,19.8323329176643,26.3770027804936
+2001,40,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,695.747061308396,25,150,C,di_coxme,25.1870628054337,21.6172428802541,28.5585594014366
+2001,41,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,507.54642819421,25,150,A,di_coxme,13.1463892316674,10.2706165872401,16.0221618760946
+2001,41,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,507.54642819421,25,150,A,di_coxme,19.1718176295149,15.8852203215981,22.4584149374318
+2001,41,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,507.54642819421,25,150,B,di_coxme,13.1463892316674,10.2706165872401,16.0221618760946
+2001,41,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,507.54642819421,25,150,B,di_coxme,19.1718176295149,15.8852203215981,22.4584149374318
+2001,41,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,507.54642819421,25,150,C,di_coxme,10.6681888088886,8.33452250694424,13.001855110833
+2001,41,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,507.54642819421,25,150,C,di_coxme,15.5577753462959,12.8907281440738,18.2248225485181
+2001,41,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.49981415243,25,150,A,di_gee,71.3270883137873,68.2408200694408,74.4133565581339
+2001,41,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.49981415243,25,150,A,di_gee,74.0704378643176,70.6412509261547,77.1567061086642
+2001,41,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.49981415243,25,150,B,di_gee,71.3270883137873,68.2408200694408,74.4133565581339
+2001,41,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.49981415243,25,150,B,di_gee,74.0704378643176,70.6412509261547,77.1567061086642
+2001,41,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.49981415243,25,150,C,di_gee,53.7742692422092,51.4474979769214,56.1010405074972
+2001,41,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1027.49981415243,25,150,C,di_gee,55.8425103669096,53.2572089610342,58.1692816321975
+2001,41,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,470.84616068581,25,150,A,di_coxme,11.6277251410941,10.0239009837018,13.3317883083234
+2001,41,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,470.84616068581,25,150,A,di_coxme,12.7303542493013,10.9260520722349,14.4344174165306
+2001,41,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,470.84616068581,25,150,B,di_coxme,11.6277251410941,10.0239009837018,13.3317883083234
+2001,41,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,470.84616068581,25,150,B,di_coxme,12.7303542493013,10.9260520722349,14.4344174165306
+2001,41,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,470.84616068581,25,150,C,di_coxme,9.38882766933345,8.09381695632194,10.7647765519082
+2001,41,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,470.84616068581,25,150,C,di_coxme,10.2791475345289,8.82226048239091,11.6550964171036
+2001,42,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,411.004080075578,25,150,A,di_coxme,39.6954930722549,31.0121039626991,48.3788821818106
+2001,42,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,411.004080075578,25,150,A,di_coxme,57.8892607303716,47.965387462308,67.8131339984353
+2001,42,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,411.004080075578,25,150,B,di_coxme,27.3048535794691,21.3319168589602,33.2777902999779
+2001,42,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,411.004080075578,25,150,B,di_coxme,39.8195781367257,32.9933647418585,46.645791531593
+2001,42,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,411.004080075578,25,150,C,di_coxme,11.8366598517495,9.24739050917931,14.4259291943197
+2001,42,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,411.004080075578,25,150,C,di_coxme,17.2617956171347,14.3026306541974,20.2209605800721
+2001,42,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1119.51617105273,25,150,A,di_gee,250.546500572369,239.70554622068,261.387454924058
+2001,42,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1119.51617105273,25,150,A,di_gee,260.182904440537,248.137399605327,271.023858792226
+2001,42,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1119.51617105273,25,150,B,di_gee,161.729571221392,154.731657082005,168.727485360779
+2001,42,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1119.51617105273,25,150,B,di_gee,167.949939345292,160.174479190417,174.947853484679
+2001,42,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1119.51617105273,25,150,C,di_gee,69.8577023047587,66.8350132627259,72.8803913467916
+2001,42,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1119.51617105273,25,150,C,di_gee,72.5445370087879,69.1859936287514,75.5672260508208
+2001,42,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,728.380234089996,25,150,A,di_coxme,80.9658358683645,69.7981343692797,92.8315187111419
+2001,42,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,728.380234089996,25,150,A,di_coxme,88.6436306489852,76.0799664625148,100.509313491763
+2001,42,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,728.380234089996,25,150,B,di_coxme,57.5443550148397,49.6072025989997,65.9775794566696
+2001,42,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,728.380234089996,25,150,B,di_coxme,63.0011473007296,54.0718508329097,71.4343717425595
+2001,42,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,728.380234089996,25,150,C,di_coxme,25.3473635431171,21.8511754682044,29.0620633727118
+2001,42,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,728.380234089996,25,150,C,di_coxme,27.7509928446196,23.8177812603428,31.4656926742143
+2001,44,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,487.91991688218,25,150,A,di_coxme,32.5494460289798,25.4292547101405,39.6696373478191
+2001,44,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,487.91991688218,25,150,A,di_coxme,47.4679421255955,39.3305806183506,55.6053036328405
+2001,44,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,487.91991688218,25,150,B,di_coxme,29.7015861819605,23.2043642046566,36.1988081592644
+2001,44,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,487.91991688218,25,150,B,di_coxme,43.3148131820257,35.8894166365357,50.7402097275159
+2001,44,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,487.91991688218,25,150,C,di_coxme,14.0520936062068,10.9781981298491,17.1259890825645
+2001,44,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,487.91991688218,25,150,C,di_coxme,20.4926365090516,16.9796131074999,24.0056599106033
+2001,44,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,905.084914878342,25,150,A,di_gee,140.925076767725,134.82735709989,147.022796435559
+2001,44,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,905.084914878342,25,150,A,di_gee,146.345272028022,139.57002795265,152.442991695856
+2001,44,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,905.084914878342,25,150,B,di_gee,125.85194682694,120.406429896928,131.297463756952
+2001,44,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,905.084914878342,25,150,B,di_gee,130.692406320284,124.641831953604,136.137923250295
+2001,44,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,905.084914878342,25,150,C,di_gee,56.4772986884085,54.033569418237,58.9210279585801
+2001,44,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,905.084914878342,25,150,C,di_gee,58.6495024841166,55.9342477394815,61.0932317542881
+2001,44,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.546140155963,25,150,A,di_coxme,44.2851487886023,38.1768524039675,50.7752136972768
+2001,44,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.546140155963,25,150,A,di_coxme,48.4846025530387,41.6127691203246,54.9746674617131
+2001,44,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.546140155963,25,150,B,di_coxme,39.4135096196609,33.9771634652249,45.1896274087491
+2001,44,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.546140155963,25,150,B,di_coxme,43.1509976008356,37.0351081770951,48.9271153899238
+2001,44,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.546140155963,25,150,C,di_coxme,17.6974056774275,15.2563842046789,20.2909909922229
+2001,44,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,508.546140155963,25,150,C,di_coxme,19.3756079399422,16.6294587831,21.9691932547376
+2001,45,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.938008336861,25,150,A,di_coxme,36.159559518076,28.2496558734968,44.0694631626551
+2001,45,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.938008336861,25,150,A,di_coxme,52.7326909638608,43.6928010843418,61.7725808433798
+2001,45,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.938008336861,25,150,B,di_coxme,29.276831924877,22.8725249413102,35.6811389084439
+2001,45,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.938008336861,25,150,B,di_coxme,42.6953798904456,35.3761719092264,50.0145878716649
+2001,45,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.938008336861,25,150,C,di_coxme,12.8718146401016,10.0561051875794,15.6875240926238
+2001,45,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,446.938008336861,25,150,C,di_coxme,18.7713963501481,15.5534426901228,21.9893500101735
+2001,45,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1112.34432151178,25,150,A,di_gee,183.317528255378,175.385519821252,191.249536689505
+2001,45,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1112.34432151178,25,150,A,di_gee,190.368202419047,181.554859714461,198.300210853174
+2001,45,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1112.34432151178,25,150,B,di_gee,156.810090235961,150.025038254598,163.595142217325
+2001,45,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1112.34432151178,25,150,B,di_gee,162.841247552729,155.302300906769,169.626299534093
+2001,45,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1112.34432151178,25,150,C,di_gee,69.4102856623351,66.4069559942533,72.4136153304169
+2001,45,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1112.34432151178,25,150,C,di_gee,72.0799120339633,68.742879069428,75.0832417020452
+2001,45,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,331.588477316838,25,150,A,di_coxme,31.2219728111875,26.9154938027479,35.7976067576546
+2001,45,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,331.588477316838,25,150,A,di_coxme,34.1826771294897,29.3378882449951,38.7583110759569
+2001,45,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,331.588477316838,25,150,B,di_coxme,25.7512985381925,22.1993952915453,29.5251957377552
+2001,45,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,331.588477316838,25,150,B,di_coxme,28.1932320202624,24.1973408677843,31.9671292198251
+2001,45,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,331.588477316838,25,150,C,di_coxme,11.539279010626,9.94765431950516,13.2303802449419
+2001,45,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,331.588477316838,25,150,C,di_coxme,12.6335209857715,10.8429432082606,14.3246222200874
+2001,46,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,810.341925501702,25,150,A,di_coxme,17.5299398851501,13.6952655352735,21.3646142350266
+2001,46,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,810.341925501702,25,150,A,di_coxme,25.5644956658438,21.1820106945563,29.9469806371313
+2001,46,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,810.341925501702,25,150,B,di_coxme,17.5299398851501,13.6952655352735,21.3646142350266
+2001,46,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,810.341925501702,25,150,B,di_coxme,25.5644956658438,21.1820106945563,29.9469806371313
+2001,46,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,810.341925501702,25,150,C,di_coxme,15.0608485496858,11.766287929442,18.3554091699296
+2001,46,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,810.341925501702,25,150,C,di_coxme,21.9637374682918,18.1985253308703,25.7289496057132
+2001,46,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,523.697324108789,25,150,A,di_gee,28.7321194184602,27.4889027128538,29.9753361240667
+2001,46,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,523.697324108789,25,150,A,di_gee,29.8372009345549,28.4558490394366,31.0804176401613
+2001,46,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,523.697324108789,25,150,B,di_gee,28.7321194184602,27.4889027128538,29.9753361240667
+2001,46,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,523.697324108789,25,150,B,di_gee,29.8372009345549,28.4558490394366,31.0804176401613
+2001,46,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,523.697324108789,25,150,C,di_gee,23.7324646062775,22.7055791185059,24.7593500940492
+2001,46,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,523.697324108789,25,150,C,di_gee,24.645251706519,23.5042678312172,25.6721371942906
+2001,46,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,219.569224630394,25,150,A,di_coxme,4.63783123665375,3.99813037642564,5.3175134006461
+2001,46,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,219.569224630394,25,150,A,di_coxme,5.07762557806056,4.35796211030395,5.75730774205292
+2001,46,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,219.569224630394,25,150,B,di_coxme,4.63783123665375,3.99813037642564,5.3175134006461
+2001,46,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,219.569224630394,25,150,B,di_coxme,5.07762557806056,4.35796211030395,5.75730774205292
+2001,46,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,219.569224630394,25,150,C,di_coxme,3.93740987855235,3.39431886082099,4.51444408489192
+2001,46,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,219.569224630394,25,150,C,di_coxme,4.31078495324266,3.69980755829488,4.88781915958222
+2001,47,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.506239061833,25,150,A,di_coxme,33.8674521063673,26.4589469580994,41.2759572546351
+2001,47,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.506239061833,25,150,A,di_coxme,49.3900343217855,40.9231712951938,57.8568973483773
+2001,47,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.506239061833,25,150,B,di_coxme,26.6883536593379,20.8502762963577,32.5264310223181
+2001,47,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.506239061833,25,150,B,di_coxme,38.9205157532011,32.2484273383667,45.5926041680355
+2001,47,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.506239061833,25,150,C,di_coxme,11.4769774430571,8.96638862738835,13.9875662587258
+2001,47,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,398.506239061833,25,150,C,di_coxme,16.7372587711249,13.8680144103607,19.6065031318892
+2001,47,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.12890229004,25,150,A,di_gee,218.880652274874,209.409854820673,228.351449729075
+2001,47,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.12890229004,25,150,A,di_gee,227.299138900831,216.776030618385,236.769936355032
+2001,47,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.12890229004,25,150,B,di_gee,171.462339397711,164.04329586608,178.881382929343
+2001,47,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.12890229004,25,150,B,di_gee,178.057044759162,169.813663057349,185.476088290793
+2001,47,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.12890229004,25,150,C,di_gee,73.7648433908028,70.5730953594701,76.9565914221357
+2001,47,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1182.12890229004,25,150,C,di_gee,76.6019527519876,73.0555660505067,79.7937007833204
+2001,47,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,339.780561236944,25,150,A,di_coxme,34.1485122193622,29.4383726028985,39.1530355618549
+2001,47,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,339.780561236944,25,150,A,di_coxme,37.386733205681,32.0878261371593,42.3912565481737
+2001,47,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,339.780561236944,25,150,B,di_coxme,27.3488804356625,23.5766210652263,31.356906016751
+2001,47,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,339.780561236944,25,150,B,di_coxme,29.9423087528374,25.6985169610967,33.9503343339258
+2001,47,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,339.780561236944,25,150,C,di_coxme,11.8243623409646,10.1934158111764,13.5572430288646
+2001,47,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,339.780561236944,25,150,C,di_coxme,12.945638080194,11.1108232341823,14.678518768094
+2001,48,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,421.475998325074,25,150,A,di_coxme,27.2114110896143,21.2589149137611,33.1639072654674
+2001,48,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,421.475998325074,25,150,A,di_coxme,39.6833078390208,32.8804550666173,46.4861606114244
+2001,48,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,421.475998325074,25,150,B,di_coxme,25.3904503454656,19.836289332395,30.9446113585362
+2001,48,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,421.475998325074,25,150,B,di_coxme,37.0277400871373,30.6801275007709,43.3753526735036
+2001,48,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,421.475998325074,25,150,C,di_coxme,11.956145618833,9.34073876471324,14.5715524729527
+2001,48,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,421.475998325074,25,150,C,di_coxme,17.4360456941314,14.4470092894232,20.4250820988396
+2001,48,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1124.12060850474,25,150,A,di_gee,150.6604689676,144.141506368041,157.17943156716
+2001,48,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1124.12060850474,25,150,A,di_gee,156.455102389431,149.211810612143,162.974064988991
+2001,48,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1124.12060850474,25,150,B,di_gee,142.502579585618,136.336602584317,148.668556586919
+2001,48,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1124.12060850474,25,150,B,di_gee,147.983448031219,141.132362474218,154.149425032519
+2001,48,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1124.12060850474,25,150,C,di_gee,68.6575113358831,65.6867536338497,71.6282690379165
+2001,48,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1124.12060850474,25,150,C,di_gee,71.2981848488017,67.9973429576534,74.2689425508351
+2001,48,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,758.125454505908,25,150,A,di_coxme,45.6380749885322,39.3431680935623,52.3264135644378
+2001,48,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,758.125454505908,25,150,A,di_coxme,49.965823478824,42.8840532219828,56.6541620547296
+2001,48,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,758.125454505908,25,150,B,di_coxme,43.9442428736797,37.8829679945515,50.3843474327535
+2001,48,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,758.125454505908,25,150,B,di_coxme,48.1113693530804,41.2924351140611,54.5514739121541
+2001,48,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,758.125454505908,25,150,C,di_coxme,24.9543076939595,21.5123342189306,28.6114045111777
+2001,48,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,758.125454505908,25,150,C,di_coxme,27.3206644580419,23.4484442986344,30.97776127526
+2001,49,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,611.395120447286,25,150,A,di_coxme,36.307019214703,28.3648587614867,44.2491796679192
+2001,49,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,611.395120447286,25,150,A,di_coxme,52.9477363547751,43.8709815510994,62.0244911584508
+2001,49,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,611.395120447286,25,150,B,di_coxme,34.1886477367936,26.7098810443699,41.6674144292171
+2001,49,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,611.395120447286,25,150,B,di_coxme,49.8584446161572,41.3112826819589,58.4056065503556
+2001,49,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,611.395120447286,25,150,C,di_coxme,16.4516552002582,12.8528556252017,20.0504547753147
+2001,49,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,611.395120447286,25,150,C,di_coxme,23.9919971670432,19.8790833669787,28.1049109671078
+2001,49,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,944.649052799689,25,150,A,di_gee,123.76062936981,118.405602137462,129.115656602158
+2001,49,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,944.649052799689,25,150,A,di_gee,128.520653576341,122.570623318177,133.875680808689
+2001,49,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,944.649052799689,25,150,B,di_gee,115.294615542503,110.305906216145,120.283324868861
+2001,49,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,944.649052799689,25,150,B,di_gee,119.729023832599,114.186013469979,124.717733158958
+2001,49,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,944.649052799689,25,150,C,di_gee,55.4349031752337,53.0362775570745,57.8335287933928
+2001,49,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,944.649052799689,25,150,C,di_gee,57.5670148358196,54.9018752600872,59.9656404539788
+2001,49,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,692.483991431952,25,150,A,di_coxme,47.5331495362266,40.9768530484712,54.4992145544667
+2001,49,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,692.483991431952,25,150,A,di_coxme,52.0406033715584,44.6647698228336,59.0066683897984
+2001,49,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,692.483991431952,25,150,B,di_coxme,44.7679940353259,38.5930983063154,51.3288207473995
+2001,49,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,692.483991431952,25,150,B,di_coxme,49.0132348490206,42.0664771538838,55.5740615610941
+2001,49,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,692.483991431952,25,150,C,di_coxme,21.6204083088994,18.6382830249132,24.7889164231346
+2001,49,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,692.483991431952,25,150,C,di_coxme,23.6706194416398,20.3157284971554,26.839127555875
+2001,50,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,355.320681532518,25,150,A,di_coxme,9.80216977070729,7.65794513336506,11.9463944080495
+2001,50,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,355.320681532518,25,150,A,di_coxme,14.2948309156148,11.844288472938,16.7453733582916
+2001,50,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,355.320681532518,25,150,B,di_coxme,9.80216977070729,7.65794513336506,11.9463944080495
+2001,50,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,355.320681532518,25,150,B,di_coxme,14.2948309156148,11.844288472938,16.7453733582916
+2001,50,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,355.320681532518,25,150,C,di_coxme,7.43737493018706,5.81044916420863,9.06430069616547
+2001,50,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,355.320681532518,25,150,C,di_coxme,10.8461717731894,8.9868280406427,12.7055155057362
+2001,50,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.939626589152,25,150,A,di_gee,27.9014983747076,26.6942220027251,29.1087747466902
+2001,50,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.939626589152,25,150,A,di_gee,28.974632927581,27.6332147364893,30.1819092995636
+2001,50,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.939626589152,25,150,B,di_gee,27.9014983747076,26.6942220027251,29.1087747466902
+2001,50,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.939626589152,25,150,B,di_gee,28.974632927581,27.6332147364893,30.1819092995636
+2001,50,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.939626589152,25,150,C,di_gee,20.81793151068,19.9171556280063,21.7187073933536
+2001,50,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,465.939626589152,25,150,C,di_gee,21.6186211841677,20.617759092308,22.5193970668413
+2001,50,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,162.843501097722,25,150,A,di_coxme,3.78613361756634,3.26390829100547,4.34099802703727
+2001,50,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,162.843501097722,25,150,A,di_coxme,4.14516352957694,3.55766003719595,4.70002793904786
+2001,50,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,162.843501097722,25,150,B,di_coxme,3.78613361756634,3.26390829100547,4.34099802703727
+2001,50,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,162.843501097722,25,150,B,di_coxme,4.14516352957694,3.55766003719595,4.70002793904786
+2001,50,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,162.843501097722,25,150,C,di_coxme,3.22031106565289,2.77613022901111,3.69225320458477
+2001,50,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,162.843501097722,25,150,C,di_coxme,3.5256853908441,3.02598194962211,3.99762752977599
+2001,51,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,430.706205074124,25,150,A,di_coxme,38.3691032845895,29.9758619410855,46.7623446280935
+2001,51,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,430.706205074124,25,150,A,di_coxme,55.9549422900263,46.362666468879,65.5472181111737
+2001,51,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,430.706205074124,25,150,B,di_coxme,28.8011270417299,22.5008805013515,35.1013735821083
+2001,51,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,430.706205074124,25,150,B,di_coxme,42.0016436025228,34.8013618420903,49.2019253629553
+2001,51,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,430.706205074124,25,150,C,di_coxme,12.4043387061348,9.69088961416778,15.1177877981017
+2001,51,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,430.706205074124,25,150,C,di_coxme,18.0896606131132,14.9885759365795,21.1907452896469
+2001,51,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1054.72859829817,25,150,A,di_gee,185.114904247781,177.10512473706,193.124683758502
+2001,51,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1054.72859829817,25,150,A,di_gee,192.234708257311,183.334953245398,200.244487768032
+2001,51,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1054.72859829817,25,150,B,di_gee,152.142159103851,145.559084911858,158.725233295845
+2001,51,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1054.72859829817,25,150,B,di_gee,157.993780607846,150.679253727853,164.576854799839
+2001,51,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1054.72859829817,25,150,C,di_gee,65.8150645338059,62.9672973184008,68.662831749211
+2001,51,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1054.72859829817,25,150,C,di_gee,68.3464131697215,65.182227374827,71.1941803851266
+2001,51,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,452.175171912916,25,150,A,di_coxme,48.5312310739324,41.8372681671831,55.6435666623535
+2001,51,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,452.175171912916,25,150,A,di_coxme,53.1333305723225,45.6026223022295,60.2456661607436
+2001,51,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,452.175171912916,25,150,B,di_coxme,36.4049892132969,31.3836113907732,41.7402031497284
+2001,51,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,452.175171912916,25,150,B,di_coxme,39.857186466282,34.2081364159428,45.1924004027134
+2001,51,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,452.175171912916,25,150,C,di_coxme,15.7356959825695,13.5652551573875,18.0417893593253
+2001,51,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,452.175171912916,25,150,C,di_coxme,17.2278740498821,14.7861281215523,19.5339674266379
+2001,53,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,504.356725795364,25,150,A,di_coxme,11.5923795900542,9.05654655472979,14.1282126253785
+2001,53,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,504.356725795364,25,150,A,di_coxme,16.9055535688289,14.0074586713154,19.8036484663425
+2001,53,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,504.356725795364,25,150,B,di_coxme,11.590550816789,9.05511782561641,14.1259838079616
+2001,53,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,504.356725795364,25,150,B,di_coxme,16.9028866078173,14.0052489036201,19.8005243120146
+2001,53,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,504.356725795364,25,150,C,di_coxme,9.53965524225398,7.45285565801092,11.626454826497
+2001,53,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,504.356725795364,25,150,C,di_coxme,13.911997228287,11.5270834177236,16.2969110388505
+2001,53,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,893.374345755923,25,150,A,di_gee,54.2163065493463,51.8704086698073,56.5622044288854
+2001,53,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,893.374345755923,25,150,A,di_gee,56.3015491089365,53.6949959094487,58.6474469884756
+2001,53,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,893.374345755923,25,150,B,di_gee,54.2090053398146,51.8634233779957,56.5545873016336
+2001,53,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,893.374345755923,25,150,B,di_gee,56.2939670836537,53.6877649038549,58.6395490454726
+2001,53,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,893.374345755923,25,150,C,di_gee,43.3618941828297,41.4856583768418,45.2381299888175
+2001,53,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,893.374345755923,25,150,C,di_gee,45.0296593437077,42.9449528926101,46.9058951496956
+2001,53,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,519.239804435232,25,150,A,di_coxme,13.380038832313,11.5345162347526,15.340906592221
+2001,53,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,519.239804435232,25,150,A,di_coxme,14.6488356181358,12.5726226958803,16.6097033780437
+2001,53,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,519.239804435232,25,150,B,di_coxme,13.3477211345278,11.506656150455,15.3038526801051
+2001,53,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,519.239804435232,25,150,B,di_coxme,14.6134533110778,12.5422552039959,16.5695848566552
+2001,53,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,519.239804435232,25,150,C,di_coxme,10.8590236279115,9.36122726544098,12.4504322630365
+2001,53,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,519.239804435232,25,150,C,di_coxme,11.88875862711,10.2037377193307,13.480167262235
+2001,54,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,185.842818230813,25,150,A,di_coxme,15.0091484870633,11.7258972555182,18.2923997186083
+2001,54,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,185.842818230813,25,150,A,di_coxme,21.8883415436339,18.1360544218681,25.6406286653997
+2001,54,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,185.842818230813,25,150,B,di_coxme,12.0281073377005,9.39695885757853,14.6592558178225
+2001,54,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,185.842818230813,25,150,B,di_coxme,17.5409898674799,14.5339630330548,20.5480167019051
+2001,54,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,185.842818230813,25,150,C,di_coxme,5.35227316504743,4.1814634101933,6.52308291990155
+2001,54,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,185.842818230813,25,150,C,di_coxme,7.80539836569416,6.46733007443231,9.14346665695602
+2001,54,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.31543875986,25,150,A,di_gee,183.351318819187,175.417848293356,191.284789345017
+2001,54,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.31543875986,25,150,A,di_gee,190.403292619924,181.588325369002,198.336763145755
+2001,54,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.31543875986,25,150,B,di_gee,148.618956900706,142.188328957887,155.049584843525
+2001,54,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.31543875986,25,150,B,di_gee,154.335070627656,147.189928468968,160.765698570475
+2001,54,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.31543875986,25,150,C,di_gee,69.470883378615,66.4649316939634,72.4768350632666
+2001,54,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1113.31543875986,25,150,C,di_gee,72.1428404316386,68.802894115359,75.1487921162903
+2001,54,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,254.572027839497,25,150,A,di_coxme,22.4876295766162,19.3858875660485,25.7832304628445
+2001,54,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,254.572027839497,25,150,A,di_coxme,24.6200772088815,21.1306174469928,27.9156780951098
+2001,54,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,254.572027839497,25,150,B,di_coxme,19.1765349347863,16.5314956334365,21.9868891924705
+2001,54,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,254.572027839497,25,150,B,di_coxme,20.9949994544643,18.0193302404458,23.8053537121485
+2001,54,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,254.572027839497,25,150,C,di_coxme,8.8591065688145,7.63716083518492,10.1574239107959
+2001,54,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,254.572027839497,25,150,C,di_coxme,9.69919426068484,8.32450531035155,10.9975116026663
+2001,55,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,571.658065900246,25,150,A,di_coxme,36.1006060545768,28.2035984801381,43.9976136290154
+2001,55,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,571.658065900246,25,150,A,di_coxme,52.6467171629244,43.6215656492802,61.6718686765685
+2001,55,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,571.658065900246,25,150,B,di_coxme,33.805026196264,26.4101767158312,41.1998756766967
+2001,55,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,571.658065900246,25,150,B,di_coxme,49.2989965362183,40.8477399871524,57.7502530852843
+2001,55,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,571.658065900246,25,150,C,di_coxme,16.3843696577949,12.8002887951522,19.9684505204375
+2001,55,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,571.658065900246,25,150,C,di_coxme,23.8938724176175,19.7977800031688,27.9899648320662
+2001,55,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1000.3310702444,25,150,A,di_gee,165.334560490273,158.18066123829,172.488459742256
+2001,55,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1000.3310702444,25,150,A,di_gee,171.693582047591,163.744805100944,178.847481299574
+2001,55,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1000.3310702444,25,150,B,di_gee,141.491394826827,135.369171012205,147.613618641449
+2001,55,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1000.3310702444,25,150,B,di_gee,146.933371550936,140.1309006458,153.055595365558
+2001,55,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1000.3310702444,25,150,C,di_gee,62.3674619499876,59.6688698463824,65.0660540535929
+2001,55,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,1000.3310702444,25,150,C,di_gee,64.7662104865256,61.7677748158531,67.4648025901309
+2001,55,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,299.268762215571,25,150,A,di_coxme,24.0812030947266,20.7596578402816,27.6103449275745
+2001,55,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,299.268762215571,25,150,A,di_coxme,26.3647654571576,22.6280270459069,29.8939072900054
+2001,55,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,299.268762215571,25,150,B,di_coxme,21.8752390249579,18.8579646766879,25.0810930199949
+2001,55,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,299.268762215571,25,150,B,di_coxme,23.9496151393936,20.5551814975898,27.1554691344305
+2001,55,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,299.268762215571,25,150,C,di_coxme,10.350669910749,8.92299130236981,11.8675784321518
+2001,55,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,299.268762215571,25,150,C,di_coxme,11.3321989540096,9.72606051958308,12.8491074754125
+2001,56,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.659705931777,25,150,A,di_coxme,3.77859899251147,2.95203046289958,4.60516752212335
+2001,56,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.659705931777,25,150,A,di_coxme,5.51045686407922,4.56580711595136,6.45510661220709
+2001,56,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.659705931777,25,150,B,di_coxme,3.77859899251147,2.95203046289958,4.60516752212335
+2001,56,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.659705931777,25,150,B,di_coxme,5.51045686407922,4.56580711595136,6.45510661220709
+2001,56,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.659705931777,25,150,C,di_coxme,3.62029496707481,2.82835544302719,4.41223449112243
+2001,56,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,591.659705931777,25,150,C,di_coxme,5.2795968269841,4.3745230852154,6.1846705687528
+2001,56,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,996.226763983109,25,150,A,di_gee,15.5922833763107,14.9176172686819,16.2669494839395
+2001,56,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,996.226763983109,25,150,A,di_gee,16.1919865830919,15.4423575746154,16.8666526907207
+2001,56,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,996.226763983109,25,150,B,di_gee,15.5922833763107,14.9176172686819,16.2669494839395
+2001,56,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,996.226763983109,25,150,B,di_gee,16.1919865830919,15.4423575746154,16.8666526907207
+2001,56,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,996.226763983109,25,150,C,di_gee,15.4445141031947,14.776241858345,16.1127863480445
+2001,56,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,996.226763983109,25,150,C,di_gee,16.0385338763945,15.2960091598948,16.7068061212443
+2001,56,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.027803308577,25,150,A,di_coxme,5.97072840614217,5.14717966046739,6.84574894842162
+2001,56,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.027803308577,25,150,A,di_coxme,6.53691816879358,5.61042582990945,7.41193871107303
+2001,56,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.027803308577,25,150,B,di_coxme,5.97072840614217,5.14717966046739,6.84574894842162
+2001,56,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.027803308577,25,150,B,di_coxme,6.53691816879358,5.61042582990945,7.41193871107303
+2001,56,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.027803308577,25,150,C,di_coxme,5.7918072358853,4.99293727231491,6.64060657217883
+2001,56,White,Hispanic or Latino,A,666,666,nvss,Deaths,age-adjusted rate,all-cause,785.027803308577,25,150,C,di_coxme,6.34103033583993,5.44230162682325,7.18982967213346
