@@ -53,9 +53,6 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
   attrBurden <- lapply(sources, function(source) {
     files <- list.files(file.path(attrBurdenDir, agr_by, source))
     attrBurden <- lapply(files, function(file) fread(file.path(attrBurdenDir, agr_by, source, file))) %>% rbindlist(use.names = TRUE)
-    #print("TEST")#54
-    #names(attrBurden[[54]] )
-    #setdiff(names(attrBurden[[55]] ), names(attrBurden[[54]] ))
   }) %>% rbindlist(use.names = TRUE)
 
   # make compatible

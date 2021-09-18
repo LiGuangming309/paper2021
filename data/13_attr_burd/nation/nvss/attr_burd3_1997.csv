@@ -1,0 +1,649 @@
+Year,nation,Race,Hispanic.Origin,Gender.Code,Education,rural_urban_class,source,measure1,measure2,min_age,max_age,scenario,method,mean,lower,upper,attr
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,A,di_gee,1877.864574678,1467.08169896719,2288.64745038882,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,A,di_coxme,2738.55250473875,2269.08636106925,3208.01864840825,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,B,di_gee,1113.71845440629,870.092542504914,1357.34436630767,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,B,di_coxme,1624.17274600917,1345.7431324076,1902.60235961074,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,C,di_gee,493.955563963834,385.902784346744,602.008343580921,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,C,di_coxme,720.351864113923,596.862973122965,843.840755104881,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,59.9486302290824,46.8348673664705,73.0623930916941,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,87.425085750745,72.4379281934745,102.412243308016,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,35.554159071325,27.7766867744727,43.3316313681774,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,51.8498153123489,42.9612755445178,60.7383550801802,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,15.7689536577702,12.3194950451329,19.2184122704074,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,22.9963907509148,19.0541523364723,26.9386291653573,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,A,di_gee,55.1445932782268,43.0817134986146,67.2074730578389,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,A,di_coxme,80.4191985307473,66.6330502111907,94.205346850304,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,B,di_gee,32.704994823826,25.550777206114,39.8592124415379,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,B,di_coxme,47.6947841180795,39.5185354121231,55.871032824036,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,C,di_gee,14.5052944922684,11.3322613220847,17.6783276624521,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,C,di_coxme,21.1535544678914,17.5272308448243,24.7798780909584,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,25,113,A,di_gee,45272.926896167,35369.4741376304,55176.3796547035,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,25,113,A,di_coxme,66023.0183902434,54704.7866662018,77341.2501142852,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,25,113,B,di_gee,26850.335668052,20976.8247406656,32723.8465954384,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,25,113,B,di_coxme,39156.7395159091,32444.1555988962,45869.3234329221,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,25,113,C,di_gee,11908.6405051994,9303.62539468704,14513.6556157118,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,absolute number,25,113,C,di_coxme,17366.7674034158,14389.607277116,20343.9275297157,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,A,di_gee,1179.4567928644,921.450619425314,1437.46296630349,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,1720.04115626059,1425.17695804449,2014.90535447669,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,B,di_gee,699.50880063499,546.491250496085,852.526350773893,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,1020.11700092602,845.239800767279,1194.99420108477,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,C,di_gee,310.24561256778,242.379384818578,378.111840316981,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,452.441518328012,374.880115186067,530.002921469957,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,25,113,A,di_gee,1329.46601893915,1038.64532729621,1620.28671058209,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,25,113,A,di_coxme,1938.80461095292,1606.43810621814,2271.17111568771,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,25,113,B,di_gee,788.475835672272,615.996746618962,960.954924725581,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,25,113,B,di_coxme,1149.86059368873,952.741634770662,1346.9795526068,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,25,113,C,di_gee,349.704204451721,273.206409727906,426.201999175534,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,1,nvss,YLL,crude rate,25,113,C,di_coxme,509.985298158759,422.559247045829,597.411349271689,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,A,di_gee,226.532757802913,176.978717033525,276.086798572299,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,A,di_coxme,330.360271795914,273.727082345186,386.993461246642,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,B,di_gee,166.122888116354,129.783506340901,202.462269891806,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,B,di_coxme,242.262545169683,200.731823140594,283.793267198771,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,C,di_gee,75.8699341024034,59.2733860175026,92.4664821873041,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,C,di_coxme,110.643653899338,91.6761703737374,129.611137424939,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,24.1612965828745,18.8760129553707,29.4465802103783,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,35.2352241833586,29.1949000376401,41.2755483290773,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,17.718163182717,13.8423149864976,21.5940113789363,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,25.8389879747956,21.4094471791164,30.2685287704748,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,8.09205696054854,6.32191950042854,9.86219442066852,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,11.8009164007999,9.77790216066282,13.8239306409371,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,A,di_gee,17.3516029418206,13.5559397982973,21.1472660853439,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,A,di_coxme,25.3044209568217,20.9665202213666,29.6423216922769,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,B,di_gee,12.7244219427695,9.94095464278865,15.5078892427503,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,B,di_coxme,18.5564486665388,15.3753431808465,21.7375541522312,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,C,di_gee,5.81136690576269,4.54013039512709,7.08260341639827,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,C,di_coxme,8.4749100709039,7.02206834446325,9.92775179734458,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,25,113,A,di_gee,5989.66985017667,4679.42957045052,7299.91012990281,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,25,113,A,di_coxme,8734.9351981743,7237.51773563014,10232.3526607185,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,25,113,B,di_gee,4392.394565913,3431.55825461952,5353.23087720646,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,25,113,B,di_coxme,6405.57540862311,5307.47676714487,7503.67405010136,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,25,113,C,di_gee,2006.04919674983,1567.2259349608,2444.87245853885,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,absolute number,25,113,C,di_coxme,2925.48841192683,2423.97611273938,3427.00071111429,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,A,di_gee,470.834100862142,367.839141298548,573.829060425735,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,686.633063757289,568.924538541755,804.341588972825,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,B,di_gee,345.275983118236,269.746861811121,420.805104425349,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,503.527475380759,417.208479601201,589.846471160318,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,C,di_gee,157.690890059503,123.196007858986,192.185772260019,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,229.965881336775,190.543158821899,269.38860385165,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,25,113,A,di_gee,458.787391284403,358.42764944094,559.147133127866,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,25,113,A,di_coxme,669.064945623087,554.368097801987,783.761793444188,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,25,113,B,di_gee,336.441789746988,262.845148239834,410.038431254141,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,25,113,B,di_coxme,490.644276714357,406.533829277611,574.754724151104,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,25,113,C,di_gee,153.656228270725,120.043928336504,187.268528204946,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,2,nvss,YLL,crude rate,25,113,C,di_coxme,224.081999561474,185.667942493793,262.496056629155,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,A,di_gee,525.399607021428,410.46844298549,640.330771057364,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,A,di_coxme,766.207760239581,634.857858484225,897.557661994938,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,B,di_gee,379.53326328757,296.510361943413,462.556164631725,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,B,di_coxme,553.486008961039,458.602693139147,648.369324782931,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,C,di_gee,172.884729791455,135.066195149574,210.703264433335,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,C,di_coxme,252.123564279204,208.902381831341,295.344746727068,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,47.6115844947829,37.1965503865491,58.0266186030166,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,69.4335607215583,57.5306645978627,81.336456845254,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,34.3932119326078,26.8696968223498,41.9167270428657,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,50.1567674017196,41.5584644185677,58.7550703848716,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,15.6667721298616,12.2396657264544,19.0938785332688,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,22.8473760227148,18.9306829902494,26.7640690551802,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,A,di_gee,53.3898802698426,41.7108439608144,65.0689165788706,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,A,di_coxme,77.860242060187,64.5127719927265,91.2077121276476,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,B,di_gee,38.5672832917052,30.1306900716447,47.0038765117657,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,B,di_coxme,56.2439548004033,46.6021339774771,65.8857756233297,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,C,di_gee,17.5681422305925,13.7251111176504,21.4111733435346,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,C,di_coxme,25.620207419614,21.2281718619659,30.0122429772621,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,25,113,A,di_gee,11814.8588700421,9230.35849222036,14399.3592478638,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,25,113,A,di_coxme,17230.0025188113,14276.2878013009,20183.7172363219,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,25,113,B,di_gee,8534.70745372347,6667.74019822145,10401.6747092255,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,25,113,B,di_coxme,12446.4483700134,10312.7715065825,14580.1252334442,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,25,113,C,di_gee,3887.724040852,3037.28440691562,4738.16367478837,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,absolute number,25,113,C,di_coxme,5669.59755957582,4697.66654936283,6641.52856978882,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,A,di_gee,940.608959886937,734.850749911668,1146.3671698622,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,1371.72139983511,1136.56915986338,1606.87363980685,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,B,di_gee,679.468319451667,530.834624571614,828.102014331719,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,990.891299200347,821.024219337432,1160.75837906326,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,C,di_gee,309.510939285575,241.805421316855,377.216457254294,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,451.370119791463,373.99238497007,528.747854612857,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,25,113,A,di_gee,1200.59834846985,937.967459742069,1463.22923719763,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,25,113,A,di_coxme,1750.87259151853,1450.72300440107,2051.02217863599,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,25,113,B,di_gee,867.277026862804,677.560177236564,1056.99387648904,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,25,113,B,di_coxme,1264.77899750825,1047.95974079255,1481.59825422395,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,25,113,C,di_gee,395.061431887998,308.641743662498,481.481120113497,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,3,nvss,YLL,crude rate,25,113,C,di_coxme,576.131254836663,477.365896864664,674.896612808662,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,A,di_gee,52.5762913597616,41.0752276248137,64.0773550947093,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,A,di_coxme,76.6737582329855,63.5296853930452,89.8178310729259,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,B,di_gee,40.1552647019836,31.3713005484246,48.9392288555424,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,B,di_coxme,58.5597610237259,48.5209448482301,68.5985771992218,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,C,di_gee,18.9064741084355,14.7706828972152,23.0422653196558,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,C,di_coxme,27.5719414081351,22.8453228810262,32.2985599352439,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,30.326439086672,23.6925305364624,36.9603476368814,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,44.2260570013966,36.6444472297286,51.8076667730646,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,23.1618883245518,18.095225253556,28.2285513955475,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,33.777753806638,27.9872817255001,39.5682258877759,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,10.9054104153118,8.51985188696231,13.2909689436612,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,15.9037235223296,13.1773709185017,18.6300761261576,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,A,di_gee,25.1549775588697,19.6523262178669,30.6576288998724,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,A,di_coxme,36.6843422733515,30.3955978836342,42.973086663069,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,B,di_gee,19.2121725653311,15.0095098166649,23.4148353139973,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,B,di_coxme,28.0177516577745,23.2147085164418,32.8207947991073,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,C,di_gee,9.04574894149024,7.06699136053924,11.0245065224412,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,C,di_coxme,13.1917172063399,10.9302799709674,15.4531544417125,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,25,113,A,di_gee,1251.96153071558,978.094945871548,1525.82811555962,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,25,113,A,di_coxme,1825.77723229356,1512.78684961466,2138.76761497245,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,25,113,B,di_gee,956.188528372701,747.022287791172,1165.35476895423,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,25,113,B,di_coxme,1394.44160387685,1155.39447178368,1633.48873597003,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,25,113,C,di_gee,450.206312637469,351.723681748022,548.688943526915,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,absolute number,25,113,C,di_coxme,656.550872596308,543.999294436942,769.102450755675,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,A,di_gee,583.552985151605,455.900769649691,711.205200653518,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,851.014770012756,705.126523724856,996.903016300658,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,B,di_gee,445.689948460862,348.195272235048,543.184624686675,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,649.964508172089,538.542021056875,761.386995287305,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,C,di_gee,209.846094491042,163.942261321126,255.749927660957,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,306.025554466102,253.564030843342,358.487078088863,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,25,113,A,di_gee,598.997445335624,467.966754168456,730.028136502791,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,25,113,A,di_coxme,873.537941114451,723.788579780546,1023.28730244836,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,25,113,B,di_gee,457.485690816002,357.410695950001,557.560685682002,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,25,113,B,di_coxme,667.166632440002,552.795209736003,781.538055144002,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,25,113,C,di_gee,215.39993404564,168.281198473156,262.518669618124,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,4,nvss,YLL,crude rate,25,113,C,di_coxme,314.124903816558,260.274920305148,367.974887327968,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,A,di_gee,55.2056352011409,43.1294025008913,67.2818679013905,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,A,di_coxme,80.5082180016637,66.7068092013786,94.309626801949,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,B,di_gee,40.3056019755635,31.4887515434089,49.1224524077179,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,B,di_coxme,58.77900288103,48.7026023871392,68.8554033749208,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,C,di_gee,18.892972477263,14.7601347478617,23.0258102066643,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,C,di_coxme,27.5522515293418,22.8290084100261,32.2754946486576,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,29.8217009860262,23.298203895333,36.3451980767194,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,43.4899806046215,36.034555358115,50.9454058511281,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,21.7728064498785,17.0100050389676,26.5356078607894,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,31.7520094060728,26.3088077936032,37.1952110185424,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,10.2058526072809,7.97332234943816,12.4383828651235,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,14.8835350522846,12.3320719004644,17.4349982041048,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,A,di_gee,36.3526453172151,28.4005041540743,44.3047864803559,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,A,di_coxme,53.0142744209386,43.9261130916349,62.1024357502424,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,B,di_gee,26.5410450867201,20.735191474,32.3468986994401,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,B,di_coxme,38.7056907514668,32.0704294797868,45.3409520231468,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,C,di_gee,12.4409315272158,9.71947775563733,15.1623852987942,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,C,di_coxme,18.1430251438564,15.0327922620524,21.2532580256603,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,25,113,A,di_gee,1233.63231795392,963.775248401496,1503.48938750633,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,25,113,A,di_coxme,1799.04713034946,1490.63905086098,2107.45520983794,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,25,113,B,di_gee,900.674233898041,703.651745232843,1097.69672256324,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,25,113,B,di_coxme,1313.48325776797,1088.31469929347,1538.65181624248,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,25,113,C,di_gee,422.184824886931,329.831894442915,514.537755330947,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,absolute number,25,113,C,di_coxme,615.686202960107,510.139996738376,721.23240918184,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,A,di_gee,607.341298609171,474.485389538414,740.197207679926,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,885.706060471706,733.870735819415,1037.541385124,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,B,di_gee,443.419526935489,346.42150541835,540.417548452626,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,646.65347678092,535.798595047049,757.508358514792,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,C,di_gee,207.84983991437,162.382687433101,253.316992395638,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,303.114349875122,251.15188989653,355.076809853714,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,25,113,A,di_gee,812.34094930776,634.641366646686,990.040531968831,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,25,113,A,di_coxme,1184.66388440715,981.578647080209,1387.74912173409,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,25,113,B,di_gee,593.089652024749,463.351290644335,722.828013405163,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,25,113,B,di_coxme,864.922409202758,716.649996196572,1013.19482220895,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,25,113,C,di_gee,278.006677063069,217.192716455523,338.820637670615,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,5,nvss,YLL,crude rate,25,113,C,di_coxme,405.426404050309,335.924734784542,474.928073316076,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,A,di_gee,2790.62931060115,2180.17914890715,3401.07947229515,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,A,di_coxme,4069.66774462668,3372.01041697639,4767.32507227696,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,B,di_gee,1807.22270003009,1411.89273439851,2202.55266566167,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,B,di_coxme,2635.53310421055,2183.72742920303,3087.33877921807,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,C,di_gee,814.003217193384,635.94001343233,992.066420954435,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,C,di_coxme,1187.08802507368,983.587220775339,1390.58882937203,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,49.8424255758672,38.9393949811462,60.7454561705881,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,72.6868706314729,60.2262642375062,85.1474770254396,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,32.2781541006116,25.2173078911028,39.3390003101204,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,47.0723080633919,39.002769538239,55.1418465885448,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,14.5386184461518,11.358295661056,17.7189412312474,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,21.2021519006379,17.5674972891,24.8368065121759,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,A,di_gee,43.2599368547531,33.7968256677758,52.7230480417303,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,A,di_coxme,63.0874079131815,52.2724236994933,73.9023921268697,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,B,di_gee,28.0153080843749,21.8869594409179,34.1436567278319,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,B,di_coxme,40.8556576230467,33.851830601953,47.8594846441404,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,C,di_gee,12.6185615701736,9.85825122669807,15.378871913649,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,C,di_coxme,18.4020689565031,15.2474285639597,21.5567093490465,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,25,113,A,di_gee,66981.2535676409,52329.1043497194,81633.4027855623,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,25,113,A,di_coxme,97680.9947861429,80935.6813942328,114426.308178053,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,25,113,B,di_gee,43377.3276386307,33888.5372176802,52866.1180595811,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,25,113,B,di_coxme,63258.6028063363,52414.2708966787,74102.9347159939,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,25,113,C,di_gee,19537.8711491998,15263.9618353123,23811.7804630872,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,absolute number,25,113,C,di_coxme,28492.7287592496,23608.2609719497,33377.1965465496,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,A,di_gee,957.208542218581,747.819173608266,1166.5979108289,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,1395.92912406876,1156.62698851412,1635.23125962341,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,B,di_gee,619.892079391756,484.290687024809,755.493471758702,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,904.00928244631,749.036262598372,1058.98230229425,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,C,di_gee,279.209721596118,218.132594996967,340.286848195268,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,407.180843994338,337.378413595309,476.983274393367,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,25,113,A,di_gee,1038.33382269039,811.198298976868,1265.46934640392,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,25,113,A,di_coxme,1514.23682475682,1254.65336908422,1773.82028042942,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,25,113,B,di_gee,672.429135409197,525.335262038435,819.523008779959,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,25,113,B,di_coxme,980.625822471745,812.518538619447,1148.73310632404,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,25,113,C,di_gee,302.873287032383,236.619755494049,369.126818570717,attributable
+1997,us,Asian or Pacific Islander,All Origins,A,666,666,nvss,YLL,crude rate,25,113,C,di_coxme,441.690210255558,365.971888497463,517.408532013654,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,25,118,A,di_gee,26826.8931230828,25666.1140937186,27987.6721524469,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,25,118,A,di_coxme,27858.6967047398,26568.9422276685,29019.475734104,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,25,118,B,di_gee,17113.8507610592,16373.3476031287,17854.3539189896,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,25,118,B,di_coxme,17772.0757903307,16949.2945037413,18512.5789482611,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,25,118,C,di_gee,7493.75507698523,7169.50605923106,7818.0040947394,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,absolute number,25,118,C,di_coxme,7781.97642610005,7421.69973970653,8106.22544385422,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,243.507032323131,232.970670347611,254.043394298651,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,252.872687412482,241.165618550793,263.409049388002,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,155.341991759036,148.620463269463,162.06352024861,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,161.316683749768,153.848318761353,168.038212239342,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,68.020625846642,65.0774256898162,70.9638260034679,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,70.6368037638205,67.3665813673473,73.5800039206464,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,25,118,A,di_gee,299.539523796784,286.578679017115,312.500368576452,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,25,118,A,di_coxme,311.060274712045,296.659336067969,324.021119491713,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,25,118,B,di_gee,191.08715585429,182.818961610595,199.355350097985,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,25,118,B,di_coxme,198.436661848685,189.249779355691,206.704856092381,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,25,118,C,di_gee,83.6725973787286,80.0521484536875,87.2930463037698,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,Deaths,crude rate,25,118,C,di_coxme,86.8907742009874,82.8680531731639,90.5112231260286,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,25,118,A,di_gee,738368.793968682,706420.144229653,770317.443707712,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,25,118,A,di_coxme,766767.593736708,731269.094026675,798716.243475738,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,25,118,B,di_gee,471032.306597239,450651.10102332,491413.512171158,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,25,118,B,di_coxme,489148.933774056,466503.149803034,509530.139347975,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,25,118,C,di_gee,206254.032962518,197329.579613179,215178.486311858,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,absolute number,25,118,C,di_coxme,214186.880384154,204270.82110711,223111.333733494,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,A,di_gee,6002.76447531703,5743.0294739812,6262.49947665287,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,6233.64003205999,5945.04558613129,6493.37503339583,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,B,di_gee,3829.38176676041,3663.68736339097,3995.07617012985,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,3976.66568086658,3792.56078823387,4142.36008423602,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,C,di_gee,1676.79673365338,1604.24302883184,1749.35043847492,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,1741.28891571698,1660.67368813749,1813.84262053852,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,25,118,A,di_gee,8244.36269668074,7887.63546461282,8601.08992874866,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,25,118,A,di_coxme,8561.45356962999,8165.08997844342,8918.18080169792,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,25,118,B,di_gee,5259.37879439481,5031.80951963735,5486.94806915228,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,25,118,B,di_coxme,5461.66259417923,5208.80784444871,5689.2318689367,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,25,118,C,di_gee,2302.9589945919,2203.31173040282,2402.60625878097,attributable
+1997,us,Black or African American,All Origins,A,666,1,nvss,YLL,crude rate,25,118,C,di_coxme,2391.53434053774,2280.81515810543,2491.18160472681,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,25,118,A,di_gee,7557.24282668772,7230.24674284066,7884.23891053479,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,25,118,A,di_coxme,7847.90601232956,7484.57703027726,8174.90209617663,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,25,118,B,di_gee,5273.0882139448,5044.92574314911,5501.25068474049,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,25,118,B,di_coxme,5475.89929909652,5222.38544265687,5704.06176989221,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,25,118,C,di_gee,2349.53742154147,2247.87474464785,2451.2000984351,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,absolute number,25,118,C,di_coxme,2439.90424544691,2326.94571556511,2541.56692234054,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,207.766005149903,198.77612992707,216.755880372735,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,215.757005347976,205.768255100384,224.746880570808,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,144.969335793399,138.696624148492,151.242047438305,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,150.54507947776,143.575399872308,156.817791122667,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,64.5941933081735,61.7992522515699,67.3891343647772,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,67.0785853584879,63.9730952955949,69.8735264150916,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,25,118,A,di_gee,211.956770912069,202.785564478374,221.127977345764,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,25,118,A,di_coxme,220.108954408687,209.918725037914,229.280160842382,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,25,118,B,di_gee,147.893454821286,141.494218795365,154.292690847207,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,25,118,B,di_coxme,153.581664622104,146.471402371081,159.980900648026,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,25,118,C,di_gee,65.897097185809,63.0457804806538,68.7484138909642,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,Deaths,crude rate,25,118,C,di_coxme,68.4316009237247,65.26347125133,71.2829176288799,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,25,118,A,di_gee,209362.465228875,200303.512406472,218421.418051278,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,25,118,A,di_coxme,217414.867737678,207349.364601674,226473.820560081,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,25,118,B,di_gee,146083.27046766,139762.359726271,152404.181209049,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,25,118,B,di_coxme,151701.857793339,144678.62363624,158022.768534729,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,25,118,C,di_gee,65090.5307666307,62274.1135699977,67906.9479632638,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,absolute number,25,118,C,di_coxme,67594.0127191934,64464.66027849,70410.4299158266,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,A,di_gee,4783.02230370023,4576.06460786705,4989.97999953342,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,4966.9846999964,4737.03170462619,5173.94239582958,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,B,di_gee,3337.3677563476,3192.96242073641,3481.7730919588,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,3465.72805466866,3305.27768176733,3610.13339027986,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,C,di_gee,1487.03570182046,1422.6928108763,1551.37859276461,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,1544.22938265971,1472.73728161065,1608.57227360386,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,25,118,A,di_gee,5871.95530139556,5617.88031239287,6126.03029039826,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,25,118,A,di_coxme,6097.79973606463,5815.4941927283,6351.87472506732,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,25,118,B,di_gee,4097.17393005494,3919.89236577371,4274.45549433616,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,25,118,B,di_coxme,4254.75754274936,4057.77802688133,4432.03910703058,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,25,118,C,di_gee,1825.58362019638,1746.59202124558,1904.57521914719,attributable
+1997,us,Black or African American,All Origins,A,666,2,nvss,YLL,crude rate,25,118,C,di_coxme,1895.79837481932,1808.02993154065,1974.78997377013,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,25,118,A,di_gee,6411.52725251132,6134.1054002392,6688.94910478345,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,25,118,A,di_coxme,6658.12445453099,6349.87795200641,6935.54630680312,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,25,118,B,di_gee,4522.58307271921,4326.8943820727,4718.27176336571,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,25,118,B,di_coxme,4696.5285755161,4479.09669701998,4892.21726616261,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,25,118,C,di_gee,1992.59381074028,1906.37580931402,2078.81181216655,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,absolute number,25,118,C,di_coxme,2069.23203423029,1973.43425486778,2155.45003565656,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,167.957814310633,160.69040888373,175.225219737535,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,174.417730245657,166.342835326877,181.685135672559,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,118.474606441805,113.34830135538,123.600911528229,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,123.031322074182,117.33542753371,128.157627160606,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,52.1984369839098,49.9398507682599,54.4570231995597,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,54.2060691755986,51.6965289359876,56.4646553912486,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,25,118,A,di_gee,202.194288992941,193.445497642285,210.943080343597,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,25,118,A,di_coxme,209.970992415746,200.25011313724,218.719783766402,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,25,118,B,di_gee,142.624437639533,136.453187933977,148.79568734509,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,25,118,B,di_coxme,148.109992933362,141.253048816076,154.281242638918,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,25,118,C,di_gee,62.8385520246456,60.119576215887,65.5575278334044,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,Deaths,crude rate,25,118,C,di_coxme,65.2554194102089,62.2343351782548,67.9743952189677,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,25,118,A,di_gee,170615.461507343,163233.061730583,177997.861284103,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,25,118,A,di_coxme,177177.594642241,168974.928223618,184559.994419001,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,25,118,B,di_gee,120349.265903073,115141.845743805,125556.686062341,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,25,118,B,di_coxme,124978.083822422,119192.061423236,130185.50398169,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,25,118,C,di_gee,53024.3886092766,50730.0641021445,55318.7131164088,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,absolute number,25,118,C,di_coxme,55063.7881711719,52514.5387188028,57358.1126783041,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,A,di_gee,4014.06605547395,3840.38050499672,4187.7516059512,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,4168.45321145372,3975.46926647901,4342.13876193096,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,B,di_gee,2831.45442268105,2708.9395678535,2953.9692775086,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,2940.35651586109,2804.22889938604,3062.87137068864,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,C,di_gee,1247.50357645398,1193.52505631896,1301.48209658901,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,1295.48448324068,1235.50834975731,1349.46300337571,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,25,118,A,di_gee,5380.53892185631,5147.72714158368,5613.35070212894,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,25,118,A,di_coxme,5587.48272654309,5328.80297068462,5820.29450681572,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,25,118,B,di_gee,3795.3413113175,3631.11981227011,3959.56281036489,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,25,118,B,di_coxme,3941.3159771374,3758.84764486252,4105.5374761848,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,25,118,C,di_gee,1672.18014240502,1599.82619393558,1744.53409087447,attributable
+1997,us,Black or African American,All Origins,A,666,3,nvss,YLL,crude rate,25,118,C,di_coxme,1736.49476326676,1656.10148718959,1808.8487117362,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,25,118,A,di_gee,1601.87528029615,1532.56336912949,1671.18719146281,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,25,118,A,di_coxme,1663.48586799985,1586.47263337023,1732.79777916651,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,25,118,B,di_gee,1146.1209921022,1096.52921840547,1195.71276579893,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,25,118,B,di_coxme,1190.20256872152,1135.10059794738,1239.79434241825,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,25,118,C,di_gee,506.567288144423,484.648511253559,528.486065035288,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,absolute number,25,118,C,di_coxme,526.050645380747,501.696448835342,547.969422271612,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,103.939907913393,99.4425080517555,108.43730777503,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,107.937596679292,102.940485721918,112.43499654093,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,74.3676563600415,71.1498250752321,77.585487644851,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,77.2279508354277,73.6525827411949,80.4457821202372,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,32.8693238039943,31.4470934470907,34.291554160898,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,34.1335285656864,32.5532726135713,35.55575892259,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,25,118,A,di_gee,130.579416899629,124.929345976088,136.229487823171,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,25,118,A,di_coxme,135.601702165,129.323845583287,141.251773088542,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,25,118,B,di_gee,93.4278796146114,89.3853271312869,97.470432097936,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,25,118,B,di_coxme,97.0212595997887,92.529534618317,101.063812083113,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,25,118,C,di_gee,41.2936399730797,39.506895935783,43.0803840103764,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,Deaths,crude rate,25,118,C,di_coxme,42.8818568951212,40.8965857425693,44.6686009324179,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,25,118,A,di_gee,41413.4143926142,39621.4878083184,43205.34097691,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,25,118,A,di_coxme,43006.2380230993,41015.2084849929,44798.1646073952,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,25,118,B,di_gee,29630.7610048315,28348.6607690455,30912.8612406175,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,25,118,B,di_coxme,30770.4056588635,29345.8498413235,32052.5058946495,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,25,118,C,di_gee,13096.3260871279,12529.6581314349,13662.9940428209,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,absolute number,25,118,C,di_coxme,13600.0309366328,12970.3998747517,14166.6988923259,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,A,di_gee,2495.20009234682,2387.23470373566,2603.16548095798,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,2591.16932666785,2471.20778376656,2699.13471527901,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,B,di_gee,1785.28331169786,1708.03547609555,1862.53114730017,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,1853.94805445547,1768.11712600846,1931.19589005778,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,C,di_gee,789.066889105224,754.924571788172,823.209206422278,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,819.415615609271,781.479707479213,853.557932926325,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,25,118,A,di_gee,3375.88048815543,3229.80873626409,3521.95224004677,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,25,118,A,di_coxme,3505.72204539217,3343.42009884624,3651.79379728352,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,25,118,B,di_gee,2415.39871542799,2310.88627101043,2519.91115984555,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,25,118,B,di_coxme,2508.29866602137,2392.17372777964,2612.81111043893,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,25,118,C,di_gee,1067.56789683926,1021.3750551491,1113.76073852942,attributable
+1997,us,Black or African American,All Origins,A,666,4,nvss,YLL,crude rate,25,118,C,di_coxme,1108.62820056385,1057.30282090812,1154.82104225401,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,25,118,A,di_gee,58.7619017445976,56.2193194575718,61.3044840316235,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,25,118,A,di_coxme,61.0219748886206,58.1968834585919,63.5645571756465,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,25,118,B,di_gee,43.4638671929605,41.5832190932651,45.344515292656,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,25,118,B,di_coxme,45.1355543926898,43.0459453930282,47.0162024923852,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,25,118,C,di_gee,19.1496553482889,18.3210644918725,19.9782462047052,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,absolute number,25,118,C,di_coxme,19.8861805539923,18.965524046863,20.7147714104086,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,3.86472504725675,3.69750136732738,4.03194872718614,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,4.01336831830509,3.82756422949467,4.18059199823447,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,2.85858509007018,2.73489631213445,2.98227386800591,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,2.9685306704575,2.83109869497335,3.09221944839323,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,1.25945809229481,1.20496230945514,1.31395387513449,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,1.30789878815231,1.24734791833044,1.36239457099199,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,25,118,A,di_gee,5.33212410877839,5.10140720022548,5.5628410173313,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,25,118,A,di_coxme,5.53720580526986,5.28085368465552,5.76792271382278,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,25,118,B,di_gee,3.94396245253641,3.77331023103244,4.1146146740404,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,25,118,B,di_coxme,4.09565331609551,3.90603973664664,4.26630553759949,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,25,118,C,di_gee,1.73766225948934,1.66247495018451,1.81284956879417,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,Deaths,crude rate,25,118,C,di_coxme,1.80449542331585,1.72095396853271,1.87968273262068,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,25,118,A,di_gee,1509.36523589527,1444.05616318826,1574.67430860228,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,25,118,A,di_coxme,1567.41774496816,1494.85210862705,1632.72681767517,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,25,118,B,di_gee,1116.41809081945,1068.11153881284,1164.72464282606,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,25,118,B,di_coxme,1159.35724815866,1105.68330148464,1207.66380016527,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,25,118,C,di_gee,491.880337496743,470.59705366275,513.163621330737,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,absolute number,25,118,C,di_coxme,510.798812015849,487.150718866967,532.082095849843,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,A,di_gee,96.5523236785189,92.3745789039677,100.73006845307,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,100.265874589231,95.6239359508408,104.443619363783,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,B,di_gee,71.4159557288444,68.3258422598079,74.5060691978809,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,74.1627232568768,70.7292638468363,77.2528367259134,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,C,di_gee,31.4650082217609,30.1035415198578,32.826474923664,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,32.6752008456747,31.1624600657824,34.0366675475779,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,25,118,A,di_gee,136.961577558355,131.035355452465,142.887799664246,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,25,118,A,di_coxme,142.229330541369,135.644639312602,148.155552647259,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,25,118,B,di_gee,101.305091237657,96.9216978667971,105.688484608517,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,25,118,B,di_coxme,105.201440900644,100.331003821911,109.584834271504,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,25,118,C,di_gee,44.6338006145549,42.7025303956559,46.5650708334539,attributable
+1997,us,Black or African American,All Origins,A,666,5,nvss,YLL,crude rate,25,118,C,di_coxme,46.3504852535762,44.2046294547995,48.2817554724753,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,25,118,A,di_gee,53936.261013617,51602.4804889894,56270.0415382447,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,25,118,A,di_coxme,56010.7325910638,53417.6431192553,58344.5131156915,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,25,118,B,di_gee,36307.3032668346,34736.3141831735,37878.2923504958,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,25,118,B,di_coxme,37703.7380078667,35958.1945815766,39274.7270915279,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,25,118,C,di_gee,15955.8308186942,15265.4342928854,16646.2273445031,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,absolute number,25,118,C,di_coxme,16569.5166194132,15802.4093685145,17259.9131452221,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,229.536278352001,219.604420154078,239.468136549924,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,238.364596750155,227.329198752463,248.296454948078,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,154.512810347804,147.827159900063,161.198460795546,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,160.455610745797,153.027110248306,167.141261193538,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,67.9031500387578,64.9650329697731,70.8412671077426,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,70.5148096556331,67.250235134539,73.4529267246179,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,25,118,A,di_gee,273.039651829642,261.225436125475,284.853867533809,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,25,118,A,di_coxme,283.541176900013,270.414270562049,295.35539260418,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,25,118,B,di_gee,183.797194253917,175.844431041007,191.749957466827,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,25,118,B,di_coxme,190.866317109837,182.029913539937,198.819080322747,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,25,118,C,di_gee,80.7726455174388,77.2776752787036,84.2676157561742,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,Deaths,crude rate,25,118,C,di_coxme,83.879285729648,79.9959854643865,87.3742559683834,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,25,118,A,di_gee,1440509.90591136,1378180.15036712,1502839.66145561,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,25,118,A,di_coxme,1495914.1330618,1426658.84912375,1558243.88860604,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,25,118,B,di_gee,969682.158716918,927724.757618591,1011639.55981525,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,25,118,B,di_coxme,1006977.62635988,960358.291806179,1048935.02745821,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,25,118,C,di_gee,426142.485953412,407703.628388121,444581.343518705,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,absolute number,25,118,C,di_coxme,442532.581567005,422044.962050014,460971.439132297,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,A,di_gee,5489.18701099777,5251.67411148345,5726.6999105121,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,5700.30958834384,5436.40636666126,5937.82248785817,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,B,di_gee,3695.05734641766,3535.17505738997,3854.93963544534,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,3837.17493666449,3659.52794885595,3997.05722569218,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,C,di_gee,1623.85262963523,1553.58977546833,1694.11548380214,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,1686.30850000582,1608.23866204259,1756.57135417273,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,25,118,A,di_gee,7292.24302492697,6976.71327865609,7607.77277119785,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,25,118,A,di_coxme,7572.71391050108,7222.12530353344,7888.24365677196,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,25,118,B,di_gee,4908.78815153019,4696.38866420437,5121.18763885602,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,25,118,B,di_coxme,5097.58769581981,4861.58826545778,5309.98718314564,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,25,118,C,di_gee,2157.24623486902,2063.90384970641,2250.58862003162,attributable
+1997,us,Black or African American,All Origins,A,666,666,nvss,YLL,crude rate,25,118,C,di_coxme,2240.21724390244,2136.50348261066,2333.55962906504,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,A,di_gee,36729.1116598239,34980.1063426895,37895.1152045803,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,A,di_coxme,39644.1205217148,37895.1152045803,40810.1240664711,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,B,di_gee,24811.5472721912,23630.0450211345,25599.2154395623,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,B,di_coxme,26780.7176906191,25599.2154395623,27568.3858579902,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,C,di_gee,11313.8856341575,10775.1291753881,11673.0566066704,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,absolute number,25,113,C,di_coxme,12211.8130654398,11673.0566066704,12570.9840379528,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,63.501888809266,60.4779893421582,65.5178217873379,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,68.5417212544459,65.5178217873379,70.5576542325179,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,42.8973107396979,40.8545816568553,44.2591301282598,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,46.3018592111026,44.2591301282598,47.6636785996645,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,19.5608626256784,18.6293929768366,20.181842391573,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,21.1133120404148,20.181842391573,21.7342918063094,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,A,di_gee,101.067531195778,96.2547916150271,104.276024249613,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,A,di_coxme,109.088763830364,104.276024249613,112.297256884198,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,B,di_gee,68.2739580301553,65.0228171715766,70.4413852692079,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,B,di_coxme,73.6925261277868,70.4413852692079,75.8599533668394,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,C,di_gee,31.1324297703191,29.6499331145897,32.1207608741388,attributable
+1997,us,White,All Origins,A,666,1,nvss,Deaths,crude rate,25,113,C,di_coxme,33.6032575298683,32.1207608741388,34.591588633688,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,absolute number,25,113,A,di_gee,747266.015697125,711681.919711549,770988.746354177,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,absolute number,25,113,A,di_coxme,806572.842339755,770988.746354177,830295.572996807,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,absolute number,25,113,B,di_gee,504799.197026374,480761.140025119,520824.568360545,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,absolute number,25,113,B,di_coxme,544862.625361802,520824.568360545,560887.996695972,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,absolute number,25,113,C,di_gee,230184.773271762,219223.593592154,237492.2263915,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,absolute number,25,113,C,di_coxme,248453.406071108,237492.2263915,255760.859190847,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,A,di_gee,1316.06197610868,1253.39235819875,1357.84172138197,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,1420.51133929191,1357.84172138197,1462.29108456521,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,B,di_gee,889.036855445428,846.701767090886,917.260247681791,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,959.595336036337,917.260247681791,987.8187282727,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,C,di_gee,405.394359195571,386.089865900545,418.264021392256,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,437.568514687284,418.264021392256,450.438176883969,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,crude rate,25,113,A,di_gee,2056.25260018543,1958.33580970042,2121.53046050878,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,crude rate,25,113,A,di_coxme,2219.4472509938,2121.53046050878,2284.72511131715,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,crude rate,25,113,B,di_gee,1389.05642656405,1322.91088244195,1433.15345597878,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,crude rate,25,113,B,di_coxme,1499.29900010088,1433.15345597878,1543.39602951561,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,crude rate,25,113,C,di_gee,633.399657713051,603.237769250526,653.507583354735,attributable
+1997,us,White,All Origins,A,666,1,nvss,YLL,crude rate,25,113,C,di_coxme,683.669471817263,653.507583354735,703.777397458947,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,A,di_gee,15904.6836731093,15147.3177839136,16409.5942659064,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,A,di_coxme,17166.9601551021,16409.5942659064,17671.8707478992,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,B,di_gee,12082.8529827126,11507.4790311549,12466.4356170844,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,B,di_coxme,13041.8095686422,12466.4356170844,13425.392203014,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,C,di_gee,5654.60941968301,5385.34230446002,5834.12082983168,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,absolute number,25,113,C,di_coxme,6103.38794505469,5834.12082983168,6282.89935520335,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,30.1926757708917,28.7549293056112,31.1511734144121,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,32.5889198796927,31.1511734144121,33.547417523213,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,22.9374987891899,21.8452369420857,23.6656733539261,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,24.7579352010304,23.6656733539261,25.4861097657666,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,10.7344347318379,10.2232711731789,11.0752104376105,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,11.5863739962695,11.0752104376105,11.9271497020421,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,A,di_gee,45.3325801799318,43.1738858856494,46.7717097094535,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,A,di_coxme,48.930404003736,46.7717097094535,50.3695335332577,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,B,di_gee,34.439345849251,32.7993769992867,35.5326584158939,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,B,di_coxme,37.1726272658583,35.5326584158939,38.2659398325012,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,C,di_gee,16.1171413510964,15.3496584296157,16.6287966320836,attributable
+1997,us,White,All Origins,A,666,2,nvss,Deaths,crude rate,25,113,C,di_coxme,17.3962795535644,16.6287966320836,17.9079348345516,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,absolute number,25,113,A,di_gee,315324.007451447,300308.578525188,325334.293402286,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,absolute number,25,113,A,di_coxme,340349.722328546,325334.293402286,350360.008279386,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,absolute number,25,113,B,di_gee,239552.933102175,228145.6505735,247157.788121291,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,absolute number,25,113,B,di_coxme,258565.070649967,247157.788121291,266169.925669083,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,absolute number,25,113,C,di_gee,112107.486035814,106769.034319823,115666.453846475,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,absolute number,25,113,C,di_coxme,121004.905562467,115666.453846475,124563.873373127,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,A,di_gee,588.711518242467,560.677636421398,607.400772789847,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,635.434654610918,607.400772789847,654.123909158298,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,B,di_gee,447.246538840633,425.949084610127,461.444841660971,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,482.742295891478,461.444841660971,496.940598711815,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,C,di_gee,209.305243974019,199.338327594304,215.949854893829,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,225.916771273545,215.949854893829,232.561382193355,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,crude rate,25,113,A,di_gee,898.757318551285,855.959351001226,927.289296917993,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,crude rate,25,113,A,di_coxme,970.087264468056,927.289296917993,998.619242834763,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,crude rate,25,113,B,di_gee,682.789596472948,650.275806164713,704.465456678438,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,crude rate,25,113,B,di_coxme,736.979246986675,704.465456678438,758.655107192165,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,crude rate,25,113,C,di_gee,319.536163305259,304.320155528819,329.680168489553,attributable
+1997,us,White,All Origins,A,666,2,nvss,YLL,crude rate,25,113,C,di_coxme,344.896176265995,329.680168489553,355.040181450289,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,A,di_gee,14215.7677080763,13538.8263886441,14667.0619210311,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,A,di_coxme,15344.0032404633,14667.0619210311,15795.2974534181,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,B,di_gee,11351.8008901663,10811.2389430156,11712.1755216002,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,B,di_coxme,12252.737468751,11712.1755216002,12613.1121001848,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,C,di_gee,5474.8992257104,5214.18973877181,5648.70555033612,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,absolute number,25,113,C,di_coxme,5909.41503727472,5648.70555033612,6083.22136190045,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,29.8394473846738,28.418521318737,30.7867314286317,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,32.2076574945686,30.7867314286317,33.1549415385265,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,23.8278700341291,22.6932095563135,24.5843103526729,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,25.7189708304886,24.5843103526729,26.4754111490324,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,11.4920256673274,10.9447863498356,11.8568518789886,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,12.4040911964804,11.8568518789886,12.7689174081416,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,A,di_gee,48.5219796910078,46.2114092295313,50.0623599986588,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,A,di_coxme,52.3729304601355,50.0623599986588,53.9133107677865,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,B,di_gee,38.7465428220304,36.9014693543148,39.9765918005076,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,B,di_coxme,41.8216652682234,39.9765918005076,43.0517142467006,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,C,di_gee,18.6872038496599,17.7973369996761,19.2804484163158,attributable
+1997,us,White,All Origins,A,666,3,nvss,Deaths,crude rate,25,113,C,di_coxme,20.1703152662996,19.2804484163158,20.7635598329555,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,absolute number,25,113,A,di_gee,285389.048983451,271799.094269954,294449.018792449,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,absolute number,25,113,A,di_coxme,308038.973505947,294449.018792449,317098.943314946,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,absolute number,25,113,B,di_gee,227893.401666484,217041.334920461,235128.112830499,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,absolute number,25,113,B,di_coxme,245980.179576523,235128.112830499,253214.890740538,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,absolute number,25,113,C,di_gee,109911.495136351,104677.614415572,113400.748950203,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,absolute number,25,113,C,di_coxme,118634.629670982,113400.748950203,122123.883484835,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,A,di_gee,604.363378087985,575.584169607606,623.549517074905,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,652.328725555287,623.549517074905,671.514864542207,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,B,di_gee,482.605855290212,459.624624085917,497.926676093075,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,520.907907297372,497.926676093075,536.228728100236,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,C,di_gee,232.75764339212,221.673946087733,240.146774928377,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,251.230472232764,240.146774928377,258.619603769022,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,crude rate,25,113,A,di_gee,974.104383468779,927.718460446457,1005.02833215033,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,crude rate,25,113,A,di_coxme,1051.41425517265,1005.02833215033,1082.3382038542,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,crude rate,25,113,B,di_gee,777.857322548512,740.816497665251,802.55120580402,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,crude rate,25,113,B,di_coxme,839.592030687284,802.55120580402,864.285913942793,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,crude rate,25,113,C,di_gee,375.15549243144,357.290945172801,387.065190603867,attributable
+1997,us,White,All Origins,A,666,3,nvss,YLL,crude rate,25,113,C,di_coxme,404.929737862507,387.065190603867,416.839436034934,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,A,di_gee,3665.54006253075,3490.99053574358,3781.90641372221,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,A,di_coxme,3956.45594050939,3781.90641372221,4072.82229170084,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,B,di_gee,2958.94795648966,2818.0456728473,3052.88281225123,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,B,di_coxme,3193.7850958936,3052.88281225123,3287.71995165518,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,C,di_gee,1453.32133831902,1384.11556030384,1499.45852366249,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,absolute number,25,113,C,di_coxme,1568.66430167768,1499.45852366249,1614.80148702114,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,15.8165843891204,15.0634137039242,16.3186981792512,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,17.0718688644474,16.3186981792512,17.5739826545783,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,12.7676820491554,12.1596971896719,13.1730052888112,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,13.7809901482948,13.1730052888112,14.1863133879505,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,6.27099395993558,5.97237519993866,6.47007313326687,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,6.76869189326382,6.47007313326687,6.9677710665951,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,A,di_gee,26.460063376154,25.2000603582419,27.3000653880954,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,A,di_coxme,28.5600684060075,27.3000653880954,29.4000704179489,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,B,di_gee,21.359458393534,20.3423413271753,22.0375364377732,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,B,di_coxme,23.054653504132,22.0375364377732,23.7327315483712,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,C,di_gee,10.4909437795882,9.99137502817925,10.8239896138608,attributable
+1997,us,White,All Origins,A,666,4,nvss,Deaths,crude rate,25,113,C,di_coxme,11.3235583652698,10.8239896138608,11.6566041995425,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,absolute number,25,113,A,di_gee,73148.1337149252,69664.8892523098,75470.2966900022,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,absolute number,25,113,A,di_coxme,78953.5411526178,75470.2966900022,81275.7041276948,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,absolute number,25,113,B,di_gee,59047.6483913738,56235.8556108323,60922.1769117349,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,absolute number,25,113,B,di_coxme,63733.9696922766,60922.1769117349,65608.4982126377,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,absolute number,25,113,C,di_gee,29001.9319861743,27620.8876058804,29922.6282397037,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,absolute number,25,113,C,di_coxme,31303.6726199977,29922.6282397037,32224.3688735271,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,A,di_gee,320.93298689483,305.650463709363,331.121335685143,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,346.403858870611,331.121335685143,356.592207660923,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,B,di_gee,259.067965304666,246.731395528254,267.292345155608,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,279.628914932021,267.292345155608,287.853294782963,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,C,di_gee,127.244212331073,121.184964124831,131.283711135234,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,137.342959341476,131.283711135234,141.382458145637,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,crude rate,25,113,A,di_gee,528.02703583275,502.882891269287,544.78979887506,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,crude rate,25,113,A,di_coxme,569.933943438525,544.78979887506,586.696706480834,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,crude rate,25,113,B,di_gee,426.241288321889,405.944084116086,439.772757792426,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,crude rate,25,113,B,di_coxme,460.069961998231,439.772757792426,473.601431468767,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,crude rate,25,113,C,di_gee,209.353313643845,199.384108232234,215.999450584919,attributable
+1997,us,White,All Origins,A,666,4,nvss,YLL,crude rate,25,113,C,di_coxme,225.968655996531,215.999450584919,232.614792937606,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,A,di_gee,342.833458459145,326.508055675377,353.717060314991,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,A,di_coxme,370.04246309876,353.717060314991,380.926064954606,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,B,di_gee,280.996793097554,267.615993426242,289.917326211762,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,B,di_coxme,303.298125883074,289.917326211762,312.218658997282,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,C,di_gee,141.65734452292,134.911756688496,146.154403079203,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,absolute number,25,113,C,di_coxme,152.899990913629,146.154403079203,157.397049469912,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,1.37310793705274,1.30772184481214,1.41669866521315,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,1.48208475745376,1.41669866521315,1.52567548561416,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,1.12544128167291,1.07184883968849,1.1611695763292,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,1.21476201831362,1.1611695763292,1.25049031296991,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,0.5673624300862,0.540345171510667,0.585373935803222,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,0.612391194378756,0.585373935803222,0.630402700095779,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,A,di_gee,2.39499569160971,2.28094827772354,2.47102730086716,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,A,di_coxme,2.58507471475334,2.47102730086716,2.66110632401079,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,B,di_gee,1.963011754598,1.86953500437905,2.0253295880773,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,B,di_coxme,2.11880633829626,2.0253295880773,2.18112417177556,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,C,di_gee,0.989602156516753,0.942478244301671,1.02101809799348,attributable
+1997,us,White,All Origins,A,666,5,nvss,Deaths,crude rate,25,113,C,di_coxme,1.06814201020856,1.02101809799348,1.09955795168528,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,absolute number,25,113,A,di_gee,6806.93414334761,6482.79442223583,7023.02729075547,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,absolute number,25,113,A,di_coxme,7347.16701186727,7023.02729075547,7563.26015927513,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,absolute number,25,113,B,di_gee,5579.1715129078,5313.49667895982,5756.28806887313,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,absolute number,25,113,B,di_coxme,6021.96290282113,5756.28806887313,6199.07945878646,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,absolute number,25,113,C,di_gee,2812.59658675914,2678.66341596109,2901.88536729117,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,absolute number,25,113,C,di_coxme,3035.81853808923,2901.88536729117,3125.10731862127,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,A,di_gee,28.1380664865931,26.7981585586601,29.0313384385484,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,30.3712463664815,29.0313384385484,31.2645183184368,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,B,di_gee,23.0628203041642,21.9645907658707,23.7949733296932,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,24.8932028679868,23.7949733296932,25.6253558935158,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,C,di_gee,11.6265308421615,11.0728865163443,11.995627059373,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,12.5492713851903,11.995627059373,12.9183676024017,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,crude rate,25,113,A,di_gee,47.5524705775802,45.2880672167432,49.0620728181383,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,crude rate,25,113,A,di_coxme,51.3264761789756,49.0620728181383,52.8360784195337,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,crude rate,25,113,B,di_gee,38.9754599688763,37.1194856846442,40.2127761583644,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,crude rate,25,113,B,di_coxme,42.0687504425967,40.2127761583644,43.3060666320849,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,crude rate,25,113,C,di_gee,19.6484810374103,18.712839083248,20.2722423401853,attributable
+1997,us,White,All Origins,A,666,5,nvss,YLL,crude rate,25,113,C,di_coxme,21.2078842943477,20.2722423401853,21.8316455971226,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,A,di_gee,96891.3193624148,92277.4470118238,99967.2342628089,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,A,di_coxme,104581.1066134,99967.2342628089,107657.021513794,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,B,di_gee,73146.587002378,69663.416192741,75468.7008754693,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,B,di_coxme,78951.8716851065,75468.7008754693,81273.9855581978,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,C,di_gee,34782.3912994881,33126.0869518935,35886.5941978845,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,absolute number,25,113,C,di_coxme,37542.8985454793,35886.5941978845,38647.1014438757,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,A,di_gee,41.4383046287198,39.4650520273523,42.7538063629649,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,A,di_coxme,44.7270589643326,42.7538063629649,46.0425606985776,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,B,di_gee,31.2832003393224,29.7935241326881,32.276317810412,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,B,di_coxme,33.7659940170465,32.276317810412,34.7591114881361,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,C,di_gee,14.8756703476434,14.1673050929937,15.3479138507432,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,age-adjusted rate,25,150,C,di_coxme,16.0562791053929,15.3479138507432,16.5285226084927,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,A,di_gee,65.177411259388,62.073725008941,67.2465354263527,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,A,di_coxme,70.3502216767998,67.2465354263527,72.4193458437645,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,B,di_gee,49.2046678138636,46.8615883941559,50.7667207603355,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,B,di_coxme,53.1098001800433,50.7667207603355,54.6718531265152,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,C,di_gee,23.3976194898539,22.2834471331942,24.1404010609604,attributable
+1997,us,White,All Origins,A,666,666,nvss,Deaths,crude rate,25,113,C,di_coxme,25.2545734176201,24.1404010609604,25.9973549887266,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,absolute number,25,113,A,di_gee,1945094.95550825,1852471.38619834,2006844.00171486,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,absolute number,25,113,A,di_coxme,2099467.57102478,2006844.00171486,2161216.6172314,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,absolute number,25,113,B,di_gee,1468419.03203727,1398494.31622597,1515035.5092448,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,absolute number,25,113,B,di_coxme,1584960.2250561,1515035.5092448,1631576.70226363,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,absolute number,25,113,C,di_gee,698257.122540459,665006.783371867,720424.015319522,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,absolute number,25,113,C,di_coxme,753674.354488116,720424.015319522,775841.247267178,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,A,di_gee,836.827800416784,796.978857539796,863.393762334777,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,A,di_coxme,903.242705211769,863.393762334777,929.808667129762,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,B,di_gee,631.750067106004,601.666730577148,651.805624791909,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,B,di_coxme,681.888961320768,651.805624791909,701.944519006673,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,C,di_gee,300.407427578877,286.102311979884,309.94417131154,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,age-adjusted rate,25,150,C,di_coxme,324.249286910535,309.94417131154,333.786030643198,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,crude rate,25,113,A,di_gee,1308.43768758608,1246.13113103436,1349.97539195389,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,crude rate,25,113,A,di_coxme,1412.28194850561,1349.97539195389,1453.81965287342,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,crude rate,25,113,B,di_gee,987.784579485574,940.747218557691,1019.14282010416,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,crude rate,25,113,B,di_coxme,1066.18018103205,1019.14282010416,1097.53842165064,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,crude rate,25,113,C,di_gee,469.707626442647,447.340596612046,484.618979663049,attributable
+1997,us,White,All Origins,A,666,666,nvss,YLL,crude rate,25,113,C,di_coxme,506.986009493652,484.618979663049,521.897362714053,attributable
