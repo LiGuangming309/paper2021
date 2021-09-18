@@ -45,17 +45,12 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
 
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  #dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
 }
-
-# if (agr_by != "nation" & source == "nvss" & year > 2004) {
-#  print(paste("in", year, "no geopgraphic identifier for nvss available"))
-#  quit()
-# }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
@@ -109,12 +104,13 @@ if (!file.exists(attrBurdenDir)) {
   # Increases of 10 μg per cubic meter in PM2.5 were associated with increases in all-cause mortality 
   
   hr <- data.frame(
-    method = c(rep("di_gee", 4), rep("di_coxme", 4)),
-    Race = c("White", "Black or African American", "Asian or Pacific Islander", "White"), # TODO
-    Hispanic.Origin = rep(c("All Origins", "All Origins", "All Origins", "Hispanic or Latino"), 2), # TODO
-    hr_mean = c(1.063, 1.208, 1.096, 1.116, 1.068, 1.216, 1.140, 1.127),
-    hr_lower = c(1.06, 1.199, 1.075, 1.1, 1.065, 1.206, 1.116, 1.109),
-    hr_upper = c(1.065, 1.217, 1.117, 1.133, 1.07, 1.225, 1.164, 1.144)
+    method = c(rep("di_gee", 6), rep("di_coxme", 6)),
+    Race = c("White","White", "Black or African American", "Asian or Pacific Islander", "White", "American Indian or Alaska Native"), # TODO
+    Hispanic.Origin = c("All Origins","Not Hispanic or Latino", "All Origins", "All Origins", "Hispanic or Latino", "All Origins"), # TODO
+    label_cause =  "all-cause",
+    hr_mean = c(1.063,1.063, 1.208, 1.096, 1.116,1.1, 1.068,1.068, 1.216, 1.140, 1.127,1.145),
+    hr_lower = c(1.06,1.06, 1.199, 1.075, 1.1,1.06, 1.065,1.065, 1.206, 1.116, 1.109,1.09),
+    hr_upper = c(1.065,1.065, 1.217, 1.117, 1.133,1.14, 1.07,1.07, 1.225, 1.164, 1.144,1.203)
   )
 
   paf_di <- inner_join(pm_summ, hr, by = c("Race", "Hispanic.Origin"))
@@ -138,9 +134,9 @@ if (!file.exists(attrBurdenDir)) {
     )
 
   attr_burden_di <- inner_join(
-    total_burden %>% dplyr::filter(label_cause == "all-cause"),
+    total_burden,
     paf_di,
-    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class")
+    by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class", "label_cause")
   ) 
   
   test_that("basic check attr burden", {
