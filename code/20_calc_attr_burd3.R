@@ -1,6 +1,6 @@
 #-------------------Header------------------------------------------------
 # Author: Daniel Fridljand
-# Date: 11/15/2020
+# Date: 09/17/2021
 # Purpose: calculate attributable burden
 #
 #***************************************************************************
@@ -36,7 +36,7 @@ attrBurdenDir <- args[18]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2000
-  agr_by <- "nation"
+  agr_by <- "STATEFP"
   source <- "nvss"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -45,11 +45,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
 
-  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  #dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
 }
 
 # if (agr_by != "nation" & source == "nvss" & year > 2004) {
@@ -91,7 +91,9 @@ if (!file.exists(attrBurdenDir)) {
   total_burden <- total_burden %>% mutate_at(c("rural_urban_class", "Education"), as.factor)
 
   pm_summ <- pm_summ %>%
-    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "rural_urban_class", "scenario", "min_age", "max_age"))) %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class","scenario", "pm"))) %>%
+    dplyr::summarize(pop_size = sum(pop_size)) %>%
+    dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education", "rural_urban_class", "scenario"))) %>%
     summarise(pop_weight_pm_exp = weighted.mean(pm, pop_size))
 
   rm(meta, files)
@@ -141,6 +143,16 @@ if (!file.exists(attrBurdenDir)) {
     paf_di,
     by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class")
   ) 
+  
+  test_that("basic check attr burden", {
+    attr_burden_dupl <- attr_burden_di %>%
+      dplyr::group_by_at(vars(one_of(setdiff(colnames(attr_burden_di), c("value"))))) %>%
+      summarise(n = n())
+    
+    attr_burden_dupl <- attr_burden_dupl %>% filter(n != 1)
+    expect_equal(nrow(attr_burden_dupl),0)
+  })
+  
   attr_burden_di <- attr_burden_di%>%
     mutate(mean = value * paf_mean,
            lower = value * paf_lower,
@@ -148,9 +160,10 @@ if (!file.exists(attrBurdenDir)) {
            paf_mean = NULL, paf_lower = NULL, paf_upper = NULL,
            value = NULL, label_cause = NULL,
            attr = "attributable",
-           min_age = min(min_age.x, min_age.y),
-           max_age = max(max_age.x, max_age.y),
-           min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL)
+           #min_age = min(min_age.x, min_age.y),
+           #max_age = max(max_age.x, max_age.y),
+           #min_age.x = NULL, min_age.y = NULL, max_age.x = NULL, max_age.y = NULL
+           )
  
   test_that("basic check attr burden", {
     attr_burden_dupl <- attr_burden_di %>%
@@ -158,7 +171,7 @@ if (!file.exists(attrBurdenDir)) {
       summarise(n = n())
     
     attr_burden_dupl <- attr_burden_dupl %>% filter(n != 1)
-    test_that(nrow(attr_burden_dupl),0)
+    expect_equal(nrow(attr_burden_dupl),0)
   })
   
   fwrite(attr_burden_di, attrBurdenDir)
