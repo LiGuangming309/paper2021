@@ -106,8 +106,7 @@ if (!file.exists(attrBurdenDir)) {
 
   # DI 2017, SI, Table S3
   # hazard ratio
-  # Risk of Death associated with increases #TODO
-  # Increases of 10 μg per cubic meter in PM2.5 were associated with increases in all-cause mortality of 7.3%
+  # Increases of 10 μg per cubic meter in PM2.5 were associated with increases in all-cause mortality 
   
   hr <- data.frame(
     method = c(rep("di_gee", 4), rep("di_coxme", 4)),
