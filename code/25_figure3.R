@@ -166,6 +166,39 @@ burnett <- function(pms) {
   return(attr_burd)
 }
 
+## ---di estimate----
+di <- function(pms) {
+  total_burden <- total_burden %>%
+    dplyr::filter(label_cause == "all-cause") %>%
+    group_by(Year) %>%
+    dplyr::summarise(overall_value = sum(value))
+  
+  rates <- c(0.0071, 0.0073, 0.0075)
+  paf_di <- outer(
+    pms,
+    rates,
+    function(pm, rate) {
+      pmax(0, pm-5) * rate
+    }
+  )
+  paf_di <- data.frame(
+    pm = pms,
+    lower = paf_di[, 1],
+    mean = paf_di[, 2],
+    upper = paf_di[, 3]
+  )
+  
+  attr_burd <- merge(total_burden, paf_di) %>%
+    mutate(
+      mean = overall_value * mean,
+      lower = overall_value * lower,
+      upper = overall_value * upper,
+      overall_value = NULL,
+      method = "DI"
+    )
+  return(attr_burd)
+}
+
 ### ----epa----
 epa <- function(pms) {
   total_burden <- total_burden %>%
@@ -212,7 +245,8 @@ pms <- seq(0, 30, by = 0.5)
 data <- rbind(
   gbd(pms),
   burnett(pms),
-  epa(pms)
+  #epa(pms),
+  di(pms)
 )
 
 g1 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
