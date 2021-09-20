@@ -260,7 +260,9 @@ g1 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
     legend.position = c(0.3, 0.88),
     legend.text = element_text(size = 11),
     legend.background = element_rect(fill = "transparent")
-  ) 
+  ) +
+  xlab("Annual average PM2.5 in μg/m^3") +
+  ylab("Mortality from PM2.5 per 100k per year") 
 g1
 #
 g2 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
@@ -268,6 +270,7 @@ g2 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0.2, show.legend = FALSE)+
   annotate("text", x = 26, y = 123, label = "Burnett", size = 8, colour = hue_pal()(3)[1])+
   annotate("text", x = 26, y = 255, label = "EPA", size = 8, colour = hue_pal()(3)[2])+
+  #annotate("text", x = 22, y = 80, label = "DI", size = 8, colour = hue_pal()(3)[2])+
   annotate("text", x = 26, y = 55, label = "GBD", size = 8, colour = hue_pal()(3)[3])+
   xlab("Annual average PM2.5 in μg/m^3") +
   ylab("Mortality from PM2.5 per 100k per year")+ 
