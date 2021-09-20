@@ -224,7 +224,7 @@ for (agr_by in agr_bys) {
 }
 
  scenario = "A"
- method <- "burnett"
+ method <- "di_gee"
   args <- paste( 
     tmp.dir, # 1
     dem.dir, # 2

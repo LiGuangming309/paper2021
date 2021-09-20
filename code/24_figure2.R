@@ -37,7 +37,7 @@ if (rlang::is_empty(args)) {
   #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   #figuresDir <-  "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
-  methodI <- "burnett"
+  methodI <- "di_gee"
 }
 theme_set(theme_classic())
 file_list <- list.files(summaryDir)
@@ -45,6 +45,7 @@ file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
 attr_burd <- lapply(file_list, fread) %>% rbindlist
 rm(file_list)
 
+attr_burd$method %>% unique
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == methodI & attr == "attributable" &
     source == "National Vital Statistics System" & scenario == scenarioI & rural_urban_class == "All")
@@ -71,4 +72,4 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   #scales='free_x', space='free_x', 
   facet_wrap(~Region) 
 
-ggsave(file.path(figuresDir, "app_figure1.svg"), g1, height = 9, width = 8)
+ggsave(file.path(figuresDir, methodI, "app_figure1.svg"), g1, height = 9, width = 8)

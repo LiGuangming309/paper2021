@@ -98,7 +98,7 @@ g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
 #ggsave(file.path(figuresDir, "figure1b.png"), g2)
 
 g3 <- ggarrange(g1, g2, ncol = 1, labels = "AUTO", align = "v")
-ggsave(file.path(figuresDir, "figure1.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "figure1.png"), g3, height = 9, width = 8)
 
 # https://stackoverflow.com/questions/64757410/shared-x-and-y-axis-labels-ggplot2-with-ggarrange
 rm(g1, g2,g3, pm_summ1, pm_summ2)
@@ -141,7 +141,7 @@ g3 <- ggarrange(NULL, g1,NULL, g2,
                 align = "v"
                 )
 
-ggsave(file.path(figuresDir, "figure2.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "figure2.png"), g3, height = 9, width = 8)
 
 rm(all_burden1, all_burden2, g1, g2, g3)
 ## -- figure 3, attributable burden----
@@ -179,7 +179,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure3.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "figure3.png"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2, g3)
 ## -- figure 4, prop. of overall burden----
 attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "prop. of overall burden")
@@ -216,7 +216,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure4.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "figure4.png"), g3, height = 9, width = 8)
 
 rm(attr_burd1, attr_burd2, g1, g2) 
 ##---figure 5, prop of difference----
@@ -256,7 +256,7 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir, "figure5.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "figure5.png"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2) 
 ## ---figure 6, differences by state ---
 all_burden1 <- all_burden %>%
