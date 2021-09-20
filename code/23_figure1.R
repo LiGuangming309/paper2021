@@ -44,6 +44,7 @@ attr_burd <- lapply(file_list, fread) %>% rbindlist
 rm(file_list)
 
 theme_set(theme_classic())
+dir.create(file.path(figuresDir,methodI))
 ### ----- read stuff----
 all_burden <- fread(file.path(summaryDir, "all_burd.csv")) %>% as.data.frame()
 pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
@@ -59,13 +60,13 @@ attr_burd <- attr_burd %>%
     source == "National Vital Statistics System" & scenario == scenarioI & rural_urban_class == "All")
 
 
-pm_summ <- pm_summ %>% filter(agr_by == "nation" & pm_metric == "mean" & Gender.Code == "All genders" & scenario == "A" & rural_urban_class == "All")
+pm_summ <- pm_summ %>% filter(agr_by == "nation" & pm_metric == "mean" & Gender.Code == "All genders" & scenario == "A")
 
 # http://www.sthda.com/english/articles/24-ggpubr-publication-ready-plots/
 # https://rpubs.com/Koundy/71792
 # http://rstudio-pubs-static.s3.amazonaws.com/9575_8a5dc0315e7d48ea94e0fd2546727041.html
 ## --- figure 1, population-weighted mean particular matter exposure---
-pm_summ1 <- pm_summ %>% filter(Education == 666 & Ethnicity != "All, All Origins")
+pm_summ1 <- pm_summ %>% filter(Education == 666 & Ethnicity != "All, All Origins" & rural_urban_class == "All")
 g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -82,7 +83,7 @@ g1 <- ggplot(pm_summ1, aes(x = Year, y = value, color = Ethnicity)) +
 #ggsave(file.path(figuresDir, "figure1a.png"), g1)
 #https://ggplot2.tidyverse.org/reference/position_dodge.html
 
-pm_summ2 <- pm_summ %>% filter(Education != 666 & Ethnicity == "All, All Origins")
+pm_summ2 <- pm_summ %>% filter(Education != 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All")
 g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -98,12 +99,12 @@ g2 <- ggplot(pm_summ2, aes(x = Year, y = value, color = Education)) +
 #ggsave(file.path(figuresDir, "figure1b.png"), g2)
 
 g3 <- ggarrange(g1, g2, ncol = 1, labels = "AUTO", align = "v")
-ggsave(file.path(figuresDir,methodI, "figure1.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "app_figure1.png"), g3, height = 9, width = 8)
 
 # https://stackoverflow.com/questions/64757410/shared-x-and-y-axis-labels-ggplot2-with-ggarrange
 rm(g1, g2,g3, pm_summ1, pm_summ2)
 ## -- figure 2, all-cause burden ----
-all_burden1 <- all_burden %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins")
+all_burden1 <- all_burden %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins" & rural_urban_class == "All")
 g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -120,7 +121,7 @@ g1 <- ggplot(all_burden1, aes(x = Year, y = overall_value, color = Ethnicity)) +
 #ggsave(file.path(figuresDir, "figure2a.png"), g1)
 #g1$layout$clip[g1$layout$name == "panel"] <- "off"
 
-all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins")
+all_burden2 <- all_burden %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All")
 g2 <- ggplot(all_burden2, aes(x = Year, y = overall_value, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -141,11 +142,11 @@ g3 <- ggarrange(NULL, g1,NULL, g2,
                 align = "v"
                 )
 
-ggsave(file.path(figuresDir,methodI, "figure2.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "app_figure2.png"), g3, height = 9, width = 8)
 
 rm(all_burden1, all_burden2, g1, g2, g3)
 ## -- figure 3, attributable burden----
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "value" )
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "value" & rural_urban_class == "All")
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -159,7 +160,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE)
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "value")
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "value" & rural_urban_class == "All")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -179,10 +180,10 @@ g3 <- ggarrange(g1,NULL, g2,
                 labels = c("A", "", "B"),
                 align = "v"
 )
-ggsave(file.path(figuresDir,methodI, "figure3.png"), g3, height = 9, width = 8)
+ggsave(file.path(figuresDir,methodI, "main_figure1.png"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2, g3)
 ## -- figure 4, prop. of overall burden----
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "prop. of overall burden")
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "prop. of overall burden" & rural_urban_class == "All")
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -196,7 +197,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
   geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE)
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "prop. of overall burden")
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"& measure3 == "prop. of overall burden" & rural_urban_class == "All")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
   xlab("Year") +
@@ -221,7 +222,8 @@ ggsave(file.path(figuresDir,methodI, "figure4.png"), g3, height = 9, width = 8)
 rm(attr_burd1, attr_burd2, g1, g2) 
 ##---figure 5, prop of difference----
 
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins"& measure3 == "proportion of disparity to Black or African American attributable" #&
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins" & rural_urban_class == "All"&
+                                     measure3 == "proportion of disparity to Black or African American attributable" #&
                                      #Ethnicity %in% c("Black or African American")
                                      )
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
@@ -236,7 +238,7 @@ g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity)) +
   ) +
   guides(col = guide_legend(nrow = 3, byrow = TRUE)) 
 
-attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins"
+attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All"
                                    & measure3 == "proportion of disparity to lower educational attainment")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education)) +
   geom_line(size = 1.5) +
