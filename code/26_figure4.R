@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "data.table", "magrittr", "shiny", "ggplot2",  "ggpubr", "scales", "grid", "cowplot",
-  "dplyr", "tigris","tmap" #, "maps", "mapdata", 
+  "dplyr", "tigris","tmap" 
 )
 
 for (p in packages) {
@@ -39,6 +39,8 @@ if (rlang::is_empty(args)) {
   scenarioI <- "A"
   methodI <- "di_gee"
 }
+
+states <- tigris::states()
 theme_set(theme_classic())
 file_list <- list.files(summaryDir)
 file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
@@ -48,32 +50,28 @@ rm(file_list)
 attr_burd$method %>% unique
 attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == methodI 
-         & attr == "attributable" & measure3 == "proportion of disparity to Black or African American attributable" &
+         & attr == "attributable"  &
     source == "National Vital Statistics System" & scenario == scenarioI & rural_urban_class == "All" & agr_by == "STATEFP" 
-    & Year %in% 2000:2016 & Ethnicity == "White, Not Hispanic or Latino")
+    & Year %in% 2000:2016 #2000:2016
+    & !Region %in% c("Alaska", "Hawaii"))
 
-test <- attr_burd %>% 
-  filter(mean >= 0) %>%
-  group_by(Region) %>%
-  summarise(years = list(Year),
-            n = n()) 
-
-attr_burd <- attr_burd %>%
+attr_burd1 <- attr_burd %>% filter(measure3 == "proportion of disparity to Black or African American attributable"& Ethnicity == "White, Not Hispanic or Latino")
+attr_burd1 <- attr_burd1 %>%
   group_by(Region) %>%
   summarise(mean = mean(mean))
+
+attr_burd2 <- attr_burd %>% 
+  filter(measure3 == "value"& Ethnicity %in% c("White, Not Hispanic or Latino", "Black or African American")) %>%
+  mutate(mean = case_when(Ethnicity == "White, Not Hispanic or Latino"~ mean,
+                          Ethnicity == "Black or African American"~ -mean)) %>%
+  group_by(Region, Year) %>%
+  summarise(mean = sum(mean)) %>%
+  group_by(Region) %>%
+  summarise(mean = mean(mean))
+
 ##---plot---
+states_join1 <- tigris::geo_join(states, attr_burd1, "NAME", "Region", how = "inner")
+tm1 <- tm_shape(states_join1) + tm_polygons("mean", alpha = 0.6)
 
-#state <- maps::map("state", boundary=FALSE, col="gray", add=TRUE)
-#maps::map("state", boundary=FALSE, col="gray", add=TRUE)
-
-states <- tigris::states()
-
-states_join <- tigris::geo_join(states, attr_burd, "NAME", "Region", how = "inner")
-
-tm_shape(states_join, projection = 26916) +
-  tm_fill("mean") + 
-  tm_legend(bg.color = "white", bg.alpha = 0.6)# + 
-  #tm_style_gray()
-
-tm <- tm_shape(states_join) + tm_polygons("mean", alpha = 0.6)
-tm
+states_join2 <- tigris::geo_join(states, attr_burd2, "NAME", "Region", how = "inner")
+tm2 <- tm_shape(states_join2) + tm_polygons("mean", alpha = 0.6)
