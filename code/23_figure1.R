@@ -196,45 +196,42 @@ own_get_legend <- function(p) {
   )
 }
 
-legend <- lapply(plots, own_get_legend) %>%
+legend_df <- lapply(plots, own_get_legend) %>%
   rbindlist() %>%
   distinct()
 
-#legend <- legend %>% 
-#  complete(column, colour, fill = list(label = ""))#%>%
-#  group_by(column) %>%
-#  mutate(max_nchar = max(nchar(label))) %>%
-#  ungroup() %>%
-#  mutate(
-#    label = str_pad(label, width = max_nchar, side = "right"),
-#    max_nchar = NULL
-#  )
-
-#https://stackoverflow.com/questions/44847770/split-legend-into-two-lines
-legend <- legend %>%
+legend_df <- legend_df %>%
   pivot_wider(
     names_from = column,
     values_from = label,
     values_fill = ""
   ) %>%
-  select(colour, Ethnicity, Education, rural_urban_class)%>%
   as.data.frame()
 
-legend2 <- legend %>% tidyr::unite("labels", c("Ethnicity", "Education", "rural_urban_class"), sep = "|")
+color_legend <- legend_df$colour
+names(color_legend) <- legend_df$Ethnicity
 
-color_legend <- legend2$colour
-names(color_legend) <- legend2$labels
-
-legend2 <- get_legend(ggplot(
-  data = legend %>% mutate(test = 1),
-  aes(color = labels, x = test, y = test) 
+legend_key <- get_legend(ggplot(
+  data = legend_df %>% mutate(test = 1),
+  aes(color = Ethnicity, x = test, y = test) 
 ) +
-  theme(legend.title = element_blank()) +
+  theme(legend.title = element_blank(),
+        legend.text=element_blank(),
+        legend.key.size = unit(4, "mm")
+        )+
+  guides(color = guide_legend(label.position = "left"))+
   geom_point() +
   scale_colour_manual(values = color_legend))
-as_ggplot(legend2)
+#as_ggplot(legend2)
 
-#grid.arrange(legend, ncol =1)
+legend_df <- legend_df %>% select(Ethnicity, Education, rural_urban_class)
+legend_theme <- gridExtra::ttheme_minimal(
+  core = list(padding=unit(c(2, 2), "mm"),
+              fg_params = list(#hjust=0, x=0.1, 
+                               fontsize=8)
+              )
+)
+legend_grob_table <- tableGrob(legend_df, theme=legend_theme,  rows = NULL, cols = NULL)
 
 #rm(color_legend)
 #----formatting------
@@ -248,27 +245,14 @@ plots <- lapply(plots, function(g) {
 
 ## --- test----
 lay <- rbind(
-  c(NA, NA, 13, NA, NA, 14),
-  c(10, 7, 1, NA, 8, 4),
-  c(NA,7, NA, NA, 8, NA),
-  c(11, 7, 2, NA, 8, 5),
-  c(NA, 7, NA, NA, 8, NA),
-  c(12, 7, 3, NA, 8, 6),
-  c(NA, NA, 9,9,9,9)
+  c(NA, NA,13, 13, NA, NA, 14),
+  c(10, 7,1, 1, NA, 8, 4),
+  c(NA,7,NA, NA, NA, 8, NA),
+  c(11, 7,2, 2, NA, 8, 5),
+  c(NA, 7,NA, NA, NA, 8, NA),
+  c(12, 7,3, 3, NA, 8, 6),
+  c(NA, NA,15, 9,9,9,9)
 )
-
-# grid.text , fontfamily="Times New Roman"
-cols <- matrix(NA, nrow(legend), ncol(legend))
-cols[,1] <- legend[,1]
-legend$colour <- " "
-
-legend_theme <- gridExtra::ttheme_minimal(
-  core = list(padding=unit(c(2, 2), "mm"),
-              bg_params = list(fill = cols),#
-              fg_params = list(hjust=0, x=0.1, fontsize=8))
-)
-            #as.data.frame(legend)
-legend <- tableGrob(legend, theme=legend_theme,  rows = NULL, cols = NULL)
 
 t1 <- textGrob("age-adjusted death rate per 100,000", rot = 90, gp = gpar(fontsize = 10), vjust = 1)
 t2 <- textGrob("%", rot = 90, gp = gpar(fontsize = 10), vjust = 1)
@@ -284,17 +268,14 @@ t6 <- grobTree(rectGrob(gp=gpar(fill="grey")),
                textGrob("burden attributable", gp=gpar(fontsize=10, fontface="bold")))
 t7 <- grobTree(rectGrob(gp=gpar(fill="grey")), 
                textGrob("proportion of all-cause burden attributable", gp=gpar(fontsize=10, fontface="bold")))
-#
 
-
-
-gs <- append(plots, list(t1, t2, legend, t3, t4, t5, t6, t7))
-#gs <- lapply(1:14, function(ii) grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)), textGrob(ii)))
+gs <- append(plots, list(t1, t2, legend_grob_table, t3, t4, t5, t6, t7,legend_key ))
+#gs <- lapply(1:15, function(ii) grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)), textGrob(ii)))
 
 blank_space <- 0.05
 g_combined <- grid.arrange(
   grobs = gs,
-  widths = c(0.1, 0.1, 1, blank_space, 0.1, 1),
+  widths = c(0.1, 0.1, 0.1,1, blank_space, 0.1, 1),
   heights = c(0.2, 1, blank_space, 1, blank_space, 1,1),
   layout_matrix = lay
 )
