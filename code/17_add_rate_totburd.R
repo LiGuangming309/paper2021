@@ -34,7 +34,7 @@ totalBurdenParsed2Dir <- args[17]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2011
-  agr_by <- "STATEFP"
+  agr_by <- "nation"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
