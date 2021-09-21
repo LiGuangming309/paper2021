@@ -50,8 +50,17 @@ attr_burd <- attr_burd %>%
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == methodI 
          & attr == "attributable" & measure3 == "proportion of disparity to Black or African American attributable" &
     source == "National Vital Statistics System" & scenario == scenarioI & rural_urban_class == "All" & agr_by == "STATEFP" 
-    & Year == 2016 & Ethnicity == "White, Not Hispanic or Latino")
+    & Year %in% 2000:2016 & Ethnicity == "White, Not Hispanic or Latino")
 
+test <- attr_burd %>% 
+  filter(mean >= 0) %>%
+  group_by(Region) %>%
+  summarise(years = list(Year),
+            n = n()) 
+
+attr_burd <- attr_burd %>%
+  group_by(Region) %>%
+  summarise(mean = mean(mean))
 ##---plot---
 
 #state <- maps::map("state", boundary=FALSE, col="gray", add=TRUE)
