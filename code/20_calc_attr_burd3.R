@@ -182,6 +182,7 @@ if (!file.exists(attrBurdenDir)) {
     expect_equal(nrow(attr_burden_dupl),0)
   })
   
+  attr_burden_di <- attr_burden_di %>% filter(method %in% c("di_gee", "di_coxme"))
   fwrite(attr_burden_di, attrBurdenDir)
   toc()
 }

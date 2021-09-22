@@ -29,32 +29,33 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-#totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
-#totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 
 #### ----- ---
 file_list <- list.files(totalBurdenDir)
-agr_bys <- c("nation", "STATEFP")
+agr_bys <- c("nation", "STATEFP")#county
+agr_bys <- c("county")
 years <- 1999:2016
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/causes.csv")
 
 #### ----- loop over everything---
- doParallel::registerDoParallel(cores = NCORES)
- foreach::foreach(year = years, .inorder = FALSE) %dopar% {
-#for (year in years) {
+# doParallel::registerDoParallel(cores = NCORES)
+# foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+for (year in years) {
   findreplaceX <- findreplace %>% filter(Year == year)
 
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
   ## ----- read total burden ---------
-   total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
-  #total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
+  # total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
+  total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
 
   ## Open log -- assume file import went fine.
-  sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
-  print(sprintf("Starting %s: %s", year, basename(totalBurdenDirX)))
+  #sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
+  #print(sprintf("Starting %s: %s", year, basename(totalBurdenDirX)))
 
   causesX <- causes %>% filter(Year == year)
   numberDeaths <- nrow(total_burden)
@@ -179,6 +180,12 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
         selectcolumns <- c(selectcolumns, "nation" = "nation")
       } else if (agr_by == "STATEFP") {
         selectcolumns <- c(selectcolumns, "STATEFP" = "staters") # residence, not occurance
+      }else if (agr_by == "county") {
+        if ("fipsctyr" %in% colnames(total_burdenX)) {
+          selectcolumns <- c(selectcolumns, "county" = "fipsctyr")
+        }else if (!("fipsctyr" %in% colnames(total_burdenX)) & "countyrs" %in% colnames(total_burdenX)){
+          selectcolumns <- c(selectcolumns, "county" = "countyrs")
+        }
       }
 
       # https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
@@ -231,7 +238,7 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
         group_by_at(colnames(total_burdenX)) %>%
         summarise(Deaths = n())
 
-      print(1 - sum(as.integer(total_burdenX$interested_state)) / nrow(total_burdenX))
+      #print(1 - sum(as.integer(total_burdenX$interested_state)) / nrow(total_burdenX))
       ## --- seperate stuff----
       # inverse_selectcolumns <- c(names(selectcolumns)) #Education1989
       inverse_selectcolumns <- setdiff(colnames(total_burdenX), "Deaths")
@@ -241,9 +248,15 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
         group_by_at(setdiff(inverse_selectcolumns, "rural_urban_class")) %>%
         summarise(Deaths = sum(Deaths)) %>%
         mutate(rural_urban_class = as.factor(666))
-      total_burdenX <- rbind(total_burdenX, total_burdenX_all_urb) %>% distinct()
+      
+      if(agr_by == "county") {
+        total_burdenX <- total_burdenX_all_urb %>% distinct()
+      }else{
+        total_burdenX <- rbind(total_burdenX, total_burdenX_all_urb) %>% distinct()
+      }
+     
       rm(total_burdenX_all_urb)
-
+      
       # add Hispanic Origin All Origins
       total_burdenX_all_his <- total_burdenX %>%
         group_by_at(setdiff(inverse_selectcolumns, "Hispanic.Origin")) %>%
@@ -386,18 +399,21 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
           )
         expect_equal(sum(test4$Deaths), numberDeaths)
 
-        total_burdenX$rural_urban_class %>% unique()
-        test5 <- total_burdenX %>%
-          filter(
-            Gender.Code != "A",
-            label_cause == "all-cause",
-            attr == "overall",
-            Race == "All",
-            Hispanic.Origin == "All Origins",
-            Education == 666,
-            rural_urban_class != 666
-          )
-        expect_equal(sum(test5$Deaths), numberDeaths)
+        
+        if(agr_by != "county"){
+          test5 <- total_burdenX %>%
+            filter(
+              Gender.Code != "A",
+              label_cause == "all-cause",
+              attr == "overall",
+              Race == "All",
+              Hispanic.Origin == "All Origins",
+              Education == 666,
+              rural_urban_class != 666
+            )
+          expect_equal(sum(test5$Deaths), numberDeaths)
+        }
+        
       })
 
       #------filter ------
@@ -442,12 +458,12 @@ causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_tot
       total_burdenX <- total_burdenX %>% tibble::add_column(source = "nvss")
       fwrite(total_burdenX, totalBurdenParsedDirX)
       toc()
-      tic.log()
+    #  tic.log()
       ## Close log
-      cat("\n\n")
-       sink()
+    #  cat("\n\n")
+     #  sink()
     }
   }
 }
- doParallel::stopImplicitCluster()
- closeAllConnections()
+# doParallel::stopImplicitCluster()
+# closeAllConnections()

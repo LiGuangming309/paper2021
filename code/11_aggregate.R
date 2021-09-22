@@ -164,6 +164,7 @@ apply(states, 1, function(state) {
       }
     })
     
+    cens_agr <- cens_agr %>% mutate(rural_urban_class = 666)
     fwrite(cens_agr, cens_agrDirCX)
     toc()
   }
@@ -196,6 +197,7 @@ if (agr_by != "county") {
         rbindlist() %>%
         as.data.frame() 
        
+      cens_agr$rural_urban_class <- NULL
       if(nrow(cens_agr) > 0){
         #add rural classification
         corresponding_year <- setNames(c(1990, rep(2010,9),2000,rep(2010,8),2000,rep(2010,7)), 1990:2016)

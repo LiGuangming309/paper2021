@@ -152,6 +152,7 @@ if(!file.exists(pop_summaryDir)){
   })%>% rbindlist()
   
   agr_bys <- files[!endsWith(files,".csv")]
+  agr_bys <- setdiff(agr_bys,"county")
   pop_summary2 <- lapply(agr_bys, function(agr_by){
     files2 <- list.files(file.path(pop.summary.dir, agr_by))
     pop_summary2<-lapply(files2, function(file) fread(file.path(pop.summary.dir, agr_by, file))) %>% rbindlist()

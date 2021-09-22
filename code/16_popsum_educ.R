@@ -31,7 +31,7 @@ pop.summary.dir <- args[16]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 1991
-  agr_by <- "nation"
+  agr_by <- "county"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -62,7 +62,6 @@ pop.summary.dirX <- file.path(pop.summary.dir, paste0("pop_sum_", year, ".csv"))
 
 if (!file.exists(pop.summary.dirX)) {
   census_meta <- file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")) %>% fread()
-
   
   # loop over all states
   tic(paste("summarized population data in", year, "by", agr_by))
@@ -75,40 +74,49 @@ if (!file.exists(pop.summary.dirX)) {
     
     pop.summary <- pop.summary %>% 
       mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.double)
-      #mutate(FIPS.code = as.double(substr(GEO_ID, 1, 5)))
-    
-    #TODO delete
-    anti_joined <- anti_join(pop.summary, rural_urban_class, by = "FIPS.code")
-    missing_FIPS <- anti_joined$FIPS.code %>% unique()
-    if(length(missing_FIPS) > 0){
-      print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in",year,"in",name,":"))
-      print(missing_FIPS)
-    }
       
-    pop.summary <- pop.summary%>%
-      left_join(rural_urban_class, by = "FIPS.code") %>%
-      mutate(FIPS.code = NULL)
+    if(agr_by == "county"){
+      pop.summary <- pop.summary %>%
+        rename(county = FIPS.code) %>%
+        group_by(county, variable) %>%
+        summarize(Population = sum(pop_size)) %>%
+        mutate(rural_urban_class = as.factor(666))
+    }else{
+      #TODO delete
+      anti_joined <- anti_join(pop.summary, rural_urban_class, by = "FIPS.code")
+      missing_FIPS <- anti_joined$FIPS.code %>% unique()
+      if(length(missing_FIPS) > 0){
+        print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in",year,"in",name,":"))
+        print(missing_FIPS)
+      }
+      
+      pop.summary <- pop.summary%>%
+        left_join(rural_urban_class, by = "FIPS.code") %>%
+        mutate(FIPS.code = NULL)
+      
+      pop.summary1 <- pop.summary %>%
+        group_by(state, variable) %>%
+        summarize(Population = sum(pop_size)) %>%
+        mutate(rural_urban_class = as.factor(666))
+      
+      pop.summary2 <- pop.summary %>%
+        group_by(state, variable, rural_urban_class) %>%
+        summarize(Population = sum(pop_size)) %>%
+        mutate(rural_urban_class = as.factor(rural_urban_class))
+      rm(pop.summary1, pop.summary2)
+      
+    }
     
-    pop.summary1 <- pop.summary %>%
-      group_by(state, variable) %>%
-      summarize(Population = sum(pop_size)) %>%
-      mutate(rural_urban_class = as.factor(666))
-    
-    pop.summary2 <- pop.summary %>%
-      group_by(state, variable, rural_urban_class) %>%
-      summarize(Population = sum(pop_size)) %>%
-      mutate(rural_urban_class = as.factor(rural_urban_class))
-    
-    pop.summary <- rbind(pop.summary1, pop.summary2)
-    rm(pop.summary1, pop.summary2)
     return(pop.summary)
   }) %>% rbindlist()
 
-  pop.summary <- states %>%
-    right_join(pop.summary, by = c("STATEFP" = "state")) %>%
-    dplyr::group_by_at(vars(all_of(c(agr_by, "variable", "rural_urban_class")))) %>%
-    summarize(Population = sum(Population)) %>%
-    as.data.frame()
+  if(agr_by != "county"){
+    pop.summary <- states %>%
+      right_join(pop.summary, by = c("STATEFP" = "state")) %>%
+      dplyr::group_by_at(vars(all_of(c(agr_by, "variable", "rural_urban_class")))) %>%
+      summarize(Population = sum(Population)) %>%
+      as.data.frame()
+  }
   
   pop.summary <- pop.summary %>%
     left_join(census_meta, by = "variable") %>%

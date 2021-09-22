@@ -151,11 +151,6 @@ plots <- lapply(plots, function(g) {
     theme(legend.position = "none", axis.title.y = element_blank())
 })
 
-g6 +
-  geom_line(size = 1.5) +
-  xlab("Year") +
-  geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0) 
-
 ## --- arrange plots----
 lay <- rbind(
   c(NA, NA,13, 13, NA, NA, 14),
@@ -183,15 +178,19 @@ t7 <- grobTree(rectGrob(gp=gpar(fill="grey")),
                textGrob("proportion of all-cause burden attributable", gp=gpar(fontsize=10, fontface="bold")))
 
 gs <- append(plots, list(t1, t2, legend_grob_table, t3, t4, t5, t6, t7,legend_key ))
-#gs <- lapply(1:15, function(ii) grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)), textGrob(ii)))
+gs <- lapply(1:15, function(ii) grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)), textGrob(ii)))
 
 blank_space <- 0.05
+figure_width <- 1.3
+figure_hight <- 1
+
 g_combined <- grid.arrange(
   grobs = gs,
-  widths = c(0.1, 0.1, 0.3,1, blank_space, 0.1, 1),
-  heights = c(0.2, 1, blank_space, 1, blank_space, 1,0.6),
+  widths = c(0.1, 0.1, 0.5,figure_width-0.5, blank_space, 0.1, figure_width),
+  heights = c(0.2, figure_hight, blank_space, figure_hight, blank_space, figure_hight,0.6),
   layout_matrix = lay
 )
 
 g_combined
+#https://stackoverflow.com/questions/40265494/ggplot-grobs-align-with-tablegrob
 ggsave(file.path(figuresDir,  "main_figure1.png"), g_combined, height = 9, width = 8)

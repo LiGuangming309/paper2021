@@ -173,6 +173,12 @@ if (!file.exists(totalBurdenParsedDir)) {
     selectcolumns <- c(selectcolumns, "nation" = "nation")
   } else if (agr_by == "STATEFP") {
     selectcolumns <- c(selectcolumns, "STATEFP" = "staters") # residence, not occurance
+  }else if (agr_by == "county") {
+    if ("fipsctyr" %in% colnames(total_burdenX)) {
+      selectcolumns <- c(selectcolumns, "county" = "fipsctyr")
+    }else if (!("fipsctyr" %in% colnames(total_burdenX)) & "countyrs" %in% colnames(total_burdenX)){
+      selectcolumns <- c(selectcolumns, "county" = "countyrs")
+    }
   }
   
   # https://www.nber.org/research/data/mortality-data-vital-statistics-nchs-multiple-cause-death-data
@@ -235,7 +241,11 @@ if (!file.exists(totalBurdenParsedDir)) {
     group_by_at(setdiff(inverse_selectcolumns, "rural_urban_class")) %>%
     summarise(Deaths = sum(Deaths)) %>%
     mutate(rural_urban_class = as.factor(666))
-  total_burden <- rbind(total_burden, total_burden_all_urb) %>% distinct()
+  if(agr_by == "county") {
+    total_burdenX <- total_burdenX_all_urb %>% distinct()
+  }else{
+    total_burdenX <- rbind(total_burdenX, total_burdenX_all_urb) %>% distinct()
+  }
   rm(total_burden_all_urb)
   
   # add Hispanic Origin All Origins
@@ -380,18 +390,19 @@ if (!file.exists(totalBurdenParsedDir)) {
       )
     expect_equal(sum(test4$Deaths), numberDeaths)
     
-    total_burden$rural_urban_class %>% unique()
-    test5 <- total_burden %>%
-      filter(
-        Gender.Code != "A",
-        label_cause == "all-cause",
-        attr == "overall",
-        Race == "All",
-        Hispanic.Origin == "All Origins",
-        Education == 666,
-        rural_urban_class != 666
-      )
-    expect_equal(sum(test5$Deaths), numberDeaths)
+    if(agr_by != "county"){
+      test5 <- total_burdenX %>%
+        filter(
+          Gender.Code != "A",
+          label_cause == "all-cause",
+          attr == "overall",
+          Race == "All",
+          Hispanic.Origin == "All Origins",
+          Education == 666,
+          rural_urban_class != 666
+        )
+      expect_equal(sum(test5$Deaths), numberDeaths)
+    }
   })
   
   #------filter ------
