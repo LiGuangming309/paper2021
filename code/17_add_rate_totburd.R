@@ -33,8 +33,8 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2011
-  agr_by <- "nation"
+  year <- 1998
+  agr_by <- "county"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-#  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
- # totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -90,20 +90,21 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       mutate_at(c("STATEFP"), as.factor)
   }else if(agr_by == "county"){
     total_burden <- total_burden %>%
+      complete(Year, county, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
+               fill = list(Deaths = 0)
+      ) %>%
       filter(county != "oth") %>% 
       mutate_at(c("county"), as.factor)
   }
   
   #---read population data----
   pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>%
-    read.csv() %>%
-    filter(Year == year)
+    read.csv() 
   
   pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_", year, ".csv")) %>%
-    read.csv() %>%
-    filter(Year == year)
+    read.csv()
   
-  pop_summary <- rbind(pop_summary1, pop_summary2)
+  pop_summary <- rbind(pop_summary1, pop_summary2) %>% filter(Year == year)
   pop_summary <- pop_summary %>%
     # filter(rural_urban_class != "Unknown") %>%
     mutate_at(c("rural_urban_class", "Education"), as.factor)
@@ -128,6 +129,12 @@ if (!file.exists(totalBurdenParsed2Dir)) {
                fill = list(Population = 0)
       )%>%
       mutate_at(c("STATEFP"), as.factor)
+  }else if (agr_by == "county") {
+    pop_summary <- pop_summary %>%
+      complete(Year, county, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class,
+               fill = list(Population = 0)
+      )%>%
+      mutate_at(c("county"), as.factor)
   }
   ## --- measure 1: Deaths and YLL-----
   tic(paste("added YLL and age-adjusted rate to total burden in", year, agr_by))

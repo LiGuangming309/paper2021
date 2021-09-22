@@ -45,7 +45,7 @@ agr_by_replace <- c(
 )
 agr_by_new <- agr_by_replace[agr_by]
 
-if (!file.exists(pop.summary.dir)) {
+if (!file.exists(pop.summary.dir) & agr_by != "county") {
   #-----read -----
   files <- list.files(cdcPopDir)
   cdc_pop <- lapply(files, function(file) {
