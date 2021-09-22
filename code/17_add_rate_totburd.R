@@ -88,22 +88,32 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       ) %>%
       filter(STATEFP != "oth") %>% 
       mutate_at(c("STATEFP"), as.factor)
+  }else if(agr_by == "county"){
+    total_burden <- total_burden %>%
+      filter(county != "oth") %>% 
+      mutate_at(c("county"), as.factor)
   }
   
   #---read population data----
   pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>%
     read.csv() %>%
-    filter(Year == year & Education == 666 & rural_urban_class == 666)
+    filter(Year == year)
   
   pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_", year, ".csv")) %>%
     read.csv() %>%
-    filter(Year == year & (Education != 666 | rural_urban_class != 666))
+    filter(Year == year)
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
   pop_summary <- pop_summary %>%
     # filter(rural_urban_class != "Unknown") %>%
     mutate_at(c("rural_urban_class", "Education"), as.factor)
-  pop_summary$source2 <- NULL
+  
+  pop_summary <- pop_summary %>% 
+    group_by_at(vars(all_of(setdiff(colnames(pop_summary), c("source2", "Population"))))) %>%
+    mutate(n = n()) %>%
+    filter(n == 1 | source2 == "CDC") %>%
+    mutate(n = NULL, source2 = NULL)
+
   rm(pop_summary1, pop_summary2)
   
   if (agr_by == "nation") {
