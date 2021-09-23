@@ -38,7 +38,7 @@ if (rlang::is_empty(args)) {
 findreplaceDir <- file.path(totalBurdenParsedDir, "findreplace.csv")
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
 rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv"))
-not_interested_states <- c("ZZ","YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS", "MP", "XX", "ON", "QC")
+not_interested_states <- c("ZZ", "YY", "PR", "CC", "MX", "VI", "GU", "CU", "AS", "MP", "XX", "ON", "QC")
 
 if (!file.exists(findreplaceDir)) {
   #### ----- 1990-1991------
@@ -141,13 +141,13 @@ if (!file.exists(findreplaceDir)) {
       ),
       data.frame(
         replacecolumns = "STATEFP",
-        from = c(states$STUSPS, not_interested_states, NA), 
-        to = c(states$STATEFP, rep(0, length(not_interested_states)+1))
+        from = c(states$STUSPS, not_interested_states, NA),
+        to = c(states$STATEFP, rep(0, length(not_interested_states) + 1))
       ),
       data.frame(
         replacecolumns = "interested_state",
         from = c(states$STUSPS, not_interested_states, NA),
-        to = c(rep(1, nrow(states)), rep(0, length(not_interested_states)+1))
+        to = c(rep(1, nrow(states)), rep(0, length(not_interested_states) + 1))
       ),
       data.frame(
         replacecolumns = "Race",
@@ -185,7 +185,92 @@ if (!file.exists(findreplaceDir)) {
 
   findreplaces3 <- merge(data.frame(Year = 2003:2016), findreplaces3)
 
-  ###---- rural_urban_class---
+  ## --- county code----
+  findreplaces4_old <- rbind(
+    data.frame(
+      replacecolumns = "county",
+      from = sprintf("%s%03d", rep(states$STATEFP, 998), rep(1:998, nrow(states))),
+      to = sprintf("%s%03d", rep(states$STATEFP, 998), rep(1:998, nrow(states)))
+    ),
+    data.frame(
+      replacecolumns = "county",
+      from = c(
+        sprintf("%s%03d", rep(1:62,2), rep(c(0,999), 62)),
+        57:62,
+        sprintf("%s%03d", rep(57:62, 1000), rep(0:999, 6)),
+        paste0(states$STATEFP, "999"),
+        NA,
+        0
+      ),
+      to = "Unknown"
+    )
+  )
+
+  findreplaces4_old <- rbind(findreplaces4_old %>% mutate(from = str_pad(from, 5, pad = "0")),
+                             findreplaces4_old
+  ) %>% distinct()
+  
+  findreplaces4_old <- merge(
+    data.frame(Year = 1990:2002),
+    findreplaces4_old
+  )
+  
+  findreplaces4_new <- rbind(
+    data.frame(
+      replacecolumns = "county",
+      from = sprintf("%s%03d", rep(states$STUSPS, 998), rep(1:998, nrow(states))),
+      to = sprintf("%s%03d", rep(states$STATEFP, 998), rep(1:998, nrow(states)))
+    ),
+    data.frame(
+      replacecolumns = "county",
+      from = c(
+        sprintf("%s%03d", rep(states$STUSPS,2), rep(c(0,999), nrow(states))),
+        not_interested_states,
+        sprintf("%s%03d", rep(not_interested_states, 1000), rep(0:999, length(not_interested_states))),
+        paste0(states$STUSPS, "999"),
+        NA,
+        0
+      ),
+      to = "Unknown"
+    )
+  )
+  
+  findreplaces4_new <- merge(
+    data.frame(Year = 2003:2016),
+    findreplaces4_new
+  )
+  
+  findreplaces4 <- rbind(findreplaces4_old, findreplaces4_new)
+  rm(findreplaces4_old, findreplaces4_new)#1001
+  ### ---- rural_urban_class---
+  findreplaces5_new <- left_join(rural_urban_class %>% mutate(FIPS.code = as.character(FIPS.code)),
+                                 findreplaces4, 
+                                 by = c("FIPS.code" = "to")) 
+  
+  findreplaces5_new <- findreplaces5_new %>%
+    filter(fromYear <= Year) %>%
+    group_by(FIPS.code, Year) %>%
+    filter(fromYear == max(fromYear)) %>%
+    mutate(fromYear = NULL) %>%
+    ungroup()
+  
+  findreplaces5_new <- findreplaces5_new%>%
+    select("Year", "from","to" ="rural_urban_class") %>%
+    mutate(replacecolumns = "rural_urban_class")
+    
+  findreplaces5_new <- rbind(findreplaces4 %>% 
+                               filter(to == "Unknown") %>%
+                               mutate(replacecolumns = "rural_urban_class"),
+                              merge(
+                                data.frame(Year = 1990:1999),
+                                data.frame(
+                                  replacecolumns = "rural_urban_class",
+                                  from = c("02232", "02282"), # corrected manually, somehow missing
+                                  to = c(5, 6)
+                                )
+                              ),
+                             findreplaces5_new)
+##---- delete----
   rural_urban_class <- left_join(
     rural_urban_class %>%
       mutate(
@@ -200,10 +285,10 @@ if (!file.exists(findreplaceDir)) {
       FIPS.code2 = paste0(STUSPS, county)
     )
 
-  findreplaces4 <- merge(data.frame(Year = 1990:2016), rural_urban_class)
+  findreplaces5 <- merge(data.frame(Year = 1990:2016), rural_urban_class)
 
-  nrow(findreplaces4)
-  findreplaces4 <- findreplaces4 %>%
+  nrow(findreplaces5)
+  findreplaces5 <- findreplaces5 %>%
     mutate(
       FIPS.code = ifelse(Year <= 2002,
         FIPS.code,
@@ -212,19 +297,21 @@ if (!file.exists(findreplaceDir)) {
       FIPS.code2 = NULL
     )
 
-  findreplaces4 <- findreplaces4 %>%
+  findreplaces5 <- findreplaces5 %>%
     filter(fromYear <= Year) %>%
     group_by(FIPS.code, Year) %>%
     filter(fromYear == max(fromYear)) %>%
     mutate(fromYear = NULL) %>%
-    ungroup
-  
-  findreplaces4 <- findreplaces4 %>%
-    transmute(Year, from = FIPS.code, to =rural_urban_class,
-              replacecolumns = "rural_urban_class")
-  
-  findreplaces4 <- rbind(
-    findreplaces4,
+    ungroup()
+
+  findreplaces5 <- findreplaces5 %>%
+    transmute(Year,
+      from = FIPS.code, to = rural_urban_class,
+      replacecolumns = "rural_urban_class"
+    )
+
+  findreplaces5 <- rbind(
+    findreplaces5,
     merge(
       data.frame(Year = 1990:2002),
       data.frame(
@@ -237,9 +324,9 @@ if (!file.exists(findreplaceDir)) {
       data.frame(Year = 1990:1999),
       data.frame(
         replacecolumns = "rural_urban_class",
-        from = c("02232", "02282"), #corrected manually, somehow missing
-        to = c(5,6)
-      ) 
+        from = c("02232", "02282"), # corrected manually, somehow missing
+        to = c(5, 6)
+      )
     ),
     merge(
       data.frame(Year = 2003:2016),
@@ -247,39 +334,47 @@ if (!file.exists(findreplaceDir)) {
         replacecolumns = "rural_urban_class",
         from = c(
           not_interested_states,
-          sprintf('%s%03d', rep(not_interested_states, 1000), rep(0:999, length(not_interested_states))),
+          sprintf("%s%03d", rep(not_interested_states, 1000), rep(0:999, length(not_interested_states))),
           paste0(states$STUSPS, "999"),
-          NA, 
+          NA,
           0
         ),
         to = "Unknown"
       )
     )
   )
+
+  findreplaces5 <- rbind(
+    findreplaces5,
+    findreplaces5 %>% mutate(from = str_pad(from, 5, pad = "0"))
+  ) %>%
+    distinct()
+  ##-test--
+  test <- anti_join(findreplaces5, findreplaces5_new, 
+                    by= c("Year", "from", "replacecolumns")) %>%
+    filter(nchar(from) == 5)
   
-  findreplaces4 <- rbind(findreplaces4,
-                         findreplaces4 %>% mutate(from = str_pad(from, 5, pad = "0"))) %>%
-    distinct
-  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces4)
+  
+  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces5)
 
   test_that("rural urban class findrepl", {
-    #expect_false(any(is.na(findreplaces)))
-    #new_DF <- findreplaces[rowSums(is.na(findreplaces)) > 0,]
-    
+    # expect_false(any(is.na(findreplaces)))
+    # new_DF <- findreplaces[rowSums(is.na(findreplaces)) > 0,]
+
     test <- findreplaces %>%
       group_by(Year, replacecolumns, from) %>%
-      mutate(n = n()) %>% 
+      mutate(n = n()) %>%
       filter(n != 1)
-    
-    expect_equal(nrow(test),0)
-    
+
+    expect_equal(nrow(test), 0)
+
     test <- rural_urban_class %>%
       group_by(fromYear, FIPS.code) %>%
-      mutate(n = n()) %>% 
+      mutate(n = n()) %>%
       filter(n != 1)
   })
   write.csv(findreplaces, findreplaceDir, row.names = FALSE)
-  rm(findreplaces1, findreplaces2, findreplaces3, findreplaces4)
+  rm(findreplaces1, findreplaces2, findreplaces3, findreplaces5)
 }
 
 causesDir <- file.path(totalBurdenParsedDir, "causes.csv")

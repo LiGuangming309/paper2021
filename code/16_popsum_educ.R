@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them

@@ -44,7 +44,7 @@ attr_burd <- lapply(file_list, fread) %>% rbindlist()
 rm(file_list)
 
 theme_set(theme_classic())
-#dir.create(file.path(figuresDir, methodI), recursive = T, showWarnings = F)
+# dir.create(file.path(figuresDir, methodI), recursive = T, showWarnings = F)
 ### ----- read stuff----
 
 attr_burd <- attr_burd %>%
@@ -53,34 +53,34 @@ attr_burd <- attr_burd %>%
     source == "National Vital Statistics System" & scenario == scenarioI)
 
 ## -- figure 3, attributable burden----
-attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins" & measure3 == "value" & rural_urban_class == "All" 
-                                   & method == "di_gee")
+attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins" & measure3 == "value" & rural_urban_class == "All"
+& method == "di_gee")
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity))
 
 attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins" & measure3 == "value" & rural_urban_class == "All"
-                                   & method == "burnett")
+& method == "burnett")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education))
 
 attr_burd3 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "value"
 & rural_urban_class != "All" & Year >= 1999 & method == "burnett")
 g3 <- ggplot(attr_burd3, aes(x = Year, y = mean, color = rural_urban_class))
 
-attr_burd4 <- attr_burd %>% filter(agr_by == "nation" & method == "di_gee"& Education == 666 & Ethnicity != "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class == "All")
+attr_burd4 <- attr_burd %>% filter(agr_by == "nation" & method == "di_gee" & Education == 666 & Ethnicity != "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class == "All")
 g4 <- ggplot(attr_burd4, aes(x = Year, y = mean, color = Ethnicity))
 
-attr_burd5 <- attr_burd %>% filter(agr_by == "nation"& method == "burnett" & Education != 666 & Ethnicity == "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class == "All")
+attr_burd5 <- attr_burd %>% filter(agr_by == "nation" & method == "burnett" & Education != 666 & Ethnicity == "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class == "All")
 g5 <- ggplot(attr_burd5, aes(x = Year, y = mean, color = Education))
 
-attr_burd6 <- attr_burd %>% filter(agr_by == "nation"& method == "burnett" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class != "All" & Year >= 1999)
+attr_burd6 <- attr_burd %>% filter(agr_by == "nation" & method == "burnett" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class != "All" & Year >= 1999)
 g6 <- ggplot(attr_burd6, aes(x = Year, y = mean, color = rural_urban_class))
 
 
-##--set range---
-min1 <- min(c(attr_burd1$lower,attr_burd2$lower,attr_burd3$lower))
-min2 <- min(c(attr_burd4$lower,attr_burd5$lower,attr_burd6$lower))
+## --set range---
+min1 <- min(c(attr_burd1$lower, attr_burd2$lower, attr_burd3$lower))
+min2 <- min(c(attr_burd4$lower, attr_burd5$lower, attr_burd6$lower))
 
-max1 <- max(c(attr_burd1$upper,attr_burd2$upper,attr_burd3$upper))
-max2 <- max(c(attr_burd4$upper,attr_burd5$upper,attr_burd6$upper))
+max1 <- max(c(attr_burd1$upper, attr_burd2$upper, attr_burd3$upper))
+max2 <- max(c(attr_burd4$upper, attr_burd5$upper, attr_burd6$upper))
 
 g1 <- g1 + ylim(min1, max1)
 g2 <- g2 + ylim(min1, max1)
@@ -91,8 +91,10 @@ g6 <- g6 + ylim(min2, max2)
 
 plots <- list(g1, g2, g3, g4, g5, g6)
 rm(min1, min2, max1, max2)
-rm(attr_burd1, attr_burd2, attr_burd3, attr_burd4, attr_burd5, attr_burd6,
-   g1, g2, g3, g4, g5, g6)
+rm(
+  attr_burd1, attr_burd2, attr_burd3, attr_burd4, attr_burd5, attr_burd6,
+  g1, g2, g3, g4, g5, g6
+)
 
 ## ----get legends ---
 own_get_legend <- function(p) {
@@ -109,39 +111,47 @@ legend_df <- lapply(plots, own_get_legend) %>%
   distinct()
 
 legend_df <- legend_df %>%
+  complete(colour, column, fill = list(label = "")) %>%
+  group_by(column) %>%
+  mutate(label = str_pad(label, max(nchar(label)), "right"))
+
+legend_df <- legend_df %>%
   pivot_wider(
     names_from = column,
-    values_from = label,
-    values_fill = ""
+    values_from = label # ,
+    # values_fill = ""
   ) %>%
-  as.data.frame()
+  as.data.frame() %>%
+  unite("labels", c("Ethnicity", "Education", "rural_urban_class"), sep = " | ")
 
-color_legend <- legend_df$colour
-names(color_legend) <- legend_df$Ethnicity
 
-legend_key <- get_legend(ggplot(
+ color_legend <- legend_df$colour
+ names(color_legend) <- legend_df$labels
+
+legend_plot <- get_legend(ggplot(
   data = legend_df %>% mutate(test = 1),
-  aes(color = Ethnicity, x = test, y = test) 
+  aes(color = labels, x = test, y = test)
 ) +
-  theme(legend.title = element_blank(),
-        legend.text=element_blank(),
-        legend.key.size = unit(4, "mm")
-        )+
-  guides(color = guide_legend(label.position = "left"))+
+  theme(
+    legend.title = element_blank(),
+    legend.key.size = unit(4, "mm"),
+    legend.text = element_text(family = "mono", size = 7)
+  ) +
+  #  guides(color = guide_legend(label.position = "left"))+
   geom_point() +
   scale_colour_manual(values = color_legend))
-#as_ggplot(legend2)
+as_ggplot(legend_plot)
 
-legend_df <- legend_df %>% select(Ethnicity, Education, rural_urban_class)
-legend_theme <- gridExtra::ttheme_minimal(
-  core = list(padding=unit(c(2, 2), "mm"),
-              fg_params = list(#hjust=0, x=0.1, 
-                               fontsize=9)
-              )
-)
-legend_grob_table <- tableGrob(legend_df, theme=legend_theme,  rows = NULL, cols = NULL)
+# legend_df <- legend_df %>% select(Ethnicity, Education, rural_urban_class)
+# legend_theme <- gridExtra::ttheme_minimal(
+#  core = list(padding=unit(c(2, 2), "mm"),
+#              fg_params = list(#hjust=0, x=0.1,
+#                               fontsize=9)
+#              )
+# )
+# legend_grob_table <- tableGrob(legend_df, theme=legend_theme,  rows = NULL, cols = NULL)
 
-#rm(color_legend)
+# rm(color_legend)
 #----formatting------
 plots <- lapply(plots, function(g) {
   g +
@@ -153,32 +163,42 @@ plots <- lapply(plots, function(g) {
 
 ## --- arrange plots----
 lay <- rbind(
-  c(NA, NA,13, 13, NA, NA, 14),
-  c(10, 7,1, 1, NA, 8, 4),
-  c(NA,7,NA, NA, NA, 8, NA),
-  c(11, 7,2, 2, NA, 8, 5),
-  c(NA, 7,NA, NA, NA, 8, NA),
-  c(12, 7,3, 3, NA, 8, 6),
-  c(NA, NA,15, 9,9,9,9)
+  c(NA, NA, 13, NA, NA, 14),
+  c(10, 7, 1, NA, 8, 4),
+  c(NA, 7, NA, NA, 8, NA),
+  c(11, 7, 2, NA, 8, 5),
+  c(NA, 7, NA, NA, 8, NA),
+  c(12, 7, 3, NA, 8, 6),
+  c(NA, NA, 9, 9, 9, 9)
 )
 
 t1 <- textGrob("age-adjusted death rate per 100,000", rot = 90, gp = gpar(fontsize = 10), vjust = 1)
 t2 <- textGrob("%", rot = 90, gp = gpar(fontsize = 10), vjust = 1)
 
-t3 <- grobTree(rectGrob(gp=gpar(fill="grey")), 
-               textGrob("Ethnicity", rot = 90, gp=gpar(fontsize=10, fontface="bold"), vjust = 1))
-t4 <- grobTree(rectGrob(gp=gpar(fill="grey")), 
-               textGrob("Education", rot = 90, gp=gpar(fontsize=10, fontface="bold"), vjust = 1))
-t5 <- grobTree(rectGrob(gp=gpar(fill="grey")), 
-               textGrob("Rural-Urban", rot = 90, gp=gpar(fontsize=10, fontface="bold"), vjust = 1))
+t3 <- grobTree(
+  rectGrob(gp = gpar(fill = "grey")),
+  textGrob("Ethnicity", rot = 90, gp = gpar(fontsize = 10, fontface = "bold"), vjust = 1)
+)
+t4 <- grobTree(
+  rectGrob(gp = gpar(fill = "grey")),
+  textGrob("Education", rot = 90, gp = gpar(fontsize = 10, fontface = "bold"), vjust = 1)
+)
+t5 <- grobTree(
+  rectGrob(gp = gpar(fill = "grey")),
+  textGrob("Rural-Urban", rot = 90, gp = gpar(fontsize = 10, fontface = "bold"), vjust = 1)
+)
 
-t6 <- grobTree(rectGrob(gp=gpar(fill="grey")), 
-               textGrob("burden attributable", gp=gpar(fontsize=10, fontface="bold")))
-t7 <- grobTree(rectGrob(gp=gpar(fill="grey")), 
-               textGrob("proportion of all-cause burden attributable", gp=gpar(fontsize=10, fontface="bold")))
+t6 <- grobTree(
+  rectGrob(gp = gpar(fill = "grey")),
+  textGrob("burden attributable", gp = gpar(fontsize = 10, fontface = "bold"))
+)
+t7 <- grobTree(
+  rectGrob(gp = gpar(fill = "grey")),
+  textGrob("proportion of all-cause burden attributable", gp = gpar(fontsize = 10, fontface = "bold"))
+)
 
-gs <- append(plots, list(t1, t2, legend_grob_table, t3, t4, t5, t6, t7,legend_key ))
-gs <- lapply(1:15, function(ii) grobTree(rectGrob(gp=gpar(fill=ii, alpha=0.5)), textGrob(ii)))
+gs <- append(plots, list(t1, t2, legend_plot, t3, t4, t5, t6, t7))
+#gs <- lapply(1:14, function(ii) grobTree(rectGrob(gp = gpar(fill = ii, alpha = 0.5)), textGrob(ii)))
 
 blank_space <- 0.05
 figure_width <- 1.3
@@ -186,11 +206,11 @@ figure_hight <- 1
 
 g_combined <- grid.arrange(
   grobs = gs,
-  widths = c(0.1, 0.1, 0.5,figure_width-0.5, blank_space, 0.1, figure_width),
-  heights = c(0.2, figure_hight, blank_space, figure_hight, blank_space, figure_hight,0.6),
+  widths = c(0.1, 0.1, figure_width , blank_space, 0.1, figure_width),
+  heights = c(0.2, figure_hight, blank_space, figure_hight, blank_space, figure_hight, 0.6),
   layout_matrix = lay
 )
 
 g_combined
-#https://stackoverflow.com/questions/40265494/ggplot-grobs-align-with-tablegrob
-ggsave(file.path(figuresDir,  "main_figure1.png"), g_combined, height = 9, width = 8)
+# https://stackoverflow.com/questions/40265494/ggplot-grobs-align-with-tablegrob
+ggsave(file.path(figuresDir, "main_figure1.png"), g_combined, height = 9, width = 8)
