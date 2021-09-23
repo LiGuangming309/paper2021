@@ -135,7 +135,7 @@ if(!file.exists(pm_summDir)){
 pop_summaryDir <- file.path(summaryDir, "pop_summary.csv")
 if(!file.exists(pop_summaryDir)){
   tic("summarized population data")
-  files <- setdiff(list.files(pop.summary.dir),"plot")
+  files <- setdiff(list.files(pop.summary.dir),c("plot","county", "pop_county.csv"))
   files1 <- files[endsWith(files,".csv")]
   pop_summary1 <- lapply(files1, function(file){
     pop_summary1 <- fread(file.path(pop.summary.dir, file))
