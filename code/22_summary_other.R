@@ -122,14 +122,8 @@ if(!file.exists(pm_summDir)){
   )
   levels(pm_summ$Ethnicity) <- rindreplace7
   
-  rindreplace8 <- list("large central metro" = 1,
-                       "large fringe metro" = 2,
-                       "medium metro" = 3,
-                       "small metro" = 4,
-                       "micropolitan" = 5,
-                       "non-core" = 6,
-                       "All" = 666,
-                       "Unknown" = "Unknown")
+  #rindreplace8 <- list("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
+  rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
   levels(pm_summ$rural_urban_class) <- rindreplace8
   
   fwrite(pm_summ, pm_summDir)
@@ -202,8 +196,8 @@ if(!file.exists(pop_summaryDir)){
   levels(pop_summary$Ethnicity) <- rindreplace7
   
   #pop_summary <- pop_summary %>% filter(!is.na(rural_urban_class)) 
-  rindreplace8 <- setNames(c("large central metro", "large fringe metro", "medium metro", "small metro", "micropolitan","non-core", "All", "Unknown"), 
-                           c(1:6,666, "Unknown"))
+  #rindreplace8 <- c("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
+  rindreplace8 <- c("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
 
   pop_summary$rural_urban_class <- sapply(pop_summary$rural_urban_class %>% as.character, function(x){
     x <- replace_na(x,"Unknown")

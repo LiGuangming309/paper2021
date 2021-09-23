@@ -25,7 +25,7 @@ year <- args[1]
 dataDir <- args[2]
 tmpDir <- args[3]
 agr_by <- args[10]
-pafDir <- args[11]
+#pafDir <- args[11]
 totalBurdenParsedDir <- args[13]
 source <- args[14]
 pop.summary.dir <- args[16]
@@ -38,13 +38,13 @@ if (rlang::is_empty(args)) {
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
-  pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
+  #pafDir <- "/Users/default/Desktop/paper2021/data/07_paf"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
   totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"

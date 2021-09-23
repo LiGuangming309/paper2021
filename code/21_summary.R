@@ -209,13 +209,6 @@ attrBurden$measure3 <- "value"
 attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6)
 rm(attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4, attrBurden_disp5, attrBurden_disp6)
 
-# TODO
-# paf_epa <- cbind(pm_summ_var,
-#                 lower = matrixStats::rowQuantiles(paf_epa, probs = .025),
-#                 mean = rowMeans(paf_epa),
-#                 upper = matrixStats::rowQuantiles(paf_epa, probs = .975),
-#                 method = "EPA"
-# )
 
 
 ## --Find replace----
@@ -271,16 +264,9 @@ rindreplace7 <- list(
 levels(all_burden$Ethnicity) <- rindreplace7
 levels(attrBurden$Ethnicity) <- rindreplace7
 
-rindreplace8 <- list(
-  "large central metro" = 1,
-  "large fringe metro" = 2,
-  "medium metro" = 3,
-  "small metro" = 4,
-  "micropolitan" = 5,
-  "non-core" = 6,
-  "All" = 666,
-  "Unknown" = "Unknown"
-)
+#rindreplace8 <- list("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
+rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
+
 levels(all_burden$rural_urban_class) <- rindreplace8
 levels(attrBurden$rural_urban_class) <- rindreplace8
 
