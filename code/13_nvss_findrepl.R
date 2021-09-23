@@ -187,19 +187,21 @@ if (!file.exists(findreplaceDir)) {
 
   ## --- county code---
   #maximum number of counties per state
-  maximum_number_counties <- 300
+  maximum_number_counties <- 840
+  concat <- function(state, county) sprintf("%s%03d", state, county)
+  
   findreplaces4_old <- rbind(
     data.frame(
       replacecolumns = "county",
-      from = sprintf("%s%03d", rep(states$STATEFP, maximum_number_counties), rep(1:maximum_number_counties, nrow(states))),
-      to = sprintf("%s%03d", rep(states$STATEFP, maximum_number_counties), rep(1:maximum_number_counties, nrow(states)))
+      from =c(outer(states$STATEFP, 1:maximum_number_counties, FUN=concat)),
+      to =c(outer(states$STATEFP, 1:maximum_number_counties, FUN=concat))
     ),
     data.frame(
       replacecolumns = "county",
       from = c(
-        sprintf("%s%03d", rep(1:62,2), rep(c(0,999), 62)),
+        c(outer(1:62, c(0,999), FUN=concat)),
         57:62,
-        sprintf("%s%03d", rep(57:62, maximum_number_counties+1), rep(0:maximum_number_counties, 6)),
+        c(outer(57:62, 0:maximum_number_counties, FUN=concat)),
         paste0(states$STATEFP, "999"),
         NA,
         0
@@ -220,15 +222,15 @@ if (!file.exists(findreplaceDir)) {
   findreplaces4_new <- rbind(
     data.frame(
       replacecolumns = "county",
-      from = sprintf("%s%03d", rep(states$STUSPS, maximum_number_counties), rep(1:maximum_number_counties, nrow(states))),
-      to = sprintf("%s%03d", rep(states$STATEFP, maximum_number_counties), rep(1:maximum_number_counties, nrow(states)))
+      from = c(outer(states$STUSPS, 1:maximum_number_counties, FUN=concat)),
+      to =c(outer(states$STATEFP, 1:maximum_number_counties, FUN=concat))
     ),
     data.frame(
       replacecolumns = "county",
       from = c(
-        sprintf("%s%03d", rep(states$STUSPS,2), rep(c(0,999), nrow(states))),
+        c(outer(states$STUSPS, c(0,999), FUN=concat)),
         not_interested_states,
-        sprintf("%s%03d", rep(not_interested_states, maximum_number_counties+1), rep(0:maximum_number_counties, length(not_interested_states))),
+        c(outer(not_interested_states, 0:maximum_number_counties, FUN=concat)),
         paste0(states$STUSPS, "999"),
         NA,
         0
@@ -243,7 +245,7 @@ if (!file.exists(findreplaceDir)) {
   )
   
   findreplaces4 <- rbind(findreplaces4_old, findreplaces4_new)
-  rm(findreplaces4_old, findreplaces4_new)#1001
+  rm(findreplaces4_old, findreplaces4_new, maximum_number_counties, concat)
   ### ---- rural_urban_class---
   findreplaces5 <- left_join(rural_urban_class %>% mutate(FIPS.code = as.character(FIPS.code)),
                                  findreplaces4, 
