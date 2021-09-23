@@ -135,7 +135,7 @@ legend_plot <- get_legend(ggplot(
   theme(
     legend.title = element_blank(),
     legend.key.size = unit(4, "mm"),
-    legend.text = element_text(family = "Courier", size = 7) #Courier, mono
+    legend.text = element_text(family = "mono", size = 7)
   ) +
   #  guides(color = guide_legend(label.position = "left"))+
   geom_point() +
@@ -190,12 +190,12 @@ t5 <- grobTree(
 
 t6 <- grobTree(
   rectGrob(gp = gpar(fill = "grey")),
-  textGrob("burden attributable to PM2.5 exposure", gp = gpar(fontsize = 10, fontface = "bold"))
+  textGrob("burden attributable", gp = gpar(fontsize = 10, fontface = "bold"))
 )
 t7 <- grobTree(
   rectGrob(gp = gpar(fill = "grey")),
-  grid::textGrob("proportion of all-cause burden \nattributable to PM2.5 exposure",
-                 x = 0.15,  hjust = 0, gp = gpar(fontsize = 10, fontface = "bold")))
+  textGrob("proportion of all-cause burden attributable", gp = gpar(fontsize = 10, fontface = "bold"))
+)
 
 gs <- append(plots, list(t1, t2, legend_plot, t3, t4, t5, t6, t7))
 #gs <- lapply(1:14, function(ii) grobTree(rectGrob(gp = gpar(fill = ii, alpha = 0.5)), textGrob(ii)))
@@ -206,7 +206,7 @@ figure_hight <- 1
 
 g_combined <- grid.arrange(
   grobs = gs,
-  widths = c(0.1, blank_space, figure_width , blank_space, blank_space, figure_width),
+  widths = c(0.1, 0.1, figure_width , blank_space, 0.1, figure_width),
   heights = c(0.2, figure_hight, blank_space, figure_hight, blank_space, figure_hight, 0.6),
   layout_matrix = lay
 )

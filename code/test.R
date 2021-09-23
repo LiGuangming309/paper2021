@@ -17,3 +17,10 @@ p1 <- ggplot(x, aes(x, y, color = labels)) +
         scale_color_manual(values = x$colors)
 p1_legend <- cowplot::get_legend(p1)
 ggdraw(p1_legend)
+
+#p1 <- ggplot(legend_df %>% mutate(blank =1),
+aes(blank, blank, color = labels)) + 
+  geom_point() +
+  scale_color_manual(values = legend_df$colors)
+p1_legend <- cowplot::get_legend(p1)
+ggdraw(p1_legend)

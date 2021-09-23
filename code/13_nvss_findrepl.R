@@ -195,7 +195,7 @@ if (!file.exists(findreplaceDir)) {
     data.frame(
       replacecolumns = "county",
       from = c(
-        paste0(1:62, "999"), paste0(1:62, "000"),
+        sprintf("%s%03d", rep(1:62,2), rep(c(0,999), 62)),
         57:62,
         sprintf("%s%03d", rep(57:62, 1000), rep(0:999, 6)),
         paste0(states$STATEFP, "999"),
@@ -351,7 +351,9 @@ if (!file.exists(findreplaceDir)) {
     distinct()
   ##-test--
   test <- anti_join(findreplaces5, findreplaces5_new, 
-                    by= c("Year", "from", "replacecolumns")) 
+                    by= c("Year", "from", "replacecolumns")) %>%
+    filter(nchar(from) == 5)
+  
   
   findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces5)
 
