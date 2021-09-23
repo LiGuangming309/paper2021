@@ -185,19 +185,21 @@ if (!file.exists(findreplaceDir)) {
 
   findreplaces3 <- merge(data.frame(Year = 2003:2016), findreplaces3)
 
-  ## --- county code----
+  ## --- county code---
+  #maximum number of counties per state
+  maximum_number_counties <- 300
   findreplaces4_old <- rbind(
     data.frame(
       replacecolumns = "county",
-      from = sprintf("%s%03d", rep(states$STATEFP, 998), rep(1:998, nrow(states))),
-      to = sprintf("%s%03d", rep(states$STATEFP, 998), rep(1:998, nrow(states)))
+      from = sprintf("%s%03d", rep(states$STATEFP, maximum_number_counties), rep(1:maximum_number_counties, nrow(states))),
+      to = sprintf("%s%03d", rep(states$STATEFP, maximum_number_counties), rep(1:maximum_number_counties, nrow(states)))
     ),
     data.frame(
       replacecolumns = "county",
       from = c(
         sprintf("%s%03d", rep(1:62,2), rep(c(0,999), 62)),
         57:62,
-        sprintf("%s%03d", rep(57:62, 1000), rep(0:999, 6)),
+        sprintf("%s%03d", rep(57:62, maximum_number_counties+1), rep(0:maximum_number_counties, 6)),
         paste0(states$STATEFP, "999"),
         NA,
         0
@@ -218,47 +220,47 @@ if (!file.exists(findreplaceDir)) {
   findreplaces4_new <- rbind(
     data.frame(
       replacecolumns = "county",
-      from = sprintf("%s%03d", rep(states$STUSPS, 998), rep(1:998, nrow(states))),
-      to = sprintf("%s%03d", rep(states$STATEFP, 998), rep(1:998, nrow(states)))
+      from = sprintf("%s%03d", rep(states$STUSPS, maximum_number_counties), rep(1:maximum_number_counties, nrow(states))),
+      to = sprintf("%s%03d", rep(states$STATEFP, maximum_number_counties), rep(1:maximum_number_counties, nrow(states)))
     ),
     data.frame(
       replacecolumns = "county",
       from = c(
         sprintf("%s%03d", rep(states$STUSPS,2), rep(c(0,999), nrow(states))),
         not_interested_states,
-        sprintf("%s%03d", rep(not_interested_states, 1000), rep(0:999, length(not_interested_states))),
+        sprintf("%s%03d", rep(not_interested_states, maximum_number_counties+1), rep(0:maximum_number_counties, length(not_interested_states))),
         paste0(states$STUSPS, "999"),
         NA,
         0
       ),
       to = "Unknown"
     )
-  )
+  )  %>% distinct()
   
   findreplaces4_new <- merge(
     data.frame(Year = 2003:2016),
-    findreplaces4_new
+    findreplaces4_new 
   )
   
   findreplaces4 <- rbind(findreplaces4_old, findreplaces4_new)
   rm(findreplaces4_old, findreplaces4_new)#1001
   ### ---- rural_urban_class---
-  findreplaces5_new <- left_join(rural_urban_class %>% mutate(FIPS.code = as.character(FIPS.code)),
+  findreplaces5 <- left_join(rural_urban_class %>% mutate(FIPS.code = as.character(FIPS.code)),
                                  findreplaces4, 
                                  by = c("FIPS.code" = "to")) 
   
-  findreplaces5_new <- findreplaces5_new %>%
+  findreplaces5 <- findreplaces5 %>%
     filter(fromYear <= Year) %>%
     group_by(FIPS.code, Year) %>%
     filter(fromYear == max(fromYear)) %>%
     mutate(fromYear = NULL) %>%
     ungroup()
   
-  findreplaces5_new <- findreplaces5_new%>%
+  findreplaces5 <- findreplaces5%>%
     select("Year", "from","to" ="rural_urban_class") %>%
     mutate(replacecolumns = "rural_urban_class")
     
-  findreplaces5_new <- rbind(findreplaces4 %>% 
+  findreplaces5 <- rbind(findreplaces4 %>% 
                                filter(to == "Unknown") %>%
                                mutate(replacecolumns = "rural_urban_class"),
                               merge(
@@ -269,93 +271,10 @@ if (!file.exists(findreplaceDir)) {
                                   to = c(5, 6)
                                 )
                               ),
-                             findreplaces5_new)
-##---- delete----
-  rural_urban_class <- left_join(
-    rural_urban_class %>%
-      mutate(
-        STATEFP = str_sub(FIPS.code, 1, -4) %>%
-          as.integer(),
-        county = str_sub(FIPS.code, -3, -1)
-      ),
-    states,
-    by = "STATEFP"
-  ) %>%
-    transmute(FIPS.code, rural_urban_class, fromYear,
-      FIPS.code2 = paste0(STUSPS, county)
-    )
-
-  findreplaces5 <- merge(data.frame(Year = 1990:2016), rural_urban_class)
-
-  nrow(findreplaces5)
-  findreplaces5 <- findreplaces5 %>%
-    mutate(
-      FIPS.code = ifelse(Year <= 2002,
-        FIPS.code,
-        FIPS.code2
-      ),
-      FIPS.code2 = NULL
-    )
-
-  findreplaces5 <- findreplaces5 %>%
-    filter(fromYear <= Year) %>%
-    group_by(FIPS.code, Year) %>%
-    filter(fromYear == max(fromYear)) %>%
-    mutate(fromYear = NULL) %>%
-    ungroup()
-
-  findreplaces5 <- findreplaces5 %>%
-    transmute(Year,
-      from = FIPS.code, to = rural_urban_class,
-      replacecolumns = "rural_urban_class"
-    )
-
-  findreplaces5 <- rbind(
-    findreplaces5,
-    merge(
-      data.frame(Year = 1990:2002),
-      data.frame(
-        replacecolumns = "rural_urban_class",
-        from = c(paste0(1:62, "000"), paste0(1:62, "999"), NA, 0),
-        to = "Unknown"
-      )
-    ),
-    merge(
-      data.frame(Year = 1990:1999),
-      data.frame(
-        replacecolumns = "rural_urban_class",
-        from = c("02232", "02282"), # corrected manually, somehow missing
-        to = c(5, 6)
-      )
-    ),
-    merge(
-      data.frame(Year = 2003:2016),
-      data.frame(
-        replacecolumns = "rural_urban_class",
-        from = c(
-          not_interested_states,
-          sprintf("%s%03d", rep(not_interested_states, 1000), rep(0:999, length(not_interested_states))),
-          paste0(states$STUSPS, "999"),
-          NA,
-          0
-        ),
-        to = "Unknown"
-      )
-    )
-  )
-
-  findreplaces5 <- rbind(
-    findreplaces5,
-    findreplaces5 %>% mutate(from = str_pad(from, 5, pad = "0"))
-  ) %>%
-    distinct()
-  ##-test--
-  test <- anti_join(findreplaces5, findreplaces5_new, 
-                    by= c("Year", "from", "replacecolumns")) %>%
-    filter(nchar(from) == 5)
+                             findreplaces5)
   
   
-  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3, findreplaces5)
+  findreplaces <- rbind(findreplaces1, findreplaces2, findreplaces3,findreplaces4,  findreplaces5)
 
   test_that("rural urban class findrepl", {
     # expect_false(any(is.na(findreplaces)))
