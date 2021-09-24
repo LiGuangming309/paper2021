@@ -34,11 +34,11 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-   # attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+    attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   #
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
