@@ -34,8 +34,8 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 1990
-  agr_by <- "nation"
+  year <- 2010
+  agr_by <- "county"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -97,8 +97,8 @@ apply(states, 1, function(state) {
     exp_tracData <- rbind(exp_tracData,
                           exp_tracData %>% mutate(scenario = "B",
                                                   pm = pmin(pm, 12)),
-                          exp_tracData %>% mutate(scenario = "C",
-                                                  pm = pmin(pm, 8)))
+                          exp_tracData %>% mutate(scenario = "D",
+                                                  pm = pmin(pm, 10)))
 
     # tigris does not provide all tract boundaries
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID") %>% filter(pop_size > 0)
@@ -131,6 +131,8 @@ apply(states, 1, function(state) {
       group_by(state, county, variable, scenario) %>%
       mutate(prop = pop_size / sum(pop_size)) %>%
       ungroup()
+    
+    cens_agr <- cens_agr %>% mutate(county = sprintf("%s%03d", state, county) %>% as.numeric())
 
     # test, check
     test_that("06_aggregate county", {

@@ -33,7 +33,7 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1998
+  year <- 2001
   agr_by <- "county"
   source <- "nvss"
 
@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
   #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -189,7 +189,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   })
 
   total_burden_crude <- total_burden %>%
-    left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
+    inner_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
     filter(Population > 0) %>% # TODO
     mutate(
       value =  100000* (value / Population), #0/0 = NaN

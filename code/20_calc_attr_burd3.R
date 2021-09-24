@@ -34,8 +34,8 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
-  agr_by <- "nation"
+  year <- 2001
+  agr_by <- "county"
   source <- "nvss"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"

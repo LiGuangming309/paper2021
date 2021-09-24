@@ -141,6 +141,7 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
                   select("GEO_ID","geometry") %>%
                   distinct
                   #filter(!is.na(AFFGEOID)) #some are entirely in water, e.g. tract 01003990000 => ignore those
+        #12087980100
         #TODO
         
         saveRDS(tracts, filepathTrX)

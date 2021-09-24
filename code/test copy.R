@@ -1,38 +1,26 @@
-library(gridExtra)
-library(ggplot2)
+library(censusapi)
+library(tidycensus)
 
-dat <- data.frame(
-  label = c("A", "B", "C"),
-  point_est = c(1,2,3),
-  lb_ci = c(.5, 1.5, 2.5),
-  ub_ci = c(1.5, 2.5, 3.5),
-  n = c(50, 100, 150),
-  total = c(75, 150, 200)
+# Add key to .Renviron
+key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
+Sys.setenv(CENSUS_KEY = key)
+
+dem.state.data <- getCensus(
+  name = "dec/sf1",
+  vintage = 2010,
+  vars = paste0("group(", "PCT12A", ")"),
+  region = "tract:*",
+  regionin = sprintf("state:%02d", 12)
 )
 
-plot1 <- ggplot(dat, aes(x=point_est, y=label)) +
-  geom_point() +
-  geom_errorbarh(aes(xmin=lb_ci, xmax=ub_ci), height=.5) +
-  ggtitle("Some measure") +
-  ylab(NULL) + xlab("some effect estimate")
+dem.state.data$GEO_ID <- dem.state.data$GEO_ID %>%
+  str_sub(., -11, -1)
 
-tab_base <- ggplot(dat, aes(y=label)) +
-  ylab(NULL) + xlab("  ") + 
-  theme(plot.title = element_text(hjust = 0.5, size=12), ## centering title on text
-        axis.text.x=element_text(color="white"), ## need text to be printed so it stays aligned with figure but white so it's invisible
-        axis.line=element_blank(),
-        axis.text.y=element_blank(),axis.ticks=element_blank(),
-        axis.title.y=element_blank(),legend.position="none",
-        panel.background=element_blank(),panel.border=element_blank(),panel.grid.major=element_blank(),
-        panel.grid.minor=element_blank(),plot.background=element_blank())
+#1001020801 -lost in interpolation
+#12087980100 actually missing
+tracts<-get_decennial(geography = "tract", variables = "PCT012A009", year = 2010, state = "FL", geometry = TRUE, key = key)%>% 
+  rename(GEO_ID = GEOID)
 
-tab1 <- tab_base + 
-  geom_text(aes(x=1, label=n)) + 
-  ggtitle("n")
+#plot(tracts)
 
-tab2 <- tab_base +
-  geom_text(aes(x=1, label=total)) + 
-  ggtitle("total")
-
-lay <-  matrix(c(1,1,1,1,1,1,2,3), nrow=1)
-grid.arrange(plot1, tab1, tab2, layout_matrix = lay)
+#anti_join(tracts,dem.state.data,  by = "GEO_ID")
