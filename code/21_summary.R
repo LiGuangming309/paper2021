@@ -34,11 +34,11 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+    attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   #
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -75,7 +75,9 @@ all_burden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(totalBurdenParsed2Dir, agr_by))
   all_burden <- lapply(sources, function(source) {
     files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
-    all_burden <- lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% do.call(rbind, .)
+    all_burden <- lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% rbindlist(use.names = TRUE)
+    
+    all_burden <- all_burden %>% filter(label_cause == "all-cause")
   }) %>% rbindlist(use.names = TRUE)
 
   # make compatible
@@ -86,11 +88,12 @@ all_burden <- lapply(agr_bys, function(agr_by) {
   rbindlist(use.names = TRUE) %>%
   as.data.frame()
 
-all_burden <- all_burden %>% filter(label_cause == "all-cause")
+
 test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
   all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ]
   expect_equal(nrow(all_burden_dupl), 0)
+  if(nrow(all_burden_dupl) > 0) browser()
 })
 
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method", "min_age", "max_age", "scenario"))
@@ -114,7 +117,7 @@ all_burden <- all_burden %>% mutate_at(
   setdiff(colnames(all_burden), c("overall_value")),
   as.factor
 )
-nrow(attrBurden) / nrow(all_burden)
+#nrow(attrBurden) / nrow(all_burden)
 ### ----- add proportion ---
 
 # add "prop. of overall burden", "prop. of total burden"
@@ -275,10 +278,12 @@ test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("overall_value")))
   all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ]
   expect_equal(nrow(all_burden_dupl), 0)
+  if(nrow(all_burden_dupl) > 0) browser()
 
   attrBurden_dupl <- attrBurden %>% select(setdiff(colnames(attrBurden), c("lower", "mean", "upper")))
   attrBurden_dupl <- attrBurden_dupl[duplicated(attrBurden_dupl), ]
   expect_equal(nrow(attrBurden_dupl), 0)
+  if(nrow(attrBurden_dupl) > 0) browser()
 })
 
 #--write---
@@ -292,10 +297,14 @@ for(agr_byI in agr_bys){
     file.path(summaryDir, paste0("all_burd_",agr_byI, ".csv"))
   )
   for (i in seq_along(measure3_all)) {
-    fwrite(
-      attrBurden %>% filter(measure3 == measure3_all[[i]] & agr_by == agr_byI),
-      file.path(summaryDir, paste0("attr_burd_",agr_byI,"_", i, ".csv"))
-    )
+    attrBurden_sub <- attrBurden %>% filter(measure3 == measure3_all[[i]] & agr_by == agr_byI)
+    if(nrow(attrBurden_sub) > 0){
+      fwrite(
+        attrBurden_sub,
+        file.path(summaryDir, paste0("attr_burd_",agr_byI,"_", i, ".csv"))
+      )
+    }
+   
   }
 }
 
