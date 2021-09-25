@@ -57,10 +57,6 @@ if(year == 1990){
   crosswalk <- crosswalk %>% select(trtidFrom = trtid00, trtidTo = trtid10, weight)
 }
 
-test_that("check that correct trtid10",{
-  counties <- tigris::tracts("TX", year = 2010)
-})
-
 crosswalk <- crosswalk %>%
   mutate(#trtidFrom = str_pad(trtidFrom, 11, pad = "0"),
          #trtidTo = str_pad(trtidTo, 11, pad = "0"),
@@ -94,19 +90,14 @@ apply(missing_states, 1, function(state) {
     }
     censDataFrom_old <- censDataFrom
     
-    #TODO
-    test1 <- censDataFrom %>%
-      anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom")) %>%
-      filter(pop_size > 0)
-    
-    test2 <- anti_join(crosswalk %>% filter(as.numeric(state) == STATEFP),
-                       censDataFrom, 
-                       by = c("trtidFrom"="GEO_ID")) 
-    
-    if (nrow(test1) > 0 &nrow(test2) > 0  ){
-      warning("03_interp missing GEO_IDs")
-    } 
-    
+    test_that("now geo_id missing",{
+      test1 <- censDataFrom %>%
+        anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom")) 
+      
+      expect_equal(nrow(test1),0)
+      
+    })
+
 
     # translate tracts
     censDataFrom <- censDataFrom %>%
