@@ -135,6 +135,15 @@ if (!file.exists(attrBurdenDir)) {
       ),
       pop_weight_pm_exp = NULL, hr_upper = NULL, hr_mean = NULL, hr_lower = NULL
     )
+  
+  test_that("calc attrburd3 anti join",{
+    test <- anti_join(
+      total_burden,
+      paf_di,
+      by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class", "label_cause")
+    ) 
+    expect_equal(0, nrow(test))
+  })
 
   attr_burden_di <- inner_join(
     total_burden,

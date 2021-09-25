@@ -90,9 +90,9 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       mutate_at(c("STATEFP"), as.factor)
   }else if(agr_by == "county"){
     total_burden <- total_burden %>%
-      #complete(Year, county, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
-      #         fill = list(Deaths = 0)
-      #) %>%
+      complete(Year, county, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
+               fill = list(Deaths = 0)
+      ) %>%
       filter(county != "oth") %>% 
       mutate_at(c("county"), as.factor)
     
@@ -121,15 +121,15 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   
   if (agr_by == "nation") {
     pop_summary <- pop_summary %>%
-      complete(Year, nation, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, 
-               fill = list(Population = 0)
-      )%>%
+      #complete(Year, nation, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, 
+      #         fill = list(Population = 0)
+      #)%>%
       mutate_at(c("nation"), as.factor)
   } else if (agr_by == "STATEFP") {
     pop_summary <- pop_summary %>%
-      complete(Year, STATEFP, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class,
-               fill = list(Population = 0)
-      )%>%
+      #complete(Year, STATEFP, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class,
+      #         fill = list(Population = 0)
+      #)%>%
       mutate_at(c("STATEFP"), as.factor)
   }else if (agr_by == "county") {
     pop_summary <- pop_summary %>%
