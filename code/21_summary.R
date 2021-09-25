@@ -27,18 +27,17 @@ totalBurdenParsed2Dir <- args[5]
 attrBurdenDir <- args[6]
 summaryDir <- args[7]
 
-# TODO delete
 if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-    attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   #
-  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -58,6 +57,7 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
   # make compatible
   attrBurden <- attrBurden %>% rename("Region" := !!agr_by)
   attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
+  attrBurden <- attrBurden %>% filter(scenario == "A") #TODO delete
   return(attrBurden)
 }) %>%
   rbindlist(use.names = TRUE) %>%
@@ -87,7 +87,6 @@ all_burden <- lapply(agr_bys, function(agr_by) {
 }) %>%
   rbindlist(use.names = TRUE) %>%
   as.data.frame()
-
 
 test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
@@ -137,6 +136,11 @@ attrBurden_prop <- attrBurden_prop %>%
   )
 
 test_that(" basic checks", {
+  attrBurden_prop_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
+  attrBurden_prop_dupl <- attrBurden_prop_dupl[duplicated(attrBurden_prop_dupl), ]
+  expect_equal(nrow(attrBurden_prop_dupl), 0)
+  if(nrow(attrBurden_prop_dupl) > 0) browser()
+  
   test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
   expect_equal(0, nrow(test1))
 
@@ -144,12 +148,12 @@ test_that(" basic checks", {
   expect_false(any(is.na(attrBurden)))
   new_DF <- attrBurden_prop[rowSums(is.na(attrBurden_prop)) > 0, ]
 
-  expect_false(any(is.na(attrBurden_prop))) # TODO
+  expect_false(any(is.na(attrBurden_prop))) 
   expect_false(any(is.na(all_burden)))
-  # TODO
+
 })
 
-# add proportion of disparity#"rural_urban_class", TODO
+# add proportion of disparity
 attrBurden_disp1 <- inner_join(
   all_burden %>% filter(attr == "overall" & !(Race == "Black or African American" & Hispanic.Origin == "All Origins")),
   all_burden %>% filter(attr == "overall" & (Race == "Black or African American" & Hispanic.Origin == "All Origins")),
@@ -207,16 +211,44 @@ attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   attr.x = NULL, attr.y = NULL
 )
 
+attrBurden_disp7 <- inner_join(all_burden %>% filter(attr == "overall" & rural_urban_class != 3),
+                               all_burden %>% filter(attr == "overall" & rural_urban_class == 3),
+                               by = setdiff(colnames(all_burden), c("rural_urban_class", "overall_value"))
+)
+
+attrBurden_disp8 <- inner_join(attrBurden %>% filter(rural_urban_class != 3),
+                               attrBurden %>% filter(rural_urban_class == 3),
+                               by = setdiff(colnames(attrBurden), c("rural_urban_class", "lower", "mean", "upper"))
+)
+
+attrBurden_disp9 <- inner_join(
+  attrBurden_disp7,
+  attrBurden_disp8,
+  by = setdiff(colnames(attrBurden_disp7), c("attr", "overall_value.x", "overall_value.y"))
+)
+
+attrBurden_disp9 <- attrBurden_disp9 %>% mutate(
+  mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
+  lower = mean, upper = mean,
+  attr = "attributable", measure3 = "proportion of disparity to non-metro",
+  rural_urban_class = rural_urban_class.x,
+  rural_urban_class.x = NULL, rural_urban_class.y = NULL,
+  overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,
+  lower.x = NULL, lower.y = NULL, upper.x = NULL, upper.y = NULL,
+  attr.x = NULL, attr.y = NULL
+)
+
 attrBurden$measure3 <- "value"
-attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6)
-rm(attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4, attrBurden_disp5, attrBurden_disp6)
+attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6, attrBurden_disp9)
+rm(attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4, 
+   attrBurden_disp5, attrBurden_disp6, attrBurden_disp7, attrBurden_disp8, attrBurden_disp9)
 
 
 
 ## --Find replace----
 
-rindreplace1 <- c(states$STATEFP, "us") %>% as.list()
-names(rindreplace1) <- c(states$NAME, "United States")
+rindreplace1 <- c(states$STATEFP, "us", 1: 99999) %>% as.list()
+names(rindreplace1) <- c(states$NAME, "United States", 1: 99999)
 levels(all_burden$Region) <- rindreplace1
 levels(attrBurden$Region) <- rindreplace1
 
