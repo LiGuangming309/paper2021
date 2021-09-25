@@ -57,14 +57,15 @@ if(year == 1990){
   crosswalk <- crosswalk %>% select(trtidFrom = trtid00, trtidTo = trtid10, weight)
 }
 
-crosswalk <- crosswalk %>%
-  mutate(#trtidFrom = str_pad(trtidFrom, 11, pad = "0"),
-         #trtidTo = str_pad(trtidTo, 11, pad = "0"),
-        trtidFrom = as.numeric(trtidFrom),
-        trtidTo = as.numeric(trtidTo),
-        state = str_pad(trtidFrom, 11, pad = "0")%>% str_sub( 1, 2) 
-         #state = str_sub(str_pad(trtidFrom, 11, pad = "0"), 1, 2) 
-         ) %>%
+crosswalk <- read.csv("~/Desktop/paper2021/data/crosswalk_2000_2010.csv")%>% 
+  mutate(trtidFrom = str_pad(trtidFrom, 11, pad = "0"),
+         trtidFrom = case_when(str_sub(trtidFrom,-2,-1) == "00"~ str_sub(trtidFrom,1,-3),
+                             TRUE ~ trtidFrom),
+         trtidTo = str_pad(trtidTo, 11, pad = "0"),
+         trtidTo = case_when(str_sub(trtidTo,-2,-1) == "00"~ str_sub(trtidTo, 1,-3),
+                               TRUE ~ trtidTo),
+         state = str_sub(trtidFrom, 1, 2) 
+  )%>%
   filter(state %in% possible_states)
 
 # states, for which 2000 and 2010 still needs to be calculated
@@ -83,10 +84,11 @@ apply(missing_states, 1, function(state) {
     censDataFrom <- file.path(censDirFrom, paste0("census_",year,"_", STUSPS, ".csv")) %>%
       fread(colClasses = c(pop_size = "numeric")) %>%
       select(GEO_ID, variable, pop_size) %>%
-      mutate(GEO_ID = as.numeric(GEO_ID))
+      mutate(GEO_ID = as.character(GEO_ID))
     
     if(year == 1990){
-      censDataFrom$GEO_ID <- substring(censDataFrom$GEO_ID, 1, 11) %>% as.numeric()
+      #TODO
+      censDataFrom$GEO_ID <- substring(censDataFrom$GEO_ID, 1, 11) %>% as.character()
     }
     censDataFrom_old <- censDataFrom
     
