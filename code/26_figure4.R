@@ -34,14 +34,12 @@ methodI <- args[11]
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
-  #figuresDir <-  "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
   methodI <- "di_gee"
 }
 
 states <- tigris::states()
-theme_set(theme_classic())
+
 file_list <- list.files(summaryDir)
 file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
 attr_burd <- lapply(file_list, fread) %>% rbindlist

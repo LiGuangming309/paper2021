@@ -34,11 +34,11 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-    attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   #totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   #
-  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -48,7 +48,6 @@ states <- file.path(tmpDir, "states.csv") %>%
 tic("summarized all burden and attributable burden data")
 ## --- read attr burden----
 agr_bys <- list.files(attrBurdenDir)
-agr_bys <- setdiff(agr_bys,"county")
 attrBurden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(attrBurdenDir, agr_by))
   attrBurden <- lapply(sources, function(source) {
@@ -71,20 +70,20 @@ test_that("basic check attr burden", {
 })
 ## --- read all burden----
 agr_bys <- list.files(totalBurdenParsed2Dir)
-agr_bys <- setdiff(agr_bys,"county")
+#agr_bys <- setdiff(agr_bys,"county")
 all_burden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(totalBurdenParsed2Dir, agr_by))
   all_burden <- lapply(sources, function(source) {
     files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
     all_burden <- lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% do.call(rbind, .)
-  }) %>% rbindlist()
+  }) %>% rbindlist(use.names = TRUE)
 
   # make compatible
   all_burden <- all_burden %>% rename("Region" := !!agr_by)
   all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
   return(all_burden)
 }) %>%
-  rbindlist() %>%
+  rbindlist(use.names = TRUE) %>%
   as.data.frame()
 
 all_burden <- all_burden %>% filter(label_cause == "all-cause")
@@ -287,13 +286,18 @@ test_that("basic check attr burden", {
 # all_burden<- all_burden %>% select(Year, Ethnicity, Education, rural_urban_class,measure1, measure2, Region, overall_value)
 
 measure3_all <- attrBurden$measure3 %>% unique()
-for (i in seq_along(measure3_all)) {
+for(agr_byI in agr_bys){
   fwrite(
-    attrBurden %>% filter(measure3 == measure3_all[[i]]),
-    file.path(summaryDir, paste0("attr_burd_", i, ".csv"))
+    all_burden %>% filter( agr_by == agr_byI),
+    file.path(summaryDir, paste0("all_burd_",agr_byI, ".csv"))
   )
+  for (i in seq_along(measure3_all)) {
+    fwrite(
+      attrBurden %>% filter(measure3 == measure3_all[[i]] & agr_by == agr_byI),
+      file.path(summaryDir, paste0("attr_burd_",agr_byI,"_", i, ".csv"))
+    )
+  }
 }
-# fwrite(attrBurden %>% filter(measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd.csv"))
-# fwrite(attrBurden %>% filter(!measure3 %in% c("value", "prop. of overall burden")), file.path(summaryDir, "attr_burd_prop.csv"))
-fwrite(all_burden, file.path(summaryDir, "all_burd.csv"))
+
+
 toc()
