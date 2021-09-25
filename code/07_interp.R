@@ -26,14 +26,14 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 if (rlang::is_empty(args)) {
-  year <- 2007
+  year <- 2001
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 
-   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
@@ -80,17 +80,29 @@ apply(states, 1, function(state) {
   if (!file.exists(censDirToX) ) {
     tic(paste("interpolated data in", year, "in", name))
     censDataLower <- fread(file.path(censDirLower, paste0("census_", year_lower, "_", STUSPS, ".csv"))) %>%
-      rename(pop_sizeLower = pop_size)
+      complete(GEO_ID, variable, fill = list(pop_size = 0)) %>%
+      rename(pop_sizeLower = pop_size) 
+      
     censDataUpper <- fread(file.path(censDirUpper, paste0("census_", year_upper, "_", STUSPS, ".csv"))) %>%
+      complete(GEO_ID, variable, fill = list(pop_size = 0)) %>%
       rename(pop_sizeUpper = pop_size)
     
     censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
 
+    test_that("interpolation: joining lower and upper cens Data",{
+      anti_join1 <- anti_join(censDataLower, censDataUpper, by = c("GEO_ID", "variable"))
+      anti_join2 <- anti_join(censDataUpper, censDataLower,  by = c("GEO_ID", "variable"))
+      
+      test_that(nrow(anti_join1), 0)
+      test_that(nrow(anti_join2), 0)
+    })
+    
     censData_joined <- inner_join(censDataLower, censDataUpper, by = c("GEO_ID", "variable")) %>%
       filter(!(pop_sizeLower == 0 & is.na(pop_sizeUpper) |
         is.na(pop_sizeLower) & pop_sizeUpper == 0 |
         is.na(pop_sizeLower) & is.na(pop_sizeUpper)))
 
+    
     #test_that("02_interp actual interpolation missing variables", {
      # test <- censData_joined %>%
      #   filter(pop_sizeLower > 0 & is.na(pop_sizeUpper) |

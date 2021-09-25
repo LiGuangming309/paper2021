@@ -9,7 +9,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "tidyr", "testthat", "magrittr", "stringr", "data.table", "tictoc", "foreign")
+packages <- c("dplyr", "tidyr", "testthat", "magrittr", "stringr", "data.table", "tictoc", "foreign", "tigris")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE))
@@ -57,6 +57,10 @@ if(year == 1990){
   crosswalk <- crosswalk %>% select(trtidFrom = trtid00, trtidTo = trtid10, weight)
 }
 
+test_that("check that correct trtid10",{
+  counties <- tigris::tracts("TX", year = 2010)
+})
+
 crosswalk <- crosswalk %>%
   mutate(#trtidFrom = str_pad(trtidFrom, 11, pad = "0"),
          #trtidTo = str_pad(trtidTo, 11, pad = "0"),
@@ -78,17 +82,19 @@ apply(missing_states, 1, function(state) {
   STUSPS <- state["STUSPS"]
   name <- state["NAME"]
   if (!is.na(STUSPS)) {
-    tic(paste("calculated 2010 demographic census data in 2000 boundaries in", name))
+    tic(paste("calculated," ,year, "demographic census data in 2010 boundaries in", name))
     # read demographic census data by tract,
     censDataFrom <- file.path(censDirFrom, paste0("census_",year,"_", STUSPS, ".csv")) %>%
       fread(colClasses = c(pop_size = "numeric")) %>%
       select(GEO_ID, variable, pop_size) %>%
       mutate(GEO_ID = as.numeric(GEO_ID))
+    
     if(year == 1990){
       censDataFrom$GEO_ID <- substring(censDataFrom$GEO_ID, 1, 11) %>% as.numeric()
     }
     censDataFrom_old <- censDataFrom
     
+    #TODO
     test1 <- censDataFrom %>%
       anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom")) %>%
       filter(pop_size > 0)

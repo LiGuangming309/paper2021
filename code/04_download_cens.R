@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 1990
+  year <- 2009
   
    censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
    tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -99,23 +99,14 @@ apply(states, 1, function(state) {
           region = "tract:*",
           regionin = sprintf("state:%02d", STATEFP)
         )
+        
         toc()
         return(dem.state.data)
       }) %>%
       rbindlist(fill = TRUE) %>%
         as.data.frame()
     
-    # subset relevant part of GEO_ID
-    if("GEO_ID" %in% colnames(dem.state.data)){
-      dem.state.data$GEO_ID <- dem.state.data$GEO_ID %>%
-        str_sub(., -11, -1)
-    }else{
-      dem.state.data$GEO_ID <- paste0(
-        dem.state.data$state , #%>% as.character %>% str_pad(width = 2, pad = "0")
-        dem.state.data$county ,
-        dem.state.data$tract 
-      )
-    }
+    dem.state.data <- dem.state.data %>% mutate(GEO_ID = paste0(state, county,tract))
     
     dem.state.data <- dem.state.data %>%
       select(all_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))) %>%
