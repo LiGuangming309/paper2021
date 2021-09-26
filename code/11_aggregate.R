@@ -101,6 +101,7 @@ apply(states, 1, function(state) {
                                                   pm = pmin(pm, 10)))
 
     # tigris does not provide all tract boundaries
+    #TODO
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID") %>% filter(pop_size > 0)
 
     if (nrow(anti) > 0) {
