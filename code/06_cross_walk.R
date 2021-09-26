@@ -26,7 +26,7 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1990
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
@@ -96,13 +96,19 @@ apply(missing_states, 1, function(state) {
     censDataFrom <- file.path(censDirFrom, paste0("census_", year, "_", STUSPS, ".csv")) %>%
       fread(colClasses = c(pop_size = "numeric")) %>%
       select(GEO_ID,state,county, tract, variable, pop_size) %>%
-      mutate(GEO_ID = as.numeric(GEO_ID)) %>%
+      
     mutate_at(c("state","county","tract"), as.character)
 
     if (year == 1990) {
-      # TODO
-      censDataFrom$GEO_ID <- substring(censDataFrom$GEO_ID, 1, 11) %>% as.character()
+      censDataFrom <- censDataFrom %>% 
+        mutate(GEO_ID = as.character(GEO_ID),
+               GEO_ID = case_when(str_sub(GEO_ID,-2,-1) == "00"~ str_sub(GEO_ID,1,-3), #,"99"
+                                  str_sub(GEO_ID,-2,-1) == "99"~ paste0(str_sub(GEO_ID,1,-3)), #,"01"
+                                   TRUE ~ GEO_ID)
+               )
     }
+    censDataFrom <- censDataFrom %>% mutate(GEO_ID = as.numeric(GEO_ID)) 
+    
     censDataFrom_old <- censDataFrom
 
     test_that("no geo_id missing", {
@@ -110,20 +116,35 @@ apply(missing_states, 1, function(state) {
       expect_false(any(is.na(censDataFrom)))
       
       test1 <- censDataFrom %>%
-        anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom", "state"="stateFrom"))
+        anti_join(crosswalk, by = c("GEO_ID" = "trtidFrom", "state"="stateFrom")) %>%
+        filter(pop_size > 0)%>%
+        group_by(GEO_ID, state, county, tract) %>%
+        summarize(n = n(),
+                  nchar = nchar(GEO_ID))
+      
+      test2 <- crosswalk %>%
+        filter(stateFrom == STATEFP) %>%
+        anti_join(censDataFrom, by = c("trtidFrom" = "GEO_ID", "stateFrom" = "state"))
+      
+      test3 <- inner_join(
+        crosswalk %>% mutate(str_sub=str_sub(trtidFrom,1,-3)),
+        test1 %>% mutate(str_sub=str_sub(GEO_ID,1,-3)),
+        by = "str_sub"
+      )
 
-      expect_equal(sum(test1$pop_size), 0)
+      expect_equal(nrow(test1), 0)
     })
 
     # translate tracts
     censDataFrom <- censDataFrom %>%
-      left_join(crosswalk, by = c("GEO_ID" = "trtidFrom", "state"="stateFrom")) %>%
+      #left_join(crosswalk, by = c("GEO_ID" = "trtidFrom", "state"="stateFrom")) %>%
+      inner_join(crosswalk, by = c("GEO_ID" = "trtidFrom", "state"="stateFrom")) %>%
       mutate(
-        trtidTo = coalesce(trtidTo, GEO_ID), #TODO
-        weight = coalesce(weight, 1), #TODO
-        stateTo = coalesce(stateTo, state),
-        countyTo = coalesce(countyTo, county),
-        tractTo = coalesce(tractTo, county),
+        #trtidTo = coalesce(trtidTo, GEO_ID), #TODO
+        #weight = coalesce(weight, 1), #TODO
+        #stateTo = coalesce(stateTo, state),
+        #countyTo = coalesce(countyTo, county),
+        #tractTo = coalesce(tractTo, county),
         pop_size = pop_size * weight
       ) %>%
       group_by(stateTo,countyTo,tractTo,trtidTo, variable) %>%
@@ -166,7 +187,7 @@ apply(missing_states, 1, function(state) {
         summarise(pop_size = sum(pop_size))
 
       test3 <- full_join(test1, test2, by = c("variable"))
-      expect_equal(test3$pop_size.x, test3$pop_size.y,  scale = test3$pop_size.y)#tolerance = 0.05,
+      expect_equal(test3$pop_size.x, test3$pop_size.y,tolerance = 0.01,  scale = test3$pop_size.y)
     })
 
     # delete this state from missing_states
