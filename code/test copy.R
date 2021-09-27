@@ -19,52 +19,104 @@ for (p in packages) {
 key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
 Sys.setenv(CENSUS_KEY = key)
 
-year <- 2000
-dem.state.data <- getCensus(
-  name = "dec/sf1",
-  vintage = year,
-  vars = paste0("group(", "P012A", ")"),
-  region = "tract:*",
-  regionin = sprintf("state:%02d", 2)
-) %>% select(state, county,tract, GEO_ID)
+year <- 1990
+# dem.state.data <- getCensus(
+#  name = "dec/sf1",
+#  vintage = year,
+#  vars = paste0("group(", "P012A", ")"),
+#  region = "tract:*",
+#  regionin = sprintf("state:%02d", 2)
+# ) %>% select(state, county,tract, GEO_ID)
 
-dem.state.data <- dem.state.data %>% mutate(GEO_ID1 = paste0(state, county,tract),#,
-                                            GEO_ID2 = sub(".*US", "", GEO_ID),
-                                            GEO_ID5 = str_remove(GEO_ID2, "^0+"),
-                                            n =nchar(GEO_ID1))
+# dem.state.data <- dem.state.data %>% mutate(GEO_ID1 = paste0(state, county,tract),#,
+#                                            GEO_ID2 = sub(".*US", "", GEO_ID),
+#                                            GEO_ID5 = str_remove(GEO_ID2, "^0+"),
+#                                            n =nchar(GEO_ID1))
 
-crosswalk_2000_2010 <- read.csv("~/Desktop/paper2021/data/crosswalk_2000_2010.csv")%>% 
-  transmute(GEO_ID1 = trtid00,
-         GEO_ID2 = str_pad(trtid00, 11, pad = "0"),
-         GEO_ID3 = case_when(str_sub(GEO_ID2,-2,-1) == "00"~ str_sub(GEO_ID2,1,-3),
-                              TRUE ~ GEO_ID2)
-)
-
-  
-tracts<-tidycensus::get_decennial(geography = "tract", variables = "P012A005", year = year, state = "AK", geometry = FALSE, key = key)%>% 
-  transmute(GEO_ID1 = GEOID,
-            GEO_ID2 = str_pad(GEO_ID1,11, side="right",pad = "0"))
+dem.state.data <- fread(file.path("/Users/default/Desktop/paper2021/data", "nhgis0002_ds120_1990_tract.csv"))
 
 
-test2 <- setdiff(dem.state.data$GEO_ID2, tracts$GEO_ID2)
-test2
+cols <- c("state" = "STATEA", "county" = "COUNTYA", "tract" = "TRACTA", "ANPSADPI", "GEO_ID" = "GISJOIN") # "GEO_ID" = "GISJOIN",
+dem.state.data <- dem.state.data %>% select(all_of(cols))
 
-test1 <- setdiff(dem.state.data$GEO_ID2, crosswalk_2000_2010$GEO_ID2)
+dem.state.data <- dem.state.data %>%
+  mutate(
+    tract = ifelse(str_detect(ANPSADPI, "\\."),
+      tract,
+      tract * 100
+    ),
+    GEO_ID2 = paste0(
+      sprintf("%02d", state),
+      sprintf("%03d", county),
+      sprintf("%06d", tract)
+    ),
+    ANPSADPI = NULL,
+    GEO_ID3 = str_sub(GEO_ID, 2, -1),
+    GEO_ID4 = str_sub(GEO_ID, 2, 12),
+    n = nchar(GEO_ID3),
+    GEO_ID5 = case_when()
+  )
+
+crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
+  transmute( # GEO_ID1 = trtid00,
+    GEO_ID1 = trtid90,
+    GEO_ID2 = str_pad(GEO_ID1, 11, pad = "0"),
+    GEO_ID3 = case_when(
+      str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3),
+      TRUE ~ GEO_ID2
+    ),
+    GEO_ID4 = case_when(
+      str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3), # ,"99"
+      str_sub(GEO_ID2, -2, -1) == "99" ~ paste0(str_sub(GEO_ID2, 1, -3)), # ,"01"
+      TRUE ~ GEO_ID2
+    )
+  )
+
+
+# tracts<-tidycensus::get_decennial(geography = "tract", variables = "P012A005", year = year, state = "AK", geometry = FALSE, key = key)%>%
+#  transmute(GEO_ID1 = GEOID,
+#            GEO_ID2 = str_pad(GEO_ID1,11, side="right",pad = "0"))
+
+tracts <- tigris::tracts(state = 2, cb = TRUE, year = year)
+tracts <- tracts %>%
+  select(-c("AREA", "PERIMETER", "geometry")) %>% 
+  mutate(GEO_ID1 = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF))
+
+
+test1 <- anti_join(dem.state.data, crosswalk, by = c("GEO_ID2" = "GEO_ID2"))
+test1
+test1 <- anti_join(crosswalk,dem.state.data,  by = c("GEO_ID2" = "GEO_ID2"))
 test1
 
-dem.state.data <- dem.state.data %>% 
-  transmute(state, county, tract, GEO_ID1=as.numeric(GEO_ID1)) %>%
-  mutate(GEO_ID1 = as.character(GEO_ID1),
-         n= nchar(GEO_ID1))
+#so farbest combination: dem.state.data$GEO_ID2, crosswalk$GEO_ID2, tracts$GEO_ID1
+#=> work on crosswalk$GEO_ID2!
+
+test2 <- setdiff(tracts$GEO_ID1, dem.state.data$GEO_ID2)
+test2
+
+dem.state.data <- dem.state.data %>%
+  transmute(state, county, tract, GEO_ID1 = as.numeric(GEO_ID1)) %>%
+  mutate(
+    GEO_ID1 = as.character(GEO_ID1),
+    n = nchar(GEO_ID1)
+  )
 
 dem.state.data2 <- dem.state.data %>%
-  mutate(GEO_ID1 = as.character(GEO_ID1),
-         GEO_ID2 = case_when(nchar(GEO_ID1) >=10 ~ GEO_ID1,
-                           TRUE ~ paste0(GEO_ID1, "00")),
-         GEO_ID2 = str_pad(GEO_ID2, 11, pad = "0"))
+  mutate(
+    GEO_ID1 = as.character(GEO_ID1),
+    GEO_ID2 = case_when(
+      nchar(GEO_ID1) >= 10 ~ GEO_ID1,
+      TRUE ~ paste0(GEO_ID1, "00")
+    ),
+    GEO_ID2 = str_pad(GEO_ID2, 11, pad = "0")
+  )
 
 dem.state.data3 <- dem.state.data %>%
-  mutate(GEO_ID1 = as.character(GEO_ID1),
-         GEO_ID2 = case_when(nchar(GEO_ID1) >=10 ~ GEO_ID1,
-                             TRUE ~ paste0(GEO_ID1, "00")),
-         GEO_ID2 = str_pad(GEO_ID2, 11, pad = "0"))
+  mutate(
+    GEO_ID1 = as.character(GEO_ID1),
+    GEO_ID2 = case_when(
+      nchar(GEO_ID1) >= 10 ~ GEO_ID1,
+      TRUE ~ paste0(GEO_ID1, "00")
+    ),
+    GEO_ID2 = str_pad(GEO_ID2, 11, pad = "0")
+  )

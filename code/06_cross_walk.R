@@ -106,6 +106,10 @@ apply(missing_states, 1, function(state) {
                                   str_sub(GEO_ID,-2,-1) == "99"~ paste0(str_sub(GEO_ID,1,-3)), #,"01"
                                    TRUE ~ GEO_ID)
                )
+      
+      censDataFrom <- censDataFrom %>% 
+        group_by(GEO_ID, state, county, tract, variable) %>%
+        summarise(pop_size = sum(pop_size))
     }
     censDataFrom <- censDataFrom %>% mutate(GEO_ID = as.numeric(GEO_ID)) 
     
