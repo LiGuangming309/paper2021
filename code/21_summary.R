@@ -33,11 +33,11 @@ if (rlang::is_empty(args)) {
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
   # totalBurdenParsed2Dir <-"C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
   #  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   #
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  # summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 }
 
 states <- file.path(tmpDir, "states.csv") %>%
@@ -57,7 +57,8 @@ attrBurden <- lapply(agr_bys, function(agr_by) {
   # make compatible
   attrBurden <- attrBurden %>% rename("Region" := !!agr_by)
   attrBurden <- attrBurden %>% tibble::add_column(agr_by = agr_by)
-  attrBurden <- attrBurden %>% filter(scenario == "A") #TODO delete
+  attrBurden <- attrBurden %>% filter(scenario == "A") # TODO delete
+  if (agr_by == "county") attrBurden <- attrBurden %>% filter(measure2 == "age-adjusted rate") # TODO delete
   return(attrBurden)
 }) %>%
   rbindlist(use.names = TRUE) %>%
@@ -70,19 +71,20 @@ test_that("basic check attr burden", {
 })
 ## --- read all burden----
 agr_bys <- list.files(totalBurdenParsed2Dir)
-#agr_bys <- setdiff(agr_bys,"county")
+# agr_bys <- setdiff(agr_bys,"county")
 all_burden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(totalBurdenParsed2Dir, agr_by))
   all_burden <- lapply(sources, function(source) {
     files <- list.files(file.path(totalBurdenParsed2Dir, agr_by, source))
     all_burden <- lapply(files, function(file) fread(file.path(totalBurdenParsed2Dir, agr_by, source, file))) %>% rbindlist(use.names = TRUE)
-    
+
     all_burden <- all_burden %>% filter(label_cause == "all-cause")
   }) %>% rbindlist(use.names = TRUE)
 
   # make compatible
   all_burden <- all_burden %>% rename("Region" := !!agr_by)
   all_burden <- all_burden %>% tibble::add_column(agr_by = agr_by)
+  if (agr_by == "county") all_burden <- all_burden %>% filter(measure2 == "age-adjusted rate") # TODO delete
   return(all_burden)
 }) %>%
   rbindlist(use.names = TRUE) %>%
@@ -92,7 +94,7 @@ test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
   all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ]
   expect_equal(nrow(all_burden_dupl), 0)
-  if(nrow(all_burden_dupl) > 0) browser()
+  if (nrow(all_burden_dupl) > 0) browser()
 })
 
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method", "min_age", "max_age", "scenario"))
@@ -116,7 +118,7 @@ all_burden <- all_burden %>% mutate_at(
   setdiff(colnames(all_burden), c("overall_value")),
   as.factor
 )
-#nrow(attrBurden) / nrow(all_burden)
+# nrow(attrBurden) / nrow(all_burden)
 ### ----- add proportion ---
 
 # add "prop. of overall burden", "prop. of total burden"
@@ -139,8 +141,8 @@ test_that(" basic checks", {
   attrBurden_prop_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
   attrBurden_prop_dupl <- attrBurden_prop_dupl[duplicated(attrBurden_prop_dupl), ]
   expect_equal(nrow(attrBurden_prop_dupl), 0)
-  if(nrow(attrBurden_prop_dupl) > 0) browser()
-  
+  if (nrow(attrBurden_prop_dupl) > 0) browser()
+
   test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
   expect_equal(0, nrow(test1))
 
@@ -148,9 +150,8 @@ test_that(" basic checks", {
   expect_false(any(is.na(attrBurden)))
   new_DF <- attrBurden_prop[rowSums(is.na(attrBurden_prop)) > 0, ]
 
-  expect_false(any(is.na(attrBurden_prop))) 
+  expect_false(any(is.na(attrBurden_prop)))
   expect_false(any(is.na(all_burden)))
-
 })
 
 # add proportion of disparity
@@ -212,13 +213,13 @@ attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
 )
 
 attrBurden_disp7 <- inner_join(all_burden %>% filter(attr == "overall" & rural_urban_class != 3),
-                               all_burden %>% filter(attr == "overall" & rural_urban_class == 3),
-                               by = setdiff(colnames(all_burden), c("rural_urban_class", "overall_value"))
+  all_burden %>% filter(attr == "overall" & rural_urban_class == 3),
+  by = setdiff(colnames(all_burden), c("rural_urban_class", "overall_value"))
 )
 
 attrBurden_disp8 <- inner_join(attrBurden %>% filter(rural_urban_class != 3),
-                               attrBurden %>% filter(rural_urban_class == 3),
-                               by = setdiff(colnames(attrBurden), c("rural_urban_class", "lower", "mean", "upper"))
+  attrBurden %>% filter(rural_urban_class == 3),
+  by = setdiff(colnames(attrBurden), c("rural_urban_class", "lower", "mean", "upper"))
 )
 
 attrBurden_disp9 <- inner_join(
@@ -240,15 +241,17 @@ attrBurden_disp9 <- attrBurden_disp9 %>% mutate(
 
 attrBurden$measure3 <- "value"
 attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6, attrBurden_disp9)
-rm(attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4, 
-   attrBurden_disp5, attrBurden_disp6, attrBurden_disp7, attrBurden_disp8, attrBurden_disp9)
+rm(
+  attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4,
+  attrBurden_disp5, attrBurden_disp6, attrBurden_disp7, attrBurden_disp8, attrBurden_disp9
+)
 
 
 
 ## --Find replace----
 
-rindreplace1 <- c(states$STATEFP, "us", 1: 99999) %>% as.list()
-names(rindreplace1) <- c(states$NAME, "United States", 1: 99999)
+rindreplace1 <- c(states$STATEFP, "us", 1:99999) %>% as.list()
+names(rindreplace1) <- c(states$NAME, "United States", 1:99999)
 levels(all_burden$Region) <- rindreplace1
 levels(attrBurden$Region) <- rindreplace1
 
@@ -289,7 +292,7 @@ attrBurden <- attrBurden %>%
 rindreplace7 <- list(
   "Black or African American" = "Black or African American, All Origins",
   "American Indian or Alaska Native" = "American Indian or Alaska Native, All Origins",
-  "Asian or Pacific Islander" = "Asian or Pacific Islander, All Origins" ,
+  "Asian or Pacific Islander" = "Asian or Pacific Islander, All Origins",
   "White, Hispanic or Latino" = "White, Hispanic or Latino",
   "White, Not Hispanic or Latino" = "White, Not Hispanic or Latino",
   "White, All Origins" = "White, All Origins",
@@ -298,8 +301,8 @@ rindreplace7 <- list(
 levels(all_burden$Ethnicity) <- rindreplace7
 levels(attrBurden$Ethnicity) <- rindreplace7
 
-#rindreplace8 <- list("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
-rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
+# rindreplace8 <- list("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
+rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2, "non metro" = 3, "All" = 666, "Unknown" = "Unknown")
 
 levels(all_burden$rural_urban_class) <- rindreplace8
 levels(attrBurden$rural_urban_class) <- rindreplace8
@@ -310,35 +313,58 @@ test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("overall_value")))
   all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ]
   expect_equal(nrow(all_burden_dupl), 0)
-  if(nrow(all_burden_dupl) > 0) browser()
+  # if(nrow(all_burden_dupl) > 0) browser()
 
   attrBurden_dupl <- attrBurden %>% select(setdiff(colnames(attrBurden), c("lower", "mean", "upper")))
   attrBurden_dupl <- attrBurden_dupl[duplicated(attrBurden_dupl), ]
   expect_equal(nrow(attrBurden_dupl), 0)
-  if(nrow(attrBurden_dupl) > 0) browser()
+  # if(nrow(attrBurden_dupl) > 0) browser()
 })
 
 #--write---
 # attrBurden<- attrBurden %>% ungroup %>% select(Year, Ethnicity, Education, rural_urban_class,measure1, measure2, measure3, Region, scenario, mean, lower, upper, method)
 # all_burden<- all_burden %>% select(Year, Ethnicity, Education, rural_urban_class,measure1, measure2, Region, overall_value)
-
 measure3_all <- attrBurden$measure3 %>% unique()
-for(agr_byI in agr_bys){
-  fwrite(
-    all_burden %>% filter( agr_by == agr_byI),
-    file.path(summaryDir, paste0("all_burd_",agr_byI, ".csv"))
-  )
-  for (i in seq_along(measure3_all)) {
-    attrBurden_sub <- attrBurden %>% filter(measure3 == measure3_all[[i]] & agr_by == agr_byI)
-    if(nrow(attrBurden_sub) > 0){
-      fwrite(
-        attrBurden_sub,
-        file.path(summaryDir, paste0("attr_burd_",agr_byI,"_", i, ".csv"))
-      )
-    }
-   
+method_all <- attrBurden$method %>% unique()
+
+all_burden_county <- all_burden %>% filter(agr_by == "county")
+all_burden_not_county <- all_burden %>% filter(agr_by != "county")
+attrBurden_county <- attrBurden %>% filter(agr_by == "county")
+attrBurden_not_county <- attrBurden %>% filter(agr_by != "county")
+
+fwrite(
+  all_burden_not_county,
+  file.path(summaryDir, paste0("all_burd", ".csv"))
+)
+
+for (i in seq_along(measure3_all)) {
+  attrBurden_sub <- attrBurden_not_county %>% filter(measure3 == measure3_all[[i]])
+  if (nrow(attrBurden_sub) > 0) {
+    fwrite(
+      attrBurden_sub,
+      file.path(summaryDir, paste0("attr_burd_", i, ".csv"))
+    )
   }
 }
 
+dir.create(file.path(summaryDir, "county"), recursive = T, showWarnings = F)
+
+fwrite(
+  all_burden_county,
+  file.path(summaryDir,"county", paste0("all_burd", ".csv"))
+)
+
+for (i in seq_along(measure3_all)) {
+  for (j in seq_along(method_all)) {
+    
+    attrBurden_sub <- attrBurden_county %>% filter(measure3 == measure3_all[[i]] & method == method_all[[j]])
+    if (nrow(attrBurden_sub) > 0) {
+      fwrite(
+        attrBurden_sub,
+        file.path(summaryDir,"county", paste0("attr_burd_", i,"_",j, ".csv"))
+      )
+    }
+  }
+}
 
 toc()
