@@ -90,14 +90,14 @@ apply(states, 1, function(state) {
     censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
 
     test_that("interpolation: joining lower and upper cens Data",{
-      anti_join1 <- anti_join(censDataLower, censDataUpper, by = c("GEO_ID", "variable"))
-      anti_join2 <- anti_join(censDataUpper, censDataLower,  by = c("GEO_ID", "variable"))
+      anti_join1 <- anti_join(censDataLower, censDataUpper, by = c("state","county","tract","GEO_ID", "variable"))
+      anti_join2 <- anti_join(censDataUpper, censDataLower,  by = c("state","county","tract","GEO_ID", "variable"))
       
       test_that(nrow(anti_join1), 0)
       test_that(nrow(anti_join2), 0)
     })
-    
-    censData_joined <- inner_join(censDataLower, censDataUpper, by = c("GEO_ID", "variable")) %>%
+    #TODO join by more
+    censData_joined <- inner_join(censDataLower, censDataUpper, by = c("state","county","tract","GEO_ID", "variable")) %>%
       filter(!(pop_sizeLower == 0 & is.na(pop_sizeUpper) |
         is.na(pop_sizeLower) & pop_sizeUpper == 0 |
         is.na(pop_sizeLower) & is.na(pop_sizeUpper)))
@@ -123,21 +123,21 @@ apply(states, 1, function(state) {
         pop_sizeUpper = replace_na(pop_sizeUpper, 0)
       )
     censData_joined <- as.data.frame(censData_joined)
-    if(!"state" %in% colnames(censData_joined)) censData_joined$state <- NA
-    if(!"county" %in% colnames(censData_joined)) censData_joined$county <- NA
-    if(!"tract" %in% colnames(censData_joined)) censData_joined$tract <- NA
+    #if(!"state" %in% colnames(censData_joined)) censData_joined$state <- NA
+  #  if(!"county" %in% colnames(censData_joined)) censData_joined$county <- NA
+   # if(!"tract" %in% colnames(censData_joined)) censData_joined$tract <- NA
     # fill state/county/tract if NA
-    suppressWarnings(
-      censData_joined[is.na(censData_joined$state), ] <- censData_joined[is.na(censData_joined$state), ] %>%
-        mutate(
-          GEO_ID = GEO_ID %>%
-            as.character() %>%
-            str_pad(., 11, pad = "0"),
-          state = str_sub(GEO_ID, 1, 2),
-          county = str_sub(GEO_ID, 3, 5),
-          tract = str_sub(GEO_ID, 6, 11)
-        )
-    )
+   # suppressWarnings(
+    #  censData_joined[is.na(censData_joined$state), ] <- censData_joined[is.na(censData_joined$state), ] %>%
+    #    mutate(
+    #      GEO_ID = GEO_ID %>%
+    #        as.character() %>%
+    #        str_pad(., 11, pad = "0"),
+    #      state = str_sub(GEO_ID, 1, 2),
+    #      county = str_sub(GEO_ID, 3, 5),
+    #      tract = str_sub(GEO_ID, 6, 11)
+  #      )
+  #  )
 
     # convex combination/interpolation
     t <- (year - year_lower) / (year_upper - year_lower)
