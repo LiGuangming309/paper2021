@@ -60,10 +60,10 @@ attr_burd <- attr_burd %>%
     & Year %in% year # 2000:2016
   )
 
-attr_burd1 <- attr_burd %>% filter(measure3 == "proportion of disparity to Black or African American attributable" & Ethnicity == "White, Not Hispanic or Latino")
-attr_burd1 <- attr_burd1 %>%
-  group_by(Region) %>%
-  summarise(mean = mean(mean))
+#attr_burd1 <- attr_burd %>% filter(measure3 == "proportion of disparity to Black or African American attributable" & Ethnicity == "White, Not Hispanic or Latino")
+#attr_burd1 <- attr_burd1 %>%
+#  group_by(Region) %>%
+#  summarise(mean = mean(mean))
 
 attr_burd2 <- attr_burd %>%
   filter(measure3 == "value" & Ethnicity %in% c("White, Not Hispanic or Latino", "Black or African American")) %>%
@@ -85,7 +85,7 @@ if (!file.exists(counties_shapeDir)) {
 counties_shape <- readRDS(counties_shapeDir) %>% mutate(GEOID = as.integer(GEOID))
 rm(counties_shapeDir)
 
-states <- tigris::states()
+states <- tigris::states() %>% filter(!(STUSPS %in% c("AS", "GU", "MP", "PR", "VI"))) 
 
 ## ---plot---
 test_that("figure5 map anti join", {
@@ -97,8 +97,8 @@ test_that("figure5 map anti join", {
   expect_equal(nrow(anti_join1) * nrow(anti_join2), 0)
 })
 
-counties_join1 <- tigris::geo_join(counties_shape, attr_burd1, "GEOID", "Region", how = "inner")
-counties_join1 <- counties_join1 %>% filter(!STATEFP %in% c("AK","HI"))
+#counties_join1 <- tigris::geo_join(counties_shape, attr_burd1, "GEOID", "Region", how = "inner")
+counties_join1 <- inner_join(counties_shape, attr_burd2, by = c("GEOID" ="Region"))
 # tm1 <- tm_shape(counties_join1) + tm_polygons("mean", alpha = 0.6)
 
 # counties_join2 <- tigris::geo_join(counties_shape, attr_burd2, "GEOID", "Region", how = "inner")
@@ -118,11 +118,17 @@ tm1 <- tm_shape(states) +
     style = "quantile", n = 7, palette = "Greens",
     title = "total Deaths for Blacks"
   ) +
-  tm_legend(bg.color = "white", bg.alpha = 0.6) 
+  tm_legend(bg.color = "white", bg.alpha = 0.6)# +
+  #tm_layout("Wealth (or so)",
+  #          legend.title.size = 1,
+  #          legend.text.size = 0.6,
+  #          legend.position = c("left","bottom"),
+  #          legend.bg.color = "white",
+  #          legend.digits = 5,
+  #          legend.bg.alpha = 1)
   # tmap_mode(mode = c("view"))
   # tm2
   # TODO show base map
 tm1
   ## ---save---
   tmap_save(tm1, file.path(figuresDir, "figure5_1.png"))
-# tmap_save(tm2, file.path(figuresDir,"figure5_2.png"))
