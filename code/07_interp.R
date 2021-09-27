@@ -80,11 +80,11 @@ apply(states, 1, function(state) {
   if (!file.exists(censDirToX) ) {
     tic(paste("interpolated data in", year, "in", name))
     censDataLower <- fread(file.path(censDirLower, paste0("census_", year_lower, "_", STUSPS, ".csv"))) %>%
-      complete(GEO_ID, variable, fill = list(pop_size = 0)) %>%
+      complete(nested(GEO_ID, state, county, tract), variable, fill = list(pop_size = 0)) %>%
       rename(pop_sizeLower = pop_size) 
       
     censDataUpper <- fread(file.path(censDirUpper, paste0("census_", year_upper, "_", STUSPS, ".csv"))) %>%
-      complete(GEO_ID, variable, fill = list(pop_size = 0)) %>%
+      complete(nested(GEO_ID, state, county, tract), variable, fill = list(pop_size = 0)) %>%
       rename(pop_sizeUpper = pop_size)
     
     censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
