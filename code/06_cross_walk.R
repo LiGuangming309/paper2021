@@ -130,11 +130,11 @@ apply(missing_states, 1, function(state) {
         filter(stateFrom == STATEFP) %>%
         anti_join(censDataFrom, by = c("trtidFrom" = "GEO_ID", "stateFrom" = "state"))
       
-      test3 <- inner_join(
-        crosswalk %>% mutate(str_sub=str_sub(trtidFrom,1,-3)),
-        test1 %>% mutate(str_sub=str_sub(GEO_ID,1,-3)),
-        by = "str_sub"
-      )
+      #test3 <- inner_join(
+      #  crosswalk %>% mutate(str_sub=str_sub(trtidFrom,1,-3)),
+      #  test1 %>% mutate(str_sub=str_sub(GEO_ID,1,-3)),
+      #  by = "str_sub"
+      #)
 
       expect_equal(nrow(test1), 0)
     })
