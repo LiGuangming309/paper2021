@@ -105,6 +105,8 @@ apply(states, 1, function(state) {
     anti <- anti_join(trac_censData, exp_tracData, by = "GEO_ID") %>% filter(pop_size > 0)
 
     if (nrow(anti) > 0) {
+      #2; 13; 1; 20130001
+      #12, 1, 2, 120010002
       anti <- anti %>%
         group_by(GEO_ID) %>%
         summarise(pop_size = sum(pop_size))

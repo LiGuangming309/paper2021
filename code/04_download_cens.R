@@ -31,7 +31,7 @@ censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2011
 
   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
@@ -107,23 +107,10 @@ apply(states, 1, function(state) {
       as.data.frame()
     
     ### ----- harmonize GEO----
-    dem.state.data <- dem.state.data %>% mutate(GEO_ID = paste0(state, county, tract))
-    dem.state.data <- dem.state.data %>%
-      mutate(
-        GEO_ID = case_when(
-          str_sub(GEO_ID, -2, -1) == "00" ~ str_sub(GEO_ID, 1, -3),
-          TRUE ~ GEO_ID),
-        tract = case_when(
-          str_sub(tract, -2, -1) == "00" ~ str_sub(tract, 1, -3),
-          TRUE ~ tract)
-      ) 
-    #TODO
+    dem.state.data <- dem.state.data %>% mutate(GEO_ID = sub(".*US", "", GEO_ID))
     if(year == 2000){
-      
     }else if(year == 2010){
-      
     }else if(year %in%c(2009,2011:2016)){
-      
     }
     ##---make longer----
     dem.state.data <- dem.state.data %>%
