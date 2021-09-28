@@ -34,7 +34,7 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2010
+  year <- 2000
   agr_by <- "county"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"

@@ -19,7 +19,8 @@ for (p in packages) {
 key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
 Sys.setenv(CENSUS_KEY = key)
 
-year <- 2009
+year <- 2000
+STUSPS <- "AL"
 if(year == 1990){
   #dem.state.data <- fread(file.path("/Users/default/Desktop/paper2021/data", "nhgis0002_ds120_1990_tract.csv"))
   
@@ -63,8 +64,31 @@ if(year == 1990){
 
 if(year %in% c(1990,2000)){
   crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
-    transmute( # GEO_ID1 = trtid00,
-      GEO_ID1 = trtid90,
+    mutate(
+      trtidFrom = as.character(trtidFrom),
+      stateFrom = str_sub(trtidFrom, 1, -10),
+      trtidFrom = case_when(
+        str_sub(trtidFrom, -2, -1) == "00" ~ str_sub(trtidFrom, 1, -3),
+        TRUE ~ trtidFrom
+      ),
+      trtidFrom = as.numeric(trtidFrom),
+      
+      trtidTo = as.character(trtidTo),
+      stateTo = str_sub(trtidTo, 1, -10),
+      countyTo = str_sub(trtidTo, -9, -6),
+      tractTo = str_sub(trtidTo, -5, -1),
+      tractTo = case_when(str_sub(tractTo,-2,-1) == "00"~ str_sub(tractTo,1,-3),
+                          TRUE ~ tractTo),
+      trtidTo = case_when(
+        str_sub(trtidTo, -2, -1) == "00" ~ str_sub(trtidTo, 1, -3),
+        TRUE ~ trtidTo
+      ),
+      trtidTo = as.numeric(trtidTo)
+    )
+  
+  crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
+    transmute(  GEO_ID1 = trtid00,
+      #GEO_ID1 = trtid90,
       GEO_ID2 = str_pad(GEO_ID1, 11, pad = "0"),
       GEO_ID3 = case_when(
         str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3),
