@@ -81,7 +81,7 @@ if (!file.exists(counties_shapeDir)) {
 counties_shape <- readRDS(counties_shapeDir) %>% mutate(GEOID = as.integer(GEOID))
 rm(counties_shapeDir)
 
-states <- tigris::states() %>% filter(!(STUSPS %in% c("AS", "GU", "MP", "PR", "VI"))) 
+states <- tigris::states() %>% filter(!(STUSPS %in% c("AS", "GU", "MP", "PR", "VI", "HI", "AK"))) #TODO + Alaska, Hawaii
 
 ## ---plot---
 test_that("figure5 map anti join", {
@@ -93,23 +93,17 @@ test_that("figure5 map anti join", {
   expect_equal(nrow(anti_join1) * nrow(anti_join2), 0)
 })
 
-counties_shape <- counties_shape %>% filter(STATEFP == "06") #TODO
+
+#counties_shape <- counties_shape %>% filter(STATEFP == "06") #TODO
 counties_join <- inner_join(counties_shape, attr_burd_sum, by = c("GEOID" ="Region"))
 
-tm3<-ggplot(data = counties_join) +
-  geom_sf()
-tm3
 #https://bookdown.org/nicohahn/making_maps_with_r5/docs/tmap.html
 tm1 <- tm_shape(states) +
   tm_borders(lwd = 0.5, col = "black") +
-  tm_fill(col = "grey") +l
+  tm_fill(col = "grey", bg.alpha = 0.6)+ 
   tm_shape( counties_join)+#, projection = 26916
-  tm_polygons(col = "mean", midpoint = 0)
-  #tm_fill("mean",
-  #  style = "quantile", n = 7, palette = "Greens",
-  #  title = "total Deaths for Blacks"
-  #) +
-  tm_legend(bg.color = "white", bg.alpha = 0.6)# +
+  tm_polygons(col = "mean", midpoint = 0, title = "burden for White - burden for Black")+ 
+  tm_legend(bg.color = "white", bg.alpha = 0.6)# #+
   #tm_layout("Wealth (or so)",
   #          legend.title.size = 1,
   #          legend.text.size = 0.6,
@@ -122,4 +116,5 @@ tm1 <- tm_shape(states) +
   # TODO show base map
 tm1
   ## ---save---
-  tmap_save(tm1, file.path(figuresDir, "figure5_1.png"))
+  tmap_save(tm1, file.path(figuresDir, "figure5_1.png"),
+            dpi = 300)
