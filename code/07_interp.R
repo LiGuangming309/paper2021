@@ -87,20 +87,32 @@ apply(states, 1, function(state) {
       complete(nesting(GEO_ID, state, county, tract), variable, fill = list(pop_size = 0)) %>%
       rename(pop_sizeUpper = pop_size)
     
-    censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
+    censDataLower <- censDataLower %>% filter(variable %in% censDataUpper$variable)
+    censDataUpper <- censDataUpper %>% filter(variable %in% censDataLower$variable)
+    
+    #censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
 
     test_that("interpolation: joining lower and upper cens Data",{
-      anti_join1 <- anti_join(censDataLower, censDataUpper, by = c("state","county","tract","GEO_ID", "variable"))
-      anti_join2 <- anti_join(censDataUpper, censDataLower,  by = c("state","county","tract","GEO_ID", "variable"))
+      anti_join1 <- anti_join(censDataLower, censDataUpper, 
+                              by = c("state","GEO_ID", "variable")) %>%
+        filter(pop_sizeLower > 0)
       
-      test_that(nrow(anti_join1), 0)
-      test_that(nrow(anti_join2), 0)
+      anti_join2 <- anti_join(censDataUpper, censDataLower,  
+                              by = c("state","GEO_ID", "variable")) %>%
+        filter(pop_sizeUpper > 0)
+      
+      expect_equal(nrow(anti_join1), 0)
+      expect_equal(nrow(anti_join2), 0)
+      
     })
-    #TODO join by more
-    censData_joined <- inner_join(censDataLower, censDataUpper, by = c("state","county","tract","GEO_ID", "variable")) %>%
-      filter(!(pop_sizeLower == 0 & is.na(pop_sizeUpper) |
-        is.na(pop_sizeLower) & pop_sizeUpper == 0 |
-        is.na(pop_sizeLower) & is.na(pop_sizeUpper)))
+
+    censData_joined <- full_join(censDataLower, censDataUpper, by = c("state","GEO_ID", "variable")) %>% #TODO "county","tract",
+      mutate(county = coalesce(county.y, county.x), county.y = NULL, county.x = NULL,
+             tract = coalesce(tract.y, tract.x), tract.y = NULL, tract.x = NULL,
+             pop_sizeLower = coalesce(pop_sizeLower,0), pop_sizeUpper = coalesce(pop_sizeUpper,0))
+      #filter(!(pop_sizeLower == 0 & is.na(pop_sizeUpper) |
+      #  is.na(pop_sizeLower) & pop_sizeUpper == 0 |
+      #  is.na(pop_sizeLower) & is.na(pop_sizeUpper)))
 
     
     #test_that("02_interp actual interpolation missing variables", {
@@ -117,11 +129,6 @@ apply(states, 1, function(state) {
       #if (0 != nrow(test)) browser()
     #})
     
-    censData_joined <- censData_joined %>%
-      mutate(
-        pop_sizeLower = replace_na(pop_sizeLower, 0),
-        pop_sizeUpper = replace_na(pop_sizeUpper, 0)
-      )
     censData_joined <- as.data.frame(censData_joined)
     #if(!"state" %in% colnames(censData_joined)) censData_joined$state <- NA
   #  if(!"county" %in% colnames(censData_joined)) censData_joined$county <- NA

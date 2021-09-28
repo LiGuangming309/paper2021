@@ -25,17 +25,17 @@ for (p in packages) {
 
 # Pass in arguments
 args <- commandArgs(trailingOnly = T)
-year <- args[1] 
+year <- args[1]
 tmpDir <- args[3]
 censDir <- args[8]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 2009
-  
-   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-   tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   
+  year <- 2010
+
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 }
@@ -46,8 +46,8 @@ if (!year %in% c(2000, 2009:2016)) {
   quit()
 }
 
-#intense computation
-if (Sys.info()["sysname"] == "Windows") memory.limit(size=500000)
+# intense computation
+if (Sys.info()["sysname"] == "Windows") memory.limit(size = 500000)
 
 ## ----------read useful data to tmp-------------------------------------------------------------------------------
 
@@ -62,14 +62,14 @@ census_meta <- read.csv(file.path(censDir, "meta_down", paste0("cens_meta_", toS
 census_metan_new <- read.csv(file.path(censDir, "meta", paste0("cens_meta_", toString(year), ".csv")))
 cross_bridge <- read.csv(file.path(censDir, "cross_bridge", paste0("cross_meta_", year, ".csv")))
 # identify relevant variables
-if(year %in% 2001:2009){
+if (year %in% 2001:2009) {
   census_meta <- census_meta %>% filter(tablename != "dec/sf1")
-} 
-  
+}
+
 relevant_variables <- census_meta$variable %>% unique()
 table_groups <- census_meta %>%
   select(group, tablename) %>%
-  distinct
+  distinct()
 ## ---------------- download sex by age for each race----------------------
 censDir <- file.path(censDir, year)
 dir.create(censDir, recursive = T, showWarnings = F)
@@ -85,61 +85,80 @@ apply(states, 1, function(state) {
     file.path(censDir, .)
 
   # download if does not exist yet
-  if (!file.exists(dem.state.dir)) { 
+  if (!file.exists(dem.state.dir)) {
     tic(paste("Downloaded census data in year", toString(year), "in", name))
-    
+
     # loop over all groups, download data
     dem.state.data <- apply(table_groups, 1, function(row) {
-       group <- row[["group"]]
-        tic(paste("Downloaded census data in year", toString(year), "in", name, "for group", group))
-        dem.state.data <- getCensus(
-          name = row[["tablename"]],
-          vintage = year,
-          vars = paste0("group(", group, ")"),
-          region = "tract:*",
-          regionin = sprintf("state:%02d", STATEFP)
-        )
-        
-        toc()
-        return(dem.state.data)
-      }) %>%
+      group <- row[["group"]]
+      tic(paste("Downloaded census data in year", toString(year), "in", name, "for group", group))
+      dem.state.data <- getCensus(
+        name = row[["tablename"]],
+        vintage = year,
+        vars = paste0("group(", group, ")"),
+        region = "tract:*",
+        regionin = sprintf("state:%02d", STATEFP)
+      )
+
+      toc()
+      return(dem.state.data)
+    }) %>%
       rbindlist(fill = TRUE) %>%
-        as.data.frame()
+      as.data.frame()
     
-    dem.state.data <- dem.state.data %>% mutate(GEO_ID = paste0(state, county,tract))
-    
+    ### ----- harmonize GEO----
+    dem.state.data <- dem.state.data %>% mutate(GEO_ID = paste0(state, county, tract))
+    dem.state.data <- dem.state.data %>%
+      mutate(
+        GEO_ID = case_when(
+          str_sub(GEO_ID, -2, -1) == "00" ~ str_sub(GEO_ID, 1, -3),
+          TRUE ~ GEO_ID),
+        tract = case_when(
+          str_sub(tract, -2, -1) == "00" ~ str_sub(tract, 1, -3),
+          TRUE ~ tract)
+      ) 
+    #TODO
+    if(year == 2000){
+      
+    }else if(year == 2010){
+      
+    }else if(year %in%c(2009,2011:2016)){
+      
+    }
+    ##---make longer----
     dem.state.data <- dem.state.data %>%
       select(all_of(c(relevant_variables, "state", "county", "tract", "GEO_ID"))) %>%
       pivot_longer(
         cols = !c("state", "county", "tract", "GEO_ID"),
         names_to = "variable",
-        values_to = "pop_size"
+        values_to = "pop_size",
+        values_drop_na = F
       )
     dem.state.data$pop_size[is.na(dem.state.data$pop_size)] <- 0
     toc()
-    
-    dem.state.data.old <- dem.state.data 
-    
+
+    dem.state.data.old <- dem.state.data
+
     ## ---- make additional calculations-----
     tic(paste("Made additional calculations with census data in year", toString(year), "in", name))
 
-    dem.state.data <- dem.state.data %>% right_join(cross_bridge, by =c("variable" ="variable.y"))
-    
-    dem.state.data <- dem.state.data %>% 
+    dem.state.data <- dem.state.data %>% right_join(cross_bridge, by = c("variable" = "variable.y"))
+
+    dem.state.data <- dem.state.data %>%
       mutate(pop_size = pop_size * coeff) %>%
       group_by(state, county, tract, GEO_ID, variable.x) %>%
       summarize(pop_size = sum(pop_size)) %>%
       rename(variable = variable.x) %>%
       ungroup()
-      
-    toc()
+
+      toc()
 
     #--- test file for download census------
     test_that("02_download basic checks", {
       expect_false(any(is.na(dem.state.data)))
       expect_true(all(dem.state.data$pop_size >= 0))
-      
-      #Test, that sums have not changed
+
+      # Test, that sums have not changed
       census_meta <- census_meta %>%
         mutate(Education = as.character(Education)) %>%
         rename(Race2 = Race, Hispanic.Origin2 = Hispanic.Origin)
@@ -152,33 +171,31 @@ apply(states, 1, function(state) {
         Hispanic.Origin = c("Not Hispanic or Latino", "All Origins", "Hispanic or Latino"),
         Hispanic.Origin2 = c("NOT HISPANIC OR LATINO", "all", "HISPANIC OR LATINO")
       )
-      #TODO age 18-24 in Education is cut off
-      
+
       census_meta <- census_meta %>%
         left_join(replaces1, by = "Race2") %>%
-        left_join(replaces2, by = "Hispanic.Origin2") 
-      
-      join_variables <- c("Race","Hispanic.Origin",  "Gender.Code","Year") #TODO 
-      test_dem.state.data.old <- dem.state.data.old %>% 
+        left_join(replaces2, by = "Hispanic.Origin2")
+
+      join_variables <- c("Race", "Hispanic.Origin", "Gender.Code", "Year") # TODO
+      test_dem.state.data.old <- dem.state.data.old %>%
         left_join(census_meta, by = "variable") %>%
         filter(Education == "666") %>%
         group_by_at(vars(all_of(join_variables))) %>%
-        summarize(pop_size = sum(pop_size)) 
-       
-      test_dem.state.data <- dem.state.data %>% 
+        summarize(pop_size = sum(pop_size))
+
+      test_dem.state.data <- dem.state.data %>%
         left_join(census_metan_new, by = "variable") %>%
         group_by_at(vars(all_of(join_variables))) %>%
-        summarize(pop_size = sum(pop_size)) 
-      
-      test <- inner_join(test_dem.state.data.old, test_dem.state.data, by = join_variables) #%>%
-        #filter(pop_size.x != pop_size.y)
+        summarize(pop_size = sum(pop_size))
+
+      test <- inner_join(test_dem.state.data.old, test_dem.state.data, by = join_variables) # %>%
+      # filter(pop_size.x != pop_size.y)
       expect_equal(test$pop_size.x, test$pop_size.y)
-      
-      #Test, that GEO_ID - variable is a primary key for the data.frame
-      test_dem.state.data <- dem.state.data %>% select(GEO_ID,variable)
+
+      # Test, that GEO_ID - variable is a primary key for the data.frame
+      test_dem.state.data <- dem.state.data %>% select(GEO_ID, variable)
       test_dem.state.data <- test_dem.state.data[duplicated(test_dem.state.data), ]
-      expect_equal(0,nrow(test_dem.state.data))
-  
+      expect_equal(0, nrow(test_dem.state.data))
     })
 
     # save demographic data in seperate file for each state

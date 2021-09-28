@@ -5,7 +5,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "dplyr", "magrittr", "censusapi", "stringr", "data.table", "tidyverse",
-  "tictoc", "cdcfluview", "testthat", "rlang"
+  "tictoc", "cdcfluview", "testthat", "rlang","tidycensus"
 )
 
 options(dplyr.summarise.inform = FALSE)
@@ -19,68 +19,89 @@ for (p in packages) {
 key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
 Sys.setenv(CENSUS_KEY = key)
 
-year <- 1990
-# dem.state.data <- getCensus(
-#  name = "dec/sf1",
-#  vintage = year,
-#  vars = paste0("group(", "P012A", ")"),
-#  region = "tract:*",
-#  regionin = sprintf("state:%02d", 2)
-# ) %>% select(state, county,tract, GEO_ID)
-
-# dem.state.data <- dem.state.data %>% mutate(GEO_ID1 = paste0(state, county,tract),#,
-#                                            GEO_ID2 = sub(".*US", "", GEO_ID),
-#                                            GEO_ID5 = str_remove(GEO_ID2, "^0+"),
-#                                            n =nchar(GEO_ID1))
-
-dem.state.data <- fread(file.path("/Users/default/Desktop/paper2021/data", "nhgis0002_ds120_1990_tract.csv"))
-
-
-cols <- c("state" = "STATEA", "county" = "COUNTYA", "tract" = "TRACTA", "ANPSADPI", "GEO_ID" = "GISJOIN") # "GEO_ID" = "GISJOIN",
-dem.state.data <- dem.state.data %>% select(all_of(cols))
-
-dem.state.data <- dem.state.data %>%
-  mutate(
-    tract = ifelse(str_detect(ANPSADPI, "\\."),
-      tract,
-      tract * 100
-    ),
-    GEO_ID2 = paste0(
-      sprintf("%02d", state),
-      sprintf("%03d", county),
-      sprintf("%06d", tract)
-    ),
-    ANPSADPI = NULL,
-    GEO_ID3 = str_sub(GEO_ID, 2, -1),
-    GEO_ID4 = str_sub(GEO_ID, 2, 12),
-    n = nchar(GEO_ID3),
-    GEO_ID5 = case_when()
-  )
-
-crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
-  transmute( # GEO_ID1 = trtid00,
-    GEO_ID1 = trtid90,
-    GEO_ID2 = str_pad(GEO_ID1, 11, pad = "0"),
-    GEO_ID3 = case_when(
-      str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3),
-      TRUE ~ GEO_ID2
-    ),
-    GEO_ID4 = case_when(
-      str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3), # ,"99"
-      str_sub(GEO_ID2, -2, -1) == "99" ~ paste0(str_sub(GEO_ID2, 1, -3)), # ,"01"
-      TRUE ~ GEO_ID2
+year <- 2009
+if(year == 1990){
+  #dem.state.data <- fread(file.path("/Users/default/Desktop/paper2021/data", "nhgis0002_ds120_1990_tract.csv"))
+  
+  
+  #cols <- c("state" = "STATEA", "county" = "COUNTYA", "tract" = "TRACTA", "ANPSADPI", "GEO_ID" = "GISJOIN") # "GEO_ID" = "GISJOIN",
+  #dem.state.data <- dem.state.data %>% select(all_of(cols))
+  
+  dem.state.data <- dem.state.data %>%
+    mutate(
+      tract = ifelse(str_detect(ANPSADPI, "\\."),
+                     tract,
+                     tract * 100
+      ),
+      GEO_ID2 = paste0(
+        sprintf("%02d", state),
+        sprintf("%03d", county),
+        sprintf("%06d", tract)
+      ),
+      ANPSADPI = NULL,
+      GEO_ID3 = str_sub(GEO_ID, 2, -1),
+      GEO_ID4 = str_sub(GEO_ID, 2, 12),
+      n = nchar(GEO_ID3),
+      GEO_ID5 = case_when()
     )
-  )
+}else{
+  dem.state.data <- getCensus(
+    name = "dec/sf1",
+    vintage = year,
+    vars = paste0("group(", "P012A", ")"),
+    region = "tract:*",
+    regionin = sprintf("state:%02d", 2)
+  ) %>% select(state, county,tract, GEO_ID)
+  
+  dem.state.data <- dem.state.data %>% mutate(GEO_ID1 = paste0(state, county,tract),#,
+                                              GEO_ID2 = sub(".*US", "", GEO_ID),
+                                              GEO_ID5 = str_remove(GEO_ID2, "^0+"),
+                                              n =nchar(GEO_ID1))
+}
 
 
-# tracts<-tidycensus::get_decennial(geography = "tract", variables = "P012A005", year = year, state = "AK", geometry = FALSE, key = key)%>%
-#  transmute(GEO_ID1 = GEOID,
-#            GEO_ID2 = str_pad(GEO_ID1,11, side="right",pad = "0"))
 
-tracts <- tigris::tracts(state = 2, cb = TRUE, year = year)
-tracts <- tracts %>%
-  select(-c("AREA", "PERIMETER", "geometry")) %>% 
-  mutate(GEO_ID1 = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF))
+if(year %in% c(1990,2000)){
+  crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
+    transmute( # GEO_ID1 = trtid00,
+      GEO_ID1 = trtid90,
+      GEO_ID2 = str_pad(GEO_ID1, 11, pad = "0"),
+      GEO_ID3 = case_when(
+        str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3),
+        TRUE ~ GEO_ID2
+      ),
+      GEO_ID4 = case_when(
+        str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3), # ,"99"
+        str_sub(GEO_ID2, -2, -1) == "99" ~ paste0(str_sub(GEO_ID2, 1, -3)), # ,"01"
+        TRUE ~ GEO_ID2
+      )
+    )
+}
+
+
+if(year == 1990){
+  #tracts<-get_decennial(geography = "tract", variables = "TODO", year = 1990, state = STUSPS, geometry = TRUE)
+  tracts <- tigris::tracts(state = STUSPS, cb = TRUE, year = year)
+  tracts <- tracts %>% mutate(GEO_ID = paste0(STATEFP, COUNTYFP, TRACTBASE, TRACTSUF))%>%
+    select(-c("AREA", "PERIMETER", "geometry")) 
+
+}else if(year %in% c(1991:1999,2001:2008, 2010)){
+  tracts<-get_decennial(geography = "tract", variables = "PCT012A009", year = 2010, state = STUSPS, geometry = TRUE, key = key)%>% 
+    rename(GEO_ID = GEOID)
+}else if(year == 2000){
+  tracts<-get_decennial(geography = "tract", variables = "P012A005", year = 2000, state = STUSPS, geometry = TRUE, key = key)%>% 
+    rename(GEO_ID = GEOID)
+  
+  # tracts<-tidycensus::get_decennial(geography = "tract", variables = "P012A005", year = year, state = "AK", geometry = FALSE, key = key)%>%
+  #  transmute(GEO_ID1 = GEOID,
+  #            GEO_ID2 = str_pad(GEO_ID1,11, side="right",pad = "0"))
+  
+}else if(year %in% c(2009,2011:2016)){
+  tracts<-get_acs(geography = "tract", variables = "B01001A_003E", state = STUSPS, geometry = TRUE, year = year, key = key)%>% 
+    rename(GEO_ID = GEOID)
+}
+
+
 
 
 test1 <- anti_join(dem.state.data, crosswalk, by = c("GEO_ID2" = "GEO_ID2"))
