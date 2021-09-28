@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "data.table", "magrittr",
-  "dplyr", "tigris", "tmap", "testthat"
+  "dplyr", "tigris", "tmap", "testthat","tidyverse"
 )
 
 for (p in packages) {
@@ -38,9 +38,9 @@ if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
-  #figuresDir <- "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  figuresDir <- "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
   methodI <- "di_gee"
 }
@@ -60,12 +60,8 @@ attr_burd <- attr_burd %>%
     & Year %in% year # 2000:2016
   )
 
-#attr_burd1 <- attr_burd %>% filter(measure3 == "proportion of disparity to Black or African American attributable" & Ethnicity == "White, Not Hispanic or Latino")
-#attr_burd1 <- attr_burd1 %>%
-#  group_by(Region) %>%
-#  summarise(mean = mean(mean))
 
-attr_burd2 <- attr_burd %>%
+attr_burd_sum <- attr_burd %>%
   filter(measure3 == "value" & Ethnicity %in% c("White, Not Hispanic or Latino", "Black or African American")) %>%
   mutate(mean = case_when(
     Ethnicity == "White, Not Hispanic or Latino" ~ mean,
@@ -97,27 +93,22 @@ test_that("figure5 map anti join", {
   expect_equal(nrow(anti_join1) * nrow(anti_join2), 0)
 })
 
-#counties_join1 <- tigris::geo_join(counties_shape, attr_burd1, "GEOID", "Region", how = "inner")
-counties_join1 <- inner_join(counties_shape, attr_burd2, by = c("GEOID" ="Region"))
-# tm1 <- tm_shape(counties_join1) + tm_polygons("mean", alpha = 0.6)
+counties_shape <- counties_shape %>% filter(STATEFP == "06") #TODO
+counties_join <- inner_join(counties_shape, attr_burd_sum, by = c("GEOID" ="Region"))
 
-# counties_join2 <- tigris::geo_join(counties_shape, attr_burd2, "GEOID", "Region", how = "inner")
-# tm2 <- tm_shape(counties_join2) + tm_polygons("mean", alpha = 0.6)
-
-
-# https://stackoverflow.com/questions/56903210/how-to-add-a-basemap-to-a-tmap-plot-in-r
+tm3<-ggplot(data = counties_join) +
+  geom_sf()
+tm3
+#https://bookdown.org/nicohahn/making_maps_with_r5/docs/tmap.html
 tm1 <- tm_shape(states) +
-  tm_borders(
-    lwd = 0.5,
-    col = "black"
-  ) +
-  tm_shape(
-    counties_join1#, projection = 26916
-  ) +
-  tm_fill("mean",
-    style = "quantile", n = 7, palette = "Greens",
-    title = "total Deaths for Blacks"
-  ) +
+  tm_borders(lwd = 0.5, col = "black") +
+  tm_fill(col = "grey") +l
+  tm_shape( counties_join)+#, projection = 26916
+  tm_polygons(col = "mean", midpoint = 0)
+  #tm_fill("mean",
+  #  style = "quantile", n = 7, palette = "Greens",
+  #  title = "total Deaths for Blacks"
+  #) +
   tm_legend(bg.color = "white", bg.alpha = 0.6)# +
   #tm_layout("Wealth (or so)",
   #          legend.title.size = 1,
