@@ -103,6 +103,7 @@ if (!file.exists(pop.summary.dirX)) {
       pop.summary2 <- pop.summary %>%
         group_by(state, variable, rural_urban_class) %>%
         summarize(Population = sum(pop_size)) %>%
+        filter(!is.na(rural_urban_class)) %>% #TODO
         mutate(rural_urban_class = as.factor(rural_urban_class))
       rm(pop.summary1, pop.summary2)
       
@@ -126,80 +127,5 @@ if (!file.exists(pop.summary.dirX)) {
   pop.summary <- pop.summary %>% tibble::add_column(source2 = "Census")
   pop.summary <- pop.summary %>% filter(min_age >= 25)
   write.csv(pop.summary, pop.summary.dirX, row.names = FALSE)
-  toc()
-}
-
-if (FALSE) {
-  tic("plotted population summary")
-  files <- list.files(pop.summary.dir)
-  pop.summary <- lapply(files, function(file) {
-    fread(file.path(pop.summary.dir, file))
-  }) %>%
-    rbindlist() %>%
-    #do.call(rbind,.) %>%
-    as.data.frame()
-
-  for (location in pop.summary[, agr_by] %>% unique()) {
-    pop.summary_sub <- pop.summary %>% filter(get(agr_by) == location)
-    ## --- by race/ethnicity---
-    pop.summary_sub1 <- pop.summary_sub %>%
-      mutate(Ethnicity = paste0(Race, ", ", Hispanic.Origin)) %>%
-      filter(Ethnicity %in% c(
-        "White, Not Hispanic or Latino",
-        "White, Hispanic or Latino",
-        "Black or African American, All Origins",
-        "Asian or Pacific Islander, All Origins",
-        "American Indian or Alaska Native, All Origins"
-      ) &
-        Gender.Code == "A" &
-        Education == 666)
-
-    pop.summary_sub1 <- pop.summary_sub1 %>%
-      group_by(Ethnicity, Year) %>%
-      summarize(Population = sum(Population))
-
-    g <- ggplot(pop.summary_sub1, aes(x = Year, y = Population)) +
-      geom_line(aes(color = Ethnicity), size = 1) +
-      ylab(paste("Population")) +
-      xlab("Year") +
-      ylim(0, NA) +
-      xlim(2000, 2016) +
-      theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-      guides(col = guide_legend(nrow = 3, byrow = TRUE)) +
-      ggtitle(paste("Population in", location))
-
-    ggsave(file.path(plotDir, paste0(location, "_plot_race_cens.png")), plot = g)
-
-    ## --- by education---
-    pop.summary_sub2 <- pop.summary_sub %>% filter(Education != 666 &
-                                                     Gender.Code == "A")
-
-    pop.summary_sub2 <- pop.summary_sub2 %>%
-      group_by(Education, Year) %>%
-      summarize(Population = sum(Population)) %>%
-      arrange(Year, Education)
-    
-    replaces3 <- data.frame(
-      Education = c(1:7, 666),
-      Education2 = c(
-        "Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative",
-        "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"
-      )
-    )
-    pop.summary_sub2 <- pop.summary_sub2 %>% left_join(replaces3, by = "Education")
-
-    g <- ggplot(pop.summary_sub2, aes(x = Year, y = Population, color = Education2)) +
-      geom_line( size = 1) +
-      ylab(paste("Population")) +
-      xlab("Year") +
-      ylim(0, NA) +
-      xlim(2000, 2016) +
-      theme(legend.position = "bottom", legend.box = "vertical", legend.margin = margin()) +
-      guides(col = guide_legend(nrow = 4, byrow = TRUE)) +
-      ggtitle(paste("Population 25+ in", location))
-
-    ggsave(file.path(plotDir, paste0(location, "_plot_educ_cens.png")), plot = g)
-    
-  }
   toc()
 }
