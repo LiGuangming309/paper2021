@@ -131,11 +131,11 @@ dir.create(filepathTr, recursive = T, showWarnings = F)
             rename(GEO_ID = GEOID)
         }else if(year == 2000){
           tracts<-get_decennial(geography = "tract", variables = "P012A005", year = 2000, state = STUSPS, geometry = TRUE, key = key)%>% 
-            rename(GEO_ID = GEOID) %>%
-            mutate(
-              GEO_ID = case_when(str_sub(GEO_ID,-2,-1) == "00"~ str_sub(GEO_ID,1,-3),
-                                  TRUE ~ GEO_ID)
-            )
+            rename(GEO_ID = GEOID) #%>%
+            #mutate(
+            #  GEO_ID = case_when(str_sub(GEO_ID,-2,-1) == "00"~ str_sub(GEO_ID,1,-3),
+            #                      TRUE ~ GEO_ID)
+            #)
 
         }else if(year %in% c(2009,2011:2016)){
           tracts<-get_acs(geography = "tract", variables = "B01001A_003E", state = STUSPS, geometry = TRUE, year = year, key = key)%>% 

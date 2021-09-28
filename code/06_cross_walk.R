@@ -57,24 +57,12 @@ if (year == 1990) {
 
 crosswalk <- crosswalk %>%
   mutate(
-    trtidFrom = as.character(trtidFrom),
     stateFrom = str_sub(trtidFrom, 1, -10),
-    trtidFrom = case_when(
-      str_sub(trtidFrom, -2, -1) == "00" ~ str_sub(trtidFrom, 1, -3),
-      TRUE ~ trtidFrom
-    ),
-    trtidFrom = as.numeric(trtidFrom),
-
     trtidTo = as.character(trtidTo),
     stateTo = str_sub(trtidTo, 1, -10),
-    countyTo = str_sub(trtidTo, -9, -6),
-    tractTo = str_sub(trtidTo, -5, -1),
-    tractTo = case_when(str_sub(tractTo,-2,-1) == "00"~ str_sub(tractTo,1,-3),
-                        TRUE ~ tractTo),
-    trtidTo = case_when(
-      str_sub(trtidTo, -2, -1) == "00" ~ str_sub(trtidTo, 1, -3),
-      TRUE ~ trtidTo
-    ),
+    countyTo = str_sub(trtidTo, -9, -6), #TODO
+    tractTo = str_sub(trtidTo, -5, -1), #TODO
+    
     trtidTo = as.numeric(trtidTo)
   )
 

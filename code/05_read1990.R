@@ -60,9 +60,11 @@ if (year == 1990) {
       mutate(tract = ifelse(str_detect(ANPSADPI, "\\."),
                             tract,
                             tract*100),
-             GEO_ID = paste0(sprintf("%02d", state),
-                             sprintf("%03d", county),
-                             sprintf("%06d", tract)),
+             GEO_ID = paste0( 
+               state,
+               sprintf("%03d", county),
+               sprintf("%06d", tract)
+             ),
              ANPSADPI = NULL
              )
     
