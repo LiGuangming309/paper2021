@@ -20,7 +20,7 @@ key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
 Sys.setenv(CENSUS_KEY = key)
 options(tigris_use_cache = TRUE)
 
-year <- 2010
+year <- 2011
 STUSPS <- "FL"
 STATEFPI <- "12"
 if(year == 1990){
@@ -55,12 +55,18 @@ if(year == 1990){
     #mutate_at(c("GEO_ID2","GEO_ID3","GEO_ID4"),as.integer)
 }else{
   if(year == 2000){
+    table_name <- "dec/sf1"
     group <- "P012A"
   }else if(year == 2010){
+    table_name <- "dec/sf1"
     group <- "PCT12A"
+  }else if(year %in% c(2009,2011:2016)){
+    table_name <- "acs/acs5"
+    group <- "B01001A"
   }
+    
   dem.state.data <- getCensus(
-    name = "dec/sf1",
+    name = table_name,
     vintage = year,
     vars = paste0("group(", group, ")"),
     region = "tract:*",
@@ -140,9 +146,9 @@ test1
 #so farbest combination: dem.state.data$GEO_ID2, crosswalk$GEO_ID2, tracts$GEO_ID1
 #=> work on crosswalk$GEO_ID2!
 
-test2 <- setdiff(tracts$GEO_ID, dem.state.data$GEO_ID1)
+test2 <- setdiff(tracts$GEO_ID, dem.state.data$GEO_ID2)
 test2
-test2 <- setdiff(dem.state.data$GEO_ID1, tracts$GEO_ID)
+test2 <- setdiff(dem.state.data$GEO_ID2, tracts$GEO_ID)
 test2
 
 dem.state.data <- dem.state.data %>%
