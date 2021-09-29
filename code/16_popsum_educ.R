@@ -30,7 +30,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1991
+  year <- 2000
   agr_by <- "county"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  #tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them
@@ -73,7 +73,7 @@ if (!file.exists(pop.summary.dirX)) {
     pop.summary <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
     
     pop.summary <- pop.summary %>% 
-      mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.double) %>%
+      mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.integer) %>%
       mutate(county = NULL)
       
     if(agr_by == "county"){

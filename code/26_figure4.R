@@ -93,7 +93,6 @@ test_that("figure5 map anti join", {
   expect_equal(nrow(anti_join1) * nrow(anti_join2), 0)
 })
 
-
 #counties_shape <- counties_shape %>% filter(STATEFP == "06") #TODO
 counties_join <- inner_join(counties_shape, attr_burd_sum, by = c("GEOID" ="Region"))
 
@@ -112,9 +111,8 @@ tm1 <- tm_shape(states) +
   #          legend.digits = 5,
   #          legend.bg.alpha = 1)
   # tmap_mode(mode = c("view"))
-  # tm2
-  # TODO show base map
+
 tm1
   ## ---save---
-  tmap_save(tm1, file.path(figuresDir, "figure5_1.png"),
+  tmap_save(tm1, file.path(figuresDir, "figure5.png"),
             dpi = 300)
