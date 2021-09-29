@@ -34,7 +34,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 1992
   agr_by <- "county"
   source <- "nvss"
 
@@ -44,11 +44,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
 
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-##  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-  #attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <- "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
 }
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
@@ -76,6 +76,7 @@ if (!file.exists(attrBurdenDir)) {
 
   pm_summ <- pm_summ %>% mutate_at(c("rural_urban_class", "Education"), as.factor)
   total_burden <- total_burden %>% mutate_at(c("rural_urban_class", "Education"), as.factor)
+  total_burden <- total_burden %>% filter(label_cause == "all-cause")
 
   pm_summ <- pm_summ %>%
     dplyr::group_by_at(vars(one_of("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class","scenario", "pm", "min_age","max_age"))) %>%
@@ -93,15 +94,26 @@ if (!file.exists(attrBurdenDir)) {
   # hazard ratio
   # Increases of 10 μg per cubic meter in PM2.5 were associated with increases in all-cause mortality 
   
+  #hr <- data.frame(
+  #  method = c(rep("di_gee", 6), rep("di_coxme", 6), rep("di_gee65+", 6), rep("di_coxme65+", 6)),
+  #  Race = c("White","White", "Black or African American", "Asian or Pacific Islander", "White", "American Indian or Alaska Native"), # TODO
+  #  Hispanic.Origin = c("All Origins","Not Hispanic or Latino", "All Origins", "All Origins", "Hispanic or Latino", "All Origins"), # TODO
+  #  label_cause =  "all-cause",
+  #  hr_mean = c(1.063,1.063, 1.208, 1.096, 1.116,1.1, 1.068,1.068, 1.216, 1.140, 1.127,1.145),
+  #  hr_lower = c(1.06,1.06, 1.199, 1.075, 1.1,1.06, 1.065,1.065, 1.206, 1.116, 1.109,1.09),
+  #  hr_upper = c(1.065,1.065, 1.217, 1.117, 1.133,1.14, 1.07,1.07, 1.225, 1.164, 1.144,1.203),
+  #  min_age = c(rep(25,12), rep(65,12))
+  #)
+  
   hr <- data.frame(
-    method = c(rep("di_gee", 6), rep("di_coxme", 6), rep("di_gee65+", 6), rep("di_coxme65+", 6)),
-    Race = c("White","White", "Black or African American", "Asian or Pacific Islander", "White", "American Indian or Alaska Native"), # TODO
-    Hispanic.Origin = c("All Origins","Not Hispanic or Latino", "All Origins", "All Origins", "Hispanic or Latino", "All Origins"), # TODO
-    label_cause =  "all-cause",
-    hr_mean = c(1.063,1.063, 1.208, 1.096, 1.116,1.1, 1.068,1.068, 1.216, 1.140, 1.127,1.145),
-    hr_lower = c(1.06,1.06, 1.199, 1.075, 1.1,1.06, 1.065,1.065, 1.206, 1.116, 1.109,1.09),
-    hr_upper = c(1.065,1.065, 1.217, 1.117, 1.133,1.14, 1.07,1.07, 1.225, 1.164, 1.144,1.203),
-    min_age = c(rep(25,12), rep(65,12))
+    method = rep("di_gee", 1),
+    Race = c("White","White", "Black or African American", "Asian or Pacific Islander", "White", "American Indian or Alaska Native", "All"), # TODO
+    Hispanic.Origin = c("All Origins","Not Hispanic or Latino", "All Origins", "All Origins", "Hispanic or Latino", "All Origins", "All Origins"), # TODO
+    label_cause =  rep("all-cause", 1),
+    hr_mean = c(1.063, 1.063, 1.208, 1.096, 1.116, 1.1, 1.071),
+    hr_lower = c(1.06, 1.06, 1.199, 1.075, 1.1, 1.06, 1.073),
+    hr_upper = c(1.065,1.065, 1.217, 1.117, 1.133,1.14, 1.075),
+    min_age = rep(25, 1)
   )
 
   paf_di <- inner_join(pm_summ, hr, by = c("Race", "Hispanic.Origin"))
@@ -142,6 +154,7 @@ if (!file.exists(attrBurdenDir)) {
       paf_di,
       by = c("Year", agr_by, "Race", "Hispanic.Origin", "Gender.Code", "Education","rural_urban_class", "label_cause")
     ) 
+
     expect_equal(0, nrow(test))
   })
 
