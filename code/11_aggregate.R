@@ -83,13 +83,13 @@ apply(states, 1, function(state) {
     # read demographic census data by tract
     trac_censData <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% 
       fread()  %>% 
-      mutate(GEO_ID = as.numeric(GEO_ID)) 
+      mutate(GEO_ID = as.character(GEO_ID)) 
 
     # read pm exposure data by tract
     exp_tracDataDir <- file.path(exp_tracDir, year, paste0("exp_trac_", toString(year), "_", STUSPS, ".csv"))
     if(!file.exists(exp_tracDataDir) & year < 2000 & STUSPS %in% c("AK","HI")) return()
     
-    exp_tracData <-fread(exp_tracDataDir) %>% mutate(GEO_ID = as.numeric(GEO_ID)) 
+    exp_tracData <-fread(exp_tracDataDir) %>% mutate(GEO_ID = as.character(GEO_ID)) 
     
     #stylized scenarios
     exp_tracData <- exp_tracData %>% mutate(scenario = "A")

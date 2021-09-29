@@ -31,7 +31,7 @@ pop.summary.dir <- args[16]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2000
-  agr_by <- "county"
+  agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -68,27 +68,38 @@ if (!file.exists(pop.summary.dirX)) {
   pop.summary <- apply(states, 1, function(state) {
     STUSPS <- state[["STUSPS"]]
     name <- state[["NAME"]]
+    STATEFP <- state[["STATEFP"]]
 
     # read demographic census data by tract
     pop.summary <- file.path(censDir, year, paste0("census_", toString(year), "_", STUSPS, ".csv")) %>% fread()
     
     pop.summary <- pop.summary %>% 
-      mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.integer) %>%
-      mutate(county = NULL)
+      mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.integer) 
       
     if(agr_by == "county"){
       pop.summary <- pop.summary %>%
-        rename(county = FIPS.code) %>%
+        mutate(county = FIPS.code, FIPS.code = NULL) %>%
         group_by(county, variable) %>%
         summarize(Population = sum(pop_size)) %>%
         mutate(rural_urban_class = as.factor(666))
     }else{
-      #TODO delete
-      anti_joined <- anti_join(pop.summary, rural_urban_class, by = "FIPS.code")
-      missing_FIPS <- anti_joined$FIPS.code %>% unique()
-      if(length(missing_FIPS) > 0){
-        print(paste("16_popsum_educ;",length(missing_FIPS) ,"FIPS missing in",year,"in",name,":"))
-        print(missing_FIPS)
+
+      anti_joined <- anti_join(pop.summary, rural_urban_class, by = "FIPS.code") %>%
+        group_by(state, county, FIPS.code) %>%
+        summarise(pop_size = sum(pop_size), n = n())
+
+      if(nrow(anti_joined) > 0){
+        print(paste("16_popsum_educ;",nrow(anti_joined) ,"FIPS not classified in rural urban lookup table",year,"in",name,":"))
+        print(anti_joined$FIPS.code)
+        
+        anti_joined2 <- anti_join(rural_urban_class, pop.summary,  by = "FIPS.code") %>%
+          filter(as.integer(str_sub(FIPS.code,1,-4)) == as.integer(STATEFP))
+        
+        if(nrow(anti_joined2) >0){
+          print("following counites from the  rural urban lookup table were not assigned yet and could potentially solve that issue:")
+          print(anti_joined2$FIPS.code)
+          browser()
+        }
       }
       
       pop.summary <- pop.summary%>%
@@ -116,7 +127,7 @@ if (!file.exists(pop.summary.dirX)) {
     pop.summary <- states %>%
       right_join(pop.summary, by = c("STATEFP" = "state")) %>%
       dplyr::group_by_at(vars(all_of(c(agr_by, "variable", "rural_urban_class")))) %>%
-      summarize(Population = sum(Population)) %>%
+      summarize(Population = sum(pop_size)) %>%
       as.data.frame()
   }
   

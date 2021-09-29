@@ -36,7 +36,7 @@ attrBurdenDir <- args[18]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 2000
-  agr_by <- "nation"
+  agr_by <- "county"
   source <- "nvss"
 
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
@@ -45,18 +45,17 @@ if (rlang::is_empty(args)) {
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
   attrBurdenDir <- "/Users/default/Desktop/paper2021/data/13_attr_burd"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-#  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-#  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
-#  totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
-#  attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+  totalBurdenParsed2Dir <-  "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  attrBurdenDir <-  "C:/Users/Daniel/Desktop/paper2021/data/13_attr_burd"
   
 }
 
-#if (agr_by != "nation" & source == "nvss" & year > 2004) {
-#  print(paste("in", year, "no geopgraphic identifier for nvss available"))
-#  quit()
-#}
+if (agr_by == "county") {
+  quit()
+}
 
 attrBurdenDir <- file.path(attrBurdenDir, agr_by, source)
 dir.create(attrBurdenDir, recursive = T, showWarnings = F)
