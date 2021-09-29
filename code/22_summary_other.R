@@ -36,11 +36,11 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary/"
   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+ # tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+#  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+#  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+#  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+#  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -195,7 +195,7 @@ if(!file.exists(pop_summaryDir)){
   )
   levels(pop_summary$Ethnicity) <- rindreplace7
   
-  test <- pop_summary %>% filter(!is.na(rural_urban_class)) 
+  #test <- pop_summary %>% filter(!is.na(rural_urban_class)) 
   
   #rindreplace8 <- c("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
   rindreplace8 <- c("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")

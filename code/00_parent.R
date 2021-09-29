@@ -162,7 +162,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 # years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
- years <- c(2000)
+years <- c(2000,2010,2001)
 # years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
   for (source in sources) {
@@ -206,13 +206,13 @@ for (agr_by in agr_bys) {
 
       runscript(script = assignTractAKHI.script, args = args)
 
-         runscript(script = cens_agr.script, args = args)
+      runscript(script = cens_agr.script, args = args)
       # runscript(script = rural.urban.script, args = args)
       #  runscript(script = paf.script, args = args)
       #     runscript(script = read.nvs.findrepl.script, args = args)
      #   runscript(script = read.total.burden.nvs.script, args = args)
-      #runscript(script=pop.summary.script, args = args)
-    #runscript(script=pop.summary.educ.script, args = args)
+      runscript(script=pop.summary.script, args = args)
+    runscript(script=pop.summary.educ.script, args = args)
          
     #  runscript(script = add.rate.tot.burd, args = args)
       #runscript(script = calc.attr.burd1.script, args = args)

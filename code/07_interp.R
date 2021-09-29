@@ -31,9 +31,9 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 
-   #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 
 states <- file.path(tmpDir, "states.csv") %>% read.csv()
@@ -93,6 +93,9 @@ apply(states, 1, function(state) {
     #censDataUpper <- censDataUpper %>% filter(variable %in% metaUpper$variable)
 
     test_that("interpolation: joining lower and upper cens Data",{
+      expect_false(any(is.na(censDataLower)))
+      expect_false(any(is.na(censDataUpper)))
+      
       anti_join1 <- anti_join(censDataLower, censDataUpper, 
                               by = c("state","GEO_ID", "variable")) %>%
         filter(pop_sizeLower > 0)
@@ -101,8 +104,8 @@ apply(states, 1, function(state) {
                               by = c("state","GEO_ID", "variable")) %>%
         filter(pop_sizeUpper > 0)
       
-      expect_equal(nrow(anti_join1), 0)
-      expect_equal(nrow(anti_join2), 0)
+      expect_equal(nrow(anti_join1) * nrow(anti_join2), 0)
+      if(nrow(anti_join1) * nrow(anti_join2) >0)browser()
       
     })
 
