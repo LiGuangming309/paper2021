@@ -36,7 +36,7 @@ totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 #### ----- ---
 file_list <- list.files(totalBurdenDir)
 #agr_bys <- c("nation", "STATEFP")#county
-agr_bys <- c("county")
+agr_bys <- c("nation")
 years <- 1999:2016
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")

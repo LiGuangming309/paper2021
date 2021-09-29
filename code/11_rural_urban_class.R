@@ -34,8 +34,7 @@ if (rlang::is_empty(args)) {
 }
 suppressMessages(
   rural_urban_class_or <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
-    rename(rural_urban_class = ..2013.code) %>%
-    select(FIPS.code, rural_urban_class)
+    transmute(FIPS.code, rural_urban_class = ..2013.code) #, pop_size = County.2012.pop
 )
 
 ## --- read pop sum---
@@ -83,18 +82,29 @@ crosswalk <- crosswalk %>%
   ) %>%
   distinct()
 
+#crosswalk <- rbind(crosswalk,
+#                   data.frame(countyFrom = rural_urban_class_or$FIPS.code,
+#                              countyTo = rural_urban_class_or$FIPS.code,
+#                              fromYear = 2010))
+#TODO 
+#test_that()
+#test <- anti_join(crosswalk, rural_urban_class_or, by = c("countyTo" = "FIPS.code"))
+
+#rural_urban_class_or <- left_join(crosswalk, rural_urban_class_or, by = c("countyTo" = "FIPS.code"))
+
+
 test_that("11_rural urban class",{
   test1 <- setdiff(crosswalk$countyTo, rural_urban_class_or$FIPS.code)
   test2 <- setdiff(rural_urban_class_or$FIPS.code, crosswalk$countyTo)
   expect_equal(0, length(test1) *length(test2))
+  
+  test <- crosswalk %>%
+    anti_join(pop.sum, by = c("countyTo" = "FIPS.code"))
+  
+  expect_equal(0, nrow(test))
 })
 
-crosswalk <- crosswalk %>%
-  filter(countyTo %in% rural_urban_class_or$FIPS.code)
-
-#test
-test <- crosswalk %>%
-  anti_join(pop.sum, by = c("countyTo" = "FIPS.code"))
+#crosswalk <- crosswalk %>% filter(countyTo %in% rural_urban_class_or$FIPS.code)
 
 crosswalk <- crosswalk %>%
   left_join(pop.sum, by = c("countyTo" = "FIPS.code")) %>%
@@ -112,7 +122,7 @@ crosswalk <- rbind(
   crosswalk,
   data.frame(
     fromYear = 2010,
-    countyFrom = crosswalk$countyTo %>% unique(),
+    countyFrom = crosswalk$countyTo %>% unique(), 
     countyTo = crosswalk$countyTo %>% unique()
   ),
   filler
