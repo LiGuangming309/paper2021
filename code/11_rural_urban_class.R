@@ -38,7 +38,7 @@ suppressMessages(
     select(FIPS.code, rural_urban_class)
 )
 
-## ---
+## --- read pop sum---
 
   meta <- file.path(censDir, "meta", paste0("cens_meta_", 2010, ".csv")) %>%
     fread() %>%
@@ -58,7 +58,7 @@ suppressMessages(
     summarise(pop_size = sum(pop_size)) 
 
 
-### ----
+### ---- cross walk----
 crosswalk90 <- read.csv(file.path(dataDir, paste0("crosswalk_", 1990, "_2010.csv"))) %>%
   select(trtidFrom = trtid90, trtidTo = trtid10) %>%
   mutate(fromYear = 1990)
@@ -83,8 +83,18 @@ crosswalk <- crosswalk %>%
   ) %>%
   distinct()
 
+test_that("11_rural urban class",{
+  test1 <- setdiff(crosswalk$countyTo, rural_urban_class_or$FIPS.code)
+  test2 <- setdiff(rural_urban_class_or$FIPS.code, crosswalk$countyTo)
+  expect_equal(0, length(test1) *length(test2))
+})
+
 crosswalk <- crosswalk %>%
   filter(countyTo %in% rural_urban_class_or$FIPS.code)
+
+#test
+test <- crosswalk %>%
+  anti_join(pop.sum, by = c("countyTo" = "FIPS.code"))
 
 crosswalk <- crosswalk %>%
   left_join(pop.sum, by = c("countyTo" = "FIPS.code")) %>%

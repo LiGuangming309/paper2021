@@ -23,6 +23,8 @@ options(tigris_use_cache = TRUE)
 year <- 2010
 STUSPS <- "FL"
 STATEFPI <- "12"
+
+##---load population counts-----
 if(year == 1990){
   dem.state.data <- fread(file.path("/Users/default/Desktop/paper2021/data", "nhgis0002_ds120_1990_tract.csv"))
   
@@ -82,6 +84,7 @@ if(year == 1990){
                                               )
 }
 
+##----load crosswalk----
 if(year == 1990){
   crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv"))
   crosswalk <- crosswalk %>% transmute(GEO_ID = trtid90)
@@ -95,39 +98,7 @@ if(year == 1990){
 crosswalk <- crosswalk %>% 
   mutate(GEO_ID = as.character(GEO_ID)) %>%
   filter(str_sub(GEO_ID, 1, -10) == STATEFPI)
-if(year %in% c(1990,2000, 2010)){
-  
-  #crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
-  #  mutate(GEO_ID1 = trtid00,
-  #    trtidTo = as.character(trtidTo),
-  #    stateTo = str_sub(trtidTo, 1, -10),
-  #    countyTo = str_sub(trtidTo, -9, -6),
-  #    tractTo = str_sub(trtidTo, -5, -1),
-  #    tractTo = case_when(str_sub(tractTo,-2,-1) == "00"~ str_sub(tractTo,1,-3),
-  #                        TRUE ~ tractTo),
-  #    trtidTo = case_when(
-  #      str_sub(trtidTo, -2, -1) == "00" ~ str_sub(trtidTo, 1, -3),
-  #      TRUE ~ trtidTo
-  #    ),
-  #    trtidTo = as.numeric(trtidTo)
-  #  )
-  
-  #crosswalk <- read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", year, "_2010.csv")) %>%
-   # transmute(  #GEO_ID1 = trtid00,
-    #  GEO_ID1 = trtid90, #implemented
-      #GEO_ID2 = str_pad(GEO_ID1, 11, pad = "0"),
-      #GEO_ID3 = case_when(
-      #  str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3),
-      #  TRUE ~ GEO_ID2
-      #),
-      #GEO_ID4 = case_when(
-      #  str_sub(GEO_ID2, -2, -1) == "00" ~ str_sub(GEO_ID2, 1, -3), # ,"99"
-      #  str_sub(GEO_ID2, -2, -1) == "99" ~ paste0(str_sub(GEO_ID2, 1, -3)), # ,"01"
-      #  TRUE ~ GEO_ID2
-      #)
-   # )
-}
-
+###----- load tract files-----
 
 if(year == 1990){
   #tracts<-get_decennial(geography = "tract", variables = "TODO", year = 1990, state = STUSPS, geometry = TRUE)
@@ -150,15 +121,12 @@ if(year == 1990){
   tracts<-get_acs(geography = "tract", variables = "B01001A_003E", state = STUSPS, geometry = TRUE, year = year, key = key)%>% 
     transmute(GEO_ID = GEOID %>% as.character())
 }
-
+#----compare-----
 
 test1 <- anti_join(dem.state.data, crosswalk, by = c("GEO_ID" = "GEO_ID"))
 test1
 test2 <- anti_join(crosswalk,dem.state.data,  by = c("GEO_ID" = "GEO_ID"))
 test2
-
-#so farbest combination: dem.state.data$GEO_ID2, crosswalk$GEO_ID2, tracts$GEO_ID1
-#=> work on crosswalk$GEO_ID2!
 
 test3 <- setdiff(tracts$GEO_ID, dem.state.data$GEO_ID)
 test3

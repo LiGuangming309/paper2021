@@ -34,6 +34,7 @@ methodI <- args[11]
 # TODO delete
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  #summaryDir <- "/Users/default/Desktop/data_summary_old"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
 }
@@ -52,7 +53,8 @@ attr_burd <- attr_burd %>%
     attr == "attributable" &
     source == "National Vital Statistics System" & scenario == scenarioI)
 
-## -- figure 3, attributable burden----
+## -- figure 3, attributable burden---
+#TODO method di_gee/burnett
 attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity != "All, All Origins" & measure3 == "value" & rural_urban_class == "All"
 & method == "di_gee")
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity))
