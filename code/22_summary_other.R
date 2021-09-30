@@ -200,10 +200,13 @@ if(!file.exists(pop_summaryDir)){
   
   
   #rindreplace8 <- c("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
-  rindreplace8 <- c("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
-  levels(pop_summary$rural_urban_class) <- rindreplace8
-
+  #rindreplace8 <- c("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
+  #levels(pop_summary$rural_urban_class) <- rindreplace8
   
+  rindreplace8 <- c("1" = "large metro","2" = "small-medium metro",  "3" = "non metro",  "666" = "All","Unknown" = "Unknown")
+  pop_summary <- pop_summary %>% mutate(rural_urban_class = sapply(rural_urban_class, function(x) rindreplace8[[x]]))
+  
+
   fwrite(pop_summary, pop_summaryDir)
   rm(rindreplace1, rindreplace2, rindreplace3)
   toc()
