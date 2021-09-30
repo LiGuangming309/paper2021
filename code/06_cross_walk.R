@@ -171,7 +171,7 @@ apply(missing_states, 1, function(state) {
       return(censDataFrom_sub)
     }) %>% rbindlist()
 
-    test_that("03_interp old censData10", {
+    test_that("06_crosswalk old censData", {
       expect_false(any(is.na(censDataFrom)))
       expect_false(any(censDataFrom == ""))
 

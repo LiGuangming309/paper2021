@@ -81,11 +81,13 @@ apply(states, 1, function(state) {
     tic(paste("interpolated data in", year, "in", name))
     censDataLower <- fread(file.path(censDirLower, paste0("census_", year_lower, "_", STUSPS, ".csv"))) %>%
       complete(nesting(GEO_ID, state, county, tract), variable, fill = list(pop_size = 0)) %>%
-      rename(pop_sizeLower = pop_size) 
+      rename(pop_sizeLower = pop_size) %>%
+      mutate(GEO_ID = as.character(GEO_ID))
       
     censDataUpper <- fread(file.path(censDirUpper, paste0("census_", year_upper, "_", STUSPS, ".csv"))) %>%
       complete(nesting(GEO_ID, state, county, tract), variable, fill = list(pop_size = 0)) %>%
-      rename(pop_sizeUpper = pop_size)
+      rename(pop_sizeUpper = pop_size)%>%
+      mutate(GEO_ID = as.character(GEO_ID))
     
     censDataLower <- censDataLower %>% filter(variable %in% censDataUpper$variable)
     censDataUpper <- censDataUpper %>% filter(variable %in% censDataLower$variable)
