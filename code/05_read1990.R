@@ -31,9 +31,9 @@ if (rlang::is_empty(args)) {
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 
-  # tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  # dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 
 if (year == 1990) {
@@ -65,6 +65,7 @@ if (year == 1990) {
                sprintf("%03d", county),
                sprintf("%06d", tract)
              ),
+             GEO_ID = as.character(GEO_ID), #TODO redundant
              ANPSADPI = NULL
              )
     

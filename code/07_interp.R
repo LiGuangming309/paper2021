@@ -26,7 +26,7 @@ tmpDir <- args[3]
 censDir <- args[8]
 
 if (rlang::is_empty(args)) {
-  year <- 2001
+  year <- 1991
   dataDir <- "/Users/default/Desktop/paper2021/data"
   tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
