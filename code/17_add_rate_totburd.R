@@ -33,8 +33,8 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
-  agr_by <- "nation"
+  year <- 1998
+  agr_by <- "STATEFP"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-  #totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  #totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -83,16 +83,16 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       mutate_at(c("nation"), as.factor)
   } else if (agr_by == "STATEFP") {
     total_burden <- total_burden %>%
-      complete(Year, STATEFP, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
-        fill = list(Deaths = 0)
-      ) %>%
+      #complete(Year, STATEFP, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
+      #  fill = list(Deaths = 0)
+      #) %>%
       filter(STATEFP != "oth") %>% 
       mutate_at(c("STATEFP"), as.factor)
   }else if(agr_by == "county"){
     total_burden <- total_burden %>%
-      complete(Year, county, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
-               fill = list(Deaths = 0)
-      ) %>%
+      #complete(Year, county, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
+      #         fill = list(Deaths = 0)
+      #) %>%
       filter(county != "oth") %>% 
       mutate_at(c("county"), as.factor)
     
@@ -121,15 +121,15 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   
   if (agr_by == "nation") {
     pop_summary <- pop_summary %>%
-      #complete(Year, nation, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, 
-      #         fill = list(Population = 0)
-      #)%>%
+      complete(Year, nation, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, 
+               fill = list(Population = 0)
+      )%>%
       mutate_at(c("nation"), as.factor)
   } else if (agr_by == "STATEFP") {
     pop_summary <- pop_summary %>%
-      #complete(Year, STATEFP, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class,
-      #         fill = list(Population = 0)
-      #)%>%
+      complete(Year, STATEFP, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class,
+               fill = list(Population = 0)
+      )%>%
       mutate_at(c("STATEFP"), as.factor)
   }else if (agr_by == "county") {
     pop_summary <- pop_summary %>%
