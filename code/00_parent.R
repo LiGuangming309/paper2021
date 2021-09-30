@@ -162,7 +162,7 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 # years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
-years <- c(1990,1991, 2000)
+years <- c(1990:2000)
 #years <- c(1990)
 # years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
