@@ -34,7 +34,7 @@ agr_by <- args[10]
 
 # TODO l?schen
 if (rlang::is_empty(args)) {
-  year <- 1993
+  year <- 1991
   agr_by <- "county"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -134,8 +134,6 @@ apply(states, 1, function(state) {
       group_by(state, county, variable, scenario) %>%
       mutate(prop = pop_size / sum(pop_size)) %>%
       ungroup()
-    
-    cens_agr <- cens_agr %>% mutate(county = sprintf("%s%03d", state, county) %>% as.numeric())
 
     # test, check
     test_that("06_aggregate county", {
@@ -169,7 +167,8 @@ apply(states, 1, function(state) {
       }
     })
     
-    cens_agr <- cens_agr %>% mutate(rural_urban_class = 666)
+    cens_agr <- cens_agr %>% mutate(county = sprintf("%s%03d", state, county) %>% as.numeric(),
+                                    rural_urban_class = 666)
     fwrite(cens_agr, cens_agrDirCX)
     toc()
   }
