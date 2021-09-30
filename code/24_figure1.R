@@ -34,7 +34,7 @@ methodI <- args[11]
 # TODO delete
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-  #summaryDir <- "/Users/default/Desktop/data_summary_old"
+  summaryDir <- "/Users/default/Desktop/data_summary_old"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
 }
@@ -128,18 +128,24 @@ plots <- lapply(plots, function(g) {
 
 
 ## ----get legends ---
-own_get_legend <- function(p) {
-  g <- ggplot_build(p)
-  data.frame(
-    colour = unique(g$data[[1]]["colour"]),
-    column = g$plot$labels$colour,
-    label = unique(as.data.frame(g$plot$data)[, g$plot$labels$colour])
-  )
-}
+#own_get_legend <- function(p) {
+#  g <- ggplot_build(p)
+#  data.frame(
+#    colour = unique(g$data[[1]]["colour"]),
+#    column = g$plot$labels$colour,
+#    label = unique(as.data.frame(g$plot$data)[, g$plot$labels$colour])
+#  )
+#}
 
-legend_df <- lapply(plots, own_get_legend) %>%
-  rbindlist() %>%
-  distinct()
+#legend_df <- lapply(plots, own_get_legend) %>%
+#  rbindlist() %>%
+#  distinct()
+
+legend_df <- data.frame(
+  colour = group.colors,
+  label = names(group.colors),
+  column = c(rep("Ethnicity", 6), rep("Education", 3), rep("rural_urban_class", 3))
+)
 
 legend_df <- legend_df %>%
   complete(colour, column, fill = list(label = "")) %>%

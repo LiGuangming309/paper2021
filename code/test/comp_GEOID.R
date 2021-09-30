@@ -20,7 +20,7 @@ key <- "d44ca9c0b07372ada0b5243518e89adcc06651ef"
 Sys.setenv(CENSUS_KEY = key)
 options(tigris_use_cache = TRUE)
 
-year <- 2010
+year <- 1990
 STUSPS <- "FL"
 STATEFPI <- "12"
 
@@ -96,8 +96,8 @@ if(year == 1990){
                      read.csv(paste0("~/Desktop/paper2021/data/crosswalk_", 2000, "_2010.csv")) %>% transmute(GEO_ID = trtid10))
 }
 crosswalk <- crosswalk %>% 
-  mutate(GEO_ID = as.character(GEO_ID)) %>%
-  filter(str_sub(GEO_ID, 1, -10) == STATEFPI)
+  mutate(GEO_ID = as.character(GEO_ID)) #%>%
+  #filter(str_sub(GEO_ID, 1, -10) == STATEFPI)
 ###----- load tract files-----
 
 if(year == 1990){
@@ -127,7 +127,7 @@ test1 <- anti_join(dem.state.data, crosswalk, by = c("GEO_ID" = "GEO_ID"))
 test1
 test2 <- anti_join(crosswalk,dem.state.data,  by = c("GEO_ID" = "GEO_ID"))
 test2
-
+#nrow(test1) /nrow(dem.state.data)
 test3 <- setdiff(tracts$GEO_ID, dem.state.data$GEO_ID)
 test3
 test4 <- setdiff(dem.state.data$GEO_ID, tracts$GEO_ID)
