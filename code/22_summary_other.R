@@ -36,11 +36,11 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary/"
   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -139,21 +139,24 @@ if(!file.exists(pop_summaryDir)){
   files1 <- files[endsWith(files,".csv")]
   pop_summary1 <- lapply(files1, function(file){
     pop_summary1 <- fread(file.path(pop.summary.dir, file))
+    if(nrow(pop_summary1) == 0) return(NULL)
     #make compatible
     agr_by <- str_sub(file,5,-5)
     pop_summary1 <- pop_summary1 %>% rename("Region":=!!agr_by)
     pop_summary1 <- pop_summary1 %>% tibble::add_column(agr_by = agr_by)
-  })%>% rbindlist()
+  })%>% rbindlist(use.name = TRUE)
   
   agr_bys <- files[!endsWith(files,".csv")]
   agr_bys <- setdiff(agr_bys,"county")
   pop_summary2 <- lapply(agr_bys, function(agr_by){
     files2 <- list.files(file.path(pop.summary.dir, agr_by))
-    pop_summary2<-lapply(files2, function(file) fread(file.path(pop.summary.dir, agr_by, file))) %>% rbindlist()
+    pop_summary2<-lapply(files2, function(file) fread(file.path(pop.summary.dir, agr_by, file))) %>% rbindlist(use.name = TRUE)
+    
+    if(nrow(pop_summary2) == 0) return(NULL)
     #make compatible
     pop_summary2 <- pop_summary2 %>% rename("Region":=!!agr_by)
     pop_summary2 <- pop_summary2 %>% tibble::add_column(agr_by = agr_by)
-  }) %>% rbindlist()
+  }) %>% rbindlist(use.name = TRUE)
   #pop_summary2 <- pop_summary2 %>% filter(Education != 666) #TODO
   
   pop_summary <- rbind(pop_summary1, pop_summary2)
