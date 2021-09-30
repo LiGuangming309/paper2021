@@ -29,8 +29,8 @@ if (rlang::is_empty(args)) {
   dataDir <- "/Users/default/Desktop/paper2021/data"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 
-  # dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  # censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 suppressMessages(
   rural_urban_class_or <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
@@ -120,11 +120,11 @@ filler <- merge(
 
 crosswalk <- rbind(
   crosswalk,
-  data.frame(
-    fromYear = 2010,
-    countyFrom = crosswalk$countyTo %>% unique(), 
-    countyTo = crosswalk$countyTo %>% unique()
-  ),
+  #data.frame(
+  #  fromYear = 2010,
+  #  countyFrom = crosswalk$countyTo %>% unique(), 
+  #  countyTo = crosswalk$countyTo %>% unique()
+  #),
   filler
 ) %>% distinct
 
@@ -153,20 +153,23 @@ test_that("rural urban class", {
 
 rural_urban_class <- rural_urban_class_or %>%
   right_join(crosswalk, by = c("FIPS.code" = "countyTo")) %>% 
-  distinct
+  distinct %>%
+  mutate(FIPS.code = countyFrom, countyFrom = NULL)
+
+rural_urban_class <- rbind(
+  rural_urban_class %>% filter(!(fromYear == 2010 & FIPS.code %in% rural_urban_class_or$FIPS.code)),
+  rural_urban_class_or  %>% mutate(fromYear = 2010))
 
 test_that("rural urban class", {
   expect_false(any(is.na(rural_urban_class)))
   
   test <- rural_urban_class %>%
-    group_by(countyFrom, fromYear) %>%
+    group_by(FIPS.code, fromYear) %>%
     summarise(n = n()) %>%
     filter(n != 1)
   expect_equal(nrow(test), 0)
 })
 
-rural_urban_class <- rural_urban_class %>%
-  mutate(FIPS.code = countyFrom, countyFrom = NULL)
 
 #find replace for less categories
 rural_urban_class <- rural_urban_class %>%

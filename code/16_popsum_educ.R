@@ -30,7 +30,7 @@ pop.summary.dir <- args[16]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 2000
+  year <- 1991
   agr_by <- "nation"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  #tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them
@@ -98,7 +98,7 @@ if (!file.exists(pop.summary.dirX)) {
         if(nrow(anti_joined2) >0){
           print("following counites from the  rural urban lookup table were not assigned yet and could potentially solve that issue:")
           print(anti_joined2$FIPS.code)
-          browser()
+          #browser()
         }
       }
       
@@ -128,7 +128,7 @@ if (!file.exists(pop.summary.dirX)) {
     pop.summary <- states %>%
       right_join(pop.summary, by = c("STATEFP" = "state")) %>%
       dplyr::group_by_at(vars(all_of(c(agr_by, "variable", "rural_urban_class")))) %>%
-      summarize(Population = sum(pop_size)) %>%
+      summarize(Population = sum(Population)) %>%
       as.data.frame()
   }
   

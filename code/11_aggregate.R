@@ -205,7 +205,7 @@ if (agr_by != "county") {
       cens_agr$rural_urban_class <- NULL
       if(nrow(cens_agr) > 0){
         #add rural classification
-        corresponding_year <- setNames(c(1990, rep(2010,9),2000,rep(2010,8),2000,rep(2010,7)), 1990:2016)
+        corresponding_year <- setNames(c(1990, rep(2010,9),2000,rep(2010,8),2000,rep(2010,7)), 1990:2016) #TODO
         rural_urban_class <- read.csv(file.path(dataDir, "rural_urban_class.csv")) %>%
           filter(fromYear == corresponding_year[[as.character(year)]])
         rm(corresponding_year)
