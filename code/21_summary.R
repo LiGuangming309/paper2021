@@ -144,7 +144,7 @@ test_that(" basic checks", {
   if (nrow(attrBurden_prop_dupl) > 0) browser()
 
   test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
-  expect_equal(0, nrow(test1))
+  expect_equal(0, nrow(test1))#TODO
 
   test <- attrBurden[rowSums(is.na(attrBurden)) > 0, ]
   expect_false(any(is.na(attrBurden)))
@@ -211,14 +211,14 @@ attrBurden_disp6 <- attrBurden_disp6 %>% mutate(
   lower.x = NULL, lower.y = NULL, upper.x = NULL, upper.y = NULL,
   attr.x = NULL, attr.y = NULL
 )
-
-attrBurden_disp7 <- inner_join(all_burden %>% filter(attr == "overall" & rural_urban_class != 3),
-  all_burden %>% filter(attr == "overall" & rural_urban_class == 3),
+#rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2, "non metro" = 3, "All" = 666, "Unknown" = "Unknown")
+attrBurden_disp7 <- inner_join(all_burden %>% filter(attr == "overall" & rural_urban_class != 1),
+  all_burden %>% filter(attr == "overall" & rural_urban_class == 1),
   by = setdiff(colnames(all_burden), c("rural_urban_class", "overall_value"))
 )
 
-attrBurden_disp8 <- inner_join(attrBurden %>% filter(rural_urban_class != 3),
-  attrBurden %>% filter(rural_urban_class == 3),
+attrBurden_disp8 <- inner_join(attrBurden %>% filter(rural_urban_class != 1),
+  attrBurden %>% filter(rural_urban_class == 1),
   by = setdiff(colnames(attrBurden), c("rural_urban_class", "lower", "mean", "upper"))
 )
 
@@ -231,7 +231,7 @@ attrBurden_disp9 <- inner_join(
 attrBurden_disp9 <- attrBurden_disp9 %>% mutate(
   mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
   lower = mean, upper = mean,
-  attr = "attributable", measure3 = "proportion of disparity to non-metro",
+  attr = "attributable", measure3 = "proportion of disparity to large metro",
   rural_urban_class = rural_urban_class.x,
   rural_urban_class.x = NULL, rural_urban_class.y = NULL,
   overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,

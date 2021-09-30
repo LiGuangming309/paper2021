@@ -38,10 +38,10 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
   
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #tmpDir <-  "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 
 # load states, so we can loop over them
@@ -109,13 +109,14 @@ if (!file.exists(pop.summary.dirX)) {
       pop.summary1 <- pop.summary %>%
         group_by(state, variable) %>%
         summarize(Population = sum(pop_size)) %>%
-        mutate(rural_urban_class = as.factor(666))
+        mutate(rural_urban_class = as.factor(666)) #TODO
       
       pop.summary2 <- pop.summary %>%
         group_by(state, variable, rural_urban_class) %>%
         summarize(Population = sum(pop_size)) %>%
         filter(!is.na(rural_urban_class)) %>% #TODO
         mutate(rural_urban_class = as.factor(rural_urban_class))
+      pop.summary <- rbind(pop.summary1, pop.summary2)
       rm(pop.summary1, pop.summary2)
       
     }
