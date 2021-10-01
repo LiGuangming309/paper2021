@@ -207,7 +207,7 @@ for (agr_by in agr_bys) {
 
     #  runscript(script = assignTractAKHI.script, args = args)
 
-     # runscript(script = cens_agr.script, args = args)
+      runscript(script = cens_agr.script, args = args)
       # runscript(script = rural.urban.script, args = args)
       #  runscript(script = paf.script, args = args)
       #     runscript(script = read.nvs.findrepl.script, args = args)
