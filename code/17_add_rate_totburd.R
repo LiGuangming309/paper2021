@@ -33,7 +33,11 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
+<<<<<<< HEAD
   year <- 2000
+=======
+  year <- 1999
+>>>>>>> 44d63a5d8dc3f45822a31c1c34a95bcde1954a27
   agr_by <- "nation"
   source <- "nvss"
 
@@ -79,7 +83,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     total_burden <- total_burden %>%
       complete(Year, nation, source, nesting(Gender.Code, Race, min_age, max_age, Hispanic.Origin, Education), rural_urban_class, nesting(label_cause, attr),
         fill = list(Deaths = 0)
-      )%>%
+      ) %>%
       mutate_at(c("nation"), as.factor)
   } else if (agr_by == "STATEFP") {
     total_burden <- total_burden %>%
@@ -99,27 +103,63 @@ if (!file.exists(totalBurdenParsed2Dir)) {
     total_burden <- total_burden %>% filter(label_cause == "all-cause" & Race != "All")
   }
   
+  test_that("check rural urban class total burden", {
+    test <- setdiff(c(1,2,3,666), total_burden$rural_urban_class)
+    expect_equal(length(test), 0)
+  })
+  
   #---read population data----
-  if(file.exists(file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")))){
+  if(file.exists(file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv"))) & agr_by != "county"){
     pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>%
-      read.csv() 
+      read.csv() %>% 
+      filter(Year == year)
   }else{
     pop_summary1 <- NULL
   }
   
   pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_", year, ".csv")) %>%
-    read.csv()
+    read.csv() %>% 
+    filter(Year == year)
   
-  pop_summary <- rbind(pop_summary1, pop_summary2) %>% filter(Year == year)
+  if(agr_by != "county"){
+    pop_summary2 <- pop_summary2 %>% filter(!(rural_urban_class == 666 & Education == 666))
+    
+  }
+  
+  pop_summary <- rbind(pop_summary1, pop_summary2) 
+  
+  test_that("check rural urban class pop_summary", {
+    test <- setdiff(c(1,2,3,666), pop_summary$rural_urban_class)
+    expect_equal(length(test), 0)
+  })
+  
   pop_summary <- pop_summary %>%
     # filter(rural_urban_class != "Unknown") %>%
-    mutate_at(c("rural_urban_class", "Education"), as.factor)
+    mutate_at(c("rural_urban_class", "Education"), as.factor) %>%
+    mutate(source2 = NULL)
   
-  pop_summary <- pop_summary %>% 
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary), c("source2", "Population"))))) %>%
-    mutate(n = n()) %>%
-    filter(n == 1 | source2 == "CDC") %>%
-    mutate(n = NULL, source2 = NULL)
+ # pop_summary <- pop_summary %>% 
+#    group_by_at(vars(all_of(setdiff(colnames(pop_summary), c("source2","min_age","max_age","Population"))))) %>%
+#    mutate(available_sources = list(source2)) %>%
+#    ungroup()
+  
+#  pop_summary3 <- pop_summary %>%
+#    filter("CDC" %in% available_sources) #%>%
+    #filter(source2 == "CDC")
+
+ # pop_summary4 <- pop_summary %>%
+  #  filter(!"CDC" %in% available_sources) 
+  
+  #pop_summary <- rbind(pop_summary3, pop_summary4)
+  
+  test_that("17 total burden check pop summary", {
+    pop_summary <- pop_summary %>% 
+          group_by_at(vars(all_of(setdiff(colnames(pop_summary), c("source2","Population"))))) %>%
+          summarize(n = n()) %>%
+      filter(n != 1)
+    
+    expect_equal(nrow(pop_summary), 0)
+  })
 
   rm(pop_summary1, pop_summary2)
   
@@ -185,7 +225,9 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       select(all_of(c("Year", "Education", "Gender.Code", "Race", "Hispanic.Origin", "rural_urban_class", agr_by))) %>%
       distinct()
     expect_equal(0, nrow(test_anti_join)) 
-    
+  })
+  
+  test_that("check if there are rows, with mortality, but without Population", {  
     test <- total_burden %>%
       left_join(pop_summary_agr, by = setdiff(colnames(pop_summary_agr), "Population")) %>%
       filter(Population == 0 & value != 0)
@@ -262,6 +304,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
       Population = NULL, standard_popsize = NULL
     )
 
+  setdiff(names(total_burden_age_adj), names(total_burden_crude))
   total_burden <- rbind(total_burden, total_burden_crude, total_burden_age_adj)
   rm(total_burden_crude, total_burden_age_adj, standartpopulation, full_stand_popsize, pop_summary)
 
