@@ -33,11 +33,7 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-<<<<<<< HEAD
-  year <- 2000
-=======
   year <- 1999
->>>>>>> 44d63a5d8dc3f45822a31c1c34a95bcde1954a27
   agr_by <- "nation"
   source <- "nvss"
 
@@ -47,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
-  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-#  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-#  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-#  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-#  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
