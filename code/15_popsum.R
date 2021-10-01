@@ -32,6 +32,11 @@ if (rlang::is_empty(args)) {
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
   cdcPopDir <- "/Users/default/Desktop/paper2021/data/10_cdc_population"
   pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  
+
+  censDir <-  "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+  cdcPopDir <-  "C:/Users/Daniel/Desktop/paper2021/data/10_cdc_population"
+  pop.summary.dir <-  "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
 }
 # https://wonder.cdc.gov/controller/saved/D134/D140F499
 cdcPopDir <- file.path(cdcPopDir, agr_by)
