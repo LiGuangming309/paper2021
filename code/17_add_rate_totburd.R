@@ -34,7 +34,7 @@ totalBurdenParsed2Dir <- args[17]
 # TODO delete
 if (rlang::is_empty(args)) {
   year <- 1998
-  agr_by <- "STATEFP"
+  agr_by <- "county"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -100,8 +100,12 @@ if (!file.exists(totalBurdenParsed2Dir)) {
   }
   
   #---read population data----
-  pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>%
-    read.csv() 
+  if(file.exists(file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")))){
+    pop_summary1 <- file.path(pop.summary.dir, paste0("pop_", agr_by, ".csv")) %>%
+      read.csv() 
+  }else{
+    pop_summary1 <- NULL
+  }
   
   pop_summary2 <- file.path(pop.summary.dir, agr_by, paste0("pop_sum_", year, ".csv")) %>%
     read.csv()
