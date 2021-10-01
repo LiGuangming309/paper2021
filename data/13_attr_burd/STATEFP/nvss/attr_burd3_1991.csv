@@ -1,256 +1,656 @@
 Year,Gender.Code,Race,Hispanic.Origin,rural_urban_class,STATEFP,attr,Education,source,measure1,measure2,scenario,method,min_age,max_age,mean,lower,upper
-1991,A,All,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,270.519184266414,278.139442978144,285.759701689874
+1991,A,All,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,56.896297394579,58.4990099972432,60.1017225999074
+1991,A,All,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,30.2624886360845,31.1149531047066,31.9674175733288
+1991,A,All,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,21.6174428567327,22.226384909035,22.8353269613373
 1991,A,All,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,All,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,67.1306809693524,69.0216860670806,70.9126911648088
-1991,A,All,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,231.625704296238,238.150372022893,244.675039749547
-1991,A,All,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,190.478201286742,195.843784421579,201.209367556417
-1991,A,All,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,49.1367793077983,50.520913936187,51.9050485645756
-1991,A,All,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,288.127705277496,296.243978665595,304.360252053693
-1991,A,All,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,330.915848965993,340.237422176303,349.558995386612
-1991,A,All,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,165.805344999942,170.475918098532,175.146491197122
-1991,A,All,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,81.6707312895483,83.9713152695356,86.2718992495229
-1991,A,All,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,262.922538832592,270.328807532102,277.735076231611
+1991,A,All,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,0,0,0
+1991,A,All,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,0,0,0
+1991,A,All,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.2928702459929,23.9490074360209,24.6051446260489
+1991,A,All,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,44.0590845774682,45.3001855514814,46.5412865254946
+1991,A,All,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,58.5518067484274,60.2011534173971,61.8505000863669
+1991,A,All,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,17.7087323026,18.2075698322507,18.7064073619014
+1991,A,All,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,40.2690834281488,41.4034238064065,42.5377641846642
+1991,A,All,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,65.7991944744602,67.6526929103604,69.5061913462607
+1991,A,All,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,77.8679563220512,80.0614198804189,82.2548834387865
+1991,A,All,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.299073674671,32.1807377218448,33.0624017690186
+1991,A,All,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.7066890510877,62.4167366299916,64.1267842088955
 1991,A,All,All Origins,666,15,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,All,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,184.083094088907,189.268533359017,194.453972629127
-1991,A,All,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,266.3039987522,273.805519843811,281.307040935422
-1991,A,All,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,347.189561938185,356.969549598415,366.749537258646
-1991,A,All,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,247.698619368872,254.676045266586,261.653471164301
-1991,A,All,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,231.075872678368,237.585052190435,244.094231702502
-1991,A,All,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,429.700020626794,441.804246559943,453.908472493093
-1991,A,All,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,223.799437556338,230.103647064968,236.407856573597
-1991,A,All,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,186.169767528004,191.41398633161,196.658205135216
-1991,A,All,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,182.89337962371,188.045305810294,193.197231996877
-1991,A,All,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,217.112491311732,223.228336137414,229.344180963097
-1991,A,All,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,372.087377423256,382.568711998559,393.050046573862
-1991,A,All,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,127.535589936442,131.128141765638,134.720693594833
-1991,A,All,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,497.415191351003,511.426886882017,525.438582413032
-1991,A,All,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,279.191803786398,287.056361639536,294.920919492674
-1991,A,All,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,173.740643788315,178.63474643024,183.528849072164
-1991,A,All,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,154.285915684652,158.631997816614,162.978079948576
-1991,A,All,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,85.6823440700535,88.0959312269565,90.5095183838593
-1991,A,All,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,284.056768736615,292.058367855956,300.059966975298
-1991,A,All,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,256.200348147969,263.417259363405,270.634170578841
-1991,A,All,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,52.2560786773146,53.728080893577,55.2000831098394
-1991,A,All,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,220.732205584439,226.950014192452,233.167822800464
-1991,A,All,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,261.603007049201,268.972105839319,276.341204629437
-1991,A,All,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,139.983216179151,143.926405367296,147.869594555441
-1991,A,All,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,266.972613816118,274.492969134882,282.013324453646
-1991,A,All,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,147.048471058891,151.190681511254,155.332891963617
-1991,A,All,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,113.54312069246,116.741518458444,119.939916224429
-1991,A,All,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,310.814401879839,319.56973714406,328.32507240828
-1991,A,All,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,138.229763237155,142.12355938468,146.017355532205
-1991,A,All,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,237.784950817984,244.48311844666,251.181286075335
-1991,A,All,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,129.834883389576,133.492204048438,137.149524707299
-1991,A,All,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,312.231901661683,321.027166497223,329.822431332764
-1991,A,All,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,118.455258849435,121.792026704349,125.128794559263
-1991,A,All,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,126.617916365801,130.184618235261,133.75132010472
-1991,A,All,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,234.547310234563,241.154276720044,247.761243205524
-1991,A,All,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,238.605710684846,245.326998309771,252.048285934696
-1991,A,All,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,119.651782439415,123.022255184187,126.392727928959
-1991,A,All,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,527.148058470688,541.997299554369,556.84654063805
-1991,A,All,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,241.945626922375,248.760996694836,255.576366467297
-1991,A,All,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,109.094850944026,112.167945336816,115.241039729605
-1991,A,American Indian or Alaska Native,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,66.3463753168483,39.807825190109,92.8849254435875
+1991,A,All,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,22.9251180990068,23.5708960736267,24.2166740482466
+1991,A,All,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,57.8894109438477,59.5200985760688,61.1507862082898
+1991,A,All,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.9668234159376,29.7827902727245,30.5987571295115
+1991,A,All,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.6905881542411,21.2734216233747,21.8562550925082
+1991,A,All,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,59.3189634416464,60.9899201583125,62.6608768749786
+1991,A,All,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.8719816531609,29.6852769109964,30.498572168832
+1991,A,All,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.6228440379721,21.2037692221403,21.7846944063086
+1991,A,All,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.4658721481072,29.267727701575,30.0695832550428
+1991,A,All,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.5680631472795,25.2601212641043,25.952179380929
+1991,A,All,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.3710385850019,18.8885326296499,19.4060266742978
+1991,A,All,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.2413994891757,29.0369318691524,29.8324642491292
+1991,A,All,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.4907223471761,23.1242638217445,23.7578052963128
+1991,A,All,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.3660581267426,17.8552428627072,18.3444275986718
+1991,A,All,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.6057541763082,62.3129585193028,64.0201628622974
+1991,A,All,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,30.0843480935467,30.931794518717,31.7792409438873
+1991,A,All,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,21.4965617483487,22.1020986990064,22.7076356496641
+1991,A,All,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,47.7138880206915,49.057941204373,50.4019943880544
+1991,A,All,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,31.4621154344943,32.3483722072969,33.2346289800996
+1991,A,All,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,22.4973581608189,23.1310865597152,23.7648149586115
+1991,A,All,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.4399081249019,21.0156801847583,21.5914522446147
+1991,A,All,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.0434129628481,19.5798471308157,20.1162812987832
+1991,A,All,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.7420190083818,17.2136251776319,17.6852313468821
+1991,A,All,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,62.9608585544733,64.7344038658669,66.5079491772606
+1991,A,All,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.8218189077701,29.6337011305242,30.4455833532783
+1991,A,All,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.5870135055501,21.1669293789459,21.7468452523416
+1991,A,All,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,36.1008310858796,37.1177559052002,38.1346807245207
+1991,A,All,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,26.3943772603135,27.137880845111,27.8813844299086
+1991,A,All,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.0252038272318,19.5611250618017,20.0970462963716
+1991,A,All,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,46.2472993786792,47.5500402062477,48.8527810338161
+1991,A,All,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,27.9098033885714,28.6959950333199,29.4821866780684
+1991,A,All,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.2873996571037,20.8588757037827,21.4303517504616
+1991,A,All,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.5671899810372,25.2592235016298,25.9512570222224
+1991,A,All,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.2942258622431,21.8940632104753,22.4939005587075
+1991,A,All,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.7446581032436,17.2163386131941,17.6880191231446
+1991,A,All,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,48.914468099167,50.2923404399886,51.6702127808102
+1991,A,All,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,31.2673278924447,32.1480976922319,33.0288674920191
+1991,A,All,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,22.3366881032165,22.9658905849973,23.595093066778
+1991,A,All,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,43.916724118823,45.1538149390715,46.39090575932
+1991,A,All,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.2489356250564,29.044680290551,29.8404249560455
+1991,A,All,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.2010732042849,20.7701175198986,21.3391618355123
+1991,A,All,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,17.2915386415796,17.7786242371171,18.2657098326545
+1991,A,All,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.8992184436138,15.3189147378001,15.7386110319864
+1991,A,All,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,12.8528551809863,13.2149074396057,13.576959698225
+1991,A,All,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,19.5252050465028,20.0752108224606,20.6252165984184
+1991,A,All,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.1518058365026,18.6631243107703,19.174442785038
+1991,A,All,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.0837917543541,15.5086872967303,15.9335828391065
+1991,A,All,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.9408907489277,32.8406341503059,33.7403775516842
+1991,A,All,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.1702942770363,25.8793166510373,26.5883390250384
+1991,A,All,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.1571183534473,19.6967554901641,20.2363926268809
+1991,A,All,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.3051661340535,29.1024947575479,29.8998233810424
+1991,A,All,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.0414035062482,24.718626140227,25.3958487742058
+1991,A,All,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.406104357445,18.9245861703307,19.4430679832165
+1991,A,All,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.3551886016892,62.0553347594833,63.7554809172773
+1991,A,All,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.4265664081106,29.2273147576349,30.0280631071591
+1991,A,All,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.3046902915076,20.8766533983106,21.4486165051137
+1991,A,All,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,12.1551882617849,12.497587931131,12.839987600477
+1991,A,All,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,12.1477298180506,12.4899193903901,12.8321089627295
+1991,A,All,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.0999700107212,11.4126452222908,11.7253204338604
+1991,A,All,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,51.1327476292395,52.5731067173871,54.0134658055347
+1991,A,All,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.1017955806213,28.8933954561318,29.6849953316422
+1991,A,All,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.3601816453908,20.9337078889229,21.507234132455
+1991,A,All,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,52.1547785045805,53.6239271948504,55.0930758851203
+1991,A,All,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.6933549043581,29.5016184227907,30.3098819412234
+1991,A,All,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.6092783789584,21.1898214318868,21.7703644848152
+1991,A,All,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,12.0267818225689,12.3655644091201,12.7043469956713
+1991,A,All,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,11.954981138535,12.2917411706064,12.6285012026778
+1991,A,All,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.0982929171212,11.4109208866176,11.723548856114
+1991,A,All,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,61.4599331375955,63.1911988597813,64.9224645819671
+1991,A,All,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.9320262499761,29.747012904905,30.5619995598339
+1991,A,All,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.6657330356972,21.2478663606464,21.8299996855956
+1991,A,All,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,30.5080546150528,31.3674364351951,32.2268182553374
+1991,A,All,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.8829071184665,26.6120030936346,27.3410990688026
+1991,A,All,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.7377658435054,20.2937592475478,20.8497526515902
+1991,A,All,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.6427710356823,24.3087645859832,24.9747581362841
+1991,A,All,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.9068798758683,19.4394680413857,19.9720562069031
+1991,A,All,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.1987810655653,15.6269157434686,16.0550504213718
+1991,A,All,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,58.6714441956087,60.3241609335132,61.9768776714177
+1991,A,All,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.59919939006,29.4048106404842,30.2104218909085
+1991,A,All,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.4344189628663,21.01003639844,21.5856538340137
+1991,A,All,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,39.5354494120562,40.6491240433817,41.7627986747072
+1991,A,All,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,26.8179740431362,27.5734099316753,28.3288458202143
+1991,A,All,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.1560076444888,19.6956134936293,20.2352193427698
+1991,A,All,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,56.7635564825726,58.3625299046169,59.9615033266612
+1991,A,All,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,29.3437651583685,30.170350092407,30.9969350264456
+1991,A,All,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.9611150775509,21.5515690233974,22.1420229692439
+1991,A,All,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,12.1646989951968,12.5073665725263,12.8500341498558
+1991,A,All,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,12.0164782454242,12.3549705903657,12.6934629353072
+1991,A,All,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.1348678753601,11.4485261253703,11.7621843753804
+1991,A,All,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,57.6304000159718,59.2537915657175,60.8771831154632
+1991,A,All,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,29.5277727523291,30.3595409988736,31.1913092454181
+1991,A,All,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,21.1049974090767,21.6995043783465,22.2940113476163
+1991,A,All,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.722406695725,32.6159956167313,33.5095845377376
+1991,A,All,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.0759696049188,25.7823349459024,26.488700286886
+1991,A,All,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.810603895833,19.3404800619128,19.8703562279926
+1991,A,All,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.1491334539542,28.9420667906853,29.7350001274164
+1991,A,All,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.7438558663497,21.3281898344159,21.9125238024821
+1991,A,All,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.5060872795174,15.9428784704897,16.379669661462
+1991,A,All,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,19.3402736528725,19.8850700937985,20.4298665347245
+1991,A,All,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.2874746991812,18.8026148315525,19.3177549639238
+1991,A,All,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.2158092980968,16.6725926586066,17.1293760191163
+1991,A,All,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,54.6372447820856,56.1763220998908,57.7153994176961
+1991,A,All,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.7560069133769,29.566035277134,30.3760636408911
+1991,A,All,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.5494772558738,21.1283357701238,21.7071942843738
+1991,A,All,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,26.9680484270211,27.7277117629935,28.4873750989659
+1991,A,All,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.2338566306304,22.8601624512116,23.4864682717927
+1991,A,All,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.4836401837372,17.9761370903213,18.4686339969055
+1991,A,All,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,53.4960723234547,55.0030039381999,56.5099355529451
+1991,A,All,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,31.0544001965805,31.9291720331039,32.8039438696273
+1991,A,All,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,22.1859347487461,22.8108906571615,23.4358465655769
+1991,A,All,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,33.4969124317408,34.440487429818,35.3840624278952
+1991,A,All,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.6479990597234,26.3704779064762,27.092956753229
+1991,A,All,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.0220372967912,19.5578693333205,20.0937013698498
+1991,A,All,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,10.3049279761975,10.5952076374988,10.8854872988002
+1991,A,All,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,10.2358127658766,10.524145519845,10.8124782738133
+1991,A,All,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.75726104107507,10.0321134647673,10.3069658884596
+1991,A,American Indian or Alaska Native,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,11.7586858042358,7.05521148254147,16.4621601259301
+1991,A,American Indian or Alaska Native,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,6.64277273823633,3.9856636429418,9.29988183353085
+1991,A,American Indian or Alaska Native,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,4.74516512323845,2.84709907394307,6.64323117253382
 1991,A,American Indian or Alaska Native,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,American Indian or Alaska Native,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,208.85677868788,125.314067212728,292.399490163032
-1991,A,American Indian or Alaska Native,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,74.0695732517268,44.4417439510361,103.697402552417
-1991,A,American Indian or Alaska Native,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,124.200991637682,74.5205949826095,173.881388292755
-1991,A,American Indian or Alaska Native,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,59.0435987759672,35.4261592655803,82.661038286354
-1991,A,American Indian or Alaska Native,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,323.335114218201,194.00106853092,452.66915990548
-1991,A,American Indian or Alaska Native,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,539.801234285692,323.880740571415,755.721727999967
-1991,A,American Indian or Alaska Native,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,66.1919294258501,39.7151576555101,92.66870119619
-1991,A,American Indian or Alaska Native,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,49.0910528163294,29.4546316897977,68.7274739428611
-1991,A,American Indian or Alaska Native,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.5994322209456,36.3596593325673,84.8392051093236
+1991,A,American Indian or Alaska Native,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,0,0,0
+1991,A,American Indian or Alaska Native,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,0,0,0
+1991,A,American Indian or Alaska Native,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,13.6353244804599,8.18119468827596,19.0894542726439
+1991,A,American Indian or Alaska Native,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.0856186015792,14.4513711609475,33.7198660422108
+1991,A,American Indian or Alaska Native,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.4735373026314,17.6841223815789,41.262952223684
+1991,A,American Indian or Alaska Native,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,19.6192663682862,11.7715598209717,27.4669729156007
+1991,A,American Indian or Alaska Native,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,40.0930149370923,24.0558089622554,56.1302209119291
+1991,A,American Indian or Alaska Native,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,80.8250488766767,48.495029326006,113.155068427347
+1991,A,American Indian or Alaska Native,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.6519119700568,14.1911471820341,33.1126767580795
+1991,A,American Indian or Alaska Native,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,13.2038464504645,7.92230787027871,18.4853850306503
+1991,A,American Indian or Alaska Native,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,13.7531997659416,8.25191985956493,19.2544796723181
 1991,A,American Indian or Alaska Native,All Origins,666,15,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,American Indian or Alaska Native,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,201.257202584095,120.754321550457,281.760083617732
-1991,A,American Indian or Alaska Native,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,139.074590127714,83.4447540766287,194.7044261788
-1991,A,American Indian or Alaska Native,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,178.667198173137,107.200318903882,250.134077442392
-1991,A,American Indian or Alaska Native,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,341.335446092875,204.801267655725,477.869624530024
-1991,A,American Indian or Alaska Native,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,364.118584262806,218.471150557684,509.766017967928
-1991,A,American Indian or Alaska Native,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,200.69702474757,120.418214848542,280.975834646597
-1991,A,American Indian or Alaska Native,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,157.833240370588,94.6999442223527,220.966536518823
-1991,A,American Indian or Alaska Native,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,125.857113052808,75.514267831685,176.199958273931
-1991,A,American Indian or Alaska Native,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,115.979398265565,69.5876389593389,162.37115757179
-1991,A,American Indian or Alaska Native,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,176.276837636507,105.766102581904,246.78757269111
-1991,A,American Indian or Alaska Native,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,791.355266912059,474.813160147236,1107.89737367688
-1991,A,American Indian or Alaska Native,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,353.065724042376,211.839434425426,494.292013659326
-1991,A,American Indian or Alaska Native,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,536.370466548875,321.822279929325,750.918653168423
-1991,A,American Indian or Alaska Native,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,167.040612463025,100.224367477815,233.856857448234
-1991,A,American Indian or Alaska Native,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,352.109423317241,211.265653990344,492.953192644136
-1991,A,American Indian or Alaska Native,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,457.141682970464,274.285009782279,639.998356158649
-1991,A,American Indian or Alaska Native,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,103.362321021775,62.017392613065,144.707249430485
-1991,A,American Indian or Alaska Native,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,153.472425556532,92.0834553339194,214.861395779145
-1991,A,American Indian or Alaska Native,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,160.944223350034,96.5665340100202,225.321912690047
-1991,A,American Indian or Alaska Native,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,71.9050357500874,43.1430214500525,100.667050050122
-1991,A,American Indian or Alaska Native,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,125.469786643981,75.2818719863884,175.657701301573
-1991,A,American Indian or Alaska Native,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,491.624284794647,294.974570876788,688.273998712504
-1991,A,American Indian or Alaska Native,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,284.384025421422,170.630415252853,398.137635589991
-1991,A,American Indian or Alaska Native,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,164.030878528526,98.4185271171154,229.643229939936
-1991,A,American Indian or Alaska Native,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,200.262968631271,120.157781178763,280.36815608378
-1991,A,American Indian or Alaska Native,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,175.342766411009,105.205659846605,245.479872975412
-1991,A,American Indian or Alaska Native,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,133.540814302952,80.124488581771,186.957140024132
-1991,A,American Indian or Alaska Native,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,301.636361881867,180.98181712912,422.290906634612
-1991,A,American Indian or Alaska Native,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,116.431830585795,69.8590983514768,163.004562820112
-1991,A,American Indian or Alaska Native,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,284.176966884871,170.506180130923,397.847753638819
-1991,A,American Indian or Alaska Native,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.3380948250217,36.202856895013,84.4733327550302
-1991,A,American Indian or Alaska Native,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.8764973759926,12.5258984255956,29.2270963263896
-1991,A,American Indian or Alaska Native,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,145.219835226301,87.1319011357805,203.307769316821
-1991,A,American Indian or Alaska Native,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,33.5732333407377,20.1439400044426,47.0025266770327
-1991,A,American Indian or Alaska Native,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,106.883124757756,64.1298748546534,149.636374660858
-1991,A,American Indian or Alaska Native,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,233.271651075285,139.962990645171,326.580311505399
-1991,A,American Indian or Alaska Native,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,62.0696260669722,37.2417756401833,86.8974764937609
-1991,A,American Indian or Alaska Native,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,491.013636961254,294.608182176752,687.419091745754
-1991,A,American Indian or Alaska Native,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,184.176030818078,110.505618490847,257.846443145309
-1991,A,Asian or Pacific Islander,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,111.418514034546,87.0457140894886,135.791313979602
+1991,A,American Indian or Alaska Native,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.459381011705,17.075628607023,39.8431334163869
+1991,A,American Indian or Alaska Native,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.1779854871797,16.9067912923078,39.4491796820514
+1991,A,American Indian or Alaska Native,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,13.9370346325582,8.36222077953492,19.5118484855814
+1991,A,American Indian or Alaska Native,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.95502473754157,5.97301484252494,13.9370346325582
+1991,A,American Indian or Alaska Native,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.6362969353089,17.7817781611853,41.4908157094324
+1991,A,American Indian or Alaska Native,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.3831173187132,8.62987039122795,20.1363642461985
+1991,A,American Indian or Alaska Native,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,10.2736552276523,6.16419313659139,14.3831173187132
+1991,A,American Indian or Alaska Native,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,45.7322093313412,27.4393255988047,64.0250930638775
+1991,A,American Indian or Alaska Native,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,38.3832497935148,23.0299498761089,53.7365497109207
+1991,A,American Indian or Alaska Native,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,28.5166566551254,17.1099939930753,39.9233193171755
+1991,A,American Indian or Alaska Native,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,46.171340633959,27.7028043803754,64.6398768875424
+1991,A,American Indian or Alaska Native,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,36.9966102271453,22.1979661362872,51.7952543180034
+1991,A,American Indian or Alaska Native,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,28.0386485775149,16.8231891465089,39.2541080085207
+1991,A,American Indian or Alaska Native,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,38.9943045691163,23.3965827414698,54.5920263967627
+1991,A,American Indian or Alaska Native,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.2751316503642,11.5650789902185,26.9851843105098
+1991,A,American Indian or Alaska Native,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.7716641791267,8.26299850747605,19.2803298507774
+1991,A,American Indian or Alaska Native,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,30.631255037042,18.3787530222252,42.8837570518587
+1991,A,American Indian or Alaska Native,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.4852703106054,13.4911621863632,31.4793784348475
+1991,A,American Indian or Alaska Native,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.2955719256913,9.77734315541479,22.8138006959678
+1991,A,American Indian or Alaska Native,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.0733480206315,12.0440088123789,28.1026872288841
+1991,A,American Indian or Alaska Native,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.7749490002394,11.2649694001436,26.2849286003351
+1991,A,American Indian or Alaska Native,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.9608805344129,10.1765283206477,23.745232748178
+1991,A,American Indian or Alaska Native,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,45.5964863144379,27.3578917886627,63.835080840213
+1991,A,American Indian or Alaska Native,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.6536915783399,12.3922149470039,28.9151682096758
+1991,A,American Indian or Alaska Native,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.7526368416714,8.85158210500282,20.6536915783399
+1991,A,American Indian or Alaska Native,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.4633356991412,18.8780014194847,44.0486699787976
+1991,A,American Indian or Alaska Native,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.8414929614088,13.7048957768453,31.9780901459722
+1991,A,American Indian or Alaska Native,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.5305341351701,9.91832048110205,23.1427477892381
+1991,A,American Indian or Alaska Native,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,82.9918771709693,49.7951263025816,116.188628039357
+1991,A,American Indian or Alaska Native,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,53.5180354387246,32.1108212632348,74.9252496142143
+1991,A,American Indian or Alaska Native,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,40.4096831898863,24.2458099139318,56.5735564658408
+1991,A,American Indian or Alaska Native,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,43.071248723769,25.8427492342614,60.2997482132765
+1991,A,American Indian or Alaska Native,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,35.2673959670085,21.1604375802051,49.3743543538118
+1991,A,American Indian or Alaska Native,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,28.1674981251846,16.9004988751107,39.4344973752583
+1991,A,American Indian or Alaska Native,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,74.9603890287288,44.9762334172373,104.94454464022
+1991,A,American Indian or Alaska Native,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,50.2740089895875,30.1644053937525,70.3836125854224
+1991,A,American Indian or Alaska Native,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,35.9156950219453,21.5494170131672,50.2819730307233
+1991,A,American Indian or Alaska Native,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,22.4179572642253,13.4507743585352,31.3851401699153
+1991,A,American Indian or Alaska Native,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,15.6236391300018,9.37418347800106,21.8730947820024
+1991,A,American Indian or Alaska Native,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.1699880452068,6.70199282712409,15.6379832632895
+1991,A,American Indian or Alaska Native,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.5356753333589,15.3214052000153,35.7499454667023
+1991,A,American Indian or Alaska Native,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,23.0694280102073,13.8416568061244,32.2971992142902
+1991,A,American Indian or Alaska Native,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.8276209987897,12.4965725992738,29.1586693983055
+1991,A,American Indian or Alaska Native,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,42.4255694858139,25.4553416914884,59.3957972801394
+1991,A,American Indian or Alaska Native,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,39.5084270311063,23.7050562186638,55.3117978435488
+1991,A,American Indian or Alaska Native,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,33.2384420210418,19.9430652126251,46.5338188294584
+1991,A,American Indian or Alaska Native,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.0844756679811,15.0506854007887,35.1182659351735
+1991,A,American Indian or Alaska Native,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.1395648862711,12.0837389317627,28.1953908407795
+1991,A,American Indian or Alaska Native,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.8862216444019,9.53173298664114,22.2407103021626
+1991,A,American Indian or Alaska Native,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,14.2721921110089,8.56331526660536,19.9810689554125
+1991,A,American Indian or Alaska Native,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,11.9061462413999,7.14368774483993,16.6686047379598
+1991,A,American Indian or Alaska Native,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.1441603672321,5.48649622033926,12.8018245141249
+1991,A,American Indian or Alaska Native,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.1663828462923,18.6998297077754,43.6329359848092
+1991,A,American Indian or Alaska Native,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.7032753222002,8.8219651933201,20.5845854510802
+1991,A,American Indian or Alaska Native,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,10.5023395158573,6.30140370951436,14.7032753222001
+1991,A,American Indian or Alaska Native,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,9.41290408269318,5.64774244961591,13.1780657157704
+1991,A,American Indian or Alaska Native,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,9.3988731601926,5.63932389611556,13.1584224242696
+1991,A,American Indian or Alaska Native,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,8.79359461699124,5.27615677019474,12.3110324637877
+1991,A,American Indian or Alaska Native,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.5912821554457,14.7547692932674,34.427795017624
+1991,A,American Indian or Alaska Native,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,13.5365794771963,8.12194768631775,18.9512112680747
+1991,A,American Indian or Alaska Native,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.84716448120732,5.90829868872439,13.7860302736902
+1991,A,American Indian or Alaska Native,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,71.219446009275,42.731667605565,99.7072244129848
+1991,A,American Indian or Alaska Native,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,42.886740628176,25.7320443769056,60.0414368794463
+1991,A,American Indian or Alaska Native,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,30.8464376650558,18.5078625990335,43.185012731078
+1991,A,American Indian or Alaska Native,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.2431925385189,12.1459155231113,28.3404695539264
+1991,A,American Indian or Alaska Native,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.1601027841688,12.0960616705013,28.2241438978362
+1991,A,American Indian or Alaska Native,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.198881804615,11.519329082769,26.8784345264609
+1991,A,American Indian or Alaska Native,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,34.5950063898063,20.7570038338838,48.4330089457287
+1991,A,American Indian or Alaska Native,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,16.0281924788625,9.61691548731748,22.4394694704074
+1991,A,American Indian or Alaska Native,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.4487089134732,6.86922534808391,16.0281924788624
+1991,A,American Indian or Alaska Native,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.6459424046372,18.9875654427823,44.304319366492
+1991,A,American Indian or Alaska Native,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,27.35251989628,16.411511937768,38.2935278547919
+1991,A,American Indian or Alaska Native,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.4781713703435,12.2869028222061,28.6694399184808
+1991,A,American Indian or Alaska Native,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,26.8823914580956,16.1294348748574,37.6353480413338
+1991,A,American Indian or Alaska Native,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.2875567424635,12.7725340454781,29.8025794394488
+1991,A,American Indian or Alaska Native,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.2314008823665,10.3388405294199,24.1239612353131
+1991,A,American Indian or Alaska Native,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.4747705255968,18.8848623153581,44.0646787358355
+1991,A,American Indian or Alaska Native,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.7186548225125,8.83119289350751,20.6061167515175
+1991,A,American Indian or Alaska Native,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,10.5209904140342,6.3125942484205,14.7293865796478
+1991,A,American Indian or Alaska Native,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,78.0520424487298,46.8312254692379,109.272859428222
+1991,A,American Indian or Alaska Native,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,51.9896844570106,31.1938106742063,72.7855582398147
+1991,A,American Indian or Alaska Native,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,37.1355031383941,22.2813018830364,51.9897043937516
+1991,A,American Indian or Alaska Native,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,26.594097966806,15.9564587800836,37.2317371535284
+1991,A,American Indian or Alaska Native,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.2410569859294,8.54463419155763,19.9374797803011
+1991,A,American Indian or Alaska Native,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,10.1726859260442,6.10361155562655,14.2417602964619
+1991,A,American Indian or Alaska Native,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,22.7133469764185,13.6280081858511,31.7986857669859
+1991,A,American Indian or Alaska Native,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.6001032935987,13.5600619761592,31.6401446110381
+1991,A,American Indian or Alaska Native,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,21.6285547512729,12.9771328507637,30.279976651782
+1991,A,American Indian or Alaska Native,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,10.8109713386536,6.48658280319217,15.135359874115
+1991,A,American Indian or Alaska Native,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,5.50084070314389,3.30050442188633,7.70117698440143
+1991,A,American Indian or Alaska Native,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,3.93237784897482,2.35942670938489,5.50532898856474
+1991,A,American Indian or Alaska Native,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,5.35305375402807,3.21183225241684,7.49427525563929
+1991,A,American Indian or Alaska Native,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,4.25812370663311,2.55487422397987,5.96137318928634
+1991,A,American Indian or Alaska Native,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,3.21715900737315,1.93029540442389,4.5040226103224
+1991,A,American Indian or Alaska Native,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.105926093745,13.863555656247,32.348296531243
+1991,A,American Indian or Alaska Native,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,17.3212753808778,10.3927652285267,24.2497855332288
+1991,A,American Indian or Alaska Native,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.5384443176885,8.12306659061312,18.9538220447639
+1991,A,American Indian or Alaska Native,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,2.92205445803991,1.75323267482395,4.09087624125587
+1991,A,American Indian or Alaska Native,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,2.74835252080224,1.64901151248134,3.84769352912312
+1991,A,American Indian or Alaska Native,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,2.46638001074584,1.4798280064475,3.45293201504417
+1991,A,American Indian or Alaska Native,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.3353280377583,14.601196822655,34.0694592528616
+1991,A,American Indian or Alaska Native,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,12.4139341244356,7.44836047466137,17.3795077742098
+1991,A,American Indian or Alaska Native,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,8.86912406944354,5.32147444166613,12.4167736972209
+1991,A,American Indian or Alaska Native,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,37.9310478465102,22.7586287079061,53.1034669851141
+1991,A,American Indian or Alaska Native,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,31.114376997061,18.6686261982366,43.5601277958854
+1991,A,American Indian or Alaska Native,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,24.8320193033563,14.8992115820138,34.7648270246987
+1991,A,American Indian or Alaska Native,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,6.28602812853265,3.77161687711959,8.80043937994569
+1991,A,American Indian or Alaska Native,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,3.67478196100368,2.20486917660221,5.14469474540514
+1991,A,American Indian or Alaska Native,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,2.62565792368228,1.57539475420937,3.67592109315519
+1991,A,American Indian or Alaska Native,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,54.5170490943192,32.7102294565915,76.3238687320467
+1991,A,American Indian or Alaska Native,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,43.8101993023998,26.2861195814399,61.3342790233596
+1991,A,American Indian or Alaska Native,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,34.105384131399,20.4632304788394,47.7475377839585
+1991,A,American Indian or Alaska Native,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,21.5284158692919,12.9170495215751,30.1397822170086
+1991,A,American Indian or Alaska Native,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.4515444793662,12.8709266876197,30.0321622711127
+1991,A,American Indian or Alaska Native,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.4147740646212,12.2488644387727,28.5806836904696
+1991,A,Asian or Pacific Islander,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,37.8408857985842,29.5631920301439,46.1185795670244
+1991,A,Asian or Pacific Islander,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.2854211436098,15.0667352684452,23.5041070187745
+1991,A,Asian or Pacific Islander,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.7757785429089,10.7623269866475,16.7892300991701
 1991,A,Asian or Pacific Islander,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,Asian or Pacific Islander,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,59.9041603654165,46.8001252854816,73.0081954453513
-1991,A,Asian or Pacific Islander,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,174.512745133511,136.338082135555,212.687408131466
-1991,A,Asian or Pacific Islander,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,189.043129173775,147.689944667012,230.396313680538
-1991,A,Asian or Pacific Islander,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,34.4210616655052,26.8914544261759,41.9506689048344
-1991,A,Asian or Pacific Islander,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,134.69019563418,105.226715339203,164.153675929157
-1991,A,Asian or Pacific Islander,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,111.266971931071,86.9273218211491,135.606622040993
-1991,A,Asian or Pacific Islander,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,77.3302998063997,60.4142967237497,94.2463028890496
-1991,A,Asian or Pacific Islander,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,33.771437858042,26.3839358265952,41.1589398894886
-1991,A,Asian or Pacific Islander,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,84.0073275594268,65.6307246558021,102.383930463051
+1991,A,Asian or Pacific Islander,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,0,0,0
+1991,A,Asian or Pacific Islander,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,0,0,0
+1991,A,Asian or Pacific Islander,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.3078329359701,18.2092444812266,28.4064213907136
+1991,A,Asian or Pacific Islander,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,94.2987642137166,73.670909541966,114.926618885467
+1991,A,Asian or Pacific Islander,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.3656601599051,47.1606719999258,73.5706483198842
+1991,A,Asian or Pacific Islander,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,19.8809014281722,15.5319542407595,24.2298486155849
+1991,A,Asian or Pacific Islander,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.6750183475572,18.496108084029,28.8539286110853
+1991,A,Asian or Pacific Islander,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,38.7288394408336,30.2569058131512,47.2007730685159
+1991,A,Asian or Pacific Islander,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,26.7775399268245,20.9199530678316,32.6351267858173
+1991,A,Asian or Pacific Islander,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,15.3831273298325,12.0180682264316,18.7481864332334
+1991,A,Asian or Pacific Islander,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,45.2733513929366,35.3698057757316,55.1768970101414
 1991,A,Asian or Pacific Islander,All Origins,666,15,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,Asian or Pacific Islander,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,180.363758863782,140.90918661233,219.818331115235
-1991,A,Asian or Pacific Islander,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,137.154759044188,107.152155503272,167.157362585104
-1991,A,Asian or Pacific Islander,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,83.0843814985222,64.9096730457204,101.259089951324
-1991,A,Asian or Pacific Islander,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,97.9259063545837,76.5046143395184,119.347198369649
-1991,A,Asian or Pacific Islander,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,79.7450562822867,62.3008252205364,97.1892873440368
-1991,A,Asian or Pacific Islander,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,193.028474979055,150.803496077386,235.253453880723
-1991,A,Asian or Pacific Islander,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,64.9682498872326,50.7564452244004,79.1800545500646
-1991,A,Asian or Pacific Islander,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,291.631549709669,227.837148210679,355.425951208659
-1991,A,Asian or Pacific Islander,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,86.5921216429146,67.650095033527,105.534148252302
-1991,A,Asian or Pacific Islander,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,121.204174182415,94.6907610800119,147.717587284819
-1991,A,Asian or Pacific Islander,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,220.444031343831,172.221899487368,268.666163200294
-1991,A,Asian or Pacific Islander,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,64.7266309546557,50.5676804333247,78.8855814759865
-1991,A,Asian or Pacific Islander,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,225.067617047633,175.834075818463,274.301158276802
-1991,A,Asian or Pacific Islander,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,119.586019422314,93.4265776736827,145.745461170945
-1991,A,Asian or Pacific Islander,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,150.04266673037,117.220833383102,182.864500077639
-1991,A,Asian or Pacific Islander,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,70.6701912687629,55.2110869287209,86.1292956088047
-1991,A,Asian or Pacific Islander,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,64.6215869846009,50.4856148317194,78.7575591374823
-1991,A,Asian or Pacific Islander,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,117.727424218993,91.9745501710882,143.480298266898
-1991,A,Asian or Pacific Islander,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,101.217119851911,79.0758748843053,123.358364819516
-1991,A,Asian or Pacific Islander,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,55.5711800699039,43.4149844296124,67.7273757101953
-1991,A,Asian or Pacific Islander,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,181.737898132616,141.982732916106,221.493063349126
-1991,A,Asian or Pacific Islander,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.5013929486065,47.2667132410987,73.736072656114
-1991,A,Asian or Pacific Islander,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,173.439963639248,135.499971593163,211.379955685334
-1991,A,Asian or Pacific Islander,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,115.89277914973,90.5412337107263,141.244324588733
-1991,A,Asian or Pacific Islander,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,83.473142756072,65.2133927781812,101.732892733963
-1991,A,Asian or Pacific Islander,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,64.9110225842665,50.7117363939581,79.1103087745747
-1991,A,Asian or Pacific Islander,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,181.913078227152,142.119592364962,221.706564089341
-1991,A,Asian or Pacific Islander,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,105.618434579437,82.5144020151851,128.722467143689
-1991,A,Asian or Pacific Islander,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,75.3851812809167,58.8946728757161,91.8756896861171
-1991,A,Asian or Pacific Islander,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,50.1189853698645,39.1554573202066,61.0825134195223
-1991,A,Asian or Pacific Islander,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,123.569186892172,96.5384272595095,150.599946524835
-1991,A,Asian or Pacific Islander,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,46.3910401901072,36.2430001485212,56.5390802316931
-1991,A,Asian or Pacific Islander,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,132.221867427368,103.298333927631,161.145400927105
-1991,A,Asian or Pacific Islander,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,205.00865871232,160.163014619,249.854302805639
-1991,A,Asian or Pacific Islander,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,105.016720413395,82.0443128229645,127.989128003825
-1991,A,Asian or Pacific Islander,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,116.640537191056,91.1254196805125,142.1556547016
-1991,A,Asian or Pacific Islander,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,266.041237133788,207.844716510771,324.237757756804
-1991,A,Asian or Pacific Islander,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,135.110426441047,105.555020657068,164.665832225026
-1991,A,Asian or Pacific Islander,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,17.8806257056237,13.9692388325185,21.7920125787288
-1991,A,Black or African American,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1166.85603149758,1116.36706859624,1217.34499439891
+1991,A,Asian or Pacific Islander,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.0233568353226,22.6744975275957,35.3722161430494
+1991,A,Asian or Pacific Islander,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,37.8092739119585,29.5384952437176,46.0800525801994
+1991,A,Asian or Pacific Islander,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,17.6222352678412,13.7673713030009,21.4770992326815
+1991,A,Asian or Pacific Islander,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,12.5873109056009,9.83383664500066,15.340785166201
+1991,A,Asian or Pacific Islander,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.9571521066775,23.4040250833418,36.5102791300132
+1991,A,Asian or Pacific Islander,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.101600212073,11.016875165682,17.186325258464
+1991,A,Asian or Pacific Islander,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,10.0725715800522,7.86919654691574,12.2759466131886
+1991,A,Asian or Pacific Islander,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.163791114798,19.6592118084359,30.66837042116
+1991,A,Asian or Pacific Islander,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.8349279527622,15.4960374630954,24.1738184424289
+1991,A,Asian or Pacific Islander,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.4461231479667,11.286033709349,17.6062125865844
+1991,A,Asian or Pacific Islander,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,19.7341677175075,15.4173185293027,24.0510169057122
+1991,A,Asian or Pacific Islander,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,14.8677847858879,11.6154568639749,18.1201127078009
+1991,A,Asian or Pacific Islander,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.038607280897,8.62391193820076,13.4533026235932
+1991,A,Asian or Pacific Islander,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,61.5776036335112,48.1075028386805,75.0477044283417
+1991,A,Asian or Pacific Islander,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,28.5919094853995,22.3374292854683,34.8463896853306
+1991,A,Asian or Pacific Islander,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.4235451915305,15.9558946808832,24.8911957021777
+1991,A,Asian or Pacific Islander,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.7055052846381,23.2074260036234,36.2035845656526
+1991,A,Asian or Pacific Islander,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.0762603849469,14.1220784257398,22.0304423441541
+1991,A,Asian or Pacific Islander,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,12.942027309246,10.1109588353484,15.7730957831435
+1991,A,Asian or Pacific Islander,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,60.2885632520643,47.1004400406752,73.4766864634533
+1991,A,Asian or Pacific Islander,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,52.8452278570677,41.285334263334,64.4051214508012
+1991,A,Asian or Pacific Islander,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,43.7087315349007,34.1474465116411,53.2700165581601
+1991,A,Asian or Pacific Islander,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,47.4161909591562,37.0438991868407,57.7884827314715
+1991,A,Asian or Pacific Islander,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.1978166913714,16.5607942901339,25.8348390926089
+1991,A,Asian or Pacific Islander,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.1412976366939,11.8291387786671,18.4534564947206
+1991,A,Asian or Pacific Islander,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,26.4205544083987,20.6410581315615,32.2000506852359
+1991,A,Asian or Pacific Islander,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,17.9599953629258,14.0312463772857,21.8887443485658
+1991,A,Asian or Pacific Islander,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,12.850221511727,10.0392355560367,15.6612074674173
+1991,A,Asian or Pacific Islander,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,40.3078009612408,31.4904695009693,49.1251324215121
+1991,A,Asian or Pacific Islander,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.5335495497577,17.6043355857482,27.4627635137671
+1991,A,Asian or Pacific Islander,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.1733842471843,12.6354564431127,19.7113120512559
+1991,A,Asian or Pacific Islander,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,22.723823491078,17.7529871024047,27.6946598797513
+1991,A,Asian or Pacific Islander,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,17.7591066697062,13.8743020857079,21.6439112537044
+1991,A,Asian or Pacific Islander,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,12.9849951952607,10.1445274962974,15.825462894224
+1991,A,Asian or Pacific Islander,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,43.1170954920168,33.6852308531381,52.5489601308954
+1991,A,Asian or Pacific Islander,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,27.5414306051587,21.5167426602802,33.5661185500372
+1991,A,Asian or Pacific Islander,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.6939130131449,15.3858695415194,24.0019564847703
+1991,A,Asian or Pacific Islander,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,39.0827656484274,30.5334106628339,47.6321206340209
+1991,A,Asian or Pacific Islander,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,23.0986044139111,18.045784698368,28.1514241294541
+1991,A,Asian or Pacific Islander,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.5034307950758,12.8933053086529,20.1135562814986
+1991,A,Asian or Pacific Islander,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.9151998075506,22.5899998496489,35.2403997654523
+1991,A,Asian or Pacific Islander,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.719654523352,17.7497300963687,27.6895789503352
+1991,A,Asian or Pacific Islander,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.7498672551511,14.6483337930868,22.8514007172154
+1991,A,Asian or Pacific Islander,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,27.2357982433202,21.2779673775938,33.1936291090464
+1991,A,Asian or Pacific Islander,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.9088035409818,19.460002766392,30.3576043155715
+1991,A,Asian or Pacific Islander,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.1860863877612,14.9891299904384,23.383042785084
+1991,A,Asian or Pacific Islander,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,32.6455644433474,25.5043472213651,39.7867816653295
+1991,A,Asian or Pacific Islander,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.2108634605893,19.6959870785854,30.7257398425932
+1991,A,Asian or Pacific Islander,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.7768385160694,14.6694050906792,22.8842719414596
+1991,A,Asian or Pacific Islander,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.7345411416876,20.1051102669434,31.3639720164318
+1991,A,Asian or Pacific Islander,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.3872433804476,15.9275338909746,24.8469528699205
+1991,A,Asian or Pacific Islander,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.0479443499034,11.756206523362,18.3396821764447
+1991,A,Asian or Pacific Islander,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,35.7983964324367,27.9674972128412,43.6292956520322
+1991,A,Asian or Pacific Islander,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,16.6942033137792,13.04234633889,20.3460602886684
+1991,A,Asian or Pacific Islander,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.9244309384137,9.31596167063571,14.5329002061917
+1991,A,Asian or Pacific Islander,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.1007546174096,15.7037145448513,24.497794689968
+1991,A,Asian or Pacific Islander,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.0976467051577,15.7012864884044,24.4940069219109
+1991,A,Asian or Pacific Islander,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.3430500953317,14.3305078869779,22.3555923036855
+1991,A,Asian or Pacific Islander,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,40.3114902145685,31.4933517301316,49.1296286990053
+1991,A,Asian or Pacific Islander,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.4247988572412,15.1756241072197,23.6739736072627
+1991,A,Asian or Pacific Islander,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.8951908520481,10.8556178531626,16.9347638509336
+1991,A,Asian or Pacific Islander,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.1844871769053,19.6753806069573,30.6935937468533
+1991,A,Asian or Pacific Islander,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,12.9942953431565,10.151793236841,15.836797449472
+1991,A,Asian or Pacific Islander,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.29579812339574,7.26234228390291,11.3292539628885
+1991,A,Asian or Pacific Islander,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,22.6171640694037,17.6696594292216,27.5646687095858
+1991,A,Asian or Pacific Islander,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.4539103869782,17.5421174898267,27.3657032841297
+1991,A,Asian or Pacific Islander,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,20.5204818067726,16.0316264115411,25.0093372020041
+1991,A,Asian or Pacific Islander,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,46.4462584517644,36.2861394154409,56.6063774880878
+1991,A,Asian or Pacific Islander,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.1141782477901,16.495451756086,25.7329047394942
+1991,A,Asian or Pacific Islander,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.0815558912787,11.7824655400614,18.3806462424958
+1991,A,Asian or Pacific Islander,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,41.7768394990103,32.6381558586017,50.9155231394187
+1991,A,Asian or Pacific Islander,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,34.568277974719,27.0064671677492,42.1300887816887
+1991,A,Asian or Pacific Islander,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,25.7553554034122,20.1213714089158,31.3893393979086
+1991,A,Asian or Pacific Islander,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.6879347106425,19.2874489926894,30.0884204285955
+1991,A,Asian or Pacific Islander,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.5000578243476,14.4531701752715,22.5469454734236
+1991,A,Asian or Pacific Islander,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.0517761594616,10.9779501245794,17.1256021943439
+1991,A,Asian or Pacific Islander,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,52.0833871431922,40.6901462056189,63.4766280807654
+1991,A,Asian or Pacific Islander,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.3390399202558,17.4523749376998,27.2257049028117
+1991,A,Asian or Pacific Islander,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.9574522291162,12.466759553997,19.4481449042354
+1991,A,Asian or Pacific Islander,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.7278364180005,20.0998722015629,31.3558006344381
+1991,A,Asian or Pacific Islander,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,16.395478307562,12.8089674277828,19.9819891873411
+1991,A,Asian or Pacific Islander,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.7111641660305,9.14934700471135,14.2729813273497
+1991,A,Asian or Pacific Islander,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,39.9411716812455,31.204040375973,48.6783029865179
+1991,A,Asian or Pacific Islander,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,20.0299139471026,15.6483702711739,24.4114576230312
+1991,A,Asian or Pacific Islander,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.3073438795473,11.1776124058963,17.4370753531983
+1991,A,Asian or Pacific Islander,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,10.8319161756961,8.46243451226254,13.2013978391296
+1991,A,Asian or Pacific Islander,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,10.6466816678719,8.31772005302488,12.9756432827188
+1991,A,Asian or Pacific Islander,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.53192438925052,7.44681592910196,11.6170328493991
+1991,A,Asian or Pacific Islander,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,67.0587435098524,52.3896433670721,81.7278436526325
+1991,A,Asian or Pacific Islander,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,32.3064001183459,25.2393750924577,39.373425144234
+1991,A,Asian or Pacific Islander,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,23.0781283982912,18.029787811165,28.1264689854174
+1991,A,Asian or Pacific Islander,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.1704621290951,19.6644235383555,30.6765007198346
+1991,A,Asian or Pacific Islander,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,17.9271114274228,14.005555802674,21.8486670521715
+1991,A,Asian or Pacific Islander,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.0415013837549,10.1886729560585,15.8943298114513
+1991,A,Asian or Pacific Islander,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,45.3651615693326,35.441532476041,55.2887906626241
+1991,A,Asian or Pacific Islander,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,32.4641857428667,25.3626451116146,39.5657263741187
+1991,A,Asian or Pacific Islander,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,23.7616564274407,18.563794083938,28.9595187709433
+1991,A,Asian or Pacific Islander,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,59.9845639359543,46.8629405749643,73.1061872969443
+1991,A,Asian or Pacific Islander,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,53.6794572458684,41.9370759733347,65.4218385184021
+1991,A,Asian or Pacific Islander,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,44.6091331697459,34.8508852888639,54.3673810506278
+1991,A,Asian or Pacific Islander,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,36.6884055442584,28.6628168314518,44.7139942570649
+1991,A,Asian or Pacific Islander,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,17.4214072114682,13.6104743839595,21.2323400389769
+1991,A,Asian or Pacific Islander,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,12.4445640113679,9.72231563388113,15.1668123888546
+1991,A,Asian or Pacific Islander,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.5616162711124,23.0950127118066,36.0282198304182
+1991,A,Asian or Pacific Islander,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,23.7570821459963,18.5602204265596,28.953943865433
+1991,A,Asian or Pacific Islander,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.1930516250957,14.213321582106,22.1727816680853
+1991,A,Asian or Pacific Islander,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,163.925812343191,128.067040893118,199.784583793264
+1991,A,Asian or Pacific Islander,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,88.9474288521612,69.4901787907509,108.404678913571
+1991,A,Asian or Pacific Islander,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,63.5395532659415,49.6402759890168,77.4388305428662
+1991,A,Asian or Pacific Islander,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.4644473121602,24.5815994626251,38.3472951616952
+1991,A,Asian or Pacific Islander,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.1397970305098,17.2967164300858,26.9828776309338
+1991,A,Asian or Pacific Islander,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.9598763468574,12.4686533959823,19.4510992977325
+1991,A,Asian or Pacific Islander,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1.24967280597647,0.976306879669115,1.52303873228382
+1991,A,Asian or Pacific Islander,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,1.24325835957411,0.971295593417272,1.51522112573095
+1991,A,Asian or Pacific Islander,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,1.20793688249907,0.943700689452396,1.47217307554574
+1991,A,Black or African American,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,202.559473904168,193.794881283315,211.324066525022
+1991,A,Black or African American,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,101.64944045555,97.2511473589159,106.047733552185
+1991,A,Black or African American,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,72.6070337537222,69.4653832547632,75.7486842526814
 1991,A,Black or African American,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,Black or African American,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,396.064562585329,378.92715362731,413.201971543348
-1991,A,Black or African American,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1273.3343027341,1218.23810694273,1328.43049852548
-1991,A,Black or African American,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1331.64559333999,1274.02631285894,1389.26487382105
-1991,A,Black or African American,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,156.268909796533,149.507274276491,163.030545316576
-1991,A,Black or African American,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1627.30548395594,1556.89322743862,1697.71774047327
-1991,A,Black or African American,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1645.48436363218,1574.28552097502,1716.68320628935
-1991,A,Black or African American,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,534.583584169429,511.45256370056,557.714604638299
-1991,A,Black or African American,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,438.699760482177,419.717559307467,457.681961656886
-1991,A,Black or African American,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1140.26287337124,1090.92457596575,1189.60117077673
+1991,A,Black or African American,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,0,0,0
+1991,A,Black or African American,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,0,0,0
+1991,A,Black or African American,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,97.1353945636156,92.9324207603823,101.338368366849
+1991,A,Black or African American,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,171.568334259105,164.144704411356,178.991964106855
+1991,A,Black or African American,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,229.022664353348,219.113029838059,238.932298868638
+1991,A,Black or African American,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,72.7274165688308,69.5805571980641,75.8742759395975
+1991,A,Black or African American,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,157.96937404878,151.134160748593,164.804587348968
+1991,A,Black or African American,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,244.053887025431,233.4938630676,254.613910983263
+1991,A,Black or African American,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,258.495116228744,247.310231391924,269.680001065565
+1991,A,Black or African American,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,127.225821362586,121.720857938243,132.730784786928
+1991,A,Black or African American,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,212.362996945474,203.174213423795,221.551780467153
 1991,A,Black or African American,All Origins,666,15,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,Black or African American,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,845.89129708901,809.290231349582,882.492362828439
-1991,A,Black or African American,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,2387.61890574626,2284.30847232455,2490.92933916798
-1991,A,Black or African American,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,2009.06236178975,1922.1317788277,2095.99294475181
-1991,A,Black or African American,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,967.04176641521,925.198613060706,1008.88491976972
-1991,A,Black or African American,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,876.220653989754,838.307260307505,914.134047672003
-1991,A,Black or African American,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1940.88517709692,1856.90456847254,2024.86578572131
-1991,A,Black or African American,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,967.974822653161,926.091296672976,1009.85834863335
-1991,A,Black or African American,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,955.837243323255,914.478901064076,997.195585582435
-1991,A,Black or African American,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,773.195960481125,739.740366037231,806.651554925021
-1991,A,Black or African American,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,804.332850502394,769.529986778733,839.135714226056
-1991,A,Black or African American,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,2376.40809972049,2273.58274925181,2479.23345018916
-1991,A,Black or African American,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,718.008945419099,686.941250665389,749.076640172811
-1991,A,Black or African American,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,2177.55519985196,2083.33406139682,2271.77633830709
-1991,A,Black or African American,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1621.637153189,1551.47016098371,1691.8041453943
-1991,A,Black or African American,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,532.867971732303,509.811184493887,555.924758970721
-1991,A,Black or African American,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,451.182303938334,431.659992710233,470.704615166435
-1991,A,Black or African American,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,271.540373397511,259.791030317811,283.289716477211
-1991,A,Black or African American,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1057.88292667984,1012.1091461985,1103.65670716118
-1991,A,Black or African American,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1458.626585687,1395.51293534478,1521.74023602923
-1991,A,Black or African American,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,203.176722611006,194.385422113414,211.968023108597
-1991,A,Black or African American,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1199.76550868945,1147.85257802501,1251.6784393539
-1991,A,Black or African American,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1161.36719815392,1111.11573284918,1211.61866345866
-1991,A,Black or African American,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,257.102072319597,245.977463421153,268.226681218041
-1991,A,Black or African American,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1196.82049656515,1145.03499430993,1248.60599882038
-1991,A,Black or African American,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,693.518239897165,663.510239132384,723.526240661947
-1991,A,Black or African American,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,283.379680363194,271.118059578249,295.64130114814
-1991,A,Black or African American,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,2305.16517731003,2205.42245329181,2404.90790132825
-1991,A,Black or African American,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1474.85055957464,1411.03491036227,1538.666208787
-1991,A,Black or African American,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1085.85854387091,1038.87427995342,1132.8428077884
-1991,A,Black or African American,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,155.808906146578,149.06717463062,162.550637662536
-1991,A,Black or African American,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1311.67071221807,1254.91572947787,1368.42569495828
-1991,A,Black or African American,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,462.035972459549,442.044031343511,482.027913575588
-1991,A,Black or African American,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,699.015977130029,668.770093504211,729.261860755848
-1991,A,Black or African American,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,394.791763052696,377.709427151378,411.874098954015
-1991,A,Black or African American,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1056.91392086032,1011.1820685154,1102.64577320524
-1991,A,Black or African American,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,619.984034185548,593.157801937135,646.810266433962
-1991,A,Black or African American,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,3013.65793726118,2883.25927651431,3144.05659800806
-1991,A,Black or African American,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,1366.75349971563,1307.61512713178,1425.89187229948
-1991,A,Black or African American,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,381.634452203193,365.121423021324,398.147481385062
-1991,A,White,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,217.355063577344,207.004822454614,224.255224325831
+1991,A,Black or African American,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,106.581047035544,101.969367115736,111.192726955351
+1991,A,Black or African American,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,254.43612392369,243.426868561607,265.445379285773
+1991,A,Black or African American,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,110.377353433982,105.60141025655,115.153296611414
+1991,A,Black or African American,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,78.8409667385588,75.4295787546789,82.2523547224388
+1991,A,Black or African American,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,244.477182493452,233.898842866331,255.055522120572
+1991,A,Black or African American,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,106.014438657897,101.427275446738,110.601601869056
+1991,A,Black or African American,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,75.724599041355,72.4480538905271,79.0011441921829
+1991,A,Black or African American,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,147.82139568615,141.425277603576,154.217513768724
+1991,A,Black or African American,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,106.85855875481,102.234871116381,111.48224639324
+1991,A,Black or African American,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,76.818929886391,73.4950338816914,80.1428258910907
+1991,A,Black or African American,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,139.723000240945,133.67729349975,145.768706982139
+1991,A,Black or African American,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,99.2334397327218,94.9396851289022,103.527194336542
+1991,A,Black or African American,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,72.378226581197,69.2464763925876,75.5099767698065
+1991,A,Black or African American,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,231.490337229802,221.473928407359,241.506746052246
+1991,A,Black or African American,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,103.754862392456,99.2654693081676,108.244255476746
+1991,A,Black or African American,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,74.1502052583063,70.9417829153989,77.3586276012138
+1991,A,Black or African American,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,167.838252822296,160.576020729024,175.100484915569
+1991,A,Black or African American,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,107.056796764165,102.424531519562,111.689062008768
+1991,A,Black or African American,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,76.5122400981915,73.2016143247121,79.822865871671
+1991,A,Black or African American,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,108.12038984579,103.442103746693,112.798675944887
+1991,A,Black or African American,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,94.5534477039209,90.4621927551936,98.6447026526483
+1991,A,Black or African American,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,77.489297650113,74.1363953479446,80.8421999522813
+1991,A,Black or African American,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,229.767947175398,219.826064845694,239.709829505103
+1991,A,Black or African American,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,101.263528020055,96.8819330576488,105.645122982461
+1991,A,Black or African American,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,72.3310914428964,69.2013807554634,75.4608021303295
+1991,A,Black or African American,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,137.119651768557,131.186589913187,143.052713623927
+1991,A,Black or African American,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,89.9698595680072,86.0769329520838,93.8627861839306
+1991,A,Black or African American,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,64.3880693243001,61.6020470939218,67.1740915546786
+1991,A,Black or African American,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,194.841201052647,186.410572160946,203.271829944348
+1991,A,Black or African American,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,99.8968984960357,95.5744365418804,104.219360450191
+1991,A,Black or African American,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,71.4411425161274,68.3499392341796,74.5323457980752
+1991,A,Black or African American,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,119.907493682201,114.719188667106,125.095798697297
+1991,A,Black or African American,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,90.4756480261437,86.5608363327049,94.3904597195827
+1991,A,Black or African American,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,65.3496708429453,62.5220408545487,68.177300831342
+1991,A,Black or African American,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,168.149196988494,160.873510580338,175.42488339665
+1991,A,Black or African American,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,105.401858779713,100.841201428667,109.962516130758
+1991,A,Black or African American,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,75.2941952490107,72.0362733391978,78.5521171588237
+1991,A,Black or African American,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,204.734629015402,195.875919106082,213.593338924722
+1991,A,Black or African American,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,106.443033816075,101.83732562211,111.04874201004
+1991,A,Black or African American,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,76.0360797252052,72.7460570447877,79.3261024056228
+1991,A,Black or African American,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,57.5194273705277,55.0306059939184,60.0082487471371
+1991,A,Black or African American,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,48.5687643964206,46.4672313215755,50.6702974712658
+1991,A,Black or African American,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,40.0178109918942,38.2862710932065,41.7493508905819
+1991,A,Black or African American,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,112.424522261376,107.559999663528,117.289044859224
+1991,A,Black or African American,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,97.9757097141712,93.7363761207696,102.215043307573
+1991,A,Black or African American,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,72.1599776634069,69.0376709375865,75.2822843892274
+1991,A,Black or African American,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,117.122706880292,112.054897447972,122.190516312613
+1991,A,Black or African American,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,97.2707793800218,93.0619475799247,101.479611180119
+1991,A,Black or African American,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,74.4291072421185,71.2086170249115,77.6495974593256
+1991,A,Black or African American,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,127.620988180813,122.09892619222,133.143050169406
+1991,A,Black or African American,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,96.2844103575999,92.1182579863576,100.450562728842
+1991,A,Black or African American,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,70.2084407017408,67.1705754790694,73.2463059244123
+1991,A,Black or African American,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,233.488490829764,223.385623438092,243.591358221437
+1991,A,Black or African American,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,105.444447160602,100.881947043076,110.006947278128
+1991,A,Black or African American,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,75.3174622575725,72.0585336021968,78.5763909129483
+1991,A,Black or African American,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,50.820497246629,48.6215334234575,53.0194610698004
+1991,A,Black or African American,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,50.8046557800546,48.6063774049562,53.0029341551532
+1991,A,Black or African American,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,46.409491687351,44.4013886816483,48.4175946930537
+1991,A,Black or African American,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,201.117175731886,192.414990243487,209.819361220285
+1991,A,Black or African American,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,95.6326776668552,91.4947252678086,99.7706300659019
+1991,A,Black or African American,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,68.4478467942784,65.4861611156798,71.409532472877
+1991,A,Black or African American,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,188.12999961826,179.989759250163,196.270239986358
+1991,A,Black or African American,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,101.309427977083,96.9258469588437,105.693008995322
+1991,A,Black or African American,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,72.3869137422796,69.2547876668925,75.5190398176667
+1991,A,Black or African American,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,49.9133636591596,47.7536508085229,52.0730765097963
+1991,A,Black or African American,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,49.5689733819584,47.4241620337006,51.7137847302162
+1991,A,Black or African American,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,45.9227497992762,43.9357077406537,47.9097918578988
+1991,A,Black or African American,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,227.508979888824,217.664841335942,237.353118441705
+1991,A,Black or African American,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,99.1225822953565,94.8336244075767,103.411540183136
+1991,A,Black or African American,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,70.8018444966832,67.738303148269,73.8653858450974
+1991,A,Black or African American,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,113.46820862289,108.558526519015,118.377890726766
+1991,A,Black or African American,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,94.3306853347789,90.2490691424087,98.4123015271492
+1991,A,Black or African American,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,70.3806468919436,67.3353304398884,73.4259633439989
+1991,A,Black or African American,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,125.596543142913,120.162077333845,131.031008951982
+1991,A,Black or African American,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,86.2383177450944,82.5068520734317,89.9697834167572
+1991,A,Black or African American,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,63.157460934939,60.4246861829465,65.8902356869316
+1991,A,Black or African American,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,259.497131970842,248.268890683642,270.725373258042
+1991,A,Black or African American,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,103.919834423609,99.4233031264334,108.416365720784
+1991,A,Black or African American,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,74.2299061382615,71.0180351995867,77.4417770769363
+1991,A,Black or African American,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,190.247156879355,182.015308745152,198.479005013558
+1991,A,Black or African American,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,117.272028157088,112.197757707983,122.346298606193
+1991,A,Black or African American,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,83.7659610440623,80.1414723450405,87.3904497430843
+1991,A,Black or African American,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,189.785440126286,181.573570120822,197.99731013175
+1991,A,Black or African American,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,99.8020153854464,95.4836589504992,104.120371820394
+1991,A,Black or African American,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,71.2876472384583,68.2030855791019,74.3722088978147
+1991,A,Black or African American,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,22.6560478792481,21.6757381152422,23.636357643254
+1991,A,Black or African American,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.1878533148685,21.2278019695136,23.1479046602234
+1991,A,Black or African American,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.6173646065036,18.7685363302607,20.4661928827466
+1991,A,Black or African American,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,218.003010747674,208.570188167245,227.435833328102
+1991,A,Black or African American,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,104.818221035787,100.282817240969,109.353624830604
+1991,A,Black or African American,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,74.8716328825855,71.6319949213198,78.1112708438512
+1991,A,Black or African American,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,127.100291685278,121.600759833512,132.599823537045
+1991,A,Black or African American,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,95.0863139443723,90.9720022833177,99.2006256054269
+1991,A,Black or African American,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,69.0569430254258,66.0689022214411,72.0449838294106
+1991,A,Black or African American,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,128.758800189807,123.187505950825,134.330094428789
+1991,A,Black or African American,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,91.9720512357925,87.9924913265515,95.9516111450336
+1991,A,Black or African American,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,66.9447257752532,64.0480789869009,69.8413725636055
+1991,A,Black or African American,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,38.5806752055997,36.9113190668959,40.2500313443035
+1991,A,Black or African American,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,34.1055721146218,32.6298502442776,35.581293984966
+1991,A,Black or African American,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,28.3162559936984,27.0910333785864,29.5414786088103
+1991,A,Black or African American,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,200.97471182571,192.278690640944,209.670733010476
+1991,A,Black or African American,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,102.271832536293,97.8466090130877,106.697056059498
+1991,A,Black or African American,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,73.055968783638,69.8948932112691,76.217044356007
+1991,A,Black or African American,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,110.863975345297,106.066976412087,115.660974278507
+1991,A,Black or African American,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,85.508356313781,81.8084755117424,89.2082371158196
+1991,A,Black or African American,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,63.4875318878129,60.7404752195902,66.2345885560356
+1991,A,Black or African American,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,192.122187968906,183.80920868179,200.435167256022
+1991,A,Black or African American,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,109.555441355485,104.81506168145,114.29582102952
+1991,A,Black or African American,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,78.2644259349053,74.8779844281065,81.6508674417041
+1991,A,Black or African American,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,157.872350865162,151.041335683497,164.703366046828
+1991,A,Black or African American,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,92.2371205565344,88.2460913016844,96.2281498113845
+1991,A,Black or African American,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,65.9448092043379,63.0914280368425,68.7981903718333
+1991,A,Black or African American,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,34.5467697077625,33.0519575569459,36.0415818585791
+1991,A,Black or African American,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,34.4929940066917,33.0005086890944,35.9854793242889
+1991,A,Black or African American,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,34.1676661944063,32.6892575609945,35.6460748278181
+1991,A,White,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,48.0219043590604,45.735147008629,49.546409259348
+1991,A,White,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.9870106625703,24.7495339643527,26.8119951280487
+1991,A,White,All Origins,666,1,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.5636536943037,17.6796701850511,19.1529760338054
 1991,A,White,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,White,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,58.8336424196311,56.0320403996487,60.7013770996193
-1991,A,White,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,189.962056261884,180.916244058938,195.992597730515
-1991,A,White,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,166.817291701337,158.873611144131,172.113078739475
-1991,A,White,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,44.1297184502256,42.0283032859292,45.5306618930899
-1991,A,White,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,246.583453184742,234.841383985469,254.411499317591
-1991,A,White,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,274.193593212863,261.136755440822,282.898151727557
-1991,A,White,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,116.330395774989,110.790853119037,120.02342421229
-1991,A,White,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,69.3380602894626,66.0362478947264,71.5392685526202
-1991,A,White,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,211.482634197024,201.412032568595,218.196368615977
+1991,A,White,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,0,0,0
+1991,A,White,All Origins,666,2,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,0,0,0
+1991,A,White,All Origins,666,4,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,21.1695142634744,20.1614421556899,21.8415623353307
+1991,A,White,All Origins,666,5,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,37.5844425252887,35.7947071669417,38.7775994308535
+1991,A,White,All Origins,666,6,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,51.1259767042683,48.6914063850175,52.7490235837689
+1991,A,White,All Origins,666,8,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,15.5464666179246,14.8061586837377,16.0400052407158
+1991,A,White,All Origins,666,9,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,34.8804272457504,33.2194545197623,35.9877423964091
+1991,A,White,All Origins,666,10,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,56.2708397177909,53.5912759217057,58.0572155818478
+1991,A,White,All Origins,666,11,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,52.403543376247,49.9081365488068,54.0671479278739
+1991,A,White,All Origins,666,12,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,26.8973581913404,25.6165316108004,27.7512425783671
+1991,A,White,All Origins,666,13,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,51.1441354570911,48.7087004353249,52.7677588049353
 1991,A,White,All Origins,666,15,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-1991,A,White,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,163.651205752418,155.858291192779,168.84648212551
-1991,A,White,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,213.805065197255,203.623871616434,220.592527584469
-1991,A,White,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,296.60836807888,282.484160075124,306.024506748051
-1991,A,White,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,219.244062054749,208.803868623571,226.204191008868
-1991,A,White,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,202.843553691174,193.184336848738,209.283031586132
-1991,A,White,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,371.848430215259,354.141362109771,383.653142285584
-1991,A,White,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,175.756492349134,167.387135570604,181.336063534821
-1991,A,White,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,165.327176685952,157.454453986621,170.575658485506
-1991,A,White,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,150.368764878651,143.208347503477,155.1423764621
-1991,A,White,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,191.594970065694,182.471400062566,197.67735006778
-1991,A,White,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,301.393978435861,287.04188422463,310.962041243349
-1991,A,White,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,112.185240673248,106.843086355474,115.746676885097
-1991,A,White,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,380.086410718834,361.987057827462,392.15264597975
-1991,A,White,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,235.104008113954,223.908579156147,242.567627419158
-1991,A,White,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,152.160250358872,144.914524151307,156.990734497248
-1991,A,White,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,136.231184154002,129.743984908574,140.555983650955
-1991,A,White,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,77.183342350717,73.5079450959211,79.6336071872477
-1991,A,White,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,252.426794295901,240.406470758002,260.440343321168
-1991,A,White,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,215.346745806859,205.092138863675,222.183150435648
-1991,A,White,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,47.8734019766791,45.5937161682659,49.3931925156213
-1991,A,White,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,180.909996389687,172.295234656845,186.653170878248
-1991,A,White,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,211.521324981465,201.448880934729,218.236287679289
-1991,A,White,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,123.310190523212,117.438276688773,127.224799746171
-1991,A,White,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,228.319861909163,217.447487532537,235.568111493581
-1991,A,White,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,128.016843579842,121.920803409374,132.080870360155
-1991,A,White,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,101.001952325068,96.1923355476839,104.208363509991
-1991,A,White,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,260.170938076884,247.781845787509,268.430332936468
-1991,A,White,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,119.876630530879,114.168219553218,123.68223784932
-1991,A,White,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,184.835882753042,176.034174050517,190.703688554726
-1991,A,White,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,112.293055198281,106.945766855506,115.857914093465
-1991,A,White,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,263.478487058903,250.931892437051,271.842883473471
-1991,A,White,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,105.2040437093,100.194327342191,108.543854620706
-1991,A,White,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,112.790370232518,107.419400221446,116.371016906566
-1991,A,White,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,208.312145033106,198.392519079149,214.925229002411
-1991,A,White,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,196.310802275488,186.962668833798,202.542891236614
-1991,A,White,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,105.549826234558,100.523644032913,108.900614368989
-1991,A,White,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,460.387316074512,438.464110547155,475.002786426083
-1991,A,White,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,210.694078607132,200.661027244888,217.382779515295
-1991,A,White,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,96.6739614338542,92.0704394608137,99.742976082548
+1991,A,White,All Origins,666,16,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.4142975313807,19.4421881251245,21.0623704688849
+1991,A,White,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,48.1628736303636,45.8694034574892,49.6918537456132
+1991,A,White,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.8955935463728,23.7100890917837,25.6859298494323
+1991,A,White,All Origins,666,17,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.7825668188377,16.9357779227026,18.3470927495945
+1991,A,White,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,51.3638055347233,48.9179100330699,52.9944025358256
+1991,A,White,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.2523844987192,24.0498899987803,26.0540474986786
+1991,A,White,All Origins,666,18,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.0374174990852,17.1784928562716,18.6100339276276
+1991,A,White,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.061600590635,23.8681910387,25.8572069585916
+1991,A,White,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.7153212756409,20.6812583577532,22.4046965542326
+1991,A,White,All Origins,666,19,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.2517629847646,15.4778695092997,16.767691968408
+1991,A,White,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.4023359040373,23.240319908607,25.1770132343242
+1991,A,White,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.5989482485577,18.6656649986264,20.2211370818452
+1991,A,White,All Origins,666,20,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.1935578185243,14.4700550652613,15.6758929873664
+1991,A,White,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,52.852353269582,50.3355745424591,54.5302057543306
+1991,A,White,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,26.439119927688,25.1801142168458,27.2784570682495
+1991,A,White,All Origins,666,21,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.8917070654549,17.9921019670999,19.4914437976916
+1991,A,White,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,39.6930846599085,37.8029377713415,40.9531825856199
+1991,A,White,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,26.5410466776003,25.2771873120004,27.3836195880004
+1991,A,White,All Origins,666,22,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.9805427501872,18.0767073811307,19.5830996628916
+1991,A,White,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,18.1183936391429,17.2556129896599,18.6935807387982
+1991,A,White,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,16.8897415967459,16.0854681873771,17.4259238696585
+1991,A,White,All Origins,666,23,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.8553347189352,14.1479378275574,15.3269326465205
+1991,A,White,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,52.6952810574078,50.1859819594361,54.3681471227224
+1991,A,White,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.4566027091225,23.2920025801167,25.2330027951263
+1991,A,White,All Origins,666,24,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.4690019350875,16.6371447000833,18.0235734250902
+1991,A,White,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,31.7088786988434,30.1989320941366,32.715509768648
+1991,A,White,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,23.4028808605015,22.2884579623824,24.1458294592476
+1991,A,White,All Origins,666,25,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.8793853317638,16.0756050778704,17.4152388343595
+1991,A,White,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,38.7541198975957,36.9086856167579,39.9844094181543
+1991,A,White,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.0427932500833,22.8978983334127,24.8060565278637
+1991,A,White,All Origins,666,26,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.5192736782851,16.6850225507478,18.0754410966434
+1991,A,White,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,21.5017600168885,20.477866682751,22.1843555729802
+1991,A,White,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.7439684503081,17.851398524103,19.3390150677782
+1991,A,White,All Origins,666,27,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.78214462095,14.0782329723334,15.2514190533611
+1991,A,White,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,40.6119340570969,38.6780324353305,41.9012018049413
+1991,A,White,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,26.1830558339667,24.9362436513969,27.0142639556799
+1991,A,White,All Origins,666,28,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.7047428551258,17.8140408144056,19.298544215606
+1991,A,White,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,37.0716394035789,35.3063232415038,38.2485168449624
+1991,A,White,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.4660488112712,23.3009988678774,25.2427487735338
+1991,A,White,All Origins,666,29,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.4980710808924,16.66482960085,18.0535654009208
+1991,A,White,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,15.2871363954449,14.5591775194714,15.7724423127606
+1991,A,White,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,13.1578324919293,12.5312690399327,13.575541459927
+1991,A,White,All Origins,666,30,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,11.3386155723335,10.7986814974605,11.6985716222488
+1991,A,White,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,16.8791098163848,16.0753426822713,17.4149545724605
+1991,A,White,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,15.743154392189,14.9934803735134,16.2429370713062
+1991,A,White,All Origins,666,31,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.1589119319767,12.5322970780731,13.5766551679124
+1991,A,White,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,28.4084271377704,27.0556448931148,29.3102819675409
+1991,A,White,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.3014929057124,21.2395170530595,23.0094768074811
+1991,A,White,All Origins,666,32,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.9761032066471,16.1677173396639,17.5150271179692
+1991,A,White,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,25.0880492015364,23.8933801919395,25.8844952079344
+1991,A,White,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.3464761067553,20.3299772445289,22.0241420149063
+1991,A,White,All Origins,666,33,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.3536246137685,15.5748805845414,16.8727872999198
+1991,A,White,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,51.9675893615089,49.4929422490561,53.6173541031441
+1991,A,White,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.6602263399534,23.4859298475747,25.4430906682059
+1991,A,White,All Origins,666,34,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.614447385681,16.7756641768391,18.1736361915757
+1991,A,White,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,11.2160743394019,10.6819755613351,11.5721401914464
+1991,A,White,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,11.2092029352736,10.6754313669272,11.5650506475045
+1991,A,White,All Origins,666,35,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,10.2510793396944,9.76293270447092,10.5765104298435
+1991,A,White,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,42.6933045685017,40.6602900652398,44.0486475706764
+1991,A,White,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.5815998164193,23.4110474442089,25.3619680645596
+1991,A,White,All Origins,666,36,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.8737808762182,17.0226484535411,18.4412024913362
+1991,A,White,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,44.0185351266285,41.9224144063129,45.4159489401722
+1991,A,White,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.3366593464417,23.177770806135,25.1092517066462
+1991,A,White,All Origins,666,37,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.5033767929158,16.6698826599198,18.0590395482465
+1991,A,White,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,10.6024382837683,10.0975602702555,10.9390236261101
+1991,A,White,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,10.5388746587501,10.0370234845239,10.8734421082342
+1991,A,White,All Origins,666,38,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.77937108609654,9.31368674866339,10.089827311052
+1991,A,White,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,53.2342468474351,50.699282711843,54.9242229378298
+1991,A,White,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.2905655531051,24.0862529077192,26.093440650029
+1991,A,White,All Origins,666,39,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.0646896807893,17.2044663626565,18.6381718928779
+1991,A,White,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,27.0203611635972,25.7336772986641,27.878150406886
+1991,A,White,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.9323230102033,21.8403076287651,23.6603332644955
+1991,A,White,All Origins,666,40,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.5438390755667,16.7084181672064,18.1007863478069
+1991,A,White,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,20.7475661350662,19.7595867953012,21.4062190282429
+1991,A,White,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,16.6760552073893,15.8819573403708,17.2054537854017
+1991,A,White,All Origins,666,41,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.4474293834496,12.8070756032854,13.8743319035591
+1991,A,White,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,49.9483564534933,47.5698632890413,51.534018563128
+1991,A,White,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.9137762284813,23.727405931887,25.7046897595442
+1991,A,White,All Origins,666,42,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.8016933146935,16.9539936330415,18.3668264357949
+1991,A,White,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,34.614265137716,32.9659667978248,35.7131306976435
+1991,A,White,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,23.6386918478957,22.5130398551388,24.3891265097336
+1991,A,White,All Origins,666,44,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.8850698324529,16.0810188880504,17.4211037953879
+1991,A,White,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,48.2690347581163,45.9705092934442,49.8013850678978
+1991,A,White,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.8061219827329,23.6248780787933,25.5936179186927
+1991,A,White,All Origins,666,45,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.7200945650769,16.8762805381685,18.2826372496825
+1991,A,White,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,10.6222341843442,10.1164135088993,10.9594479679742
+1991,A,White,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,10.4909705332099,9.99140050781892,10.8240172168038
+1991,A,White,All Origins,666,46,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,9.71446261573604,9.25186915784386,10.0228582543308
+1991,A,White,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,49.1792611167422,46.8373915397546,50.7405075014007
+1991,A,White,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,25.4812737159308,24.267879729458,26.2902030402461
+1991,A,White,All Origins,666,47,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,18.2146977212983,17.3473311631413,18.792942093403
+1991,A,White,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,27.4692972714065,26.1612354965777,28.3413384546258
+1991,A,White,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,21.9956430891721,20.9482315134973,22.6939174729554
+1991,A,White,All Origins,666,48,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.5782670429919,15.7888257552304,17.1045612348329
+1991,A,White,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,24.9329338683102,23.7456513031526,25.7244555784153
+1991,A,White,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,18.3982739992731,17.5221657135935,18.9823461897263
+1991,A,White,All Origins,666,49,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,13.7598222968436,13.1045926636606,14.196642052299
+1991,A,White,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,17.1489933276314,16.3323745977443,17.6934058142229
+1991,A,White,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,16.22468329741,15.4520793308667,16.7397526084389
+1991,A,White,All Origins,666,50,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,14.3943797827959,13.7089331264724,14.851344220345
+1991,A,White,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,46.2590147393488,44.0562045136656,47.7275548898043
+1991,A,White,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,24.6421949562872,23.468757101226,25.4244868596614
+1991,A,White,All Origins,666,51,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,17.6114968394086,16.7728541327701,18.1705919771676
+1991,A,White,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,23.7639376661206,22.6323215867816,24.51834838568
+1991,A,White,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,19.6745878643603,18.7377027279622,20.2991779552923
+1991,A,White,All Origins,666,53,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,15.5186980539428,14.7797124323265,16.0113551350204
+1991,A,White,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,47.2012600060579,44.9535809581505,48.6997127046629
+1991,A,White,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,27.4222621736122,26.116440165345,28.2928101791237
+1991,A,White,All Origins,666,54,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,19.5910936581122,18.6581844362974,20.2130331393222
+1991,A,White,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,29.0469118581903,27.6637255792289,29.9690360441646
+1991,A,White,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,22.5745921665069,21.4996115871495,23.2912458860786
+1991,A,White,All Origins,666,55,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,16.7699502847478,15.9713812235693,17.3023296588667
+1991,A,White,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,A,di_gee,25,150,9.14957922552391,8.71388497668945,9.44004205808022
+1991,A,White,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,B,di_gee,25,150,9.08655777130641,8.65386454410136,9.37501992277646
+1991,A,White,All Origins,666,56,attributable,666,nvss,Deaths,age-adjusted rate,D,di_gee,25,150,8.65440352228361,8.24228906884154,8.92914649124499
