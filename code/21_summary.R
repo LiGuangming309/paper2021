@@ -94,6 +94,8 @@ test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
   all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ]
   expect_equal(nrow(all_burden_dupl), 0)
+  names(all_burden_dupl)
+  unique(all_burden_dupl$Education)
   if (nrow(all_burden_dupl) > 0) browser()
 })
 
