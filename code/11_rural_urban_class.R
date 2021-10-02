@@ -172,10 +172,10 @@ test_that("rural urban class", {
 
 
 #find replace for less categories
-rural_urban_class <- rural_urban_class %>%
-  mutate(rural_urban_class = case_when(rural_urban_class %in% 1:2 ~ 1,
-                                       rural_urban_class %in% 3:4 ~ 2,
-                                       rural_urban_class %in% 5:6 ~ 3))
+#rural_urban_class <- rural_urban_class %>%
+#  mutate(rural_urban_class = case_when(rural_urban_class %in% 1:2 ~ 1,
+#                                       rural_urban_class %in% 3:4 ~ 2,
+#                                       rural_urban_class %in% 5:6 ~ 3))
 
 write.csv(rural_urban_class,
   file = file.path(dataDir, "rural_urban_class.csv"),

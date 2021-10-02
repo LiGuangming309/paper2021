@@ -209,7 +209,7 @@ if (agr_by != "county") {
           filter(fromYear == corresponding_year[[as.character(year)]])
         rm(corresponding_year)
         
-        
+        test_that(" ")
         cens_agr <- cens_agr %>% 
           mutate(FIPS.code = paste0(state, str_pad(county, 3, pad = "0")) %>% as.double) %>%
           left_join(rural_urban_class, by = "FIPS.code") %>%
