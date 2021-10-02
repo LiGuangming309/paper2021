@@ -51,7 +51,7 @@ pm_summ <- lapply(agr_bys, function(agr_by){
   pm_summ <- pm_summ %>% rename("Region":=!!agr_by)
   pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
   
-  pm_summ <- pm_summ %>% filter(Race == "All" &  Hispanic.Origin == "All Origins" & Education == "666" & rural_urban_class == "666")
+  pm_summ <- pm_summ %>% filter(Race == "All" &  Hispanic.Origin == "All Origins" & Education == "666") #& rural_urban_class == "666"
   pm_summ <- pm_summ %>%
     group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age"))))) %>%
     summarise(pop_size = sum(pop_size))
@@ -95,7 +95,7 @@ states <- tigris::states() %>% filter(!(STUSPS %in% c("AS", "GU", "MP", "PR", "V
 ##-- plot---
 join_everything <- counties_shape %>%
   inner_join(rural_urban_class1, by = c("GEOID" ="FIPS.code")) %>%
-  inner_join(pm_summ, by = c("GEOID" ="Region"))
+  inner_join(pm_summ %>% filter(Year == 2016), by = c("GEOID" ="Region"))
 
 
 tm1 <- tm_shape(states) +
@@ -105,8 +105,8 @@ tm1 <- tm_shape(states) +
   tm_polygons(col = "rural_urban_class.x")+ 
   tm_legend(bg.color = "white", bg.alpha = 0.6)
 
-tmap_save(tm1,   "C:/Users/Daniel/Desktop/rural_ruban1.png",
-          dpi = 100)
+#tmap_save(tm1,   "C:/Users/Daniel/Desktop/rural_ruban1.png",
+#          dpi = 100)
 
 tm2 <- tm_shape(states) +
   tm_borders(lwd = 0.5, col = "black") +

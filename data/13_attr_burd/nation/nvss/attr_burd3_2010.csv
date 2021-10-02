@@ -1,217 +1,649 @@
 Year,nation,source,Gender.Code,Race,Hispanic.Origin,Education,rural_urban_class,attr,measure1,measure2,scenario,method,min_age,max_age,mean,lower,upper
-2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,15031.6938344023,15455.1218297376,15878.5498250729
-2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,9.18756146716691,9.44636601553781,9.70517056390871
-2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,14.6613154321733,15.0743102330796,15.4873050339859
-2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,308381.909853939,317068.724216022,325755.538578104
-2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,188.305518279682,193.609899076293,198.914279872904
-2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,300.783431578215,309.256204298728,317.728977019241
-2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,27710.482895353,28491.0598783207,29271.6368612884
-2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,27.7116672656023,28.4922776111122,29.2728879566221
-2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,48.4103426298083,49.7740142531832,51.1376858765581
-2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,566746.589946329,582711.282620873,598675.975295418
-2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,583.87533596993,600.322528532463,616.769721094997
-2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,990.108931236934,1017.99932366614,1045.88971609535
-2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,15024.7818494853,15448.0151410201,15871.2484325549
-2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,26.5054800789067,27.2521133205661,27.9987465622254
-2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,49.6497333100959,51.048317347,52.4469013839041
-2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,306053.409930016,314674.632744947,323295.855559877
-2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,569.027345215781,585.056284517634,601.085223819487
-2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,1011.36045327615,1039.849480129,1068.33850698185
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,41221.2100746934,42382.3709218679,43543.5317690423
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,absolute number,B,di_gee,25,150,39662.5119503164,40779.7658080718,41897.0196658272
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,absolute number,D,di_gee,25,150,34682.9974437665,35659.9832872529,36636.9691307392
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,25.1949251684119,25.904641370339,26.6143575722661
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,24.2422291526312,24.9251088470715,25.6079885415118
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,21.1986868805772,21.7958329898892,22.3929790992013
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,40.2055264069972,41.3380764466309,42.4706264862646
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,crude rate,B,di_gee,25,150,38.6852343416594,39.7749592526921,40.8646841637248
+2010,us,nvss,A,All,All Origins,666,1,attributable,Deaths,crude rate,D,di_gee,25,150,33.8284142331681,34.7813273101587,35.7342403871494
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,845671.527731047,869493.260906569,893314.994082092
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,absolute number,B,di_gee,25,150,813694.139834745,836615.101520231,859536.063205717
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,absolute number,D,di_gee,25,150,711537.176648014,731580.477398662,751623.77814931
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,516.387668132641,530.933799629335,545.479931126029
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,496.861494875929,510.857593323139,524.853691770348
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,434.481960655303,446.720889124467,458.95981759363
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,824.834323840241,848.069093525881,871.303863211522
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,crude rate,B,di_gee,25,150,793.644853391365,816.001046444643,838.357239497921
+2010,us,nvss,A,All,All Origins,666,1,attributable,YLL,crude rate,D,di_gee,25,150,694.005020557241,713.554457756036,733.103894954832
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,20094.927011644,20660.9812936622,21227.0355756803
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,absolute number,B,di_gee,25,150,19905.6864661556,20466.4100285825,21027.1335910094
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,absolute number,D,di_gee,25,150,18313.4604168339,18829.3325412517,19345.2046656696
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,20.0957858863812,20.6618643620539,21.2279428377267
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,19.9065372525865,20.4672847808284,21.0280323090703
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,18.3142431501324,18.8301373233755,19.3460314966187
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,35.1059310452441,36.0948305113073,37.0837299773706
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,crude rate,B,di_gee,25,150,34.775326931229,35.7549136053482,36.7345002794673
+2010,us,nvss,A,All,All Origins,666,2,attributable,Deaths,crude rate,D,di_gee,25,150,31.9937006101412,32.8949316132437,33.7961626163463
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,410989.999780174,422567.182872573,434144.365964972
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,absolute number,B,di_gee,25,150,407119.571601776,418587.728548305,430055.885494834
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,absolute number,D,di_gee,25,150,374554.68677878,385105.52302607,395656.359273359
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,423.411324318079,435.338403876335,447.265483434591
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,419.42392043582,431.238678757956,443.053437080091
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,385.874829176798,396.744542674736,407.614256172674
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,718.001443061089,738.226835823374,758.452228585658
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,crude rate,B,di_gee,25,150,711.239787013886,731.274710591742,751.309634169598
+2010,us,nvss,A,All,All Origins,666,2,attributable,YLL,crude rate,D,di_gee,25,150,654.348781615858,672.781141661375,691.213501706892
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,9277.21985358989,9538.54999031073,9799.88012703157
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,absolute number,B,di_gee,25,150,9260.66135154884,9521.52505159247,9782.3887516361
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,absolute number,D,di_gee,25,150,8758.00218868318,9004.70647568834,9251.4107626935
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,16.3661055767933,16.8271226352946,17.2881396937958
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,16.336894434137,16.7970886435493,17.2572828529616
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,15.450144625635,15.8853599672022,16.3205753087694
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,30.656783985562,31.520355365437,32.383926745312
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,crude rate,B,di_gee,25,150,30.6020660389996,31.4640960682672,32.3261260975348
+2010,us,nvss,A,All,All Origins,666,3,attributable,Deaths,crude rate,D,di_gee,25,150,28.9410174040065,29.75625733088,30.5714972577534
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,188976.106229382,194299.376827393,199622.647425404
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,absolute number,B,di_gee,25,150,188638.811081688,193952.580407933,199266.349734178
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,absolute number,D,di_gee,25,150,178399.690649276,183425.034047847,188450.377446418
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,351.352308283413,361.249556404073,371.146804524732
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,350.725194988088,360.604777945499,370.48436090291
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,331.68819253047,341.031521897525,350.374851264581
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,624.47584066524,642.066709416374,659.657578167507
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,crude rate,B,di_gee,25,150,623.361241179033,640.920712761541,658.480184344049
+2010,us,nvss,A,All,All Origins,666,3,attributable,YLL,crude rate,D,di_gee,25,150,589.525834855538,606.132196400764,622.73855794599
 2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,absolute number,A,di_gee,25,150,71313.2162000142,73322.0391915639,75330.8621831136
+2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,absolute number,B,di_gee,25,150,69462.9465021136,71419.649220483,73376.3519388524
+2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,absolute number,D,di_gee,25,150,62204.5496338828,63956.79046864,65709.0313033973
 2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,21.411772141251,22.0149206522722,22.6180691632933
+2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,20.8562292099072,21.4437286242708,22.0312280386344
+2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,18.6768976899624,19.2030074840459,19.7291172781293
 2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,crude rate,A,di_gee,25,150,34.8791813189007,35.8616934687288,36.844205618557
+2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,crude rate,B,di_gee,25,150,33.9742173343716,34.9312375409737,35.8882577475757
+2010,us,nvss,A,All,All Origins,666,666,attributable,Deaths,crude rate,D,di_gee,25,150,30.4241468994399,31.2811651219594,32.1381833444788
 2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,absolute number,A,di_gee,25,150,1459783.57614633,1500904.24026312,1542024.90437992
+2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,absolute number,B,di_gee,25,150,1421908.50248731,1461962.26312076,1502016.02375421
+2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,absolute number,D,di_gee,25,150,1273328.91090534,1309197.33093084,1345065.75095634
 2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,440.22509426356,452.625801144223,465.026508024887
+2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,428.80315600899,440.882118150089,452.961080291187
+2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,383.996195731709,394.812989977672,405.629784223636
 2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,crude rate,A,di_gee,25,150,713.977839618889,734.08989143914,754.20194325939
-2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,absolute number,A,di_gee,25,150,1844.40114175398,1896.35610349353,1948.31106523308
-2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,4.70243365401604,4.83489657384748,4.96735949367891
-2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,crude rate,A,di_gee,25,150,5.21435598546286,5.361239252659,5.50812251985514
-2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,absolute number,A,di_gee,25,150,37800.6781718331,38865.4860076594,39930.2938434857
-2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,86.0581153246001,88.4822875872649,90.9064598499297
-2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,crude rate,A,di_gee,25,150,106.867312114332,109.877658934454,112.888005754576
-2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,absolute number,A,di_gee,25,150,3976.63073785947,4088.64850512311,4200.66627238676
-2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,19.6455433383947,20.1989389253917,20.7523345123888
-2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,crude rate,A,di_gee,25,150,26.4513208453998,27.1964284748477,27.9415361042956
-2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,absolute number,A,di_gee,25,150,78782.7166404007,81001.9480950599,83221.179549719
-2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,364.716246690266,374.989943780133,385.263640869999
-2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,crude rate,A,di_gee,25,150,524.038325984771,538.799968970257,553.561611955744
-2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,absolute number,A,di_gee,25,150,1451.06667279658,1491.94179034014,1532.81690788371
-2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,17.647955392379,18.1450808963896,18.6422064004003
-2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,crude rate,A,di_gee,25,150,27.2673399967675,28.0354340811834,28.8035281655994
-2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,absolute number,A,di_gee,25,150,28783.4315094817,29594.2323970727,30405.0332846638
-2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,339.04676754799,348.597380718356,358.147993888722
-2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,crude rate,A,di_gee,25,150,540.876327708709,556.112280601912,571.348233495116
+2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,crude rate,B,di_gee,25,150,695.45320096125,715.043431974243,734.633662987236
+2010,us,nvss,A,All,All Origins,666,666,attributable,YLL,crude rate,D,di_gee,25,150,622.783157577693,640.326345115093,657.869532652493
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,absolute number,A,di_gee,25,150,6804.87224107037,6996.55878307235,7188.24532507434
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,absolute number,B,di_gee,25,150,6559.9880116575,6744.77640635208,6929.56480104666
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,absolute number,D,di_gee,25,150,5760.46796478676,5922.73466802019,6085.00137125362
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,17.3495122689298,17.8382309243926,18.3269495798554
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,16.7251622749617,17.1962936066508,17.6674249383398
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,14.686728286632,15.1004389425935,15.5141495985549
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,crude rate,A,di_gee,25,150,19.238237006724,19.7801591759274,20.3220813451309
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,crude rate,B,di_gee,25,150,18.5459182272148,19.0683384589673,19.5907586907198
+2010,us,nvss,A,All,All Origins,higher,1,attributable,Deaths,crude rate,D,di_gee,25,150,16.2855736375701,16.7443221907411,17.2030707439121
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,absolute number,A,di_gee,25,150,139464.664037523,143393.246123087,147321.828208651
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,absolute number,B,di_gee,25,150,134445.804671284,138233.010436672,142020.21620206
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,absolute number,D,di_gee,25,150,118059.781425306,121385.409071089,124711.036716872
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,317.509280835891,326.453204239719,335.397127643547
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,306.083200695891,314.705262687325,323.327324678758
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,268.778307069281,276.349526986725,283.92074690417
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,crude rate,A,di_gee,25,150,394.284295981868,405.390895868682,416.497495755495
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,crude rate,B,di_gee,25,150,380.095343923611,390.802255020051,401.50916611649
+2010,us,nvss,A,All,All Origins,higher,1,attributable,YLL,crude rate,D,di_gee,25,150,333.769977680697,343.171948882971,352.573920085244
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,absolute number,A,di_gee,25,150,2684.94127901033,2760.57342771485,2836.20557641936
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,absolute number,B,di_gee,25,150,2662.2801447948,2737.27395169043,2812.26775858606
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,absolute number,D,di_gee,25,150,2452.4935535239,2521.57787897527,2590.66220442665
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,13.2642766540187,13.6379182499065,14.0115598457944
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,13.1523250236875,13.5228130525238,13.8933010813601
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,12.1159271677364,12.4572208907713,12.7985146138061
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,crude rate,A,di_gee,25,150,17.8594010618117,18.3624827818628,18.8655645019138
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,crude rate,B,di_gee,25,150,17.7086661881538,18.2075018554257,18.7063375226976
+2010,us,nvss,A,All,All Origins,higher,2,attributable,Deaths,crude rate,D,di_gee,25,150,16.3132305038849,16.7727581237127,17.2322857435404
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,absolute number,A,di_gee,25,150,53192.5094192292,54690.8899662497,56189.2705132703
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,absolute number,B,di_gee,25,150,52743.560086656,54229.2941736041,55715.0282605521
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,absolute number,D,di_gee,25,150,48587.3890301631,49956.0478760832,51324.7067220033
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,246.249091358056,253.185685480818,260.122279603581
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,244.170727949016,251.048776623636,257.926825298257
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,224.930174018315,231.266235258267,237.60229649822
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,crude rate,A,di_gee,25,150,353.820162336055,363.786927472282,373.753692608509
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,crude rate,B,di_gee,25,150,350.833889880289,360.71653466565,370.59917945101
+2010,us,nvss,A,All,All Origins,higher,2,attributable,YLL,crude rate,D,di_gee,25,150,323.188322224985,332.292218625689,341.396115026393
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,absolute number,A,di_gee,25,150,770.116290059832,791.809706681236,813.503123302639
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,absolute number,B,di_gee,25,150,768.931708982087,790.591757122428,812.251805262768
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,absolute number,D,di_gee,25,150,727.843922718558,748.34656842894,768.849214139322
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,9.36619811392057,9.63003468050989,9.8938712470992
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,9.35179117148946,9.61522190871452,9.87865264593957
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,8.85207917841275,9.10143352146663,9.35078786452051
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,crude rate,A,di_gee,25,150,14.4714389157875,14.8790850824294,15.2867312490713
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,crude rate,B,di_gee,25,150,14.4491791701768,14.8561983017311,15.2632174332853
+2010,us,nvss,A,All,All Origins,higher,3,attributable,Deaths,crude rate,D,di_gee,25,150,13.6770887771124,14.0623588835099,14.4476289899074
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,absolute number,A,di_gee,25,150,15276.0654660703,15706.3771693399,16136.6888726095
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,absolute number,B,di_gee,25,150,15252.5680562284,15682.2178606292,16111.86766503
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,absolute number,D,di_gee,25,150,14437.548661211,14844.2401727944,15250.9316843778
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,179.940345730372,185.009087863622,190.077829996872
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,179.663564247593,184.724509719356,189.785455191119
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,170.063260292224,174.853774666653,179.644289041082
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,crude rate,A,di_gee,25,150,287.05619023931,295.142280105206,303.228369971102
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,crude rate,B,di_gee,25,150,286.614644805723,294.688296772082,302.76194873844
+2010,us,nvss,A,All,All Origins,higher,3,attributable,YLL,crude rate,D,di_gee,25,150,271.299420933158,278.941658142543,286.583895351928
 2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,absolute number,A,di_gee,25,150,10439.1063665562,10733.1657008254,11027.2250350946
+2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,absolute number,B,di_gee,25,150,10151.6880997977,10437.6511448624,10723.6141899271
+2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,absolute number,D,di_gee,25,150,9060.92961576714,9316.16706973242,9571.40452369769
 2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,15.3970062150956,15.8307247000279,16.2644431849602
+2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,14.9730828748956,15.3948598572871,15.8166368396785
+2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,13.3642847107548,13.7407434350014,14.1172021592481
 2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,crude rate,A,di_gee,25,150,18.7325830457087,19.2602614413624,19.7879398370162
+2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,crude rate,B,di_gee,25,150,18.2168217954777,18.7299717052095,19.2431216149413
+2010,us,nvss,A,All,All Origins,higher,666,attributable,Deaths,crude rate,D,di_gee,25,150,16.2594967939457,16.7175107881413,17.175524782337
 2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,absolute number,A,di_gee,25,150,211008.042252246,216951.930766394,222895.819280542
+2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,absolute number,B,di_gee,25,150,205198.39115313,210978.62752364,216758.863894151
+2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,absolute number,D,di_gee,25,150,183150.640684501,188309.813661529,193468.986638557
 2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,284.151018424552,292.15527246468,300.159526504808
+2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,276.327533315241,284.111407493135,291.895281671029
+2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,246.637239605288,253.584767481493,260.532295357699
 2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,crude rate,A,di_gee,25,150,378.645981371159,389.312065353446,399.978149335732
-2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,absolute number,A,di_gee,25,150,11568.6622248173,11894.5400339671,12220.4178431169
-2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,14.292825226474,14.6954400215859,15.0980548166979
-2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,crude rate,A,di_gee,25,150,26.2146448287034,26.9530855281035,27.6915262275036
-2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,absolute number,A,di_gee,25,150,229872.752082015,236348.040873058,242823.329664101
-2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,302.091566282672,310.601187868099,319.110809453526
-2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,crude rate,A,di_gee,25,150,520.892773470339,535.565809342743,550.238845215146
-2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,absolute number,A,di_gee,25,150,18565.7448982032,19088.7236277301,19611.702357257
-2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,35.5612507892876,36.5629761636337,37.5647015379799
-2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,crude rate,A,di_gee,25,150,69.4084317195106,71.363598810201,73.3187659008915
-2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,absolute number,A,di_gee,25,150,372565.968263114,383060.784270525,393555.600277937
-2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,778.357565928928,800.283131166363,822.208696403798
-2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,crude rate,A,di_gee,25,150,1392.84578728141,1432.08087988088,1471.31597248036
-2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,absolute number,A,di_gee,25,150,11224.3226151286,11540.5007169632,11856.6788187978
-2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,32.2670172576261,33.1759473212212,34.0848773848163
-2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,crude rate,A,di_gee,25,150,66.3267848455488,68.1951449820431,70.0635051185374
-2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,absolute number,A,di_gee,25,150,224130.679479593,230444.219746624,236757.760013654
-2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,714.390810540091,734.514495344037,754.638180147983
-2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,crude rate,A,di_gee,25,150,1324.43336358604,1361.74134565889,1399.04932773173
+2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,crude rate,B,di_gee,25,150,368.220781372292,378.593197748977,388.965614125661
+2010,us,nvss,A,All,All Origins,higher,666,attributable,YLL,crude rate,D,di_gee,25,150,328.656923880829,337.914865398599,347.172806916369
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,absolute number,A,di_gee,25,150,27603.0553281671,28380.6061824816,29158.1570367962
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,absolute number,B,di_gee,25,150,26322.7144218822,27064.1993351747,27805.6842484671
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,absolute number,D,di_gee,25,150,22780.0408242723,23421.7321150968,24063.4234059214
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,34.1029617647441,35.0636085750185,36.024255385293
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,32.5211290127619,33.4372171539665,34.3533052951711
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,28.144234469462,28.9370298066299,29.7298251437979
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,crude rate,A,di_gee,25,150,62.5486575329911,64.310591548005,66.0725255630188
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,crude rate,B,di_gee,25,150,59.6473988164979,61.327607233864,63.0078156512302
+2010,us,nvss,A,All,All Origins,lower,1,attributable,Deaths,crude rate,D,di_gee,25,150,51.6196832258271,53.0737588096532,54.5278343934793
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,absolute number,A,di_gee,25,150,548480.902186433,563931.068445206,579381.234703978
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,absolute number,B,di_gee,25,150,523040.148362754,537773.673668747,552507.19897474
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,absolute number,D,di_gee,25,150,452646.172483338,465396.768891319,478147.3652993
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,720.7964115665,741.100535835979,761.404660105458
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,687.362970236902,706.725307426674,726.087644616446
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,594.853413372633,611.609847552144,628.366281731654
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,crude rate,A,di_gee,25,150,1242.86039014085,1277.8705419758,1312.88069381076
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,crude rate,B,di_gee,25,150,1185.21151832648,1218.59775827934,1251.9839982322
+2010,us,nvss,A,All,All Origins,lower,1,attributable,YLL,crude rate,D,di_gee,25,150,1025.69842684729,1054.5913402796,1083.48425371192
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,absolute number,A,di_gee,25,150,14162.9987310079,14561.9564417406,14960.9141524732
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,absolute number,B,di_gee,25,150,14014.2409419495,14409.0082924269,14803.7756429044
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,absolute number,D,di_gee,25,150,12862.7378178235,13225.0684605791,13587.3991033347
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,27.1281304662588,27.8923031554492,28.6564758446396
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,26.8431964077239,27.5993427854062,28.3554891630886
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,24.6375810873467,25.3315974560044,26.025613824662
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,crude rate,A,di_gee,25,150,52.9486716398767,54.4401835170564,55.931695394236
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,crude rate,B,di_gee,25,150,52.3925374852159,53.86838361156,55.3442297379041
+2010,us,nvss,A,All,All Origins,lower,2,attributable,Deaths,crude rate,D,di_gee,25,150,48.0876185927112,49.4421993981396,50.7967802035681
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,absolute number,A,di_gee,25,150,284214.361699966,292220.400057711,300226.438415457
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,absolute number,B,di_gee,25,150,281229.181734328,289151.130515577,297073.079296825
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,absolute number,D,di_gee,25,150,258121.524123483,265392.552972031,272663.58182058
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,593.775109965489,610.501169401137,627.227228836784
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,587.538530111602,604.088911241507,620.639292371411
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,539.262461805775,554.452953687628,569.643445569481
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,crude rate,A,di_gee,25,150,1062.54142917074,1092.47217365443,1122.40291813811
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,crude rate,B,di_gee,25,150,1051.38127045094,1080.99764426646,1110.61401808198
+2010,us,nvss,A,All,All Origins,lower,2,attributable,YLL,crude rate,D,di_gee,25,150,964.992801565134,992.17569738387,1019.35859320261
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,absolute number,A,di_gee,25,150,7376.83436886312,7584.6325200987,7792.43067133428
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,absolute number,B,di_gee,25,150,7362.68741494108,7570.08706043238,7777.48670592367
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,absolute number,D,di_gee,25,150,6957.18776497495,7153.16488511509,7349.14200525523
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,21.2064861327071,21.8038519392623,22.4012177458174
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,21.1658173082268,21.7620375140923,22.3582577199579
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,20.0001109531918,20.5634943603239,21.1268777674561
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,crude rate,A,di_gee,25,150,43.5912012512328,44.8191224132393,46.0470435752459
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,crude rate,B,di_gee,25,150,43.5076040488731,44.733170360109,45.9587366713448
+2010,us,nvss,A,All,All Origins,lower,3,attributable,Deaths,crude rate,D,di_gee,25,150,41.1114248797179,42.2694931861888,43.4275614926597
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,absolute number,A,di_gee,25,150,147302.866836099,151452.243366694,155601.619897288
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,absolute number,B,di_gee,25,150,147020.376167946,151161.795214931,155303.214261915
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,absolute number,D,di_gee,25,150,138923.23612734,142836.566722476,146749.897317612
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,469.510977605819,482.736638946828,495.962300287837
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,468.610571031134,481.810868806659,495.011166582184
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,442.801866706957,455.275158726872,467.748450746786
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,crude rate,A,di_gee,25,150,870.442332315174,894.961834633912,919.481336952649
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,crude rate,B,di_gee,25,150,868.773038014758,893.245517958836,917.717997902913
+2010,us,nvss,A,All,All Origins,lower,3,attributable,YLL,crude rate,D,di_gee,25,150,820.925405355506,844.050064661295,867.174723967084
 2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,absolute number,A,di_gee,25,150,49414.8387886732,50806.806078495,52198.7733683168
+2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,absolute number,B,di_gee,25,150,47927.9436124273,49278.0265310872,50628.1094497471
+2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,absolute number,D,di_gee,25,150,42751.0229314824,43955.2770985664,45159.5312656504
 2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,29.4036934468746,30.2319665017162,31.0602395565577
+2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,28.5189347180858,29.3222849918347,30.1256352655836
+2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,25.4384715933901,26.1550482579927,26.8716249225952
 2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,crude rate,A,di_gee,25,150,56.2799606931605,57.8653116986016,59.4506627040428
+2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,crude rate,B,di_gee,25,150,54.5864936268842,56.1241413346837,57.6617890424833
+2010,us,nvss,A,All,All Origins,lower,666,attributable,Deaths,crude rate,D,di_gee,25,150,48.6903519095915,50.0619111183124,51.4334703270332
 2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,absolute number,A,di_gee,25,150,985963.036331792,1013736.64298903,1041510.24964626
+2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,absolute number,B,di_gee,25,150,956295.355153105,983233.252481361,1010171.14980962
+2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,absolute number,D,di_gee,25,150,853001.434570625,877029.643995149,901057.853419674
 2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,634.092293017952,651.954047750853,669.815802483753
+2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,615.012421568504,632.336715133814,649.661008699124
+2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,548.582062068781,564.035077901704,579.488093734627
 2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,crude rate,A,di_gee,25,150,1122.94125185696,1154.57339979659,1186.20554773622
-2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,absolute number,A,di_gee,25,150,2110.52981302864,2169.98135705761,2229.43290108659
-2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,5.62962484947346,5.78820583114877,5.94678681282407
-2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,crude rate,A,di_gee,25,150,7.04741379270971,7.2459324910959,7.44445118948209
-2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,absolute number,A,di_gee,25,150,48031.4710082422,49384.4701915729,50737.4693749037
-2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,115.496094801424,118.749505922591,122.002917043758
-2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,crude rate,A,di_gee,25,150,160.385155034543,164.903046725657,169.420938416771
-2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,absolute number,A,di_gee,25,150,4604.06126910901,4733.75313584447,4863.44500257994
-2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,19.5656745961558,20.1168203594278,20.6679661226998
-2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,crude rate,A,di_gee,25,150,26.2000312137521,26.9380602620268,27.6760893103015
-2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,absolute number,A,di_gee,25,150,103563.704199602,106480.991641844,109398.279084086
-2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,407.008054854768,418.473070484479,429.938086114191
-2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,crude rate,A,di_gee,25,150,589.34321766019,605.944435059069,622.545652457947
-2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,absolute number,A,di_gee,25,150,2096.58115386987,2155.63977792254,2214.69840197521
-2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,17.27084754392,17.7573502916361,18.2438530393521
-2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,crude rate,A,di_gee,25,150,24.1610834103028,24.8416773091845,25.5222712080663
-2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,absolute number,A,di_gee,25,150,47953.5725500917,49304.3774106576,50655.1822712236
-2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,369.71144848552,380.125855485112,390.540262484704
-2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,crude rate,A,di_gee,25,150,552.61885001027,568.185578179573,583.752306348876
+2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,crude rate,B,di_gee,25,150,1089.1518887522,1119.83222364662,1150.51255854105
+2010,us,nvss,A,All,All Origins,lower,666,attributable,YLL,crude rate,D,di_gee,25,150,971.507514456332,998.873923314257,1026.24033217218
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,absolute number,A,di_gee,25,150,6941.0790794123,7136.60243376194,7332.12578811159
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,absolute number,B,di_gee,25,150,6658.03539851882,6845.58569143484,7033.13598435087
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,absolute number,D,di_gee,25,150,5812.05900454018,5975.77897649906,6139.49894845793
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,18.5146265295091,19.0361653049882,19.5577040804673
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,17.7596361334446,18.2599075738233,18.7601790142021
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,15.5030796516502,15.9397861207108,16.3764925897713
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,crude rate,A,di_gee,25,150,23.1774297328419,23.830315077429,24.4832004220161
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,crude rate,B,di_gee,25,150,22.2322993071287,22.8585612594422,23.4848232117557
+2010,us,nvss,A,All,All Origins,middle,1,attributable,Deaths,crude rate,D,di_gee,25,150,19.4074419322516,19.9541304373855,20.5008189425193
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,absolute number,A,di_gee,25,150,157965.187940316,162414.911544268,166864.635148221
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,absolute number,B,di_gee,25,150,151523.675354719,155791.947899922,160060.220445126
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,absolute number,D,di_gee,25,150,132270.931143192,135996.872865535,139722.814587879
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,379.841839916765,390.541610055266,401.241380193766
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,364.352629766966,374.616084126599,384.879538486232
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,318.05763350794,327.01700346591,335.97637342388
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,crude rate,A,di_gee,25,150,527.472314006805,542.33068904925,557.189064091695
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,crude rate,B,di_gee,25,150,505.963020766116,520.215500224316,534.467979682517
+2010,us,nvss,A,All,All Origins,middle,1,attributable,YLL,crude rate,D,di_gee,25,150,441.674871759056,454.11641744241,466.557963125763
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,absolute number,A,di_gee,25,150,3240.33936743167,3331.61653271144,3422.8936979912
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,absolute number,B,di_gee,25,150,3208.39090966448,3298.76811838742,3389.14532711037
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,absolute number,D,di_gee,25,150,2949.40299220195,3032.48476663017,3115.56654105839
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,13.7703262269033,14.1582227403372,14.5461192537711
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,13.6345562855439,14.0186282935874,14.4027003016309
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,12.5339468407029,12.8870157657931,13.2400846908834
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,crude rate,A,di_gee,25,150,18.4395879219672,18.9590129338536,19.47843794574
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,crude rate,B,di_gee,25,150,18.2577809168459,18.7720846046444,19.2863882924429
+2010,us,nvss,A,All,All Origins,middle,2,attributable,Deaths,crude rate,D,di_gee,25,150,16.7839752646427,17.2567633002664,17.7295513358901
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,absolute number,A,di_gee,25,150,72888.1585496279,74941.3461144061,76994.5336791844
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,absolute number,B,di_gee,25,150,72169.5102874871,74202.4542392473,76235.3981910075
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,absolute number,D,di_gee,25,150,66343.8388839979,68212.6794159415,70081.5199478851
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,286.452361495814,294.52144210133,302.590522706846
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,283.628055108174,291.617577787277,299.607100466381
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,260.733014760956,268.077606726054,275.422198691151
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,crude rate,A,di_gee,25,150,414.779890512345,426.463831090158,438.147771667971
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,crude rate,B,di_gee,25,150,410.690325713083,422.259067282465,433.827808851848
+2010,us,nvss,A,All,All Origins,middle,2,attributable,YLL,crude rate,D,di_gee,25,150,377.538557373992,388.173446314105,398.808335254217
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,absolute number,A,di_gee,25,150,1211.28453428557,1245.40522539221,1279.52591649884
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,absolute number,B,di_gee,25,150,1209.0201492861,1243.07705489979,1277.13396051348
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,absolute number,D,di_gee,25,150,1144.11653608819,1176.34517090758,1208.57380572696
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,9.97810673120873,10.2591801602569,10.540253589305
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,9.95945357865391,10.240001566785,10.5205495549161
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,9.42480200720314,9.69028938768773,9.95577676817233
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,crude rate,A,di_gee,25,150,13.9588904595772,14.3520986415371,14.7453068234971
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,crude rate,B,di_gee,25,150,13.9327955980717,14.3252687135103,14.7177418289489
+2010,us,nvss,A,All,All Origins,middle,3,attributable,Deaths,crude rate,D,di_gee,25,150,13.1848438151368,13.5562478662674,13.927651917398
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,absolute number,A,di_gee,25,150,27704.8282564466,28485.2459538113,29265.6636511759
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,absolute number,B,di_gee,25,150,27653.0366288469,28431.9954071243,29210.9541854017
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,absolute number,D,di_gee,25,150,26168.543591931,26905.6856649431,27642.8277379553
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,213.598104166982,219.614952171686,225.63180017639
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,213.198802162126,219.204402223031,225.210002283936
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,201.753688862766,207.436891365943,213.120093869119
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,crude rate,A,di_gee,25,150,319.271526950712,328.265091090169,337.258655229626
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,crude rate,B,di_gee,25,150,318.674678203846,327.651429702546,336.628181201246
+2010,us,nvss,A,All,All Origins,middle,3,attributable,YLL,crude rate,D,di_gee,25,150,301.567322249255,310.062176397121,318.557030544988
 2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,absolute number,A,di_gee,25,150,11400.8778254617,11722.0293135029,12043.1808015441
+2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,absolute number,B,di_gee,25,150,11081.5586850363,11393.7152677134,11705.8718503905
+2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,absolute number,D,di_gee,25,150,9908.98884066447,10188.1152868804,10467.2417330963
 2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,15.5754852718359,16.0142313358313,16.4529773998267
+2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,15.1392424978275,15.5657000329775,15.9921575681276
+2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,13.5373181003547,13.91865100459,14.2999839088254
 2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,crude rate,A,di_gee,25,150,20.287044967189,20.8585110226028,21.4299770780165
+2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,crude rate,B,di_gee,25,150,19.7188394430296,20.2742997090304,20.8297599750313
+2010,us,nvss,A,All,All Origins,middle,666,attributable,Deaths,crude rate,D,di_gee,25,150,17.6323354453448,18.1290209508474,18.6257064563501
 2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,absolute number,A,di_gee,25,150,258682.164404817,265968.985937347,273255.807469877
+2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,absolute number,B,di_gee,25,150,251436.918236435,258519.648327602,265602.378418769
+2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,absolute number,D,di_gee,25,150,224831.694507037,231164.981676249,237498.268845462
 2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,323.084495037372,332.185466728566,341.286438419759
+2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,314.035449444611,322.881518443051,331.727587441491
+2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,280.80650498396,288.716547377874,296.626589771788
 2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,crude rate,A,di_gee,25,150,460.306371301524,473.272747957905,486.239124614286
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,0,0,0
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,0,0,0
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,0,0,0
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,0,0,0
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,0,0,0
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,0,0,0
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,189.657209837334,113.7943259024,265.520093772266
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,33.4107410891637,20.0464446534982,46.7750375248291
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,35.7424324353935,21.4454594612361,50.0394054095508
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,5425.63040834123,3255.37824500474,7595.88257167771
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,769.920975696245,461.952585417747,1077.88936597474
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,1022.50385553958,613.502313323748,1431.50539775541
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,275.39878892035,165.23927335221,385.558304488489
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,39.4711552443696,23.6826931466218,55.2596173421174
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,48.643966447235,29.186379868341,68.1015530261288
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,7984.57491521547,4790.74494912928,11178.4048813016
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,979.966165867847,587.979699520708,1371.95263221498
-2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,1410.32353770992,846.194122625952,1974.45295279389
+2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,crude rate,B,di_gee,25,150,447.413975025856,460.017185589965,472.620396154074
+2010,us,nvss,A,All,All Origins,middle,666,attributable,YLL,crude rate,D,di_gee,25,150,400.071886247832,411.341516846363,422.611147444893
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,152.961300299483,91.7767801796901,214.145820419277
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,absolute number,B,di_gee,25,150,145.321793907329,87.1930763443975,203.450511470261
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,absolute number,D,di_gee,25,150,127.674880928214,76.6049285569287,178.7448332995
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,25.9651940604012,15.5791164362407,36.3512716845616
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,24.6683871843509,14.8010323106106,34.5357420580912
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,21.6728221677578,13.0036933006547,30.3419510348609
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,25.5775296054518,15.3465177632711,35.8085414476325
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,crude rate,B,di_gee,25,150,24.3000842612125,14.5800505567275,34.0201179656975
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,Deaths,crude rate,D,di_gee,25,150,21.3492435042079,12.8095461025247,29.888940905891
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,4337.92606859195,2602.75564115517,6073.09649602872
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,absolute number,B,di_gee,25,150,4121.27248454934,2472.7634907296,5769.78147836907
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,absolute number,D,di_gee,25,150,3620.81254015559,2172.48752409335,5069.13755621781
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,578.393870054397,347.036322032638,809.751418076154
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,549.506539345177,329.703923607106,769.309155083247
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,482.778116714621,289.666870028773,675.889363400468
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,725.369307324373,435.221584394624,1015.51703025412
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,crude rate,B,di_gee,25,150,689.141428448295,413.484857068977,964.797999827612
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,1,attributable,YLL,crude rate,D,di_gee,25,150,605.456672768187,363.274003660912,847.63934187546
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,122.918444098586,73.7510664591515,172.08582173802
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,absolute number,B,di_gee,25,150,121.583440377676,72.9500642266054,170.216816528746
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,absolute number,D,di_gee,25,150,112.173926012311,67.3043556073866,157.043496417235
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,21.653784289999,12.9922705739994,30.3152980059985
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,21.4186049171154,12.8511629502692,29.9860468839615
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,19.7609887974561,11.8565932784737,27.6653843164385
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,23.1649732009954,13.8989839205972,32.4309624813935
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,crude rate,B,di_gee,25,150,22.9133809713272,13.7480285827963,32.078733359858
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,Deaths,crude rate,D,di_gee,25,150,21.1400820192738,12.6840492115643,29.5961148269833
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,3516.39702291982,2109.83821375189,4922.95583208774
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,absolute number,B,di_gee,25,150,3478.20582106869,2086.92349264121,4869.48814949616
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,absolute number,D,di_gee,25,150,3209.02255452041,1925.41353271225,4492.63157632857
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,498.992305605555,299.395383363333,698.589227847776
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,493.572804979963,296.143682987978,691.001926971948
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,455.374507708677,273.224704625206,637.524310792146
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,662.693409417593,397.616045650556,927.770773184628
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,crude rate,B,di_gee,25,150,655.495969083206,393.297581449924,917.694356716487
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,2,attributable,YLL,crude rate,D,di_gee,25,150,604.76620918854,362.859725513124,846.672692863954
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,88.78876726399,53.273260358394,124.304274169586
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,absolute number,B,di_gee,25,150,88.7190539514638,53.2314323708783,124.206675532049
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,absolute number,D,di_gee,25,150,84.9745379768671,50.9847227861203,118.964353167614
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,12.7255287881703,7.6353172729022,17.8157403034384
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,12.7155372228766,7.62932233372594,17.8017521120272
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,12.1788595855937,7.30731575135624,17.0504034198312
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,15.6828497053777,9.40970982322662,21.9559895875287
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,crude rate,B,di_gee,25,150,15.6705361725232,9.40232170351394,21.9387506415325
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,Deaths,crude rate,D,di_gee,25,150,15.0091385311484,9.00548311868902,21.0127939436077
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,2574.23268500283,1544.5396110017,3603.92575900395
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,absolute number,B,di_gee,25,150,2572.21150267071,1543.32690160242,3601.09610373898
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,absolute number,D,di_gee,25,150,2463.64759635289,1478.18855781174,3449.10663489405
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,315.941795419404,189.565077251643,442.318513587165
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,315.693730829672,189.416238497803,441.971223161541
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,302.369420374125,181.421652224475,423.317188523775
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,454.68932106622,272.813592639732,636.565049492707
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,crude rate,B,di_gee,25,150,454.332317587981,272.599390552789,636.065244623173
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,3,attributable,YLL,crude rate,D,di_gee,25,150,435.156565083739,261.093939050244,609.219191117234
 2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,absolute number,A,di_gee,25,150,410.796032849618,246.477619709771,575.114445989465
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,absolute number,B,di_gee,25,150,398.242258564838,238.945355138903,557.539161990773
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,absolute number,D,di_gee,25,150,360.431385579065,216.258831347439,504.603939810691
 2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,17.1119777727003,10.2671866636202,23.9567688817804
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,16.5890420835836,9.95342525015013,23.2246589170169
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,15.0140054075702,9.00840324454211,21.0196075705982
 2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,crude rate,A,di_gee,25,150,17.3046607128855,10.3827964277313,24.2265249980397
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,crude rate,B,di_gee,25,150,16.7758367046367,10.065502022782,23.4861713864913
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,Deaths,crude rate,D,di_gee,25,150,15.1830649250798,9.10983895504785,21.2562908951116
 2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,absolute number,A,di_gee,25,150,11795.778892321,7077.46733539261,16514.0904492494
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,absolute number,B,di_gee,25,150,11435.3042677241,6861.18256063446,16009.4259748137
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,absolute number,D,di_gee,25,150,10349.5861453461,6209.75168720767,14489.4206034845
 2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,390.59155078835,234.35493047301,546.828171103689
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,378.655217975871,227.193130785523,530.117305166219
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,342.704024840613,205.622414904368,479.785634776858
 2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,crude rate,A,di_gee,25,150,496.893677769658,298.136206661795,695.65114887752
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,815.833139804879,637.369640472561,994.296639137195
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,9.54558307717702,7.45748677904453,11.6336793753095
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,10.1032030336227,7.8931273700177,12.3132786972276
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,17534.2866532468,13698.6614478491,21369.9118586445
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,174.639939760289,136.437452937726,212.842426582852
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,217.143003224731,169.64297126932,264.64303518014
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,606.391413260522,473.743291609782,739.039534911261
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,26.0405399232696,20.3441718150543,31.7369080314848
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,32.5612324289833,25.4384628351431,39.6840020228233
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,13024.1760423445,10175.1375330816,15873.2145516073
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,509.924743300568,398.378705703568,621.470780897566
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,699.355587887548,546.371553037146,852.339622737949
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,82.0442612029451,64.0970790648008,99.9914433410893
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,23.3244915279973,18.2222590062478,28.4267240497466
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,29.7030433549753,23.2055026210744,36.2005840888761
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,1795.66603165393,1402.86408722963,2188.46797607822
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,461.829967173029,360.804661853928,562.855272492129
-2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,650.097218345828,507.888451832678,792.305984858978
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,crude rate,B,di_gee,25,150,481.70879141381,289.025274848286,674.392307979333
+2010,us,nvss,A,American Indian or Alaska Native,All Origins,666,666,attributable,YLL,crude rate,D,di_gee,25,150,435.973238401642,261.583943040985,610.362533762298
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,1747.72387440897,1365.409276882,2130.03847193593
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,absolute number,B,di_gee,25,150,1632.37127723499,1275.29006033984,1989.45249413014
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,absolute number,D,di_gee,25,150,1414.24489582448,1104.87882486287,1723.61096678608
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,20.4490877180186,15.975849779702,24.9223256563351
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,19.0994149163527,14.9214179034005,23.2774119293049
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,16.5472465948059,12.9275364021921,20.1669567874197
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,21.6436527132087,16.9091036821943,26.3782017442231
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,crude rate,B,di_gee,25,150,20.2151366933972,15.7930755417166,24.6371978450779
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,Deaths,crude rate,D,di_gee,25,150,17.5138795234484,13.682718377694,21.3450406692027
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,37562.9401521239,29346.0469938467,45779.8333104009
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,absolute number,B,di_gee,25,150,35083.7254618151,27409.160517043,42758.2904065871
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,absolute number,D,di_gee,25,150,30395.6461087232,23746.59852244,37044.6936950064
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,374.123552050608,292.284025039537,455.963079061678
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,349.430793643571,272.99280753404,425.868779753102
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,302.737939123378,236.514014940138,368.961863306616
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,465.176017472752,363.418763650587,566.933271294917
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,crude rate,B,di_gee,25,150,434.473649356007,339.43253855938,529.514760152633
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,1,attributable,YLL,crude rate,D,di_gee,25,150,376.41690315255,294.075705587929,458.758100717169
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,308.924939200952,241.347608750744,376.50226965116
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,absolute number,B,di_gee,25,150,304.917559284681,238.216843191157,371.618275378204
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,absolute number,D,di_gee,25,150,278.151751611126,217.306055946192,338.997447276059
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,13.2663029796233,10.3642992028307,16.1683067564159
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,13.0942122566754,10.2298533255277,15.9585711878232
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,11.9447961072051,9.33187195875397,14.5577202556562
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,16.588257235282,12.959575965064,20.2169385054999
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,crude rate,B,di_gee,25,150,16.3730740614581,12.7914641105141,19.954684012402
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,Deaths,crude rate,D,di_gee,25,150,14.9358378708565,11.6686233366066,18.2030524051063
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,6635.14143511654,5183.70424618479,8086.57862404828
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,absolute number,B,di_gee,25,150,6549.07026003601,5116.46114065313,7981.67937941888
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,absolute number,D,di_gee,25,150,5974.18977289074,4667.33576007088,7281.04378571058
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,259.780179726111,202.953265411024,316.607094041198
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,256.410306521402,200.320551969845,312.500061072958
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,233.902488454218,182.736319104858,285.068657803578
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,356.285359164852,278.34793684754,434.222781482163
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,crude rate,B,di_gee,25,150,351.663619021528,274.737202360569,428.590035682487
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,2,attributable,YLL,crude rate,D,di_gee,25,150,320.794420099046,250.620640702379,390.968199495712
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,36.0351643057822,28.1524721138923,43.917856497672
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,absolute number,B,di_gee,25,150,35.9581438802731,28.0922999064633,43.8239878540828
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,absolute number,D,di_gee,25,150,33.7368632664371,26.3569244269039,41.1168021059701
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,10.2444933044267,8.00351039408335,12.48547621477
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,10.2225970470172,7.9864039429822,12.4587901510522
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,9.59110570199109,7.49305132968053,11.6891600743016
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,13.0460562626151,10.192231455168,15.8998810700621
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,crude rate,B,di_gee,25,150,13.0181720327546,10.1704469005895,15.8658971649196
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,Deaths,crude rate,D,di_gee,25,150,12.213986664894,9.54217708194845,14.8857962478396
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,788.685516088705,616.1605594443,961.210472733108
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,absolute number,B,di_gee,25,150,786.999804500809,614.843597266256,959.156011735359
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,absolute number,D,di_gee,25,150,738.383629687918,576.862210693686,899.90504868215
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,202.843178845234,158.471233472839,247.215124217629
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,202.409628221912,158.132522048369,246.686734395456
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,189.90596327413,148.364033807914,231.447892740345
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,285.533195550099,223.072809023514,347.993582076683
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,crude rate,B,di_gee,25,150,284.922905888822,222.596020225642,347.249791552001
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,3,attributable,YLL,crude rate,D,di_gee,25,150,267.32206060059,208.84535984421,325.798761356968
 2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,absolute number,A,di_gee,25,150,2157.77893363384,1685.76479190143,2629.79307536623
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,absolute number,B,di_gee,25,150,2029.96930408459,1585.91351881609,2474.02508935309
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,absolute number,D,di_gee,25,150,1771.63634261519,1384.09089266811,2159.18179256226
 2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,17.815004682995,13.9179724085898,21.7120369574001
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,16.7597857662373,13.0935826298729,20.4259889026017
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,14.6269431257732,11.4272993170103,17.8265869345361
 2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,crude rate,A,di_gee,25,150,19.3047358405326,15.0818248754161,23.5276468056491
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,crude rate,B,di_gee,25,150,18.1612771210755,14.1884977508402,22.1340564913107
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,Deaths,crude rate,D,di_gee,25,150,15.850081334364,12.3828760424718,19.3172866262561
 2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,absolute number,A,di_gee,25,150,46399.99940771,36249.9995372734,56549.9992781465
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,absolute number,B,di_gee,25,150,43651.6331858758,34102.8384264654,53200.4279452861
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,absolute number,D,di_gee,25,150,38096.5463916109,29762.926868446,46430.1659147757
 2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,330.099055955502,257.889887465236,402.308224445768
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,310.546618308344,242.614545553393,378.478691063294
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,271.026598266425,211.739529895644,330.313666637205
 2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,crude rate,A,di_gee,25,150,415.121177431382,324.313419868267,505.928934994496
-2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,17498.6671518755,16741.513284727,18255.821019024
-2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,88.6129145484964,84.7787018997634,92.4471271972294
-2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,112.534863717459,107.665566729685,117.404160705234
-2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,448478.176131762,429072.870433753,467883.481829771
-2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2016.02795215287,1928.79597345395,2103.2599308518
-2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,2884.18712083642,2759.3905627233,3008.98367894953
-2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,8077.81585789741,7728.2949794307,8427.33673636413
-2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,113.106106668427,108.212092437582,118.000120899273
-2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,142.864750403639,136.683102549635,149.046398257642
-2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,207671.785958048,198685.987527171,216657.584388926
-2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2575.52839719918,2464.08726462806,2686.9695297703
-2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,3672.89603881823,3513.97265252321,3831.81942511325
-2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,3616.36486432801,3459.88753846767,3772.84219018836
-2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,108.045445783802,103.370402456618,112.720489110985
-2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,154.104530980068,147.436546466507,160.772515493629
-2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,89151.1717660465,85293.6691415542,93008.674390539
-2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2497.61833538035,2389.54831125331,2605.68835950738
-2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,3799.0081274288,3634.6279680689,3963.3882867887
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,crude rate,B,di_gee,25,150,390.532706815349,305.103677199491,475.961736431206
+2010,us,nvss,A,Asian or Pacific Islander,All Origins,666,666,attributable,YLL,crude rate,D,di_gee,25,150,340.833693879896,266.276323343668,415.391064416123
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,20020.1212324655,19153.86598683,20886.3764781011
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,absolute number,B,di_gee,25,150,19254.5791838257,18421.4483537563,20087.7100138951
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,absolute number,D,di_gee,25,150,16305.8814149919,15600.3384691509,17011.4243608329
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,101.381509610169,96.9948096751133,105.768209545224
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,97.5048193713849,93.2858608408923,101.723777901878
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,82.5726704739181,78.9998145399506,86.1455264078858
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,128.750469675689,123.179535891645,134.321403459734
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,crude rate,B,di_gee,25,150,123.827227844415,118.4693189473,129.185136741529
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,Deaths,crude rate,D,di_gee,25,150,104.863994891891,100.32661049753,109.401379286251
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,absolute number,A,di_gee,25,150,513101.219558347,490899.724481304,535302.714635391
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,absolute number,B,di_gee,25,150,493480.930838851,472128.39056217,514833.471115532
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,absolute number,D,di_gee,25,150,417907.940858945,399825.385725626,435990.495992265
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2306.52561477026,2206.72402566963,2406.3272038709
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,2218.32723056128,2122.34191770045,2314.3125434221
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,1878.60666368469,1797.3207984291,1959.89252894028
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,crude rate,A,di_gee,25,150,3299.7813670667,3157.00236560708,3442.56036852632
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,crude rate,B,di_gee,25,150,3173.60224165205,3036.28291388826,3310.92156941584
+2010,us,nvss,A,Black or African American,All Origins,666,1,attributable,YLL,crude rate,D,di_gee,25,150,2687.58830388776,2571.29842535415,2803.87818242136
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,6935.04215422633,6634.96821486077,7235.1160935919
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,absolute number,B,di_gee,25,150,6833.10651506021,6537.44325238934,7128.76977773109
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,absolute number,D,di_gee,25,150,6036.09157947739,5774.91453998078,6297.26861897401
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,97.104914427962,92.9032594767522,101.306569379172
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,95.6776049324669,91.5377085651968,99.8175012997372
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,84.5177496069428,80.860731595104,88.1747676187817
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,122.653584066739,117.346457833082,127.960710300396
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,crude rate,B,di_gee,25,150,120.850744053684,115.621625320592,126.079862786777
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,Deaths,crude rate,D,di_gee,25,150,106.754688654168,102.135495395094,111.373881913243
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,absolute number,A,di_gee,25,150,178292.327430872,170577.755570882,186006.899290861
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,absolute number,B,di_gee,25,150,175671.673950921,168070.495751121,183272.85215072
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,absolute number,D,di_gee,25,150,155181.294123074,148466.718896595,161895.869349553
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2211.16677059688,2115.49128533067,2306.84225586309
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,2178.66564182922,2084.39645540392,2272.93482825452
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,1924.54563764782,1841.27202832653,2007.81924696913
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,crude rate,A,di_gee,25,150,3153.28911990392,3016.8487252927,3289.72951451515
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,crude rate,B,di_gee,25,150,3106.94008052324,2972.5051731929,3241.37498785357
+2010,us,nvss,A,Black or African American,All Origins,666,2,attributable,YLL,crude rate,D,di_gee,25,150,2744.54595675535,2625.79156439574,2863.30034911495
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,2980.54286077949,2851.57706391884,3109.50865764014
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,absolute number,B,di_gee,25,150,2975.44431839382,2846.69913154025,3104.1895052474
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,absolute number,D,di_gee,25,150,2782.34763484003,2661.95759294791,2902.73767673215
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,89.0491126178129,85.1960260141576,92.9021992214684
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,88.8967844359028,85.0502889555032,92.7432799163025
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,83.1276715181939,79.5308011159643,86.7245419204234
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,127.010182008215,121.514549132859,132.50581488357
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,crude rate,B,di_gee,25,150,126.792917292816,121.306685294569,132.279149291063
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,Deaths,crude rate,D,di_gee,25,150,118.564468292443,113.434274952866,123.69466163202
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,absolute number,A,di_gee,25,150,73476.791890796,70297.5076262904,76656.0761553016
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,absolute number,B,di_gee,25,150,73351.1018553505,70177.2561019941,76524.9476087071
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,absolute number,D,di_gee,25,150,68590.8533049994,65622.9798446869,71558.7267653119
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2058.49209848828,1969.42272884215,2147.56146813441
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,2054.97082410809,1966.05381729573,2143.88783092046
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,1921.6098842034,1838.46330267537,2004.75646573143
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,crude rate,A,di_gee,25,150,3131.07415237406,2995.59498231942,3266.55332242871
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,crude rate,B,di_gee,25,150,3125.71810985959,2990.47069164451,3260.96552807467
+2010,us,nvss,A,Black or African American,All Origins,666,3,attributable,YLL,crude rate,D,di_gee,25,150,2922.86914474646,2796.39884521416,3049.33944427876
 2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,absolute number,A,di_gee,25,150,30023.2463496762,28724.1635749306,31322.3291244218
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,absolute number,B,di_gee,25,150,29129.963075593,27869.531980976,30390.39417021
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,absolute number,D,di_gee,25,150,25142.8853362396,24054.9720284215,26230.7986440577
 2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,95.2307097686456,91.1101502113485,99.3512693259429
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,92.3973053051634,88.3993449794593,96.3952656308676
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,79.7506967872445,76.2999454839503,83.2014480905388
 2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,crude rate,A,di_gee,25,150,120.52447749106,115.309476061158,125.739478920962
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,crude rate,B,di_gee,25,150,116.938506187143,111.878666977122,121.998345397163
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,Deaths,crude rate,D,di_gee,25,150,100.932893214614,96.5656045659047,105.300181863323
 2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,absolute number,A,di_gee,25,150,766743.284604357,733566.892482054,799919.676726662
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,absolute number,B,di_gee,25,150,743930.330146484,711741.037015146,776119.623277823
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,absolute number,D,di_gee,25,150,642107.061395345,614323.582777277,669890.540013413
 2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,2161.88869230089,2068.34543157634,2255.43195302545
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,2097.56590099546,2006.80583797162,2188.3259640193
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,1810.46775778864,1732.13021057664,1888.80530500065
 2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,crude rate,A,di_gee,25,150,3077.99272172031,2944.81034433819,3211.17509910245
-2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,78.1967639717447,67.4110034239178,89.6566345538107
-2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,0.698427832162855,0.602092958761082,0.800783635152238
-2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,0.76783916866231,0.661930317812336,0.880367322690406
-2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,absolute number,A,di_gee,25,150,1948.67891078175,1679.89561274288,2234.26116494803
-2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,14.8918223318937,12.8377778723221,17.0742445701884
-2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,crude rate,A,di_gee,25,150,19.1347047991025,16.4954351716401,21.9389287782813
-2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,1952.18106800122,1682.91471379416,2238.27656934623
-2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,46.2746086286825,39.8919039902436,53.0562323070239
-2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,50.7953884563414,43.7891279796046,58.2395402128741
-2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,absolute number,A,di_gee,25,150,48977.1632765813,42221.6924798114,56154.8509981492
-2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,990.282413075884,853.691735410245,1135.41000809563
-2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,crude rate,A,di_gee,25,150,1274.37668303524,1098.60058882349,1461.13878313524
-2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,510.195405813226,439.823625701057,584.965422182405
-2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,44.3601609078535,38.2415180240116,50.8612189719354
-2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,51.5842853371942,44.4692114975812,59.144051291783
-2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,absolute number,A,di_gee,25,150,13071.6567491534,11268.6696113391,14987.330583081
-2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,987.076438895989,850.927964565507,1131.73419287212
-2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,crude rate,A,di_gee,25,150,1321.63493417468,1139.34046049541,1515.3228124589
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,crude rate,B,di_gee,25,150,2986.41303763022,2857.19324273276,3115.63283252768
+2010,us,nvss,A,Black or African American,All Origins,666,666,attributable,YLL,crude rate,D,di_gee,25,150,2577.65656540431,2466.12334863201,2689.18978217662
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,5023.63099361143,4330.71637380296,5759.85277715793
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,absolute number,B,di_gee,25,150,4688.14326202201,4041.50281208794,5375.19874007696
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,absolute number,D,di_gee,25,150,4043.57779681361,3485.84292828759,4636.1710946225
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,44.8694233142686,38.6805373398867,51.4451146620493
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,41.8729570004465,36.0973767245228,48.0095110436153
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,36.115909807097,31.1344050061181,41.408758658137
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,49.3286480140612,42.5246965638458,56.5578464299149
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,crude rate,B,di_gee,25,150,46.034386105562,39.6848156082431,52.7808047589632
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,Deaths,crude rate,D,di_gee,25,150,39.7051905504506,34.2286125434919,45.5240546828442
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,absolute number,A,di_gee,25,150,125189.883514073,107922.3133742,143536.676787687
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,absolute number,B,di_gee,25,150,116829.462517488,100715.053894387,133951.021679534
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,absolute number,D,di_gee,25,150,100766.762926445,86867.8990745218,115534.305769114
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,956.702252344965,824.743320987039,1096.90861691276
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,892.811837453054,769.665377114702,1023.65495156255
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,770.060538017871,663.845291394717,882.914237554972
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,crude rate,A,di_gee,25,150,1229.27971951768,1059.72389613593,1409.43278186079
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,crude rate,B,di_gee,25,150,1147.18605755996,988.953497896521,1315.30815220237
+2010,us,nvss,A,White,Hispanic or Latino,666,1,attributable,YLL,crude rate,D,di_gee,25,150,989.461245508719,852.983832335102,1134.46849700569
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,1267.06353161799,1092.29614794654,1452.7538767689
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,absolute number,B,di_gee,25,150,1255.52444439338,1082.34865895981,1439.52371641654
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,absolute number,D,di_gee,25,150,1173.51925821579,1011.65453294465,1345.50052881638
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,30.0345444356404,25.8918486514142,34.4361587063808
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,29.7610212701905,25.6560528191297,34.1225502494425
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,27.8171657753847,23.9803153236075,31.8938193803979
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,32.9687575309275,28.4213426990755,37.8003857897703
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,crude rate,B,di_gee,25,150,32.6685126265929,28.1625108849939,37.4561394770419
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,Deaths,crude rate,D,di_gee,25,150,30.5347529279652,26.3230628689355,35.0096736156842
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,absolute number,A,di_gee,25,150,31788.6380966671,27403.9983591958,36447.3178177303
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,absolute number,B,di_gee,25,150,31499.1404838041,27154.4314515553,36115.3938305685
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,absolute number,D,di_gee,25,150,29441.7588921169,25380.8266311352,33756.4994194099
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,642.743007899269,554.088799913163,736.938103884506
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,636.889577944033,549.042739606925,730.22684367721
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,595.290827201192,513.181747587234,682.531724291021
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,crude rate,A,di_gee,25,150,827.134453399608,713.046942585869,948.352433639205
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,crude rate,B,di_gee,25,150,819.601779333871,706.55325804644,939.715833201765
+2010,us,nvss,A,White,Hispanic or Latino,666,2,attributable,YLL,crude rate,D,di_gee,25,150,766.069092809213,660.40439035277,878.337839169183
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,176.482012500501,152.139665948708,202.345755711782
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,absolute number,B,di_gee,25,150,176.151268623965,151.854541917211,201.966540749891
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,absolute number,D,di_gee,25,150,169.399579225913,146.034120022339,194.22537962971
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,15.3446510546001,13.2281474608622,17.5934361229467
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,15.3158937364917,13.2033566693894,17.5604643702879
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,14.7288519390062,12.6972861543157,16.8873905852398
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,17.8435524624086,15.3823728124212,20.4585558405202
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,crude rate,B,di_gee,25,150,17.8101119682246,15.3535448001937,20.4202145842575
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,Deaths,crude rate,D,di_gee,25,150,17.1274694582199,14.7650598777758,19.6375296374417
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,absolute number,A,di_gee,25,150,4521.62497647199,3897.95256592413,5184.27691267909
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,absolute number,B,di_gee,25,150,4513.15102634092,3890.64743650079,5174.56109054604
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,absolute number,D,di_gee,25,150,4340.16678288705,3741.52308869573,4976.22570796532
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,341.440229455858,294.345025392981,391.478883772664
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,340.800338378599,293.793395153965,390.745215554773
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,327.737826541711,282.532609087682,375.768370086617
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,crude rate,A,di_gee,25,150,457.167568183674,394.109972572133,524.166263520937
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,crude rate,B,di_gee,25,150,456.310793198024,393.371373446572,523.18392668394
+2010,us,nvss,A,White,Hispanic or Latino,666,3,attributable,YLL,crude rate,D,di_gee,25,150,438.8208893857,378.293870160086,503.130847312914
 2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,absolute number,A,di_gee,25,150,6484.93203929716,5590.45865456652,7435.31001057346
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,absolute number,B,di_gee,25,150,6135.35963769695,5289.10313594565,7034.5071708077
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,absolute number,D,di_gee,25,150,5398.50435300699,4653.88306293706,6189.66447370628
 2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,28.1269878942874,24.2474033571443,32.2490464650019
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,26.6107933299644,22.9403390775555,30.5106509731488
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,23.4148431570521,20.1852096181484,26.8463287921373
 2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,crude rate,A,di_gee,25,150,26.1214719553239,22.5185103063137,29.9496187073972
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,crude rate,B,di_gee,25,150,24.7133853895093,21.3046425771632,28.335174627627
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,Deaths,crude rate,D,di_gee,25,150,21.7453134748733,18.7459598921321,24.9321266565357
 2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,absolute number,A,di_gee,25,150,162198.09255561,139825.941858284,185968.502671518
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,absolute number,B,di_gee,25,150,153454.750851171,132288.578319975,175943.809165566
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,absolute number,D,di_gee,25,150,135024.870485118,116400.750418205,154812.998056212
 2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,569.82807747362,491.231101270362,653.337364689581
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,539.111306914638,464.75112665055,618.11899844523
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,474.364162656721,408.934622979932,543.883048563309
 2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,crude rate,A,di_gee,25,150,653.33806125092,563.222466595621,749.085880572175
-2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,12184.9750448655,11604.7381379672,12571.7996494644
-2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,9.80532861135868,9.33840820129399,10.1166088847351
-2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,17.8876069148059,17.035816109339,18.4554674517839
-2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,absolute number,A,di_gee,25,150,232184.294563915,221127.899584681,239555.224550071
-2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,196.182881890785,186.840839895986,202.410909887317
-2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,crude rate,A,di_gee,25,150,340.84775534283,324.616909850315,351.668319004507
-2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,20392.2192599382,19421.1611999411,21039.5912999362
-2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,23.6908341295807,22.5626991710292,24.4429241019483
-2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,44.9658051428451,42.8245763265192,46.3932910203957
-2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,absolute number,A,di_gee,25,150,399357.406420158,380340.387066818,412035.419322385
-2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,492.378945733843,468.932329270327,508.010023376187
-2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,crude rate,A,di_gee,25,150,880.601914413471,838.668489917593,908.557530744058
-2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,11522.1910960255,10973.5153295481,11887.9749403438
-2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,22.4369142106536,21.3684897244321,23.149197201468
-2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,44.1743522107589,42.0708116292942,45.576712598402
-2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,absolute number,A,di_gee,25,150,227400.013475464,216571.441405204,234619.061522304
-2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,474.210309707436,451.628866388035,489.264605253703
-2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,crude rate,A,di_gee,25,150,871.817539240563,830.302418324347,899.494286518041
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,crude rate,B,di_gee,25,150,618.119657458201,532.861773670863,708.706158982247
+2010,us,nvss,A,White,Hispanic or Latino,666,666,attributable,YLL,crude rate,D,di_gee,25,150,543.883628428973,468.865196921528,623.590711905632
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,absolute number,A,di_gee,25,150,26091.4377804658,24848.9883623485,26919.7373925441
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,absolute number,B,di_gee,25,150,25333.0963609103,24126.7584389622,26137.321642209
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,absolute number,D,di_gee,25,150,22420.6970472467,21353.0448069016,23132.4652074767
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,20.9959495557678,19.9961424340646,21.6624876369033
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,20.3857072868286,19.4149593207892,21.0328725975216
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,18.0420806308183,17.1829339341127,18.6148450952888
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,crude rate,A,di_gee,25,150,38.3023667377761,36.4784445121678,39.5183148881817
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,crude rate,B,di_gee,25,150,37.1891175788506,35.418207217953,38.3697244861157
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,Deaths,crude rate,D,di_gee,25,150,32.9137001972026,31.346381140193,33.9585795685423
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,absolute number,A,di_gee,25,150,497171.479868434,473496.647493747,512954.701451559
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,absolute number,B,di_gee,25,150,482721.309319066,459734.580303873,498045.795329195
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,absolute number,D,di_gee,25,150,427225.637178452,406881.559217574,440788.355819038
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,A,di_gee,25,150,420.082391436886,400.07846803513,433.41834037139
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,B,di_gee,25,150,407.872796866707,388.450282730198,420.82113962438
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,age-adjusted rate,D,di_gee,25,150,360.982024545263,343.792404328822,372.441771356223
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,crude rate,A,di_gee,25,150,729.850325371515,695.095547972873,753.020176970611
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,crude rate,B,di_gee,25,150,708.637399642306,674.892761564102,731.133825027776
+2010,us,nvss,A,White,Not Hispanic or Latino,666,1,attributable,YLL,crude rate,D,di_gee,25,150,627.169463510378,597.304250962266,647.07960520912
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,absolute number,A,di_gee,25,150,14791.0668599725,14086.730342831,15260.6245380669
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,absolute number,B,di_gee,25,150,14666.6689412064,13968.2561344823,15132.2774790225
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,absolute number,D,di_gee,25,150,13571.9568043048,12925.673146957,14002.81257587
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,17.1836476997653,16.3653787616813,17.7291603251547
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,17.0391273598265,16.2277403426919,17.5800520379162
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,15.7673362259441,15.0165106913754,16.2678865823233
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,crude rate,A,di_gee,25,150,32.6149999567205,31.0619047206862,33.6503967807434
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,crude rate,B,di_gee,25,150,32.3406966793719,30.8006635041637,33.367385462844
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,Deaths,crude rate,D,di_gee,25,150,29.9268047920808,28.5017188496008,30.8768620870675
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,absolute number,A,di_gee,25,150,289665.485844903,275871.89128086,298861.215554265
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,absolute number,B,di_gee,25,150,287229.30027975,273551.714552143,296347.690764821
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,absolute number,D,di_gee,25,150,265790.662621093,253133.964401041,274228.461434461
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,A,di_gee,25,150,357.136700717004,340.130191159052,368.474373755639
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,B,di_gee,25,150,354.133059214684,337.269580204462,365.375378554833
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,age-adjusted rate,D,di_gee,25,150,327.700761632019,312.095963459066,338.103960413987
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,crude rate,A,di_gee,25,150,638.726056594438,608.310530089942,659.003074264103
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,crude rate,B,di_gee,25,150,633.354152535437,603.194430986132,653.460633568308
+2010,us,nvss,A,White,Not Hispanic or Latino,666,2,attributable,YLL,crude rate,D,di_gee,25,150,586.080945475475,558.172329024263,604.686689776284
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,absolute number,A,di_gee,25,150,7191.74452708492,6849.28050198565,7420.05387715111
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,absolute number,B,di_gee,25,150,7178.79445358129,6836.94709864886,7406.69269020292
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,absolute number,D,di_gee,25,150,6796.66425909961,6473.01358009488,7012.43137843611
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,14.0043290060345,13.3374561962234,14.448910879242
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,13.9791116072081,13.3134396259125,14.4228929280718
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,13.2349977212786,12.6047597345511,13.655156379097
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,crude rate,A,di_gee,25,150,27.5720696785555,26.2591139795768,28.4473734778748
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,crude rate,B,di_gee,25,150,27.5224210393916,26.2118295613254,28.3961486914358
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,Deaths,crude rate,D,di_gee,25,150,26.0573911973486,24.8165630450939,26.8846099655184
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,absolute number,A,di_gee,25,150,141935.052868141,135176.240826802,146440.927562368
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,absolute number,B,di_gee,25,150,141679.472409122,134932.830865831,146177.233437983
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,absolute number,D,di_gee,25,150,134137.815561885,127750.300535128,138396.158913056
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,A,di_gee,25,150,295.985318339504,281.890779370956,305.381677651869
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,B,di_gee,25,150,295.452341728049,281.383182598142,304.831781147987
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,age-adjusted rate,D,di_gee,25,150,279.725291520018,266.405039542875,288.605459504781
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,crude rate,A,di_gee,25,150,544.157700926582,518.245429453889,561.432548575045
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,crude rate,B,di_gee,25,150,543.177843786492,517.312232177612,560.421584859079
+2010,us,nvss,A,White,Not Hispanic or Latino,666,3,attributable,YLL,crude rate,D,di_gee,25,150,514.264262763048,489.775488345761,530.590112374574
 2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,absolute number,A,di_gee,25,150,48252.6022222935,45954.8592593273,49784.4308642711
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,absolute number,B,di_gee,25,150,47338.7823413183,45084.5546107794,48841.6008283443
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,absolute number,D,di_gee,25,150,42904.4091794875,40861.3420757025,44266.4539153443
 2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,age-adjusted rate,A,di_gee,25,150,18.2538824673616,17.3846499689159,18.8333707996588
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,age-adjusted rate,B,di_gee,25,150,17.9081858637502,17.0554151083336,18.4766997006946
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,age-adjusted rate,D,di_gee,25,150,16.2306695685755,15.4577805415005,16.7459289199588
 2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,crude rate,A,di_gee,25,150,34.1805154553855,32.552871862272,35.2656111841279
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,crude rate,B,di_gee,25,150,33.5331962823963,31.9363774118061,34.5977421961232
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,Deaths,crude rate,D,di_gee,25,150,30.3920359425944,28.9447961358043,31.3568624804546
 2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,absolute number,A,di_gee,25,150,934267.361993626,889778.439993931,963926.643326757
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,absolute number,B,di_gee,25,150,916573.972410139,872927.592771563,945671.558835858
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,absolute number,D,di_gee,25,150,830715.595344521,791157.709851926,857087.519006252
 2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,age-adjusted rate,A,di_gee,25,150,373.303553856557,355.527194149103,385.154460328194
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,age-adjusted rate,B,di_gee,25,150,366.233837541958,348.794130992341,377.860308575036
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,age-adjusted rate,D,di_gee,25,150,331.927558000566,316.121483810064,342.464940794235
 2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,crude rate,A,di_gee,25,150,661.803478680192,630.28902731447,682.813112924008
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,crude rate,B,di_gee,25,150,649.270078443445,618.352455660425,669.881826965459
+2010,us,nvss,A,White,Not Hispanic or Latino,666,666,attributable,YLL,crude rate,D,di_gee,25,150,588.450900842495,560.429429373806,607.131881821622

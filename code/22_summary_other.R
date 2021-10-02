@@ -127,8 +127,8 @@ if(!file.exists(pm_summDir)){
   )
   levels(pm_summ$Ethnicity) <- rindreplace7
   
-  rindreplace8 <- list("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
-  #rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
+  #rindreplace8 <- list("large central metro" = 1, "large fringe metro" = 2, "medium metro" = 3, "small metro" = 4, "micropolitan" = 5, "non-core" = 6,"All" = 666,"Unknown" = "Unknown")
+  rindreplace8 <- list("large metro" = 1, "small-medium metro" = 2,  "non metro" = 3, "All" = 666,"Unknown" = "Unknown")
   levels(pm_summ$rural_urban_class) <- rindreplace8 
   
   fwrite(pm_summ, pm_summDir)

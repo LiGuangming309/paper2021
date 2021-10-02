@@ -29,8 +29,8 @@ if (rlang::is_empty(args)) {
   dataDir <- "/Users/default/Desktop/paper2021/data"
   censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 
-   #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-   #censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+   dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+   censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
 }
 suppressMessages(
   rural_urban_class_or <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
@@ -172,10 +172,10 @@ test_that("rural urban class", {
 
 
 #find replace for less categories
-#rural_urban_class <- rural_urban_class %>%
-#  mutate(rural_urban_class = case_when(rural_urban_class %in% 1:2 ~ 1,
-#                                       rural_urban_class %in% 3:4 ~ 2,
-#                                       rural_urban_class %in% 5:6 ~ 3))
+rural_urban_class <- rural_urban_class %>%
+  mutate(rural_urban_class = case_when(rural_urban_class %in% 1:2 ~ 1,
+                                       rural_urban_class %in% 3:4 ~ 2,
+                                       rural_urban_class %in% 5:6 ~ 3))
 
 write.csv(rural_urban_class,
   file = file.path(dataDir, "rural_urban_class.csv"),

@@ -98,7 +98,7 @@ dir.create(dem.dir, recursive = T, showWarnings = F)
 # directory for demographic data grouped by PM exposure and aggregated by county/hhs region/census region
 dem.agr.dir <- file.path(data.dir, "06_dem.agr")
 dir.create(dem.agr.dir, recursive = T, showWarnings = F)
-agr_bys <- c("nation") # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
+agr_bys <- c("nation","county","STATEFP" ) # c("county","Census_Region","Census_division","hhs_region_number","STATEFP","nation")
 
 paf.dir <- file.path(data.dir, "07_paf")
 dir.create(paf.dir, recursive = T, showWarnings = F)
@@ -162,9 +162,9 @@ args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
 
-# years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
-
-years <- c(2000:2016)
+ years <- c(1990, 2000, 2010, 2016:2011, 2009:2001, 1999:1991)
+ 
+#years <- c(2000:2016)
 #years <- c(1999) #TODO in 1999 still has rural urban class 5,6
 # years <- c(2000,1990,1991) #,1990,1991
 for (agr_by in agr_bys) {
@@ -214,13 +214,13 @@ for (agr_by in agr_bys) {
       #  runscript(script = paf.script, args = args)
       #     runscript(script = read.nvs.findrepl.script, args = args)
      #   runscript(script = read.total.burden.nvs.script, args = args)
-     # runscript(script=pop.summary.script, args = args)
-    #runscript(script=pop.summary.educ.script, args = args)
+      runscript(script=pop.summary.script, args = args)
+    runscript(script=pop.summary.educ.script, args = args)
          
      # runscript(script = add.rate.tot.burd, args = args)
      # runscript(script = calc.attr.burd1.script, args = args)
-    #  runscript(script = calc.attr.burd2.script, args = args)
-     # runscript(script = calc.attr.burd3.script, args = args) 
+      runscript(script = calc.attr.burd2.script, args = args)
+      runscript(script = calc.attr.burd3.script, args = args) 
 
     }  
   }
@@ -243,7 +243,7 @@ for (agr_by in agr_bys) {
     method #11
   )   
    
-#  runscript(script = summary.script, args = args)
+  runscript(script = summary.script, args = args)
   runscript(script = summary.other.script, args = args)
 
 # runscript(script = figure1.script, args = args)
