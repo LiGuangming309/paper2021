@@ -252,10 +252,23 @@ rm(
 
 ## --Find replace----
 
-rindreplace1 <- c(states$STATEFP, "us", 1:99999) %>% as.list()
-names(rindreplace1) <- c(states$NAME, "United States", 1:99999)
-levels(all_burden$Region) <- rindreplace1
-levels(attrBurden$Region) <- rindreplace1
+#rindreplace1 <- c(states$STATEFP, "us", 1:99999) %>% as.list()
+#names(rindreplace1) <- c(states$NAME, "United States", 1:99999)
+#levels(all_burden$Region) <- rindreplace1
+#levels(attrBurden$Region) <- rindreplace1
+
+rindreplace1 <- data.frame(agr_by = c("nation", rep("STATEFP", nrow(states))),
+                           RegionFrom = c("us", states$STATEFP),
+                           RegionTo = c("United States", states$NAME))
+all_burden <- all_burden %>% 
+  left_join(rindreplace1, by = c("Region" = "RegionFrom", "agr_by")) %>%
+  mutate(Region = coalesce(RegionTo, Region),
+         RegionTo = NULL)
+
+attrBurden <- attrBurden %>% 
+  left_join(rindreplace1, by = c("Region" = "RegionFrom", "agr_by")) %>%
+  mutate(Region = coalesce(RegionTo, Region),
+         RegionTo = NULL)
 
 # c("Less than 9th grade", "9th to 12th grade, no diploma", "High school graduate, GED, or alternative", "Some college, no degree", "Associate's degree", "Bachelor's degree", "Graduate or professional degree", "666"),
 # c(1:7, 666)

@@ -36,11 +36,11 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary/"
   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -54,6 +54,7 @@ if(!file.exists(pm_summDir)){
   
   tic(paste("summarized pm data"))
   agr_bys <- setdiff(list.files(dem_agrDir),"county")
+  agr_bys <- "nation" #TODO löschen
   pm_summ <- lapply(agr_bys, function(agr_by){
     tic(paste("summarized pm data by", agr_by))
     years <- list.files(file.path(dem_agrDir, agr_by))
@@ -95,9 +96,13 @@ if(!file.exists(pm_summDir)){
   pm_summ <- pm_summ %>% mutate_at(setdiff(colnames(pm_summ), c("value")),
                                          as.factor)
   
-  rindreplace1 <- c(states$STATEFP, "us") %>% as.list
-  names(rindreplace1) <- c(states$NAME, "United States")
-  levels(pm_summ$Region) <- rindreplace1
+  rindreplace1 <- data.frame(agr_by = c("nation", rep("STATEFP", nrow(states))),
+                             RegionFrom = c("us", states$STATEFP),
+                             RegionTo = c("United States", states$NAME))
+  pm_summ <- pm_summ %>% 
+    left_join(rindreplace1, by = c("Region" = "RegionFrom", "agr_by")) %>%
+    mutate(Region = coalesce(RegionTo, Region),
+           RegionTo = NULL)
   
   rindreplace2 <- list("high school graduate or lower" = "lower", 
                        "some college education but no 4-year college degree" = "middle", 
@@ -168,9 +173,13 @@ if(!file.exists(pop_summaryDir)){
   ###---find and replace----
   pop_summary <- pop_summary %>% mutate_at(setdiff(colnames(pop_summary), c("Population")),
                                    as.factor)
-  rindreplace1 <- c(states$STATEFP, "us") %>% as.list
-  names(rindreplace1) <- c(states$NAME, "United States")
-  levels(pop_summary$Region) <- rindreplace1
+  rindreplace1 <- data.frame(agr_by = c("nation", rep("STATEFP", nrow(states))),
+             RegionFrom = c("us", states$STATEFP),
+             RegionTo = c("United States", states$NAME))
+  pop_summary <- pop_summary %>% 
+    left_join(rindreplace1, by = c("Region" = "RegionFrom", "agr_by")) %>%
+    mutate(Region = coalesce(RegionTo, Region),
+           RegionTo = NULL)
   
   rindreplace2 <- list("high school graduate or lower" = "lower", 
                        "some college education but no 4-year college degree" = "middle", 
