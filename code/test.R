@@ -6,7 +6,10 @@ rm(list = ls(all = TRUE))
 packages <- c(
   "data.table", "magrittr", "shiny", "ggplot2",  "ggpubr", "scales", "grid", "cowplot",
   "dplyr", "tigris","tmap" , "tictoc",
- "testthat","tidyverse"
+ "testthat","tidyverse",  "readxl",
+ 
+ "data.table", "magrittr",
+ "dplyr", "tigris", "tmap", "testthat","tidyverse"
 )
 
 for (p in packages) {
@@ -19,11 +22,15 @@ options(scipen = 10000)
 tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
 censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+
+dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+dem_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr"
+
 
 ###----- pm summ----
-agr_bys <- "nation" #TODO löschen
+agr_bys <- "county" #TODO löschen
 pm_summ <- lapply(agr_bys, function(agr_by){
   tic(paste("summarized pm data by", agr_by))
   years <- list.files(file.path(dem_agrDir, agr_by))
@@ -63,9 +70,15 @@ pm_summ <- pm_summ %>%
                names_to = "pm_metric")
 pm_summ <- pm_summ %>% filter(pm_metric == "mean")
 ##--- read rural urban class----
-rural_urban_class <- read.csv("~/Desktop/paper2021/data/rural_urban_class.csv") %>%
+rural_urban_class1 <- read.csv(file.path(dataDir, "rural_urban_class.csv")) %>%
   filter(fromYear == 2010) %>%
   select(FIPS.code, rural_urban_class)
+
+#suppressMessages(
+#  rural_urban_class2 <- read_excel(file.path(dataDir, "NCHSURCodes2013.xlsx"), .name_repair = "universal") %>%
+#    transmute(FIPS.code, rural_urban_class = ..2013.code) #, pop_size = County.2012.pop
+#)
+#rural_urban_class2<- rural_urban_class2 %>% mutate(rural_urban_class = as.factor(rural_urban_class))
 ##--shape files----
 counties_shapeDir <- file.path(tmpDir, paste0("counties_", 2016, ".RData"))
 if (!file.exists(counties_shapeDir)) {
@@ -77,13 +90,39 @@ counties_shape <- readRDS(counties_shapeDir) %>%
   select(GEOID, geometry)
 rm(counties_shapeDir)
 
-##-- plot---
-rural_ruban_shape <- inner_join(counties_shape, rural_urban_class, by = c("GEOID" ="FIPS.code")) %>%
-  mutate(GEOID = NULL)
-#plot(rural_ruban_shape)
+states <- tigris::states() %>% filter(!(STUSPS %in% c("AS", "GU", "MP", "PR", "VI", "HI", "AK"))) #TODO + Alaska, Hawaii
 
-g1<- ggplot(data = rural_ruban_shape) +
-  geom_sf()
-g1
-#pm_summ_shape <- inner_join(pm_summ, rural_urban_class, by = c("GEOID" ="Region")) %>%
-#  mutate(GEOID = NULL)
+##-- plot---
+join_everything <- counties_shape %>%
+  inner_join(rural_urban_class1, by = c("GEOID" ="FIPS.code")) %>%
+  inner_join(pm_summ, by = c("GEOID" ="Region"))
+
+
+tm1 <- tm_shape(states) +
+  tm_borders(lwd = 0.5, col = "black") +
+  tm_fill(col = "grey", bg.alpha = 0.6)+
+  tm_shape(join_everything)+#, projection = 26916
+  tm_polygons(col = "rural_urban_class.x")+ 
+  tm_legend(bg.color = "white", bg.alpha = 0.6)
+
+tmap_save(tm1,   "C:/Users/Daniel/Desktop/rural_ruban1.png",
+          dpi = 100)
+
+tm2 <- tm_shape(states) +
+  tm_borders(lwd = 0.5, col = "black") +
+  tm_fill(col = "grey", bg.alpha = 0.6)+
+  tm_shape(join_everything)+#, projection = 26916
+  tm_polygons(col = "rural_urban_class.y")+ 
+  tm_legend(bg.color = "white", bg.alpha = 0.6)
+
+tmap_save(tm2,   "C:/Users/Daniel/Desktop/rural_ruban2.png",
+          dpi = 100)
+
+tm3 <- tm_shape(states) +
+  tm_borders(lwd = 0.5, col = "black") +
+  tm_fill(col = "grey", bg.alpha = 0.6)+
+  tm_shape(join_everything)+#, projection = 26916
+  tm_polygons(col = "value")+ 
+  tm_legend(bg.color = "white", bg.alpha = 0.6)
+tmap_save(tm3,   "C:/Users/Daniel/Desktop/pm_summ.png",
+                    dpi = 100)
