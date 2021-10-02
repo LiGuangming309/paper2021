@@ -161,7 +161,9 @@ figure4.script <- file.path(code.dir, "26_figure4.R")
 args <- paste(tmp.dir, exp.rr.dir)
 # runscript(script=mrbrtRR.script, args = args)
 
-# years <- c(1990, 2000, 2010, 1991:1998, 2001:2009, 2011:2016)
+
+# years <- c(1990, 2000, 2010, 1991:1999, 2001:2009, 2011:2016)
+
 years <- c(2000:2016)
 #years <- c(1999) #TODO in 1999 still has rural urban class 5,6
 # years <- c(2000,1990,1991) #,1990,1991
@@ -206,9 +208,15 @@ for (agr_by in agr_bys) {
     # runscript(script=assignTract.script, args  = args)
 
     #  runscript(script = assignTractAKHI.script, args = args)
+<<<<<<< HEAD
 
       runscript(script = cens_agr.script, args = args)
       # runscript(script = rural.urban.script, args = args)
+=======
+    #  runscript(script = rural.urban.script, args = args)
+     # runscript(script = cens_agr.script, args = args)
+       
+>>>>>>> 7a9460d7fad07d0a305232418f330177f554d653
       #  runscript(script = paf.script, args = args)
       #     runscript(script = read.nvs.findrepl.script, args = args)
      #   runscript(script = read.total.burden.nvs.script, args = args)
@@ -217,8 +225,13 @@ for (agr_by in agr_bys) {
          
      # runscript(script = add.rate.tot.burd, args = args)
      # runscript(script = calc.attr.burd1.script, args = args)
+<<<<<<< HEAD
     #  runscript(script = calc.attr.burd2.script, args = args)
      # runscript(script = calc.attr.burd3.script, args = args) 
+=======
+     # runscript(script = calc.attr.burd2.script, args = args)
+    #  runscript(script = calc.attr.burd3.script, args = args) 
+>>>>>>> 7a9460d7fad07d0a305232418f330177f554d653
 
     }  
   }
