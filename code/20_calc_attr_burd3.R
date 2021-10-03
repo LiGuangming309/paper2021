@@ -34,7 +34,7 @@ attrBurdenDir <- args[18]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1992
+  year <- 2016
   agr_by <- "county"
   source <- "nvss"
 
@@ -147,6 +147,8 @@ if (!file.exists(attrBurdenDir)) {
       ),
       pop_weight_pm_exp = NULL, hr_upper = NULL, hr_mean = NULL, hr_lower = NULL
     )
+  
+  if(agr_by == "county") paf_di$rural_urban_class <- as.factor(666) #TODO change total burden
   
   test_that("calc attrburd3 anti join",{
     test <- anti_join(
