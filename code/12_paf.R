@@ -109,8 +109,10 @@ short_meta <- short_meta %>%
 short_meta <- short_meta %>% 
   mutate(cummin = NULL, cummax = NULL)%>%
   ungroup() %>%
-  mutate(short_variable_id = row_number())
+  mutate(short_variable_id = row_number()) %>%
+  mutate_at(c("Education"), as.factor)
 
+census_meta <- census_meta %>% mutate_at(c("Education"), as.factor)
 meta_cross <- inner_join(short_meta, census_meta, by = c("Year", "Gender.Code", "Race", "Hispanic.Origin", "Education"))
 
 meta_cross1<- meta_cross%>%
