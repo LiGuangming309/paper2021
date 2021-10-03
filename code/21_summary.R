@@ -97,7 +97,7 @@ test_that("basic check all burden", {
   expect_equal(nrow(all_burden_dupl), 0)
   names(all_burden_dupl)
   unique(all_burden_dupl$Education)
-  if (nrow(all_burden_dupl) > 0) browser()
+  #if (nrow(all_burden_dupl) > 0) browser()
 })
 
 group_variables <- setdiff(colnames(attrBurden), c("lower", "mean", "upper", "method", "min_age", "max_age", "scenario"))
@@ -144,7 +144,7 @@ test_that(" basic checks", {
   attrBurden_prop_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("value", "label_cause")))
   attrBurden_prop_dupl <- attrBurden_prop_dupl[duplicated(attrBurden_prop_dupl), ]
   expect_equal(nrow(attrBurden_prop_dupl), 0)
-  if (nrow(attrBurden_prop_dupl) > 0) browser()
+  #if (nrow(attrBurden_prop_dupl) > 0) browser()
 
   test1 <- attrBurden %>% anti_join(all_burden, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
   expect_equal(0, nrow(test1))#TODO

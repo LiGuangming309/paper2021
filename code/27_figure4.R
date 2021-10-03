@@ -114,5 +114,5 @@ tm1 <- tm_shape(states) +
 
 tm1
   ## ---save---
-  tmap_save(tm1, file.path(figuresDir, "figure5.png"),
+  tmap_save(tm1, file.path(figuresDir, "figure4.png"),
             dpi = 300)

@@ -106,8 +106,8 @@ rm(
 group.colors <- c(hue_pal()(6), hue_pal()(3), hue_pal()(3))
 names(group.colors) <- c("White, Not Hispanic or Latino",
                          "White, Hispanic or Latino",
-                         "White, All Origins",
                          "Black or African American",
+                         "White, All Origins",
                          "Asian or Pacific Islander",
                          "American Indian or Alaska Native",
                          
