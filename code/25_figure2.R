@@ -63,7 +63,8 @@ attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethni
 & method == "burnett")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education))
 
-attr_burd3 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "proportion of disparity to large metro"  & rural_urban_class != "All" & Year >= 2001 & method == "burnett")
+attr_burd3 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "proportion of disparity to large metro"  
+                                   & rural_urban_class != "All" & Year >= 2001 & method == "burnett")
 g3 <- ggplot(attr_burd3, aes(x = Year, y = mean, color = rural_urban_class))
 
 attr_burd$measure3 %>% unique
@@ -166,17 +167,17 @@ lay <- rbind(
 
 t1 <- grobTree(
   rectGrob(gp = gpar(fill = "grey")),
-  textGrob("proportion of disparity to Black or African American attributable", gp = gpar(fontsize = 10, fontface = "bold"))
+  textGrob("race", gp = gpar(fontsize = 10, fontface = "bold"))
 )
 
 t2 <- grobTree(
   rectGrob(gp = gpar(fill = "grey")),
-  textGrob("proportion of disparity to Black or African American attributable", gp = gpar(fontsize = 10, fontface = "bold"))
+  textGrob("Education", gp = gpar(fontsize = 10, fontface = "bold"))
 )
 
 t3 <- grobTree(
   rectGrob(gp = gpar(fill = "grey")),
-  textGrob("proportion of disparity to Black or African American attributable", gp = gpar(fontsize = 10, fontface = "bold"))
+  textGrob("Rural-Urban", gp = gpar(fontsize = 10, fontface = "bold"))
 )
 
 gs <- append(plots, list(t1, t2, t3, legend_plot))
@@ -189,7 +190,7 @@ figure_hight <- 1
 g_combined <- grid.arrange(
   grobs = gs,
   widths = c(figure_width, blank_space, figure_width , blank_space,  figure_width),
-  heights = c(0.2, blank_space, figure_hight, 0.8),
+  heights = c(0.1, blank_space, figure_hight, 0.8),
   layout_matrix = lay
 )
 

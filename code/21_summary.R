@@ -329,7 +329,7 @@ test_that("basic check attr burden", {
   all_burden_dupl <- all_burden %>% select(setdiff(colnames(all_burden), c("overall_value")))
   all_burden_dupl <- all_burden_dupl[duplicated(all_burden_dupl), ]
   expect_equal(nrow(all_burden_dupl), 0)
-  if(nrow(all_burden_dupl) > 0) browser()
+  #if(nrow(all_burden_dupl) > 0) browser()
 
   attrBurden_dupl <- attrBurden %>% select(setdiff(colnames(attrBurden), c("lower", "mean", "upper")))
   attrBurden_dupl <- attrBurden_dupl[duplicated(attrBurden_dupl), ]

@@ -54,8 +54,7 @@ all_burden <- all_burden %>% filter(attr == "overall")
 attr_burd <- attr_burd %>% filter(method == methodI & attr == "attributable" & measure3 == "value" & scenario == scenarioI)
 ### ---- population ranking----
 pop_sum <- fread(file.path(summaryDir, "pop_summary.csv"))
-pop_sum <- pop_sum %>% filter(Year %in% 2000:2004 &
-  Gender.Code == "All genders" & source2 == "Official Bridged-Race Population Estimates" &
+pop_sum <- pop_sum %>% filter(Gender.Code == "All genders" & source2 == "Official Bridged-Race Population Estimates" &
   Education == "666" & Ethnicity == "All, All Origins" )
 pop_sum <- pop_sum %>%
   group_by(Year, Region) %>%
@@ -65,7 +64,7 @@ most_pop_states <-pop_sum %>%
   group_by(Region) %>%
   summarise(population_state_all = mean(population_state_all)) %>%
   arrange(desc(population_state_all)) %>%
-  #head(31) %>%
+  head(31) %>%
   select(Region) %>%
   unlist
 
@@ -73,7 +72,9 @@ most_pop_states <-pop_sum %>%
 joined_all_attr <- inner_join(all_burden, attr_burd, by = setdiff(colnames(all_burden), c("overall_value", "attr")))
 joined_all_attr <- inner_join(joined_all_attr, pop_sum, by = c("Year", "Region"))
 joined_all_attr <- joined_all_attr %>%
-  filter(Region %in% most_pop_states) %>%
+  filter(Region %in% most_pop_states & Year == 2016 &
+           Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" &
+           source == "National Vital Statistics System" ) %>%
   group_by_at(vars(all_of(setdiff(colnames(joined_all_attr), c("Year", "overall_value", "mean", "lower", "upper", "population_state_all"))))) %>%
   summarise(
     overall_value = mean(overall_value),
@@ -85,11 +86,17 @@ joined_all_attr <- joined_all_attr %>%
   ungroup() %>%
   as.data.frame()
 
-joined_all_attr <- joined_all_attr %>%
+joined_all_attr1 <- joined_all_attr %>%
   filter(Ethnicity %in% c("Black or African American", "White, Not Hispanic or Latino") &
-    # Year == 2004 &
-    Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" &
-    source == "National Vital Statistics System" & Education == 666 & Ethnicity != "All, All Origins")
+           Education == 666 & Ethnicity != "All, All Origins" & rural_urban_class == "All")
+
+joined_all_attr2 <- joined_all_attr %>%
+  filter(Education %in% c("4-year college graduate or higher","high school graduate or lower") &
+           Education != 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All")
+
+joined_all_attr3 <- joined_all_attr %>%
+  filter(rural_urban_class %in% c("large metro","non metro") &
+            Education == 666 & Ethnicity == "All, All Origins" & rural_urban_class != "All")
 #joined_all_attr <- joined_all_attr 
 #joined_all_attr <- joined_all_attr[1:51, ]
 ## ---get convex hull----
@@ -141,15 +148,13 @@ g1 <- g1 + geom_abline(
     segment.color = "grey50"
   ) +
   scale_colour_manual(values = group.colors) +
-  guides(size = FALSE) # , alpha =
-
-
+  guides(size = "none") # , alpha =
 
 g1
 # https://stackoverflow.com/questions/8545035/scatterplot-with-marginal-histograms-in-ggplot2
 # https://cran.r-project.org/web/packages/ggExtra/readme/README.html
 g1 <- ggExtra::ggMarginal(g1, groupColour = TRUE, groupFill = TRUE, size = 15)
 
-ggsave(file.path(figuresDir, "figure7.png"), g1,
+ggsave(file.path(figuresDir, "figure3.png"), g1,
   height = 6, width = 9
 )

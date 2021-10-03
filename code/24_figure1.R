@@ -34,7 +34,7 @@ methodI <- args[11]
 # TODO delete
 if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-  summaryDir <- "/Users/default/Desktop/data_summary_old"
+  #summaryDir <- "/Users/default/Desktop/data_summary_old"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
 }
@@ -60,7 +60,7 @@ attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethni
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity))
 
 attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins" & measure3 == "value" & rural_urban_class == "All"
-& method == "di_gee") #burnett
+                                   & method == "di_gee") #burnett 
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education))
 
 attr_burd3 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "value"
@@ -85,12 +85,15 @@ min2 <- min(c(attr_burd4$lower, attr_burd5$lower, attr_burd6$lower))
 max1 <- max(c(attr_burd1$upper, attr_burd2$upper, attr_burd3$upper))
 max2 <- max(c(attr_burd4$upper, attr_burd5$upper, attr_burd6$upper))
 
-g1 <- g1 + ylim(min1, max1)
-g2 <- g2 + ylim(min1, max1)
-g3 <- g3 + ylim(min1, max1)
-g4 <- g4 + ylim(min2, max2)
-g5 <- g5 + ylim(min2, max2)
-g6 <- g6 + ylim(min2, max2)
+if(FALSE){
+  g1 <- g1 + ylim(min1, max1)
+  g2 <- g2 + ylim(min1, max1)
+  g3 <- g3 + ylim(min1, max1)
+  g4 <- g4 + ylim(min2, max2)
+  g5 <- g5 + ylim(min2, max2)
+  g6 <- g6 + ylim(min2, max2)
+}
+
 #g6 <- g6 + scale_y_continuous(breaks= pretty_breaks())
 
 plots <- list(g1, g2, g3, g4, g5, g6)
