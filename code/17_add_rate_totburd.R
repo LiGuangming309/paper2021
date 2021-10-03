@@ -33,8 +33,8 @@ totalBurdenParsed2Dir <- args[17]
 
 # TODO delete
 if (rlang::is_empty(args)) {
-  year <- 1999
-  agr_by <- "nation"
+  year <- 2016
+  agr_by <- "STATEFP"
   source <- "nvss"
 
   dataDir <- "/Users/default/Desktop/paper2021/data"
@@ -43,11 +43,11 @@ if (rlang::is_empty(args)) {
   totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/data/09_total_burden_parsed"
   totalBurdenParsed2Dir <- "/Users/default/Desktop/paper2021/data/12_total_burden_parsed2"
 
-  dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
-  pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
-  pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
-  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
-  totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
+  #dataDir <- "C:/Users/Daniel/Desktop/paper2021/data"
+  #pafDir <- "C:/Users/Daniel/Desktop/paper2021/data/07_paf"
+  #pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary"
+#  totalBurdenParsedDir <- "C:/Users/Daniel/Desktop/paper2021/data/09_total_burden_parsed"
+ # totalBurdenParsed2Dir <- "C:/Users/Daniel/Desktop/paper2021/data/12_total_burden_parsed2"
 }
 
 totalBurdenParsed2Dir <- file.path(totalBurdenParsed2Dir, agr_by, source)
@@ -317,7 +317,7 @@ if (!file.exists(totalBurdenParsed2Dir)) {
 
   if(agr_by != "nation"){
     total_burden <- total_burden %>%
-      filter(measure1 == "Deaths" & measure2 == "age-adjusted rate" & rural_urban_class == 666)
+      filter(measure1 == "Deaths" & measure2 == "age-adjusted rate")
   }
 
   total_burden <- total_burden %>% distinct()
