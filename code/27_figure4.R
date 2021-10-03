@@ -38,9 +38,9 @@ if (rlang::is_empty(args)) {
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
   
-  #tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
-  #summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
-  #figuresDir <- "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
+  tmpDir <- "C:/Users/Daniel/Desktop/paper2021/data/tmp"
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  figuresDir <- "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
   scenarioI <- "A"
   methodI <- "di_gee"
 }
