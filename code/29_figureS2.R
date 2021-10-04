@@ -276,4 +276,4 @@ g2 <- ggplot(data, aes(x = pm, y = mean, color = method)) +
   ylab("Mortality from PM2.5 per 100k per year")+ 
   theme(legend.position = "none")
 g2
-ggsave(file.path(figuresDir, "figures2.svg"), g2, height = 9, width = 8)
+ggsave(file.path(figuresDir, "figuresS2.png"), g1, height = 9, width = 8)

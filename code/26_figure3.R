@@ -64,7 +64,7 @@ most_pop_states <- pop_sum %>%
   group_by(Region) %>%
   summarise(population_state_all = mean(population_state_all)) %>%
   arrange(desc(population_state_all)) %>%
-  #head(31) %>%
+  head(31) %>%
   select(Region) %>%
   unlist()
 
@@ -112,6 +112,7 @@ joined_all_attr3 <- joined_all_attr %>%
     Education == 666 & Ethnicity == "All, All Origins" & rural_urban_class != "All" & method == "di_gee") #TODO
 # joined_all_attr <- joined_all_attr
 # joined_all_attr <- joined_all_attr[1:51, ]
+
 ## ---get convex hull----
 convex_hull1 <- joined_all_attr1 %>%
   select(overall_value, mean) %>%
@@ -133,14 +134,14 @@ convex_regions2 <- joined_all_attr2[convex_hull2, "Region"]
 convex_regions3 <- joined_all_attr3[convex_hull3, "Region"]
 rm(convex_hull1, convex_hull2, convex_hull3)
 ## ---colors---
-group.colors1 <- hue_pal()(5)[c(3, 5)] # TODO
-names(group.colors1) <- c("Black or African American", "White, Not Hispanic or Latino")
+group.colors1 <- hue_pal()(5)[c(1, 3)] # TODO
+names(group.colors1) <- c("White, Not Hispanic or Latino", "Black or African American")
 
-group.colors2 <- hue_pal()(3)[c(1, 2)] # TODO
+group.colors2 <- hue_pal()(3)[c(1, 3)] # TODO
 names(group.colors2) <- c("4-year college graduate or higher", "high school graduate or lower")
 
-group.colors3 <- hue_pal()(3)[c(1, 2)] # TODO
-names(group.colors3) <- c("large metro", "non metro")
+group.colors3 <- hue_pal()(3)[c(1, 3)] # TODO
+names(group.colors3) <- c("non metro", "large metro")
 
 #--plots----
 add_stuff <- function(g, convex_regions, group.colors){
@@ -165,30 +166,42 @@ add_stuff <- function(g, convex_regions, group.colors){
     xlab("all-cause burden") +
     geom_label_repel(
       aes(label = ifelse(Region %in% c(convex_regions, "national"), as.character(Region), "")), # ,shape = agr_by
-      size = 2.5,
+      size = 2,
       box.padding = 0.2, # 0.35
       point.padding = 0.5,
       segment.color = "grey50"
     ) +
-    #scale_colour_manual(values = group.colors) +
+    scale_colour_manual(values = group.colors) +
     guides(size = "none")  # , alpha =
   
   # https://stackoverflow.com/questions/8545035/scatterplot-with-marginal-histograms-in-ggplot2
   # https://cran.r-project.org/web/packages/ggExtra/readme/README.html
   g <- ggExtra::ggMarginal(g, groupColour = TRUE, groupFill = TRUE, size = 15)
   return(g)
-  #TODO fix scales
 }
 
 g1 <- ggplot(joined_all_attr1, aes(x = overall_value, y = mean))
+g2 <- ggplot(joined_all_attr2, aes(x = overall_value, y = mean))
+g3 <- ggplot(joined_all_attr3, aes(x = overall_value, y = mean))
+
+## --set range---
+min_y <- min(c(joined_all_attr1$lower, joined_all_attr2$lower, joined_all_attr3$lower))
+max_y <- max(c(joined_all_attr1$upper, joined_all_attr2$upper, joined_all_attr3$upper))
+min_x <- min(c(joined_all_attr1$overall_value, joined_all_attr2$overall_value, joined_all_attr3$overall_value))
+max_x <- max(c(joined_all_attr1$overall_value, joined_all_attr2$overall_value, joined_all_attr3$overall_value))
+if(TRUE){
+  g1 <- g1 + ylim(min_y, max_y) + xlim(min_x, max_x)
+  g2 <- g2 + ylim(min_y, max_y) + xlim(min_x, max_x)
+  g3 <- g3 + ylim(min_y, max_y) + xlim(min_x, max_x)
+}
+
+###-----add information----
 g1 <- g1 +geom_point(aes(size = point_size, color = Ethnicity)) 
 g1 <- add_stuff(g1, convex_regions1, group.colors1) 
 
-g2 <- ggplot(joined_all_attr2, aes(x = overall_value, y = mean))
 g2 <- g2 +geom_point(aes(size = point_size, color = Education)) 
 g2 <- add_stuff(g2, convex_regions2,  group.colors2)
 
-g3 <- ggplot(joined_all_attr3, aes(x = overall_value, y = mean))
 g3 <- g3 +geom_point(aes(size = point_size, color = rural_urban_class)) 
 g3 <- add_stuff(g3, convex_regions3,  group.colors3)
 ##--- legend ---
@@ -225,7 +238,7 @@ legend_plot <- get_legend(ggplot(
   theme(
     legend.title = element_blank(),
     legend.key.size = unit(4, "mm"),
-    legend.text = element_text(family = "mono", size = 7)
+    legend.text = element_text(family = "mono", size = 5)
   ) +
   #  guides(color = guide_legend(label.position = "left"))+
   geom_point() +
@@ -236,10 +249,10 @@ as_ggplot(legend_plot)
 lay <- rbind(
   c(1,NA,2),
   c(NA,NA,NA),
-  c(3, NA, NA)
+  c(3, NA, 4)
 )
 
-gs <- list(g1, g2, g3)
+gs <- list(g1, g2, g3, legend_plot)
 
 
 blank_space <- 0.05

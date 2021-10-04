@@ -115,9 +115,9 @@ names(group.colors) <- c("White, Not Hispanic or Latino",
                          "some college education but no 4-year college degree",
                          "4-year college graduate or higher",
                          
+                         "non metro",
                          "large metro",
-                         "small-medium metro",
-                         "non metro"
+                         "small-medium metro"
 )
 
 plots <- lapply(plots, function(g) {
