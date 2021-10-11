@@ -12,7 +12,7 @@ rm(list = ls(all = TRUE))
 # load packages, install if missing
 packages <- c(
   "data.table", "magrittr", "shiny", "ggplot2", "ggpubr", "scales", "ggrepel",
-  "dplyr", "ggExtra", "gridExtra", "grid", "tidyverse"
+  "dplyr", "ggExtra", "gridExtra", "grid", "tidyverse", "cowplot"
 )
 
 for (p in packages) {
@@ -107,6 +107,10 @@ joined_all_attr2 <- joined_all_attr %>%
   filter(Education %in% c("4-year college graduate or higher", "high school graduate or lower") &
     Education != 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All" & method == "di_gee") #TODO
 
+joined_all_attr3 <- joined_all_attr %>%
+  filter(rural_urban_class %in% c("large metro", "non metro") &
+           Education == 666 & Ethnicity == "All, All Origins" & rural_urban_class != "All" & method == "di_gee") #TODO
+joined_all_attr$rural_urban_class %>% unique
 # joined_all_attr <- joined_all_attr
 # joined_all_attr <- joined_all_attr[1:51, ]
 
