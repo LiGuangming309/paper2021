@@ -54,7 +54,7 @@ rm(file_list)
 attr_burd$method %>% unique()
 attr_burd <- attr_burd %>%
   filter(
-    Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == methodI
+    Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & method == "di_gee"
     & attr == "attributable" &
       source == "National Vital Statistics System" & scenario == scenarioI & rural_urban_class == "All" & agr_by == "county"
     & Year %in% year # 2000:2016
@@ -101,7 +101,7 @@ tm1 <- tm_shape(states) +
   tm_borders(lwd = 0.5, col = "black") +
   tm_fill(col = "grey", bg.alpha = 0.6)+ 
   tm_shape( counties_join)+#, projection = 26916
-  tm_polygons(col = "mean", midpoint = 0, title = "burden for White - burden for Black")+ 
+  tm_polygons(col = "mean", midpoint = 0, title = "burden for White - burden for Black")+ #lwd = 0.2, 
   tm_legend(bg.color = "white", bg.alpha = 0.6)# #+
   #tm_layout("Wealth (or so)",
   #          legend.title.size = 1,

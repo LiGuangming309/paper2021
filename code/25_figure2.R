@@ -60,30 +60,28 @@ attr_burd1 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethni
 g1 <- ggplot(attr_burd1, aes(x = Year, y = mean, color = Ethnicity))
 
 attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethnicity == "All, All Origins" & measure3 == "proportion of disparity to lower educational attainment"  & rural_urban_class == "All"
-& method == "burnett")
+& method == "di_gee")
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education))
 
-attr_burd3 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "proportion of disparity to large metro"  
-                                   & rural_urban_class != "All" & Year >= 2001 & method == "burnett")
-g3 <- ggplot(attr_burd3, aes(x = Year, y = mean, color = rural_urban_class))
 
 attr_burd$measure3 %>% unique
 ## --set range---
-min1 <- min(c(attr_burd1$lower, attr_burd2$lower, attr_burd3$lower))
-max1 <- max(c(attr_burd1$upper, attr_burd2$upper, attr_burd3$upper))
+min1 <- min(c(attr_burd1$lower, attr_burd2$lower))
+max1 <- max(c(attr_burd1$upper, attr_burd2$upper))
 
-#g1 <- g1 + ylim(min1, max1)
-#g2 <- g2 + ylim(min1, max1)
-#g3 <- g3 + ylim(min1, max1)
+g1 <- g1 + ylim(min1, max1)
+g2 <- g2 + ylim(min1, max1)
 
-plots <- list(g1, g2, g3)
+plots <- list(g1, g2)
 rm(min1, max1)
 rm(
-  attr_burd1, attr_burd2, attr_burd3, 
-  g1, g2, g3
+  attr_burd1, attr_burd2, 
+  g1, g2
 )
 #----formatting------
-group.colors <- c(hue_pal()(6), hue_pal()(3), hue_pal()(3))
+#group.colors <- c(hue_pal()(6), hue_pal()(3), hue_pal()(3))
+group.colors <- hue_pal()(9)
+group.colors <- RColorBrewer::brewer.pal(n = 9, name = "Paired")
 names(group.colors) <- c("White, Not Hispanic or Latino",
                          "White, Hispanic or Latino",
                          "Black or African American",
@@ -93,11 +91,7 @@ names(group.colors) <- c("White, Not Hispanic or Latino",
                          
                          "high school graduate or lower",
                          "some college education but no 4-year college degree",
-                         "4-year college graduate or higher",
-                         
-                         "non metro",
-                         "large metro",
-                         "small-medium metro"
+                         "4-year college graduate or higher"
 )
 
 plots <- lapply(plots, function(g) {
@@ -105,64 +99,25 @@ plots <- lapply(plots, function(g) {
     geom_line(size = 1.5) +
     xlab("Year") +
     geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE) +
-    theme(legend.position = "none", axis.title.y = element_blank()) + 
-    scale_colour_manual(values=group.colors)
+    scale_colour_manual(values=group.colors) +
+    theme(legend.title = element_blank()) +
+    guides(color=guide_legend(ncol=3,byrow=TRUE))
 })
 
-## ----get legends ---
-own_get_legend <- function(p) {
-  g <- ggplot_build(p)
-  data.frame(
-    colour = unique(g$data[[1]]["colour"]),
-    column = g$plot$labels$colour,
-    label = unique(as.data.frame(g$plot$data)[, g$plot$labels$colour])
-  )
-}
+legend_plot <- get_legend(plots[[1]])
+legend_plot <- as_ggplot(legend_plot)
 
-legend_df <- lapply(plots, own_get_legend) %>%
-  rbindlist() %>%
-  distinct()
-
-legend_df <- legend_df %>%
-  complete(colour, column, fill = list(label = "")) %>%
-  group_by(column) %>%
-  mutate(label = str_pad(label, max(nchar(label)), "right"))
-
-legend_df <- legend_df %>%
-  pivot_wider(
-    names_from = column,
-    values_from = label # ,
-    # values_fill = ""
-  ) %>%
-  as.data.frame() %>%
-  unite("labels", c("Ethnicity", "Education", "rural_urban_class"), sep = " | ")
-
-
- color_legend <- legend_df$colour
- names(color_legend) <- legend_df$labels
-
-legend_plot <- get_legend(ggplot(
-  data = legend_df %>% mutate(test = 1),
-  aes(color = labels, x = test, y = test)
-) +
-  theme(
-    legend.title = element_blank(),
-    legend.key.size = unit(4, "mm"),
-    legend.text = element_text(family = "mono", size = 7)
-  ) +
-  #  guides(color = guide_legend(label.position = "left"))+
-  geom_point() +
-  scale_colour_manual(values = color_legend))
-as_ggplot(legend_plot)
-
-
+plots <- lapply(plots, function(g) {
+  g + theme(legend.position = "none", axis.title.y = element_blank()) 
+  
+})
 
 ## --- arrange plots----
 lay <- rbind(
-  c(4,NA,5,NA,6),
-  c(NA,NA,NA,NA,NA),
-  c(1,NA,2,NA,3),
-  c(7,7,7,7,7)
+  c(4,NA,5),
+  c(NA,NA,NA),
+  c(1,NA,2),
+  c(7,7,7)
 )
 
 t1 <- grobTree(
@@ -175,12 +130,8 @@ t2 <- grobTree(
   textGrob("Education", gp = gpar(fontsize = 10, fontface = "bold"))
 )
 
-t3 <- grobTree(
-  rectGrob(gp = gpar(fill = "grey")),
-  textGrob("Rural-Urban", gp = gpar(fontsize = 10, fontface = "bold"))
-)
 
-gs <- append(plots, list(t1, t2, t3, legend_plot))
+gs <- append(plots, list(t1, t2, legend_plot))
 #gs <- lapply(1:7, function(ii) grobTree(rectGrob(gp = gpar(fill = ii, alpha = 0.5)), textGrob(ii)))
 
 blank_space <- 0.05
@@ -189,7 +140,7 @@ figure_hight <- 1
 
 g_combined <- grid.arrange(
   grobs = gs,
-  widths = c(figure_width, blank_space, figure_width , blank_space,  figure_width),
+  widths = c(figure_width, blank_space, figure_width),
   heights = c(0.1, blank_space, figure_hight, 0.8),
   layout_matrix = lay
 )

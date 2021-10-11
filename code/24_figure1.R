@@ -13,7 +13,7 @@ rm(list = ls(all = TRUE))
 packages <- c(
   "data.table", "magrittr", "shiny", "ggplot2", "ggpubr", "scales", "grid", "cowplot",
   "dplyr", "stringr", "tidyr",
-  "gridExtra", "grid", "lattice"
+  "gridExtra", "grid", "lattice", "ggsci"
 )
 
 for (p in packages) {
@@ -85,14 +85,12 @@ min2 <- min(c(attr_burd4$lower, attr_burd5$lower, attr_burd6$lower))
 max1 <- max(c(attr_burd1$upper, attr_burd2$upper, attr_burd3$upper))
 max2 <- max(c(attr_burd4$upper, attr_burd5$upper, attr_burd6$upper))
 
-if(FALSE){
   g1 <- g1 + ylim(min1, max1)
   g2 <- g2 + ylim(min1, max1)
   g3 <- g3 + ylim(min1, max1)
   g4 <- g4 + ylim(min2, max2)
   g5 <- g5 + ylim(min2, max2)
   g6 <- g6 + ylim(min2, max2)
-}
 
 #g6 <- g6 + scale_y_continuous(breaks= pretty_breaks())
 
@@ -103,7 +101,9 @@ rm(
   g1, g2, g3, g4, g5, g6
 )
 #----formatting------
-group.colors <- c(hue_pal()(6), hue_pal()(3), hue_pal()(3))
+#group.colors <- c(hue_pal()(6), hue_pal()(3), hue_pal()(3))
+group.colors <- hue_pal()(12)
+group.colors <- RColorBrewer::brewer.pal(n = 12, name = "Paired")
 names(group.colors) <- c("White, Not Hispanic or Latino",
                          "White, Hispanic or Latino",
                          "Black or African American",
@@ -120,16 +120,24 @@ names(group.colors) <- c("White, Not Hispanic or Latino",
                          "small-medium metro"
 )
 
+
 plots <- lapply(plots, function(g) {
   g +
     geom_line(size = 1.5) +
     xlab("Year") +
     geom_ribbon(aes(ymin = lower, ymax = upper), linetype = 2, alpha = 0, show.legend = FALSE) +
-    theme(legend.position = "none", axis.title.y = element_blank()) + 
-    scale_colour_manual(values=group.colors)
+    scale_colour_manual(values=group.colors) +
+    theme(legend.title = element_blank()) +
+    guides(color=guide_legend(ncol=3,byrow=TRUE))
 })
 
+legend_plot <- get_legend(plots[[1]])
+legend_plot <- as_ggplot(legend_plot)
 
+plots <- lapply(plots, function(g) {
+  g + theme(legend.position = "none", axis.title.y = element_blank()) 
+
+})
 ## ----get legends ---
 #own_get_legend <- function(p) {
 #  g <- ggplot_build(p)
@@ -144,43 +152,42 @@ plots <- lapply(plots, function(g) {
 #  rbindlist() %>%
 #  distinct()
 
-legend_df <- data.frame(
-  colour = group.colors,
-  label = names(group.colors),
-  column = c(rep("Ethnicity", 6), rep("Education", 3), rep("rural_urban_class", 3))
-)
+#legend_df <- data.frame(
+#  colour = group.colors,
+#  label = names(group.colors),
+#  column = c(rep("Ethnicity", 6), rep("Education", 3), rep("rural_urban_class", 3))
+#)
 
-legend_df <- legend_df %>%
-  complete(colour, column, fill = list(label = "")) %>%
-  group_by(column) %>%
-  mutate(label = str_pad(label, max(nchar(label)), "right"))
+#legend_df <- legend_df %>%
+#  complete(colour, column, fill = list(label = "")) %>%
+#  group_by(column) %>%
+#  mutate(label = str_pad(label, max(nchar(label)), "right"))
 
-legend_df <- legend_df %>%
-  pivot_wider(
-    names_from = column,
-    values_from = label # ,
+#legend_df <- legend_df %>%
+#  pivot_wider(
+#    names_from = column,
+#    values_from = label # ,
     # values_fill = ""
-  ) %>%
-  as.data.frame() %>%
-  unite("labels", c("Ethnicity", "Education", "rural_urban_class"), sep = " | ")
+#  ) %>%
+#  as.data.frame() %>%
+#  unite("labels", c("Ethnicity", "Education", "rural_urban_class"), sep = " | ")
 
+# color_legend <- legend_df$colour
+# names(color_legend) <- legend_df$labels
 
- color_legend <- legend_df$colour
- names(color_legend) <- legend_df$labels
-
-legend_plot <- get_legend(ggplot(
-  data = legend_df %>% mutate(test = 1),
-  aes(color = labels, x = test, y = test)
-) +
-  theme(
-    legend.title = element_blank(),
-    legend.key.size = unit(4, "mm"),
-    legend.text = element_text(family = "mono", size = 7)
-  ) +
+#legend_plot <- get_legend(ggplot(
+#  data = legend_df %>% mutate(test = 1),
+#  aes(color = labels, x = test, y = test)
+#) +
+#  theme(
+#    legend.title = element_blank(),
+#    legend.key.size = unit(4, "mm"),
+#    legend.text = element_text(family = "mono", size = 7)
+#  ) +
   #  guides(color = guide_legend(label.position = "left"))+
-  geom_point() +
-  scale_colour_manual(values = color_legend))
-as_ggplot(legend_plot)
+#  geom_point() +
+#  scale_colour_manual(values = color_legend))
+#as_ggplot(legend_plot)
 
 # legend_df <- legend_df %>% select(Ethnicity, Education, rural_urban_class)
 # legend_theme <- gridExtra::ttheme_minimal(

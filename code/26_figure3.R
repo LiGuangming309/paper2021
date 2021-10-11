@@ -107,9 +107,6 @@ joined_all_attr2 <- joined_all_attr %>%
   filter(Education %in% c("4-year college graduate or higher", "high school graduate or lower") &
     Education != 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All" & method == "di_gee") #TODO
 
-joined_all_attr3 <- joined_all_attr %>%
-  filter(rural_urban_class %in% c("large metro", "non metro") &
-    Education == 666 & Ethnicity == "All, All Origins" & rural_urban_class != "All" & method == "di_gee") #TODO
 # joined_all_attr <- joined_all_attr
 # joined_all_attr <- joined_all_attr[1:51, ]
 
@@ -134,14 +131,10 @@ convex_regions2 <- joined_all_attr2[convex_hull2, "Region"]
 convex_regions3 <- joined_all_attr3[convex_hull3, "Region"]
 rm(convex_hull1, convex_hull2, convex_hull3)
 ## ---colors---
-group.colors1 <- hue_pal()(5)[c(1, 3)] # TODO
-names(group.colors1) <- c("White, Not Hispanic or Latino", "Black or African American")
 
-group.colors2 <- hue_pal()(3)[c(1, 3)] # TODO
-names(group.colors2) <- c("4-year college graduate or higher", "high school graduate or lower")
-
-group.colors3 <- hue_pal()(3)[c(1, 3)] # TODO
-names(group.colors3) <- c("non metro", "large metro")
+group.colors <- hue_pal()(12)[c(1, 3,7,9,10,12)] # TODO
+group.colors <- RColorBrewer::brewer.pal(n = 12, name = "Paired")[c(1, 3,7,9,10,12)] 
+names(group.colors) <- c("White, Not Hispanic or Latino", "Black or African American", "4-year college graduate or higher", "high school graduate or lower", "non metro", "large metro")
 
 #--plots----
 add_stuff <- function(g, convex_regions, group.colors){
@@ -152,8 +145,6 @@ add_stuff <- function(g, convex_regions, group.colors){
       linetype = 3
     ) +
     # annotate("text", label = "m = 0.5", x = 885, y = 160, size = 3.5)+
-    geom_errorbar(aes(ymin = lower, ymax = upper), alpha = 0.3, width = 10) +
-    
     #theme(
     #  legend.title = element_blank(),
     #  legend.position = c(0.8, 0.2),
@@ -168,7 +159,7 @@ add_stuff <- function(g, convex_regions, group.colors){
       aes(label = ifelse(Region %in% c(convex_regions, "national"), as.character(Region), "")), # ,shape = agr_by
       size = 2,
       box.padding = 0.2, # 0.35
-      point.padding = 0.5,
+      point.padding = 1,
       segment.color = "grey50"
     ) +
     scale_colour_manual(values = group.colors) +
@@ -189,61 +180,43 @@ min_y <- min(c(joined_all_attr1$lower, joined_all_attr2$lower, joined_all_attr3$
 max_y <- max(c(joined_all_attr1$upper, joined_all_attr2$upper, joined_all_attr3$upper))
 min_x <- min(c(joined_all_attr1$overall_value, joined_all_attr2$overall_value, joined_all_attr3$overall_value))
 max_x <- max(c(joined_all_attr1$overall_value, joined_all_attr2$overall_value, joined_all_attr3$overall_value))
-if(TRUE){
+
   g1 <- g1 + ylim(min_y, max_y) + xlim(min_x, max_x)
   g2 <- g2 + ylim(min_y, max_y) + xlim(min_x, max_x)
   g3 <- g3 + ylim(min_y, max_y) + xlim(min_x, max_x)
-}
+
 
 ###-----add information----
-g1 <- g1 +geom_point(aes(size = point_size, color = Ethnicity)) 
-g1 <- add_stuff(g1, convex_regions1, group.colors1) 
+g1 <- g1 +
+  geom_errorbar(aes(ymin = lower, ymax = upper), alpha = 0.3, width = 10) +
+  geom_point(aes(size = point_size, color = Ethnicity)) 
 
-g2 <- g2 +geom_point(aes(size = point_size, color = Education)) 
-g2 <- add_stuff(g2, convex_regions2,  group.colors2)
+g1 <- add_stuff(g1, convex_regions1, group.colors) 
 
-g3 <- g3 +geom_point(aes(size = point_size, color = rural_urban_class)) 
-g3 <- add_stuff(g3, convex_regions3,  group.colors3)
+g2 <- g2 +
+  geom_errorbar(aes(ymin = lower, ymax = upper), alpha = 0.3, width = 10) +
+  geom_point(aes(size = point_size, color = Education)) 
+g2 <- add_stuff(g2, convex_regions2,  group.colors)
+
+g3 <- g3 +
+  geom_errorbar(aes(ymin = lower, ymax = upper), alpha = 0.3, width = 10) +
+  geom_point(aes(size = point_size, color = rural_urban_class)) 
+g3 <- add_stuff(g3, convex_regions3,  group.colors)
 ##--- legend ---
-group.colors <- c(group.colors1, group.colors2, group.colors3)
-
-legend_df <- data.frame(
-  colour = group.colors,
-  label = names(group.colors),
-  column = c(rep("Ethnicity", 2), rep("Education", 2), rep("rural_urban_class", 2))
+group.colors
+legend_df <- data.frame(x = 1:6,
+            colors = group.colors,
+            labels = names(group.colors)
 )
-
-legend_df <- legend_df %>%
-  complete(colour, column, fill = list(label = "")) %>%
-  group_by(column) %>%
-  mutate(label = str_pad(label, max(nchar(label)), "right"))
-
-legend_df <- legend_df %>%
-  pivot_wider(
-    names_from = column,
-    values_from = label # ,
-    # values_fill = ""
-  ) %>%
-  as.data.frame() %>%
-  unite("labels", c("Ethnicity", "Education", "rural_urban_class"), sep = " | ")
-
-
-color_legend <- legend_df$colour
-names(color_legend) <- legend_df$labels
-
-legend_plot <- get_legend(ggplot(
-  data = legend_df %>% mutate(test = 1),
-  aes(color = labels, x = test, y = test)
-) +
-  theme(
-    legend.title = element_blank(),
-    legend.key.size = unit(4, "mm"),
-    legend.text = element_text(family = "mono", size = 5)
-  ) +
-  #  guides(color = guide_legend(label.position = "left"))+
+p1 <- ggplot(legend_df, aes(x, x, color = labels)) +
   geom_point() +
-  scale_colour_manual(values = color_legend))
-as_ggplot(legend_plot)
+  scale_color_manual(values = group.colors) +
+  theme(legend.title = element_blank(),
+        legend.text=element_text(size=8)) +
+  guides(col = guide_legend(ncol = 1))
+legend_plot <- cowplot::get_legend(p1) #todo wrong
+ggdraw(legend_plot)
+rm(p1, legend_df)
 
 ###---- arrange-----
 lay <- rbind(
@@ -252,7 +225,7 @@ lay <- rbind(
   c(3, NA, 4)
 )
 
-gs <- list(g1, g2, g3, legend_plot)
+gs <- list(g1, g2, g3, legend_plot) #legend_plot
 
 
 blank_space <- 0.05
