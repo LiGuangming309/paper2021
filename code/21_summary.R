@@ -10,7 +10,7 @@
 rm(list = ls(all = TRUE))
 
 # load packages, install if missing
-packages <- c("dplyr", "DataCombine", "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
+packages <- c("dplyr",  "magrittr", "data.table", "testthat", "tidyverse", "tictoc", "viridis", "hrbrthemes")
 
 for (p in packages) {
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
