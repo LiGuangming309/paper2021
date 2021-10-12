@@ -20,17 +20,23 @@ options(scipen = 10000)
 
 #load calculated data
 #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
-tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
-exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/nation"
-summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+tracDir <- "/Users/default/Desktop/paper2021/data/02_tracts"
+exp_tracDir <- "/Users/default/Desktop/paper2021/data/03_exp_tracts"
+censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr/nation"
+summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+
+#tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
+#exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+#censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+#cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/nation"
+#summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
 file_list <- list.files(summaryDir)
 file_list <- file.path(summaryDir, file_list[grepl("attr_bur", file_list)])
-attr_burd <- lapply(file_list, fread) %>% rbindlist
+attrBurden <- lapply(file_list, fread) %>% rbindlist
 rm(file_list)
 
 all_burden <- fread(file.path(summaryDir, "all_burd.csv"))
@@ -52,7 +58,7 @@ attrBurden1 <- attrBurden1 %>%
 ## count states, where more than 10% of disparity explained by PM2.5
 attrBurden2 <- attrBurden %>% filter(Ethnicity %in% c("White, Not Hispanic or Latino") &
                                        Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & Region != "United States"
-                                     & Year == 2004 & method == "burnett" & measure3 == "proportion of disparity to Black or African American attributable")
+                                     & Year == 2016 & method == "burnett" & measure3 == "proportion of disparity to Black or African American attributable")
 attrBurden2 <- attrBurden2 %>%
   group_by(scenario) %>%
   summarise(n = sum(mean >= 10))
@@ -88,19 +94,25 @@ cens_agr <- left_join(cens_agr, cens_meta, by= "variable") %>%
             pop_size = sum(pop_size))
 
 ##study population
-pop_summary1 <- pop_summary %>%
-  filter(Region == "United States"  & Gender.Code == "All genders")
-
-pop_summary2 <- pop_summary1 %>% filter(Education != 666 & Year %in% c(2009,2016)) %>%
+pop_summary1 <- pop_summary %>% filter(Region == "United States"  & Gender.Code == "All genders" & Education != 666 & rural_urban_class == "All" & Year %in% c(2009,2016)) %>%
           group_by(Year) %>%
-        mutate(prop = 100*Population/sum(Population))
+        mutate(prop = 100*Population/sum(Population),
+               prop = round(prop, 2))
 
-pop_summary2 <- pop_summary1 %>% filter(Education == 666 & Ethnicity != "All, All Origins"
+pop_summary2 <- pop_summary %>% filter(Region == "United States"  & Gender.Code == "All genders" & Education == 666 & Ethnicity == "All, All Origins" & rural_urban_class != "All" & Year %in% c(2000,2016)) %>%
+  group_by(Year) %>%
+  mutate(prop = 100*Population/sum(Population),
+         prop = round(prop, 2))
+
+pop_summary3 <- pop_summary %>% filter(Region == "United States"  & Gender.Code == "All genders" & Education == 666 & Ethnicity != "All, All Origins" & rural_urban_class == "All"
                                         & Year %in% c(1990,2016) 
                                         & source2 == "Official Bridged-Race Population Estimates") %>%
   group_by(Year) %>%
-  mutate(prop = 100*Population/sum(Population))
+  mutate(prop = 100*Population/sum(Population),
+         prop = round(prop, 2))
 
+pop_summary_sub <-rbind(pop_summary1, pop_summary2, pop_summary3)
+rm(pop_summary1, pop_summary2, pop_summary3)
 ## count tract year combinations
 years <- 1990:2016
 #tract_years <- sapply(years, function(year){

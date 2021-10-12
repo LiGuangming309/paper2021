@@ -15,6 +15,7 @@ packages <- c(
   "dplyr", "ggExtra", "gridExtra", "grid", "tidyverse", "cowplot"
 )
 
+
 for (p in packages) {
   if (p %in% rownames(installed.packages()) == FALSE) install.packages(p)
   suppressMessages(library(p, character.only = T, warn.conflicts = FALSE, quietly = TRUE))
