@@ -419,7 +419,7 @@ for (year in years) {
       total_burdenX <- total_burdenX %>% distinct()
 
       total_burdenX <- total_burdenX %>%
-        filter(Hispanic.Origin != "Unknown" & # TODO
+        filter(Hispanic.Origin != "Unknown" & 
           # Race != "Guama" &
           min_age != "Unknown" &
           Education != "Unknown" &

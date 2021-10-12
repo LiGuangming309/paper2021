@@ -110,8 +110,8 @@ if (!file.exists(attrBurdenDir)) {
     Race = c("White","White", "Black or African American", "Asian or Pacific Islander", "White", "American Indian or Alaska Native", "All"), # TODO
     Hispanic.Origin = c("All Origins","Not Hispanic or Latino", "All Origins", "All Origins", "Hispanic or Latino", "All Origins", "All Origins"), # TODO
     label_cause =  rep("all-cause", 1),
-    hr_mean = c(1.063, 1.063, 1.208, 1.096, 1.116, 1.1, 1.071),
-    hr_lower = c(1.06, 1.06, 1.199, 1.075, 1.1, 1.06, 1.073),
+    hr_mean = c(1.063, 1.063, 1.208, 1.096, 1.116, 1.1, 1.073),
+    hr_lower = c(1.06, 1.06, 1.199, 1.075, 1.1, 1.06, 1.071),
     hr_upper = c(1.065,1.065, 1.217, 1.117, 1.133,1.14, 1.075),
     min_age = rep(25, 1)
   )

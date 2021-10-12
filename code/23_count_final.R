@@ -26,11 +26,11 @@ censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
 cens_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr/nation"
 summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 
-#tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
-#exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
-#censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
-#cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/nation"
-#summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/02_tracts"
+exp_tracDir <- "C:/Users/Daniel/Desktop/paper2021/data/03_exp_tracts"
+censDir <- "C:/Users/Daniel/Desktop/paper2021/data/05_demog"
+cens_agrDir <- "C:/Users/Daniel/Desktop/paper2021/data/06_dem.agr/nation"
+summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
 #if not downloaded, load from github
 if(!file.exists(summaryDir)) summaryDir <- 'https://raw.github.com/FridljDa/paper2021/master/data/14_summary'
 
@@ -121,14 +121,19 @@ years <- 1990:2016
 #    readRDS(file.path(tracDir, toString(year), file)) %>% nrow
 #  }) %>% sum
 #}) %>% sum
-
+##--- total number of deaths considered----
+all_burden_sub <- all_burden %>% filter(Region == "United States" & Ethnicity == "All, All Origins" &
+                                          Education == "666" & rural_urban_class == "All" & measure1 == "Deaths" & measure2 == "absolute number")
 ##read results
 attrBurden3 <- attrBurden %>% 
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" 
          & Region == "United States"
-         & Year %in% c(2016) & method == "burnett" & measure3 == "value" & scenario == "C"
-         #& Education == 666 & Ethnicity == "All, All Origins"
-         )
+         & Year %in% c(1990, 2016) & method == "di_gee" & measure3 == "value" & scenario == "A"
+         & Education == 666 & Ethnicity == "All, All Origins" & rural_urban_class == "All"
+         ) %>%
+  mutate(mean =  round(mean, 2),
+         lower =  round(lower, 2),
+         upper =  round(upper, 2))
 
 attrBurden4 <- attrBurden %>% filter(Ethnicity %in% c("White, All Origins") &
                                        Gender.Code == "All genders" & measure1 == "Deaths" &
