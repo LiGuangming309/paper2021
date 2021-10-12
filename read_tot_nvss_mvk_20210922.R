@@ -416,40 +416,67 @@ for (year in years) {
       })
 
       #------filter ------
-      total_burdenX <- total_burdenX %>% distinct()
-
-      total_burdenX <- total_burdenX %>%
-        filter(Hispanic.Origin != "Unknown" & 
-          # Race != "Guama" &
-          min_age != "Unknown" &
-          Education != "Unknown" &
-          rural_urban_class != "oth") %>%
-        mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
-
-      total_burdenX <- total_burdenX %>% unite("Ethnicity", c("Race", "Hispanic.Origin"), sep = ", ", remove = F)
-
+      total_burden <- total_burden %>% distinct()
+      
+      total_burden <- total_burden %>% filter(Gender.Code == "A")
+      total_burden <- total_burden %>%
+        filter(interested_state == 1) %>%
+        mutate(interested_state = NULL)
+      
+      if("STATEFP" %in% colnames(total_burden)) total_burden <- total_burden %>% filter(STATEFP != "oth") #TODO
+      
+      
+      total_burden <- total_burden %>% unite("Ethnicity", c("Race", "Hispanic.Origin"), sep = ", ", remove = F)
       interested_ethnicities <- c(
         "Black or African American, All Origins",
         "Asian or Pacific Islander, All Origins",
         "American Indian or Alaska Native, All Origins",
         "All, All Origins"
       )
-
       if (year %in% 1990:1999) interested_ethnicities <- c(interested_ethnicities, "White, All Origins")
       if (year == 2000) interested_ethnicities <- c(interested_ethnicities, "White, All Origins", "White, Not Hispanic or Latino", "White, Hispanic or Latino")
       if (year %in% 2001:2016) interested_ethnicities <- c(interested_ethnicities, "White, Not Hispanic or Latino", "White, Hispanic or Latino")
-
-      total_burdenX <- total_burdenX %>%
+      total_burden <- total_burden %>%
         filter(Ethnicity %in% interested_ethnicities) %>%
         mutate(Ethnicity = NULL)
-
-      total_burdenX <- total_burdenX %>% filter(Gender.Code == "A")
-      total_burdenX <- total_burdenX %>%
-        filter(interested_state == 1) %>%
-        mutate(interested_state = NULL)
-
+      
       # Only considering age above 25
-      total_burdenX <- total_burdenX %>% filter(min_age >= 25)
+      total_burden <- total_burden %>% filter(min_age >= 25)
+      
+      #----measure suppression---
+      numberDeaths_afterfiltering <- total_burden %>%
+        filter(Gender.Code == "A" & Race == "All" & rural_urban_class == 666 & label_cause == "all-cause" & Education == 666) 
+      numberDeaths_afterfiltering <- sum(numberDeaths_afterfiltering$Deaths)
+      
+      suppressed_deaths <- total_burden %>%
+        filter(!(Hispanic.Origin != "Unknown" & 
+                   min_age != "Unknown" &
+                   Education != "Unknown" &
+                   rural_urban_class != "Unknown")) %>%
+        filter(label_cause == "all-cause") %>%
+        group_by_at(setdiff(colnames(total_burden), c("min_age","max_age", "Deaths"))) %>%
+        summarize(Deaths = sum(Deaths)) %>% 
+        ungroup() %>%
+        filter((Race == "All" &Hispanic.Origin == "All Origins" & rural_urban_class == 666 & Education == "Unknown") |
+                 (Race == "All" &Hispanic.Origin == "All Origins"& Education == 666 & rural_urban_class == "Unknown")|
+                 (rural_urban_class == "All"& Education == 666 & (Race == "Unknown"| Hispanic.Origin == "Unknown") ))
+      
+      suppressed_deaths <- suppressed_deaths %>% 
+        mutate(prop = 100*Deaths/numberDeaths_afterfiltering) %>%
+        select(Year, Race, Hispanic.Origin, rural_urban_class, Education, Deaths, prop) %>%
+        as.data.frame()
+      
+      print(paste("In",year,"rows in the mortality counts were excluded due to missing entries:"))
+      print(suppressed_deaths)
+      print(paste0("(total number of deaths considered: ",numberDeaths_afterfiltering,")"))
+      
+      total_burden <- total_burden %>%
+        filter(Hispanic.Origin != "Unknown" & 
+                 # Race != "Guama" &
+                 min_age != "Unknown" &
+                 Education != "Unknown" &
+                 rural_urban_class != "Unknown") %>%
+        mutate(min_age = as.numeric(min_age), max_age = as.numeric(max_age))
 
       #---write csv---
       test_that("no na end read tot nvss", expect_false(any(is.na(total_burdenX))))
