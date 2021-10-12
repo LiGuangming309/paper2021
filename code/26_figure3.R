@@ -65,7 +65,7 @@ most_pop_states <- pop_sum %>%
   group_by(Region) %>%
   summarise(population_state_all = mean(population_state_all)) %>%
   arrange(desc(population_state_all)) %>%
-  head(31) %>%
+  #head(31) %>%
   select(Region) %>%
   unlist()
 

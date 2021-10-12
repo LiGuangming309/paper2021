@@ -215,7 +215,7 @@ for (agr_by in agr_bys) {
      # runscript(script = add.rate.tot.burd, args = args)
      # runscript(script = calc.attr.burd1.script, args = args)
      # runscript(script = calc.attr.burd2.script, args = args)
-      runscript(script = calc.attr.burd3.script, args = args) 
+     # runscript(script = calc.attr.burd3.script, args = args) 
 
     }  
   }
@@ -238,12 +238,12 @@ for (agr_by in agr_bys) {
     method #11
   )   
    
-  runscript(script = summary.script, args = args)
+#  runscript(script = summary.script, args = args)
  # runscript(script = summary.other.script, args = args)
 
  runscript(script = figure1.script, args = args)
 runscript(script = figure2.script, args = args)  
 runscript(script = figure3.script, args = args)
-runscript(script = figure4.script, args = args)
+#runscript(script = figure4.script, args = args)
   
 
