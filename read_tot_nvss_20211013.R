@@ -29,6 +29,8 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
+dir.create(sprintf("%s/logs", totalBurdenParsedDir), recursive = TRUE, showWarnings = FALSE)
+
 #totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
 #totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
@@ -36,8 +38,8 @@ totalBurdenParsedDir <- "./Transfer_for_daniel"
 #### ----- ---
 file_list <- list.files(totalBurdenDir)
 #agr_bys <- c("nation", "STATEFP")#county
-agr_bys <- c("nation")
-years <- 1999:2016
+agr_bys <- c("county","nation", "STATEFP")
+years <- 1999
 
 findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/findreplace.csv")
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/causes.csv")
