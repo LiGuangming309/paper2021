@@ -29,9 +29,9 @@ totalBurdenDir <- "./raw_restricted_data"
 # Where the parsed files should be stored
 totalBurdenParsedDir <- "./Transfer_for_daniel"
 
-totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+#totalBurdenDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 # Where the parsed files should be stored
-totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
+#totalBurdenParsedDir <- "/Users/default/Desktop/paper2021/raw_restricted_fake"
 
 #### ----- ---
 file_list <- list.files(totalBurdenDir)
@@ -43,18 +43,18 @@ findreplace <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/0
 causes <- read.csv("https://raw.github.com/FridljDa/paper2021/master/data/09_total_burden_parsed/causes.csv")
 
 #### ----- loop over everything---
-# doParallel::registerDoParallel(cores = NCORES)
-# foreach::foreach(year = years, .inorder = FALSE) %dopar% {
-for (year in years) {
+ doParallel::registerDoParallel(cores = NCORES)
+ foreach::foreach(year = years, .inorder = FALSE) %dopar% {
+#for (year in years) {
   findreplaceX <- findreplace %>% filter(Year == year)
 
   totalBurdenDirX <- file.path(totalBurdenDir, file_list[grepl(year, file_list)])
   ## ----- read total burden ---------
-  # total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
-  total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
+   total_burden <- narcan:::.import_restricted_data(totalBurdenDirX, year = year, fix_states = FALSE)
+  #total_burden <- data.table::fread(cmd = paste("unzip -p", totalBurdenDirX))
 
   ## Open log -- assume file import went fine.
-  #sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
+  sink(sprintf("%s/logs/log_%s.txt", totalBurdenParsedDir, Sys.getpid()), append = TRUE)
   print(sprintf("Starting %s: %s", year, basename(totalBurdenDirX)))
 
   causesX <- causes %>% filter(Year == year)
@@ -482,14 +482,15 @@ for (year in years) {
       test_that("no na end read tot nvss", expect_false(any(is.na(total_burdenX))))
 
       total_burdenX <- total_burdenX %>% tibble::add_column(source = "nvss")
-      fwrite(total_burdenX, totalBurdenParsedDirX)
+      #fwrite(total_burdenX, totalBurdenParsedDirX)
+      fwrite(suppressed_deaths, totalBurdenParsedDirX)
       toc()
-      #tic.log()
+      tic.log()
       ## Close log
-      #cat("\n\n")
-      # sink()
+      cat("\n\n")
+       sink()
     }
   }
 }
-# doParallel::stopImplicitCluster()
-# closeAllConnections()
+ doParallel::stopImplicitCluster()
+ closeAllConnections()
