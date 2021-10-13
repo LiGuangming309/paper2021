@@ -148,7 +148,7 @@ attrBurden4 <- attrBurden %>% filter(Ethnicity %in% c("White, All Origins") &
                                        Gender.Code == "All genders" & measure1 == "Deaths" &
                                        scenario == "A" 
                                      & measure2 == "age-adjusted rate per 100,000" & Region != "United States"
-                                     & Year %in% c(1990,2000) & method == "burnett" 
+                                     & Year %in% c(1990,2000) & method == "dii_gee" 
                                      & measure3 == "proportion of disparity to Black or African American attributable")  %>% 
                               select(Region, Year, mean)
 attrBurden4 <- attrBurden4 %>%
@@ -162,4 +162,5 @@ attrBurden4 <- attrBurden4 %>%
 attrBurden4 <- attrBurden4 %>% 
   filter(name == "my_ranks")
 
-plot(attrBurden4$`1990`, attrBurden4$`2000`)
+##----higher than average-----
+attrBurden5 <- attrBurden %>% filter(method == "dii_gee" & Region == "United States" )

@@ -46,6 +46,7 @@ states <- file.path(tmpDir, "states.csv") %>%
 tic("summarized all burden and attributable burden data")
 ## --- read attr burden----
 agr_bys <- list.files(attrBurdenDir)
+#agr_bys <- "nation"
 attrBurden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(attrBurdenDir, agr_by))
   attrBurden <- lapply(sources, function(source) {
@@ -69,7 +70,7 @@ test_that("basic check attr burden", {
   expect_equal(nrow(attrBurden_dupl), 0)
 })
 ## --- read all burden----
-agr_bys <- list.files(totalBurdenParsed2Dir)
+#agr_bys <- list.files(totalBurdenParsed2Dir)
 # agr_bys <- setdiff(agr_bys,"county")
 all_burden <- lapply(agr_bys, function(agr_by) {
   sources <- list.files(file.path(totalBurdenParsed2Dir, agr_by))
@@ -241,42 +242,46 @@ attrBurden_disp9 <- attrBurden_disp9 %>% mutate(
   attr.x = NULL, attr.y = NULL
 )
 
-attrBurden_disp10 <- inner_join(all_burden %>% filter(attr == "overall" & rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins"),
-                                all_burden %>% filter(attr == "overall" & !(rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins")),
-                               by = setdiff(colnames(all_burden), c("rural_urban_class","Education","Race","Hispanic.Origin", "overall_value"))
-)
-
-attrBurden_disp11 <- inner_join(attrBurden %>% filter(rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins"),
-                               attrBurden %>% filter(!(rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins")),
-                               by = setdiff(colnames(attrBurden), c("rural_urban_class","Education","Race","Hispanic.Origin", "lower", "mean", "upper"))
-)
-
-attrBurden_disp12 <- inner_join(
-  attrBurden_disp10,
-  attrBurden_disp11,
-  by = setdiff(colnames(attrBurden_disp10), c("attr", "overall_value.x", "overall_value.y"))
-)
-
-attrBurden_disp12 <- attrBurden_disp12 %>% mutate(
-  mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
-  lower = mean, upper = mean,
-  attr = "attributable", measure3 = "proportion of disparity to average",
-  rural_urban_class = rural_urban_class.y,
-  Education = Education.y,
-  Race = Race.y, Hispanic.Origin = Hispanic.Origin.y,
-  rural_urban_class.x = NULL, rural_urban_class.y = NULL,
-  Education.x = NULL, Education.y = NULL,
-  Race.x = NULL, Race.y = NULL, Hispanic.Origin.x = NULL, Hispanic.Origin.y = NULL,
-  overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,
-  lower.x = NULL, lower.y = NULL, upper.x = NULL, upper.y = NULL,
-  attr.x = NULL, attr.y = NULL
-)
+if(FALSE){
+  
+  attrBurden_disp10 <- inner_join(all_burden %>% filter(attr == "overall" & rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins"),
+                                  all_burden %>% filter(attr == "overall" & !(rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins")),
+                                  by = setdiff(colnames(all_burden), c("rural_urban_class","Education","Race","Hispanic.Origin", "overall_value"))
+  )
+  
+  attrBurden_disp11 <- inner_join(attrBurden %>% filter(rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins"),
+                                  attrBurden %>% filter(!(rural_urban_class == 666 & Education == 666 & Race == "All" & Hispanic.Origin == "All Origins")),
+                                  by = setdiff(colnames(attrBurden), c("rural_urban_class","Education","Race","Hispanic.Origin", "lower", "mean", "upper"))
+  )
+  
+  attrBurden_disp12 <- inner_join(
+    attrBurden_disp10,
+    attrBurden_disp11,
+    by = setdiff(colnames(attrBurden_disp10), c("attr", "overall_value.x", "overall_value.y"))
+  )
+  
+  attrBurden_disp12 <- attrBurden_disp12 %>% mutate(
+    mean = 100 * (mean.x - mean.y) / (overall_value.x - overall_value.y),
+    lower = mean, upper = mean,
+    attr = "attributable", measure3 = "proportion of disparity to average",
+    rural_urban_class = rural_urban_class.y,
+    Education = Education.y,
+    Race = Race.y, Hispanic.Origin = Hispanic.Origin.y,
+    rural_urban_class.x = NULL, rural_urban_class.y = NULL,
+    Education.x = NULL, Education.y = NULL,
+    Race.x = NULL, Race.y = NULL, Hispanic.Origin.x = NULL, Hispanic.Origin.y = NULL,
+    overall_value.x = NULL, overall_value.y = NULL, mean.x = NULL, mean.y = NULL,
+    lower.x = NULL, lower.y = NULL, upper.x = NULL, upper.y = NULL,
+    attr.x = NULL, attr.y = NULL
+  )
+}
 
 attrBurden$measure3 <- "value"
-attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6, attrBurden_disp9, attrBurden_disp12)
+attrBurden <- rbind(attrBurden, attrBurden_prop, attrBurden_disp3, attrBurden_disp6, attrBurden_disp9)
 rm(
   attrBurden_prop, attrBurden_disp1, attrBurden_disp2, attrBurden_disp3, attrBurden_disp4,
-  attrBurden_disp5, attrBurden_disp6, attrBurden_disp7, attrBurden_disp8, attrBurden_disp9
+  attrBurden_disp5, attrBurden_disp6, attrBurden_disp7, attrBurden_disp8, attrBurden_disp9#,
+ # attrBurden_disp10, attrBurden_disp11, attrBurden_disp12
 )
 
 
