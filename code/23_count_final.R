@@ -44,6 +44,11 @@ pm_summ <- fread(file.path(summaryDir, "pm_summary.csv"))
 pm_summ <- pm_summ %>% filter(scenario == "A")
 pop_summary <- fread(file.path(summaryDir, "pop_summary.csv"))
 
+##-----pm summary ----
+pm_summ_sub <- pm_summ %>% 
+  filter(Ethnicity == "All, All Origins" & Region == "United States" & Year %in% c(1990,2016)
+         & Education == 666 & rural_urban_class == "All" & pm_metric == "mean") %>%
+  mutate(value = round(value, 2))
 ## count states, where whites less affected
 attrBurden1 <- attrBurden %>% filter(Ethnicity %in% c("White, Not Hispanic or Latino", "Black or African American") &
                                       Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" & Region != "United States"
@@ -93,7 +98,7 @@ cens_agr <- left_join(cens_agr, cens_meta, by= "variable") %>%
   summarise(prop = 100*sum(prop),
             pop_size = sum(pop_size))
 
-##study population
+##--- study population----
 pop_summary1 <- pop_summary %>% filter(Region == "United States"  & Gender.Code == "All genders" & Education != 666 & rural_urban_class == "All" & Year %in% c(2009,2016)) %>%
           group_by(Year) %>%
         mutate(prop = 100*Population/sum(Population),
@@ -112,6 +117,7 @@ pop_summary3 <- pop_summary %>% filter(Region == "United States"  & Gender.Code 
          prop = round(prop, 2))
 
 pop_summary_sub <-rbind(pop_summary1, pop_summary2, pop_summary3)
+
 rm(pop_summary1, pop_summary2, pop_summary3)
 ## count tract year combinations
 years <- 1990:2016
@@ -124,7 +130,10 @@ years <- 1990:2016
 ##--- total number of deaths considered----
 all_burden_sub <- all_burden %>% filter(Region == "United States" & Ethnicity == "All, All Origins" &
                                           Education == "666" & rural_urban_class == "All" & measure1 == "Deaths" & measure2 == "absolute number")
-##read results
+
+
+
+##------read results-------
 attrBurden3 <- attrBurden %>% 
   filter(Gender.Code == "All genders" & measure1 == "Deaths" & measure2 == "age-adjusted rate per 100,000" 
          & Region == "United States"

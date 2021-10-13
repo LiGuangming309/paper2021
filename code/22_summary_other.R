@@ -36,11 +36,11 @@ if (rlang::is_empty(args)) {
   pop.summary.dir <- "C:/Users/Daniel/Desktop/paper2021/data/11_population_summary/"
   summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
   
-  tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
-  censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
-  dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
-  pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
-  summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
+  #tmpDir <- "/Users/default/Desktop/paper2021/data/tmp"
+  #censDir <- "/Users/default/Desktop/paper2021/data/05_demog"
+  #dem_agrDir <- "/Users/default/Desktop/paper2021/data/06_dem.agr"
+  #pop.summary.dir <- "/Users/default/Desktop/paper2021/data/11_population_summary"
+  #summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
 }
 
 #intense computation
@@ -54,7 +54,7 @@ if(!file.exists(pm_summDir)){
   
   tic(paste("summarized pm data"))
   agr_bys <- setdiff(list.files(dem_agrDir),"county")
-  agr_bys <- "nation" #TODO löschen
+  #agr_bys <- "nation" #TODO löschen
   pm_summ <- lapply(agr_bys, function(agr_by){
     tic(paste("summarized pm data by", agr_by))
     years <- list.files(file.path(dem_agrDir, agr_by))
@@ -75,14 +75,16 @@ if(!file.exists(pm_summDir)){
     pm_summ <- pm_summ %>% tibble::add_column(agr_by = agr_by)
     
     pm_summ <- pm_summ %>%
+      filter(min_age >= 25) %>%
       group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age"))))) %>%
-      summarise(pop_size = sum(pop_size))
+      summarise(pop_size = sum(pop_size)) %>%
+      mutate(min_age = 25, max_age = 150)
     toc()
     return(pm_summ)
   }) %>% rbindlist
   
   pm_summ <- pm_summ %>%
-    group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","min_age", "max_age","pm"))))) %>%
+    group_by_at(vars(all_of(setdiff(colnames(pm_summ),c("variable","pop_size","prop","pm"))))) %>%
     #group_by(Year,Region, agr_by, Race, Hispanic.Origin,Gender.Code, scenario, Education) %>%
     summarise(mean = weighted.mean(pm, pop_size),
               median = matrixStats::weightedMedian(pm, pop_size))
@@ -168,8 +170,10 @@ if(!file.exists(pop_summaryDir)){
   rm(pop_summary1, pop_summary2)
   
   pop_summary <- pop_summary %>%
-    group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population","min_age", "max_age"))))) %>%
-    summarise(Population = sum(Population))
+    filter(min_age >= 25) %>%
+    dplyr::group_by_at(vars(all_of(setdiff(colnames(pop_summary),c("Population","min_age", "max_age"))))) %>%
+    dplyr::summarize(Population = sum(Population)) %>%
+    mutate(min_age = 25, max_age = 150)
   ###---find and replace----
   pop_summary <- pop_summary %>% mutate_at(setdiff(colnames(pop_summary), c("Population")),
                                    as.factor)

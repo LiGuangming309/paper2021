@@ -33,10 +33,14 @@ methodI <- args[11]
 
 # TODO delete
 if (rlang::is_empty(args)) {
+  scenarioI <- "A"
+  
   summaryDir <- "/Users/default/Desktop/paper2021/data/14_summary"
   #summaryDir <- "/Users/default/Desktop/data_summary_old"
   figuresDir <- "/Users/default/Desktop/paper2021/data/15_figures"
-  scenarioI <- "A"
+  
+  summaryDir <- "C:/Users/Daniel/Desktop/paper2021/data/14_summary"
+  figuresDir <- "C:/Users/Daniel/Desktop/paper2021/data/15_figures"
 }
 
 file_list <- list.files(summaryDir)
@@ -64,7 +68,7 @@ attr_burd2 <- attr_burd %>% filter(agr_by == "nation" & Education != 666 & Ethni
 g2 <- ggplot(attr_burd2, aes(x = Year, y = mean, color = Education))
 
 attr_burd3 <- attr_burd %>% filter(agr_by == "nation" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "value"
-& rural_urban_class != "All" & Year >= 2001 & method == "di_gee")
+& rural_urban_class != "All" & Year >= 2000 & method == "di_gee")
 g3 <- ggplot(attr_burd3, aes(x = Year, y = mean, color = rural_urban_class))
 
 attr_burd4 <- attr_burd %>% filter(agr_by == "nation" & method == "di_gee" & Education == 666 & Ethnicity != "All, All Origins" & measure3 == "prop. of overall burden" & rural_urban_class == "All")
@@ -74,7 +78,7 @@ attr_burd5 <- attr_burd %>% filter(agr_by == "nation" & method == "di_gee" & Edu
 g5 <- ggplot(attr_burd5, aes(x = Year, y = mean, color = Education))
 
 attr_burd6 <- attr_burd %>% filter(agr_by == "nation" & method == "di_gee" & Education == 666 & Ethnicity == "All, All Origins" & measure3 == "prop. of overall burden" 
-                                   & rural_urban_class != "All" & Year >= 2001)
+                                   & rural_urban_class != "All" & Year >= 2000)
 g6 <- ggplot(attr_burd6, aes(x = Year, y = mean, color = rural_urban_class))
 
 
